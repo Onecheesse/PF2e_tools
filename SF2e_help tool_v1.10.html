@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfinder Pomocníček v1.10</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #0c1117; 
+            color: #cdd6f4;
+        }
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Orbitron', sans-serif;
+            color: #89b4fa;
+            text-shadow: 0 0 5px rgba(137, 180, 250, 0.5);
+        }
+        .data-panel { 
+            background-color: rgba(17, 24, 39, 0.8); 
+            border: 1px solid #3b82f6;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        .tab-button { 
+            transition: all 0.3s ease; 
+            border-bottom: 3px solid transparent; 
+            padding: 0.75rem 0.5rem;
+            white-space: nowrap;
+            color: #9399b2;
+        }
+        .tab-button.active, .tab-button:hover { 
+            border-bottom-color: #89b4fa; 
+            color: #f5c2e7; 
+            text-shadow: 0 0 8px rgba(245, 194, 231, 0.7);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .card-expand { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .card-expand.open { max-height: 4000px; }
+        
+        .card-header .expand-btn {
+            color: #89b4fa;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card-header.open .expand-btn {
+            transform: rotate(45deg);
+        }
+        
+        .gen-button {
+            background-color: #f5c2e7;
+            color: #1e1e2e;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(245, 194, 231, 0.5);
+            cursor: pointer;
+        }
+        .gen-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(245, 194, 231, 0.8);
+        }
+        .gen-button:disabled {
+            background-color: #45475a;
+            color: #6c7086;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        select, .gen-output, input {
+             background-color: #1e1e2e;
+             border: 1px solid #45475a;
+             color: #cdd6f4;
+             border-radius: 8px;
+        }
+        .gen-output { flex-grow: 1; }
+        .gen-output h4 { color: #f5c2e7; text-shadow: none; font-family: 'Orbitron', sans-serif;}
+        .gen-output ul { margin-left: 1rem; list-style-type: disc; }
+        .history-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0;
+        }
+        .history-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #89b4fa;
+            transition: color 0.2s;
+        }
+        .history-btn:hover:not(:disabled) { color: #f5c2e7; }
+        .history-btn:disabled { color: #45475a; cursor: not-allowed; }
+
+        .save-btn {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            margin-left: auto;
+        }
+        .save-btn:hover { background-color: #60a5fa; }
+
+        .card {
+            background-color: rgba(30, 30, 46, 0.7);
+            border: 1px solid #45475a;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #89b4fa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(137, 180, 250, 0.1);
+        }
+        .feat {
+            background-color: rgba(17, 24, 39, 0.6);
+            border-left: 3px solid #f5c2e7;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .spinner {
+            border: 4px solid rgba(205, 214, 244, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #f5c2e7;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #11111b; }
+        ::-webkit-scrollbar-thumb { background: #45475a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6c7086; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <header class="bg-gray-900/80 sticky top-0 z-40 backdrop-filter backdrop-blur-lg border-b border-blue-500/30">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">Starfinder Pomocníček</h1>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-8">
+        
+        <div class="border-b-2 border-blue-500/30 mb-8">
+            <nav id="tabs" class="flex flex-wrap space-x-2 md:space-x-6 -mb-0.5 overflow-x-auto">
+                <button data-tab="generators-tab" class="tab-button active">🚀 Generátory</button>
+                <button data-tab="archetypes-tab" class="tab-button">🏅 Archetypy</button>
+                <button data-tab="adventures-tab" class="tab-button">🌌 Dobrodružství</button>
+                <button data-tab="locations-tab" class="tab-button">🪐 Lokace</button>
+                <button data-tab="factions-tab" class="tab-button">🏛️ Frakce</button>
+                <button data-tab="ancestries-tab" class="tab-button">👽 Rasy</button>
+                <button data-tab="classes-tab" class="tab-button">🧑‍🚀 Povolání</button>
+            </nav>
+        </div>
+
+        <div id="tab-contents">
+            <!-- Generators Tab -->
+            <div id="generators-tab" class="tab-content active">
+                <h2 class="text-3xl font-bold mb-6 text-center">Centrum Kreativních Generátorů</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Adventure Hook Generator -->
+                    <div class="data-panel p-6 rounded-lg">
+                        <h3 class="text-2xl mb-4">Námět na Dobrodružství</h3>
+                        <p class="text-sm text-gray-400 mb-4">Vyberte typ a přidejte vlastní nápady pro zápletku na míru.</p>
+                        <select id="adventure-type-select" class="w-full p-2 mb-2">
+                            <!-- Options populated by JS -->
+                        </select>
+                        <input type="text" id="adventure-context-input" placeholder="Volitelný námět (např. 'opuštěná těžařská loď')" class="w-full p-2 mb-4">
+                        <button id="generate-adventure-hook" class="gen-button w-full">Generovat Námět</button>
+                        <div id="adventure-output" class="gen-output mt-4 p-4 min-h-[200px] border-dashed text-sm"></div>
+                        <div class="history-nav">
+                            <button id="adventure-prev" class="history-btn" disabled>&lt;</button>
+                            <span id="adventure-history-counter" class="text-xs">0 / 0</span>
+                            <button id="adventure-next" class="history-btn" disabled>&gt;</button>
+                            <button id="save-adventure-btn" class="save-btn">Uložit</button>
+                        </div>
+                    </div>
+
+                    <!-- NPC Generator -->
+                    <div class="data-panel p-6 rounded-lg">
+                        <h3 class="text-2xl mb-4">Postava (NPC)</h3>
+                        <p class="text-sm text-gray-400 mb-4">Potřebujete rychle postavu? Zadejte roli, frakci, nebo lokaci.</p>
+                        <input type="text" id="npc-context-input" placeholder="např. 'cynický Steward', 'pirát z Diaspory'" class="w-full p-2 mb-4">
+                        <button id="generate-npc" class="gen-button w-full">Generovat NPC</button>
+                        <div id="npc-output" class="gen-output mt-4 p-4 min-h-[200px] border-dashed text-sm"></div>
+                         <div class="history-nav">
+                            <button id="npc-prev" class="history-btn" disabled>&lt;</button>
+                            <span id="npc-history-counter" class="text-xs">0 / 0</span>
+                            <button id="npc-next" class="history-btn" disabled>&gt;</button>
+                            <button id="save-npc-btn" class="save-btn">Uložit</button>
+                        </div>
+                    </div>
+
+                    <!-- Starship Name Generator -->
+                    <div class="data-panel p-6 rounded-lg">
+                        <h3 class="text-2xl mb-4">Jméno Hvězdné Lodi</h3>
+                        <p class="text-sm text-gray-400 mb-4">Dejte své lodi jméno a krátkou historii.</p>
+                        <select id="ship-type-select" class="w-full p-2 mb-2">
+                             <option value="explorer">Průzkumná</option>
+                             <option value="freighter">Nákladní</option>
+                             <option value="pirate">Piratská</option>
+                             <option value="military">Vojenská</option>
+                             <option value="luxury">Luxusní</option>
+                             <option value="salvage">Záchranná/Sběračská</option>
+                        </select>
+                         <input type="text" id="ship-context-input" placeholder="Volitelný námět (např. 'posádka z Vesku')" class="w-full p-2 mb-4">
+                        <button id="generate-ship-name" class="gen-button w-full">Generovat Jména</button>
+                        <div id="ship-output" class="gen-output mt-4 p-4 min-h-[200px] border-dashed text-sm"></div>
+                         <div class="history-nav">
+                            <button id="ship-prev" class="history-btn" disabled>&lt;</button>
+                            <span id="ship-history-counter" class="text-xs">0 / 0</span>
+                            <button id="ship-next" class="history-btn" disabled>&gt;</button>
+                            <button id="save-ship-btn" class="save-btn">Uložit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Other Tabs Content Placeholder -->
+            <div id="archetypes-tab" class="tab-content"></div>
+            <div id="adventures-tab" class="tab-content"></div>
+            <div id="locations-tab" class="tab-content"></div>
+            <div id="factions-tab" class="tab-content"></div>
+            <div id="ancestries-tab" class="tab-content"></div>
+            <div id="classes-tab" class="tab-content"></div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800/50 text-center p-6 mt-16 border-t-2 border-blue-500/30">
+        <div class="container mx-auto px-6">
+            <div id="api-key-section" class="max-w-md mx-auto text-sm">
+                 <h3 class="text-xl font-bold mb-4">Nastavení API klíče</h3>
+                 <p class="mb-2 text-gray-400">Pro využití generativních funkcí (AI) zadejte svůj vlastní Gemini API klíč. Můžete jej získat zdarma na <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-f5c2e7 hover:underline">Google AI Studio</a>.</p>
+                 <div class="mb-4">
+                     <label for="api-key-input" class="block font-bold mb-1">Váš Gemini API klíč:</label>
+                     <div class="flex gap-2">
+                         <input type="password" id="api-key-input" class="w-full p-2" placeholder="Vložte svůj API klíč">
+                         <button id="save-api-key-btn" class="gen-button">Uložit</button>
+                     </div>
+                     <p id="api-key-status" class="text-xs mt-2 h-4"></p>
+                 </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">Starfinder Pomocníček v1.10 (Integrace Lore)</p>
+        </div>
+    </footer>
+
+    <script>
+    const starfinderData = {
+        archetypes: [
+            {
+                name: "AbadarCorp Rep",
+                source: "Galaxy Guide",
+                description: "Zástupci AbadarCorp jsou více než jen obchodníci; jsou to agenti civilizace a obchodu, kteří využívají své znalosti byznysu a korporátních strategií k dosažení svých cílů, ať už diplomaticky, nebo lstí. Jejich práce je často směsicí diplomacie, špionáže a ekonomické války, vždy pod rouškou legitimního obchodu.",
+                feats: [
+                    { name: "AbadarCorp Rep Dedication", level: 2, prerequisites: "Trénovaný v Deception, Diplomacy, nebo Society.", text: "Získáš talent Additional Lore pro Business nebo Corporate Lore. Tuto dovednost můžeš použít místo jakékoli jiné při hodu na Recall Knowledge o tématech souvisejících s tvou prací, jako jsou zboží, klienti nebo průmyslové zákony." },
+                    { name: "According to My Calculations", level: 4, prerequisites: "AbadarCorp Rep Dedication", text: "Oznámíš obchodní projekce spojenci. Hodíš na Business nebo Corporate Lore a při úspěchu získá spojenec +1 bonus k dalšímu hodu na dovednost nebo útok (+2 při kritickém úspěchu). Cíl je vůči této akci imunní na 24 hodin." },
+                    { name: "Sales Pitch", level: 4, prerequisites: "AbadarCorp Rep Dedication", text: "Můžeš použít Business nebo Corporate Lore k akci Make an Impression. Při úspěchu zlepšíš postoj cíle o jeden stupeň. Cíl je vůči této akci imunní na 24 hodin." },
+                    { name: "Corporate Speak", level: 4, prerequisites: "AbadarCorp Rep Dedication", text: "Můžeš sdílet tajné zprávy pomocí korporátního žargonu. Spojenci, kteří s tebou cestují, nebo jsou trénovaní ve stejném Lore, ti rozumí automaticky. Ostatní musí uspět na hodu na Perception, aby si všimli, že předáváš zprávu." },
+                    { name: "It's Who You Know", level: 5, prerequisites: "AbadarCorp Rep Dedication", text: "Využíváš svou síť kontaktů. Akce Gather Information nebo Create a Forgery ti trvají poloviční dobu." },
+                    { name: "Do You Know Who I Work For?", level: 7, prerequisites: "AbadarCorp Rep Dedication; expert v Intimidation", text: "Při použití Intimidation na Coerce nebo Demoralize proti cíli, který zná tvou korporaci, se úspěch stává kritickým úspěchem." },
+                    { name: "Maximize Profits", level: 7, prerequisites: "AbadarCorp Rep Dedication", text: "Při neúspěchu na hodu Earn Income získáš místo toho úspěch." }
+                ]
+            },
+            {
+                name: "Space Pirate",
+                source: "Galaxy Guide",
+                description: "Žiješ životem psance mezi hvězdami, hledáš kořist a slávu. Ať už jsi součástí posádky Free Captains, nebo nezávislý korzár, tvé jméno je šeptáno v přístavních barech po celé galaxii. Piráti si cení svobody, posádky a samozřejmě tučného zisku.",
+                feats: [
+                    { name: "Space Pirate Dedication", level: 2, prerequisites: "Trénovaný v Intimidation.", text: "Získáš trénink (nebo expertízu) v Piloting. Získáš obeznámenost s cutlassy, flaily, rapiers a zbraněmi s vlastností 'razing'. Získáš akci Holo-Roger, která ti umožní Demoralizovat všechny nepřátele v okolí, když hodíš iniciativu." },
+                    { name: "Broadside Charge", level: 4, prerequisites: "Space Pirate Dedication", text: "Držíš pistoli a sečnou zbraň. Umožňuje ti provést útok na dálku, pohyb a útok na blízko jako dvě akce proti jednomu cíli." },
+                    { name: "Pirate's Parry", level: 6, prerequisites: "Space Pirate Dedication", text: "Jako reakci na útok na blízko získáš +2 bonus k AC. Při kritickém neúspěchu útočníka můžeš provést protiútok na dálku." },
+                    { name: "Press-Gang the Soul", level: 8, prerequisites: "Space Pirate Dedication", text: "Když porazíš nepřítele pomocí phase cutlass, ukradneš část jeho vitality a můžeš na vůli sesílat kouzlo wisp ally." },
+                    { name: "Další talenty", level: "4+", prerequisites: "Různé", text: "Tento archetyp také dobře doplňují obecné talenty jako Menacing Laughter (4), Quip (4), Twin Draw (6) a Opening Volley (10)." }
+                ]
+            },
+            {
+                name: "Hellknight",
+                source: "Galaxy Guide",
+                description: "Jsi členem obávaného řádu, který prosazuje nekompromisní zákon a pořádek inspirovaný disciplínou Pekla. Tvá zbroj je symbolem tvé autority a tvé odhodlání je pevné jako ocel. Pro Hellknighta je zákon absolutní a chaos je největším nepřítelem civilizace.",
+                feats: [
+                    { name: "Hellknight Dedication", level: 6, prerequisites: "Členství v řádu Hellknightů, složení Hellknight Testu.", text: "Získáš expertízu v Intimidation. Tvá zbroj je považována o kategorii lehčí pro účely zdatnosti a získává bonus k resistenci a Intimidation. Tabulka níže ukazuje resistence dle řádu: <ul class='list-disc ml-4 mt-2 text-xs'><li><b>Order of the Chain:</b> electricity</li><li><b>Order of the Crucible:</b> cold</li><li><b>Order of the Eclipse:</b> void</li><li><b>Order of the Pyre:</b> fire</li></ul>" },
+                    { name: "Disperse!", level: 8, prerequisites: "Hellknight Dedication", text: "Akce, která ti umožní odtlačit nepřítele pomocí Intimidation a následovat ho." },
+                    { name: "Infernal Bulwark", level: 10, prerequisites: "Hellknight Dedication", text: "Tvá zbroj získá vlastnost 'bulwark'. Získáš resistenci (dle řádu) rovnou polovině tvé úrovně." },
+                    { name: "Infernal Armaments", level: 12, prerequisites: "Hellknight Dedication", text: "Jednou za 10 minut můžeš na minutu napustit své zbraně pekelnou energií, která přidává bonusové poškození (dle řádu)." },
+                    { name: "Unleash Hell!", level: 14, prerequisites: "Hellknight Dedication", text: "Jednou denně můžeš ze své zbroje vypustit 30-stopý kužel pekelné energie, který zraňuje nepřátele." }
+                ]
+            },
+            {
+                name: "Knight of Golarion",
+                source: "Galaxy Guide",
+                description: "Jsi členem rytířského řádu, který chrání nevinné, bojuje proti tyranii a snaží se zachovat kulturu ztracené planety Golarion. Tvá síla nepramení jen z oceli, ale i z neochvějné víry v dobro. Rytíři jsou majákem naděje v často temné galaxii.",
+                feats: [
+                    { name: "Knight of Golarion Dedication", level: 2, prerequisites: "Síla 14.", text: "Získáš obeznámenost se všemi zbraněmi ze skupiny mečů (sword weapon group) a staneš se trénovaným ve dvou Lore dovednostech spojených s Golarionem (např. Golarion Lore, Iomedae Lore)." },
+                    { name: "Iomedae's Shield", level: 4, prerequisites: "Knight of Golarion Dedication", text: "Akce, kterou vytvoříš sobě a až pěti spojencům dočasný energetický štít s 14 životy, který se každé kolo obnovuje." },
+                    { name: "Iomedae's Sword", level: 6, prerequisites: "Knight of Golarion Dedication", text: "Tvé útoky proti démonům, ďáblům, drakům a nemrtvým způsobují dodatečné přetrvávající poškození duchem (spirit damage) s vlastností 'holy'." },
+                    { name: "Iomedae's Helm", level: 8, prerequisites: "Knight of Golarion Dedication", text: "Dotykem můžeš dát spojenci další záchranný hod proti mentálním efektům, jako je zmatení nebo strach." },
+                    { name: "Iomedae's Barrage", level: 10, prerequisites: "Knight of Golarion Dedication", text: "Jednou denně můžeš vytvořit nebeské plazmové dělo a vystřelit kužel nebo linii energie, která způsobuje poškození ohněm a duchem." }
+                ]
+            },
+            {
+                name: "Xenoarcheologist",
+                source: "Galaxy Guide",
+                description: "Galaxie je plná ruin prastarých civilizací a ty jsi ten, kdo odhaluje jejich tajemství. S kloboukem na hlavě a laserovou pistolí po boku, jsi připraven čelit jakékoli pasti a kletbě. Znalosti jsou tvým největším pokladem.",
+                feats: [
+                    { name: "Xenoarcheologist Dedication", level: 2, prerequisites: "Trénovaný v Society, Thievery a jedné ze znalostních magických dovedností (Arcana, Nature, Occultism, Religion).", text: "Staneš se expertem v Society a Thievery. Získáš +1 bonus na Recall Knowledge a Delve Lore při prozkoumávání. Získáš novou Lore dovednost: Delve Lore, pro znalosti o archeologických nalezištích." },
+                    { name: "Don't Touch That!", level: 2, prerequisites: "Xenoarcheologist Dedication", text: "Jako reakci můžeš varovat spojence, který spustil past, a potenciálně past zastavit nebo dát spojenci bonus k záchraně." },
+                    { name: "Ready for Trouble", level: 6, prerequisites: "Mistr v Thievery, Xenoarcheologist Dedication", text: "Získáš talent Danger Awareness. Můžeš použít Delve Lore k odzbrojení pastí z mimozemských nebo historicky významných lokací." },
+                    { name: "Byzantine Linguistics", level: 7, prerequisites: "Mistr v Society, Xenoarcheologist Dedication", text: "Získáš přístup k neobvyklým starověkým jazykům. Můžeš použít Society nebo Delve Lore k rozluštění písma a získáš bonus k těmto hodům." },
+                    { name: "Statistical Anomaly", level: 10, prerequisites: "Xenoarcheologist Dedication", text: "Jednou za hodinu si můžeš přehodit kritický neúspěch na záchranném hodu nebo hodu na dovednost. Pokud se jednalo o Delve Lore nebo záchranu proti pasti, můžeš si nechat lepší výsledek." }
+                ]
+            },
+            {
+                name: "Xenodruid",
+                source: "Galaxy Guide",
+                description: "Nejsi jen ochránce přírody, jsi spojen s tepem samotných planet. Tvá moc pochází z mystického pouta s ekosystémy světů, což ti umožňuje chránit je a čerpat z nich sílu. Jsi hlasem světů, které nemohou mluvit samy za sebe.",
+                feats: [
+                    { name: "Xenodruid Dedication", level: 4, prerequisites: "Vlastnost mystic bond, schopnost sesílat primální kouzla, trénovaný v Nature.", text: "Můžeš vytvořit pouto s kolektivním duchem ekosystému planety. To ti dává bonusy na přežití a znalosti o planetě, a také schopnost vycítit velké poruchy v jejím ekosystému." },
+                    { name: "Planetary Bond", level: 6, prerequisites: "Xenodruid Dedication", text: "Tvé pouto se prohlubuje. Jsi neustále pod efektem kouzel speak with animals a speak with plants na tvé spřízněné planetě. Získáš také edikty a anatémy spojené s ochranou planety." },
+                    { name: "Galactic Bond", level: 12, prerequisites: "Planetary Bond", text: "Můžeš se napojit na více planet najednou. Získáš přístup ke kouzlu teleport a rituálu commune, které můžeš používat v souvislosti se svými planetami." },
+                    { name: "Planetary Reincarnation", level: 12, prerequisites: "Xenodruid Dedication", text: "Tvá spřízněná planeta tě může oživit. Získáš přístup ke kouzlu breath of life, které je na tvé planetě silnější. Dokonce ho můžeš seslat sám na sebe v okamžiku smrti." }
+                ]
+            }
+        ],
+        adventureTypes: [
+            { name: "Dystopian", description: "Příběhy boje proti útlaku v korporacemi ovládaných městech, na vězeňských planetách nebo v bezprávných pustinách. Hrdinové jsou často morálně šedí anti-hrdinové, kteří se snaží přežít nebo svrhnout systém, který je drtí."},
+            { name: "High-Tech", description: "Dobrodružství zaměřená na průzkum technologických ruin, starobylých artefaktů od Prvních (First Ones) nebo řešení záhad spojených s pokročilou magitechnologií. Často zahrnují střet s umělou inteligencí, roboty a nepochopitelnou mimozemskou technologií."},
+            { name: "Fantasy", description: "Příběhy plné magie, kouzelných bytostí a klasických fantasy prvků přenesených do vesmíru. Zahrnuje boj s draky, diplomacii s elfy nebo řešení prastarých kleteb v kulisách hvězdných lodí a laserových zbraní."},
+            { name: "War-Torn", description: "Dobrodružství odehrávající se na pozadí velkých galaktických konfliktů, jako je válka mezi Veskariem a Azlantskou hvězdnou říší. Může jít o špionáž, frontový boj, záchranu uprchlíků nebo profitování z chaosu."},
+            { name: "Into the Unknown", description: "Explorace neprobádaných částí galaxie, objevování nových světů, prvních kontaktů s neznámými rasami a řešení kosmických anomálií. Tyto příběhy se zaměřují na úžas a nebezpečí objevování."},
+            { name: "Horror", description: "Příběhy plné napětí, strachu a boje o přežití proti nemrtvým, kosmickým hrůzám nebo sériovým vrahům v temných zákoutích vesmíru. Důraz je kladen na atmosféru a psychologický tlak."},
+            { name: "Weird", description: "Bizarní a surreálná dobrodružství, která popírají žánrové konvence. Může jít o cestování dimenzemi, setkání s paradoxními entitami, řešení nelogických záhad nebo hraní za rockovou kapelu ve vesmíru."}
+        ],
+        locations: [
+            { name: "Absalom Station", description: "Centrum Paktových světů, obrovská kosmopolitní stanice.", faction: "Paktové světy (různé frakce)", dayLength: "24 hodin (uměle)", gravity: "Normální (umělá)" },
+            { name: "Akiton", description: "Umírající rudá planeta plná vrakovišť a bezpráví.", faction: "Nezávislé (gangy, korporace)", dayLength: "24 hodin", gravity: "Nízká" },
+            { name: "Verces", description: "Technologicky vyspělý svět s jednou stranou spálenou a druhou zmrzlou.", faction: "Prsten národů", dayLength: "Vázaná rotace (věčný soumrak)", gravity: "Normální" },
+            { name: "The Idari", description: "Masivní generační loď Kasathů.", faction: "Kasathové (Doyenate)", dayLength: "27 hodin (uměle)", gravity: "Vysoká (umělá)" },
+            { name: "Eox", description: "Radioaktivní planeta nemrtvých, ovládaná mocnými nekromanty.", faction: "Věčné shromáždění (Eternal Convocation)", dayLength: "30 dní", gravity: "Normální" },
+            { name: "Castrovel", description: "Divoký svět džunglí, kde soupeří elfové, lašuntové a formiané.", faction: "Lashunta-Formian Federation", dayLength: "24 hodin", gravity: "Normální" },
+            { name: "Triaxus", description: "Planeta extrémů, domov draků a legendární Skyfire Legion.", faction: "Spojená území (ryphoriani, drakoni)", dayLength: "24 hodin", gravity: "Normální" },
+            { name: "The Diaspora", description: "Pás asteroidů plný pirátů, těžařů a domorodých Sarcesianů.", faction: "Svobodní kapitáni, Sarcesiané", dayLength: "Proměnlivá", gravity: "Proměnlivá / Nulová" }
+        ],
+        factions: [
+            { name: "Starfinder Society", description: "Organizace dobrodruhů a učenců, kteří prozkoumávají galaxii, odhalují její tajemství a podávají o nich zprávy. Jejich heslem je 'Prozkoumat, Zaznamenat, Spolupracovat'. Jsou to klasičtí dobrodruzi, kteří se pletou do všeho." },
+            { name: "Stewards", description: "Mírové síly Paktových světů, které udržují pořádek a chrání členské planety. Fungují jako galaktická policie a armáda v jednom. Jsou symbolem zákona, ale někdy jsou vnímáni jako příliš byrokratičtí." },
+            { name: "Hellknights", description: "Nelítostný řád válečníků, kteří prosazují zákon a pořádek pomocí strachu a síly, inspirovaní strukturou Pekla. Jsou to extremisté, pro které je řád nade vše, i nad morálku." },
+            { name: "Free Captains", description: "Volná aliance pirátských posádek, která operuje především z asteroidového pásu Diaspora. Nemají žádného vůdce, ale řídí se kodexem, který jim umožňuje koexistovat. Jsou symbolem svobody a anarchie." },
+            { name: "AbadarCorp", description: "Megakorporace a církev boha civilizace Abadara v jednom. Ovládají bankovnictví a obchod v Paktových světech. Pro někoho jsou nositeli pokroku, pro jiné bezcitnými kapitalisty." },
+            { name: "Xenowardens", description: "Ochránci přírody, kteří se snaží chránit ekosystémy galaxie před zničením a vykořisťováním. Často se dostávají do konfliktu s korporacemi a průmyslovými zájmy. Jsou to vesmírní druidové a ekoteroristé." },
+            { name: "Corpse Fleet", description: "Frakce odpadlíků z Eoxu, kteří odmítli mír s Paktovými světy a nyní usilují o nadvládu nemrtvých. Jsou to hlavní antagonisté, kteří chtějí vidět galaxii v područí smrti." },
+            { name: "Veskarium", description: "Mocná a militaristická říše reptiliánských Vesků a jejich podrobených světů v systému Ghavaniska. Cení si síly, cti a dobývání nade vše. Po dlouhé Tiché válce jsou v nestabilním spojenectví s Paktovými světy, ale jejich hlavním rivalem je nyní Azlantská hvězdná říše." },
+            { name: "Azlanti Star Empire", description: "Expanzivní, xenofobní lidská říše ve Vastu, která věří ve svou nadřazenost a snaží se dobýt nebo zničit všechny ostatní rasy. Jsou to klasičtí 'zlí impéria' vesmírných oper." }
+        ],
+        ancestries: [
+            { name: "Android", description: "Uměle vytvořené bytosti s duší, často hledající své místo a identitu ve světě.", hp: 8, size: "Střední", speed: "25 stop", boosts: "Obratnost, Inteligence, Volitelný", flaw: "Charisma", abilities: [ { name: "Low-Light Vision", text: "Vidíš v šeru jako za světla." }, { name: "Constructed Body", text: "Jsi imunní vůči nemocem, ale efekty, které léčí živé, na tebe mají menší účinek." } ] },
+            { name: "Human", description: "Nejrozšířenější a nejpřizpůsobivější rasa, známá svou ambicí a odolností.", hp: 8, size: "Střední", speed: "25 stop", boosts: "Dva volitelné", flaw: "Žádný", abilities: [ { name: "Versatile Heritage", text: "Na 1. úrovni získáš obecný talent (General Feat)." } ] },
+            { name: "Kasatha", description: "Čtyřrucí humanoidi s přísnou tradicí, pocházející z generační lodi Idari.", hp: 8, size: "Střední", speed: "30 stop", boosts: "Síla, Moudrost, Volitelný", flaw: "Inteligence", abilities: [ { name: "Four-Armed", text: "Máš čtyři paže, což ti umožňuje držet více předmětů." }, { name: "Desert Stride", text: "Pohyb v pouštním terénu tě nezpomaluje." } ] },
+            { name: "Lashunta", description: "Telepatičtí humanoidé se dvěma poddruhy: vysokými a intelektuálními damaya a menšími, silnějšími korasha.", hp: 6, size: "Střední", speed: "30 stop", boosts: "Inteligence, Charisma, Volitelný", flaw: "Odolnost", abilities: [ { name: "Limited Telepathy", text: "Můžeš mentálně komunikovat s bytostmi v dosahu 30 stop." }, { name: "Lashunta Magic", text: "Získáš psychická kouzla jako cantripy (Daze, Telekinetic Projectile)." } ] },
+            { name: "Shirren", description: "Hmyzí humanoidi, kteří se osvobodili od kolektivní mysli Roje (Swarm) a cení si individuality.", hp: 8, size: "Střední", speed: "25 stop", boosts: "Odolnost, Moudrost, Volitelný", flaw: "Charisma", abilities: [ { name: "Communalism", text: "Získáš bonus +2 k hodům na pomoc (Aid)." }, { name: "Limited Telepathy", text: "Můžeš mentálně komunikovat s bytostmi v dosahu 30 stop." } ] },
+            { name: "Vesk", description: "Váleční reptiliáni, jejichž říše Veskarium je hlavním rivalem Paktových světů.", hp: 10, size: "Střední", speed: "30 stop", boosts: "Síla, Odolnost, Volitelný", flaw: "Inteligence", abilities: [ { name: "Natural Weapons", text: "Máš neozbrojený útok drápy (1d3 S)." }, { name: "Armor Savant", text: "Při nošení těžké zbroje se ti zvyšuje maximální bonus k Obratnosti o 1." } ] },
+            { name: "Ysoki", description: "Dříve známí jako krysáci (ratfolk), jsou to chytří a společenští humanoidi, kteří excelují v přeplněných městech a na lodích.", hp: 6, size: "Malá", speed: "25 stop", boosts: "Obratnost, Inteligence, Volitelný", flaw: "Síla", abilities: [ { name: "Cheek Pouches", text: "Můžeš uskladnit až 1 krychlovou stopu předmětů ve svých lícních torbách." }, { name: "Darkvision", text: "Vidíš perfektně ve tmě (černobíle)." } ] },
+            { name: "Astrazoan", description: "Tvaroměniči s bizarní pravou podobou, schopní dokonale napodobit jiné rasy.", hp: 8, size: "Střední", speed: "25 stop", boosts: "Obratnost, Charisma, Volitelný", flaw: "Odolnost", abilities: [ { name: "Low-Light Vision", text: "Vidíš v šeru jako za světla." }, { name: "Change Shape", text: "Jako jednu akci se můžeš přeměnit do podoby jakékoliv Small, Medium nebo Large rasy." } ] },
+            { name: "Contemplative", description: "Telepatičtí megamozky s atrofovanými těly, mistři psychických sil.", hp: 6, size: "Střední", speed: "5 stop (vznášení); let 20 stop", boosts: "Inteligence, Charisma, Volitelný", flaw: "Síla", abilities: [ { name: "Atrophied", text: "Tvé končetiny jsou zakrnělé, což snižuje tvou nosnost." }, { name: "Thoughtsense", text: "Vnímáš myslící bytosti v okolí 20 stop." }, { name: "Limited Telepathy", text: "Můžeš mentálně komunikovat s bytostmi v dosahu 30 stop." } ] },
+            { name: "Dragonkin", description: "Humanoidní draci, kteří mohou vytvořit hluboké telepatické pouto s jedním partnerem.", hp: 10, size: "Velký (Large)", speed: "20 stop, Létání 20 stop", boosts: "Dva volitelné", flaw: "Žádný", abilities: [ { name: "Darkvision", text: "Vidíš perfektně ve tmě (černobíle)." }, { name: "Partner Bond", text: "Můžeš vytvořit permanentní empatické pouto s jednou ochotnou bytostí." } ] },
+            { name: "Kalo", description: "Vodní humanoidi známí svou elegantní módou a bojovým uměním.", hp: 6, size: "Střední", speed: "20 stop, Plavání 30 stop", boosts: "Obratnost, Charisma, Volitelný", flaw: "Odolnost", abilities: [ { name: "Darkvision", text: "Vidíš perfektně ve tmě (černobíle)." }, { name: "Hydration", text: "Musíš se pravidelně nořit do vody, jinak tvá kůže začne praskat." } ] },
+            { name: "Sarcesian", description: "Vesmírní poutníci s energetickými křídly, schopní přežít ve vakuu.", hp: 8, size: "Velký (Large)", speed: "25 stop", boosts: "Obratnost, Charisma, Volitelný", flaw: "Síla", abilities: [ { name: "Energy Wings", text: "Ve vakuu můžeš manifestovat energetická křídla a létat." }, { name: "Suspended Respiration", text: "Dokážeš dočasně přežít ve vakuu bez dýchání." } ] },
+            { name: "Vlaka", description: "Vlčí nomádi s bystrými smysly a silným smyslem pro komunitu.", hp: 6, size: "Střední", speed: "25 stop", boosts: "Moudrost, Charisma, Volitelný", flaw: "Obratnost", abilities: [ { name: "Sensory Diversity", text: "Máš vynikající čich a můžeš se narodit slepý, hluchý nebo obojí, což ti dává jiné výhody." }, { name: "Versed", text: "Jsi zběhlý ve znakové řeči." } ] },
+            { name: "Pahtra", description: "Hbití, kočkovití humanoidé z planety Pulonis, známí svou nezávislostí a rebelským duchem.", hp: 8, size: "Střední", speed: "30 stop", boosts: "Obratnost, Charisma, Volitelný", flaw: "Moudrost", abilities: [ { name: "Low-Light Vision", text: "Vidíš v šeru jako za světla." }, { name: "Cat's Luck", text: "Jednou denně si můžeš přehodit neúspěšný záchranný hod na Reflexy." } ] },
+            { name: "Ijtikri", description: "Záhadní, chobotnicím podobní humanoidé z vodního světa Vesk-2. Komunikují pomocí bioluminiscence.", hp: 6, size: "Střední", speed: "20 stop, Plavání 30 stop", boosts: "Inteligence, Moudrost, Volitelný", flaw: "Síla", abilities: [ { name: "Darkvision", text: "Vidíš perfektně ve tmě (černobíle)." }, { name: "Amphibious", text: "Můžeš dýchat na vzduchu i ve vodě." }, { name: "Ink Cloud", text: "Jako reakci na zranění můžeš vypustit oblak inkoustu, který tě skryje." } ] }
+        ],
+        classes: [
+            { name: "Envoy", description: "Charismatický diplomat a taktik, který inspiruje své spojence a mate nepřátele.", keyAbility: "Charisma", role: "Podpora, Kontrolor, Tvář skupiny", armor: "Lehká zbroj", weapons: "Jednoduché a malé zbraně na blízko, granáty." },
+            { name: "Mechanic", description: "Mistr technologie, který bojuje po boku svého droního společníka nebo s experimentálními zbraněmi.", keyAbility: "Inteligence", role: "Poškozovatel, Kontrolor, Užitečnost", armor: "Lehká a těžká zbroj", weapons: "Jednoduché a pokročilé zbraně na blízko, granáty." },
+            { name: "Mystic", description: "Uživatel magie, který čerpá sílu z propojení s fundamentálními silami vesmíru.", keyAbility: "Moudrost", role: "Léčitel, Podpora, Sesilatel kouzel", armor: "Lehká zbroj", weapons: "Jednoduché a malé zbraně na blízko." },
+             { name: "Operative", description: "Zručný expert na infiltraci, špionáž a přesné, smrtící útoky.", keyAbility: "Obratnost", role: "Poškozovatel (Skillful), Průzkumník", armor: "Lehká zbroj", weapons: "Jednoduché a malé zbraně na blízko, odstřelovací pušky." },
+            { name: "Solarian", description: "Kosmický válečník, který manipuluje s energiemi hvězd a černých děr.", keyAbility: "Charisma", role: "Poškozovatel na blízko, Tank", armor: "Lehká a těžká zbroj", weapons: "Jednoduché a pokročilé zbraně na blízko, malé zbraně." },
+            { name: "Soldier", description: "Mistr všech druhů boje, specializující se na různé bojové styly a zbraně.", keyAbility: "Síla nebo Obratnost", role: "Poškozovatel, Tank", armor: "Lehká a těžká zbroj, štíty", weapons: "Všechny jednoduché a válečné zbraně, těžké zbraně, granáty." },
+            { name: "Technomancer", description: "Kouzelník, který prolíná technologii s magií, schopný 'hackovat' samotnou realitu.", keyAbility: "Inteligence", role: "Sesilatel kouzel, Kontrolor, Užitečnost", armor: "Lehká zbroj", weapons: "Jednoduché a malé zbraně na blízko." },
+        ],
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const saveApiKeyBtn = document.getElementById('save-api-key-btn');
+        const apiKeyStatus = document.getElementById('api-key-status');
+        let userApiKey = localStorage.getItem('starfinderApiKey') || '';
+        
+        // Generator history storage
+        let histories = {
+            adventure: [],
+            npc: [],
+            ship: [],
+        };
+        let currentIndices = {
+            adventure: -1,
+            npc: -1,
+            ship: -1,
+        };
+
+        const isCanvasEnv = (window.self !== window.top);
+        if (isCanvasEnv) {
+            document.getElementById('api-key-section').style.display = 'none';
+            userApiKey = "";
+        } else {
+            document.getElementById('api-key-section').style.display = 'block'; // Ensure it's visible outside canvas
+            apiKeyInput.value = userApiKey;
+            if(userApiKey) apiKeyStatus.textContent = 'API klíč je uložen.';
+        }
+
+        saveApiKeyBtn.addEventListener('click', () => {
+            userApiKey = apiKeyInput.value.trim();
+            localStorage.setItem('starfinderApiKey', userApiKey);
+            apiKeyStatus.textContent = 'API klíč uložen!';
+            setTimeout(() => apiKeyStatus.textContent = (userApiKey ? 'API klíč je uložen.' : ''), 3000);
+        });
+
+        function switchTab(targetTabId) {
+            tabContents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(targetTabId).classList.add('active');
+            document.querySelector(`[data-tab="${targetTabId}"]`).classList.add('active');
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+        });
+
+        function setupExpandableCards(containerSelector) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            container.addEventListener('click', e => {
+                const header = e.target.closest('.card-header');
+                if (header) {
+                    const content = header.nextElementSibling;
+                    header.classList.toggle('open');
+                    content.classList.toggle('open');
+                }
+            });
+        }
+        
+        function getTabTitle(tabId) {
+            const titles = {
+                'adventures-tab': "Typy Dobrodružství", 'locations-tab': "Klíčové Lokace",
+                'factions-tab': "Frakce a Impéria", 'ancestries-tab': "Hratelné Rasy",
+                'classes-tab': "Povolání", 'archetypes-tab': "Archetypy Galaxie"
+            };
+            return titles[tabId] || "";
+        }
+        
+        function renderCard(item, detailsHtml) {
+             const card = document.createElement('div');
+                card.className = `card p-5 rounded-lg flex flex-col`;
+                
+                card.innerHTML = `
+                    <div class="card-header flex justify-between items-start cursor-pointer">
+                        <div class="flex-1 pr-4">
+                            <h4 class="text-xl font-bold text-f5c2e7">${item.name}</h4>
+                            <p class="text-xs text-gray-400 mt-1">${item.description.substring(0, 100)}${item.description.length > 100 ? '...' : ''}</p>
+                        </div>
+                        <button class="expand-btn text-2xl font-bold ml-4">+</button>
+                    </div>
+                    <div class="card-expand text-sm mt-4 border-t border-blue-500/20 pt-4">
+                        ${detailsHtml}
+                    </div>`;
+                return card;
+        }
+
+        function renderSimpleCards(data, containerId, cardClass) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<h2 class="text-3xl font-bold mb-8 text-center">${getTabTitle(containerId)}</h2>
+                                   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${cardClass}-container"></div>`;
+            const grid = container.querySelector(`.${cardClass}-container`);
+            data.forEach(item => {
+                let detailsHtml = `<p>${item.description}</p>`;
+                if (cardClass === 'location') {
+                    detailsHtml += `
+                        <div class="mt-3 pt-3 border-t border-blue-500/20 text-xs space-y-1">
+                            <p><strong>Frakce:</strong> ${item.faction || 'N/A'}</p>
+                            <p><strong>Délka dne:</strong> ${item.dayLength || 'N/A'}</p>
+                            <p><strong>Gravitace:</strong> ${item.gravity || 'N/A'}</p>
+                        </div>
+                    `;
+                }
+                grid.appendChild(renderCard(item, detailsHtml));
+            });
+            setupExpandableCards(`#${containerId}`);
+        }
+
+        function renderDetailedCards(data, containerId, cardClass, detailRenderer) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<h2 class="text-3xl font-bold mb-8 text-center">${getTabTitle(containerId)}</h2>
+                                   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${cardClass}-container"></div>`;
+            const grid = container.querySelector(`.${cardClass}-container`);
+            data.forEach(item => {
+                grid.appendChild(renderCard(item, detailRenderer(item)));
+            });
+            setupExpandableCards(`#${containerId}`);
+        }
+
+        function renderRaceDetails(item) {
+            const abilitiesHtml = item.abilities.map(ab => `
+                <div class="feat !border-l-fuchsia-400">
+                    <p class="font-bold text-base text-fuchsia-400">${ab.name}</p>
+                    <p class="text-sm">${ab.text}</p>
+                </div>
+            `).join('');
+            return `
+                <p class="mb-4">${item.description}</p>
+                <h5 class="font-bold text-lg mb-2 text-fuchsia-400">Základní Vlastnosti</h5>
+                <ul class="list-disc ml-5 text-xs grid grid-cols-2 gap-x-4">
+                    <li><b>HP:</b> ${item.hp}</li>
+                    <li><b>Velikost:</b> ${item.size}</li>
+                    <li><b>Rychlost:</b> ${item.speed}</li>
+                    <li><b>Vylepšení:</b> ${item.boosts}</li>
+                    <li><b>Oslabení:</b> ${item.flaw}</li>
+                </ul>
+                <h5 class="font-bold text-lg mt-4 mb-2 text-fuchsia-400">Schopnosti Rasy</h5>
+                ${abilitiesHtml}
+            `;
+        }
+
+        function renderClassDetails(item) {
+            return `
+                <p class="mb-4">${item.description}</p>
+                <h5 class="font-bold text-lg mb-2 text-fuchsia-400">Charakteristiky</h5>
+                <ul class="list-disc ml-5 text-sm space-y-1">
+                    <li><b>Klíčová vlastnost:</b> ${item.keyAbility}</li>
+                    <li><b>Role v družině:</b> ${item.role}</li>
+                </ul>
+                <h5 class="font-bold text-lg mt-4 mb-2 text-fuchsia-400">Zdatnosti</h5>
+                 <ul class="list-disc ml-5 text-sm space-y-1">
+                    <li><b>Zbroje:</b> ${item.armor}</li>
+                    <li><b>Zbraně:</b> ${item.weapons}</li>
+                </ul>
+            `;
+        }
+        
+        function renderArchetypeCards() {
+            const container = document.getElementById('archetypes-tab');
+            container.innerHTML = `<h2 class="text-3xl font-bold mb-8 text-center">Archetypy Galaxie</h2>
+                                   <p class="text-center max-w-3xl mx-auto mb-8 text-gray-400">Archetypy umožňují postavám získat talenty z jiných povolání nebo se specializovat na unikátní koncepty. Postava si může vzít talent archetypu místo talentu svého povolání (class feat).</p>
+                                   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 archetype-container"></div>`;
+            const grid = container.querySelector('.archetype-container');
+            starfinderData.archetypes.forEach(archetype => {
+                let featsHtml = archetype.feats.map(feat => `
+                    <div class="feat">
+                        <p class="font-bold text-base text-f5c2e7">Talent ${feat.level}: ${feat.name}</p>
+                        ${feat.prerequisites ? `<p class="text-xs text-gray-400 italic mb-1">Požadavky: ${feat.prerequisites}</p>` : ''}
+                        <p class="text-sm">${feat.text}</p>
+                    </div>
+                `).join('');
+
+                const detailsHtml = `
+                    <p class="mb-4">${archetype.description}</p>
+                    <h5 class="text-lg font-bold mb-2">Talenty Archetypu</h5>
+                    ${featsHtml}
+                `;
+                 grid.appendChild(renderCard(archetype, detailsHtml));
+            });
+            setupExpandableCards('#archetypes-tab');
+        }
+
+        function markdownToHtml(text) {
+             return text
+                 .replace(/^### (.*$)/gim, '<h4 class="font-bold text-f5c2e7 mt-3 mb-1">$1</h4>')
+                 .replace(/^## (.*$)/gim, '<h3 class="font-bold text-xl mt-4 mb-2">$1</h3>')
+                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                 .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc">$1</li>')
+                 .replace(/\n/g, '<br>');
+        }
+        
+        function downloadText(filename, text) {
+            if (!text || text.trim() === '') {
+                return; // Do nothing if there's no text
+            }
+            const element = document.createElement('a');
+            const file = new Blob([text.replace(/<br\s*[\/]?>/gi, "\n").replace(/<[^>]*>/g, '')], {type: 'text/plain;charset=utf-8'});
+            element.href = URL.createObjectURL(file);
+            element.download = filename;
+            document.body.appendChild(element); // Required for Firefox
+            element.click();
+            document.body.removeChild(element);
+        }
+        
+        function sanitizeForFilename(text) {
+            if (!text) return 'neznamy';
+            return text.replace(/[^a-z0-9]/gi, '_').toLowerCase().substring(0, 25);
+        }
+
+        function getFormattedDate() {
+            const d = new Date();
+            const year = d.getFullYear();
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
+
+        function extractName(htmlContent, type, contextInputElement) {
+             if (!htmlContent) return "neznamy";
+             
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+
+             if (type === 'npc') {
+                const headings = Array.from(tempDiv.querySelectorAll('h4'));
+                const nameHeading = headings.find(h => h.textContent.includes('Jméno a koncept'));
+                 if (nameHeading) {
+                     let sibling = nameHeading.nextSibling;
+                     while(sibling && sibling.nodeType === 3 && !sibling.textContent.trim()){
+                         sibling = sibling.nextSibling;
+                     }
+                      if(sibling && sibling.nodeType === 1) sibling = sibling.firstChild; // Look inside the <p> tag
+                      if(sibling && sibling.textContent.trim()) {
+                        return sibling.textContent.trim().split(/<br>|\n/)[0];
+                     }
+                 }
+             } else if (type === 'ship') {
+                 const bold = tempDiv.querySelector('strong');
+                 if (bold) return bold.textContent.trim();
+             }
+             return contextInputElement ? (contextInputElement.value.trim() || `gen_${type}`) : `gen_${type}`;
+        }
+
+
+         async function callGeminiAPI(originalPrompt, userContext, outputDiv, button, historyType) {
+            if (!isCanvasEnv && !userApiKey) {
+                outputDiv.innerHTML = '<p class="text-red-400">Chyba: Nebyl zadán Gemini API klíč. Prosím, zadejte platný klíč v patičce stránky.</p>';
+                return;
+            }
+            button.disabled = true;
+            outputDiv.innerHTML = '<div class="flex justify-center items-center h-full"><div class="spinner"></div></div>';
+            
+            const loreContext = `Kontext pro Starfinder 2e:
+Toto je science-fantasy vesmír. Klíčové lokace zahrnují Systém Paktových světů (Absalom Station, Akiton, Castrovel, Verces), Veskarium (říše reptiliánských Vesků) a Azlantské hvězdné impérium (xenofobní lidská říše). Cestování nadsvětelnou rychlostí se děje skrze dimenzi zvanou Drift. Nedávné události, jako Driftová krize a zrození nového boha zvaného Novorozeně, otřásly galaxií. Probíhá válka mezi Veskariem a Azlantským impériem.
+Klíčové frakce: Starfinder Society, Stewardi, Pekelní rytíři, Svobodní kapitáni, Xenostrážci, Mrtvolná flotila, AbadarCorp.
+Klíčové rasy: Lidé, Androidi, Kasathové, Lashuntové, Shirreni, Vesk, Ysoki, Astrazoané, Kontemplativci, Drakoni, Kalo, Sarcesiáni, Vlaka.
+Klíčová povolání: Posel, Mystik, Agent, Solarian, Voják, Čaroděj reality.
+Tón: Dobrodružství mohou být dystopická, high-tech, fantasy, válečná, hororová, průzkumnická nebo bizarní. Technologie jako kybernetika, biotechnologie a magitechnologie jsou běžné.
+`;
+            
+            const finalPrompt = `${loreContext}\n\nNa základě výše uvedeného kontextu splňte následující požadavek v češtině:\n\n${originalPrompt}`;
+
+            const apiKey = userApiKey;
+            const model = 'gemini-2.0-flash';
+            const endpoint = 'generateContent';
+            const chatHistory = [{ role: "user", parts: [{ text: finalPrompt }] }];
+            const payload = { contents: chatHistory };
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:${endpoint}?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    let errorMsg = `Chyba API (HTTP ${response.status}). Zkontrolujte klíč a oprávnění.`;
+                    try {
+                        const errorResult = await response.json();
+                        if (errorResult.error && errorResult.error.message) {
+                            errorMsg += ` Detail: ${errorResult.error.message}`;
+                        }
+                    } catch (e) {
+                         const textError = await response.text();
+                         console.error("Non-JSON error response from API:", textError);
+                         errorMsg += ' Odpověď serveru nebyla platný JSON.';
+                    }
+                    outputDiv.innerHTML = `<p class="text-red-400">${errorMsg}</p>`;
+                    return;
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content) {
+                    let promptDisplay = '';
+                    if (userContext && userContext.trim() !== '') {
+                        promptDisplay = `<p class="text-xs text-gray-500 italic border-b border-gray-600 pb-2 mb-2"><strong>Použitý námět:</strong> ${userContext}</p>`;
+                    }
+                    const generatedText = markdownToHtml(result.candidates[0].content.parts[0].text);
+                    const fullHtml = promptDisplay + generatedText;
+                    outputDiv.innerHTML = fullHtml;
+                    
+                    if(historyType){
+                        histories[historyType].push({html: fullHtml, context: userContext});
+                        currentIndices[historyType] = histories[historyType].length - 1;
+                        updateHistoryUI(historyType);
+                    }
+                } else {
+                    let errorMsg = 'Chyba při generování. Odpověď API byla nekompletní.';
+                    if (result.promptFeedback && result.promptFeedback.blockReason) {
+                        errorMsg = `Obsah byl zablokován z důvodu: ${result.promptFeedback.blockReason}`;
+                    } else if (result.error) {
+                        errorMsg = `Chyba API: ${result.error.message}`;
+                    }
+                    console.error("Incomplete or blocked response from API:", result);
+                    outputDiv.innerHTML = `<p class="text-red-400">${errorMsg}</p>`;
+                }
+            } catch (error) {
+                console.error("API Call/Parsing Error:", error);
+                outputDiv.innerHTML = '<p class="text-red-400">Došlo k chybě při komunikaci s API. Zkontrolujte konzoli pro více detailů.</p>';
+            } finally {
+                button.disabled = false;
+            }
+        }
+        
+        function updateHistoryUI(type) {
+            const counter = document.getElementById(`${type}-history-counter`);
+            const prevBtn = document.getElementById(`${type}-prev`);
+            const nextBtn = document.getElementById(`${type}-next`);
+            
+            const history = histories[type];
+            const currentIndex = currentIndices[type];
+
+            counter.textContent = `${history.length > 0 ? currentIndex + 1 : 0} / ${history.length}`;
+            prevBtn.disabled = currentIndex <= 0;
+            nextBtn.disabled = currentIndex >= history.length - 1;
+        }
+
+        function navigateHistory(type, direction) {
+            const history = histories[type];
+            let currentIndex = currentIndices[type];
+
+            currentIndex += direction;
+
+            if (currentIndex >= 0 && currentIndex < history.length) {
+                currentIndices[type] = currentIndex;
+                const historyEntry = history[currentIndex];
+                document.getElementById(`${type}-output`).innerHTML = historyEntry.html;
+                
+                const contextInputId = {
+                    'adventure': 'adventure-context-input',
+                    'npc': 'npc-context-input',
+                    'ship': 'ship-context-input'
+                }[type];
+                if (contextInputId) {
+                    document.getElementById(contextInputId).value = historyEntry.context || '';
+                }
+
+                updateHistoryUI(type);
+            }
+        }
+
+        // --- Generator Setup ---
+        const adventureTypeSelect = document.getElementById('adventure-type-select');
+        starfinderData.adventureTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type.name;
+            option.textContent = type.name;
+            adventureTypeSelect.appendChild(option);
+        });
+        
+        document.getElementById('save-adventure-btn').addEventListener('click', () => {
+            const outputDiv = document.getElementById('adventure-output');
+            const plainTextContent = outputDiv.innerText;
+            const name = sanitizeForFilename(extractName(outputDiv.innerHTML, 'adventure', document.getElementById('adventure-context-input')));
+            const filename = `SF2eGen_pribeh_${getFormattedDate()}_${name}.txt`;
+            downloadText(filename, plainTextContent);
+        });
+
+        document.getElementById('save-npc-btn').addEventListener('click', () => {
+            const outputDiv = document.getElementById('npc-output');
+            const plainTextContent = outputDiv.innerText;
+            const name = sanitizeForFilename(extractName(outputDiv.innerHTML, 'npc', document.getElementById('npc-context-input')));
+            const filename = `SF2eGen_charakter_${getFormattedDate()}_${name}.txt`;
+            downloadText(filename, plainTextContent);
+        });
+
+        document.getElementById('save-ship-btn').addEventListener('click', () => {
+            const outputDiv = document.getElementById('ship-output');
+            const plainTextContent = outputDiv.innerText;
+            const name = sanitizeForFilename(extractName(outputDiv.innerHTML, 'ship', document.getElementById('ship-context-input')));
+            const filename = `SF2eGen_lod_${getFormattedDate()}_${name}.txt`;
+            downloadText(filename, plainTextContent);
+        });
+
+        document.getElementById('generate-adventure-hook').addEventListener('click', e => {
+            const type = adventureTypeSelect.value;
+            const userContext = document.getElementById('adventure-context-input').value.trim();
+            const prompt = `Vytvoř detailní námět na dobrodružství pro hru Starfinder. Typ dobrodružství je "${type}". ${userContext ? `Zohledni tento uživatelský námět: "${userContext}".` : ''} Odpověď musí být v češtině. Zahrň následující sekce s nadpisy: ### Základní zápletka, ### Klíčové lokace, ### Hlavní konflikt, ### Možný zvrat. Každá sekce by měla být rozepsána alespoň na 2-3 věty.`;
+            callGeminiAPI(prompt, userContext, document.getElementById('adventure-output'), e.target, 'adventure');
+        });
+
+        document.getElementById('generate-npc').addEventListener('click', e => {
+            const userContext = document.getElementById('npc-context-input').value.trim();
+            const prompt = `Vytvoř detailní popis NPC postavy pro hru Starfinder. ${userContext ? `Postava by měla zapadat do kontextu: "${userContext}".` : ''} Odpověď musí být v češtině. Zahrň následující sekce s nadpisy: ### Jméno a koncept, ### Vzhled a chování, ### Motivace a cíle, ### Tajemství nebo háček. Každá sekce by měla být rozepsána.`;
+            callGeminiAPI(prompt, userContext, document.getElementById('npc-output'), e.target, 'npc');
+        });
+
+        document.getElementById('generate-ship-name').addEventListener('click', e => {
+            const type = document.getElementById('ship-type-select').value;
+            const userContext = document.getElementById('ship-context-input').value.trim();
+            const prompt = `Vytvoř 5 kreativních jmen pro hvězdnou loď typu "${type}" ve světě Starfinder. ${userContext ? `Zohledni tento kontext: "${userContext}".` : ''} Pro každé jméno přidej krátkou, jedno- až dvouvětnou fiktivní historii nebo charakteristiku. Odpověď musí být v češtině. Formátuj jako seznam s tučnými názvy lodí.`;
+            callGeminiAPI(prompt, userContext, document.getElementById('ship-output'), e.target, 'ship');
+        });
+
+        // History navigation event listeners
+        document.getElementById('adventure-prev').addEventListener('click', () => navigateHistory('adventure', -1));
+        document.getElementById('adventure-next').addEventListener('click', () => navigateHistory('adventure', 1));
+        document.getElementById('npc-prev').addEventListener('click', () => navigateHistory('npc', -1));
+        document.getElementById('npc-next').addEventListener('click', () => navigateHistory('npc', 1));
+        document.getElementById('ship-prev').addEventListener('click', () => navigateHistory('ship', -1));
+        document.getElementById('ship-next').addEventListener('click', () => navigateHistory('ship', 1));
+
+
+        // --- Initial Load ---
+        renderArchetypeCards();
+        renderSimpleCards(starfinderData.adventureTypes, 'adventures-tab', 'adventure');
+        renderSimpleCards(starfinderData.locations, 'locations-tab', 'location');
+        renderSimpleCards(starfinderData.factions, 'factions-tab', 'faction');
+        renderDetailedCards(starfinderData.ancestries, 'ancestries-tab', 'ancestry', renderRaceDetails);
+        renderDetailedCards(starfinderData.classes, 'classes-tab', 'class', renderClassDetails);
+        
+        document.getElementById('generate-adventure-hook').click();
+        document.getElementById('generate-npc').click();
+        document.getElementById('generate-ship-name').click();
+
+        switchTab('generators-tab');
+    });
+    </script>
+</body>
+</html>
