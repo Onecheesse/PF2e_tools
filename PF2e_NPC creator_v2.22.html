@@ -346,89 +346,65 @@
          @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 15mm; /* Dáme trochu víc místa po okrajích */
+                /* Odstraní záhlaví a zápatí prohlížeče */
+                @top-left { content: ""; }
+                @top-right { content: ""; }
+                @bottom-left { content: ""; }
+                @bottom-right { content: ""; }
             }
 
             body {
-                background: #fff !important; color: #000 !important;
-                font-family: 'Open Sans', sans-serif; font-size: 9pt;
-                line-height: 1.2; margin: 0; padding: 0;
+                background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif;
+                font-size: 9pt; line-height: 1.2; margin: 0; padding: 0;
             }
 
-            /* Skryjeme vše nepotřebné */
             header, nav, footer, .tab-button,
             #generator-content > h2, #generator-content > p.mb-4,
             .form-section, .flex.space-x-4, .modal-overlay,
-            [style*="position: fixed"],
-            h3[data-lang-key="generationResults"],
-            #history-prev, #history-next, #history-counter {
-                display: none !important;
-            }
+            [style*="position: fixed"], h3[data-lang-key="generationResults"],
+            #history-prev, #history-next, #history-counter { display: none !important; }
             
             .main-content, #statblock-display-container {
-                padding: 0 !important; border: none !important;
-                box-shadow: none !important; background: none !important;
+                padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important;
             }
-            
-            #statblock-display-container {
-                display: block !important;
-                width: 100%; box-sizing: border-box;
-                /* Zabráníme zbytečnému dělení uprostřed statblocku */
-                page-break-inside: avoid;
-            }
+            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
 
             h3, h4 {
-                color: #000 !important; font-family: 'Cormorant Garamond', serif;
-                border-color: #333 !important; page-break-after: avoid;
-                margin-top: 10pt; margin-bottom: 3pt;
+                color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important;
+                page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt;
             }
-            h3 { font-size: 18pt; }
-            h4 { font-size: 11pt; border-bottom-width: 1px; }
+            h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
             .statblock-header h3 { font-size: 22pt; margin: 0; }
 
             .stat-section, .attack-entry {
-                background-color: #f0f0f0 !important; border: 1px solid #ccc !important;
-                box-shadow: none !important; page-break-inside: avoid;
-                padding: 0.4rem !important; margin-bottom: 0.5rem !important;
+                background-color: #f0f0f0 !important; border: 1px solid #ccc !important; box-shadow: none !important;
+                page-break-inside: avoid; padding: 0.4rem !important; margin-bottom: 0.5rem !important;
             }
             
             #defenses-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 0.5rem 1.5rem !important; border-top: 1px solid #333;
                 padding-top: 0.5rem; margin-bottom: 0.5rem !important;
             }
-            #defenses-grid > div { margin-bottom: 0 !important; }
-            #defenses-grid h4 { margin-top: 0; }
+            #defenses-grid > div { margin-bottom: 0 !important; } #defenses-grid h4 { margin-top: 0; }
 
-            p, ul, li { margin: 0 0 4pt 0; }
-            ul { padding-left: 20px; } li { margin-bottom: 2pt; }
+            p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon {
-                width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem;
-                border-color: #000 !important; color: #000 !important;
-                background: #fff !important; margin-right: 0.2rem;
+                width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important;
+                color: #000 !important; background: #fff !important; margin-right: 0.2rem;
             }
             
-            /* Zamezení prázdné stránky na konci */
             #statblock-display-container > div:last-of-type,
-            #statblock-display-container > div:last-of-type p:last-of-type {
-                margin-bottom: 0 !important;
-            }
+            #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
             
-            /* Styly pro JSON na nové stránce */
-            #json-print-container {
-                display: block !important;
-                page-break-before: always; /* VŽDY NA NOVOU STRÁNKU */
-            }
-            #json-print-container h4 {
-                font-size: 11pt; border-bottom: 1px solid #333;
-                margin-bottom: 3pt;
-            }
+            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
+            #json-print-container:empty { display: none !important; }
+            #json-print-container h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre {
-                font-family: monospace; font-size: 8pt; color: #000;
-                background-color: #f4f4f4; padding: 1em;
-                border: 1px solid #ccc; white-space: pre-wrap;
-                word-wrap: break-word;
+                font-family: monospace; font-size: 7pt; /* Zmenšený font */
+                color: #000; background-color: #f4f4f4; padding: 1em;
+                border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word;
             }
 
             a, i.lucide { display: none !important; }
