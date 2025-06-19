@@ -1960,7 +1960,7 @@ function renderStatblock(creature) {
             // Zkontrolujeme, jestli existuje 'url' v datech, jinak ho sestavíme
             const spellUrl = spellData.url || `https://2e.aonprd.com/Spells.aspx?ID=${spellData._id}`;
             // Z dat z jsDelivr je popis pravděpodobně zde:
-            const descriptionHtml = spellData.description; 
+            const descriptionHtml = spellData.system?.description?.value;
 
             return `
                 <li style="margin-bottom: 0.5rem;">
@@ -2279,8 +2279,9 @@ async function handleGenerate() {
 
 async function loadSpellDatabase() {
     try {
-        // ZMĚNA ZDE: Používáme správnou URL na CDN, nikoliv na webovou stránku
-        const databaseUrl = 'https://cdn.jsdelivr.net/npm/pf2e-database@latest/spells.json';
+        // Použijeme oficiální a stabilní balíček od vývojářů Foundry VTT PF2e.
+        // Soubor je ve formátu NeDB (JSON objekty oddělené novým řádkem).
+        const databaseUrl = 'https://cdn.jsdelivr.net/npm/@league-of-foundry-developers/pf2e/packs/spells.db';
         console.log(`Načítám databázi kouzel z: ${databaseUrl}`);
         
         const response = await fetch(databaseUrl);
@@ -2289,11 +2290,12 @@ async function loadSpellDatabase() {
             throw new Error(`Nepodařilo se načíst databázi kouzel z jsDelivr: ${response.statusText}`);
         }
         
-        // Data z tohoto balíčku přijdou jako pole (array) objektů.
-        const spellsArray = await response.json();
+        // Zpracování NeDB formátu
+        const dbText = await response.text();
+        const lines = dbText.trim().split('\n');
+        const spellsArray = lines.map(line => JSON.parse(line));
         
-        // Pro rychlé vyhledávání je lepší převést pole na mapu (objekt),
-        // kde klíčem je název kouzla. Použijeme na to metodu reduce.
+        // Převedeme pole na mapu pro rychlé vyhledávání podle jména
         state.spellDatabase = spellsArray.reduce((map, spell) => {
             map[spell.name] = spell;
             return map;
@@ -2303,18 +2305,16 @@ async function loadSpellDatabase() {
 
     } catch (error) {
         console.error("Kritická chyba při načítání databáze kouzel:", error);
-        // Zobrazíme chybu uživateli
         const errorDiv = getElement('generator-error');
-        if (errorDiv) errorDiv.textContent = translations[state.lang]?.loadSpellDBError || "Failed to load spell database. Please refresh the page.";
+        if (errorDiv) errorDiv.textContent = "Failed to load spell database. Please refresh the page.";
     } finally {
         state.spellsLoading = false;
-        // Povolíme tlačítko generování, které bylo zakázané při startu
         const generateBtn = getElement('generate-btn');
         if (generateBtn) {
             generateBtn.disabled = false;
-            // Vrátíme původní text tlačítka
             const span = generateBtn.querySelector('span');
             if(span) span.textContent = translations[state.lang]?.generateCreature || "Generate Creature";
+            if (typeof lucide !== 'undefined') lucide.createIcons(); // Vykreslíme ikony znovu
         }
         console.log("Načítání kouzel dokončeno, generátor je připraven.");
     }
