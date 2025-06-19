@@ -1960,7 +1960,7 @@ function renderStatblock(creature) {
             // Zkontrolujeme, jestli existuje 'url' v datech, jinak ho sestavíme
             const spellUrl = spellData.url || `https://2e.aonprd.com/Spells.aspx?ID=${spellData._id}`;
             // Z dat z jsDelivr je popis pravděpodobně zde:
-            const descriptionHtml = spellData.system?.description?.value; 
+            const descriptionHtml = spellData.description;
 
             return `
                 <li style="margin-bottom: 0.5rem;">
@@ -2190,8 +2190,6 @@ async function handleGenerate() {
     const generateBtn = getElement('generate-btn');
     const errorDiv = getElement('generator-error');
 
-    // <--- ZAČÁTEK NOVÉHO KÓDU
-    // Kontrola, jestli je databáze připravena
     if (state.spellsLoading) {
         alert(t.lang === 'cs' ? 'Databáze kouzel se stále načítá, zkuste to prosím za chvíli.' : 'The spell database is still loading, please try again in a moment.');
         return;
@@ -2200,22 +2198,18 @@ async function handleGenerate() {
          alert(t.lang === 'cs' ? 'Nepodařilo se načíst databázi kouzel. Obnovte prosím stránku.' : 'Failed to load the spell database. Please refresh the page.');
         return;
     }
-    // <--- KONEC NOVÉHO KÓDU
 
     generateBtn.disabled = true;
     generateBtn.innerHTML = `<i data-lucide="loader-2" style="animation: spin 1s linear infinite;"></i> ${t.generating}`;
     if (typeof lucide !== 'undefined') lucide.createIcons();
     errorDiv.textContent = '';
     
-    // ... (část s userPrompt, level, apiKey zůstává stejná) ...
     let userPrompt = getElement('generator-prompt').value.trim();
     const level = getElement('creature-level').value;
     const finalPrompt = userPrompt || (state.lang === 'cs' ? 'Náhodné stvoření na dané úrovni' : 'A random creature for the given level');
     const apiKey = state.localApiKey || API_KEY;
 
-
     try {
-        // <--- ZMĚNA ZDE: Upravíme schéma pro AI ---
         const spellcastingSchema = {
             "type": "OBJECT",
             "properties": {
@@ -2241,7 +2235,6 @@ async function handleGenerate() {
         const statblockSchema = { 
             type: "OBJECT", 
             properties: {
-                // ... Všechny ostatní vlastnosti zůstávají stejné (name, level, ac, hp...)
                 name: { "type": "STRING" }, level: { "type": "NUMBER" }, rarity: { "type": "STRING", "enum": ["Common", "Uncommon", "Rare", "Unique"] }, size: { "type": "STRING", "enum": ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] },
                 traits: { "type": "ARRAY", "items": { "type": "STRING" } }, perception: { "type": "STRING" }, senses: { "type": "ARRAY", "items": { "type": "STRING" } }, languages: { "type": "ARRAY", "items": { "type": "STRING" } },
                 skills: { "type": "ARRAY", "items": { "type": "OBJECT", "properties": { "name_cz": { "type": "STRING" }, "name_en": { "type": "STRING" }, "bonus": { "type": "STRING" } }, "required": ["name_cz", "name_en", "bonus"] } },
@@ -2250,7 +2243,6 @@ async function handleGenerate() {
                 attributes: { "type": "OBJECT", "properties": { "Str": { "type": "STRING" }, "Dex": { "type": "STRING" }, "Con": { "type": "STRING" }, "Int": { "type": "STRING" }, "Wis": { "type": "STRING" }, "Cha": { "type": "STRING" } } },
                 meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { type: "STRING" } } }, required: ["name", "toHit", "damage"] } },
                 rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { type: "STRING" } } }, required: ["name", "toHit", "damage", "range"] } },
-                // Nahradíme původní 'spellcasting' za naše nové, zjednodušené schéma
                 spellcasting: spellcastingSchema,
                 specialAbilities: { "type": "ARRAY", "items": { "type": "OBJECT", "properties": { "name": { "type": "STRING" }, "description": { "type": "STRING" }, "actionCost": { "type": "STRING", "description": "The number of actions (1, 2, 3), or 'reaction' or 'free'." } }, "required": ["name", "description", "actionCost"] } },
                 appearance: { type: "STRING", description: "A detailed physical description of the creature's appearance." },
@@ -2260,9 +2252,8 @@ async function handleGenerate() {
             "required": ["name", "level", "rarity", "size", "traits", "perception", "senses", "languages", "skills", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] 
         };
         
-        // <--- ZMĚNA ZDE: Vytvoříme instrukci pro AI s názvy kouzel ---
-        const spellNameList = Object.keys(state.spellDatabase).join(', ');
-        const spellInstruction = `For the 'spellcasting' property, you MUST select spell names from the following list: [${spellNameList}]. Return only the names of the spells. Do not invent spell names.`;
+        // --- NOVÉ, VYLEPŠENÉ INSTRUKCE PRO AI ---
+        const spellInstruction = `If the creature is a spellcaster, select a small number of thematically appropriate spells. The highest spell level should be roughly half the creature's level (rounded up), but no higher than 10. For example, a level 12 creature can cast up to level 6 spells. A level 20 creature can cast up to level 10 spells. Provide a mix of offensive, defensive, or utility spells that fit the creature's concept. Ensure the spell names are accurate Pathfinder 2e spells.`;
         
         const foundryFormattingInstruction = "Crucially, for all game mechanics mentioned in 'description' or 'lore' strings, use these exact machine-readable tags: For saving throws, use [Check:type|DC|optional:basic], e.g., [Check:will|25] or [Check:fortitude|22|basic]. For damage, use [Damage:formula|type|optional:persistent], e.g., [Damage:2d8|fire] or [Damage:1d6|poison|persistent]. For conditions, use [Condition:name|value], e.g., [Condition:frightened|2]. For area templates, use [Template:type|distance], e.g., [Template:cone|30]. This formatting is vital. For damage types, use Pathfinder 2e Remastered terminology, especially 'mental' instead of 'psychic'. For melee attacks, do not include 'reach' as a trait; it is handled separately.";
         const languageInstruction = state.lang === 'cs' ? "All text in 'name', 'description', 'appearance', 'behavior', and 'lore' fields MUST be in Czech." : "All text fields must be in English.";
@@ -2284,10 +2275,12 @@ async function handleGenerate() {
         }
 
         const responseData = await response.json();
-        const creatureData = responseData.candidates[0].content.parts[0].text;
+        // Zde může být AI vrácena data jako text, který musíme parsovat
+        const rawText = responseData.candidates[0].content.parts[0].text;
+        const creatureData = JSON.parse(rawText);
         
-        updateGeneratorState(JSON.parse(creatureData), userPrompt, level);
-        addToHistory(JSON.parse(creatureData), userPrompt, level);
+        updateGeneratorState(creatureData, userPrompt, level);
+        addToHistory(creatureData, userPrompt, level);
         
     } catch (err) {
       console.error("Error during generation:", err);
@@ -2301,25 +2294,22 @@ async function handleGenerate() {
 
 async function loadSpellDatabase() {
     try {
-        // Use the official Foundry PF2e system package, which is more stable.
-        // This file is in NeDB format (JSON objects separated by newlines).
         const databaseUrl = 'https://raw.githubusercontent.com/fyjham-ts/Pathfinder-2E-Spell-DB/master/NethysScrape/spells.json';
         console.log(`Načítám databázi kouzel z: ${databaseUrl}`);
         
         const response = await fetch(databaseUrl);
-        
         if (!response.ok) {
-            throw new Error(`Nepodařilo se načíst databázi kouzel z jsDelivr: ${response.statusText}`);
+            throw new Error(`Nepodařilo se načíst databázi kouzel: ${response.statusText}`);
         }
         
-        // Zpracování NeDB formátu
-        const dbText = await response.text();
-        const lines = dbText.trim().split('\n');
-        const spellsArray = lines.map(line => JSON.parse(line));
+        // Nový zdroj je standardní JSON pole, takže stačí použít response.json()
+        const spellsArray = await response.json();
         
         // Převedeme pole na mapu pro rychlé vyhledávání podle jména
         state.spellDatabase = spellsArray.reduce((map, spell) => {
-            map[spell.name] = spell;
+            // Důležité: Některá kouzla mají v názvu HTML tagy, očistíme je.
+            const cleanName = spell.name.replace(/<[^>]*>?/gm, '');
+            map[cleanName] = spell;
             return map;
         }, {});
 
@@ -2327,16 +2317,13 @@ async function loadSpellDatabase() {
 
     } catch (error) {
         console.error("Kritická chyba při načítání databáze kouzel:", error);
-        // Zobrazíme chybu uživateli
         const errorDiv = getElement('generator-error');
         if (errorDiv) errorDiv.textContent = "Failed to load spell database. Please refresh the page.";
     } finally {
         state.spellsLoading = false;
-        // Povolíme tlačítko generování, které bylo zakázané při startu
         const generateBtn = getElement('generate-btn');
         if (generateBtn) {
             generateBtn.disabled = false;
-            // Vrátíme původní text tlačítka
             const span = generateBtn.querySelector('span');
             if(span) {
                 const t = translations[state.lang] || translations.en;
