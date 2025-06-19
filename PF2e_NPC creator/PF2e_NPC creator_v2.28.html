@@ -2261,8 +2261,8 @@ async function handleGenerate() {
         const spellNameList = Object.keys(state.spellDatabase).join(', ');
         const spellInstruction = `For the 'spellcasting' property, you MUST select spell names from the following list: [${spellNameList}]. Return only the names of the spells. Do not invent spell names.`;
         
-        const foundryFormattingInstruction = "/* ... zbytek instrukcí je stejný ... */";
-        const languageInstruction = state.lang === 'cs' ? "/* ... */" : "/* ... */";
+        const foundryFormattingInstruction = "Crucially, for all game mechanics mentioned in 'description' or 'lore' strings, use these exact machine-readable tags: For saving throws, use [Check:type|DC|optional:basic], e.g., [Check:will|25] or [Check:fortitude|22|basic]. For damage, use [Damage:formula|type|optional:persistent], e.g., [Damage:2d8|fire] or [Damage:1d6|poison|persistent]. For conditions, use [Condition:name|value], e.g., [Condition:frightened|2]. For area templates, use [Template:type|distance], e.g., [Template:cone|30]. This formatting is vital. For damage types, use Pathfinder 2e Remastered terminology, especially 'mental' instead of 'psychic'. For melee attacks, do not include 'reach' as a trait; it is handled separately.";
+        const languageInstruction = state.lang === 'cs' ? "All text in 'name', 'description', 'appearance', 'behavior', and 'lore' fields MUST be in Czech." : "All text fields must be in English.";
 
         const statblockPayload = {
             contents: [{ role: "user", parts: [{ text: `Create detailed statistics for a Pathfinder 2e Remastered creature. The creature's level is ${level} and its concept is: "${finalPrompt}". Generate ONLY JSON data. Adhere strictly to the provided JSON schema. The stats (AC, HP, attacks, saves, DC, skills, attributes) must be appropriate for level ${level}. ${languageInstruction} ${foundryFormattingInstruction} ${spellInstruction}` }] }],
