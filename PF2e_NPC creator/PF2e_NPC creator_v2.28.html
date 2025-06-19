@@ -2279,7 +2279,7 @@ async function handleGenerate() {
 
 async function loadSpellDatabase() {
     try {
-        // Toto je URL k nejnovější verzi databáze kouzel na jsDelivr.
+        // ZMĚNA ZDE: Používáme správnou URL na CDN, nikoliv na webovou stránku
         const databaseUrl = 'https://cdn.jsdelivr.net/npm/pf2e-database@latest/spells.json';
         console.log(`Načítám databázi kouzel z: ${databaseUrl}`);
         
@@ -2303,17 +2303,23 @@ async function loadSpellDatabase() {
 
     } catch (error) {
         console.error("Kritická chyba při načítání databáze kouzel:", error);
-        // Můžete přidat zobrazení chyby pro uživatele
+        // Zobrazíme chybu uživateli
         const errorDiv = getElement('generator-error');
-        if (errorDiv) errorDiv.textContent = "Failed to load spell database. Please refresh the page.";
+        if (errorDiv) errorDiv.textContent = translations[state.lang]?.loadSpellDBError || "Failed to load spell database. Please refresh the page.";
     } finally {
         state.spellsLoading = false;
         // Povolíme tlačítko generování, které bylo zakázané při startu
         const generateBtn = getElement('generate-btn');
-        if (generateBtn) generateBtn.disabled = false;
+        if (generateBtn) {
+            generateBtn.disabled = false;
+            // Vrátíme původní text tlačítka
+            const span = generateBtn.querySelector('span');
+            if(span) span.textContent = translations[state.lang]?.generateCreature || "Generate Creature";
+        }
         console.log("Načítání kouzel dokončeno, generátor je připraven.");
     }
 }
+
 
 function updateGeneratorState(creatureData, prompt, level) {
     state.currentCreature = creatureData;
@@ -2501,14 +2507,13 @@ window.onload = () => {
      const generateBtn = getElement('generate-btn');
     if (generateBtn) {
         generateBtn.disabled = true;
-        // Můžete přidat i text
+        // Přidáme text do tlačítka
         const span = generateBtn.querySelector('span');
-        if(span) span.textContent = state.lang === 'cs' ? 'Načítám kouzla...' : 'Loading spells...';
+        if(span) span.textContent = (translations[state.lang]?.generating || 'Generating...').replace('...', ' spells...');
     }
 
      // Spustíme asynchronní načítání databáze
     loadSpellDatabase();
-    // <--- KONEC NOVÉHO KÓDU
 
     // NOVÉ: Načtení uložených stvoření z localStorage
     loadSavedCreaturesFromStorage();
