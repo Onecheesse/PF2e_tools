@@ -1960,7 +1960,7 @@ function renderStatblock(creature) {
             // Zkontrolujeme, jestli existuje 'url' v datech, jinak ho sestavíme
             const spellUrl = spellData.url || `https://2e.aonprd.com/Spells.aspx?ID=${spellData._id}`;
             // Z dat z jsDelivr je popis pravděpodobně zde:
-            const descriptionHtml = spellData.system?.description?.value;
+            const descriptionHtml = spellData.system?.description?.value; 
 
             return `
                 <li style="margin-bottom: 0.5rem;">
@@ -2209,7 +2209,10 @@ async function handleGenerate() {
     
     // ... (část s userPrompt, level, apiKey zůstává stejná) ...
     let userPrompt = getElement('generator-prompt').value.trim();
-    // ...
+    const level = getElement('creature-level').value;
+    const finalPrompt = userPrompt || (state.lang === 'cs' ? 'Náhodné stvoření na dané úrovni' : 'A random creature for the given level');
+    const apiKey = state.localApiKey || API_KEY;
+
 
     try {
         // <--- ZMĚNA ZDE: Upravíme schéma pro AI ---
@@ -2269,18 +2272,37 @@ async function handleGenerate() {
             generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema }
         };
 
-        // ... Zbytek funkce zůstává stejný ...
+        const response = await fetch(`${API_URL}?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(statblockPayload)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || `HTTP error! status: ${response.status}`);
+        }
+
+        const responseData = await response.json();
+        const creatureData = responseData.candidates[0].content.parts[0].text;
+        
+        updateGeneratorState(JSON.parse(creatureData), userPrompt, level);
+        addToHistory(JSON.parse(creatureData), userPrompt, level);
+        
     } catch (err) {
-      // ...
+      console.error("Error during generation:", err);
+      errorDiv.textContent = err.message;
     } finally {
-      // ...
+      generateBtn.disabled = false;
+      generateBtn.innerHTML = `<i data-lucide="sparkles"></i> ${t.generateCreature}`;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 }
 
 async function loadSpellDatabase() {
     try {
-        // Použijeme oficiální a stabilní balíček od vývojářů Foundry VTT PF2e.
-        // Soubor je ve formátu NeDB (JSON objekty oddělené novým řádkem).
+        // Use the official Foundry PF2e system package, which is more stable.
+        // This file is in NeDB format (JSON objects separated by newlines).
         const databaseUrl = 'https://cdn.jsdelivr.net/npm/@league-of-foundry-developers/pf2e/packs/spells.db';
         console.log(`Načítám databázi kouzel z: ${databaseUrl}`);
         
@@ -2305,21 +2327,26 @@ async function loadSpellDatabase() {
 
     } catch (error) {
         console.error("Kritická chyba při načítání databáze kouzel:", error);
+        // Zobrazíme chybu uživateli
         const errorDiv = getElement('generator-error');
         if (errorDiv) errorDiv.textContent = "Failed to load spell database. Please refresh the page.";
     } finally {
         state.spellsLoading = false;
+        // Povolíme tlačítko generování, které bylo zakázané při startu
         const generateBtn = getElement('generate-btn');
         if (generateBtn) {
             generateBtn.disabled = false;
+            // Vrátíme původní text tlačítka
             const span = generateBtn.querySelector('span');
-            if(span) span.textContent = translations[state.lang]?.generateCreature || "Generate Creature";
-            if (typeof lucide !== 'undefined') lucide.createIcons(); // Vykreslíme ikony znovu
+            if(span) {
+                const t = translations[state.lang] || translations.en;
+                span.textContent = t.generateCreature;
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
         console.log("Načítání kouzel dokončeno, generátor je připraven.");
     }
 }
-
 
 function updateGeneratorState(creatureData, prompt, level) {
     state.currentCreature = creatureData;
@@ -2509,7 +2536,10 @@ window.onload = () => {
         generateBtn.disabled = true;
         // Přidáme text do tlačítka
         const span = generateBtn.querySelector('span');
-        if(span) span.textContent = (translations[state.lang]?.generating || 'Generating...').replace('...', ' spells...');
+        if(span) {
+            const t = translations[state.lang] || translations.en;
+            span.textContent = t.generating.replace('...', ' spells...');
+        }
     }
 
      // Spustíme asynchronní načítání databáze
