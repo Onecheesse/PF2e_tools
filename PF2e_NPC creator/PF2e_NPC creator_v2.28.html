@@ -2303,7 +2303,7 @@ async function loadSpellDatabase() {
     try {
         // Use the official Foundry PF2e system package, which is more stable.
         // This file is in NeDB format (JSON objects separated by newlines).
-        const databaseUrl = 'https://cdn.jsdelivr.net/npm/@league-of-foundry-developers/pf2e/packs/spells.db';
+        const databaseUrl = 'https://raw.githubusercontent.com/fyjham-ts/Pathfinder-2E-Spell-DB/master/NethysScrape/spells.json';
         console.log(`Načítám databázi kouzel z: ${databaseUrl}`);
         
         const response = await fetch(databaseUrl);
