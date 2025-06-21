@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PF2 NPC Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+        /* General Styles & Color Palette */
+        :root {
+            --parchment-light: #F8F5E9; /* Updated background color */
+            --parchment-medium: #E0D8C7;
+            --text-dark: #5C4A3A;
+            --text-darker: #3F2C1F;
+            --text-medium: #8B7363;
+            --text-light: #F8F5E9;
+            --gold: #D4AF37;
+            --orange: #D2691E;
+            --header-dark: #4A3B2F;
+            --header-subtle: #6E5F4E;
+            --border-main: #A08F7E;
+            --border-subtle: #C7BFB0;
+            --border-strong: #7E6C5A;
+            --paper-main: #F2ECC9;
+            --paper-light: #FAF7E4;
+            --paper-medium: #EBE2BE;
+            --paper-subtle: #EAE1CB;
+            --button-main: #A08F7E;
+            --button-hover: #8C7B6A;
+            --button-primary: #7E6C5A;
+            --button-primary-hover: #6A5B49;
+            --button-secondary: #B5A696;
+            --button-secondary-hover: #A19282;
+            --button-tertiary: #C7BFB0;
+            --button-tertiary-hover: #B3ABA0;
+            --button-danger: #B22222;
+            --button-danger-hover: #8B0000;
+            --button-success: #228B22;
+            --button-success-hover: #006400;
+            /* ZMĚNA: Nové barvy pro akce */
+            --action-reaction: #E67E22;
+            --action-free: #27AE60;
+        }
+
+        body {
+            min-height: 100vh;
+            background-image: linear-gradient(to bottom right, var(--parchment-light), var(--parchment-medium));
+            color: var(--text-dark);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 400;
+            margin: 0;
+            padding: 2rem;
+            padding-bottom: 3rem; /* Space for version footer */
+        }
+
+        /* Typography */
+        .font-handwritten { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
+        .font-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; }
+        strong, b { font-weight: 600 !important; }
+
+        /* Layout */
+        header { text-align: center; position: relative; padding: 2rem 0; margin-bottom: 2rem; }
+        header h1 { font-size: 2.8rem; color: var(--header-dark); margin-bottom: 0.5rem; }
+        header p { margin: 0; }
+        .tagline { font-size: 1.25rem; }
+
+        .main-content {
+            background-color: var(--paper-main);
+            border: 2px solid var(--border-main);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 2.5rem;
+        }
+        
+        /* Navigation Tabs */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Umožní zalamování na menších obrazovkách */
+            margin-bottom: 2rem;
+            background-color: var(--paper-light);
+            border: 2px solid var(--border-main);
+            border-radius: 0.5rem;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            margin: 0.25rem;
+            border-radius: 0.375rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            background-color: var(--paper-subtle);
+            color: var(--text-dark);
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+        }
+        .tab-button:hover {
+            background-color: var(--parchment-light);
+            color: var(--gold);
+        }
+        .tab-button.active {
+            background-image: linear-gradient(to bottom right, var(--gold), var(--orange));
+            color: var(--text-darker);
+            box-shadow: 0 4px 8px rgba(212,175,55,0.4);
+            border-color: var(--gold);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Form elements */
+        .form-section {
+            background-color: var(--paper-subtle);
+            padding: 1.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        label { display: block; color: var(--text-dark); font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem; }
+        input[type="text"], input[type="number"], input[type="password"], select, textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background-color: var(--paper-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.375rem;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        
+        /* Buttons */
+        .btn {
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            border: 1px solid var(--button-main);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+        .btn .lucide { margin-right: 0.5rem; }
+        .btn-primary { background-color: var(--button-primary); }
+        .btn-primary:hover { background-color: var(--button-primary-hover); }
+        .btn-secondary { background-color: var(--button-secondary); }
+        .btn-secondary:hover { background-color: var(--button-secondary-hover); }
+        .btn-tertiary { background-color: var(--button-tertiary); }
+        .btn-tertiary:hover { background-color: var(--button-tertiary-hover); }
+        .btn-danger { background-color: var(--button-danger); }
+        .btn-danger:hover { background-color: var(--button-danger-hover); }
+        .btn-success { background-color: var(--button-success); border-color: var(--button-success); }
+        .btn-success:hover { background-color: var(--button-success-hover); }
+
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* Header Dropdowns */
+        .header-dropdown-container { position: absolute; top: 1rem; z-index: 10; font-family: 'Open Sans', sans-serif; }
+        .links-dropdown { right: 1rem; }
+        .lang-dropdown { right: 14rem; }
+        .dropdown-btn {
+            background-color: var(--button-main);
+            color: var(--text-light);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-strong);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-btn:hover { background-color: var(--button-hover); }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            margin-top: 0.5rem;
+            width: max-content;
+            background-color: var(--paper-light);
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 0.25rem 0;
+            border: 1px solid var(--border-main);
+        }
+        .dropdown-content.show { display: block; }
+        .dropdown-content a, .dropdown-content button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+        .dropdown-content a:hover, .dropdown-content button:hover {
+            background-color: var(--parchment-light);
+            color: var(--gold);
+        }
+        
+        /* Section styles */
+        h2 { font-size: 2rem; font-weight: 700; color: var(--header-dark); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-main); font-family: 'Cormorant Garamond', serif; }
+        h3 { font-size: 1.5rem; font-weight: 700; color: var(--header-subtle); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+        h4 { font-size: 1.25rem; font-weight: 700; color: var(--text-darker); margin-bottom: 0.75rem; padding-bottom: 0.25rem; border-bottom: 1px solid var(--border-subtle); }
+        
+        /* Grid and Flex Layout */
+        .grid { display: grid; }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .gap-8 { gap: 2rem; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-content {
+            background-color: var(--paper-main);
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            border: 2px solid var(--border-main);
+            max-width: 90%;
+            width: 600px;
+        }
+
+        /* Statblock Display */
+        #statblock-display-container {
+            background-color: var(--paper-main);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid var(--border-main);
+        }
+        .statblock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-strong);
+        }
+        .statblock-header h3 { font-size: 2.2rem; margin: 0; line-height: 1; color: var(--header-dark); }
+        .statblock-header p { margin: 0; color: var(--text-dark); font-size: 1.1rem; }
+        .statblock-level { font-size: 1.5rem; font-weight: 700; text-align: right; }
+        .statblock-level span { color: var(--gold); }
+        
+        .stat-section {
+            background-color: var(--paper-subtle);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .attack-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background-color: var(--paper-subtle);
+            border-radius: 0.25rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .attack-entry p { margin: 0; }
+        
+        .action-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 22px;
+            text-align: center;
+            border: 2px solid var(--text-darker);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.2rem;
+            vertical-align: middle;
+            color: var(--text-darker);
+            background-color: var(--paper-light);
+        }
+        /* ZMĚNA: Barevné ikony pro Free a Reaction */
+        .action-icon.reaction {
+            border-color: var(--action-reaction);
+            color: var(--action-reaction);
+            font-size: 1rem; /* Zvětšení písmene R */
+        }
+        .action-icon.free {
+            border-color: var(--action-free);
+            color: var(--action-free);
+            font-weight: 700;
+            font-size: 1rem; /* Zvětšení písmene F */
+        }
+        
+        #special-abilities-list {
+            padding-left: 0;
+        }
+        #special-abilities-list li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+        }
+        #special-abilities-list .action-icon-wrapper {
+           flex-shrink: 0;
+           width: 70px;
+           text-align: left;
+           margin-top: 4px;
+        }
+
+        /* Compact grid for defenses */
+        #defenses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        #defenses-grid > div {
+            margin-bottom: 0;
+        }
+        #defenses-grid h4 {
+            margin-top: 0;
+        }
+        #json-print-container {
+            display: none; /* Skryje JSON na webu */
+        }
+
+        /* Styly pro seznam uložených stvoření */
+        .saved-creature-list {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+        .saved-creature-item {
+            background-color: var(--paper-subtle);
+            padding: 1.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        .saved-creature-item h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .saved-creature-meta {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+        }
+        .saved-creature-meta span {
+            display: block;
+        }
+        .saved-creature-prompt {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Tlačí tlačítka dolů */
+            border-left: 3px solid var(--gold);
+            padding-left: 0.75rem;
+        }
+        .saved-creature-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .saved-creature-actions .btn {
+            flex: 1 1 auto; /* Umožní tlačítkům zmenšit se, pokud je jich více */
+            min-width: 100px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        /* Utility */
+        .hidden { display: none; }
+        .error-message { color: var(--button-danger); text-align: center; font-weight: 700; margin: 1rem 0; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 1rem; padding-bottom: 3rem; }
+            .main-content { padding: 1.5rem; }
+            .grid-cols-2 { grid-template-columns: 1fr; }
+            header h1 { font-size: 2rem; }
+            .lang-dropdown { right: auto; left: 1rem; }
+            .tab-button { padding: 0.5rem 1rem; font-size: 1rem; }
+            .modal-content { padding: 1.5rem; }
+        }
+
+        /* PDF Export / Print Styles - Vylepšeno pro kompaktnost */
+         @media print {
+            @page {
+                size: A4;
+                margin: 15mm;
+                @top-left { content: ""; } @top-right { content: ""; } @bottom-left { content: ""; } @bottom-right { content: ""; }
+            }
+            body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
+            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section, .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn { display: none !important; }
+            .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
+            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
+            h3, h4 { color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important; page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt; }
+            h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
+            .statblock-header h3 { font-size: 22pt; margin: 0; }
+            .stat-section, .attack-entry { background-color: #f0f0f0 !important; border: 1px solid #ccc !important; box-shadow: none !important; page-break-inside: avoid; padding: 0.4rem !important; margin-bottom: 0.5rem !important; }
+            #defenses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem 1.5rem !important; border-top: 1px solid #333; padding-top: 0.5rem; margin-bottom: 0.5rem !important; }
+            #defenses-grid > div { margin-bottom: 0 !important; } #defenses-grid h4 { margin-top: 0; }
+            p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
+            .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
+            #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
+            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
+            #json-print-container:empty { display: none !important; }
+            #json-print-container h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
+            #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
+            a, i.lucide { display: none !important; }
+        }
+        
+        .spell-list-columns { column-count: 2; column-gap: 2rem; }
+        @media (max-width: 768px) { .spell-list-columns { column-count: 1; } }
+        .spell-level-group { margin-bottom: 1rem; break-inside: avoid-column; }
+        .spell-level-group h4 { font-size: 1.1rem; border: none; margin-bottom: 0.25rem; padding: 0; }
+        .spell-link { color: var(--gold); text-decoration: underline; cursor: pointer; }
+        .spell-link:hover { color: var(--orange); }
+
+        #spell-popover {
+            position: fixed; display: none; max-width: 400px; padding: 1rem;
+            background-color: var(--paper-light); border: 2px solid var(--border-main);
+            border-radius: 0.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 2000; pointer-events: none;
+        }
+        #spell-popover h4 { margin-top: 0; color: var(--header-dark); border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem; }
+        #spell-popover p, #spell-popover ul { font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <div id="app-container">
+        <!-- HEADER -->
+        <header>
+            <h1 class="font-handwritten" data-lang-key="appName">PF2 NPC Generator</h1>
+            <p class="tagline font-script" data-lang-key="tagline">Create Your Own Legends</p>
+            <div class="header-dropdown-container links-dropdown">
+                <button id="useful-links-btn" class="dropdown-btn"><span data-lang-key="usefulLinks">Useful Links</span><i data-lucide="info" class="ml-2 h-4 w-4"></i></button>
+                <div id="useful-links-content" class="dropdown-content">
+                    <a href="https://2e.aonprd.com/" target="_blank" rel="noopener noreferrer"><span data-lang-key="archivesOfNethys">Archives of Nethys</span><i data-lucide="external-link" class="h-4 w-4 ml-2"></i></a>
+                    <a href="https://pathfinderwiki.com/" target="_blank" rel="noopener noreferrer"><span data-lang-key="pfWiki">PF Wiki</span><i data-lucide="external-link" class="h-4 w-4 ml-2"></i></a>
+                    <a href="https://pf2.tools/" target="_blank" rel="noopener noreferrer"><span data-lang-key="pf2eTools">PF2e Tools</span><i data-lucide="external-link" class="h-4 w-4 ml-2"></i></a>
+                    <a href="https://pathbuilder2e.com/" target="_blank" rel="noopener noreferrer"><span data-lang-key="pathbuilder">Pathbuilder</span><i data-lucide="external-link" class="h-4 w-4 ml-2"></i></a>
+                </div>
+            </div>
+            <div class="header-dropdown-container lang-dropdown">
+                <button id="lang-btn" class="dropdown-btn">EN</button>
+                <div id="lang-content" class="dropdown-content">
+                    <button data-lang="cs">Čeština</button>
+                    <button data-lang="en">English</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav>
+            <button class="tab-button" data-tab="encounter" data-lang-key="tabEncounter">Encounter Builder</button>
+            <button class="tab-button" data-tab="monster-guide" data-lang-key="tabMonsterGuide">Creation Guide</button>
+            <button class="tab-button active" data-tab="generator" data-lang-key="tabGenerator">Creature Generator (AI)</button>
+            <button class="tab-button" data-tab="saved" data-lang-key="tabSaved">Saved Creatures</button>
+        </nav>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="main-content">
+            <div id="encounter-content" class="tab-content"></div>
+            <div id="monster-guide-content" class="tab-content"></div>
+            <div id="saved-content" class="tab-content"></div>
+            <div id="generator-content" class="tab-content active">
+                <h2 data-lang-key="generatorTitle">Monster/NPC Generator (AI)</h2>
+                <p class="mb-4" data-lang-key="generatorIntro">Describe the creature you want to generate, select its level, and let the AI create its description and statistics!</p>
+                <div class="form-section">
+                    <label for="generator-prompt" data-lang-key="creatureDescriptionPrompt">Creature Description (leave blank for a random creature):</label>
+                    <textarea id="generator-prompt" placeholder="e.g. An ice golem..."></textarea>
+                </div>
+                <div class="form-section">
+                    <label for="creature-level" data-lang-key="creatureLevel">Creature Level:</label>
+                    <select id="creature-level"></select>
+                </div>
+                <div class="flex space-x-4 mb-8" style="flex-wrap: wrap; gap: 1rem;">
+                    <button id="generate-btn" class="btn btn-primary" style="flex: 1; min-width: 200px;"><i data-lucide="sparkles"></i><span data-lang-key="generateCreature">Generate Creature</span></button>
+                    <button id="import-btn" class="btn" style="background-color: var(--button-main); flex: 1; min-width: 200px;"><i data-lucide="upload"></i><span data-lang-key="importJson">Import from Foundry</span></button>
+                </div>
+                <div id="generator-error" class="error-message"></div>
+                <div class="mt-8">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 data-lang-key="generationResults">Generation Results</h3>
+                         <div class="flex items-center space-x-2">
+                            <button id="history-prev" class="btn" style="padding: 0.5rem; background-color: var(--button-main);"><i data-lucide="chevron-left" style="margin:0;"></i></button>
+                            <span id="history-counter">0/0</span>
+                            <button id="history-next" class="btn" style="padding: 0.5rem; background-color: var(--button-main);"><i data-lucide="chevron-right" style="margin:0;"></i></button>
+                        </div>
+                    </div>
+                    <div id="statblock-display-container"></div>
+                    <div id="json-print-container"></div>
+                    <div id="image-prompt-container" class="form-section" style="margin-top: 2rem;">
+                        <h4><i data-lucide="sparkles" style="color: var(--gold); display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i><span data-lang-key="imagePromptGenerator">Image Prompt Generator (AI)</span></h4>
+                        <p data-lang-key="imagePromptIntro" style="font-size: 0.9rem;">Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.</p>
+                        <textarea id="image-prompt-output" readonly></textarea>
+                        <div class="flex space-x-2" style="margin-top: 0.5rem;">
+                            <button id="copy-image-prompt-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyImagePrompt">Copy Prompt</span></button>
+                            <a href="https://gemini.google.com/app/images" target="_blank" class="btn btn-primary" style="flex: 1; text-decoration: none;"><i data-lucide="external-link"></i><span data-lang-key="openGemini">Open Gemini</span></a>
+                        </div>
+                    </div>
+                    <div id="json-output-container" class="form-section" style="margin-top: 2rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+                             <label for="json-output" data-lang-key="jsonStatblock">JSON Statblock (Foundry VTT Compatible):</label>
+                             <button id="how-to-import-btn" style="color:var(--gold); font-size: 0.9rem; background:none; border:none; cursor: pointer; display:flex; align-items:center;"><i data-lucide="info" style="width:16px; height:16px; margin-right: 4px;"></i><span data-lang-key="howToImportButton">How to import?</span></button>
+                        </div>
+                        <textarea id="json-output" readonly></textarea>
+                        <div class="flex space-x-2" style="margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                            <button id="copy-json-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyJson">Copy JSON</span></button>
+                            <button id="download-json-btn" class="btn btn-secondary" style="flex: 1;"><i data-lucide="download"></i><span data-lang-key="downloadJson">Download JSON</span></button>
+                            <button id="export-pdf-btn" class="btn btn-danger" style="flex: 1;"><i data-lucide="file-text"></i><span data-lang-key="exportPdf">Export to PDF</span></button>
+                            <button id="save-creature-btn" class="btn btn-success" style="flex: 1;"><i data-lucide="save"></i><span data-lang-key="saveCreature">Save Creature</span></button>
+                            <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <footer style="margin-top: 3rem; text-align: center; color: var(--text-medium); font-size: 0.875rem;">
+             <div class="form-section" style="display: inline-block; max-width: 500px; width: 100%;">
+                <label for="api-key-input" data-lang-key="apiKeyLabel">Your Gemini API Key (optional):</label>
+                <div class="flex space-x-2">
+                    <input type="password" id="api-key-input" placeholder="sk-...">
+                    <button id="api-key-btn" class="btn btn-secondary"><span data-lang-key="apiKeyButton">Use Key</span></button>
+                </div>
+                <p style="margin-top: 0.5rem;"><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color: var(--gold); text-decoration: underline;" data-lang-key="getApiKey">Get your key at Google AI Studio</a>.</p>
+             </div>
+        </footer>
+    </div>
+
+    <!-- MODALS -->
+    <div id="import-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 data-lang-key="importJsonModalTitle">Import Foundry VTT JSON Statblock</h3>
+            <label for="import-json-textarea" data-lang-key="importJsonModalPrompt">Paste the JSON text of the statblock here:</label>
+            <textarea id="import-json-textarea" style="height: 200px; font-family: monospace;"></textarea>
+            <div id="import-error" class="error-message"></div>
+            <div class="flex" style="justify-content: flex-end; margin-top: 1rem; gap: 1rem;">
+                <button id="cancel-import-btn" class="btn btn-secondary"><span data-lang-key="cancel">Cancel</span></button>
+                <button id="confirm-import-btn" class="btn btn-primary"><span data-lang-key="confirmImport">Confirm Import</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="how-to-import-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 data-lang-key="howToImportTitle">How to Import into Foundry VTT</h3>
+            <p data-lang-key="howToImportDesc">To easily import into Foundry VTT, create a new macro (Script), paste the code below, and run it. A dialog will appear where you can paste the generated JSON.</p>
+            <textarea id="macro-code" readonly style="height: 250px; font-family: monospace; font-size: 0.8rem; margin: 1rem 0;"></textarea>
+            <div class="flex" style="justify-content: flex-end; gap: 1rem;">
+                <button id="copy-macro-btn" class="btn btn-secondary"><i data-lucide="copy"></i><span data-lang-key="copyMacro">Copy Macro</span></button>
+                <button id="close-how-to-modal-btn" class="btn btn-primary"><span data-lang-key="close">Close</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="share-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 data-lang-key="shareCreatureTitle">Share Creature</h3>
+            <p data-lang-key="shareCreatureDesc">Copy the link below and send it to a friend. When they open it, the creature will be automatically loaded.</p>
+            <textarea id="share-link-textarea" readonly style="margin: 1rem 0;"></textarea>
+            <div class="flex" style="justify-content: flex-end; gap: 1rem;">
+                <button id="copy-share-link-btn" class="btn btn-secondary"><i data-lucide="copy"></i><span data-lang-key="copyLink">Copy Link</span></button>
+                <button id="close-share-modal-btn" class="btn btn-primary"><span data-lang-key="close">Close</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VERSION INFO -->
+    <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
+        <span data-lang-key="version">Version</span>: 2.34
+    </div>
+    
+    <div id="spell-popover" style="display: none;"></div>
+
+<script type="module">
+// This script contains all the logic for the application.
+
+// --- DATA & MAPPINGS ---
+const translations = {
+    cs: {
+        appName: "PF2 NPC Generator",
+        tagline: "Vytvořte své vlastní legendy",
+        version: "Verze",
+        usefulLinks: "Užitečné Odkazy",
+        archivesOfNethys: "Archives of Nethys",
+        pfWiki: "PF Wiki",
+        pf2eTools: "PF2e Tools",
+        pathbuilder: "Pathbuilder",
+        tabEncounter: "Tvorba Střetnutí",
+        tabMonsterGuide: "Průvodce Tvorbou",
+        tabGenerator: "Generátor Stvoření (AI)",
+        tabSaved: "Uložená Stvoření",
+        encounterTitle: "Tvorba a Vyvažování Střetnutí",
+        encounterIntro: "Pathfinder 2e používá systém rozpočtu Zkušenostních Bodů (ZK) pro tvorbu střetnutí. Každá bytost má úroveň a síla se určuje na základě její relativní úrovně k úrovni skupiny.",
+        calculatorTitle: "Kalkulačka Střetnutí",
+        playerLevel: "Úroveň Hráčů",
+        numPlayers: "Počet Hráčů",
+        targetDifficulty: "Cílová Obtížnost",
+        difficultyTrivial: "Triviální (40 ZK)",
+        difficultyLow: "Nízká (60 ZK)",
+        difficultyModerate: "Střední (80 ZK)",
+        difficultySevere: "Těžká (120 ZK)",
+        difficultyExtreme: "Extrémní (160 ZK)",
+        addMonsters: "Přidat Nestvůry:",
+        monsterLevel: "Úroveň Nestvůry",
+        monsterCount: "Počet Nestvůr",
+        remove: "Odebrat",
+        addMonster: "Přidat Nestvůru",
+        results: "Výsledky",
+        targetXPBudget: "Cílový rozpočet ZK:",
+        totalEncounterXP: "Celkové ZK střetnutí:",
+        calculatedDifficulty: "Kalkulovaná obtížnost:",
+        xpPerPlayer: "ZK na hráče:",
+        rewards: "Odměny",
+        xpRewardInfo: "Za každých 1000 ZK získaných za střetnutí postavy obvykle získají 1 úroveň.",
+        suggestedXPRewards: "Doporučené odměny ZK:",
+        suggestedGoldReward: "Návrh odměny zlata (při úrovni {{level}}):",
+        goldDisclaimer: "<i>*Přesné odměny v zlaťácích naleznete v GM Core a závisí na bohatství světa a příběhu.</i>",
+        balancingTipsTitle: "Tipy pro Vyvážení Střetnutí",
+        balancingTips: [
+            "<strong>Relativní úroveň:</strong> Klíčová je úroveň nestvůr v poměru k úrovni hráčů. Nestvůra úrovně PL+2 je mnohem silnější než dvě nestvůry úrovně PL-1, i když mají stejný rozpočet ZK.",
+            "<strong>Akční Ekonomika:</strong> Jediný silný nepřítel (boss) může být přemožen mnoha akcemi skupiny. Zvažte mu dát speciální akce nebo legendární akce (pokud jsou vhodné pro váš systém), aby vyrovnal počet akcí.",
+            "<strong>Hordy:</strong> Velké množství slabších nepřátel může být únavné na vedení. Zvažte použití skupinových iniciativ nebo zjednodušených statblocků.",
+            "<strong>Prostředí:</strong> Terén, překážky, pasti nebo interaktivní prvky mohou výrazně ovlivnit obtížnost střetnutí a přidat mu dynamiku bez změny statistik nepřátel.",
+            "<strong>Cíle:</strong> Nechte střetnutí mít jiné cíle než jen porazit všechny nepřátele (např. ochránit NPC, získat předmět, uniknout, dosáhnout určitého bodu).",
+            "<strong>Roleplaying:</strong> Chování nestvůr a NPC v boji by mělo odrážet jejich povahu a motivace, i když to znamená, že nebudou vždy jednat 'optimálně'."
+        ],
+        guideTitle: "Průvodce Tvorbou Nestvůr a NPC",
+        guideIntro: "V Pathfinder 2e Remastered nejsou nestvůry a NPC stavěny jako postavy hráčů. Jsou zjednodušeny pro vypravěče a navrženy tak, aby měly jasnou roli v boji.",
+        conceptRoleTitle: "1. Koncepce a Role Stvoření",
+        conceptRoleDesc: "Předtím než začnete s čísly, definujte, co vaše stvoření je a jakou roli hraje ve světě a v boji.",
+        conceptRoleList: [
+            "<strong>Úroveň:</strong> Jaká je úroveň stvoření? To ovlivní všechny jeho statistiky.",
+            "<strong>Typ a vzhled:</strong> Je to zvíře, humanoid, duch? Jak vypadá?",
+            "<strong>Bojový styl:</strong> Bojuje zblízka, střílí, sesílá kouzla, nebo se spoléhá na speciální schopnosti?",
+            "<strong>Lore a motivace:</strong> Proč existuje? Jaké jsou jeho cíle? Jeho lore by měl ovlivňovat jeho mechaniky."
+        ],
+        statblockStructureTitle: "2. Struktura Statblocku a Statistiky",
+        statblockStructureDesc: "Statblocky jsou zjednodušené. Použijte průměrné statistiky z GM Core jako vodítko a upravte je podle konceptu stvoření.",
+        statblockTableDisclaimer: "<i>*Úplná tabulka průměrných statistik se nachází v GM Core. Toto jsou zjednodušené příklady.</i>",
+        abilityGenerationTitle: "3. Generování a Úprava Schopností (Atributů)",
+        abilityGenerationDesc1: "Nestvůry používají přímo modifikátory atributů, nikoliv základní hodnoty. Přizpůsobte je roli stvoření.",
+        abilityGenerationDesc2: "Například, pro nestvůru úrovně 5:",
+        abilityGenerationList: [
+            "<strong>Extrémní:</strong> +5 (např. hlavní útočící atribut bojovníka)",
+            "<strong>Vysoká:</strong> +4 (např. klíčová záchrana)",
+            "<strong>Střední:</strong> +3 (např. vedlejší dovednost)",
+            "<strong>Nízká:</strong> +2 (např. slabý atribut)"
+        ],
+        abilityGenerationDisclaimer: "<i>*Podrobné rozsahy pro všechny úrovně naleznete v GM Core, kapitole 'Building Creatures'.</i>",
+        eliteWeakTemplatesTitle: "4. Šablony Elite a Weak",
+        eliteWeakTemplatesDesc: "Tyto šablony rychle upraví úroveň stvoření o +/- 1 (nebo 2 u velmi nízkých úrovní).",
+        eliteWeakTemplatesList: [
+            "<strong>Elite (+1 úroveň):</strong> Zvyšuje AC, útoky, DC, záchrany, Vnímání a dovednosti o +2. Poškození útoků a omezených schopností o +2 (nebo +4 pro omezené použití). HP se zvyšují dle úrovně.",
+            "<strong>Weak (-1 úroveň):</strong> Aplikuje opačné úpravy (-2 na statistiky, -2/-4 na poškození), HP se snižují dle úrovně."
+        ],
+        eliteWeakTemplatesImportant: "<strong>Důležité:</strong> Šablony fungují nejlépe u fyzicky orientovaných stvoření. U sesilatelů kouzel nebo stvoření s unikátními schopnostmi budete možná muset ručně upravit jejich kouzla nebo obtížnosti.",
+        givingSpellsTitle: "5. Dávání Kouzel Nestvůrám a NPC",
+        givingSpellsDesc: "Kouzla by měla být tematicky konzistentní a zaměřená na bojovou roli stvoření. Vyvarujte se plných seznamů kouzel postav hráčů.",
+        spellTypes: "<strong>Typy kouzel:</strong> Můžou být <strong>vrozená</strong> (část podstaty stvoření, často \"dle libosti\" nebo s omezenými denními použitími), <strong>připravená</strong> nebo <strong>spontánní</strong> (pro bytosti primárně se zaměřující na sesílání kouzel).",
+        spellSelection: "<strong>Výběr:</strong> Zaměřte se na 2-3 charakteristická kouzla, která se hodí k bojovému stylu stvoření. Kouzla by neměla být o více než 2 úrovně nižší než nejvyšší úroveň, kterou stvoření sesílá.",
+        spellDCAttacks: "<strong>Obtížnost (DC) a Útoky:</strong> Většina stvoření používá jednu DC a bonus k útoku pro všechna svá kouzla. Použijte benchmarky z GM Core:",
+        spellDCAttacksDisclaimer: "<i>*Úplné benchmarky pro DC a útoky kouzly naleznete v GM Core.</i>",
+        loreIntegrationTitle: "6. Integrace Loru a Tematická Konzistence",
+        loreIntegrationDesc: "Lore by měl přímo ovlivňovat mechaniky a bojové taktiky stvoření.",
+        loreIntegrationList: [
+            "<strong>\"Postava\" stvoření:</strong> Každá nestvůra by měla mít jasné motivace a sociální struktury, které se projeví v jejím chování.",
+            "<strong>Mechaniky odrážejí lore:</strong> Pokud má nestvůra schopnost ovládat mysl, mělo by to mít logické vysvětlení v jejím pozadí.",
+            "<strong>Adaptace existujícího loru:</strong> Buďte si vědomi změn v loru v Remastered edici (např. odstranění přesvědčení, změny u některých draků)."
+        ],
+        cryptidTitle: "7. Tvorba Kryptidů a Unikátních Bytostí",
+        cryptidIntro: "Kryptidi nejsou jen obyčejné nestvůry, jsou to záhady, které se vymykají běžné klasifikaci. Často se rodí z lidových pověstí, experimentů nebo bizarních mutací. Jejich tvorba vnáší do hru jedinečnou atmosféru strachu a tajemna. Namísto přímého designu od nuly se kryptidi často vytvářejí aplikací speciálních úprav na existující stvoření. Zde jsou klíčové typy kryptidů, jak je popsáno v 'Dark Archive'.",
+        experimentalCryptidTitle: "Experimentální Kryptidi",
+        experimentalCryptidDesc: "Tato stvoření byla cíleně upravena alchymií, inženýrským nebo magií, což vedlo k integraci konstruktních prvků do jejich těl. Jsou silnější, ale proces je nestabilní a plný chyb.",
+        experimentalCryptidList: [
+            "<strong>Vylepšení:</strong> Mají o +1 vyšší úroveň, lepší AC, útoky, DC a záchrany a více HP.",
+            "<strong>Augmentace:</strong> Díky svým umělým částem získávají +2 bonus k záchranám proti efektům smrti, nemocem a jedům.",
+            "<strong>Provozní vada:</strong> Každý experimentální kryptid má slabé místo ve své konstrukci. Pokud jej někdo odhalí, stane se vůči jeho útokům zranitelný.",
+            "<strong>Schopnosti:</strong> Často mají temné vidění, útok 'Clobber' (Úder), který odhazuje a sráží protivníky, a mohou vypustit vlnu energie."
+        ],
+        mutantCryptidTitle: "Mutantní Kryptidi",
+        mutantCryptidDesc: "Mutace, ať už z prostředí nebo magického záření, odlišuje tyto kryptidy od jejich druhu. Mohou mít zcela nečekané schopnosti a slabiny.",
+        mutantCryptidList: [
+            "<strong>Vylepšení:</strong> Jsou vzácnější, mají o +1 vyšší úroveň a vylepšené statistiky.",
+            "<strong>Neobvyklá zhouba:</strong> Získávají specifickou slabinu, která není pro jejich druh typická (např. averze vůči šafránu nebo dětskému smíchu). Vystavení této zhoubě jim způsobuje mentální poškození a může je ochromit.",
+            "<strong>Explozivní konec:</strong> Po smrti explodují v gejzíru ohně, kyseliny nebo jiné energie.",
+            "<strong>Další schopnosti:</strong> Mohou jim růst kostěné hroty (Marrowlance) pro útoky na dálku nebo měnit svou odolnost vůči energii (Shifting Iridescence)."
+        ],
+        primevalCryptidTitle: "Prapůvodní Kryptidi",
+        primevalCryptidDesc: "Jsou to přeživší z dávných dob, větší, odolnější a chytřejší než jejich moderní příbuzní. Jsou to živoucí fosílie, které si pamatují svět, jaký kdysi byl.",
+        primevalCryptidList: [
+            "<strong>Vylepšení:</strong> Jsou větší, vzácnější a mají vyšší statistiky, včetně mírně vyšší inteligence. Často se zvířata stávají bestiemi.",
+            "<strong>Unikátní schopnosti:</strong> Mohou mít auru zápachu (Stench), úlomky zbraní v kůži, které zraňují útočníky (Broken Arsenal), schopnost přežít smrtelný úder (Grasp for Life) nebo vytvořit rázovou vlnu dupnutím (Shockwave Effect)."
+        ],
+        rumoredCryptidTitle: "Bájní Kryptidi",
+        rumoredCryptidDesc: "Tato stvoření jsou doslova utvářena pověstmi a legendami. Čím více se o nich mluví, tím reálnější a nebezpečnější se stávají. Jejich podoba je nestálá a přizpůsobuje se příběhům.",
+        rumoredCryptidList: [
+            "<strong>Vylepšení:</strong> Jsou vzácnější, mají o +1 vyšší úroveň, vylepšené statistiky a jsou zdatní ve skrývání.",
+            "<strong>Nestálá podoba:</strong> Jejich vzhled se mění, aby odpovídal místním legendám. Pokud všechny příběhy zaniknou, stvoření přestane existovat.",
+            "<strong>Zranitelnost odhalením (Obscura Vulnerability):</strong> Když někdo úspěšně použije Vzpomínání (Recall Knowledge) k jejich identifikaci, oslabí je to (dostanou stav drained).",
+            "<strong>Schopnosti:</strong> Obvykle mají temné vidění (Burning Eyes), schopnost nepozorovaně pronásledovat (Stalk) a rychle zmizet (Vanishing Escape)."
+        ],
+        generatorTitle: "Generátor Nestvůr/NPC (AI)",
+        generatorIntro: "Popište stvoření, které chcete vygenerovat, vyberte jeho úroveň a nechte AI vytvořit jeho popis a statistiky!",
+        creatureDescriptionPrompt: "Popis stvoření (nechte prázdné pro náhodné stvoření):",
+        creatureLevel: "Úroveň stvoření:",
+        generateCreature: "Vygenerovat Stvoření",
+        generating: "Generování...",
+        generationResults: "Výsledky Generování",
+        appearance: "Vzhled",
+        behavior: "Chování",
+        jsonStatblock: "JSON Statblock (Foundry VTT kompatibilní):",
+        copyJson: "Kopírovat JSON",
+        copied: "Zkopírováno!",
+        downloadJson: "Stáhnout JSON",
+        noCreatureToDisplay: "Vygenerujte stvoření pro zobrazení jeho statistik.",
+        defaultDescription: "Popis a lore stvoření se zobrazí zde po vygenerování. Zahrnuje příběh, zajímavosti a pozadí bytosti.",
+        apiKeyLabel: "Váš Gemini API Klíč (volitelné):",
+        apiKeyButton: "Použít klíč",
+        apiKeyUsed: "Klíč použit!",
+        getApiKey: "Získejte svůj klíč na Google AI Studio",
+        unknownCreature: "Neznámé Stvoření",
+        creatureLabel: "STVOŘENÍ",
+        attributes: "Atributy",
+        perceptionSenses: "Vnímání & Smysly",
+        saves: "Záchranné Hody",
+        skills: "Dovednosti",
+        immunities: "Imunity",
+        resistances: "Odolnosti",
+        weaknesses: "Slabosti",
+        meleeAttacks: "Útoky na blízko",
+        rangedAttacks: "Útoky na dálku",
+        spellcasting: "Sesílání Kouzel",
+        loreStory: "Lore / Příběh",
+        strength: "Síla (Str)",
+        dexterity: "Obratnost (Dex)",
+        constitution: "Kondice (Con)",
+        intelligence: "Inteligence (Int)",
+        wisdom: "Moudrost (Wis)",
+        charisma: "Charisma (Cha)",
+        fortitude: "Odolnost (Fort)",
+        reflex: "Reflexy (Ref)",
+        will: "Vůle (Will)",
+        toHit: "k zásahu",
+        damage: "Poškození",
+        range: "Dosah",
+        speed: "Rychlost",
+        traits: "Rysy",
+        noTraits: "Žádné rysy",
+        ability: "Schopnost",
+        dc: "DC",
+        attack: "Útok",
+        cantrips: "Cantripy",
+        level: "Úroveň",
+        specialAbilitiesActions: "Speciální Schopnosti a Akce",
+        passive: "Pasivní",
+        importJson: "Importovat z Foundry",
+        importJsonModalTitle: "Importovat Foundry VTT JSON Statblock",
+        importJsonModalPrompt: "Vložte JSON text statblocku zde:",
+        confirmImport: "Potvrdit Import",
+        cancel: "Zrušit",
+        invalidJson: "Neplatný JSON. Zkontrolujte prosím formát nebo se ujistěte, že se jedná o export NPC z Foundry VTT.",
+        imagePromptGenerator: "Generátor Promptu pro Obrázek (AI)",
+        imagePromptIntro: "Zkopírujte tento prompt a vložte jej do nástroje pro generování obrázků, jako je Gemini, pro vizuální reprezentaci vašeho stvoření.",
+        copyImagePrompt: "Kopírovat Prompt",
+        openGemini: "Otevřít Gemini",
+        howToImportButton: "Jak na import?",
+        howToImportTitle: "Jak importovat do Foundry VTT",
+        howToImportDesc: "Pro snadný import do Foundry VTT, vytvořte nové makro (Script), vložte níže uvedený kód a spusťte jej. Objeví se dialogové okno, kam vložíte vygenerovaný JSON.",
+        copyMacro: "Kopírovat Makro",
+        close: "Zavřít",
+        exportPdf: "Exportovat do PDF",
+        saveCreature: "Uložit stvoření",
+        creatureSaved: "Stvoření uloženo!",
+        loadCreature: "Načíst",
+        deleteCreature: "Smazat",
+        shareCreature: "Sdílet",
+        shareComingSoon: "Funkce sdílení bude brzy dostupná.",
+        savedCreaturesTitle: "Uložená Stvoření",
+        noSavedCreatures: "Zatím nemáte žádná uložená stvoření. Vygenerujte nějaké a uložte ho!",
+        savedOn: "Uloženo:",
+        usedPrompt: "Použitý prompt:",
+        Acrobatics: "Akrobacie", Arcana: "Arkána", Athletics: "Atletika", Crafting: "Řemesla",
+        Deception: "Klamání", Diplomacy: "Diplomacie", Intimidation: "Zastrašování", Medicine: "Lékařství",
+        Nature: "Příroda", Occultism: "Okultismus", Performance: "Vystupování", Religion: "Náboženství",
+        Society: "Společnost", Stealth: "Nenápadnost", Survival: "Přežití", Thievery: "Zlodějství",
+        shareCreatureTitle: "Sdílet Stvoření",
+        shareCreatureDesc: "Zkopírujte odkaz níže a pošlete ho příteli. Když ho otevře, stvoření se automaticky načte.",
+        copyLink: "Kopírovat odkaz",
+    },
+    en: {
+        appName: "PF2 NPC Generator",
+        tagline: "Create Your Own Legends",
+        version: "Version",
+        usefulLinks: "Useful Links",
+        archivesOfNethys: "Archives of Nethys",
+        pfWiki: "PF Wiki",
+        pf2eTools: "PF2e Tools",
+        pathbuilder: "Pathbuilder",
+        tabEncounter: "Encounter Builder",
+        tabMonsterGuide: "Creation Guide",
+        tabGenerator: "Creature Generator (AI)",
+        tabSaved: "Saved Creatures",
+        encounterTitle: "Encounter Building & Balancing",
+        encounterIntro: "Pathfinder 2e uses an Experience Point (XP) budget system for encounter building. Each creature has a level, and strength is determined by its relative level to the party's level.",
+        calculatorTitle: "Encounter Calculator",
+        playerLevel: "Player Level",
+        numPlayers: "Number of Players",
+        targetDifficulty: "Target Difficulty",
+        difficultyTrivial: "Trivial (40 XP)",
+        difficultyLow: "Low (60 XP)",
+        difficultyModerate: "Moderate (80 XP)",
+        difficultySevere: "Severe (120 XP)",
+        difficultyExtreme: "Extreme (160 XP)",
+        addMonsters: "Add Monsters:",
+        monsterLevel: "Monster Level",
+        monsterCount: "Monster Count",
+        remove: "Remove",
+        addMonster: "Add Monster",
+        results: "Results",
+        targetXPBudget: "Target XP Budget:",
+        totalEncounterXP: "Total Encounter XP:",
+        calculatedDifficulty: "Calculated Difficulty:",
+        xpPerPlayer: "XP per Player:",
+        rewards: "Rewards",
+        xpRewardInfo: "For every 1000 XP gained from an encounter, characters typically earn 1 level.",
+        suggestedXPRewards: "Suggested XP rewards:",
+        suggestedGoldReward: "Suggested Gold Reward (at level {{level}}):",
+        goldDisclaimer: "<i>*Exact gold rewards can be found in the GM Core and depend on world wealth and story.</i>",
+        balancingTipsTitle: "Encounter Balancing Tips",
+        balancingTips: [
+            "<strong>Relative Level:</strong> The level of creatures relative to player level is key. A PL+2 creature is much stronger than two PL-1 creatures, even with the same XP budget.",
+            "<strong>Action Economy:</strong> A single strong enemy (boss) can be overwhelmed by the group's many actions. Consider giving it special actions or legendary actions (if applicable to your system) to balance the action count.",
+            "<strong>Hordes:</strong> Large numbers of weaker enemies can be tedious to manage. Consider using group initiatives or simplified stat blocks.",
+            "<strong>Environment:</strong> Terrain, obstacles, traps, or interactive elements can significantly affect encounter difficulty and add dynamism without changing enemy stats.",
+            "<strong>Objectives:</strong> Have encounters with objectives other than just defeating all enemies (e.g., protect an NPC, retrieve an item, escape, reach a certain point).",
+            "<strong>Roleplaying:</strong> The behavior of monsters and NPCs in combat should reflect their nature and motivations, even if it means they don't always act 'optimally'."
+        ],
+        guideTitle: "Monster and NPC Creation Guide",
+        guideIntro: "In Pathfinder 2e Remastered, monsters and NPCs are not built like player characters. They are simplified for the GM and designed to have a clear role in combat.",
+        conceptRoleTitle: "1. Creature Concept and Role",
+        conceptRoleDesc: "Before you start with numbers, define what your creature is and what role it plays in the world and in combat.",
+        conceptRoleList: [
+            "<strong>Level:</strong> What is the creature's level? This will affect all its statistics.",
+            "<strong>Type and Appearance:</strong> Is it an animal, humanoid, spirit? What does it look like?",
+            "<strong>Combat Style:</strong> Does it fight melee, ranged, cast spells, or rely on special abilities?",
+            "<strong>Lore and Motivation:</strong> Why does it exist? What are its goals? Its lore should influence its mechanics."
+        ],
+        statblockStructureTitle: "2. Stat Block Structure and Statistics",
+        statblockStructureDesc: "Stat blocks are simplified. Use average statistics from the GM Core as a guide and adjust them according to the creature's concept.",
+        statblockTableDisclaimer: "<i>*A complete table of average statistics can be found in the GM Core. These are simplified examples.</i>",
+        abilityGenerationTitle: "3. Generating and Adjusting Abilities (Attributes)",
+        abilityGenerationDesc1: "Creatures use attribute modifiers directly, not base values. Adjust them to the creature's role.",
+        abilityGenerationDesc2: "For example, for a level 5 creature:",
+        abilityGenerationList: [
+            "<strong>Extreme:</strong> +5 (e.g., main attacking attribute of a warrior)",
+            "<strong>High:</strong> +4 (e.g., key save)",
+            "<strong>Moderate:</strong> +3 (e.g., secondary skill)",
+            "<strong>Low:</strong> +2 (e.g., weak attribute)"
+        ],
+        abilityGenerationDisclaimer: "<i>*Detailed ranges for all levels can be found in the GM Core, chapter 'Building Creatures'.</i>",
+        eliteWeakTemplatesTitle: "4. Elite and Weak Templates",
+        eliteWeakTemplatesDesc: "These templates quickly adjust a creature's level by +/- 1 (or 2 for very low levels).",
+        eliteWeakTemplatesList: [
+            "<strong>Elite (+1 level):</strong> Increases AC, attacks, DC, saves, Perception, and skills by +2. Attack damage and limited abilities by +2 (or +4 for limited use). HP increases according to level.",
+            "<strong>Weak (-1 level):</strong> Applies the opposite adjustments (-2 to stats, -2/-4 to damage), HP decreases according to level."
+        ],
+        eliteWeakTemplatesImportant: "<strong>Important:</strong> Templates work best for physically oriented creatures. For spellcasters or creatures with unique abilities, you may need to manually adjust their spells or DCs.",
+        givingSpellsTitle: "5. Giving Spells to Monsters and NPCs",
+        givingSpellsDesc: "Spells should be thematically consistent and focused on the creature's combat role. Avoid full player character spell lists.",
+        spellTypes: "<strong>Spell Types:</strong> Can be <strong>innate</strong> (part of the creature's essence, often \"at will\" or with limited daily uses), <strong>prepared</strong> or <strong>spontaneous</strong> (for creatures primarily focused on spellcasting).",
+        spellSelection: "<strong>Selection:</strong> Focus on 2-3 signature spells that fit the creature's combat style. Spells should be no more than 2 levels lower than the highest level the creature casts.",
+        spellDCAttacks: "<strong>Difficulty Class (DC) and Attacks:</strong> Most creatures use a single DC and attack bonus for all their spells. Use benchmarks from the GM Core:",
+        spellDCAttacksDisclaimer: "<i>*Complete benchmarks for spell DCs and attacks can be found in the GM Core.</i>",
+        loreIntegrationTitle: "6. Lore Integration and Thematic Consistency",
+        loreIntegrationDesc: "Lore should directly influence the creature's mechanics and combat tactics.",
+        loreIntegrationList: [
+            "<strong>Creature's \"Personality\":</strong> Every monster should have clear motivations and social structures that manifest in its behavior.",
+            "<strong>Mechanics Reflect Lore:</strong> If a monster has mind-control abilities, it should have a logical explanation in its background.",
+            "<strong>Adapting Existing Lore:</strong> Be aware of changes in lore in the Remastered edition (e.g., removal of alignment, changes to some dragons)."
+        ],
+        cryptidTitle: "7. Creating Cryptids and Unique Beings",
+        cryptidIntro: "Cryptids are not just ordinary monsters; they are mysteries that defy common classification. They often arise from folklore, experiments, or bizarre mutations. Their creation brings a unique atmosphere of fear and mystery to the game. Instead of designing from scratch, cryptids are often created by applying special modifications to existing creatures. Here are the key types of cryptids as described in 'Dark Archive'.",
+        experimentalCryptidTitle: "Experimental Cryptids",
+        experimentalCryptidDesc: "These creatures have been purposefully altered by alchemy, engineering, or magic, leading to the integration of construct elements into their bodies. They are stronger, but the process is unstable and prone to errors.",
+        experimentalCryptidList: [
+            "<strong>Enhancements:</strong> They have a +1 higher level, better AC, attacks, DC, and saves, and more HP.",
+            "<strong>Augmentations:</strong> Thanks to their artificial parts, they gain a +2 bonus to saves against death effects, diseases, and poisons.",
+            "<strong>Operational Flaw:</strong> Every experimental cryptid has a weakness in its construction. If someone discovers it, they become vulnerable to its attacks.",
+            "<strong>Abilities:</strong> They often have darkvision, a 'Clobber' attack that pushes and knocks down opponents, and can unleash a wave of energy."
+        ],
+        mutantCryptidTitle: "Mutant Cryptids",
+        mutantCryptidDesc: "Mutations, whether from environment or magical radiation, distinguish these cryptids from their kind. They can have completely unexpected abilities and weaknesses.",
+        mutantCryptidList: [
+            "<strong>Enhancements:</strong> They are rarer, have a +1 higher level, and improved statistics.",
+            "<strong>Unusual Bane:</strong> They gain a specific weakness not-typical for their kind (e.g., aversion to saffron or children's laughter). Exposure to this bane causes them mental damage and can paralyze them.",
+            "<strong>Explosive End:</strong> Upon death, they explode in a geyser of fire, acid, or other energy.",
+            "<strong>Other Abilities:</strong> They may grow bone spikes (Marrowlance) for ranged attacks or change their energy resistance (Shifting Iridescence)."
+        ],
+        primevalCryptidTitle: "Primeval Cryptids",
+        primevalCryptidDesc: "They are survivors from ancient times, larger, more resilient, and smarter than their modern relatives. They are living fossils that remember the world as it once was.",
+        primevalCryptidList: [
+            "<strong>Enhancements:</strong> They are larger, rarer, and have higher statistics, including slightly higher intelligence. Animals often become beasts.",
+            "<strong>Unique Abilities:</strong> They may have a stench aura (Stench), weapon shards in their skin that wound attackers (Broken Arsenal), the ability to survive a mortal blow (Grasp for Life) or create a shockwave by stomping (Shockwave Effect)."
+        ],
+        rumoredCryptidTitle: "Rumored Cryptids",
+        rumoredCryptidDesc: "These creatures are literally shaped by rumors and legends. The more they are talked about, the more real and dangerous they become. Their form is unstable and adapts to the stories.",
+        rumoredCryptidList: [
+            "<strong>Enhancements:</strong> They are rarer, have a +1 higher level, improved statistics, and are proficient in hiding.",
+            "<strong>Unstable Form:</strong> Their appearance changes to match local legends. If all the stories die out, the creature ceases to exist.",
+            "<strong>Obscura Vulnerability:</strong> When someone successfully uses Recall Knowledge to identify them, it weakens them (they become drained).",
+            "<strong>Abilities:</strong> They usually have darkvision (Burning Eyes), the ability to stalk unseen, and to vanish quickly (Vanishing Escape)."
+        ],
+        generatorTitle: "Monster/NPC Generator (AI)",
+        generatorIntro: "Describe the creature you want to generate, select its level, and let the AI create its description and statistics!",
+        creatureDescriptionPrompt: "Creature Description (leave blank for a random creature):",
+        creatureLevel: "Creature Level:",
+        generateCreature: "Generate Creature",
+        generating: "Generating...",
+        generationResults: "Generation Results",
+        appearance: "Appearance",
+        behavior: "Behavior",
+        jsonStatblock: "JSON Statblock (Foundry VTT Compatible):",
+        copyJson: "Copy JSON",
+        copied: "Copied!",
+        downloadJson: "Download JSON",
+        noCreatureToDisplay: "Generate a creature to display its stats.",
+        defaultDescription: "The creature's description and lore will appear here after generation. This includes its story, interesting facts, and background.",
+        apiKeyLabel: "Your Gemini API Key (optional):",
+        apiKeyButton: "Use Key",
+        apiKeyUsed: "Key Applied!",
+        getApiKey: "Get your key at Google AI Studio",
+        unknownCreature: "Unknown Creature",
+        creatureLabel: "CREATURE",
+        attributes: "Attributes",
+        perceptionSenses: "Perception & Senses",
+        saves: "Saving Throws",
+        skills: "Skills",
+        immunities: "Immunities",
+        resistances: "Resistances",
+        weaknesses: "Weaknesses",
+        meleeAttacks: "Melee Attacks",
+        rangedAttacks: "Ranged Attacks",
+        spellcasting: "Spellcasting",
+        loreStory: "Lore / Story",
+        strength: "Strength (Str)",
+        dexterity: "Dexterity (Dex)",
+        constitution: "Constitution (Con)",
+        intelligence: "Intelligence (Int)",
+        wisdom: "Wisdom (Wis)",
+        charisma: "Charisma (Cha)",
+        fortitude: "Fortitude (Fort)",
+        reflex: "Reflex (Ref)",
+        will: "Will (Will)",
+        toHit: "to Hit",
+        damage: "Damage",
+        range: "Range",
+        speed: "Speed",
+        traits: "Traits",
+        noTraits: "No Traits",
+        ability: "Ability",
+        dc: "DC",
+        attack: "Attack",
+        cantrips: "Cantrips",
+        level: "Level",
+        specialAbilitiesActions: "Special Abilities & Actions",
+        passive: "Passive",
+        importJson: "Import from Foundry",
+        importJsonModalTitle: "Import Foundry VTT JSON Statblock",
+        importJsonModalPrompt: "Paste the JSON text of the statblock here:",
+        confirmImport: "Confirm Import",
+        cancel: "Cancel",
+        invalidJson: "Invalid JSON. Please check the format or ensure it is an NPC export from Foundry VTT.",
+        imagePromptGenerator: "Image Prompt Generator (AI)",
+        imagePromptIntro: "Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.",
+        copyImagePrompt: "Copy Prompt",
+        openGemini: "Open Gemini",
+        howToImportButton: "How to import?",
+        howToImportTitle: "How to Import into Foundry VTT",
+        howToImportDesc: "To easily import into Foundry VTT, create a new macro (Script), paste the code below, and run it. A dialog will appear where you can paste the generated JSON.",
+        copyMacro: "Copy Macro",
+        close: "Close",
+        exportPdf: "Export to PDF",
+        saveCreature: "Save Creature",
+        creatureSaved: "Creature Saved!",
+        loadCreature: "Load",
+        deleteCreature: "Delete",
+        shareCreature: "Share",
+        shareComingSoon: "Share functionality is coming soon.",
+        savedCreaturesTitle: "Saved Creatures",
+        noSavedCreatures: "You don't have any saved creatures yet. Generate one and save it!",
+        savedOn: "Saved on:",
+        usedPrompt: "Used prompt:",
+        Acrobatics: "Acrobatics", Arcana: "Arcana", Athletics: "Athletics", Crafting: "Crafting",
+        Deception: "Deception", Diplomacy: "Diplomacy", Intimidation: "Intimidation", Medicine: "Medicine",
+        Nature: "Nature", Occultism: "Occultism", Performance: "Performance", Religion: "Religion",
+        Society: "Society", Stealth: "Stealth", Survival: "Survival", Thievery: "Thievery",
+        shareCreatureTitle: "Share Creature",
+        shareCreatureDesc: "Copy the link below and send it to a friend. When they open it, the creature will be automatically loaded.",
+        copyLink: "Copy Link",
+    }
+};
+const FOUNDRY_IMPORT_MACRO = `/**
+ * Creates a monster from JSON data (compatible with any system, incl. PF2e).
+ * Shows a dialog to paste JSON. After confirmation, creates a new actor
+ * based on the provided data in the "Monsters" folder.
+ */
+
+// Folder name where monsters will be saved
+const folderName = "Monsters";
+
+// Find the folder or create it if it doesn't exist
+let folder = game.folders.find(f => f.type === "Actor" && f.name === folderName);
+if (!folder) {
+  try {
+    folder = await Folder.create({ name: folderName, type: "Actor", color: "#562e6a" });
+    ui.notifications.info(\`Folder "\${folderName}" was created.\`);
+  } catch (e) {
+    console.error("Failed to create folder:", e);
+    ui.notifications.error("Error creating monster folder!");
+    return;
+  }
+}
+
+// Create dialog for pasting JSON
+new Dialog({
+  title: "Create Monster from JSON (PF2e)",
+  content: \`
+    <form>
+      <div class="form-group">
+        <label>Monster JSON Data:</label>
+        <textarea name="jsonData" rows="18" style="width: 100%; font-family: monospace;"></textarea>
+      </div>
+    </form>
+    <p>Paste the JSON data for the PF2e actor and click "Create".</p>
+  \`,
+  buttons: {
+    create: {
+      icon: '<i class="fas fa-check"></i>',
+      label: "Create",
+      callback: async (html) => {
+        const jsonString = html.find('[name="jsonData"]').val();
+        if (!jsonString) {
+          ui.notifications.warn("You did not enter any JSON data!");
+          return;
+        }
+
+        try {
+          const actorData = JSON.parse(jsonString);
+          actorData.folder = folder.id;
+          const newActor = await Actor.create(actorData);
+          ui.notifications.info(\`Monster "\${newActor.name}" was successfully created!\`);
+        } catch (e) {
+          console.error("Error parsing JSON or creating actor:", e);
+          ui.notifications.error("Invalid JSON format or creation error. Check the console (F12).");
+        }
+      }
+    },
+    cancel: {
+      icon: '<i class="fas fa-times"></i>',
+      label: "Cancel"
+    }
+  },
+  default: "create"
+}).render(true, { width: 600 });
+`;
+const SKILL_MAP_FOUNDRY_TO_EN = { acr: 'Acrobatics', arc: 'Arcana', ath: 'Athletics', cra: 'Crafting', dec: 'Deception', dip: 'Diplomacy', itm: 'Intimidation', med: 'Medicine', nat: 'Nature', occ: 'Occultism', prf: 'Performance', rel: 'Religion', soc: 'Society', ste: 'Stealth', sur: 'Survival', thi: 'Thievery' };
+const SKILL_MAP_EN_TO_FOUNDRY = Object.fromEntries(Object.entries(SKILL_MAP_FOUNDRY_TO_EN).map(([key, value]) => [value, key]));
+const SIZE_MAP_FOUNDRY_TO_APP = { tiny: 'Tiny', sm: 'Small', med: 'Medium', lg: 'Large', huge: 'Huge', grg: 'Gargantuan' };
+const SIZE_MAP_APP_TO_FOUNDRY = { Tiny: 'tiny', Small: 'sm', Medium: 'med', Large: 'lg', Huge: 'huge', Gargantuan: 'grg' };
+const CONDITION_UUID_MAP = { "frightened": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "vyděšený": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "paralyzed": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "paralyzovaný": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "drained": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "vysátý": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "confused": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "zmatený": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "slowed": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "zpomalený": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "stunned": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V", "omráčený": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V" };
+const API_KEY = "";
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+
+
+// --- STATE MANAGEMENT ---
+let state = {
+    lang: 'en',
+    activeTab: 'generator',
+    localApiKey: '',
+    generationHistory: [], // Session history
+    historyIndex: -1,
+    currentCreature: null,
+    currentPrompt: '', // Keep track of the current prompt
+    currentJson: '',
+    savedCreatures: [], // Persistent storage
+    spellDatabase: null,
+    spellsLoading: true,
+};
+
+// --- DOM ELEMENT SELECTORS ---
+const getElement = (id) => document.getElementById(id);
+const getElements = (selector) => document.querySelectorAll(selector);
+
+// --- UTILITY FUNCTIONS ---
+function copyToClipboard(textToCopy, btnElem, t) {
+    if (!textToCopy) return;
+    const originalText = btnElem.innerHTML;
+    const textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = '-9999px';
+    textArea.style.left = '-9999px';
+    textArea.value = textToCopy;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            btnElem.innerHTML = `<i data-lucide="check-circle" class="mr-2 h-4 w-4"></i> ${t.copied}`;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            setTimeout(() => { btnElem.innerHTML = originalText; if (typeof lucide !== 'undefined') lucide.createIcons(); }, 2000);
+        }
+    } catch (err) { console.error('Fallback: Unable to copy', err); }
+    document.body.removeChild(textArea);
+}
+
+function formatFoundryVTTText(description) {
+    if (!description) return '';
+    let text = description;
+    text = text.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `@Check[type:${type.toLowerCase()}|dc:${dc}${basic ? '|basic:true' : ''}]{${basic ? 'Basic ' : ''}${type.charAt(0).toUpperCase() + type.slice(1)} DC ${dc}}`);
+    text = text.replace(/\[Damage:([\w\d+-]+)\|(\w+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `@Damage[${formula}[${type}${persistent ? ',persistent' : ''}]]{${formula} ${type} ${persistent ? 'persistent ' : ''}damage}`);
+    text = text.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => {
+        const uuid = CONDITION_UUID_MAP[name.toLowerCase()];
+        const label = `${name.charAt(0).toUpperCase() + name.slice(1)} ${value}`;
+        return uuid ? `@UUID[${uuid}]{${label}}` : label;
+    });
+    text = text.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type}}`);
+    return text;
+}
+
+function formatDescriptionForDisplay(text, t) {
+    if (!text) return '';
+    let readableText = text;
+    readableText = readableText.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `záchranný hod na ${t[type.charAt(0).toUpperCase() + type.slice(1)] || type} se SO ${dc}${basic ? ' základní' : ''}`);
+    readableText = readableText.replace(/\[Damage:([\w\d.+-]+)\|(\w+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `<strong>${formula}${persistent ? ' přetrvávajícího' : ''} ${type} ${t.damage || 'damage'}</strong>`);
+    readableText = readableText.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => `<strong>${name.charAt(0).toUpperCase() + name.slice(1)} ${value}</strong>`);
+    readableText = readableText.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `<strong>${distance}-stopový ${type}</strong>`);
+    return readableText;
+}
+
+function encodeCreatureForUrl(dataToEncode) {
+    try {
+        const jsonString = JSON.stringify(dataToEncode);
+        const compressedBytes = pako.deflate(jsonString);
+        let binaryString = '';
+        compressedBytes.forEach((byte) => { binaryString += String.fromCharCode(byte); });
+        const base64 = btoa(binaryString);
+        return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    } catch (e) { console.error("Error encoding creature data:", e); return null; }
+}
+
+function decodeCreatureFromUrl(encodedString) {
+    try {
+        let base64 = encodedString.replace(/-/g, '+').replace(/_/g, '/');
+        while (base64.length % 4) { base64 += '='; }
+        const binaryString = atob(base64);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) { bytes[i] = binaryString.charCodeAt(i); }
+        const jsonString = pako.inflate(bytes, { to: 'string' });
+        return JSON.parse(jsonString);
+    } catch (e) {
+        console.error("Error decoding creature data:", e);
+        if (e instanceof DOMException && e.name === 'InvalidCharacterError') { console.error("Decoding failed: The Base64 string is likely corrupted or malformed."); }
+        return null;
+    }
+}
+
+function handleShare(creatureToShare, promptToShare) {
+    if (!creatureToShare) return;
+    const dataToShare = { prompt: promptToShare, creature: creatureToShare, version: "1.0" };
+    const encodedData = encodeCreatureForUrl(dataToShare);
+    if (!encodedData) { alert(state.lang === 'cs' ? 'Chyba při vytváření odkazu pro sdílení.' : 'Error creating share link.'); return; }
+    const shareUrl = `${window.location.origin}${window.location.pathname}?data=${encodedData}`;
+    getElement('share-link-textarea').value = shareUrl;
+    getElement('share-modal').classList.add('show');
+}
+
+function checkForShareDataInUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedData = urlParams.get('data');
+    if (sharedData) {
+        const decodedData = decodeCreatureFromUrl(sharedData);
+        if (decodedData && decodedData.creature) {
+            updateGeneratorState(decodedData.creature, decodedData.prompt, decodedData.creature.level);
+            addToHistory(decodedData.creature, decodedData.prompt, decodedData.creature.level);
+            window.history.replaceState({}, document.title, window.location.pathname);
+            const generatorTabButton = getElement('generator-content').parentElement.querySelector('[data-tab="generator"]');
+            if (generatorTabButton) generatorTabButton.click();
+        } else { alert(state.lang === 'cs' ? 'Data pro sdílení v URL jsou poškozená nebo neplatná.' : 'Shared data in URL is corrupted or invalid.'); }
+    }
+}
+
+
+// --- DATA TRANSFORMATION FUNCTIONS ---
+function transformFoundryToInternal(data, t) {
+    if (!data || data.type !== 'npc' || !data.system) return null;
+    const s = data.system;
+    const skills = Object.entries(s.skills || {}).map(([key, skillData]) => ({ name_en: SKILL_MAP_FOUNDRY_TO_EN[key] || key, name_cz: t[SKILL_MAP_FOUNDRY_TO_EN[key]] || key, bonus: `${skillData.value >= 0 ? '+' : ''}${skillData.value}` }));
+    const parseDamage = (damageRolls) => { const firstDamage = Object.values(damageRolls || {})[0]; return firstDamage ? { formula: firstDamage.damage, type: firstDamage.damageType } : { formula: 'N/A', type: 'untyped' }; };
+    const meleeAttacks = data.items?.filter(i => i.type === 'melee' && i.system && !i.system.range?.value).map(i => { const traits = i.system.traits?.value || []; if (i.system.reach?.value) traits.push(`reach ${i.system.reach.value} feet`); return { name: i.name, toHit: i.system.bonus?.value ? `${i.system.bonus.value >= 0 ? '+' : ''}${i.system.bonus.value}` : '+0', damage: parseDamage(i.system.damageRolls), traits }; }) || [];
+    const rangedAttacks = data.items?.filter(i => i.type === 'melee' && i.system && i.system.range?.value).map(i => ({ name: i.name, toHit: i.system.bonus?.value ? `${i.system.bonus.value >= 0 ? '+' : ''}${i.system.bonus.value}` : '+0', damage: parseDamage(i.system.damageRolls), range: i.system.range.value, traits: i.system.traits?.value || [] })) || [];
+    const getActionCost = (item) => { if (item.system.actionType?.value === 'reaction') return 'reaction'; if (item.system.actionType?.value === 'free') return 'free'; if (item.system.actionType?.value === 'passive') return 'passive'; return item.system.actions?.value?.toString() || '1'; };
+    const specialAbilities = data.items?.filter(i => i.type === 'action').map(i => ({ name: i.name.replace(/\[.*?\]/g, '').trim(), description: i.system.description.value, actionCost: getActionCost(i) }));
+    let spellcasting = {};
+    const spellcastingEntries = data.items?.filter(i => i.type === 'spellcastingEntry');
+    if (spellcastingEntries.length > 0) {
+        const mainEntry = spellcastingEntries[0];
+        const entryId = mainEntry._id;
+        const spells = data.items.filter(i => i.type === 'spell' && i.system.location?.value === entryId);
+        spellcasting = {
+            type: mainEntry.system.tradition.value, ability: mainEntry.system.ability.value, dc: mainEntry.system.spelldc.dc, attack: `+${mainEntry.system.spelldc.value}`,
+            cantrips: spells.filter(s => s.system.level.value === 0).map(s => ({name_en: s.name, name_cz: s.name})),
+            spells: spells.filter(s => s.system.level.value > 0).reduce((acc, spell) => {
+                const level = spell.system.level.value; let group = acc.find(g => g.level === level);
+                if (!group) { group = { level, list: [] }; acc.push(group); }
+                group.list.push({name_en: spell.name, name_cz: spell.name}); return acc;
+            }, []).sort((a, b) => a.level - b.level),
+        };
+    }
+    return { name: data.name, level: s.details?.level?.value || 0, rarity: (s.traits?.rarity || 'common').charAt(0).toUpperCase() + (s.traits?.rarity || 'common').slice(1), size: SIZE_MAP_FOUNDRY_TO_APP[s.traits?.size?.value] || 'Medium', traits: s.traits?.value || [], perception: `${s.perception?.value >= 0 ? '+' : ''}${s.perception?.value || 0}`, senses: s.perception?.senses?.map(sen => sen.type) || [], languages: s.traits?.languages?.value || [], skills: skills, ac: s.attributes?.ac?.value || 10, hp: `${s.attributes?.hp?.value || 10} / ${s.attributes?.hp?.max || 10}`, immunities: s.attributes?.immunities?.map(i => i.type) || [], resistances: s.attributes?.resistances?.map(r => `${r.type} ${r.value}`) || [], weaknesses: s.attributes?.weaknesses?.map(w => `${w.type} ${w.value}`) || [], speed: `${s.attributes?.speed?.value || 0} feet`, saves: { Fort: `${s.saves?.fortitude?.value >= 0 ? '+' : ''}${s.saves?.fortitude?.value || 0}`, Ref: `${s.saves?.reflex?.value >= 0 ? '+' : ''}${s.saves?.reflex?.value || 0}`, Will: `${s.saves?.will?.value >= 0 ? '+' : ''}${s.saves?.will?.value || 0}` }, attributes: { Str: `${s.abilities?.str?.mod >= 0 ? '+' : ''}${s.abilities?.str?.mod || 0}`, Dex: `${s.abilities?.dex?.mod >= 0 ? '+' : ''}${s.abilities?.dex?.mod || 0}`, Con: `${s.abilities?.con?.mod >= 0 ? '+' : ''}${s.abilities?.con?.mod || 0}`, Int: `${s.abilities?.int?.mod >= 0 ? '+' : ''}${s.abilities?.int?.mod || 0}`, Wis: `${s.abilities?.wis?.mod >= 0 ? '+' : ''}${s.abilities?.wis?.mod || 0}`, Cha: `${s.abilities?.cha?.mod >= 0 ? '+' : ''}${s.abilities?.cha?.mod || 0}` }, meleeAttacks, rangedAttacks, spellcasting, specialAbilities, lore: s.details?.publicNotes?.value || '' };
+}
+
+function transformInternalToFoundry(data) {
+    if (!data) return null;
+    let items = [];
+
+    const CZECH_TO_ENGLISH_DAMAGE_MAP = { 'oheň': 'fire', 'chlad': 'cold', 'kyselina': 'acid', 'elektřina': 'electricity', 'hrom': 'sonic', 'síla': 'force', 'jed': 'poison', 'mentální': 'mental', 'pozitivní': 'positive', 'negativní': 'negative', 'sečné': 'slashing', 'bodné': 'piercing', 'drtivé': 'bludgeoning', 'krvácení': 'bleed' };
+    const CZECH_TO_ENGLISH_TRAIT_MAP = { 'éterický': 'ethereal', 'magický': 'magical', 'oheň': 'fire', 'voda': 'water', 'vzduch': 'air', 'země': 'earth', 'humanoid': 'humanoid', 'duch': 'spirit', 'nemrtvý': 'undead', 'zvíře': 'animal', 'bestie': 'beast', 'mrštný': 'agile', 'jemný': 'finesse', 'jed': 'poison' };
+    
+    const getCorrectedDamageType = (type) => { const lt = (type || 'untyped').toLowerCase(); return CZECH_TO_ENGLISH_DAMAGE_MAP[lt] || (lt === 'psychic' ? 'mental' : lt); };
+    const getCorrectedTraits = (traits) => (traits || []).map(t => { const lt = t.toLowerCase(); return CZECH_TO_ENGLISH_TRAIT_MAP[lt] || lt; });
+    
+    const generateId = () => (Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)).slice(0, 16);
+
+    (data.meleeAttacks || []).forEach(attack => {
+        let reachValue = null;
+        const filteredTraits = (attack.traits || []).filter(trait => { const reachMatch = trait.match(/^reach (\d+)/i); if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; } return true; });
+        items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, traits: { value: getCorrectedTraits(filteredTraits) }, ...(reachValue !== null && { reach: { value: reachValue } }) }});
+    });
+
+    (data.rangedAttacks || []).forEach(attack => items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
+    
+    (data.specialAbilities || []).forEach(ability => {
+        const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
+        if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
+        else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
+        else if (cost === 'passive') { type = 'passive'; count = null; }
+        else if (count === 1) icon = ' [A]'; else if (count === 2) icon = ' [AA]'; else if (count === 3) icon = ' [AAA]';
+        items.push({ _id: generateId(), name: `${ability.name}${icon}`, type: 'action', system: { description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` }, actionType: { value: type }, actions: { value: count }, traits: { value: getCorrectedTraits(ability.traits) } }});
+    });
+
+    if (data.spellcasting && data.spellcasting.type) {
+        const spellcastingEntryId = generateId();
+        items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
+        const createSpellItem = (spell, level) => ({ _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, traits: { rarity: "common", value: getCorrectedTraits(spell.traits) } } });
+        (data.spellcasting.cantrips || []).forEach(spell => items.push(createSpellItem(spell, 0)));
+        (data.spellcasting.spells || []).forEach(group => group.list.forEach(spell => items.push(createSpellItem(spell, group.level))));
+    }
+    
+    const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
+    const hpParts = data.hp?.split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
+    const speedValue = parseInt(data.speed) || 25;
+    
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities: (data.immunities || []).map(i => ({ type: i, source: null })), resistances: (data.resistances || []).map(r => ({ type: r.split(' ')[0], value: parseInt(r.split(' ')[1]) || 0, source: null })), weaknesses: (data.weaknesses || []).map(w => ({ type: w.split(' ')[0], value: parseInt(w.split(' ')[1]) || 0, source: null })) }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v2.34" }, }, items };
+}
+
+
+// --- RENDER FUNCTIONS ---
+function updateLanguage() {
+    const t = translations[state.lang];
+    getElements('[data-lang-key]').forEach(el => { const key = el.dataset.langKey; if (t && t[key]) { el.innerHTML = t[key].replace(/\{\{.*?\}\}/g, (match) => t[match.replace(/\{\{|\}\}/g, '')] || match); } });
+    getElement('generator-prompt').placeholder = state.lang === 'cs' ? "např. Ledový golem... (prázdné = náhodný)" : "e.g. An ice golem... (blank = random)";
+    if (state.activeTab === 'encounter') renderEncounterTab();
+    if (state.activeTab === 'monster-guide') renderMonsterGuideTab();
+    if (state.activeTab === 'saved') renderSavedTab();
+    renderStatblock(state.currentCreature);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function renderEncounterTab() {
+    const t = translations[state.lang]; const container = getElement('encounter-content');
+    container.innerHTML = `<h2 data-lang-key="encounterTitle">${t.encounterTitle}</h2><p class="mb-4" data-lang-key="encounterIntro">${t.encounterIntro}</p><div class="grid grid-cols-2 gap-8 mb-8" id="encounter-grid"><div><h3 data-lang-key="calculatorTitle">${t.calculatorTitle}</h3><div class="form-section"><label for="playerLevel" data-lang-key="playerLevel">${t.playerLevel}:</label><input type="number" id="playerLevel" value="1" min="1"></div><div class="form-section"><label for="numPlayers" data-lang-key="numPlayers">${t.numPlayers}:</label><input type="number" id="numPlayers" value="4" min="1"></div><div class="form-section"><label for="difficulty" data-lang-key="targetDifficulty">${t.targetDifficulty}:</label><select id="difficulty"><option value="trivial" data-lang-key="difficultyTrivial">${t.difficultyTrivial}</option><option value="low" data-lang-key="difficultyLow">${t.difficultyLow}</option><option value="moderate" selected data-lang-key="difficultyModerate">${t.difficultyModerate}</option><option value="severe" data-lang-key="difficultySevere">${t.difficultySevere}</option><option value="extreme" data-lang-key="difficultyExtreme">${t.difficultyExtreme}</option></select></div><h4 data-lang-key="addMonsters">${t.addMonsters}</h4><div id="monster-list"></div><button id="add-monster-btn" class="btn btn-secondary mt-4"><span data-lang-key="addMonster">${t.addMonster}</span></button></div><div><h3 data-lang-key="results">${t.results}</h3><div id="encounter-results" class="form-section"></div><h3 data-lang-key="rewards">${t.rewards}</h3><div id="encounter-rewards" class="form-section"></div></div></div><h3 data-lang-key="balancingTipsTitle">${t.balancingTipsTitle}</h3><ul class="list-disc list-inside space-y-2">${(t.balancingTips || []).map(tip => `<li>${tip}</li>`).join('')}</ul>`;
+    addMonsterRow(); calculateEncounter(); setupEncounterListeners();
+}
+
+function renderMonsterGuideTab() {
+     const t = translations[state.lang]; const container = getElement('monster-guide-content');
+    const guideSection = ({ titleKey, descKey, listKey, importantKey }) => { let listItemsHTML = (listKey ? (t[listKey] || []).map(item => `<li>${item}</li>`).join('') : ''); if (importantKey && t[importantKey]) { listItemsHTML = `<li>${t[importantKey]}</li>` + listItemsHTML; } return `<div class="form-section mb-8"><h3 data-lang-key="${titleKey}">${t[titleKey]}</h3>${descKey ? `<p class="mb-2" data-lang-key="${descKey}">${t[descKey]}</p>` : ''}${listItemsHTML ? `<ul class="list-disc list-inside space-y-2">${listItemsHTML}</ul>` : ''}</div>`; };
+    container.innerHTML = `<h2 data-lang-key="guideTitle">${t.guideTitle}</h2><p class="mb-4" data-lang-key="guideIntro">${t.guideIntro}</p>${guideSection({ titleKey: 'conceptRoleTitle', descKey: 'conceptRoleDesc', listKey: 'conceptRoleList' })}<div class="form-section mb-8"><h3 data-lang-key="statblockStructureTitle">${t.statblockStructureTitle}</h3><p data-lang-key="statblockStructureDesc">${t.statblockStructureDesc}</p><div style="overflow-x:auto;"><table style="min-width:100%; border-collapse: collapse; margin-top:1rem;"><thead><tr style="background-color: var(--border-strong); color: var(--text-light); text-align: left;"><th style="padding: 0.5rem;" data-lang-key="level">${t.level}</th><th style="padding: 0.5rem;">AC</th><th style="padding: 0.5rem;" data-lang-key="fortitude">${t.fortitude}</th><th style="padding: 0.5rem;" data-lang-key="reflex">${t.reflex}</th><th style="padding: 0.5rem;" data-lang-key="will">${t.will}</th><th style="padding: 0.5rem;">HP</th><th style="padding: 0.5rem;" data-lang-key="attack">${t.attack}</th><th style="padding: 0.5rem;" data-lang-key="damage">${t.damage}</th></tr></thead><tbody>
+        ${[{ level: 1, ac: 15, fort: '+4', ref: '+4', will: '+3', hp: 18, attack: '+7', dmg: 5 },{ level: 5, ac: 20, fort: '+11', ref: '+9', will: '+8', hp: 68, attack: '+13', dmg: 14 },{ level: 10, ac: 26, fort: '+18', ref: '+16', will: '+15', hp: 203, attack: '+20', dmg: 26 },{ level: 15, ac: 35, fort: '+26', ref: '+26', will: '+23', hp: 328, attack: '+28', dmg: 41 },{ level: 20, ac: 44, fort: '+32', ref: '+31', will: '+33', hp: 365, attack: '+35', dmg: 46 },].map((row, i) => `<tr style="background-color: ${i % 2 === 0 ? 'var(--paper-light)' : 'var(--paper-medium)'};">${Object.values(row).map(val => `<td style="padding: 0.5rem; border: 1px solid var(--border-subtle);">${val}</td>`).join('')}</tr>`).join('')}
+        </tbody></table></div><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="statblockTableDisclaimer">${t.statblockTableDisclaimer}</p></div><div class="form-section mb-8"><h3 data-lang-key="abilityGenerationTitle">${t.abilityGenerationTitle}</h3><p data-lang-key="abilityGenerationDesc1">${t.abilityGenerationDesc1}</p><p data-lang-key="abilityGenerationDesc2">${t.abilityGenerationDesc2}</p><ul class="list-disc list-inside space-y-1">${(t.abilityGenerationList || []).map(item => `<li>${item}</li>`).join('')}</ul><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="abilityGenerationDisclaimer">${t.abilityGenerationDisclaimer}</p></div>${guideSection({ titleKey: 'eliteWeakTemplatesTitle', descKey: 'eliteWeakTemplatesDesc', listKey: 'eliteWeakTemplatesList', importantKey: 'eliteWeakTemplatesImportant' })}<div class="form-section mb-8"><h3 data-lang-key="givingSpellsTitle">${t.givingSpellsTitle}</h3><p data-lang-key="givingSpellsDesc">${t.givingSpellsDesc}</p><ul class="list-disc list-inside space-y-1"><li>${t.spellTypes}</li><li>${t.spellSelection}</li><li><span>${t.spellDCAttacks}</span><div style="overflow-x:auto; margin-top: 0.5rem;"><table style="min-width:100%; border-collapse: collapse;"><thead><tr style="background-color: var(--border-strong); color: var(--text-light); text-align: left;"><th style="padding: 0.5rem;" data-lang-key="level">${t.level}</th><th>${t.dc} (${state.lang === 'cs' ? 'Extrémní' : 'Extreme'})</th><th>${t.attack} (${state.lang === 'cs' ? 'Extrémní' : 'Extreme'})</th><th>${t.dc} (${state.lang === 'cs' ? 'Vysoká' : 'High'})</th><th>${t.attack} (${state.lang === 'cs' ? 'Vysoká' : 'High'})</th></tr></thead><tbody>
+        ${[{ level: 1, dcE: 18, atkE: '+10', dcH: 17, atkH: '+9' },{ level: 5, dcE: 22, atkE: '+14', dcH: 21, atkH: '+13' },{ level: 10, dcE: 27, atkE: '+19', dcH: 26, atkH: '+18' },{ level: 15, dcE: 32, atkE: '+24', dcH: 31, atkH: '+23' },{ level: 20, dcE: 37, atkE: '+29', dcH: 36, atkH: '+28' },].map((row, i) => `<tr style="background-color: ${i % 2 === 0 ? 'var(--paper-light)' : 'var(--paper-medium)'};">${Object.values(row).map(val => `<td style="padding: 0.5rem; border: 1px solid var(--border-subtle);">${val}</td>`).join('')}</tr>`).join('')}
+        </tbody></table></div><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="spellDCAttacksDisclaimer">${t.spellDCAttacksDisclaimer}</p></li></ul></div>${guideSection({ titleKey: 'loreIntegrationTitle', descKey: 'loreIntegrationDesc', listKey: 'loreIntegrationList' })}<div class="form-section mb-8"><h3 data-lang-key="cryptidTitle">${t.cryptidTitle}</h3><p data-lang-key="cryptidIntro">${t.cryptidIntro}</p><div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">${guideSection({ titleKey: 'experimentalCryptidTitle', descKey: 'experimentalCryptidDesc', listKey: 'experimentalCryptidList' })}${guideSection({ titleKey: 'mutantCryptidTitle', descKey: 'mutantCryptidDesc', listKey: 'mutantCryptidList' })}${guideSection({ titleKey: 'primevalCryptidTitle', descKey: 'primevalCryptidDesc', listKey: 'primevalCryptidList' })}${guideSection({ titleKey: 'rumoredCryptidTitle', descKey: 'rumoredCryptidDesc', listKey: 'rumoredCryptidList' })}</div></div>`;
+}
+
+function renderSavedTab() {
+    const t = translations[state.lang]; const container = getElement('saved-content');
+    const sortedCreatures = [...state.savedCreatures].sort((a, b) => b.id - a.id);
+    let content = `<h2 data-lang-key="savedCreaturesTitle">${t.savedCreaturesTitle}</h2>`;
+    if (sortedCreatures.length === 0) content += `<p data-lang-key="noSavedCreatures">${t.noSavedCreatures}</p>`;
+    else { content += `<div class="saved-creature-list">${sortedCreatures.map(item => `<div class="saved-creature-item" data-id="${item.id}"><h4>${item.creatureData.name}</h4><div class="saved-creature-meta"><span><strong>${t.level}:</strong> ${item.creatureData.level}</span><span><strong>${t.savedOn}</strong> ${new Date(item.timestamp).toLocaleString(state.lang)}</span></div><p class="saved-creature-prompt"><strong>${t.usedPrompt}</strong> ${item.prompt || (state.lang === 'cs' ? 'Náhodné stvoření' : 'Random creature')}</p><div class="saved-creature-actions"><button class="btn btn-primary btn-load" data-id="${item.id}"><i data-lucide="upload-cloud"></i> <span data-lang-key="loadCreature">${t.loadCreature}</span></button><button class="btn btn-secondary btn-share" data-id="${item.id}"><i data-lucide="share-2"></i> <span data-lang-key="shareCreature">${t.shareCreature}</span></button><button class="btn btn-danger btn-delete" data-id="${item.id}"><i data-lucide="trash-2"></i> <span data-lang-key="deleteCreature">${t.deleteCreature}</span></button></div></div>`).join('')}</div>`; }
+    container.innerHTML = content;
+    setupSavedTabListeners();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function getActionIcon(cost, t) {
+    if (!cost) return '';
+    const single = '<span class="action-icon">A</span>';
+    if (cost === '1' || cost === 1) return single;
+    if (cost === '2' || cost === 2) return single.repeat(2);
+    if (cost === '3' || cost === 3) return single.repeat(3);
+    if (cost === 'reaction') return '<span class="action-icon reaction">R</span>';
+    if (cost === 'free') return '<span class="action-icon free">F</span>';
+    if (cost === 'passive') return `<span style="color: var(--text-medium); font-style: italic; font-size: 0.9rem;">${t.passive || 'Passive'}</span>`;
+    return '';
+}
+
+function getSpellActionCost(spellData) {
+    if (!spellData || !spellData.system?.time?.value) return '';
+    const time = spellData.system.time.value.toLowerCase();
+    if (time.includes('reaction')) return 'reaction';
+    if (time.includes('free')) return 'free';
+    if (time.includes('1 action') || time.includes('one action')) return '1';
+    if (time.includes('2 actions') || time.includes('two actions')) return '2';
+    if (time.includes('3 actions') || time.includes('three actions')) return '3';
+    return '';
+}
+
+function findSpellInDatabase(spellName) {
+    if (!spellName || !state.spellDatabase) return null;
+    const trimmedName = spellName.trim();
+    // 1. Direct, case-sensitive match (fastest)
+    if (state.spellDatabase[trimmedName]) return state.spellDatabase[trimmedName];
+    
+    // 2. Fuzzy match (slower, but more robust)
+    const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const normalizedSpellName = normalize(trimmedName);
+
+    for (const key in state.spellDatabase) {
+        if (normalize(key) === normalizedSpellName) {
+            return state.spellDatabase[key];
+        }
+    }
+    return null; // Not found
+}
+
+function renderStatblock(creature) {
+    const t = translations[state.lang];
+    const container = getElement('statblock-display-container');
+    const displayCreature = creature || { name: t.unknownCreature, level: '?', rarity: 'N/A', size: 'N/A', traits: ['N/A'], perception: 'N/A', senses: [], languages: [], skills: [], ac: '?', hp: '?', immunities: [], resistances: [], weaknesses: [], speed: 'N/A', saves: { Fort: 'N/A', Ref: 'N/A', Will: 'N/A' }, attributes: { Str: 'N/A', Dex: 'N/A', Con: 'N/A', Int: 'N/A', Wis: 'N/A', Cha: 'N/A' }, meleeAttacks: [], rangedAttacks: [], spellcasting: {}, specialAbilities: [], appearance: '', behavior: '', lore: t.defaultDescription, };
+    const renderSection = (titleKey, items) => (items && items.length > 0) ? `<div class="mb-4"><h4>${t[titleKey]}</h4><ul class="list-disc list-inside space-y-1">${items.map(item => `<li>${item}</li>`).join('')}</ul></div>` : '';
+    const renderAttacks = (attacks, typeKey) => (attacks && attacks.length > 0) ? `<div class="mb-4"><h4>${t[typeKey]}</h4>${attacks.map(attack => `<div class="attack-entry"><p><strong>${attack.name}</strong> <span style="color: var(--text-medium);">(${(attack.traits || []).join(', ') || t.noTraits})</span></p><p>${attack.toHit} ${t.toHit}, ${t.damage}: ${attack.damage.formula} ${attack.damage.type}${attack.range ? `, ${t.range}: ${attack.range}` : ''}</p></div>`).join('')}</div>` : '';
+    
+    function renderSpellcasting(spellcasting, t) {
+        if (!state.spellDatabase || !spellcasting || !spellcasting.type || (!spellcasting.cantrips?.length && !spellcasting.spells?.length)) return '';
+        const createSpellLinks = (spellList) => (spellList || []).map(spell => {
+            const isObject = typeof spell === 'object' && spell !== null;
+            const displayName = isObject ? (state.lang === 'cs' ? spell.name_cz : spell.name_en) : spell;
+            const lookupName = isObject ? spell.name_en : spell;
+            const spellData = findSpellInDatabase(lookupName);
+            const actionIcon = getActionIcon(getSpellActionCost(spellData), t);
+            return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${actionIcon}</div><span class="spell-link" data-spell-name="${lookupName}">${displayName}</span></div>`;
+        }).join('');
+        const cantripsHtml = createSpellLinks(spellcasting.cantrips);
+        const spellsByLevelHtml = (spellcasting.spells || []).sort((a, b) => a.level - b.level).map(group => `<div class="spell-level-group"><h4>${t.level} ${group.level}</h4><div>${createSpellLinks(group.list)}</div></div>`).join('');
+        return `<div class="mb-4"><h4 data-lang-key="spellcasting">${t.spellcasting} (${spellcasting.type})</h4><p>${t.dc}: ${spellcasting.dc || 'N/A'}, ${t.attack}: ${spellcasting.attack || 'N/A'}</p><div class="spell-list-columns">${cantripsHtml ? `<div class="spell-level-group"><h4>${t.cantrips}</h4><div>${cantripsHtml}</div></div>` : ''}${spellsByLevelHtml}</div></div>`;
+    }
+
+    container.innerHTML = `<div class="statblock-header"><div><h3 class="font-handwritten">${displayCreature.name}</h3><p class="font-script">${displayCreature.rarity} ${displayCreature.size} ${(displayCreature.traits || []).join(', ')}</p></div><div class="statblock-level"><span data-lang-key="creatureLabel">${t.creatureLabel}</span> <span>${displayCreature.level}</span></div></div>
+        <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 1rem 0;"><div class="stat-section"><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>AC</strong> ${displayCreature.ac}</div><div><strong>HP</strong> ${displayCreature.hp}</div><div><strong>${t.speed}</strong> ${displayCreature.speed}</div></div><div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.fortitude.substring(0,4)}</strong> ${displayCreature.saves.Fort}</div><div><strong>${t.reflex.substring(0,4)}</strong> ${displayCreature.saves.Ref}</div><div><strong>${t.will.substring(0,4)}</strong> ${displayCreature.saves.Will}</div></div><div><p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Vnímání' : 'Perception')}</strong> ${displayCreature.perception}</p>${displayCreature.senses.length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Smysly' : 'Senses')}</strong> ${displayCreature.senses.join(', ')}</p>` : ''}${displayCreature.languages.length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Jazyky' : 'Languages')}</strong> ${displayCreature.languages.join(', ')}</p>` : ''}</div></div><div class="stat-section"><div class="grid grid-cols-2 gap-x-4 gap-y-1" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.strength.substring(0,3)}</strong> ${displayCreature.attributes.Str}</div><div><strong>${t.dexterity.substring(0,3)}</strong> ${displayCreature.attributes.Dex}</div><div><strong>${t.constitution.substring(0,3)}</strong> ${displayCreature.attributes.Con}</div><div><strong>${t.intelligence.substring(0,3)}</strong> ${displayCreature.attributes.Int}</div><div><strong>${t.wisdom.substring(0,3)}</strong> ${displayCreature.attributes.Wis}</div><div><strong>${t.charisma.substring(0,3)}</strong> ${displayCreature.attributes.Cha}</div></div><div><h4 style="margin: 0 0 0.5rem 0; padding: 0; border: 0;">${t.skills}</h4><p style="margin:0; line-height: 1.5;">${(displayCreature.skills && displayCreature.skills.length > 0) ? displayCreature.skills.map(skill => `${(state.lang === 'cs' ? skill.name_cz : skill.name_en)} ${skill.bonus}`).join(', ') : (state.lang === 'cs' ? 'Žádné' : 'None')}</p></div></div></div>
+        <div id="defenses-grid" class="mb-4">${renderSection('immunities', displayCreature.immunities)}${renderSection('resistances', displayCreature.resistances)}${renderSection('weaknesses', displayCreature.weaknesses)}</div>
+        ${renderAttacks(displayCreature.meleeAttacks, 'meleeAttacks')}${renderAttacks(displayCreature.rangedAttacks, 'rangedAttacks')}${renderSpellcasting(displayCreature.spellcasting, t)}
+        <div class="mb-4">${(displayCreature.specialAbilities || []).length > 0 ? `<h4>${t.specialAbilitiesActions}</h4>` : ''}<ul id="special-abilities-list">${(displayCreature.specialAbilities || []).map(sa => `<li><div class="action-icon-wrapper">${getActionIcon(sa.actionCost, t)}</div><div><strong>${sa.name}:</strong> ${formatDescriptionForDisplay(sa.description, t)}</div></li>`).join('')}</ul></div>
+        <div class="mt-4"><h4 data-lang-key="appearance">${t.appearance}</h4><p style="white-space: pre-wrap;">${displayCreature.appearance || ''}</p></div><div class="mt-4"><h4 data-lang-key="behavior">${t.behavior}</h4><p style="white-space: pre-wrap;">${displayCreature.behavior || ''}</p></div><div class="mt-4"><h4 data-lang-key="loreStory">${t.loreStory}</h4><p style="white-space: pre-wrap;">${formatDescriptionForDisplay(displayCreature.lore, t)}</p></div>`;
+}
+
+// --- ENCOUNTER TAB LOGIC ---
+function setupEncounterListeners() { getElement('add-monster-btn').addEventListener('click', () => { addMonsterRow(); calculateEncounter(); }); getElements('#encounter-content input, #encounter-content select').forEach(el => el.addEventListener('change', calculateEncounter)); }
+function addMonsterRow() { const t = translations[state.lang]; const list = getElement('monster-list'); const pLvl = parseInt(getElement('playerLevel').value) || 1; const lvls = Array.from({ length: 26 }, (_, i) => i - 1); const row = document.createElement('div'); row.className = 'flex items-center space-x-2 mb-3 form-section'; row.innerHTML = `<div style="flex:1;"><label data-lang-key="monsterLevel">${t.monsterLevel}:</label><select class="monster-level">${lvls.map(l => `<option value="${l}" ${l === pLvl ? 'selected' : ''}>${state.lang === 'cs' ? 'Úroveň' : 'Level'} ${l}</option>`).join('')}</select></div><div style="flex:1;"><label data-lang-key="monsterCount">${t.monsterCount}:</label><input type="number" class="monster-count" value="1" min="1"></div><button class="btn btn-danger remove-monster-btn" style="align-self: flex-end; margin-bottom: 0.25rem;"><span data-lang-key="remove">${t.remove}</span></button>`; list.appendChild(row); row.querySelector('select, input').addEventListener('change', calculateEncounter); row.querySelector('.remove-monster-btn').addEventListener('click', (e) => { e.currentTarget.parentElement.remove(); calculateEncounter(); }); }
+function calculateEncounter() { const t = translations[state.lang]; const pLvl = parseInt(getElement('playerLevel').value); const numP = parseInt(getElement('numPlayers').value); const diff = getElement('difficulty').value; const budgets = { trivial: 40, low: 60, moderate: 80, severe: 120, extreme: 160 }; const xpMap = { '-4': 10, '-3': 15, '-2': 20, '-1': 30, '0': 40, '+1': 60, '+2': 80, '+3': 120, '+4': 160 }; const target = budgets[diff] + (numP - 4) * (budgets[diff] / 4); let totalXP = 0; getElements('#monster-list > div').forEach(row => { const lvl = parseInt(row.querySelector('.monster-level').value); const count = parseInt(row.querySelector('.monster-count').value); totalXP += (xpMap[(lvl - pLvl).toString()] || 0) * count; }); const getCalcDiff = (xp) => { if (xp >= budgets.extreme * (numP / 4)) return t.difficultyExtreme.split(' ')[0]; if (xp >= budgets.severe * (numP / 4)) return t.difficultySevere.split(' ')[0]; if (xp >= budgets.moderate * (numP / 4)) return t.difficultyModerate.split(' ')[0]; if (xp >= budgets.low * (numP / 4)) return t.difficultyLow.split(' ')[0]; return t.difficultyTrivial.split(' ')[0]; }; getElement('encounter-results').innerHTML = `<p><strong>${t.targetXPBudget}</strong> ${target} XP</p><p><strong>${t.totalEncounterXP}</strong> ${totalXP} XP</p><p><strong>${t.calculatedDifficulty}</strong> <span style="font-weight: bold; color: ${totalXP > target ? 'var(--button-danger)' : 'green'}">${getCalcDiff(totalXP)}</span></p><p><strong>${t.xpPerPlayer}</strong> ${Math.floor(totalXP / numP)} XP</p>`; const gold = { 1: 'Low (0-5 gp)', 5: 'Moderate (10-20 gp)', 10: 'High (50-100 gp)', 15: 'Very High (200-400 gp)', 20: 'Epic (1000+ gp)'}[pLvl] || 'Consult GM Core'; getElement('encounter-rewards').innerHTML = `<p>${t.xpRewardInfo}</p><p><strong>${t.suggestedXPRewards}</strong> ${budgets.trivial / numP} XP to ${budgets.extreme / numP} XP per player.</p><p><strong>${t.suggestedGoldReward.replace('{{level}}', pLvl)}</strong> ${gold}</p><p style="font-size: 0.8rem; color: var(--text-medium);">${t.goldDisclaimer}</p>`; }
+
+// --- GENERATOR TAB LOGIC ---
+async function handleGenerate() {
+    const t = translations[state.lang];
+    const generateBtn = getElement('generate-btn');
+    const errorDiv = getElement('generator-error');
+    if (state.spellsLoading) { alert(state.lang === 'cs' ? 'Databáze kouzel se stále načítá.' : 'Spell database is still loading.'); return; }
+    if (!state.spellDatabase) { alert(state.lang === 'cs' ? 'Nepodařilo se načíst databázi kouzel.' : 'Failed to load spell database.'); return; }
+    generateBtn.disabled = true; generateBtn.innerHTML = `<i data-lucide="loader-2" style="animation: spin 1s linear infinite;"></i> ${t.generating}`; if (typeof lucide !== 'undefined') lucide.createIcons(); errorDiv.textContent = '';
+    const userPrompt = getElement('generator-prompt').value.trim();
+    const level = getElement('creature-level').value;
+    const finalPrompt = userPrompt || (state.lang === 'cs' ? `Vymysli zcela nové a originální monstrum pro Pathfinder 2e vhodné pro úroveň ${level}. Dej mu kreativní české jméno, vzhled, chování a příběh. V názvu ani popisu nepoužívej slova 'náhodný' nebo 'stvoření'.` : `Invent a completely new and original monster for Pathfinder 2e suitable for level ${level}. Give it a creative name, appearance, behavior, and lore. Do not use the words 'random' or 'creature' in its name or description.`);
+    const apiKey = state.localApiKey || API_KEY;
+    try {
+        const spellNameSchema = { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name_cz", "name_en"] };
+        const spellcastingSchema = { type: "OBJECT", properties: { type: { type: "STRING" }, ability: { type: "STRING" }, dc: { type: "NUMBER" }, attack: { type: "STRING" }, cantrips: { type: "ARRAY", items: spellNameSchema }, spells: { type: "ARRAY", items: { type: "OBJECT", properties: { level: { type: "NUMBER" }, list: { type: "ARRAY", items: spellNameSchema } }, required: ["level", "list"] } } } };
+        const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
+        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { type: "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { type: "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "senses", "languages", "skills", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
+        const spellInstruction = `If spellcaster, provide {name_cz, name_en} for each spell. 'name_en' MUST be the exact, official English spell name from the rulebooks (e.g., for Czech 'Zrcadlový Obraz', use English 'Mirror Image'; for 'Světlo', use 'Light'). This is crucial for data linking.`;
+        const foundryFormattingInstruction = `Use tags: [Check:type|DC|optional:basic], [Damage:formula|type|optional:persistent], [Condition:name|value], [Template:type|distance]. Use ONLY official English PF2e terms for 'damage.type' and 'traits' (e.g., fire, agile), even if description is Czech. Do not include 'reach' in 'traits'.`;
+        const languageInstruction = state.lang === 'cs' ? "All descriptive text fields ('name', 'description', etc.) MUST be in Czech." : "All text fields must be in English.";
+        const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${foundryFormattingInstruction} ${spellInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
+        const response = await fetch(`${API_URL}?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(statblockPayload) });
+        if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.error?.message || `HTTP error: ${response.status}`); }
+        const responseData = await response.json();
+        const creatureData = JSON.parse(responseData.candidates[0].content.parts[0].text);
+        updateGeneratorState(creatureData, userPrompt, level);
+        addToHistory(creatureData, userPrompt, level);
+    } catch (err) { console.error("Error during generation:", err); errorDiv.textContent = `AI Generation Error: ${err.message}. Check console (F12).`; } finally { generateBtn.disabled = false; generateBtn.innerHTML = `<i data-lucide="sparkles"></i> ${t.generateCreature}`; if (typeof lucide !== 'undefined') lucide.createIcons(); }
+}
+
+async function loadSpellDatabase() {
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/fyjham-ts/Pathfinder-2E-Spell-DB/master/NethysScrape/spells.json');
+        if (!response.ok) throw new Error(`Failed to load spell database: ${response.statusText}`);
+        const spellsArray = await response.json();
+        state.spellDatabase = spellsArray.reduce((map, spell) => { map[spell.name.replace(/<[^>]*>?/gm, '')] = spell; return map; }, {});
+        console.log(`Spell database loaded: ${Object.keys(state.spellDatabase).length} spells.`);
+    } catch (error) { console.error("Critical error loading spell database:", error); getElement('generator-error').textContent = "Failed to load spell database. Please refresh the page."; } finally { state.spellsLoading = false; const btn = getElement('generate-btn'); if (btn) { btn.disabled = false; const span = btn.querySelector('span'); if(span) span.textContent = (translations[state.lang] || translations.en).generateCreature; if (typeof lucide !== 'undefined') lucide.createIcons(); } }
+}
+
+function updateGeneratorState(creatureData, prompt, level) {
+    state.currentCreature = creatureData;
+    state.currentPrompt = prompt || '';
+    renderStatblock(creatureData);
+    getElement('generator-prompt').value = prompt;
+    getElement('creature-level').value = level || creatureData.level;
+    const foundryJson = transformInternalToFoundry(creatureData);
+    state.currentJson = foundryJson ? JSON.stringify(foundryJson, null, 2) : '';
+    getElement('json-output').value = state.currentJson;
+    getElement('image-prompt-output').value = generateImagePrompt(creatureData);
+}
+
+function generateImagePrompt(creatureData) {
+    if (!creatureData || !creatureData.name) return '';
+    return `A highly detailed, fantasy art illustration of a Pathfinder 2e creature. ${creatureData.name}, a Level ${creatureData.level} ${creatureData.rarity} ${creatureData.size} creature. ${creatureData.appearance || ''} Key traits: ${(creatureData.traits || []).join(', ')}. ${creatureData.meleeAttacks?.length > 0 ? `It wields/has ${creatureData.meleeAttacks.map(a => a.name).join(', ')}. ` : ''}${creatureData.spellcasting?.type ? `It uses ${creatureData.spellcasting.type} magic. ` : ''}Fantasy art, digital painting, intricate details, dynamic pose, rich colors, dramatic lighting, high fantasy, no text.`;
+}
+
+function addToHistory(creature, prompt, level) { state.generationHistory.push({ creatureData: creature, prompt, level }); state.historyIndex = state.generationHistory.length - 1; updateHistoryUI(); }
+function navigateHistory(direction) { let newIndex = state.historyIndex; if (direction === 'prev') newIndex = Math.max(0, state.historyIndex - 1); else if (direction === 'next') newIndex = Math.min(state.generationHistory.length - 1, state.historyIndex + 1); if (newIndex !== state.historyIndex && state.generationHistory[newIndex]) { state.historyIndex = newIndex; const entry = state.generationHistory[newIndex]; updateGeneratorState(entry.creatureData, entry.prompt, entry.level); updateHistoryUI(); } }
+function updateHistoryUI() { getElement('history-counter').textContent = state.generationHistory.length > 0 ? `${state.historyIndex + 1}/${state.generationHistory.length}` : '0/0'; getElement('history-prev').disabled = state.historyIndex <= 0; getElement('history-next').disabled = state.historyIndex >= state.generationHistory.length - 1; }
+
+const STORAGE_KEY = 'pf2-npc-saved-creatures';
+function loadSavedCreaturesFromStorage() { try { const data = localStorage.getItem(STORAGE_KEY); if (data) state.savedCreatures = JSON.parse(data); } catch (e) { console.error("Failed to load saved creatures:", e); state.savedCreatures = []; } }
+function persistSavedCreatures() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.savedCreatures)); } catch (e) { console.error("Failed to save creatures:", e); } }
+function saveCurrentCreature() { if (!state.currentCreature) return; const t = translations[state.lang]; state.savedCreatures.push({ id: Date.now(), timestamp: new Date().toISOString(), prompt: state.currentPrompt, creatureData: state.currentCreature }); persistSavedCreatures(); const btn = getElement('save-creature-btn'); const original = btn.innerHTML; btn.innerHTML = `<i data-lucide="check-circle"></i> ${t.creatureSaved}`; if(typeof lucide !== 'undefined') lucide.createIcons(); setTimeout(() => { btn.innerHTML = original; if(typeof lucide !== 'undefined') lucide.createIcons(); }, 2500); if (state.activeTab === 'saved') renderSavedTab(); }
+function deleteSavedCreature(id) { state.savedCreatures = state.savedCreatures.filter(c => c.id !== id); persistSavedCreatures(); renderSavedTab(); }
+function loadCreatureFromStorage(id) { const item = state.savedCreatures.find(c => c.id === id); if (item) { updateGeneratorState(item.creatureData, item.prompt, item.creatureData.level); addToHistory(item.creatureData, item.prompt, item.creatureData.level); const tabBtn = getElement('generator-content').parentElement.querySelector('[data-tab="generator"]'); if (tabBtn) tabBtn.click(); } }
+function setupSavedTabListeners() { getElement('saved-content').addEventListener('click', (e) => { const btn = e.target.closest('button'); if (!btn) return; const itemDiv = btn.closest('.saved-creature-item'); if (!itemDiv) return; const id = parseInt(itemDiv.dataset.id, 10); const item = state.savedCreatures.find(c => c.id === id); if (!item) return; if (btn.classList.contains('btn-load')) loadCreatureFromStorage(id); else if (btn.classList.contains('btn-delete')) { if (confirm(state.lang === 'cs' ? 'Opravdu smazat?' : 'Really delete?')) deleteSavedCreature(id); } else if (btn.classList.contains('btn-share')) handleShare(item.creatureData, item.prompt); }); }
+
+// --- INITIALIZATION AND EVENT LISTENERS ---
+window.onload = () => {
+    state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
+    const generateBtn = getElement('generate-btn');
+    if (generateBtn) { generateBtn.disabled = true; const span = generateBtn.querySelector('span'); if(span) span.textContent = (translations[state.lang] || translations.en).generating.replace('...', ' spells...'); }
+    loadSpellDatabase();
+    loadSavedCreaturesFromStorage();
+    const levelSelect = getElement('creature-level');
+    levelSelect.innerHTML = Array.from({ length: 26 }, (_, i) => i - 1).map(lvl => `<option value="${lvl}">${state.lang === 'cs' ? 'Úroveň' : 'Level'} ${lvl}</option>`).join('');
+    levelSelect.value = 1;
+    getElements('.tab-button').forEach(button => button.addEventListener('click', () => { const tabName = button.dataset.tab; state.activeTab = tabName; getElements('.tab-button').forEach(btn => btn.classList.remove('active')); button.classList.add('active'); getElements('.tab-content').forEach(content => content.classList.remove('active')); getElement(`${tabName}-content`).classList.add('active'); if (tabName === 'encounter' && !getElement('encounter-grid')) renderEncounterTab(); if (tabName === 'monster-guide' && !getElement('[data-lang-key="guideTitle"]')) renderMonsterGuideTab(); if (tabName === 'saved') renderSavedTab(); }));
+    const langBtn = getElement('lang-btn'); const langContent = getElement('lang-content'); langBtn.addEventListener('click', () => langContent.classList.toggle('show'));
+    getElements('#lang-content button').forEach(button => button.addEventListener('click', () => { state.lang = button.dataset.lang; localStorage.setItem('pf2-npc-lang', state.lang); langBtn.textContent = button.dataset.lang.toUpperCase(); langContent.classList.remove('show'); updateLanguage(); }));
+    const linksBtn = getElement('useful-links-btn'); const linksContent = getElement('useful-links-content'); linksBtn.addEventListener('click', () => linksContent.classList.toggle('show'));
+    window.addEventListener('click', (event) => { if (!langBtn.contains(event.target) && !langContent.contains(event.target)) langContent.classList.remove('show'); if (!linksBtn.contains(event.target) && !linksContent.contains(event.target)) linksContent.classList.remove('show'); });
+    const apiKeyInput = getElement('api-key-input'); const apiKeyBtn = getElement('api-key-btn'); const storedApiKey = localStorage.getItem('geminiApiKey');
+    if (storedApiKey) { state.localApiKey = storedApiKey; apiKeyInput.value = storedApiKey; apiKeyBtn.textContent = translations[state.lang].apiKeyUsed; }
+    apiKeyBtn.addEventListener('click', () => { const t = translations[state.lang]; state.localApiKey = apiKeyInput.value; localStorage.setItem('geminiApiKey', state.localApiKey); apiKeyBtn.innerHTML = `<i data-lucide="check-circle"></i> ${t.apiKeyUsed}`; if (typeof lucide !== 'undefined') lucide.createIcons(); setTimeout(() => { apiKeyBtn.innerHTML = t.apiKeyButton; if (typeof lucide !== 'undefined') lucide.createIcons(); }, 2000); });
+    getElement('generate-btn').addEventListener('click', handleGenerate);
+    getElement('history-prev').addEventListener('click', () => navigateHistory('prev'));
+    getElement('history-next').addEventListener('click', () => navigateHistory('next'));
+    getElement('import-btn').addEventListener('click', () => getElement('import-modal').classList.add('show'));
+    getElement('copy-image-prompt-btn').addEventListener('click', (e) => copyToClipboard(getElement('image-prompt-output').value, e.currentTarget, translations[state.lang]));
+    getElement('copy-json-btn').addEventListener('click', (e) => copyToClipboard(getElement('json-output').value, e.currentTarget, translations[state.lang]));
+    getElement('download-json-btn').addEventListener('click', () => { if (!state.currentJson) return; const name = (state.currentCreature.name || 'Random').replace(/[^a-z0-9]/gi, '_'); const blob = new Blob([state.currentJson], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `PF2_FoundryNPC_${name}.json`; a.click(); URL.revokeObjectURL(a.href); });
+    getElement('export-pdf-btn').addEventListener('click', () => { if (!state.currentCreature) { alert(state.lang === 'cs' ? 'Nejprve vygenerujte stvoření.' : 'Please generate a creature first.'); return; } getElement('json-print-container').innerHTML = state.currentJson ? `<h4>${translations[state.lang].jsonStatblock}</h4><pre>${state.currentJson}</pre>` : ''; window.print(); });
+    getElement('save-creature-btn').addEventListener('click', saveCurrentCreature);
+    getElement('share-current-creature-btn').addEventListener('click', () => { if (state.currentCreature) handleShare(state.currentCreature, state.currentPrompt); else alert(state.lang === 'cs' ? 'Nejprve vygenerujte stvoření.' : 'First, generate a creature.'); });
+    getElement('cancel-import-btn').addEventListener('click', () => getElement('import-modal').classList.remove('show'));
+    getElement('confirm-import-btn').addEventListener('click', () => { try { const t = translations[state.lang]; const data = transformFoundryToInternal(JSON.parse(getElement('import-json-textarea').value), t); if (!data) throw new Error("Invalid data."); const prompt = state.lang === 'cs' ? 'Importováno z JSON' : 'Imported from JSON'; updateGeneratorState(data, prompt, data.level); addToHistory(data, prompt, data.level); getElement('import-error').textContent = ''; getElement('import-modal').classList.remove('show'); } catch (e) { getElement('import-error').textContent = translations[state.lang].invalidJson; } });
+    getElement('how-to-import-btn').addEventListener('click', () => getElement('how-to-import-modal').classList.add('show'));
+    getElement('close-how-to-modal-btn').addEventListener('click', () => getElement('how-to-import-modal').classList.remove('show'));
+    getElement('copy-macro-btn').addEventListener('click', (e) => copyToClipboard(FOUNDRY_IMPORT_MACRO, e.currentTarget, translations[state.lang]));
+    getElement('macro-code').value = FOUNDRY_IMPORT_MACRO;
+    getElement('close-share-modal-btn').addEventListener('click', () => getElement('share-modal').classList.remove('show'));
+    getElement('copy-share-link-btn').addEventListener('click', (e) => copyToClipboard(getElement('share-link-textarea').value, e.currentTarget, translations[state.lang]));
+    const popover = getElement('spell-popover');
+    getElement('statblock-display-container').addEventListener('mouseover', (e) => { 
+        if (!e.target.classList.contains('spell-link')) return; 
+        const spellName = e.target.dataset.spellName; 
+        const spellData = findSpellInDatabase(spellName); 
+        popover.innerHTML = spellData ? `<h4>${e.target.textContent}</h4><p><b>Source: </b><i>${spellData.source.book} pg. ${spellData.source.page}</i></p><div>${spellData.description}</div>` : `<h4>${e.target.textContent}</h4><p>${state.lang === 'cs' ? 'Data nenalezena v databázi.' : 'Data not found in database.'}</p>`; 
+        popover.style.display = 'block'; 
+    });
+    getElement('statblock-display-container').addEventListener('mousemove', (e) => { if (popover.style.display !== 'block') return; let left = e.pageX + 15, top = e.pageY + 15; if (left + popover.offsetWidth + 20 > window.innerWidth) left = e.pageX - popover.offsetWidth - 15; if (top + popover.offsetHeight + 20 > window.innerHeight) top = e.pageY - popover.offsetHeight - 15; popover.style.left = `${left}px`; popover.style.top = `${top}px`; });
+    getElement('statblock-display-container').addEventListener('mouseout', (e) => { if (e.target.classList.contains('spell-link')) popover.style.display = 'none'; });
+    getElement('lang-btn').textContent = state.lang.toUpperCase();
+    updateLanguage(); renderStatblock(null); updateHistoryUI(); if (typeof lucide !== 'undefined') lucide.createIcons(); checkForShareDataInUrl();
+};
+</script>
+</body>
+</html>
