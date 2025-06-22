@@ -1371,10 +1371,8 @@ function getSpellActionCost(spellData) {
 }
 
 function findSpellInDatabase(spellName) {
-    if (!spellName || !state.gameData || !state.gameData.spells) return null;
-    const trimmedName = spellName.trim().toLowerCase();
-    // Find spell by matching the 'name' property (which should be the English name from JSON)
-    return state.gameData.spells.find(spell => spell.name.toLowerCase() === trimmedName) || null;
+    if (!spellName || !state.gameData || !state.gameData.spellMap) return null;
+    return state.gameData.spellMap[spellName.trim().toLowerCase()] || null;
 }
 
 function renderStatblock(creature) {
@@ -1458,38 +1456,54 @@ async function handleGenerate() {
 async function loadAllGameData() {
     const t = translations[state.lang] || translations.en;
     const generateBtn = getElement('generate-btn');
-    if (generateBtn) { generateBtn.disabled = true; const span = generateBtn.querySelector('span'); if(span) span.textContent = t.dataLoading; }
+    if (generateBtn) { generateBtn.disabled = true; const span = generateBtn.querySelector('span'); if (span) span.textContent = t.dataLoading; }
 
-    const dataFiles = {
+    const equipmentFiles = [
+        'other', 'advanced', 'ammo', 'catalyst', 'drug', 'elixir', 'fulu', 
+        'gadget', 'heavy-barding', 'heavy', 'light-barding', 'light', 
+        'martial', 'medium', 'mutagen', 'oil', 'poison', 'potion', 'scroll', 
+        'simple', 'snare', 'talisman', 'toolkit', 'unarmed', 'unarmored', 'wand'
+    ].map(name => `_equipment_${name}_complete.json`);
+
+    const mainDataFiles = {
         spells: 'JSON/spells_complete.json',
-        equipment: 'JSON/equipment_complete.json',
         conditions: 'JSON/conditions_complete.json',
         actions: 'JSON/actions_complete.json',
         bestiary_abilities: 'JSON/bestiary-ability-glossary-srd_complete.json',
     };
 
-    try {
-        const responses = await Promise.all(
-            Object.entries(dataFiles).map(([key, path]) => 
-                fetch(path).then(res => {
-                    if (!res.ok) throw new Error(`Failed to load ${path}: ${res.statusText}`);
-                    return res.json();
-                })
-            )
-        );
+    const fetchJson = (path) => fetch(path).then(res => {
+        if (!res.ok) throw new Error(`Failed to load ${path}: ${res.statusText}`);
+        return res.text().then(text => text.length > 0 ? JSON.parse(text) : []);
+    });
 
-        state.gameData = Object.keys(dataFiles).reduce((acc, key, index) => {
-            acc[key] = responses[index];
+    try {
+        // Fetch main files
+        const mainFilesPromises = Object.values(mainDataFiles).map(fetchJson);
+        const mainFilesData = await Promise.all(mainFilesPromises);
+        
+        const loadedData = Object.keys(mainDataFiles).reduce((acc, key, index) => {
+            acc[key] = mainFilesData[index];
             return acc;
         }, {});
+
+        // Fetch all equipment files dynamically
+        const equipmentPromises = equipmentFiles.map(file => fetchJson(`JSON/_equipment/${file}`));
+        const equipmentDataArrays = await Promise.all(equipmentPromises);
+
+        // Merge all equipment arrays into one
+        loadedData.equipment = equipmentDataArrays.flat();
         
         // Create an optimized map for spells for faster lookups
-        state.gameData.spellMap = state.gameData.spells.reduce((map, spell) => {
+        loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
             map[spell.name.toLowerCase()] = spell;
             return map;
         }, {});
+        
+        state.gameData = loadedData;
+        console.log("All game data loaded and merged successfully.");
+        console.log(`Total equipment items loaded: ${state.gameData.equipment.length}`);
 
-        console.log("All game data loaded successfully:", state.gameData);
     } catch (error) {
         console.error("Critical error loading game data:", error);
         getElement('generator-error').textContent = `Failed to load game data: ${error.message}. Please check file paths and network connection.`;
@@ -1503,7 +1517,6 @@ async function loadAllGameData() {
         }
     }
 }
-
 
 function updateGeneratorState(creatureData, prompt, level) {
     state.currentCreature = creatureData;
