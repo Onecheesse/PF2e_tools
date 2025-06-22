@@ -447,7 +447,7 @@
             @page { size: A4; margin: 15mm; @top-left { content: ""; } @top-right { content: ""; } @bottom-left { content: ""; } @bottom-right { content: ""; } }
             body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
             header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, #image-prompt-container, #json-output-container, .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn { display: none !important; }
-            .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
+            .main-content { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
             #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
             #item-details-section { page-break-before: auto; page-break-inside: avoid; margin-top: 2rem; }
             #json-print-container { page-break-before: always; }
@@ -460,7 +460,8 @@
             p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
             #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
-            #json-print-container:not(:empty), #item-details-section.has-content { display: block !important; }
+            #item-details-section.has-content { display: block !important; }
+            #json-print-container:not(:empty) { display: block !important; }
             #json-print-container:empty, #item-details-section:not(.has-content) { display: none !important; }
             #json-print-container h4, #item-details-section h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
@@ -1196,65 +1197,36 @@ function formatDescriptionForDisplay(text, t) {
     return readableText;
 }
 
-function encodeCreatureForUrl(dataToEncode) {
-    try {
-        const jsonString = JSON.stringify(dataToEncode);
-        const compressedBytes = pako.deflate(jsonString);
-        let binaryString = '';
-        compressedBytes.forEach((byte) => { binaryString += String.fromCharCode(byte); });
-        const base64 = btoa(binaryString);
-        return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-    } catch (e) { console.error("Error encoding creature data:", e); return null; }
+function getActionIcon(cost, t) {
+    if (!cost) return '';
+    const single = '<span class="action-icon">A</span>';
+    if (cost === '1' || cost === 1) return single;
+    if (cost === '2' || cost === 2) return single.repeat(2);
+    if (cost === '3' || cost === 3) return single.repeat(3);
+    if (cost === 'reaction') return '<span class="action-icon reaction">R</span>';
+    if (cost === 'free') return '<span class="action-icon free">F</span>';
+    if (cost === 'passive') return `<span style="color: var(--text-medium); font-style: italic; font-size: 0.9rem;">${t.passive || 'Passive'}</span>`;
+    return '';
 }
 
-function decodeCreatureFromUrl(encodedString) {
-    try {
-        let base64 = encodedString.replace(/-/g, '+').replace(/_/g, '/');
-        while (base64.length % 4) { base64 += '='; }
-        const binaryString = atob(base64);
-        const bytes = new Uint8Array(binaryString.length);
-        for (let i = 0; i < binaryString.length; i++) { bytes[i] = binaryString.charCodeAt(i); }
-        const jsonString = pako.inflate(bytes, { to: 'string' });
-        return JSON.parse(jsonString);
-    } catch (e) {
-        console.error("Error decoding creature data:", e);
-        if (e instanceof DOMException && e.name === 'InvalidCharacterError') { console.error("Decoding failed: The Base64 string is likely corrupted or malformed."); }
-        return null;
-    }
+function getSpellActionCost(spellData) {
+    if (!spellData || !spellData.system?.time?.value) return '';
+    const time = spellData.system.time.value.toLowerCase();
+    if (time.includes('reaction')) return 'reaction';
+    if (time.includes('free')) return 'free';
+    if (time.includes('1 action') || time.includes('one action')) return '1';
+    if (time.includes('2 actions') || time.includes('two actions')) return '2';
+    if (time.includes('3 actions') || time.includes('three actions')) return '3';
+    return '';
 }
 
-function handleShare(creatureToShare, promptToShare) {
-    if (!creatureToShare) return;
-    const dataToShare = { prompt: promptToShare, creature: creatureToShare, version: "1.0" };
-    const encodedData = encodeCreatureForUrl(dataToShare);
-    if (!encodedData) { alert(state.lang === 'cs' ? 'Chyba při vytváření odkazu pro sdílení.' : 'Error creating share link.'); return; }
-    const shareUrl = `${window.location.origin}${window.location.pathname}?data=${encodedData}`;
-    getElement('share-link-textarea').value = shareUrl;
-    getElement('share-modal').classList.add('show');
-}
-
-function checkForShareDataInUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const sharedData = urlParams.get('data');
-    if (sharedData) {
-        const decodedData = decodeCreatureFromUrl(sharedData);
-        if (decodedData && decodedData.creature) {
-            updateGeneratorState(decodedData.creature, decodedData.prompt, decodedData.creature.level);
-            addToHistory(decodedData.creature, decodedData.prompt, decodedData.creature.level);
-            window.history.replaceState({}, document.title, window.location.pathname);
-            const generatorTabButton = getElement('generator-content').parentElement.querySelector('[data-tab="generator"]');
-            if (generatorTabButton) generatorTabButton.click();
-        } else { alert(state.lang === 'cs' ? 'Data pro sdílení v URL jsou poškozená nebo neplatná.' : 'Shared data in URL is corrupted or invalid.'); }
-    }
-}
-
-// --- DATA TRANSFORMATION FUNCTIONS ---
 function findInDatabase(name, dbArray) {
     if (!name || !dbArray) return null;
     const trimmedName = name.trim().toLowerCase();
     return dbArray.find(item => item && item.name && item.name.toLowerCase() === trimmedName) || null;
 }
 
+// --- DATA TRANSFORMATION FUNCTIONS ---
 function transformInternalToFoundry(data) {
     if (!data) return null;
     let items = [];
@@ -1284,7 +1256,7 @@ function transformInternalToFoundry(data) {
     });
     
     (data.specialAbilities || []).forEach(ability => {
-        if (!ability.name || !ability.actionCost) return;
+        if (!ability || !ability.name || !ability.actionCost) return;
         const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
         if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
         else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
@@ -1307,12 +1279,12 @@ function transformInternalToFoundry(data) {
                 system: {
                     level: { value: level },
                     location: { value: spellcastingEntryId },
-                    description: { value: `<p>Official data for this spell could not be found.</p>` }
                 }
             };
             if (spellData && spellData._id) {
                 foundrySpell.system.sourceId = spellData._id;
-                delete foundrySpell.system.description; // Remove placeholder if found
+            } else {
+                 foundrySpell.system.description = { value: `<p>Official data for this spell could not be found.</p>`};
             }
             return foundrySpell;
         };
@@ -1379,8 +1351,8 @@ function renderStatblock(creature) {
             const cz_name = isObject ? spell.name_cz : null;
             const displayName = (cz_name && state.lang === 'cs') ? `${en_name} (${cz_name})` : en_name;
             const spellData = findInDatabase(en_name, state.gameData.spells);
-            const actionIcon = getActionIcon(getSpellActionCost(spellData), t);
-            return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${actionIcon}</div><span>${displayName}</span></div>`;
+            const actionIcon = getSpellActionCost(spellData);
+            return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${getActionIcon(actionIcon, t)}</div><span>${displayName}</span></div>`;
         }).join('');
 
         const cantripsHtml = createSpellLinks(spellcasting.cantrips);
@@ -1515,7 +1487,7 @@ async function loadAllGameData() {
         'gadget', 'heavy-barding', 'heavy', 'light-barding', 'light', 
         'martial', 'medium', 'mutagen', 'oil', 'poison', 'potion', 'scroll', 
         'simple', 'snare', 'talisman', 'toolkit', 'unarmed', 'unarmored', 'wand'
-    ].map(name => `_equipment_${name}_complete.json`);
+    ].map(name => `JSON/_equipment/_equipment_${name}_complete.json`);
 
     const mainDataFiles = {
         spells: 'JSON/spells_complete.json',
@@ -1527,11 +1499,14 @@ async function loadAllGameData() {
     const fetchJson = (path) => fetch(path).then(res => {
         if (!res.ok) throw new Error(`Failed to load ${path}: ${res.statusText}`);
         return res.text().then(text => text.length > 0 ? JSON.parse(text) : []);
+    }).catch(err => {
+        console.error(`Error fetching ${path}:`, err);
+        return []; // Return empty array on fetch error to avoid breaking Promise.all
     });
 
     try {
         const mainFilesPromises = Object.values(mainDataFiles).map(fetchJson);
-        const equipmentPromises = equipmentFiles.map(file => fetchJson(`JSON/_equipment/${file}`));
+        const equipmentPromises = equipmentFiles.map(fetchJson);
         
         const [mainFilesData, equipmentDataArrays] = await Promise.all([
             Promise.all(mainFilesPromises),
