@@ -331,9 +331,12 @@
             align-items: flex-start;
         }
         #special-abilities-list .action-icon-wrapper {
+           display: flex; /* CORRECTED: Ensures icons are in a row */
+           flex-wrap: nowrap; /* CORRECTED: Prevents wrapping */
+           align-items: center;
            flex-shrink: 0;
-           width: 70px;
-           text-align: left;
+           width: auto; /* Allow it to expand for multiple icons */
+           min-width: 70px;
            margin-top: 4px;
         }
 
@@ -396,9 +399,23 @@
          @media print {
             @page { size: A4; margin: 15mm; @top-left { content: ""; } @top-right { content: ""; } @bottom-left { content: ""; } @bottom-right { content: ""; } }
             body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
-            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section:not(#item-details-section), .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn, #json-output-container, #image-prompt-container { display: none !important; }
-            .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
-            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; }
+            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section:not(#item-details-section), .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn, #image-prompt-container, #json-output-container { display: none !important; }
+            .main-content { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
+            
+            /* CORRECTED: Re-ordering content for PDF export using Flexbox 'order' property */
+            #generation-output-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+            #statblock-display-container { order: 1; }
+            #item-details-section { order: 2; }
+            #json-print-container { order: 3; }
+
+            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
+            #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
+            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
+            #item-details-section:empty, #json-print-container:empty { display: none !important; }
+
             h3, h4 { color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important; page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt; }
             h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
             .statblock-header h3 { font-size: 22pt; margin: 0; }
@@ -408,12 +425,6 @@
             p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
             #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
-
-            /* CORRECTED: PDF Layout Order */
-            #statblock-display-container { page-break-after: avoid; }
-            #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
-            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
-            #item-details-section:empty, #json-print-container:empty { display: none !important; }
             
             #json-print-container h4, #item-details-section h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
@@ -519,14 +530,8 @@
                         </div>
                     </div>
                     
-                    <!-- This div contains all generated outputs. Their order here determines the print order. -->
                     <div id="generation-output-wrapper">
                         <div id="statblock-display-container"></div>
-                        
-                        <!-- This is hidden on screen and only used for the PDF export of JSON data -->
-                        <div id="json-print-container"></div>
-                        
-                        <!-- These sections are for on-screen display. The final one, item-details, is moved to the bottom. -->
                         <div id="image-prompt-container" class="form-section" style="margin-top: 2rem;">
                             <h4><i data-lucide="sparkles" style="color: var(--gold); display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i><span data-lang-key="imagePromptGenerator">Image Prompt Generator (AI)</span></h4>
                             <p data-lang-key="imagePromptIntro" style="font-size: 0.9rem;">Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.</p>
@@ -550,9 +555,8 @@
                                 <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
                             </div>
                         </div>
-
-                        <!-- Item/Spell details appear last on screen. -->
                         <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
+                        <div id="json-print-container"></div>
                     </div>
                 </div>
             </div>
@@ -1294,8 +1298,6 @@ function transformInternalToFoundry(data) {
             if (!spellData) {
                 return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}};
             }
-            // **CORRECTED AND FINAL**: This creates a full, clean copy of the spell data from the database,
-            // which is what Foundry needs to make the spell fully functional.
             const foundrySpell = JSON.parse(JSON.stringify(spellData));
             foundrySpell.system.location = { value: spellcastingEntryId };
             foundrySpell._id = generateId(); 
@@ -1326,7 +1328,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.2" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator V3.0.3.3" }, }, items };
 }
 
 
@@ -1377,7 +1379,7 @@ function getActionIcon(cost, t) {
     if (cost === '3' || cost === 3) return single.repeat(3);
     if (cost === 'reaction') return '<span class="action-icon reaction">R</span>';
     if (cost === 'free') return '<span class="action-icon free">F</span>';
-    if (cost === 'passive') return `<span style="color: var(--text-medium); font-style: italic; font-size: 0.9rem;">${t.passive || 'Passive'}</span>`;
+    if (cost === 'passive') return `<span style="color: var(--text-medium); font-style: italic; font-size: 0.9rem; border: 2px solid var(--border-subtle); padding: 2px 6px; border-radius: 12px; background-color: var(--paper-light);">${t.passive || 'Passive'}</span>`;
     return '';
 }
 
@@ -1521,7 +1523,7 @@ async function handleGenerate() {
         const spellNameSchema = { type: "OBJECT", properties: { name_en: { type: "STRING" }, name_cz: { type: "STRING" } }, required: ["name_en"] };
         const spellcastingSchema = { type: "OBJECT", properties: { type: { type: "STRING" }, ability: { type: "STRING" }, dc: { type: "NUMBER" }, attack: { type: "STRING" }, cantrips: { type: "ARRAY", items: spellNameSchema }, spells: { type: "ARRAY", items: { type: "OBJECT", properties: { level: { type: "NUMBER" }, list: { type: "ARRAY", items: spellNameSchema } }, required: ["level", "list"] } } } };
         const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
-        const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
+        const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING", description: "MUST be an exact name from the provided list of valid equipment." }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
         const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
