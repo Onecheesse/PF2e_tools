@@ -594,7 +594,7 @@
 
     <!-- VERSION INFO -->
     <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
-        <span data-lang-key="version">Version</span>: 3.02
+        <span data-lang-key="version">Version</span>: 3.03
     </div>
 
 <script type="module">
@@ -1304,7 +1304,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.02" }, }, items };
 }
 
 
@@ -1521,12 +1521,32 @@ async function loadAllGameData() {
     if (generateBtn) { generateBtn.disabled = true; const span = generateBtn.querySelector('span'); if (span) span.textContent = t.dataLoading; }
 
     const equipmentFiles = [
-        'advanced.json', 'ammo.json', 'catalyst.json', 'drug.json', 'elixir.json', 
-        'fulu.json', 'gadget.json', 'heavy-barding.json', 'heavy.json', 
-        'light-barding.json', 'light.json', 'martial.json', 'medium.json', 
-        'mutagen.json', 'oil.json', 'other.json', 'poison.json', 'potion.json', 
-        'scroll.json', 'simple.json', 'snare.json', 'talisman.json', 
-        'toolkit.json', 'unarmed.json', 'unarmored.json', 'wand.json'
+        '_equipment_advanced_complete.json',
+        '_equipment_ammo_complete.json',
+        '_equipment_catalyst_complete.json',
+        '_equipment_drug_complete.json',
+        '_equipment_elixir_complete.json',
+        '_equipment_fulu_complete.json',
+        '_equipment_gadget_complete.json',
+        '_equipment_heavy-barding_complete.json',
+        '_equipment_heavy_complete.json',
+        '_equipment_light-barding_complete.json',
+        '_equipment_light_complete.json',
+        '_equipment_martial_complete.json',
+        '_equipment_medium_complete.json',
+        '_equipment_mutagen_complete.json',
+        '_equipment_oil_complete.json',
+        '_equipment_other_complete.json',
+        '_equipment_poison_complete.json',
+        '_equipment_potion_complete.json',
+        '_equipment_scroll_complete.json',
+        '_equipment_simple_complete.json',
+        '_equipment_snare_complete.json',
+        '_equipment_talisman_complete.json',
+        '_equipment_toolkit_complete.json',
+        '_equipment_unarmed_complete.json',
+        '_equipment_unarmored_complete.json',
+        '_equipment_wand_complete.json'
     ];
 
     const mainDataFiles = {
