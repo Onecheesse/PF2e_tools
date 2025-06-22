@@ -398,19 +398,23 @@
             body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
             header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section:not(#item-details-section), .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn, #json-output-container, #image-prompt-container { display: none !important; }
             .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
-            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
+            #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; }
             h3, h4 { color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important; page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt; }
             h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
             .statblock-header h3 { font-size: 22pt; margin: 0; }
             .stat-section, .attack-entry { background-color: #f0f0f0 !important; border: 1px solid #ccc !important; box-shadow: none !important; page-break-inside: avoid; padding: 0.4rem !important; margin-bottom: 0.5rem !important; }
-            #defenses-grid, #item-details-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem 1.5rem !important; border-top: 1px solid #333; padding-top: 0.5rem; margin-bottom: 0.5rem !important; }
-            #defenses-grid > div, #item-details-section > div { margin-bottom: 0 !important; } #defenses-grid h4, #item-details-section h4 { margin-top: 0; }
+            #defenses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem 1.5rem !important; border-top: 1px solid #333; padding-top: 0.5rem; margin-bottom: 0.5rem !important; }
+            #defenses-grid > div { margin-bottom: 0 !important; } #defenses-grid h4 { margin-top: 0; }
             p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
             #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
+
+            /* CORRECTED: PDF Layout Order */
+            #statblock-display-container { page-break-after: avoid; }
             #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
             #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
             #item-details-section:empty, #json-print-container:empty { display: none !important; }
+            
             #json-print-container h4, #item-details-section h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
             a, i.lucide { display: none !important; }
@@ -439,6 +443,7 @@
         }
         #item-details-section .action-icon-wrapper {
             margin-right: 0.5rem;
+            min-width: 24px;
         }
         #item-details-section p {
             margin: 0;
@@ -514,33 +519,40 @@
                         </div>
                     </div>
                     
-                    <!-- CORRECTED ORDER FOR PDF EXPORT -->
-                    <div id="statblock-display-container"></div>
-                    <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
-                    <div id="json-print-container"></div>
+                    <!-- This div contains all generated outputs. Their order here determines the print order. -->
+                    <div id="generation-output-wrapper">
+                        <div id="statblock-display-container"></div>
+                        
+                        <!-- This is hidden on screen and only used for the PDF export of JSON data -->
+                        <div id="json-print-container"></div>
+                        
+                        <!-- These sections are for on-screen display. The final one, item-details, is moved to the bottom. -->
+                        <div id="image-prompt-container" class="form-section" style="margin-top: 2rem;">
+                            <h4><i data-lucide="sparkles" style="color: var(--gold); display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i><span data-lang-key="imagePromptGenerator">Image Prompt Generator (AI)</span></h4>
+                            <p data-lang-key="imagePromptIntro" style="font-size: 0.9rem;">Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.</p>
+                            <textarea id="image-prompt-output" readonly></textarea>
+                            <div class="flex space-x-2" style="margin-top: 0.5rem;">
+                                <button id="copy-image-prompt-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyImagePrompt">Copy Prompt</span></button>
+                                <a href="https://gemini.google.com/app/images" target="_blank" class="btn btn-primary" style="flex: 1; text-decoration: none;"><i data-lucide="external-link"></i><span data-lang-key="openGemini">Open Gemini</span></a>
+                            </div>
+                        </div>
+                        <div id="json-output-container" class="form-section" style="margin-top: 2rem;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+                                 <label for="json-output" data-lang-key="jsonStatblock">JSON Statblock (Foundry VTT Compatible):</label>
+                                 <button id="how-to-import-btn" style="color:var(--gold); font-size: 0.9rem; background:none; border:none; cursor: pointer; display:flex; align-items:center;"><i data-lucide="info" style="width:16px; height:16px; margin-right: 4px;"></i><span data-lang-key="howToImportButton">How to import?</span></button>
+                            </div>
+                            <textarea id="json-output" readonly></textarea>
+                            <div class="flex space-x-2" style="margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                                <button id="copy-json-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyJson">Copy JSON</span></button>
+                                <button id="download-json-btn" class="btn btn-secondary" style="flex: 1;"><i data-lucide="download"></i><span data-lang-key="downloadJson">Download JSON</span></button>
+                                <button id="export-pdf-btn" class="btn btn-danger" style="flex: 1;"><i data-lucide="file-text"></i><span data-lang-key="exportPdf">Export to PDF</span></button>
+                                <button id="save-creature-btn" class="btn btn-success" style="flex: 1;"><i data-lucide="save"></i><span data-lang-key="saveCreature">Save Creature</span></button>
+                                <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
+                            </div>
+                        </div>
 
-                    <div id="image-prompt-container" class="form-section" style="margin-top: 2rem;">
-                        <h4><i data-lucide="sparkles" style="color: var(--gold); display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i><span data-lang-key="imagePromptGenerator">Image Prompt Generator (AI)</span></h4>
-                        <p data-lang-key="imagePromptIntro" style="font-size: 0.9rem;">Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.</p>
-                        <textarea id="image-prompt-output" readonly></textarea>
-                        <div class="flex space-x-2" style="margin-top: 0.5rem;">
-                            <button id="copy-image-prompt-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyImagePrompt">Copy Prompt</span></button>
-                            <a href="https://gemini.google.com/app/images" target="_blank" class="btn btn-primary" style="flex: 1; text-decoration: none;"><i data-lucide="external-link"></i><span data-lang-key="openGemini">Open Gemini</span></a>
-                        </div>
-                    </div>
-                    <div id="json-output-container" class="form-section" style="margin-top: 2rem;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
-                             <label for="json-output" data-lang-key="jsonStatblock">JSON Statblock (Foundry VTT Compatible):</label>
-                             <button id="how-to-import-btn" style="color:var(--gold); font-size: 0.9rem; background:none; border:none; cursor: pointer; display:flex; align-items:center;"><i data-lucide="info" style="width:16px; height:16px; margin-right: 4px;"></i><span data-lang-key="howToImportButton">How to import?</span></button>
-                        </div>
-                        <textarea id="json-output" readonly></textarea>
-                        <div class="flex space-x-2" style="margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-                            <button id="copy-json-btn" class="btn btn-tertiary" style="flex: 1;"><i data-lucide="copy"></i><span data-lang-key="copyJson">Copy JSON</span></button>
-                            <button id="download-json-btn" class="btn btn-secondary" style="flex: 1;"><i data-lucide="download"></i><span data-lang-key="downloadJson">Download JSON</span></button>
-                            <button id="export-pdf-btn" class="btn btn-danger" style="flex: 1;"><i data-lucide="file-text"></i><span data-lang-key="exportPdf">Export to PDF</span></button>
-                            <button id="save-creature-btn" class="btn btn-success" style="flex: 1;"><i data-lucide="save"></i><span data-lang-key="saveCreature">Save Creature</span></button>
-                            <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
-                        </div>
+                        <!-- Item/Spell details appear last on screen. -->
+                        <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
                     </div>
                 </div>
             </div>
@@ -1280,13 +1292,12 @@ function transformInternalToFoundry(data) {
             if (!spell || !spell.name_en) return null;
             const spellData = findInDatabase(spell.name_en, state.gameData.spells);
             if (!spellData) {
-                // Fallback: create a stub item if not found.
                 return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}};
             }
-            // **CORRECTED**: Create a full copy of the spell from the DB to import into Foundry.
-            const foundrySpell = JSON.parse(JSON.stringify(spellData)); // Deep copy.
+            // **CORRECTED AND FINAL**: This creates a full, clean copy of the spell data from the database,
+            // which is what Foundry needs to make the spell fully functional.
+            const foundrySpell = JSON.parse(JSON.stringify(spellData));
             foundrySpell.system.location = { value: spellcastingEntryId };
-            // Ensure the _id is unique for this actor instance.
             foundrySpell._id = generateId(); 
             return foundrySpell;
         };
@@ -1301,8 +1312,8 @@ function transformInternalToFoundry(data) {
         if (!item || !item.name) return;
         const itemData = findInDatabase(item.name, state.gameData.equipment);
         if (itemData) {
-             const foundryItem = JSON.parse(JSON.stringify(itemData)); // Deep copy
-             foundryItem._id = generateId(); // Ensure unique ID for this actor
+             const foundryItem = JSON.parse(JSON.stringify(itemData));
+             foundryItem._id = generateId();
              items.push(foundryItem);
         }
     });
@@ -1315,7 +1326,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.02" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.2" }, }, items };
 }
 
 
@@ -1523,7 +1534,7 @@ async function handleGenerate() {
 6.  Equipment 'name' MUST be the exact, official English name.`;
 
         const equipmentNames = state.gameData.equipment.map(item => item.name).filter(Boolean);
-        const equipmentInstruction = equipmentNames.length > 0 ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), give it suitable equipment (weapons, armor). When selecting equipment, you MUST choose items exclusively from this list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list.` : 'The creature should have no equipment.';
+        const equipmentInstruction = equipmentNames.length > 0 ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), you MUST equip it with suitable items (weapons, armor). When selecting equipment, you MUST choose items exclusively from this list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list.` : 'The creature should have no equipment.';
         
         const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${equipmentInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
         
@@ -1608,7 +1619,7 @@ function updateGeneratorState(creatureData, prompt, level) {
     state.currentCreature = creatureData;
     state.currentPrompt = prompt || '';
     renderStatblock(creatureData);
-    renderItemDetails(creatureData); // NEW: render details below statblock
+    renderItemDetails(creatureData);
     getElement('generator-prompt').value = prompt;
     getElement('creature-level').value = level || creatureData.level;
     const foundryJson = transformInternalToFoundry(creatureData);
