@@ -403,14 +403,14 @@
             h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
             .statblock-header h3 { font-size: 22pt; margin: 0; }
             .stat-section, .attack-entry { background-color: #f0f0f0 !important; border: 1px solid #ccc !important; box-shadow: none !important; page-break-inside: avoid; padding: 0.4rem !important; margin-bottom: 0.5rem !important; }
-            #defenses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem 1.5rem !important; border-top: 1px solid #333; padding-top: 0.5rem; margin-bottom: 0.5rem !important; }
-            #defenses-grid > div { margin-bottom: 0 !important; } #defenses-grid h4 { margin-top: 0; }
+            #defenses-grid, #item-details-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem 1.5rem !important; border-top: 1px solid #333; padding-top: 0.5rem; margin-bottom: 0.5rem !important; }
+            #defenses-grid > div, #item-details-section > div { margin-bottom: 0 !important; } #defenses-grid h4, #item-details-section h4 { margin-top: 0; }
             p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
             #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
-            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
-            #json-print-container:empty { display: none !important; }
-            #json-print-container h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
+            #json-print-container:not(:empty), #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
+            #json-print-container:empty, #item-details-section:empty { display: none !important; }
+            #json-print-container h4, #item-details-section h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
             a, i.lucide { display: none !important; }
         }
@@ -419,17 +419,34 @@
         @media (max-width: 768px) { .spell-list-columns { column-count: 1; } }
         .spell-level-group { margin-bottom: 1rem; break-inside: avoid-column; }
         .spell-level-group h4 { font-size: 1.1rem; border: none; margin-bottom: 0.25rem; padding: 0; }
-        .spell-link, .item-link { color: var(--gold); text-decoration: underline; cursor: pointer; }
-        .spell-link:hover, .item-link:hover { color: var(--orange); }
-
-        #popover {
-            position: fixed; display: none; max-width: 400px; padding: 1rem;
-            background-color: var(--paper-light); border: 2px solid var(--border-main);
-            border-radius: 0.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            z-index: 2000; pointer-events: none;
+        
+        #item-details-section .item-detail {
+            background-color: var(--paper-subtle);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
         }
-        #popover h4 { margin-top: 0; color: var(--header-dark); border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem; }
-        #popover p, #popover ul { font-size: 0.9rem; }
+        #item-details-section h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-darker);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        #item-details-section .action-icon-wrapper {
+            margin-right: 0.5rem;
+        }
+        #item-details-section p {
+            margin: 0;
+        }
+        #item-details-section hr {
+            border: 0;
+            border-top: 1px solid var(--border-subtle);
+            margin: 0.75rem 0;
+        }
     </style>
 </head>
 <body>
@@ -520,6 +537,8 @@
                             <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
                         </div>
                     </div>
+                    <!-- NEW: Item/Spell Details Section -->
+                    <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
                 </div>
             </div>
         </div>
@@ -577,8 +596,6 @@
     <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
         <span data-lang-key="version">Version</span>: 3.02
     </div>
-    
-    <div id="popover" style="display: none;"></div>
 
 <script type="module">
 // This script contains all the logic for the application.
@@ -743,6 +760,7 @@ const translations = {
         meleeAttacks: "Útoky na blízko",
         rangedAttacks: "Útoky na dálku",
         spellcasting: "Sesílání Kouzel",
+        itemSpellDetails: "Detaily Předmětů a Kouzel",
         loreStory: "Lore / Příběh",
         strength: "Síla (Str)",
         dexterity: "Obratnost (Dex)",
@@ -958,6 +976,7 @@ const translations = {
         meleeAttacks: "Melee Attacks",
         rangedAttacks: "Ranged Attacks",
         spellcasting: "Spellcasting",
+        itemSpellDetails: "Item & Spell Details",
         loreStory: "Lore / Story",
         strength: "Strength (Str)",
         dexterity: "Dexterity (Dex)",
@@ -1135,7 +1154,7 @@ function formatFoundryVTTText(description) {
     if (!description) return '';
     let text = description;
     text = text.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `@Check[type:${type.toLowerCase()}|dc:${dc}${basic ? '|basic:true' : ''}]{${basic ? 'Basic ' : ''}${type.charAt(0).toUpperCase() + type.slice(1)} DC ${dc}}`);
-    text = text.replace(/\[Damage:([\w\d+-]+)\|(\w+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `@Damage[${formula}[${type}${persistent ? ',persistent' : ''}]]{${formula} ${type} ${persistent ? 'persistent ' : ''}damage}`);
+    text = text.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `@Damage[${formula.trim()}[${type.trim()}${persistent ? ',persistent' : ''}]]{${formula.trim()} ${type.trim()} ${persistent ? 'persistent ' : ''}damage}`);
     text = text.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => {
         const uuid = CONDITION_UUID_MAP[name.toLowerCase()];
         const label = `${name.charAt(0).toUpperCase() + name.slice(1)} ${value}`;
@@ -1149,7 +1168,7 @@ function formatDescriptionForDisplay(text, t) {
     if (!text) return '';
     let readableText = text;
     readableText = readableText.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `záchranný hod na ${t[type.charAt(0).toUpperCase() + type.slice(1)] || type} se SO ${dc}${basic ? ' základní' : ''}`);
-    readableText = readableText.replace(/\[Damage:([\w\d.+-]+)\|(\w+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `<strong>${formula}${persistent ? ' přetrvávajícího' : ''} ${type} ${t.damage || 'damage'}</strong>`);
+    readableText = readableText.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `<strong>${formula.trim()}${persistent ? ' přetrvávajícího' : ''} ${type.trim()} ${t.damage || 'damage'}</strong>`);
     readableText = readableText.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => `<strong>${name.charAt(0).toUpperCase() + name.slice(1)} ${value}</strong>`);
     readableText = readableText.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `<strong>${distance}-stopový ${type}</strong>`);
     return readableText;
@@ -1211,7 +1230,7 @@ function checkForShareDataInUrl() {
 function findInDatabase(name, dbArray) {
     if (!name || !dbArray) return null;
     const trimmedName = name.trim().toLowerCase();
-    return dbArray.find(item => item.name.toLowerCase() === trimmedName) || null;
+    return dbArray.find(item => item && item.name && item.name.toLowerCase() === trimmedName) || null;
 }
 
 function transformInternalToFoundry(data) {
@@ -1251,28 +1270,41 @@ function transformInternalToFoundry(data) {
         items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
         
         const createSpellItem = (spell, level) => {
+            if (!spell || !spell.name_en) return null;
             const spellData = findInDatabase(spell.name_en, state.gameData.spells);
-            if (!spellData || !spellData._id) { // If spell not found in DB, create a basic text-only entry
+            if (!spellData) {
                 return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}};
             }
-            return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, sourceId: spellData._id } };
+            // Create a full copy of the spell from DB to import into Foundry
+            const foundrySpell = JSON.parse(JSON.stringify(spellData)); // Deep copy
+            foundrySpell.system.location = { value: spellcastingEntryId };
+            return foundrySpell;
         };
-        (data.spellcasting.cantrips || []).forEach(spell => items.push(createSpellItem(spell, 0)));
-        (data.spellcasting.spells || []).forEach(group => group.list.forEach(spell => items.push(createSpellItem(spell, group.level))));
+
+        (data.spellcasting.cantrips || []).map(spell => createSpellItem(spell, 0)).filter(Boolean).forEach(item => items.push(item));
+        (data.spellcasting.spells || []).forEach(group => {
+            (group.list || []).map(spell => createSpellItem(spell, group.level)).filter(Boolean).forEach(item => items.push(item));
+        });
     }
     
     (data.equipment || []).forEach(item => {
+        if (!item || !item.name) return;
         const itemData = findInDatabase(item.name, state.gameData.equipment);
-        if (itemData && itemData._id) {
-            items.push({ _id: generateId(), name: item.name, type: 'equipment', system: { sourceId: itemData._id } });
+        if (itemData) {
+             const foundryItem = JSON.parse(JSON.stringify(itemData));
+             items.push(foundryItem);
         }
     });
 
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
-    const hpParts = data.hp?.split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
+    const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
     const speedValue = parseInt(data.speed) || 25;
     
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities: (data.immunities || []).map(i => ({ type: getCorrectedDamageType(i), source: null })), resistances: (data.resistances || []).map(r => ({ type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null })), weaknesses: (data.weaknesses || []).map(w => ({ type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null })) }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.02" }, }, items };
+    const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), source: null } : null).filter(Boolean);
+    const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
+    const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
+
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.02" }, }, items };
 }
 
 
@@ -1347,7 +1379,7 @@ function renderStatblock(creature) {
     
     const renderEquipment = (items) => {
         if (!items || items.length === 0) return '';
-        const itemLinks = items.map(item => `<span class="item-link" data-item-name="${item.name}">${item.name}</span>`).join(', ');
+        const itemLinks = items.map(item => item.name).join(', ');
         return `<div class="mb-4"><h4>${t.equipment}</h4><p>${itemLinks}</p></div>`;
     };
 
@@ -1356,11 +1388,12 @@ function renderStatblock(creature) {
         const createSpellLinks = (spellList) => (spellList || []).map(spell => {
             const isObject = typeof spell === 'object' && spell !== null;
             const en_name = isObject ? spell.name_en : spell;
+            if (!en_name) return ''; // Skip if name is missing
             const cz_name = isObject ? spell.name_cz : null;
             const displayName = (cz_name && state.lang === 'cs') ? `${en_name} (${cz_name})` : en_name;
             const spellData = findInDatabase(en_name, state.gameData.spells);
             const actionIcon = getActionIcon(getSpellActionCost(spellData), t);
-            return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${actionIcon}</div><span class="spell-link" data-spell-name="${en_name}">${displayName}</span></div>`;
+            return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${actionIcon}</div><span>${displayName}</span></div>`;
         }).join('');
 
         const cantripsHtml = createSpellLinks(spellcasting.cantrips);
@@ -1369,12 +1402,56 @@ function renderStatblock(creature) {
     }
 
     container.innerHTML = `<div class="statblock-header"><div><h3 class="font-handwritten">${displayCreature.name}</h3><p class="font-script">${displayCreature.rarity} ${displayCreature.size} ${(displayCreature.traits || []).join(', ')}</p></div><div class="statblock-level"><span data-lang-key="creatureLabel">${t.creatureLabel}</span> <span>${displayCreature.level}</span></div></div>
-        <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 1rem 0;"><div class="stat-section"><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>AC</strong> ${displayCreature.ac}</div><div><strong>HP</strong> ${displayCreature.hp}</div><div><strong>${t.speed}</strong> ${displayCreature.speed}</div></div><div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.fortitude.substring(0,4)}</strong> ${displayCreature.saves.Fort}</div><div><strong>${t.reflex.substring(0,4)}</strong> ${displayCreature.saves.Ref}</div><div><strong>${t.will.substring(0,4)}</strong> ${displayCreature.saves.Will}</div></div><div><p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Vnímání' : 'Perception')}</strong> ${displayCreature.perception}</p>${displayCreature.senses.length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Smysly' : 'Senses')}</strong> ${displayCreature.senses.join(', ')}</p>` : ''}${displayCreature.languages.length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Jazyky' : 'Languages')}</strong> ${displayCreature.languages.join(', ')}</p>` : ''}</div></div><div class="stat-section"><div class="grid grid-cols-2 gap-x-4 gap-y-1" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.strength.substring(0,3)}</strong> ${displayCreature.attributes.Str}</div><div><strong>${t.dexterity.substring(0,3)}</strong> ${displayCreature.attributes.Dex}</div><div><strong>${t.constitution.substring(0,3)}</strong> ${displayCreature.attributes.Con}</div><div><strong>${t.intelligence.substring(0,3)}</strong> ${displayCreature.attributes.Int}</div><div><strong>${t.wisdom.substring(0,3)}</strong> ${displayCreature.attributes.Wis}</div><div><strong>${t.charisma.substring(0,3)}</strong> ${displayCreature.attributes.Cha}</div></div><div><h4 style="margin: 0 0 0.5rem 0; padding: 0; border: 0;">${t.skills}</h4><p style="margin:0; line-height: 1.5;">${(displayCreature.skills && displayCreature.skills.length > 0) ? displayCreature.skills.map(skill => `${(state.lang === 'cs' ? skill.name_cz : skill.name_en)} ${skill.bonus}`).join(', ') : (state.lang === 'cs' ? 'Žádné' : 'None')}</p></div></div></div>
+        <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 1rem 0;"><div class="stat-section"><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>AC</strong> ${displayCreature.ac}</div><div><strong>HP</strong> ${displayCreature.hp}</div><div><strong>${t.speed}</strong> ${displayCreature.speed}</div></div><div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.fortitude.substring(0,4)}</strong> ${displayCreature.saves.Fort}</div><div><strong>${t.reflex.substring(0,4)}</strong> ${displayCreature.saves.Ref}</div><div><strong>${t.will.substring(0,4)}</strong> ${displayCreature.saves.Will}</div></div><div><p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Vnímání' : 'Perception')}</strong> ${displayCreature.perception}</p>${(displayCreature.senses || []).length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Smysly' : 'Senses')}</strong> ${displayCreature.senses.join(', ')}</p>` : ''}${(displayCreature.languages || []).length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Jazyky' : 'Languages')}</strong> ${displayCreature.languages.join(', ')}</p>` : ''}</div></div><div class="stat-section"><div class="grid grid-cols-2 gap-x-4 gap-y-1" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.strength.substring(0,3)}</strong> ${displayCreature.attributes.Str}</div><div><strong>${t.dexterity.substring(0,3)}</strong> ${displayCreature.attributes.Dex}</div><div><strong>${t.constitution.substring(0,3)}</strong> ${displayCreature.attributes.Con}</div><div><strong>${t.intelligence.substring(0,3)}</strong> ${displayCreature.attributes.Int}</div><div><strong>${t.wisdom.substring(0,3)}</strong> ${displayCreature.attributes.Wis}</div><div><strong>${t.charisma.substring(0,3)}</strong> ${displayCreature.attributes.Cha}</div></div><div><h4 style="margin: 0 0 0.5rem 0; padding: 0; border: 0;">${t.skills}</h4><p style="margin:0; line-height: 1.5;">${(displayCreature.skills && displayCreature.skills.length > 0) ? displayCreature.skills.map(skill => `${(state.lang === 'cs' ? skill.name_cz : skill.name_en)} ${skill.bonus}`).join(', ') : (state.lang === 'cs' ? 'Žádné' : 'None')}</p></div></div></div>
         <div id="defenses-grid" class="mb-4">${(displayCreature.immunities && displayCreature.immunities.length > 0) ? `<div><h4>${t.immunities}</h4><p>${displayCreature.immunities.join(', ')}</p></div>` : ''}${(displayCreature.resistances && displayCreature.resistances.length > 0) ? `<div><h4>${t.resistances}</h4><p>${displayCreature.resistances.join(', ')}</p></div>` : ''}${(displayCreature.weaknesses && displayCreature.weaknesses.length > 0) ? `<div><h4>${t.weaknesses}</h4><p>${displayCreature.weaknesses.join(', ')}</p></div>` : ''}</div>
         ${renderEquipment(displayCreature.equipment)}
         ${renderAttacks(displayCreature.meleeAttacks, 'meleeAttacks')}${renderAttacks(displayCreature.rangedAttacks, 'rangedAttacks')}${renderSpellcasting(displayCreature.spellcasting, t)}
         <div class="mb-4">${(displayCreature.specialAbilities || []).length > 0 ? `<h4>${t.specialAbilitiesActions}</h4>` : ''}<ul id="special-abilities-list">${(displayCreature.specialAbilities || []).map(sa => `<li><div class="action-icon-wrapper">${getActionIcon(sa.actionCost, t)}</div><div><strong>${sa.name}:</strong> ${formatDescriptionForDisplay(sa.description, t)}</div></li>`).join('')}</ul></div>
         <div class="mt-4"><h4 data-lang-key="appearance">${t.appearance}</h4><p style="white-space: pre-wrap;">${displayCreature.appearance || ''}</p></div><div class="mt-4"><h4 data-lang-key="behavior">${t.behavior}</h4><p style="white-space: pre-wrap;">${displayCreature.behavior || ''}</p></div><div class="mt-4"><h4 data-lang-key="loreStory">${t.loreStory}</h4><p style="white-space: pre-wrap;">${formatDescriptionForDisplay(displayCreature.lore, t)}</p></div>`;
+}
+
+function renderItemDetails(creature) {
+    const t = translations[state.lang];
+    const container = getElement('item-details-section');
+    if (!creature) {
+        container.innerHTML = '';
+        return;
+    }
+
+    let allItems = [];
+    if (creature.equipment) {
+        allItems = allItems.concat(creature.equipment.map(item => ({...item, isSpell: false})));
+    }
+    if (creature.spellcasting) {
+        const spells = (creature.spellcasting.cantrips || []).concat((creature.spellcasting.spells || []).flatMap(g => g.list));
+        allItems = allItems.concat(spells.map(spell => ({name: spell.name_en, isSpell: true})));
+    }
+
+    if (allItems.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+
+    let html = `<h4>${t.itemSpellDetails}</h4>`;
+    const uniqueItems = [...new Map(allItems.map(item => [item.name, item])).values()]; // Get unique items
+
+    uniqueItems.forEach(item => {
+        const db = item.isSpell ? state.gameData.spells : state.gameData.equipment;
+        const data = findInDatabase(item.name, db);
+        if (data) {
+            const actionCost = item.isSpell ? getSpellActionCost(data) : (data.system.actions ? data.system.actions.value : null);
+            html += `<div class="item-detail">
+                        <h5>
+                            <div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div>
+                            <span>${data.name}</span>
+                        </h5>
+                        <p><b>Source: </b><i>${data.source?.book || 'N/A'} pg. ${data.source?.page || 'N/A'}</i></p>
+                        <hr>
+                        <div>${data.description || ''}</div>
+                     </div>`;
+        }
+    });
+    container.innerHTML = html;
 }
 
 // --- ENCOUNTER TAB LOGIC ---
@@ -1402,15 +1479,16 @@ async function handleGenerate() {
         const spellcastingSchema = { type: "OBJECT", properties: { type: { type: "STRING" }, ability: { type: "STRING" }, dc: { type: "NUMBER" }, attack: { type: "STRING" }, cantrips: { type: "ARRAY", items: spellNameSchema }, spells: { type: "ARRAY", items: { type: "OBJECT", properties: { level: { type: "NUMBER" }, list: { type: "ARRAY", items: spellNameSchema } }, required: ["level", "list"] } } } };
         const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
         const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
-        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { "type": "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { "type": "STRING" } }, languages: { type: "ARRAY", items: { "type": "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { "type": "STRING" } }, resistances: { type: "ARRAY", items: { "type": "STRING" } }, weaknesses: { type: "ARRAY", items: { "type": "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
+        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
         const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
 1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
 2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
-3.  The 'type' in 'weaknesses' must be a damage type (e.g., 'cold'), not a generic word like 'vulnerability' or 'zranitelnost'.
-4.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
-5.  Equipment 'name' MUST be the exact, official English name.`;
+3.  For physical resistance, create separate entries for 'slashing', 'piercing', and 'bludgeoning' if needed; do not use a generic 'physical'.
+4.  The 'type' in 'weaknesses' must be a damage type (e.g., 'cold'), not a generic word like 'vulnerability' or 'zranitelnost'.
+5.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
+6.  Equipment 'name' MUST be the exact, official English name.`;
         
         const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
         
@@ -1464,7 +1542,7 @@ async function loadAllGameData() {
         loadedData.equipment = equipmentDataArrays.flat();
         
         loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
-            map[spell.name.toLowerCase()] = spell;
+            if (spell && spell.name) map[spell.name.toLowerCase()] = spell;
             return map;
         }, {});
         
@@ -1489,6 +1567,7 @@ function updateGeneratorState(creatureData, prompt, level) {
     state.currentCreature = creatureData;
     state.currentPrompt = prompt || '';
     renderStatblock(creatureData);
+    renderItemDetails(creatureData); // NEW: render details below statblock
     getElement('generator-prompt').value = prompt;
     getElement('creature-level').value = level || creatureData.level;
     const foundryJson = transformInternalToFoundry(creatureData);
@@ -1549,38 +1628,6 @@ window.onload = () => {
     getElement('close-share-modal-btn').addEventListener('click', () => getElement('share-modal').classList.remove('show'));
     getElement('copy-share-link-btn').addEventListener('click', (e) => copyToClipboard(getElement('share-link-textarea').value, e.currentTarget, translations[state.lang]));
     
-    const popover = getElement('popover');
-    getElement('statblock-display-container').addEventListener('mouseover', (e) => {
-        const link = e.target.closest('.spell-link, .item-link');
-        if (!link) return;
-        
-        const isSpell = link.classList.contains('spell-link');
-        const name = link.dataset.spellName || link.dataset.itemName;
-        const db = isSpell ? state.gameData.spells : state.gameData.equipment;
-        const data = findInDatabase(name, db);
-        const t = translations[state.lang];
-        
-        popover.innerHTML = data 
-            ? `<h4>${name}</h4><p><b>Source: </b><i>${data.source?.book || 'N/A'} pg. ${data.source?.page || 'N/A'}</i></p><div>${data.description || ''}</div>`
-            : `<h4>${name}</h4><p>${isSpell ? t.spellNotFound : t.itemNotFound}</p>`;
-        popover.style.display = 'block';
-    });
-
-    getElement('statblock-display-container').addEventListener('mousemove', (e) => {
-        if (popover.style.display !== 'block') return;
-        let left = e.pageX + 15, top = e.pageY + 15;
-        if (left + popover.offsetWidth + 20 > window.innerWidth) left = e.pageX - popover.offsetWidth - 15;
-        if (top + popover.offsetHeight + 20 > window.innerHeight) top = e.pageY - popover.offsetHeight - 15;
-        popover.style.left = `${left}px`;
-        popover.style.top = `${top}px`;
-    });
-
-    getElement('statblock-display-container').addEventListener('mouseout', (e) => {
-        if (e.target.closest('.spell-link, .item-link')) {
-            popover.style.display = 'none';
-        }
-    });
-
     getElement('lang-btn').textContent = state.lang.toUpperCase();
     updateLanguage(); 
     renderStatblock(null); 
