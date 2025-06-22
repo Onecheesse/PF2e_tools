@@ -1,113 +1,164 @@
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
 import os
 import json
-import tkinter as tk
-from tkinter import filedialog, messagebox
+import shutil
+import threading
 
-# --- Jádro logiky pro spojování souborů (z původního skriptu) ---
-def merge_json_files(input_folder, output_file):
-    """
-    Načte všechny .json soubory z vstupní složky a spojí je do jednoho výstupního souboru.
-    Vrací počet zpracovaných souborů nebo chybovou hlášku.
-    """
-    all_data = []
-    try:
-        for filename in os.listdir(input_folder):
-            if filename.endswith('.json'):
-                file_path = os.path.join(input_folder, filename)
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    all_data.append(data)
-
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_data, f, ensure_ascii=False, indent=2)
-        
-        return len(all_data)
-    except Exception as e:
-        return f"Došlo k chybě: {e}"
-
-# --- Funkce pro grafické rozhraní ---
-class App:
+# --- Hlavní třída aplikace ---
+class JsonSorterApp:
     def __init__(self, root):
+        """
+        Inicializace grafického rozhraní aplikace.
+        """
         self.root = root
-        self.root.title("JSON Merger by AI")
-        self.root.geometry("500x250") # Šířka x výška
+        self.root.title("Finální třídič a slučovač JSON")
+        self.root.geometry("600x350")
 
-        self.input_folder_path = tk.StringVar()
-        self.output_folder_path = tk.StringVar()
-        self.output_filename = tk.StringVar(value="vysledny_soubor.json") # Výchozí název
+        # Proměnné pro uložení cest ke složkám
+        self.source_dir = tk.StringVar()
+        self.dest_dir = tk.StringVar()
 
-        # --- Rozhraní pro výběr VSTUPNÍ složky ---
-        frame_input = tk.Frame(root, pady=10)
-        frame_input.pack(fill="x", padx=10)
+        # <<< NOVÁ ČÁST: Automatické vyplnění cest ---
+        try:
+            # Zjistí absolutní cestu k adresáři, kde se nachází spuštěný skript
+            script_path = os.path.dirname(os.path.realpath(__file__))
+            self.source_dir.set(script_path)
+            self.dest_dir.set(script_path)
+        except NameError:
+            # Pojistka, pokud by skript běžel v prostředí, kde __file__ není definováno
+            # (např. interaktivní konzole). V takovém případě zůstanou pole prázdná.
+            print("Nepodařilo se zjistit cestu skriptu, cesty je třeba vybrat ručně.")
+        # --- Konec nové části ---
+
+        # --- Vytvoření prvků v okně (widgetů) ---
+        main_frame = tk.Frame(root, padx=10, pady=10)
+        main_frame.pack(fill="both", expand=True)
+
+        tk.Label(main_frame, text="1. Zdrojová složka (kde jsou JSON soubory):").grid(row=0, column=0, sticky="w", pady=(0, 5))
+        # Entry widgety nyní budou zobrazovat předvyplněnou cestu
+        tk.Entry(main_frame, textvariable=self.source_dir, state="readonly", width=70).grid(row=1, column=0, sticky="ew")
+        tk.Button(main_frame, text="Změnit...", command=self.select_source_dir).grid(row=1, column=1, padx=(5, 0))
+
+        tk.Label(main_frame, text="2. Cílová složka (kam se vytvoří struktura):").grid(row=2, column=0, sticky="w", pady=(10, 5))
+        tk.Entry(main_frame, textvariable=self.dest_dir, state="readonly", width=70).grid(row=3, column=0, sticky="ew")
+        tk.Button(main_frame, text="Změnit...", command=self.select_dest_dir).grid(row=3, column=1, padx=(5, 0))
+
+        self.sort_button = tk.Button(main_frame, text="3. Spustit kopírování a sloučení", command=self.start_sorting_thread, font=("Arial", 10, "bold"), bg="#007BFF", fg="white")
+        self.sort_button.grid(row=4, column=0, columnspan=2, pady=(20, 10), sticky="ew")
+
+        self.progress_bar = ttk.Progressbar(main_frame, orient="horizontal", length=100, mode="determinate")
+        self.progress_bar.grid(row=5, column=0, columnspan=2, sticky="ew", pady=(5, 5))
         
-        label_input = tk.Label(frame_input, text="Složka s JSON soubory:")
-        label_input.pack(side="left")
-        
-        button_input = tk.Button(frame_input, text="Vybrat...", command=self.select_input_folder)
-        button_input.pack(side="right")
-        
-        self.entry_input = tk.Entry(frame_input, textvariable=self.input_folder_path, state="readonly")
-        self.entry_input.pack(side="left", fill="x", expand=True, padx=5)
+        self.status_label = tk.Label(main_frame, text="Připraveno. Cesty jsou předvyplněny.", bd=1, relief=tk.SUNKEN, anchor=tk.W)
+        self.status_label.grid(row=6, column=0, columnspan=2, sticky="ew")
 
-        # --- Rozhraní pro výběr VÝSTUPNÍ složky a názvu souboru ---
-        frame_output = tk.Frame(root, pady=5)
-        frame_output.pack(fill="x", padx=10)
-        
-        label_output = tk.Label(frame_output, text="Výstupní složka:")
-        label_output.pack(side="left")
+        main_frame.columnconfigure(0, weight=1)
 
-        button_output = tk.Button(frame_output, text="Vybrat...", command=self.select_output_folder)
-        button_output.pack(side="right")
-
-        self.entry_output = tk.Entry(frame_output, textvariable=self.output_folder_path, state="readonly")
-        self.entry_output.pack(side="left", fill="x", expand=True, padx=5)
-
-        # --- Název výstupního souboru ---
-        frame_filename = tk.Frame(root, pady=5)
-        frame_filename.pack(fill="x", padx=10)
-
-        label_filename = tk.Label(frame_filename, text="Název výstupního souboru:")
-        label_filename.pack(side="left")
-        
-        entry_filename = tk.Entry(frame_filename, textvariable=self.output_filename)
-        entry_filename.pack(side="left", fill="x", expand=True, padx=(18, 0))
-
-        # --- Tlačítko pro spuštění ---
-        self.run_button = tk.Button(root, text="Spojit soubory", command=self.run_merger, font=("Helvetica", 12, "bold"), bg="#4CAF50", fg="white")
-        self.run_button.pack(pady=20, ipadx=10, ipady=5)
-
-    def select_input_folder(self):
-        folder_selected = filedialog.askdirectory()
+    def select_source_dir(self):
+        folder_selected = filedialog.askdirectory(initialdir=self.source_dir.get())
         if folder_selected:
-            self.input_folder_path.set(folder_selected)
+            self.source_dir.set(folder_selected)
+            self.status_label.config(text=f"Zdrojová složka: {folder_selected}")
 
-    def select_output_folder(self):
-        folder_selected = filedialog.askdirectory()
+    def select_dest_dir(self):
+        folder_selected = filedialog.askdirectory(initialdir=self.dest_dir.get())
         if folder_selected:
-            self.output_folder_path.set(folder_selected)
+            self.dest_dir.set(folder_selected)
+            self.status_label.config(text=f"Cílová složka: {folder_selected}")
 
-    def run_merger(self):
-        input_dir = self.input_folder_path.get()
-        output_dir = self.output_folder_path.get()
-        filename = self.output_filename.get()
+    def start_sorting_thread(self):
+        source = self.source_dir.get()
+        dest = self.dest_dir.get()
 
-        if not input_dir or not output_dir or not filename:
-            messagebox.showerror("Chyba", "Musíte vyplnit všechny pole!")
+        if not source or not dest:
+            messagebox.showerror("Chyba", "Musíte vybrat zdrojovou i cílovou složku.")
+            return
+        if source == dest and not messagebox.askyesno("Varování", "Zdrojová a cílová složka jsou stejné. To znamená, že podsložky a souhrnné soubory budou vytvořeny ve stejné složce jako původní data.\n\nOpravdu chcete pokračovat?"):
             return
 
-        if not filename.endswith('.json'):
-            filename += '.json'
+        self.sort_button.config(state="disabled", text="Pracuji...")
+        self.progress_bar["value"] = 0
+        
+        thread = threading.Thread(target=self.process_files, args=(source, dest), daemon=True)
+        thread.start()
 
-        output_path = os.path.join(output_dir, filename)
+    def process_files(self, source_path, dest_path):
+        try:
+            self.status_label.config(text="Fáze 1: Načítám a analyzuji soubory...")
+            all_files = os.listdir(source_path)
+            json_files = [f for f in all_files if f.lower().endswith('.json') and not f.startswith('_') and f.endswith('_complete.json')==False]
+            total_files = len(json_files)
 
-        result = merge_json_files(input_dir, output_path)
+            if total_files == 0:
+                self.status_label.config(text="Ve zdrojové složce nebyly nalezeny žádné relevantní .json soubory.")
+                self.sort_button.config(state="normal", text="Spustit kopírování a sloučení")
+                return
 
-        if isinstance(result, int):
-            messagebox.showinfo("Hotovo", f"Úspěšně spojeno {result} souborů do:\n{output_path}")
-        else:
-            messagebox.showerror("Chyba při zpracování", result)
+            self.progress_bar["maximum"] = total_files
+            category_groups = {}
+            processed_count = 0
+            error_count = 0
 
+            for filename in json_files:
+                processed_count += 1
+                source_file_path = os.path.join(source_path, filename)
+                self.status_label.config(text=f"Načítám: {processed_count}/{total_files} - {filename}")
+
+                try:
+                    with open(source_file_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    category = data.get('system', {}).get('category')
+                    if not category: category = "_bez_kategorie"
+                    if category not in category_groups: category_groups[category] = []
+                    
+                    category_groups[category].append((filename, data))
+                except (json.JSONDecodeError, KeyError) as e:
+                    error_count += 1
+                    print(f"Chyba při zpracování souboru '{filename}': {e}")
+                
+                self.progress_bar["value"] = processed_count
+                self.root.update_idletasks()
+            
+            self.status_label.config(text="Fáze 2: Vytvářím složky, kopíruji a slučuji soubory...")
+            total_categories = len(category_groups)
+            processed_categories = 0
+            
+            for category, files_data in category_groups.items():
+                processed_categories += 1
+                self.status_label.config(text=f"Zpracovávám kategorii: {processed_categories}/{total_categories} - '{category}'")
+                
+                category_folder_path = os.path.join(dest_path, category)
+                os.makedirs(category_folder_path, exist_ok=True)
+                
+                combined_json_content = {}
+                
+                for filename, data in files_data:
+                    source_file_path = os.path.join(source_path, filename)
+                    dest_file_path = os.path.join(category_folder_path, filename)
+                    shutil.copy(source_file_path, dest_file_path)
+                    
+                    key = data.get('_id', filename)
+                    combined_json_content[key] = data
+
+                combined_filename = f"_{category}_complete.json"
+                combined_filepath = os.path.join(dest_path, combined_filename)
+                
+                with open(combined_filepath, 'w', encoding='utf-8') as f:
+                    json.dump(combined_json_content, f, indent=4, ensure_ascii=False)
+
+            final_message = f"Hotovo! Zpracováno {total_files} souborů do {total_categories} kategorií. Chyby: {error_count}."
+            self.status_label.config(text=final_message)
+            messagebox.showinfo("Dokončeno", final_message)
+        except Exception as e:
+            self.status_label.config(text=f"Kritická chyba: {e}")
+            messagebox.showerror("Chyba", f"Došlo k závažné chybě: {e}")
+        finally:
+            self.sort_button.config(state="normal", text="Spustit kopírování a sloučení")
+
+# --- Spuštění aplikace ---
 if __name__ == "__main__":
     root = tk.Tk()
-    app = App(root)
+    app = JsonSorterApp(root)
     root.mainloop()
