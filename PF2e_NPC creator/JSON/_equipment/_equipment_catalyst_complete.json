@@ -1,0 +1,4001 @@
+{
+    "dXhHBfDg1OxtSaOg": {
+        "_id": "dXhHBfDg1OxtSaOg",
+        "img": "icons/commodities/materials/hair-tuft-grey.webp",
+        "name": "Alicorn Hair",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>Hair shed from an alicorn's mane glows when it comes into contact with a living creature. A @UUID[Compendium.pf2e.spells-srd.Item.Stabilize] spell empowered with an <em>alicorn hair</em> allows you to target 1 additional creature.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Hoe17WNDQ2PQd9JZ": {
+        "_id": "Hoe17WNDQ2PQd9JZ",
+        "img": "icons/magic/perception/eye-ringed-green.webp",
+        "name": "Amphisbaena Spittle",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Hardened clumps of <em>amphisbaena spittle</em> can be harvested from the dual-headed snake's hunting grounds. When a casting of @UUID[Compendium.pf2e.spells-srd.Item.Web of Eyes] is empowered with this catalyst, you can place an additional scrying sensor on the back of each target's head, in the shape of a closed snake's eye. When a target shares their vision with the others affected by the spell, the eye blinks open, preventing the target from being flanked until the start of its next turn.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Amphisbaena Spittle]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 21
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7VNwyrkZS8ui4HmF": {
+        "_id": "7VNwyrkZS8ui4HmF",
+        "img": "icons/commodities/flowers/lily-pink.webp",
+        "name": "Bougainvillea Blossom (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This pink flower has long, slender thorns along the stem. The flower can be used as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Entangling Flora] spell, which causes the affected plants to sprout long thorns and vibrant pink blossoms. The area becomes hazardous terrain, dealing the @Damage[3[piercing]] damage to an enemy each time it enters an affected square.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "gEDLO9RQ1Qs6x5aO": {
+        "_id": "gEDLO9RQ1Qs6x5aO",
+        "img": "icons/commodities/flowers/lily-pink.webp",
+        "name": "Bougainvillea Blossom (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This pink flower has long, slender thorns along the stem. The flower can be used as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Entangling Flora] spell, which causes the affected plants to sprout long thorns and vibrant pink blossoms. The area becomes hazardous terrain, dealing the @Damage[1[piercing]] damage to an enemy each time it enters an affected square.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Tm1MfO24oe8NsxbY": {
+        "_id": "Tm1MfO24oe8NsxbY",
+        "img": "icons/commodities/flowers/lily-pink.webp",
+        "name": "Bougainvillea Blossom (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This pink flower has long, slender thorns along the stem. The flower can be used as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Entangling Flora] spell, which causes the affected plants to sprout long thorns and vibrant pink blossoms. The area becomes hazardous terrain, dealing the @Damage[5[piercing]] damage to an enemy each time it enters an affected square.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1200
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "kaYxmbz5arHnCkLn": {
+        "_id": "kaYxmbz5arHnCkLn",
+        "img": "icons/commodities/flowers/lily-pink.webp",
+        "name": "Bougainvillea Blossom (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This pink flower has long, slender thorns along the stem. The flower can be used as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Entangling Flora] spell, which causes the affected plants to sprout long thorns and vibrant pink blossoms. The area becomes hazardous terrain, dealing the @Damage[2[piercing]] damage to an enemy each time it enters an affected square.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 60
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "oJTIjBsOu9vLBjBD": {
+        "_id": "oJTIjBsOu9vLBjBD",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Broken Ram's Thorn",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>The thorny growths on a rosethorn ram's horns break off into jagged pieces when these animals fight. When used to enhance the two-action version of a @UUID[Compendium.pf2e.spells-srd.Item.Howling Blizzard] spell, these thorns cause the squares directly adjacent to every creature within the spell's area of effect to become littered with icy caltrops. The first creature that moves into each affected square must succeed at an @Check[acrobatics] check with a DC equal to spell's save DC or take an amount of cold damage equal to the spell's rank. When a creature takes damage from the icy caltrops, enough are damaged that other creatures moving into that square are safe.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 150
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "gUdXcEZQ7mGB8JW1": {
+        "_id": "gUdXcEZQ7mGB8JW1",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Chaos Falcon Feather",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>When used as catalysts, <em>chaos falcon feathers</em> lend flexibility to spells that deal with elemental energy. For the duration of a catalyzed @UUID[Compendium.pf2e.spells-srd.Item.Resist Energy] spell, you can Sustain the Spell on an adjacent target, touching them and changing the type of energy to which they have resistance. This reduces the remaining duration of the spell by 1 minute; if the spell has less than a minute remaining, it reduces the duration to 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xnIEWJYmJh6j58Wd": {
+        "_id": "xnIEWJYmJh6j58Wd",
+        "img": "icons/commodities/gems/pearls-white.webp",
+        "name": "Dazzling Rosary (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>When energy courses through these lustrous beads, they glow brightly in the sacred colors of the spellcaster's faith. A @UUID[Compendium.pf2e.spells-srd.Item.Spiritual Weapon] empowered with this catalyst flashes with bright light when it critically Strikes a target, causing the target to be @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] until the beginning of your next turn. The rosary can be used with a <em>spiritual weapon</em> of any level.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Dazzling Rosary]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 350
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xcH5IW7ahE3q8cPq": {
+        "_id": "xcH5IW7ahE3q8cPq",
+        "img": "icons/commodities/gems/pearls-white.webp",
+        "name": "Dazzling Rosary",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>When energy courses through these lustrous beads, they glow brightly in the sacred colors of the spellcaster's faith. A @UUID[Compendium.pf2e.spells-srd.Item.Spiritual Weapon] empowered with this catalyst flashes with bright light when it critically Strikes a target, causing the target to be @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] until the beginning of your next turn. The rosary can be used with a <em>spiritual weapon</em> of 4th level or below.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Dazzling Rosary]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Vk5VzPB2fj3Ym1Ia": {
+        "_id": "Vk5VzPB2fj3Ym1Ia",
+        "img": "icons/consumables/food/candy-pattie-pink-white.webp",
+        "name": "Deadlock Mint (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p><em>Deadlock mint</em> is a species of mint with small, green flowers, said to grow on battlefields where the opposing sides were equally matched. Sprigs of the flowers blow gently in a breeze of their own creation. If you cast @UUID[Compendium.pf2e.spells-srd.Item.Mystic Armor] using <em>deadlock mint</em>, you release a small blast of concussive air in an emanation of a size that depends on the catalyst's type. Unattended objects up to a certain Bulk limit are pushed away from you. Large or smaller creatures must succeed at a Fortitude save equal to your spell save DC or be pushed the same distance away from you.</p>\n<p>Objects of 1 Bulk or less and creatures that fail the save are pushed 10 feet. Objects of up to 2 Bulk are pushed 5 feet, and Huge creatures must succeed at the save or be pushed 5 feet.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 110
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "KuTwNrDpuYVAPu7c": {
+        "_id": "KuTwNrDpuYVAPu7c",
+        "img": "icons/consumables/food/candy-pattie-pink-white.webp",
+        "name": "Deadlock Mint",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p><em>Deadlock mint</em> is a species of mint with small, green flowers, said to grow on battlefields where the opposing sides were equally matched. Sprigs of the flowers blow gently in a breeze of their own creation. If you cast @UUID[Compendium.pf2e.spells-srd.Item.Mystic Armor] using <em>deadlock mint</em>, you release a small blast of concussive air in an emanation of a size that depends on the catalyst's type. Unattended objects up to a certain Bulk limit are pushed away from you. Large or smaller creatures must succeed at a Fortitude save equal to your spell save DC or be pushed the same distance away from you.</p>\n<p>Objects of 1 Bulk or less and creatures that fail the save are pushed 5 feet.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 11
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "nvjEr2dlbtMV0q3d": {
+        "_id": "nvjEr2dlbtMV0q3d",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Deathless Light",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<hr />\n<p>This glowing piece of flesh increases the spell rank of a spell with the light trait by 1 (maximum 7) when determining whether the spell's light will shine in magical darkness or counteract a @UUID[Compendium.pf2e.spells-srd.Item.Darkness] spell.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 165
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #172: Secrets of the Temple-City"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ydsXPuDjG2hPspw6": {
+        "_id": "ydsXPuDjG2hPspw6",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/dimensional-knot.webp",
+        "name": "Dimensional Knot",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<hr />\n<p>Shelynites originally crafted this complex knot of vibrant string for bracelets meant to tie the destinies of two people together. Now, however, spellcasters of all religions use them to enhance their capacity with teleportation magic. Adding this catalyst to a 4th-rank @UUID[Compendium.pf2e.spells-srd.Item.Translocate] spell allows you to bring a single willing adjacent creature along with you; however, the teleportation is somewhat disorienting for them, causing them to become @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 1}.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 60
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "BXb0tzJHOAB8whWB": {
+        "_id": "BXb0tzJHOAB8whWB",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Dischoran Rubble",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>Rock fragments exposed to any dischoran's sonic blasts can sometimes retain a portion of the attack's energy, trembling slightly whenever they are touched. When you cast @UUID[Compendium.pf2e.spells-srd.Item.Noise Blast] using a piece of <em>dischoran rubble</em>, the cacophony reverberates through the targets' forms for 1 round. If a creature that failed or critically failed its initial saving throw moves 10 feet or more on their next turn, it takes an additional @Damage[2d10[sonic]] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 18
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Kmf5F06GucKhY6hK": {
+        "_id": "Kmf5F06GucKhY6hK",
+        "img": "icons/commodities/leather/scales-blue-white.webp",
+        "name": "Dragon Breath Scale",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>When used to cast @UUID[Compendium.pf2e.spells-srd.Item.Breathe Fire] or @UUID[Compendium.pf2e.spells-srd.Item.Chilling Spray], a scale from a dragon's throat changes the spell's damage type and corresponding trait to the damage type and trait of the dragon's breath. You can instead choose the damage type and trait corresponding to the dragon's tradition if it's different.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Dragon Breath Scale]</p>\n<p><strong>Adamantine</strong> bludgeoning or fire</p>\n<p><strong>Conspirator</strong> mental or poison</p>\n<p><strong>Diabolic</strong> fire or spirit</p>\n<p><strong>Empyreal</strong> spirit</p>\n<p><strong>Fortune</strong> force</p>\n<p><strong>Horned</strong> fire or poison</p>\n<p><strong>Mirage</strong> force or mental</p>\n<p><strong>Omen</strong> mental</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 55
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "choices": [
+                        {
+                            "label": "PF2E.Dragon.Adamantine",
+                            "value": "adamantine"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Conspirator",
+                            "value": "conspirator"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Diabolic",
+                            "value": "diabolic"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Empyreal",
+                            "value": "empyreal"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Fortune",
+                            "value": "fortune"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Horned",
+                            "value": "horned"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Mirage",
+                            "value": "mirage"
+                        },
+                        {
+                            "label": "PF2E.Dragon.Omen",
+                            "value": "omen"
+                        }
+                    ],
+                    "flag": "dragon",
+                    "key": "ChoiceSet",
+                    "requiresEquipped": false
+                },
+                {
+                    "itemId": "{item|id}",
+                    "key": "ItemAlteration",
+                    "mode": "add",
+                    "property": "other-tags",
+                    "requiresEquipped": false,
+                    "value": "{item|flags.pf2e.rulesSelections.dragon}"
+                }
+            ],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "C35j9PXcyDdrTsat": {
+        "_id": "C35j9PXcyDdrTsat",
+        "img": "icons/commodities/leather/scales-blue.webp",
+        "name": "Dragon Throat Scale",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<p>Dragon scales of all sorts can be powerful magical reagents, infusing magic with the might of their breath. When used to cast @UUID[Compendium.pf2e.spells-srd.Item.Force Barrage], a scale from a dragon's throat causes the spell to lose the force trait and damage type. Instead, the spell has the damage type of the breath weapon belonging to the dragon the scale came from, along with that trait. Damage types are associated with the following dragons, with uncommon dragons noted with an asterisk.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Dragon Throat Scale]</p><hr /><p><strong>Acid:</strong> Black, brine*, copper</p>\n<p><strong>Cold:</strong> Silver, white</p>\n<p><strong>Electricity:</strong> Blue, bronze, cloud*, sky*</p>\n<p><strong>Fire:</strong> Brass, gold, magma*, red, underworld*</p>\n<p><strong>Mental:</strong> Sovereign*</p>\n<p><strong>Poison:</strong> Green</p>\n<p><strong>Void</strong>: Umbral*</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 55
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Treasure Vault"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "choices": [
+                        {
+                            "label": "PF2E.TraitAcid",
+                            "value": "acid"
+                        },
+                        {
+                            "label": "PF2E.TraitCold",
+                            "value": "cold"
+                        },
+                        {
+                            "label": "PF2E.TraitElectricity",
+                            "value": "electricity"
+                        },
+                        {
+                            "label": "PF2E.TraitFire",
+                            "value": "fire"
+                        },
+                        {
+                            "label": "PF2E.TraitMental",
+                            "value": "mental"
+                        },
+                        {
+                            "label": "PF2E.TraitPoison",
+                            "value": "poison"
+                        },
+                        {
+                            "label": "PF2E.TraitVoid",
+                            "value": "void"
+                        }
+                    ],
+                    "flag": "dragonThroatScale",
+                    "key": "ChoiceSet",
+                    "prompt": "PF2E.SpecificRule.Prompt.DamageType",
+                    "requiresEquipped": false
+                },
+                {
+                    "itemId": "{item|id}",
+                    "key": "ItemAlteration",
+                    "mode": "add",
+                    "property": "other-tags",
+                    "requiresEquipped": false,
+                    "value": "{item|flags.pf2e.rulesSelections.dragonThroatScale}"
+                }
+            ],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vRO9Orlts0jP7nCx": {
+        "_id": "vRO9Orlts0jP7nCx",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Euphoric Loop (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>This catalyst is made from twisted sapling bark harvested under a full moon. When used to cast a @UUID[Compendium.pf2e.spells-srd.Item.Charm] spell, the spell creates a blissful experience for all targets of the spell. When the spell ends, even if you Dismiss it, the sudden mental dissonance between the charmed state and reality forces all targets of the <em>charm</em> spell to attempt a Will save against your spell DC.</p><hr /><p><strong>Critical Success</strong> The target is unaffected.</p>\n<p><strong>Success</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 1} or, if the spell ended because of a hostile action, @UUID[Compendium.pf2e.conditionitems.Item.Confused] for 1 round.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 2} or, if the spell ended because of a hostile action, confused for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 3} or, if the spell ended because of a hostile action, confused for 2 rounds.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 450
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "DqgkcKJL6ASqwuio": {
+        "_id": "DqgkcKJL6ASqwuio",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Euphoric Loop",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>This catalyst is made from twisted sapling bark harvested under a full moon. When used to cast a @UUID[Compendium.pf2e.spells-srd.Item.Charm] spell, the spell creates a blissful experience for one target of your choice. When the spell ends, even if you Dismiss it, the sudden mental dissonance between the charmed state and reality forces the target to attempt a Will save against your spell DC.</p><hr /><p><strong>Critical Success</strong> The target is unaffected.</p>\n<p><strong>Success</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 1} or, if the spell ended because of a hostile action, @UUID[Compendium.pf2e.conditionitems.Item.Confused] for 1 round.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 2} or, if the spell ended because of a hostile action, confused for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 3} or, if the spell ended because of a hostile action, confused for 2 rounds.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JnGeiRdprh1j0qnT": {
+        "_id": "JnGeiRdprh1j0qnT",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Fearcracker",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<p>A fearcracker contains fragments of broken mirrors and reagents that pop and smoke when consumed. When thrown down in your space as part of a @UUID[Compendium.pf2e.spells-srd.Item.Mirror Image] spell, your and your images' appearance twists nightmarishly. When an image is destroyed, it \"dies\" in a disturbing fashion, rendering the attacker @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 1}. This aspect of the spell has the emotion, fear, and mental traits.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Treasure Vault"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "iUwss4XHPassdhV3": {
+        "_id": "iUwss4XHPassdhV3",
+        "img": "systems/pf2e/icons/equipment/adventuring-gear/whistle.webp",
+        "name": "Feral Linguist (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This wooden whistle is stuffed with cotton and carved with images of bellowing stags, howling wolves, and chirping birds. You can blow on this whistle to use it as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Animal Form] spell. When you do, you retain the ability to speak.</p>\n<p>Once during the spell's duration, you can cast either a spell of 4th-rank or lower or a cantrip of any level, ignoring the inability to cast spells while in your battle form.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 85
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "FO2QKhTLyjbwrCrZ": {
+        "_id": "FO2QKhTLyjbwrCrZ",
+        "img": "systems/pf2e/icons/equipment/adventuring-gear/whistle.webp",
+        "name": "Feral Linguist",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This wooden whistle is stuffed with cotton and carved with images of bellowing stags, howling wolves, and chirping birds. You can blow on this whistle to use it as a catalyst when casting an @UUID[Compendium.pf2e.spells-srd.Item.Animal Form] spell. When you do, you retain the ability to speak, though this doesn't allow you to cast spells.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "SsWxgxols1Q1qPVf": {
+        "_id": "SsWxgxols1Q1qPVf",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-bombs/blindpepper-bomb.webp",
+        "name": "Firestarter Pellets (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a @UUID[Compendium.pf2e.spells-srd.Item.Fireball] spell produces clinging flames that deal @Damage[2d6[persistent,fire]] damage to all who fail the saving throw against the effect (@Damage[4d6[persistent,fire]] damage on a critical failure).</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 175
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "kFqPDnz0dYvK0mIG": {
+        "_id": "kFqPDnz0dYvK0mIG",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-bombs/blindpepper-bomb.webp",
+        "name": "Firestarter Pellets (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a @UUID[Compendium.pf2e.spells-srd.Item.Fireball] spell produces clinging flames that deal @Damage[3d6[persistent,fire]] damage to all who fail the saving throw against the effect (@Damage[6d6[persistent,fire]] damage on a critical failure).</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1200
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VmMSP1EbMVnj2pZ2": {
+        "_id": "VmMSP1EbMVnj2pZ2",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-bombs/blindpepper-bomb.webp",
+        "name": "Firestarter Pellets",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a @UUID[Compendium.pf2e.spells-srd.Item.Fireball] spell produces clinging flames that deal @Damage[1d6[persistent,fire]] damage to all who fail the saving throw against the effect (@Damage[2d6[persistent,fire]] damage on a critical failure).</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VrZiS4hVpzWk2p2z": {
+        "_id": "VrZiS4hVpzWk2p2z",
+        "img": "icons/skills/ranged/projectile-strike-egg-blue.webp",
+        "name": "Ghostcracker",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>A <em>ghostcracker</em> pops and smokes when consumed. When you throw the <em>ghostcracker</em> down in your space as part of casting an @UUID[Compendium.pf2e.spells-srd.Item.Illusory Creature] spell, the appearance of the creature twists nightmarishly. When an enemy's attack or spell ends the <em>illusory creature</em> spell, the creature \"dies\" in a disturbing fashion, rendering the enemy @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 1}. From this effect, the ghostcracker adds the emotion, fear, and mental traits to the spell.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Wn0H58sAkUtIaPPd": {
+        "_id": "Wn0H58sAkUtIaPPd",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Gravemist Taper",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>A <em>gravemist taper</em> is a conical candle with symbols of terror and death carved into the wax. The taper can be used as a catalyst when casting a @UUID[Compendium.pf2e.spells-srd.Item.Mist] spell, burning the taper away, coloring the mist gray, and filling the mist with ghastly, shadowy shapes. The flat check to overcome the @UUID[Compendium.pf2e.conditionitems.Item.Concealed] state from the mist rises to 7, and a creature who fails such a check becomes @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 1}. This aspect of the spell has the emotion, fear, and mental traits.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "3M7iB9tfrsWTccZ0": {
+        "_id": "3M7iB9tfrsWTccZ0",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-tools/skinitch-salve.webp",
+        "name": "Healer's Gel (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>An astringent aroma from rare succulent plants wafts off these soothing cloth patches. Adding this material component to a @UUID[Compendium.pf2e.spells-srd.Item.Heal] spell bestows an additional 15 temporary Hit Points to one target healed by the spell. These temporary Hit Points last for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Healer's Gel]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "q8aRbsKX93R5AXNb": {
+        "_id": "q8aRbsKX93R5AXNb",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-tools/skinitch-salve.webp",
+        "name": "Healer's Gel (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>An astringent aroma from rare succulent plants wafts off these soothing cloth patches. Adding this material component to a @UUID[Compendium.pf2e.spells-srd.Item.Heal] spell bestows an additional 5 temporary Hit Points to one target healed by the spell. These temporary Hit Points last for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Healer's Gel]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZxkTbyq61JTQ7Zkt": {
+        "_id": "ZxkTbyq61JTQ7Zkt",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-tools/skinitch-salve.webp",
+        "name": "Healer's Gel (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>An astringent aroma from rare succulent plants wafts off these soothing cloth patches. Adding this material component to a @UUID[Compendium.pf2e.spells-srd.Item.Heal] spell bestows an additional 10 temporary Hit Points to one target healed by the spell. These temporary Hit Points last for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Healer's Gel]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 125
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7k0lrb4I47mDIBj1": {
+        "_id": "7k0lrb4I47mDIBj1",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Hippogriff Feather",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Tawny-colored hippogriff feathers can be up to 2 feet long. Used as a catalyst with a @UUID[Compendium.pf2e.spells-srd.Item.Ghostly Carrier] spell, a single <em>hippogriff feather</em> grants the hand semicorporeal wings that increase the hand's maneuverability. The hand has a range of only 60 feet, but its increased agility grants it a +1 status bonus to its AC and Reflex saves.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Ia3z1nC3LBulMFMs": {
+        "_id": "Ia3z1nC3LBulMFMs",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Kirin Echo Chime",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>The echo of kirin's song can be captured within this small glass chime, which shatters and calls up a meandering breeze of its own when rung. Adding this catalyst to a @UUID[Compendium.pf2e.spells-srd.Item.Gust of Wind] spell causes any flying creatures that would be pushed by the spell's effects to be pushed 30 feet in a direction of your choice, rather than 30 feet in the direction of the spell.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "EBAgEC9YyNC9NTmY": {
+        "_id": "EBAgEC9YyNC9NTmY",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Kushtaka Relic",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add one action)</p><hr /><p>These relics come in many forms, as the only requirement is they were owned by a human who transformed into a kushtaka. Used as a catalyst for @UUID[Compendium.pf2e.spells-srd.Item.Spirit Blast] against a target possessing another creature, a <em>kushtaka relic</em> attempts to banish such a spirit. A creature who fails the Fortitude save against <em>spirit blast</em> has its grasp on its possessed target weakened. The result of the possessed creature's next Will save against the possession effect is improved by one degree. A creature who is possessing another and critically fails the Fortitude save against <em>spirit blast</em> takes damage and then is banished from the body it was possessing.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 525
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "cDyoBhYeAMkCmjiP": {
+        "_id": "cDyoBhYeAMkCmjiP",
+        "img": "icons/consumables/mushrooms/umbontae-bumpy-purple.webp",
+        "name": "Necrotic Cap (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>You can use this slimy, rotting mushroom as a spell catalyst when you cast an @UUID[Compendium.pf2e.spells-srd.Item.Acid Grip] spell by tapping it against the target, causing the mushroom to release a cloud of necrotic spores. When you do, <em>acid grip</em> loses the acid trait, gains the fungus trait, and all acid damage the spell deals becomes void damage. On a hit, the target additionally gains the @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 3} and @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 3} conditions as the spores consume their flesh. As long as the target is taking persistent void damage, they can't reduce the value of their sickened condition below 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Necrotic Cap]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 350
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "sUZxDEiwCKiMpN7T": {
+        "_id": "sUZxDEiwCKiMpN7T",
+        "img": "icons/consumables/mushrooms/umbontae-bumpy-purple.webp",
+        "name": "Necrotic Cap (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>You can use this slimy, rotting mushroom as a spell catalyst when you cast an @UUID[Compendium.pf2e.spells-srd.Item.Acid Grip] spell by tapping it against the target, causing the mushroom to release a cloud of necrotic spores. When you do, <em>acid grip</em> loses the acid trait, gains the fungus trait, and all acid damage the spell deals becomes void damage. On a hit, the target additionally gains the @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 1} and @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 1} conditions as the spores consume their flesh. As long as the target is taking persistent void damage, they can't reduce the value of their sickened condition below 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Necrotic Cap]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 18
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "CM3GrNvvZBdPmxe5": {
+        "_id": "CM3GrNvvZBdPmxe5",
+        "img": "icons/consumables/mushrooms/umbontae-bumpy-purple.webp",
+        "name": "Necrotic Cap (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>You can use this slimy, rotting mushroom as a spell catalyst when you cast an @UUID[Compendium.pf2e.spells-srd.Item.Acid Grip] spell by tapping it against the target, causing the mushroom to release a cloud of necrotic spores. When you do, <em>acid grip</em> loses the acid trait, gains the fungus trait, and all acid damage the spell deals becomes void damage. On a hit, the target additionally gains the @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 4} and @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 4} conditions as the spores consume their flesh. As long as the target is taking persistent void damage, they can't reduce the value of their sickened condition below 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Necrotic Cap]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1200
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Oxai9zyjeocPNUzO": {
+        "_id": "Oxai9zyjeocPNUzO",
+        "img": "icons/consumables/mushrooms/umbontae-bumpy-purple.webp",
+        "name": "Necrotic Cap (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>You can use this slimy, rotting mushroom as a spell catalyst when you cast an @UUID[Compendium.pf2e.spells-srd.Item.Acid Grip] spell by tapping it against the target, causing the mushroom to release a cloud of necrotic spores. When you do, <em>acid grip</em> loses the acid trait, gains the fungus trait, and all acid damage the spell deals becomes void damage. On a hit, the target additionally gains the @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 2} and @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 2} conditions as the spores consume their flesh. As long as the target is taking persistent void damage, they can't reduce the value of their sickened condition below 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Necrotic Cap]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 80
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "smPuKlJLRyoYaDpR": {
+        "_id": "smPuKlJLRyoYaDpR",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Nevercold (Compressed)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Nevercold, sometimes mistakenly referred to as nevercoal, is the charcoal left after wildfires in the First World. True to its name, nevercold remains warm to the touch. If you use nevercold to cast @UUID[Compendium.pf2e.spells-srd.Item.Fire Shield], the spell's duration increases to 5 minutes, the cold resistance you gain from it lasts 1 hour, and you're immune to minor and severe cold for 8 hours.</p>\n<p>The catalyst affects 6th-rank or lower <em>fire shield</em>, and the immunity from minor and severe cold lasts 24 hours.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 720
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aMXCMLI3spk0d7tq": {
+        "_id": "aMXCMLI3spk0d7tq",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Nevercold (Refined)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Nevercold, sometimes mistakenly referred to as nevercoal, is the charcoal left after wildfires in the First World. True to its name, nevercold remains warm to the touch. If you use nevercold to cast @UUID[Compendium.pf2e.spells-srd.Item.Fire Shield], the spell's duration increases to 5 minutes, the cold resistance you gain from it lasts 1 hour, and you're immune to minor and severe cold for 8 hours.</p>\n<p>The catalyst affects 8th-rank or lower <em>fire shield</em>, and the immunity from minor and severe cold lasts 24 hours.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3600
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "dEU38O24zT6JCfEZ": {
+        "_id": "dEU38O24zT6JCfEZ",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Nevercold",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Nevercold, sometimes mistakenly referred to as nevercoal, is the charcoal left after wildfires in the First World. True to its name, nevercold remains warm to the touch. If you use nevercold to cast @UUID[Compendium.pf2e.spells-srd.Item.Fire Shield], the spell's duration increases to 5 minutes, the cold resistance you gain from it lasts 1 hour, and you're immune to minor and severe cold for 8 hours.</p>\n<p>The catalyst affects 4th-rank <em>fire shield</em>.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 180
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "hH63OWEVoMEr4ypr": {
+        "_id": "hH63OWEVoMEr4ypr",
+        "img": "icons/commodities/materials/orb-tassle-blue-yellow.webp",
+        "name": "Nightpitch",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>A pellet of tar mixed with the fur of a nocturnal creature, such as a bat, nightpitch used to cast a @UUID[Compendium.pf2e.spells-srd.Item.Darkness] spell makes the area of the darkness difficult terrain.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 60
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "EDjJy68ZFLu57ldN": {
+        "_id": "EDjJy68ZFLu57ldN",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/noxious-incense.webp",
+        "name": "Noxious Incense (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<hr />\n<p>Sold only in single sticks, this foul incense comes coated with a bevy of alchemical smoke that activates in the presence of intense heat, releasing its namesake pungent odor. Adding this catalyst to a @UUID[Compendium.pf2e.spells-srd.Item.Wall of Fire] spell fills all squares adjacent to the wall with thick, foul smoke. Creatures in this area are @UUID[Compendium.pf2e.conditionitems.Item.Concealed], and other creatures are concealed to creatures in the area. The smoke lasts for the duration of the spell. The incense can be used with a <em>wall of fire</em> of any level.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 750
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "0GY1BYECGqz6YJ88": {
+        "_id": "0GY1BYECGqz6YJ88",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/noxious-incense.webp",
+        "name": "Noxious Incense",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<hr />\n<p>Sold only in single sticks, this foul incense comes coated with a bevy of alchemical smoke that activates in the presence of intense heat, releasing its namesake pungent odor. Adding this catalyst to a @UUID[Compendium.pf2e.spells-srd.Item.Wall of Fire] spell fills all squares adjacent to the wall with thick, foul smoke. Creatures in this area are @UUID[Compendium.pf2e.conditionitems.Item.Concealed], and other creatures are concealed to creatures in the area. The smoke lasts for the duration of the spell. The incense can be used with a <em>wall of fire</em> of 6th level or below.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 125
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "jnw6iyevvDSISGsn": {
+        "_id": "jnw6iyevvDSISGsn",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Ogre Spider Filament",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>This delicate strand of spiderweb sticks to the target of a @UUID[Compendium.pf2e.spells-srd.Item.Spider Sting] spell, hampering their movement. Using this catalyst causes a creature afflicted with spider venom to become @UUID[Compendium.pf2e.conditionitems.Item.Clumsy] instead of @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled].</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "B3zoAu9NpUEHGe22": {
+        "_id": "B3zoAu9NpUEHGe22",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Seventh Prism (Pentagonal)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Beloved by the church of the Seventh Veil, a <em>seventh prism</em> is a crystal that disperses its internal light, casting an aurora of color. If you use a seventh prism to cast @UUID[Compendium.pf2e.spells-srd.Item.Dizzying Colors], targets are @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] for twice as long as their saving throw indicates. On a critical failure, the target is dazzled for 1 minute after its @UUID[Compendium.pf2e.conditionitems.Item.Blinded] condition ends. Motes of shifting rainbow hues cloud the eyes, making it difficult to see details.</p>\n<p>The area increases to a @Template[cone|distance:20], and the DC for the flat check against the target being @UUID[Compendium.pf2e.conditionitems.Item.Concealed] increases to @Check[flat|dc:7].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Seventh Prism (Pentagonal)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 52
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "zAfSy6fshSGUtYF6": {
+        "_id": "zAfSy6fshSGUtYF6",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Seventh Prism (Triangular)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>Beloved by the church of the Seventh Veil, a <em>seventh prism</em> is a crystal that disperses its internal light, casting an aurora of color. If you use a seventh prism to cast @UUID[Compendium.pf2e.spells-srd.Item.Dizzying Colors], targets are @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] for twice as long as their saving throw indicates. On a critical failure, the target is dazzled for 1 minute after its @UUID[Compendium.pf2e.conditionitems.Item.Blinded] condition ends. Motes of shifting rainbow hues cloud the eyes, making it difficult to see details.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "zAlDcTlvCd3MxXmI": {
+        "_id": "zAlDcTlvCd3MxXmI",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/black-powder-dose.webp",
+        "name": "Shadow Ash",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell or successfully perform a ritual as the primary or secondary caster</p>\n<hr />\n<p>This small pile of ash glows with strange blue embers that coat whatever they touch with a thin layer of frost laced with veins of necrotic ichor. Adding this catalyst to an animate dead spell or create undead ritual wreathes the resulting undead creature in a shroud of frost that pulses with void energy. During a combat encounter, the first opponent to deal damage to the undead creature with a melee Strike takes @Damage[3d6[cold]] damage and becomes @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1} as the shroud of ice and rot shatters from the blow. If the undead creature survives the encounter, the shroud of frost reforms the next day. When an undead creature animated or created with this catalyst dies, it can return to animation with half of its Hit Points within [[/r 1d4 #Rounds]]{1d4 rounds} of its death (unless it was killed in a manner that destroys it remains completely such as a @UUID[Compendium.pf2e.spells-srd.Item.Disintegrate] spell) with a @Check[flat|dc:11]. If the undead creature rises again, a desperate, garbled screech resonates from within its corpse.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 750
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #184: The Ghouls Hunger"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "catalyst",
+                    "cold",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZiD7kDxU4KEkO6XH": {
+        "_id": "ZiD7kDxU4KEkO6XH",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/qat.webp",
+        "name": "Shimmering Dust",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<hr />\n<p>This luminous mica dust fluoresces for a short time after being exposed to significant amounts of magical energy. When a creature fails its save against a cloud of @UUID[Compendium.pf2e.spells-srd.Item.Revealing Light] created using this catalyst, glowing grains stick to them, causing them to shed dim light in a 20-foot radius for as long as their invisibility is negated by the spell as well as causing them to take a -2 circumstance penalty to Stealth for that duration.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Shimmering Dust]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Xd96IsYFLmjWnWHk": {
+        "_id": "Xd96IsYFLmjWnWHk",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Silvered Marp Fur",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>A marp that gnaws on silver rather than gold grows fur tipped with silver that can be further processed into a versatile spell catalyst. A spellcaster who uses <em>silvered marp fur</em> with an @UUID[Compendium.pf2e.spells-srd.Item.Impaling Spike] spell creates a silver spike rather than a cold iron one.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 110
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "keaNrIPYQYP02acm": {
+        "_id": "keaNrIPYQYP02acm",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Skyfisher Vapors",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p><em>Skyfisher vapors</em> are only visible via their effect on a @UUID[Compendium.pf2e.spells-srd.Item.Toxic Cloud] spell, or apparent lack thereof. These gases cause the conjured cloud to be as transparent as a skyfisher. The cloud is invisible, meaning it does not provide concealment, but it requires a successful @Check[perception] check against your spell DC to notice the cloud by faint distortions in the air. Your magical connection to the cloud means you always know where it is. This has no effect on its damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "uCt7Kc2MXzRMc0GD": {
+        "_id": "uCt7Kc2MXzRMc0GD",
+        "img": "systems/pf2e/icons/equipment/consumables/talismans/snapleaf.webp",
+        "name": "Soothing Scents",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>Performers popularized these bundles of aromatic herbs to calm the mind and ward off misfortune before a big show, though soldier bards have found them especially useful for clearing fear during particularly tumultuous battles. Adding this catalyst to a @UUID[Compendium.pf2e.spells-srd.Item.Soothe] spell also causes the spell to reduce the target's @UUID[Compendium.pf2e.conditionitems.Item.Frightened] condition value by 1.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "KaUMLt7iYTmCLby3": {
+        "_id": "KaUMLt7iYTmCLby3",
+        "img": "icons/creatures/claws/claw-talons-yellow-red.webp",
+        "name": "Steadfast Sentinel",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<hr />\n<p>This catalyst is a bird's claw soaked in a mixture of blood and grave dirt. A @UUID[Compendium.pf2e.spells-srd.Item.Shadow Spy] spell empowered by it creates an unusually long-lasting homunculus. Instead of the spell expiring when you next make your daily preparations, you can renew it by expending a spell slot for shadow spy again, maintaining the same homunculus so it can continue its observations. Steadfast sentinels are often used by powerful spellcasters of Geb to covertly monitor their rivals.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 38
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Wake the Dead #5"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Fgcc2OXLIKXWjbSp": {
+        "_id": "Fgcc2OXLIKXWjbSp",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/swirling-sand.webp",
+        "name": "Swirling Sand",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> @UUID[Compendium.pf2e.actionspf2e.Item.Cast a Spell]</p>\n<hr />\n<p><em>Swirling sand</em> carries a faint trace of strange compulsions from the helical sand spire near Beachcomber. Adding this catalyst to a suggestion spell implants a strange compulsion in one target of the spell. The target creature must spin counterclockwise at the end of its turn if it didn't take a move action that turn. This spin is a free action that has the move trait. This effect lasts for 3 rounds on a success, failure, or critical failure against @UUID[Compendium.pf2e.spells-srd.Item.Suggestion] (even if the target completes its <em>suggestion</em> in fewer rounds); a target that critically succeeds against <em>suggestion</em> is unaffected by the <em>swirling sand</em>.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 52
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Dark Archive"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "sYTvRLIlhfUd1Dm5": {
+        "_id": "sYTvRLIlhfUd1Dm5",
+        "img": "systems/pf2e/icons/equipment/treasure/gems/lesser-semiprecious-stones/tigers-eye.webp",
+        "name": "Thunderbird Tuft (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This carved chunk of amber contains a single tuft of gray feathers, which spark with electricity to create an odd jittery sensation in anyone holding the amber for long. When used as part of a @UUID[Compendium.pf2e.spells-srd.Item.Shocking Grasp] spell, <em>thunderbird tuft</em> funnels electricity back into the spellcaster in a defensive nimbus. For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes @Damage[2d4[electricity]] damage, or @Damage[2d6[electricity]] damage if the creature is using a metal weapon.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 125
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Led9ciHzpF8uPN6Y": {
+        "_id": "Led9ciHzpF8uPN6Y",
+        "img": "systems/pf2e/icons/equipment/treasure/gems/lesser-semiprecious-stones/tigers-eye.webp",
+        "name": "Thunderbird Tuft (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This carved chunk of amber contains a single tuft of gray feathers, which spark with electricity to create an odd jittery sensation in anyone holding the amber for long. When used as part of a @UUID[Compendium.pf2e.spells-srd.Item.Shocking Grasp] spell, <em>thunderbird tuft</em> funnels electricity back into the spellcaster in a defensive nimbus. For 1 round, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes @Damage[1d4[electricity]] damage, or @Damage[1d6[electricity]] damage if the creature is using a metal weapon, but the nimbus only lasts 1 round, rather than the full minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xYJwgmn2Nmthztb7": {
+        "_id": "xYJwgmn2Nmthztb7",
+        "img": "systems/pf2e/icons/equipment/treasure/gems/lesser-semiprecious-stones/tigers-eye.webp",
+        "name": "Thunderbird Tuft (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This carved chunk of amber contains a single tuft of gray feathers, which spark with electricity to create an odd jittery sensation in anyone holding the amber for long. When used as part of a @UUID[Compendium.pf2e.spells-srd.Item.Shocking Grasp] spell, <em>thunderbird tuft</em> funnels electricity back into the spellcaster in a defensive nimbus. For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes @Damage[3d4[electricity]] damage, or @Damage[3d6[electricity]] damage if the creature is using a metal weapon.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ik15k2r6znOdguXo": {
+        "_id": "ik15k2r6znOdguXo",
+        "img": "systems/pf2e/icons/equipment/treasure/gems/lesser-semiprecious-stones/tigers-eye.webp",
+        "name": "Thunderbird Tuft (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p>\n<hr />\n<p>This carved chunk of amber contains a single tuft of gray feathers, which spark with electricity to create an odd jittery sensation in anyone holding the amber for long. When used as part of a @UUID[Compendium.pf2e.spells-srd.Item.Shocking Grasp] spell, <em>thunderbird tuft</em> funnels electricity back into the spellcaster in a defensive nimbus. For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes @Damage[1d4[electricity]] damage, or @Damage[1d6[electricity]] damage if the creature is using a metal weapon.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "k5A8zFQuDtGqNnk5": {
+        "_id": "k5A8zFQuDtGqNnk5",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Toothwort Extract",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span></p>\n<p><strong>Trigger</strong> You use Quick Alchemy to craft an alchemical poison that's at least 1 level lower than your advanced alchemy level.</p>\n<p>Originally used in dental procedures, toothwort numbs the gums by deadening nerves. When the oils are extracted and distilled, toothwort has a secondary reputation among alchemists for enhancing the duration of poisons. When adding toothwort extract to an alchemical poison, you can extend the maximum duration of the poison by 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 9
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Travel Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "herbal"
+                ],
+                "rarity": "common",
+                "value": [
+                    "additive1",
+                    "alchemical",
+                    "consumable"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZVaiCVMdkakXagIU": {
+        "_id": "ZVaiCVMdkakXagIU",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-poisons/liars-demise.webp",
+        "name": "Waterproofing Wax",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p>\n<hr />\n<p>Many books and spellbooks are treated in this wax formula to protect them from the elements, but waterproofing wax's liquid-repellent properties can be further applied to split up a @UUID[Compendium.pf2e.spells-srd.Item.Grease] spell into useful smaller sections. When the spell is cast in an area while using this catalyst, the conjured grease fills three 5-foot squares within 30 feet instead of its normal area; these squares don't need to be contiguous.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "jdBSk1eH1qPsCNi6": {
+        "_id": "jdBSk1eH1qPsCNi6",
+        "img": "icons/commodities/treasure/brooch-spiral-blue.webp",
+        "name": "Wemmuth Trinket",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>The baubles wemmuths use to lure victims to their hunting grounds are dangerous to retrieve and often stained by blood. One of these trinkets covers the plant matter created by @UUID[Compendium.pf2e.spells-srd.Item.Entangling Flora] with blood-drinking thorns. Creatures who fail or critically fail their Reflex saves against <em>entangling flora</em> also take piercing damage equal to the spell's rank.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Wemmuth Trinket]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vmAZrNtftTBOyTVx": {
+        "_id": "vmAZrNtftTBOyTVx",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Witchwarg Fur",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell</p><hr /><p>The pelt of a witchwarg stays cold long after it leaves the creature's body. A tuft of this fur can freeze a @UUID[Compendium.pf2e.spells-srd.Item.Fire Shield] spell into solid ice, inverting its usual effects. The spell's fire trait is replaced with the cold trait, you gain resistance to fire damage and environmental heat effects (instead of cold effects), the shield is immune to cold damage instead of fire damage, and its Hardness is halved against fire effects. The damage you deal to creatures that touch you or hit you with a melee or unarmed attack has its type changed to cold.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 52
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "GzcCAMqagCxy18tF": {
+        "_id": "GzcCAMqagCxy18tF",
+        "img": "icons/commodities/materials/hair-tuft-white.webp",
+        "name": "Wolliped Fleece",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add one action)</p><hr /><p>A small bundle of <em>wolliped fleece</em> contains the memory of winter snows. Adding this catalyst to a casting of @UUID[Compendium.pf2e.spells-srd.Item.Chilling Spray] coats all squares within the area of effect with a thin layer of ice. These squares become difficult terrain until the beginning of your next turn.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "1PG9vWx48TWopxpm": {
+        "_id": "1PG9vWx48TWopxpm",
+        "img": "icons/commodities/wood/bark-beige.webp",
+        "name": "Wood-Rotted Root (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>This palm-sized chunk of wood it rotting, and riddled with mold and fungi. You can crush this wood to use it as a spell catalyst when you cast a @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience]. When you do, the bark that covers your skin is rotting, and emits a small cloud of spores whenever your hurt. For the duration, whenever you take physical damage, your rotting bark skin emits a cloud of spores in a @Template[emanation|distance:10]. Creatures in the area must attempt a @Check[fortitude|dc:24|options:area-effect,damaging-effect] save to avoid taking @Damage[1d8[poison]|options:area-damage] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 190
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JQqtNuiMQrU3DW11": {
+        "_id": "JQqtNuiMQrU3DW11",
+        "img": "icons/commodities/wood/bark-beige.webp",
+        "name": "Wood-Rotted Root (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>This palm-sized chunk of wood it rotting, and riddled with mold and fungi. You can crush this wood to use it as a spell catalyst when you cast a @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience]. When you do, the bark that covers your skin is rotting, and emits a small cloud of spores whenever your hurt. For the duration, whenever you take physical damage, your rotting bark skin emits a cloud of spores in a @Template[emanation|distance:5]. Creatures in the area must attempt a @Check[fortitude|dc:15|options:area-effect,damaging-effect] save to avoid taking @Damage[1[poison]|options:area-damage] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 11
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vIMax5wxd9zS1MpW": {
+        "_id": "vIMax5wxd9zS1MpW",
+        "img": "icons/commodities/wood/bark-beige.webp",
+        "name": "Wood-Rotted Root (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>This palm-sized chunk of wood it rotting, and riddled with mold and fungi. You can crush this wood to use it as a spell catalyst when you cast a @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience]. When you do, the bark that covers your skin is rotting, and emits a small cloud of spores whenever your hurt. For the duration, whenever you take physical damage, your rotting bark skin emits a cloud of spores in a @Template[emanation|distance:15]. Creatures in the area must attempt a @Check[fortitude|dc:29|options:area-effect,damaging-effect] save to avoid taking @Damage[2d8[poison]|options:area-damage] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 900
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "dFHJyZV5Kx6IRbWC": {
+        "_id": "dFHJyZV5Kx6IRbWC",
+        "img": "icons/commodities/wood/bark-beige.webp",
+        "name": "Wood-Rotted Root (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "catalyst",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> Cast a Spell (add 1 action)</p><hr /><p>This palm-sized chunk of wood it rotting, and riddled with mold and fungi. You can crush this wood to use it as a spell catalyst when you cast a @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience]. When you do, the bark that covers your skin is rotting, and emits a small cloud of spores whenever your hurt. For the duration, whenever you take physical damage, your rotting bark skin emits a cloud of spores in a @Template[emanation|distance:5]. Creatures in the area must attempt a @Check[fortitude|dc:21|options:area-effect,damaging-effect] save to avoid taking @Damage[1d4[poison]|options:area-damage] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 55
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catalyst",
+                    "consumable",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

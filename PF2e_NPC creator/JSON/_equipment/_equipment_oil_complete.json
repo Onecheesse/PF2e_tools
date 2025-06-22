@@ -1,0 +1,3468 @@
+{
+    "znITT3WIS59TYtCu": {
+        "_id": "znITT3WIS59TYtCu",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/anointing-oil.webp",
+        "name": "Anointing Oil (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Carried by many Knights of Lastwall, this amber-colored, fragrant-smelling oil is meant to prevent those who fall in battle from rising as undead. Applying <em>anointing oil</em> to a corpse casts a 5th-rank @UUID[Compendium.pf2e.spells-srd.Item.Peaceful Rest] on it. The effects last for 24 hours. The funerary rites of the Knights of Lastwall sometimes include using this type of oil on their dead if they are to be buried.</p>\n<p>The oil is repugnant to the undead. An undead creature that touches a corpse treated with this oil is @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 1} until the contact is broken or the oil's effect wears off.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 180
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Knights of Lastwall"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "89955RkZoEmVNo3V": {
+        "_id": "89955RkZoEmVNo3V",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/anointing-oil.webp",
+        "name": "Anointing Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Carried by many Knights of Lastwall, this amber-colored, fragrant-smelling oil is meant to prevent those who fall in battle from rising as undead. Applying <em>anointing oil</em> to a corpse casts @UUID[Compendium.pf2e.spells-srd.Item.Peaceful Rest] on it. The effects last for 24 hours.</p>\n<p>The oil is repugnant to the undead. An undead creature that touches a corpse treated with this oil is @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 1} until the contact is broken or the oil's effect wears off.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 18
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Knights of Lastwall"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ICDQcwf2U7bSoieB": {
+        "_id": "ICDQcwf2U7bSoieB",
+        "img": "icons/consumables/potions/potion-jar-corked-orange.webp",
+        "name": "Anticorrosion Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>You can coat objects of 6 Bulk or less with <em>anticorrosion oil</em>. For 24 hours, the object takes half damage from acid and from all effects that specifically cause it to rust or corrode, such as contact with an ore louse's saliva.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "737LQfIaLXBPEzc3": {
+        "_id": "737LQfIaLXBPEzc3",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/antimagic-oil.webp",
+        "name": "Antimagic Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>This oil contains energy that repels nearly all types of magic. When you apply this oil to armor, the creature wearing the armor becomes immune to all spells, effects of magic items (the wearer's and those of others), and effects with the magical trait for 1 minute.</p>\n<p>The oil affects neither the magic of the armor nor the fundamental runes of weapons attacking the wearer. Magical effects from a source of 20th level or higher, such as a deity, still function on the armor's wearer.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 13000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "poHyu9ZhQPudhPPu": {
+        "_id": "poHyu9ZhQPudhPPu",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Aroma Concealer",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> 1 minute (Interact)</p><hr /><p>This oily mix of herbs and natural detergents can be applied to a creature to reduce and cover any ordinary odors they produce. The creature receives a +2 item bonus to Stealth checks to @UUID[Compendium.pf2e.actionspf2e.Item.Hide] or @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] against creatures using primarily smell. This bonus also applies to the DC to @UUID[Compendium.pf2e.actionspf2e.Item.Track] the creature by scent. The listed amount is enough to cover one Medium or smaller creature and takes 1 minute to apply. The effect lasts for 1 hour after applying.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "alchemical-tool"
+                ],
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "F8jLnpBuvzM0nBp4": {
+        "_id": "F8jLnpBuvzM0nBp4",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Bane Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Bane oil comes in as many forms as the bane weapon property rune. Coating a weapon with the oil gives the weapon the benefit of one type of @UUID[Compendium.pf2e.equipment-srd.Item.Bane] rune for 1 minute. A weapon can be coated in only one type of bane oil at a time. Any new application of this oil supersedes any previous one. If a weapon has the bane rune, this oil has no effect if it's of the same type as the rune.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UOt1kd4ccF9sX9bt": {
+        "_id": "UOt1kd4ccF9sX9bt",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Burial Oil (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A pearlescent fluid, burial oil applied to a weapon grants the benefits of a @UUID[Compendium.pf2e.equipment-srd.Item.Vitalizing (Greater)]{Greater Vitalizing} rune with a @Check[fortitude|dc:30|name:Greater Disrupting|traits:incapacitation] for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 250
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "M1rX9EahXV9pa0Ui": {
+        "_id": "M1rX9EahXV9pa0Ui",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Burial Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A pearlescent fluid, burial oil applied to a weapon grants the benefits of a @UUID[Compendium.pf2e.equipment-srd.Item.Vitalizing] rune for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "yYe4drMnjGWtUMb7": {
+        "_id": "yYe4drMnjGWtUMb7",
+        "img": "icons/consumables/plants/grass-curcled-bundle-green.webp",
+        "name": "Cindergrass Poultice",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thick, waxy gel erases the effects of flame. It restores @Damage[2d12[healing]] Hit Points to a creature when applied to their body. If the creature has taken fire damage within the last minute, it restores additional Hit Points equal to the amount of fire damage the creature took within the last minute (maximum +10). Finally, the creature becomes immune to the effects of severe heat for 1 hour.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 33
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #208: Hoof, Cinder, and Storm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Cu2zf4wi8UGzsyVC": {
+        "_id": "Cu2zf4wi8UGzsyVC",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/prey-mutagen.webp",
+        "name": "Demortification Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>This foul-smelling oil has the appearance and odor of the greasy, thick fluids that seep from a decaying body. When you spread this oil on an intact corpse that has been dead no longer than 1 week, its decay fades and the corpse is restored to the condition it was just after death. <em>Demortification oil</em> can't undo damage done to a corpse after death, such as consumption by scavengers. Applied to a non-incorporeal undead, a dose of <em>demortification oil</em> grants the undead creature a +1 item bonus to Armor Class for 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Demortification Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #200: Seven Dooms for Sandpoint"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "bVsNvqhfvDKGbRhd": {
+        "_id": "bVsNvqhfvDKGbRhd",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Fundamental Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Made of elemental salts and essences from the Inner Sphere or where such planes leak onto the Universe, fundamental oil is anathema to elementals and other creatures with a weakness to elemental damage. A weapon anointed with this oil acts as @UUID[Compendium.pf2e.equipment-srd.Item.Bane Oil] to elementals, but the damage type is the same as the target's greatest weakness if the target has weakness to acid, cold, electricity, fire, or sonic damage. If it has none of these, the additional damage is the same type as the weapon's damage type. These effects last 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 220
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "MIP28AmODXgyF2D2": {
+        "_id": "MIP28AmODXgyF2D2",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/ghost-oil.webp",
+        "name": "Ghost Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>The vials containing this translucent, unsubstantial oil are always cold to the touch. Applying <em>ghost oil</em> to a melee weapon you're wielding or carrying causes it to become semitransparent and gain the effects of a <em>@UUID[Compendium.pf2e.equipment-srd.Item.Ghost Touch]</em> rune, but it also makes the weapon unable to harm corporeal creatures. The oil has no effect when applied to another creature's weapon. The effect of the oil lasts for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ghost Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 18
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Knights of Lastwall"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "F4WcgJ3NB1kiF7OL": {
+        "_id": "F4WcgJ3NB1kiF7OL",
+        "img": "icons/commodities/materials/bowl-liquid-white.webp",
+        "name": "Ghostly Portal Paint",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> Interact</p>\n<hr />\n<p>Translucent and nearly weightless, this opalescent paint seems to resolve into occult symbols if stared at too long. When used to cover a 5-foot-wide, 10-foot-tall section of a wall, the paint turns that section of wall ghostly and incorporeal to a depth of 10 feet, allowing corporeal creatures and objects to pass through it. The portal persists for 10 minutes. When this effect wears off, anything remaining within the portal is shunted to the nearest exit.</p>\n<p>Force effects, other incorporeal objects and creatures, and <em>ghost touch</em> weapons can't cross through the wall, as is normal for incorporeality. An incorporeal creature that's inside the wall when the paint is used is shunted to the nearest exit.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 120
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qkPlUzyNLmLKVtBL": {
+        "_id": "qkPlUzyNLmLKVtBL",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Lady's Blessing Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> @UUID[Compendium.pf2e.actionspf2e.Item.Administer First Aid]</p>\n<hr />\n<p>Lady's blessing oil is favored by Pharasmin healers who ease the transitions of life. You can Activate the item as part of the same activity you use to Administer First Aid to stabilize a creature. If you use lady's blessing oil, the DC of the check to Administer First Aid is reduced to the creature's recovery roll DC, rather than 5 + the recovery roll DC. However, if you roll a failure on the check, you get a critical failure instead.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Travel Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "herbal"
+                ],
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "3kELQauVoYunyFcd": {
+        "_id": "3kELQauVoYunyFcd",
+        "img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+        "name": "Life-Boosting Oil (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you apply sticky, stinging life-boosting oil, you gain fast healing 10 that starts the first time you take damage while the oil lasts. Once the fast healing starts, the oil remains effective for 4 rounds. However, the oil lasts only 8 hours, whether it provides fast healing or not.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Life-Boosting Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "AFFaFaAW3IbbYqkL": {
+        "_id": "AFFaFaAW3IbbYqkL",
+        "img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+        "name": "Life-Boosting Oil (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you apply sticky, stinging life-boosting oil, you gain fast healing 3 that starts the first time you take damage while the oil lasts. Once the fast healing starts, the oil remains effective for 4 rounds. However, the oil lasts only 8 hours, whether it provides fast healing or not.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Life-Boosting Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UOH0A4xNSMnpV6i4": {
+        "_id": "UOH0A4xNSMnpV6i4",
+        "img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+        "name": "Life-Boosting Oil (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you apply sticky, stinging life-boosting oil, you gain fast healing 15 that starts the first time you take damage while the oil lasts. Once the fast healing starts, the oil remains effective for 4 rounds. However, the oil lasts only 8 hours, whether it provides fast healing or not.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Life-Boosting Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "9zyrMZF76hMxwizY": {
+        "_id": "9zyrMZF76hMxwizY",
+        "img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+        "name": "Life-Boosting Oil (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you apply sticky, stinging life-boosting oil, you gain fast healing 6 that starts the first time you take damage while the oil lasts. Once the fast healing starts, the oil remains effective for 4 rounds. However, the oil lasts only 8 hours, whether it provides fast healing or not.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Life-Boosting Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "tspcGx4OrZEv2gQX": {
+        "_id": "tspcGx4OrZEv2gQX",
+        "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+        "name": "Merciful Balm",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Smelling strongly of herbs and pine resin, <em>merciful balm</em> is a thick, sticky paste that can be used to anoint a weapon, granting the weapon the nonlethal trait for 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Merciful Balm]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ukTlC4G83aVQEg7u": {
+        "_id": "ukTlC4G83aVQEg7u",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/nectar-of-purification.webp",
+        "name": "Nectar of Purification",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>A shimmering liquid, <em>nectar of purification</em> is often stored in bottles similar to those used for vinegar. This oil casts a 1st-rank @UUID[Compendium.pf2e.spells-srd.Item.Cleanse Cuisine] spell over any food or drink onto which it's poured. The nectar evaporates as it takes effect, leaving the taste and texture of the food or drink unaltered.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "QD5rDuk0OHadPGuh": {
+        "_id": "QD5rDuk0OHadPGuh",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/obfuscation-oil.webp",
+        "name": "Obfuscation Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>You can spread this blue-gray gel on a single item with a Bulk of 3 or less to ward it against magical detection. It becomes immune to divination magic of 8th rank or lower (such as @UUID[Compendium.pf2e.spells-srd.Item.Locate]). This oil is permanent, but it can be removed with acid. Removing the oil in this way usually takes 1 minute for objects with Bulk of 1 or less, or a number of minutes equal to the item's Bulk.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1200
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Du05UxCyCM0ZWH8z": {
+        "_id": "Du05UxCyCM0ZWH8z",
+        "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
+        "name": "Oil (1 pint)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5-foot square you target. You must succeed at a @Check[flat|dc:10] for the oil to ignite successfully when it hits. If the oil ignites, the target takes @Damage[1d6[fire]] damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "cp": 1
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": []
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "KVrmsNbro6mJ9wuT": {
+        "_id": "KVrmsNbro6mJ9wuT",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-animation.webp",
+        "name": "Oil of Animation",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>You can rub this bronze-colored oil onto a melee weapon to grant it the <em>@UUID[Compendium.pf2e.equipment-srd.Item.Animated]</em> rune. Once you fail a flat check for the weapon, causing it to fall, this effect ends.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 330
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Ja0KlgXV8DsOEkif": {
+        "_id": "Ja0KlgXV8DsOEkif",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/shielding-salve.webp",
+        "name": "Oil of Corpse Restoration",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> 1 minute (Interact)</p>\n<p>Adlet spiritual leaders create this thick purple gel so that the dead can temporarily assume their appearance in life during ancestral worship ceremonies. Spreading it over the bones of an undead creature or a lifeless corpse causes the gel to congeal, forming a cosmetic layer that covers or restores any missing or compromised flesh until the body mimics its appearance in life. The dead creature's flesh looks healthy and whole. It gains a +2 circumstance bonus on Deception checks to look like a living creature. The gel does not restore life or Hit Points and the flesh quickly rots away 8 hours after application.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Oil of Corpse Restoration]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 150
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Adventure Path: Gatewalkers"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "EP8f2NL28vPlmX7k": {
+        "_id": "EP8f2NL28vPlmX7k",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-object-animation.webp",
+        "name": "Oil of Dynamism (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This fine golden oil comes in a small blue canister. Carefully spreading the oil over an object turns it into an <em>animated object</em> of the same type. For example, sprinkling it on a statue makes an <em>animated statue</em>. If the animated object's level would be greater than 11, the oil struggles to animate it and ultimately fails.</p>\n<p>This animated object has the <em>minion</em> trait, meaning it can use 2 actions when you Command it. You can issue a Command for the current turn as part of the activation. The object remains animated for 1 minute before falling inert. As usual, you can have a maximum of four minions under your control.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1400
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "C0kSU5KWMzLngvTa": {
+        "_id": "C0kSU5KWMzLngvTa",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-object-animation.webp",
+        "name": "Oil of Dynamism",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This fine golden oil comes in a small blue canister. Carefully spreading the oil over an object turns it into an <em>animated object</em> of the same type. For example, sprinkling it on a statue makes an <em>animated statue</em>. If the animated object's level would be greater than 3, the oil struggles to animate it and ultimately fails.</p>\n<p>This animated object has the <em>minion</em> trait, meaning it can use 2 actions when you Command it. You can issue a Command for the current turn as part of the activation. The object remains animated for 1 minute before falling inert. As usual, you can have a maximum of four minions under your control.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 85
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "1DHjXJEdJ7GlGSzg": {
+        "_id": "1DHjXJEdJ7GlGSzg",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-keen-edges.webp",
+        "name": "Oil of Keen Edges",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>When this silvery salve is applied to a melee weapon that deals piercing or slashing damage, the weapon grows sharper and more dangerous for 1 minute, granting it the benefits of the <em>@UUID[Compendium.pf2e.equipment-srd.Item.Keen]</em> rune.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Oil of Keen Edges]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 250
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "QN8UIz0nMcnLUWHu": {
+        "_id": "QN8UIz0nMcnLUWHu",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-mending.webp",
+        "name": "Oil of Mending",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> 1 minute (manipulate)</p>\n<hr />\n<p>A vial of oil of mending appears to have countless translucent threads swirling within. Applying this oil to an item casts a 2nd-rank @UUID[Compendium.pf2e.spells-srd.Item.Mending] spell to repair the item.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 9
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "3TxupnJlz7qXfdIr": {
+        "_id": "3TxupnJlz7qXfdIr",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Oil of Ownership (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>You can coat objects of 6 Bulk or less with oil of ownership, or \"red-handed oil\" as some call it. Once applied, this clear oil remains active for 24 hours. Anyone who touches an object coated with this oil comes away with a red stain that won't wash off for 1 month.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 210
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "6XMuLT5QKkoznKz9": {
+        "_id": "6XMuLT5QKkoznKz9",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Oil of Ownership (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>You can coat objects of 6 Bulk or less with oil of ownership, or \"red-handed oil\" as some call it. Once applied, this clear oil remains active for 24 hours. Anyone who touches an object coated with this oil comes away with a red stain that won't wash off for 24 hours.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "dUREATQUwEOGiV13": {
+        "_id": "dUREATQUwEOGiV13",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Oil of Ownership (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>You can coat objects of 6 Bulk or less with oil of ownership, or \"red-handed oil\" as some call it. Once applied, this clear oil remains active for 24 hours. Anyone who touches an object coated with this oil comes away with a red stain that won't wash off for 1 week.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 55
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "PLuJEzJWaWamW0Fc": {
+        "_id": "PLuJEzJWaWamW0Fc",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-potency.webp",
+        "name": "Oil of Potency (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you apply this thick, viscous oil to a weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a <em>+2 greater striking weapon</em>, or, if it's armor, it temporarily becomes <em>+2 greater resilient armor</em>. This lasts for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "B9NVsgy2jvd6sJID": {
+        "_id": "B9NVsgy2jvd6sJID",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-potency.webp",
+        "name": "Oil of Potency (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When you apply this thick, viscous oil to a weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a <em>+3 major striking weapon</em>, or, if it's armor, it temporarily becomes <em>+3 major resilient armor</em>. This lasts for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 19
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "j2CHumvbjmlLQX2i": {
+        "_id": "j2CHumvbjmlLQX2i",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-potency.webp",
+        "name": "Oil of Potency",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When you apply this thick, viscous oil to a weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a <em>+1 striking weapon</em>, or, if it's armor, it temporarily becomes <em>+1 resilient armor</em>. This lasts for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 7
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "IZRfgOYlZ3HRBkYX": {
+        "_id": "IZRfgOYlZ3HRBkYX",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-repulsion.webp",
+        "name": "Oil of Repulsion",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>This oil contains magnetically charged iron filings repelled into opposite ends of the vial. For 1 minute after you apply this oil to armor, any creature that hits you with a melee Strike must attempt a @Check[fortitude|dc:28] save with the following effects.</p>\n<p><strong>Success</strong> The creature is unaffected.</p>\n<p><strong>Failure</strong> The creature is pushed up to 10 feet away from you (the GM determines the direction).</p>\n<p><strong>Critical Failure</strong> As failure, and the creature is also knocked @UUID[Compendium.pf2e.conditionitems.Item.Prone].</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 175
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "o9k5L682AlZfhpRu": {
+        "_id": "o9k5L682AlZfhpRu",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-revelation.webp",
+        "name": "Oil of Revelation",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This bright oil, first created by humans as a tool to help them fight in darkness, holds flecks of tiny gemstones in suspension and smells like a struck matchstick.</p>\n<p>The first time a weapon coated with this oil damages a creature, the wound glows with light for 1 minute. If the creature is @UUID[Compendium.pf2e.conditionitems.Item.Invisible], the light's position means it's merely @UUID[Compendium.pf2e.conditionitems.Item.Hidden] to creatures that would otherwise be unable to see it, rather than undetected. The light also negates the @UUID[Compendium.pf2e.conditionitems.Item.Concealed] condition due to lighting conditions. If the coated weapon doesn't damage a creature within 1 hour, the oil sloughs off and loses its power.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "yUPRtHCpAPx3EBUq": {
+        "_id": "yUPRtHCpAPx3EBUq",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Oil of Skating",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, slippery oil shimmers with a golden hue. Coating your shoes or feet with oil of skating enables you to skate quickly along flat surfaces for 1 hour. You gain a +10-foot status bonus to your Speed, which doubles if you move on a downhill surface. You lose this bonus if moving on difficult terrain, greater difficult terrain, or uneven ground. Also, you treat any uphill movement as moving on difficult terrain while your feet are oiled and treat the results of any Acrobatics checks made to @UUID[Compendium.pf2e.actionspf2e.Item.Balance] as one degree worse.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "TZJKwkvJD4NGXCG8": {
+        "_id": "TZJKwkvJD4NGXCG8",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Oil of Swiftness",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Anoint a weapon with oil of swiftness, which hisses upon application, to give it the benefits of the @UUID[Compendium.pf2e.equipment-srd.Item.Quickstrike] rune for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 50
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "RhOx5wenvlljzOku": {
+        "_id": "RhOx5wenvlljzOku",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-unlife.webp",
+        "name": "Oil of Unlife (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "6d8+20",
+                "kind": "healing",
+                "type": "void"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, black liquid imparts a bone-deep chill while rapidly repairing an undead creature's physical or spiritual form. When you dash <em>oil of unlife</em> onto an undead creature, or a living creature with void healing, the oil absorbs quickly into its body, and the creature regains @Damage[(6d8+20)[healing]]{6d8+20 Hit Points}. You can pour <em>oil of unlife</em> on an incorporeal undead; in this case, the creature absorbs the oil into itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "BSInwFNVBVkfFK0B": {
+        "_id": "BSInwFNVBVkfFK0B",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-unlife.webp",
+        "name": "Oil of Unlife (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "2d8+5",
+                "kind": "healing",
+                "type": "void"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, black liquid imparts a bone-deep chill while rapidly repairing an undead creature's physical or spiritual form. When you dash <em>oil of unlife</em> onto an undead creature, or a living creature with void healing, the oil absorbs quickly into its body, and the creature regains @Damage[(2d8+5)[healing]]{2d8+5 Hit Points}. You can pour <em>oil of unlife</em> on an incorporeal undead; in this case, the creature absorbs the oil into itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "obER4cKi8UbGhSg7": {
+        "_id": "obER4cKi8UbGhSg7",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-unlife.webp",
+        "name": "Oil of Unlife (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "8d8+30",
+                "kind": "healing",
+                "type": "void"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, black liquid imparts a bone-deep chill while rapidly repairing an undead creature's physical or spiritual form. When you dash <em>oil of unlife</em> onto an undead creature, or a living creature with void healing, the oil absorbs quickly into its body, and the creature regains @Damage[(8d8+30)[healing]]{8d8+30 Hit Points}. You can pour <em>oil of unlife</em> on an incorporeal undead; in this case, the creature absorbs the oil into itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "fTQ5e4utVfgtXV1e": {
+        "_id": "fTQ5e4utVfgtXV1e",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-unlife.webp",
+        "name": "Oil of Unlife (Minor)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "1d8",
+                "kind": "healing",
+                "type": "void"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, black liquid imparts a bone-deep chill while rapidly repairing an undead creature's physical or spiritual form. When you dash <em>oil of unlife</em> onto an undead creature, or a living creature with void healing, the oil absorbs quickly into its body, and the creature regains @Damage[1d8[healing]]{1d8 Hit Points}. You can pour <em>oil of unlife</em> on an incorporeal undead; in this case, the creature absorbs the oil into itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "YHev1WJ2tOiTBg9o": {
+        "_id": "YHev1WJ2tOiTBg9o",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/oil-of-unlife.webp",
+        "name": "Oil of Unlife (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "3d8+10",
+                "kind": "healing",
+                "type": "void"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This thin, black liquid imparts a bone-deep chill while rapidly repairing an undead creature's physical or spiritual form. When you dash <em>oil of unlife</em> onto an undead creature, or a living creature with void healing, the oil absorbs quickly into its body, and the creature regains @Damage[(3d8+10)[healing]]{3d8+10 Hit Points}. You can pour <em>oil of unlife</em> on an incorporeal undead; in this case, the creature absorbs the oil into itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 50
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Ru4xaA4kjdZ4IFS5": {
+        "_id": "Ru4xaA4kjdZ4IFS5",
+        "img": "icons/tools/laboratory/bowl-mixing.webp",
+        "name": "Oil of Weightlessness (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<hr />\n<p>You can spread this shimmering oil on an item of 2 Bulk or less to make it feel weightless. It has negligible Bulk for 8 hours.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 36
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "6DmHDtIsGzH1s5JO": {
+        "_id": "6DmHDtIsGzH1s5JO",
+        "img": "icons/tools/laboratory/bowl-mixing.webp",
+        "name": "Oil of Weightlessness",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<hr />\n<p>You can spread this shimmering oil on an item of 1 Bulk or less to make it feel weightless. It has negligible Bulk for 1 hour.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ktRGlgegUBZcr0aJ": {
+        "_id": "ktRGlgegUBZcr0aJ",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/saints-balm.webp",
+        "name": "Saints' Balm",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": {
+                "formula": "3d8+10",
+                "kind": "healing",
+                "type": "untyped"
+            },
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<p>This luminescent paste is made from the powdered bones of a long-forgotten saint, mixed with herbs and blessed by a priest. It typically comes in a tightly sealed, palm-sized dish etched with holy symbols. Applying <em>saints' balm</em> to yourself or a creature within reach restores 3d8+10 Hit Points to the creature to which it's applied.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #152: Legacy of the Lost God"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ybu2BMu2oWj74wl8": {
+        "_id": "ybu2BMu2oWj74wl8",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/salve-of-antiparalysis.webp",
+        "name": "Salve of Antiparalysis (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<hr />\n<p>Applying this filmy salve to a creature helps it overcome magical paralysis. If the creature is petrified, it returns to normal, and for removing paralysis, the salve's counteract modifier is [[/r 1d20+31 #Counteract]]{+31} and its counteract rank is 6th.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 325
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZEKmCg8K2hUHbmnT": {
+        "_id": "ZEKmCg8K2hUHbmnT",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/salve-of-antiparalysis.webp",
+        "name": "Salve of Antiparalysis",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>Applying this filmy salve to a creature helps it overcome magical paralysis. The salve attempts to counteract the paralysis (counteract rank 3rd, counteract modifier [[/r 1d20+22 #Counteract]]{+22})</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 40
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "healing",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "BnYABzPAgdU89nLk": {
+        "_id": "BnYABzPAgdU89nLk",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Serpent Oil (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Medium object that is snakelike in shape, from a stick to a scarf, the object transforms into a @UUID[Compendium.pf2e.pathfinder-monster-core.Actor.Giant Viper], keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the minion trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 56
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "K6D2Ld8Md6PVsAaV": {
+        "_id": "K6D2Ld8Md6PVsAaV",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Serpent Oil (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Tiny object that is snakelike in shape, from a stick to a scarf, the object transforms into a @UUID[Compendium.pf2e.pathfinder-monster-core.Actor.Viper], keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the minion trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VTuKWBEGuBS3HqF4": {
+        "_id": "VTuKWBEGuBS3HqF4",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Serpent Oil (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Large object that is snakelike in shape, from a stick to a scarf, the object transforms into a @UUID[Compendium.pf2e.pathfinder-bestiary-2.Actor.Emperor Cobra], keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the minion trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 225
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "l2M9P6kI3z3xPBOa": {
+        "_id": "l2M9P6kI3z3xPBOa",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Serpent Oil (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on an object, the object transforms. The oil can be applied to a Small object, producing a @UUID[Compendium.pf2e.pathfinder-bestiary-2.Actor.Sea Snake], or a Medium object, producing a @UUID[Compendium.pf2e.pathfinder-monster-core.Actor.Python], keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the minion trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 24
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "1DmcPUZERWeKpiMM": {
+        "_id": "1DmcPUZERWeKpiMM",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Serpent Oil (True)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Huge object that is snakelike in shape, from a stick to a scarf, the object transforms into a @UUID[Compendium.pf2e.pathfinder-monster-core.Actor.Giant Anaconda], keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the minion trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1100
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "EWujUs3YmlBu2jhm": {
+        "_id": "EWujUs3YmlBu2jhm",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/shielding-salve.webp",
+        "name": "Shielding Salve",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p>This shimmering paste has many properties of a @UUID[Compendium.pf2e.spells-srd.Item.Shield] spell. When you slather it onto a creature or object, the target gains a +1 circumstance bonus to AC for 1 round. The first time a physical attack or a force barrage hits the target during that round, the oil prevents 5 damage from that attack or spell, and then the oil's effect ends.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Shielding Salve]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "PblDdXHm98XWs9ba": {
+        "_id": "PblDdXHm98XWs9ba",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-poisons/looters-lethargy.webp",
+        "name": "Topology Protoplasm",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>This slimy gel wriggles to the touch, as if covered by a multitude of imperceptible cilia. If applied to a creature or object no larger than 7 feet in any dimension, the protoplasm shifts it into an ooze-like state for 1 minute, allowing the subject to squash and stretch harmlessly. In this state, a creature that attempts a check to Squeeze uses the outcome one degree of success better than it rolls and can move its full Speed while Squeezing, and an object can fit through a space 2 feet across. One vial can cover a creature or object of up to Large size, but as each vial is made from a specific ooze, multiple vials can't be combined together to cover a larger object, as the two gels simply negate each other.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Topology Protoplasm]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "MobYbxEL4KgxVi63": {
+        "_id": "MobYbxEL4KgxVi63",
+        "img": "systems/pf2e/icons/equipment/consumables/oils/salve-of-slipperiness.webp",
+        "name": "Tricky Liniment",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>This greenish, persistent grease can be applied to armor to make it extremely slippery for 8 hours, granting the wearer a +2 item bonus to Acrobatics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Escape] or to @UUID[Compendium.pf2e.actionspf2e.Item.Squeeze].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Tricky Liniment]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "BzGI4g44y6LiHEPp": {
+        "_id": "BzGI4g44y6LiHEPp",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Weapon-Weird Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Each dose of weapon-weird oil is keyed to a particular melee weapon group, selected from among axe, brawling, club, flail, hammer, knife, pick, polearm, shield, spear, and sword. The oil creates a synergy between skill and weapon, enabling you to wield the weapon in unexpected ways. You must have proficiency with the original weapon to benefit from the oil; however, you use your proficiency rank with the oil's keyed group instead of the weapon's original group. Also, you apply the critical specialization effect from the oil's keyed group instead of the weapon's normal critical specialization effect. While the oil remains effective, the @UUID[Compendium.pf2e.equipment-srd.Item.Grievous] rune and similar magic react as if the weapon belongs to the oil's group. A weapon can be coated in only one type of weapon-weird oil at a time. Any new application of this oil supersedes any previous one. These effects last for 1 hour.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 55
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "lvGSfPbpAd9lHeX5": {
+        "_id": "lvGSfPbpAd9lHeX5",
+        "img": "icons/consumables/potions/potion-tube-corked-bat-gold-red.webp",
+        "name": "Wounding Oil",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "oil",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>Smearing <em>wounding oil</em>, a crimson fluid, on a weapon causes it to smell strongly of blood and gives it the benefits of the @UUID[Compendium.pf2e.equipment-srd.Item.Wounding] rune for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Wounding Oil]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 45
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "magical",
+                    "oil"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

@@ -1,0 +1,3336 @@
+{
+    "nLhb0w0DbtUC6weH": {
+        "_id": "nLhb0w0DbtUC6weH",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/armor-of-the-holy-warrior.webp",
+        "name": "Armor of the Holy Warrior",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "half-plate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Based on the armors used by the holy warriors who served under General Arnisant in the Shining Crusade, this well-polished <em>+2 greater resilient half plate</em> is decorated with religious motifs and carved with sacred scripture. While wearing armor of the holy warrior, your item bonus from the <em>greater resilient rune</em> increases from +2 to +3; if you upgrade to a <em>major resilient rune</em>, the item bonus instead increases from +3 to +4. An undead that critically fails an unarmed attack against you while you wear this armor takes 1d6 vitality damage.</p>\n<p>If you are evil, you're @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 2} while wearing the armor. If you're undead, you also take @Damage[2d6[vitality]] damage each round that you wear the armor.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> command, envision, Interact</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The armor casts the three-action version of a 6th-rank @UUID[Compendium.pf2e.spells-srd.Item.Heal] spell.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 9000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Knights of Lastwall"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "saving-throw",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "divine",
+                    "good",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "IAPztxiK2T5mC2Y5": {
+        "_id": "IAPztxiK2T5mC2Y5",
+        "img": "systems/pf2e/icons/equipment/armor/bastion-plate.webp",
+        "name": "Bastion of the Inheritor",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "bastion-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Worn by Iomedae's prestigious knights, this <em>+2 resilient bastion plate</em> is emblazoned with the Inheritor's religious symbol and sports a white cloak. While the cloak is white, this armor grants you a +2 item bonus to Diplomacy checks to @UUID[Compendium.pf2e.actionspf2e.Item.Make an Impression], provided your target has no enmity toward Iomedae.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Effect</strong> The armor's cloak becomes red for 1 minute. As long as the cloak is red, you gain the benefits of the armor's deflect melee trait without needing to spend an additional action to activate it during each turn.</p>\n<p><strong>Craft Requirements</strong> You worship Iomedae.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:make-an-impression"
+                    ],
+                    "selector": "diplomacy",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "entrench-melee",
+                    "hindering"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "oGVtymwknrJS8gWW": {
+        "_id": "oGVtymwknrJS8gWW",
+        "img": "systems/pf2e/icons/equipment/armor/bastion-plate.webp",
+        "name": "Bastion Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "bastion-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This cumbersome and sturdy plate armor has fluting and additional protection built into the cuirass, helm, pauldrons, and vambraces. Bastion plate was invented for protection in combat tournaments meant to be sporting rather than lethal.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 33
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "entrench-melee",
+                    "hindering"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "DUTKrSu5iJMktfZI": {
+        "_id": "DUTKrSu5iJMktfZI",
+        "img": "icons/equipment/chest/breastplate-layered-gilded-black.webp",
+        "name": "Black Hole Armor",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "fortress-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>The joints of this black <em>+2 greater resilient fortification fortress plate</em> look like swirling vortices of silver. Non-magical ammunition and thrown weapons aimed at you are destroyed after they hit you and deal damage or miss you. You also have resistance 10 to physical damage from ranged attacks.</p>\n<p>When an enemy's ranged attack misses you or hits you and deals no damage, the armor absorbs the projectile. When it has absorbed six projectiles, the armor glows at the joints.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per minute</p>\n<p><strong>Trigger</strong> A ranged weapon Strike targets a creature within 20 feet of you and the attacker hasn't yet rolled its attack</p>\n<p><strong>Effect</strong> The triggering Strike targets you instead of its intended target.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p><strong>Requirements</strong> The <em>black hole armor</em> has absorbed six or more projectiles</p>\n<p><strong>Effect</strong> All the projectiles absorbed by the armor appear out of thin air, as though transported there, falling in a @Template[burst|distance:10] within 120 feet of you. Each creature in the burst takes @Damage[10d8[piercing]|options:area-damage] with a @Check[reflex|dc:35|options:area-effect,damaging-effect] save. The absorbed projectiles are all expended, and the armor's joints stop glowing.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "definition": [
+                        "damage:category:physical",
+                        "item:ranged"
+                    ],
+                    "key": "Resistance",
+                    "label": "PF2E.IWR.Custom.PhysicalRangedAttacks",
+                    "type": "custom",
+                    "value": 10
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "fortification"
+                ],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "fortification"
+                    ],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "entrench-ranged",
+                    "ponderous"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "GPrjYsQiC3jKdQmO": {
+        "_id": "GPrjYsQiC3jKdQmO",
+        "img": "icons/equipment/chest/breastplate-banded-steel-studded.webp",
+        "name": "Blast Suit",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Crafted from heavy steel plating and riveted together with cunning precision, this suit of +1 resilient @UUID[Compendium.pf2e.equipment-srd.Item.Full Plate] is specifically designed to protect against sudden explosions. This added layer of security comes at the cost of movement, however.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">r</span> command</p>\n<p><strong>Trigger</strong> You're affected by an area effect that requires a Reflex save, or you would take splash damage from a scatter weapon</p>\n<hr />\n<p><strong>Effect</strong> The <em>blast suit</em> locks together into a rigid bulwark, protecting you from the blast but preventing you from moving from your position under any circumstances.</p>\n<p>You become @UUID[Compendium.pf2e.conditionitems.Item.Immobilized], gain a +2 circumstance bonus to your Reflex save against area effects, and gain resistance 5 to all damage you would normally take from area effects and scatter splash damage (this doesn't damage the <em>blast suit</em>). These effects persist for as long as the suit remains in the locked position. You can Interact with the suit to unlock it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Blast Suit]</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 650
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #180: The Smoking Gun"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "7qBpWdPZ0X8HoH9X": {
+        "_id": "7qBpWdPZ0X8HoH9X",
+        "img": "icons/equipment/chest/breastplate-layered-gilded-black.webp",
+        "name": "Bone Dreadnought Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "fortress-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of bone-based fortress plate is a masterpiece of alchemical science. This armor has a receiver that can hold a single lodestone bomb, which takes 3 Interact actions to install.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<p><strong>Requirements</strong> A lodestone bomb is installed in the armor.</p><hr /><p><strong>Effect</strong> The bomb shifts numerous small plates and hinges, offering a wide variety of protections, granting you resistance to cold, electricity, fire, piercing, and slashing damage equal to the loaded lodestone bomb's splash damage. These effects last for 20 minutes, but each time you're hit by an attack that deals damage of one of these types, decrease the remaining duration by 1 minute. Once activated, the armor can't be deactivated. The activation uses up the lodestone bomb, and the armor can't be activated again until a new one is installed.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "bulwark",
+                    "entrench-ranged",
+                    "ponderous"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "mHHvzxHtlLbkbStG": {
+        "_id": "mHHvzxHtlLbkbStG",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/containment-contraption.webp",
+        "name": "Containment Contraption",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This heavy, mechanized brass suit is studded with pistons, gears, dials, and gauges and topped with a front-facing thick glass porthole. The suit is a suit of <em>+1 full plate</em>. While worn, it completely encloses you, providing protection against inhaled toxins—you gain a +1 circumstance bonus to all saving throws made against such effects. The suit isn't airtight, however, and doesn't protect against drowning if you're immersed in water or suffocation if you're placed in a vacuum—at least, not until you activate it.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The <em>containment contraption</em> fills with breathable air and filters exterior air or water to create more breathable air for you, as needed. This state persists for up to 1 hour, during which time you can breathe normally in environments where you normally couldn't. During this time, your circumstance bonus to saving throws against inhaled toxins increases to +2, and you also gain a +2 circumstance bonus to saves against olfactory effects. This effect ends immediately if the <em>containment contraption</em> becomes broken.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Containment Contraption]</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #179: Cradle of Quartz"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "inhaled"
+                    ],
+                    "requireInvestment": false,
+                    "selector": "saving-throw",
+                    "type": "circumstance",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "YFAaJntmFK2fPqi5": {
+        "_id": "YFAaJntmFK2fPqi5",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Dragon Turtle Armor",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+1 resilient full plate</em> is crafted from the most colorful fragments chipped from scales of a dragon turtle's shell, traditionally incorporating that motif in the form of a thicker, sturdier backplate. While wearing this armor, you aren't @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] from creatures that flank you, and you ignore the armor's speed penalty when you Swim and its check penalty to Athletics checks to Swim.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #199: To Bloom Below the Web"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "ActiveEffectLike",
+                    "mode": "override",
+                    "path": "system.attributes.flanking.flankable",
+                    "value": false
+                },
+                {
+                    "key": "AdjustModifier",
+                    "selector": "swim-speed",
+                    "slug": "armor-speed-penalty",
+                    "suppress": true
+                },
+                {
+                    "key": "AdjustModifier",
+                    "predicate": [
+                        "action:swim"
+                    ],
+                    "selector": "athletics",
+                    "slug": "armor-check-penalty",
+                    "suppress": true
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "u9BdrpYhJDUPQFCF": {
+        "_id": "u9BdrpYhJDUPQFCF",
+        "img": "icons/equipment/chest/breastplate-gorget-steel-white.webp",
+        "name": "Dragon Turtle Plate",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "half-plate",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This harness of <em>+1 resilient half plate</em> is made from the shell plates of a dragon turtle and has the aquadynamic trait. To those who can craft with them, the dense organic plates on the dragon turtle's body are as valuable as the creature's hoard of gold.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (manipulate)</p>\n<p><strong>Trigger</strong> A creature adjacent to you targets you with a melee attack</p>\n<p><strong>Effect</strong> You roll the hefty plates of the <em>dragon turtle armor</em> toward the attacker to gain a +1 circumstance bonus to AC against the triggering attack.</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the shell of a dragon turtle.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 700
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "RollOption",
+                    "option": "dragon-turtle-plate",
+                    "toggleable": true
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "dragon-turtle-plate",
+                        "item:melee"
+                    ],
+                    "selector": "ac",
+                    "type": "circumstance",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "aquadynamic"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "3xsQ1AA4dyMHLxpw": {
+        "_id": "3xsQ1AA4dyMHLxpw",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/dragonplate.webp",
+        "name": "Dragonplate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of +2 <em>greater resilient dragonhide full plate</em> makes you look like a fearsome dragon. The armor comes in many different varieties depending on the type of dragon from which it's made, though they usually conform to the four magical traditions.</p><hr /><p><strong>Activate—Dragon Breath</strong> <span class=\"action-glyph\">2</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You unleash a @Template[cone|distance:15] of energy with a damage type and saving throw corresponding to the tradition of the dragon used to make the armor (shown on the table below). The cone deals 14d6 damage; each creature in the area must attempt a DC 36 basic saving throw.</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include 1,250 gp of dragonhide.</p><table class=\"pf2e remaster\"><thead><tr><th>Dragon Tradition</th><th>Damage</th></tr></thead><tbody><tr><td>Arcane</td><td>@Damage[14d6[force]|options:area-damage]{Force} (@Check[reflex|dc:36|basic|options:area-effect]{Reflex})</td></tr><tr><td>Divine</td><td>@Damage[14d6[spirit]|options:area-damage]{Spirit} (@Check[reflex|dc:36|basic|options:area-effect]{Reflex})</td></tr><tr><td>Occult</td><td>@Damage[14d6[mental]|options:area-damage]{Mental} (@Check[will|dc:36|basic|options:area-effect]{Will})</td></tr><tr><td>Primal</td><td>@Damage[14d6[poison]|options:area-damage]{Poison} (@Check[fortitude|dc:36|basic|options:area-effect]{Fortitude})</td></tr></tbody></table>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": "standard",
+                "type": "dragonhide"
+            },
+            "price": {
+                "value": {
+                    "gp": 10000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "standard",
+                    "type": "dragonhide"
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "zPSImy0ENQjnRJNs": {
+        "_id": "zPSImy0ENQjnRJNs",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/forgotten_shell.webp",
+        "name": "Forgotten Shell",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 resilient @UUID[Compendium.pf2e.equipment-srd.Item.Full Plate]</em>, crafted from grim plates of iron, covers the entire body except for small holes for the eyes and mouth.</p>\n<p>While wearing the armor, you gain the benefits of a @UUID[Compendium.pf2e.spells-srd.Item.Veil of Privacy] spell. Additionally, creatures attempting to Recall Knowledge about a subject involving you must succeed at a @Check[will|dc:30]. On a success, they can attempt the check normally. On a failure, they can still attempt the check, but even if they successfully Recall Knowledge, they don't remember you (although they might remember other details about the event). Creatures that fail their save can make another attempt to Recall Knowledge about you, but they must wait 24 hours to do so.</p>\n<p>You can spend 1 hour using blacksmithing tools to bind a helpless Medium humanoid inside the suit, which welds the suit shut and makes it impossible to remove without breaking it (Hardness 9, HP 36, BT 18). The humanoid inside the suit counts as being Invested while bound in this fashion and can't break out of the suit on its own. If the suit is welded shut, the creature gains the benefits above but also the following penalties:</p>\n<ul>\n<li>Whenever the humanoid attempts a Deception, Diplomacy, Intimidation, or Performance check, they must roll twice and use the worse result.</li>\n<li>Additionally, creatures the humanoid encounters have an initial attitude toward them of one degree worse than they normally would (for instance, @UUID[Compendium.pf2e.conditionitems.Item.Unfriendly] instead of @UUID[Compendium.pf2e.conditionitems.Item.Indifferent]).</li>\n<li>Good creatures are @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 2} while carrying, wielding, or wearing this item crafted by the sea-witches.</li>\n</ul>\n<p><strong>Craft Requirements</strong> Supply a casting of <em>Nondetection</em> and @UUID[Compendium.pf2e.spells-srd.Item.Outcast's Curse].</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #161: Belly of the Black Whale"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "FSDEuHDr1I4JVIJg": {
+        "_id": "FSDEuHDr1I4JVIJg",
+        "img": "icons/equipment/chest/breastplate-layered-gilded-black.webp",
+        "name": "Fortress Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "fortress-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Dwarves of Dongun Hold developed fortress plate, which is still popular in Alkenstar and Dongun Hold. A trained wearer can adjust the articulated armor's overlapping layers of plates and panels to provide protection from missiles.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 32
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": " Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "entrench-ranged",
+                    "ponderous"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "Gq1cZWSKOtJhKd2p": {
+        "_id": "Gq1cZWSKOtJhKd2p",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Full Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of @UUID[Compendium.pf2e.equipment-srd.Item.Padded Armor] and a pair of @UUID[Compendium.pf2e.equipment-srd.Item.Gauntlet]{gauntlets}.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "tLNsmY90aN668PMG": {
+        "_id": "tLNsmY90aN668PMG",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/glorious-plate.webp",
+        "name": "Glorious Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This elegant full plate is embossed with heraldic imagery and never tarnishes or loses its shine. <em>Glorious plate</em> is <em>+2 resilient full plate</em>.</p>\n<p>In battle, <em>glorious plate</em> sheds bright light in a 10-foot radius, which enemies see as a blinding halo that obscures creatures other than the wearer. When an enemy looks at the wearer, it must attempt a @Check[will|dc:33] saving throw. The enemy is then temporarily immune for 1 minute.</p>\n<p><strong>Success</strong> The enemy is unaffected.</p>\n<p><strong>Failure</strong> For 1 minute, the wearer's allies within the glorious plate's 10-foot radius of light are @UUID[Compendium.pf2e.conditionitems.Item.Concealed] to the enemy. Allies are concealed only while they remain within the light; if allies enter the light later, they are concealed as well.</p>\n<p><strong>Critical Failure</strong> As failure, except the wearer's allies are @UUID[Compendium.pf2e.conditionitems.Item.Hidden] to the enemy instead of concealed.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> command, Interact</p>\n<p><strong>Effect</strong> The armor casts @UUID[Compendium.pf2e.spells-srd.Item.Sanctuary] on you.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Character Guide"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "RollOption",
+                    "label": "PF2E.SpecificRule.InCombat.ToggleLabel",
+                    "option": "in-combat",
+                    "toggleable": true
+                },
+                {
+                    "key": "TokenLight",
+                    "predicate": [
+                        "in-combat"
+                    ],
+                    "value": {
+                        "animation": {
+                            "intensity": 1,
+                            "speed": 2,
+                            "type": "pulse"
+                        },
+                        "bright": 10,
+                        "color": "#343434"
+                    }
+                },
+                {
+                    "key": "TokenEffectIcon",
+                    "predicate": [
+                        "in-combat"
+                    ],
+                    "value": "systems/pf2e/icons/equipment/armor/specific-magic-armor/glorious-plate.webp"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "good",
+                    "light",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "M6b20zZTGNWrx5oM": {
+        "_id": "M6b20zZTGNWrx5oM",
+        "img": "systems/pf2e/icons/equipment/armor/hellknight-plate.webp",
+        "name": "Gray Maiden Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": null,
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>These suits of faceless full plate were first designed and distributed under Queen Ileosa's rule, but today, each new suit of this infamous style of plate armor is made by a Gray Maiden herself or a new member's sponsor.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 35
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Adventure: Shadows at Sundown"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "pRoikbRo5HFW6YUB": {
+        "_id": "pRoikbRo5HFW6YUB",
+        "img": "icons/equipment/chest/breastplate-gorget-steel-white.webp",
+        "name": "Half Plate",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "half-plate",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of full plate with greater flexibility and speed. A suit of this armor comes with an undercoat of @UUID[Compendium.pf2e.equipment-srd.Item.Padded Armor] and a pair of @UUID[Compendium.pf2e.equipment-srd.Item.Gauntlet]{gauntlets}.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 18
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "U6XqhSFUUowHnnkk": {
+        "_id": "U6XqhSFUUowHnnkk",
+        "img": "systems/pf2e/icons/equipment/armor/hellknight-plate.webp",
+        "name": "Hellknight Half Plate",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "hellknight-half-plate",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Hellknights wear a variety of armors decorated with designs specific to the order. Hellknight half plate is the armor of choice for Hellknight signifers.</p>\n<p>A character who is a member of the Hellknights has access to these uncommon armors.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "lCgXeV52eYYl5cUX": {
+        "_id": "lCgXeV52eYYl5cUX",
+        "img": "systems/pf2e/icons/equipment/armor/hellknight-plate.webp",
+        "name": "Hellknight Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "hellknight-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Hellknights wear a variety of armors decorated with designs specific to the order. Hellknight half plate is the armor of choice for Hellknight signifiers, and Hellknight breastplate serves those in the order who lack the training to wear heavy armor.</p>\n<p>A character who is a member of the Hellknights has access to these uncommon armors.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 35
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "ziESwPW9EostyeQn": {
+        "_id": "ziESwPW9EostyeQn",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Hero's Plate (Greater)",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Golden images of heroic deeds decorate the black plates of this <em>+2 greater resilient full plate</em>. You gain resistance 10 to mental damage and a +2 status bonus to saves against fear.</p>\n<p><strong>Activate—Personal Legend</strong> <span class=\"action-glyph\">1</span> (concentration)</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The scenes depicted on your armor shift and change, making room to accommodate your current heroic feats. You cast 6th-rank @UUID[Compendium.pf2e.spells-srd.Item.Heroism] on yourself.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 22500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "mental",
+                    "value": 10
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "item:trait:fear"
+                    ],
+                    "selector": "saving-throw",
+                    "type": "status",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "qiRJhMvDnuorQZ62": {
+        "_id": "qiRJhMvDnuorQZ62",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Hero's Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Golden images of heroic deeds decorate the black plates of this <em>+1 resilient full plate</em>. You gain resistance 5 to mental damage and a +1 status bonus to saves against fear.</p>\n<p><strong>Activate—Personal Legend</strong> <span class=\"action-glyph\">1</span> (concentration)</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The scenes depicted on your armor shift and change, making room to accommodate your current heroic feats. You cast @UUID[Compendium.pf2e.spells-srd.Item.Heroism] on yourself.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #202: Severed at the Root"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "mental",
+                    "value": 5
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "item:trait:fear"
+                    ],
+                    "selector": "saving-throw",
+                    "type": "status",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "SMruq5revpHcKDdt": {
+        "_id": "SMruq5revpHcKDdt",
+        "img": "systems/pf2e/icons/equipment/armor/bastion-plate.webp",
+        "name": "Highhelm Stronghold Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "bastion-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 resilient fortification bastion plate</em> is made almost entirely of stone plates. It looks almost unwearable and is in fact only wearable because of numerous minor enchantments for comfort and mobility. If you have armor specialization with heavy armor, your resistance while wearing <em>Highhelm stronghold plate</em> applies to both slashing and piercing damage.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> envision, Interact</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The plating on your armor explodes off of your body, expands, and reshapes, transforming into a stone structure with the effects of @UUID[Compendium.pf2e.spells-srd.Item.Wall of Stone]. While the armor is transformed in this way, you don't gain the benefits of wearing the armor. The armor remains transformed for up to 10 minutes or until you Dismiss the effect, at which point the <em>wall of stone</em> disappears and the armor returns to you, donning itself immediately.</p>\n<hr />\n<p><strong>Crafting Requirements</strong> Supply one casting of <em>wall of stone</em>.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3750
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Highhelm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "fortification"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "fortification"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "entrench-melee",
+                    "hindering",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "qSqx72639EJTzBam": {
+        "_id": "qSqx72639EJTzBam",
+        "img": "systems/pf2e/icons/equipment/armor/bastion-plate.webp",
+        "name": "Immortal Bastion",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "bastion-plate",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This impressive <em>+3 greater resilient greater fortification bastion plate</em> is built like an impregnable castle, with multiple layers of defense and no weak points. When you activate the armor's deflect melee trait, you gain a +2 circumstance bonus to AC against melee attacks instead of +1, and you gain 10 temporary Hit Points that last until the start of your next turn.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Immortal Bastion]</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You are reduced to 0 Hit Points or would die from a death effect</p>\n<p><strong>Effect</strong> You drop to 1 Hit Point instead of being reduced to 0 HP or dying, and you gain 100 temporary Hit Points that last until the start of your next turn.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You would gain or increase the @UUID[Compendium.pf2e.conditionitems.Item.Doomed] or @UUID[Compendium.pf2e.conditionitems.Item.Wounded] condition</p>\n<p><strong>Effect</strong> You avoid gaining or increasing the condition. If the triggering effect imposes both doomed and wounded, choose only one to prevent. This doesn't remove either of the conditions if you already have them, nor does it prevent the same triggering effect from giving or increasing the prevented condition later.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "greaterFortification"
+                ],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "greaterFortification"
+                    ],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "entrench-melee",
+                    "hindering"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "oRBcuFdQDRCn1pwo": {
+        "_id": "oRBcuFdQDRCn1pwo",
+        "img": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp",
+        "name": "Life-Saver Mail (Greater)",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+3 greater resilient greater fortification splint mail</em> has a large, green gemstone inset in a prominent location. While wearing the armor, you feel at ease knowing the armor can protect you in even dire circumstances. The gemstone glows with life essence, casting green light as brightly as a torch. You can suppress or resume this light by using a single action, which has the concentrate trait.</p>\n<hr />\n<p><strong>Activate—Second Chance</strong> <span class=\"action-glyph\">R</span> (concentration)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You would die</p>\n<p><strong>Effect</strong> The armor's gemstone turns gray as it shares life energy with you. The armor casts @UUID[Compendium.pf2e.spells-srd.Item.Breath of Life] on you.</p>\n<hr />\n<p><strong>Activate—Shielding Light</strong> <span class=\"action-glyph\">2</span> (concentration, manipulate)</p>\n<p><strong>Effect</strong> You tap on the gemstone, producing a protective screen of green light. You cast a 9th-rank @UUID[Compendium.pf2e.spells-srd.Item.Shield] spell. As normal with the spell, you can't cast <em>shield</em> again (using this activation or other means) for 10 minutes if you use it to Shield Block.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 52500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "RollOption",
+                    "label": "PF2E.SpecificRule.LitItem",
+                    "option": "lit-life-saver-mail",
+                    "toggleable": true,
+                    "value": true
+                },
+                {
+                    "key": "TokenLight",
+                    "predicate": [
+                        "lit-life-saver-mail"
+                    ],
+                    "value": {
+                        "alpha": 0.45,
+                        "animation": {
+                            "intensity": 1,
+                            "speed": 2,
+                            "type": "flame"
+                        },
+                        "attenuation": 0.4,
+                        "bright": 20,
+                        "color": "#88ff88",
+                        "dim": 40,
+                        "shadows": 0.2
+                    }
+                },
+                {
+                    "key": "TokenEffectIcon",
+                    "predicate": [
+                        "lit-life-saver-mail"
+                    ],
+                    "value": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "greaterFortification"
+                ],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "greaterFortification"
+                    ],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "h9sZfo6UmHIOU5wb": {
+        "_id": "h9sZfo6UmHIOU5wb",
+        "img": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp",
+        "name": "Life-Saver Mail",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+2 resilient fortification splint mail</em> has a large, green gemstone inset in a prominent location. While wearing the armor, you feel at ease knowing the armor can protect you in even dire circumstances. The gemstone glows with life essence, casting green light as brightly as a torch. You can suppress or resume this light by using a single action, which has the concentrate trait.</p>\n<hr />\n<p><strong>Activate—Second Chance</strong> <span class=\"action-glyph\">R</span> (concentration)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You would die</p>\n<p><strong>Effect</strong> The armor's gemstone turns gray as it shares life energy with you. The armor casts @UUID[Compendium.pf2e.spells-srd.Item.Breath of Life] on you.</p>\n<hr />\n<p><strong>Activate—Shielding Light</strong> <span class=\"action-glyph\">2</span> (concentration, manipulate)</p>\n<p><strong>Effect</strong> You tap on the gemstone, producing a protective screen of green light. You cast a 5th-rank @UUID[Compendium.pf2e.spells-srd.Item.Shield] spell. As normal with the spell, you can't cast <em>shield</em> again (using this activation or other means) for 10 minutes if you use it to Shield Block.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "RollOption",
+                    "label": "PF2E.SpecificRule.LitItem",
+                    "option": "lit-life-saver-mail",
+                    "toggleable": true,
+                    "value": true
+                },
+                {
+                    "key": "TokenLight",
+                    "predicate": [
+                        "lit-life-saver-mail"
+                    ],
+                    "value": {
+                        "alpha": 0.45,
+                        "animation": {
+                            "intensity": 1,
+                            "speed": 2,
+                            "type": "flame"
+                        },
+                        "attenuation": 0.4,
+                        "bright": 20,
+                        "color": "#88ff88",
+                        "dim": 40,
+                        "shadows": 0.2
+                    }
+                },
+                {
+                    "key": "TokenEffectIcon",
+                    "predicate": [
+                        "lit-life-saver-mail"
+                    ],
+                    "value": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "fortification"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "fortification"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "dmEmxoEVzOeEkscr": {
+        "_id": "dmEmxoEVzOeEkscr",
+        "img": "icons/equipment/chest/breastplate-layered-gold.webp",
+        "name": "Lion's Armor (Greater)",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "half-plate",
+            "bulk": {
+                "value": 0
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Various parts of this +3 <em>greater resilient half plate</em> are forged into the shape of a lion's head. The golden lion heads grant you a commanding presence and seem to actively growl at your enemies, granting you a +3 item bonus to Intimidation.</p>\n<p>The lions on the armor work in tandem with the lion on a <em>lion's shield</em>. If you critically hit with the <em>lion's shield</em> using Lion Bite, the lions on the armor roar in support of the shield, causing the target of the shield's Strike to become @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 1}.</p>\n<p><strong>Activate—Roar of the Pride</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per hour</p>\n<hr />\n<p><strong>Effect</strong> The lions on your armor roar, attempting to cow your enemies. Attempt a check to @UUID[Compendium.pf2e.actionspf2e.Item.Demoralize] each enemy within 30 feet of you. On a critical success, the target is also @UUID[Compendium.pf2e.conditionitems.Item.Fleeing] for 1 round.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 19
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "intimidation",
+                    "type": "item",
+                    "value": 3
+                }
+            ],
+            "runes": {
+                "potency": 3,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "EBuQjgVZaQpjQUjc": {
+        "_id": "EBuQjgVZaQpjQUjc",
+        "img": "icons/equipment/chest/breastplate-layered-gold.webp",
+        "name": "Lion's Armor",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "half-plate",
+            "bulk": {
+                "value": 0
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Various parts of this +2 <em>resilient half plate</em> are forged into the shape of a lion's head. The golden lion heads grant you a commanding presence and seem to actively growl at your enemies, granting you a +2 item bonus to Intimidation.</p>\n<p>The lions on the armor work in tandem with the lion on a <em>lion's shield</em>. If you critically hit with the <em>lion's shield</em> using Lion Bite, the lions on the armor roar in support of the shield, causing the target of the shield's Strike to become @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 1}.</p>\n<p><strong>Activate—Roar of the Pride</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> The lions on your armor roar, attempting to cow your enemies. Attempt a check to @UUID[Compendium.pf2e.actionspf2e.Item.Demoralize] each enemy within 30 feet of you. On a critical success, the target is also @UUID[Compendium.pf2e.conditionitems.Item.Fleeing] for 1 round.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "intimidation",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "AdJgj7vVvNGvPIEj": {
+        "_id": "AdJgj7vVvNGvPIEj",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/mail-of-luck.webp",
+        "name": "Mail of Luck",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of +2 resilient splint mail has a large, green gemstone inset in a prominent location.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">F</span> Envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You are hit or critically hit with an attack, but damage hasn't been rolled yet</p>\n<hr />\n<p><strong>Effect</strong> You force the attacker to reroll the attack roll and use the worse result. This effect has the misfortune trait.</p>\n<p>Activating the armor causes the gemstone to turn gray and become inert. You cannot activate the armor again until the stone returns to its original green color. The gem turns green again after 1 week or when a significant foe critically succeeds at an attack roll targeting you. (If an enemy rolls a critical success at an attack against you and you force the attacker to reroll that critical success, that critical success does not recharge the mail of luck.) Even if the armor's power returns before a week has elapsed, it can't be activated more than once per day.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2600
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Core Rulebook"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "w21zEmBFQmf25GCk": {
+        "_id": "w21zEmBFQmf25GCk",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Mantis Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>The beautiful plates of this <em>+2 resilient @UUID[Compendium.pf2e.equipment-srd.Item.Ready (Greater)]{Greater Ready} full plate</em> armor are shaped from the carapace of a deadly mantis, providing excellent protection with added flexibility. When wearing a suit of mantis plate, you gain a +2 item bonus to your Athletics DC.</p><hr /><p><strong>Activate—Mandible Vambraces</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p>\n<p><strong>Effect</strong> Make a melee Strike. If you succeed, the target is caught by the spikes on the armor's forearms, taking an additional @Damage[6d6[piercing]] damage (@Check[reflex|dc:30|basic] save).</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the arms and carapace of a deadly mantis.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2800
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "athletics-dc",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "greaterReady"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "greaterReady"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "YfRwH0wIEmuNDL7I": {
+        "_id": "YfRwH0wIEmuNDL7I",
+        "img": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp",
+        "name": "Mariner's Splint",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+1 splint mail</em> is worn by veteran sailors aboard warships who want as much protection as possible but still need to remain mobile enough to climb up rigging or swim should the need arise. The plates are arranged for maximum flexibility and the undercoat of padded armor is often no more than a cotton shrift. The armor grants you a +1 item bonus to Athletics checks to Climb or Swim and increases the distance you move when you successfully Climb or Swim by 5 feet.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 180
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        {
+                            "or": [
+                                "action:swim",
+                                "action:climb"
+                            ]
+                        }
+                    ],
+                    "selector": "athletics",
+                    "type": "item",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": null
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": null
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "U2liOd8kJasy0Ghd": {
+        "_id": "U2liOd8kJasy0Ghd",
+        "img": "icons/equipment/chest/breastplate-gorget-steel.webp",
+        "name": "O-Yoroi",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "o-yoroi",
+            "bulk": {
+                "value": 5
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Larger plates coupled with lamellar pieces to make up a suit of heavy lamellar. The custom-fitted and often highly decorative suit covers most of the body. Rounding out the suit are a tiered helmet and fearsome mask, often depicting a fiendish or monstrous creature.</p>"
+            },
+            "dexCap": 0,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 35
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "laminar"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "gp5kgCySEOuntQPF": {
+        "_id": "gp5kgCySEOuntQPF",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/plate-armor-of-the-deep.webp",
+        "name": "Plate Armor of the Deep",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of +2 greater resilient full plate is decorated with swirling, ornate motifs of waves and fish scales.</p>\n<p>While wearing it, you take no Speed reduction or check penalty from armor when Swimming, gain a +2 item bonus to Athletics checks to Swim, can breathe underwater, and can speak Thalassic.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Core Rulebook"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "label": "Plate Armor of the Deep (Swim)",
+                    "predicate": [
+                        "action:swim"
+                    ],
+                    "selector": "athletics",
+                    "type": "item",
+                    "value": 2
+                },
+                {
+                    "key": "ActiveEffectLike",
+                    "mode": "add",
+                    "path": "system.build.languages.granted",
+                    "value": {
+                        "slug": "thalassic",
+                        "source": "{item|name}"
+                    }
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "8EO2ibeDloBIVFF4": {
+        "_id": "8EO2ibeDloBIVFF4",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Plate of Yled (Greater)",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This sinister suit of jet-black <em>+1 resilient full plate</em> was designed to bolster the graveknights of Yled's undead armies, creating unstoppable legions.</p>\n<p>The armor gains additional abilities if it is a graveknight's armor. If a graveknight wearing undamaged plate of Yled is destroyed, the armor rebuilds its body over the course of [[/r 1d10 #Rounds]] rounds instead of 1d10 days. A living creature who dons the armor is affected by the graveknight's curse immediately instead of 1 hour.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> Your previous action was a weapon Strike that reduced a living creature to 0 HP</p>\n<hr />\n<p><strong>Effect</strong> The creature is targeted with @UUID[Compendium.pf2e.spells-srd.Item.Death Knell] (DC 24).</p>\n<hr />\n<p><strong>Craft Requirements</strong> The metals used to create this armor must include a fragment from a previous graveknight's armor.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 415
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Wake the Dead #5"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "NhyID8liSflMQ7ti": {
+        "_id": "NhyID8liSflMQ7ti",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Plate of Yled (Major)",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This sinister suit of jet-black <em>+2 resilient full plate</em> was designed to bolster the graveknights of Yled's undead armies, creating unstoppable legions.</p>\n<p>The armor gains additional abilities if it is a graveknight's armor. If a graveknight wearing undamaged plate of Yled is destroyed, the armor rebuilds its body over the course of [[/r 1d10 #Rounds]] rounds instead of 1d10 days. A living creature who dons the armor is affected by the graveknight's curse immediately instead of 1 hour.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> Your previous action was a weapon Strike that reduced a living creature to 0 HP</p>\n<hr />\n<p><strong>Effect</strong> The creature is targeted with @UUID[Compendium.pf2e.spells-srd.Item.Death Knell] (DC 28).</p>\n<hr />\n<p><strong>Craft Requirements</strong> The metals used to create this armor must include a fragment from a previous graveknight's armor.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1160
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Wake the Dead #5"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "GBleItbLFB08D8C5": {
+        "_id": "GBleItbLFB08D8C5",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Plate of Yled (True)",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This sinister suit of jet-black <em>+2 greater resilient full plate</em> was designed to bolster the graveknights of Yled's undead armies, creating unstoppable legions.</p>\n<p>The armor gains additional abilities if it is a graveknight's armor. If a graveknight wearing undamaged plate of Yled is destroyed, the armor rebuilds its body over the course of [[/r 1d10 #Rounds]] rounds instead of 1d10 days. A living creature who dons the armor is affected by the graveknight's curse immediately instead of 1 hour.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> Your previous action was a weapon Strike that reduced a living creature to 0 HP</p>\n<hr />\n<p><strong>Effect</strong> The creature is targeted with @UUID[Compendium.pf2e.spells-srd.Item.Death Knell] (DC 31).</p>\n<hr />\n<p><strong>Craft Requirements</strong> The metals used to create this armor must include a fragment from a previous graveknight's armor.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3600
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Wake the Dead #5"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "E47syLjnN3KXr0bW": {
+        "_id": "E47syLjnN3KXr0bW",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Plate of Yled",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This sinister suit of jet-black <em>+1 full plate</em> was designed to bolster the graveknights of Yled's undead armies, creating unstoppable legions.</p>\n<p>The armor gains additional abilities if it is a graveknight's armor. If a graveknight wearing undamaged plate of Yled is destroyed, the armor rebuilds its body over the course of [[/r 1d10 #Rounds]] rounds instead of 1d10 days. A living creature who dons the armor is affected by the graveknight's curse immediately instead of 1 hour.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> Your previous action was a weapon Strike that reduced a living creature to 0 HP</p>\n<hr />\n<p><strong>Effect</strong> The creature is targeted with @UUID[Compendium.pf2e.spells-srd.Item.Death Knell] (DC 20).</p>\n<hr />\n<p><strong>Craft Requirements</strong> The metals used to create this armor must include a fragment from a previous graveknight's armor.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 250
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Wake the Dead #5"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "bulwark",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "3mmS3Y291h6Ckgin": {
+        "_id": "3mmS3Y291h6Ckgin",
+        "img": "icons/equipment/chest/breastplate-layered-steel-green.webp",
+        "name": "Powered Full Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Stasian actuators help the limbs of this full plate move of their own accord, as long as they're supplied with power. A chamber in the chest plate can hold a single @UUID[Compendium.pf2e.equipment-srd.Item.Bottled Lightning (Lesser)]{Bottled Lightning}, which takes 3 Interact actions to install.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<p><strong>Requirements</strong> A bottled lightning is installed in the armor</p><hr /><p><strong>Effect</strong> The armor powers up for 10 minutes. While it's powered up, add the bottled lightning's item bonus to your Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Force Open], @UUID[Compendium.pf2e.actionspf2e.Item.High Jump], @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump], and @UUID[Compendium.pf2e.actionspf2e.Item.Shove]. The armor's Strength requirement is lowered by 1, or by 2 if the loaded bottled lightning's item bonus to attack rolls is +3 or higher. The armor's normal penalties still apply, based on this altered Strength. The activation uses up the bottled lightning, and the armor can't be activated again until a new one is installed.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 360
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "630xJ5zceXFXiTi2": {
+        "_id": "630xJ5zceXFXiTi2",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/prismatic-plate.webp",
+        "name": "Prismatic Plate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 1
+            },
+            "category": "heavy",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>With its standard-grade dawnsilver polished to a mirrorlike sheen, this <em>+2 resilient glamered dawnsilver breastplate</em> features the religious symbols of the goddesses of the Prismatic Ray pantheon-Desna, Sarenrae, and Shelyn-surrounded by a rainbow-colored set of gems.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> command, Interact</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> You surround yourself in a coruscating field of red, orange, yellow, green, blue, indigo, and violet light for 1 minute. Each color has a different effect, based on the effects of a 7th-rank @UUID[Compendium.pf2e.spells-srd.Item.Chromatic Wall] spell, and you apply the effects of each color once before it disappears from your field of light, which can happen in the following two ways.</p>\n<p>First, the field attempts a counteract check (counteract rank 7, counteract modifier [[/r 1d20+27 #Counteract]]{+27}) against any effect that would be blocked by a chromatic wall of any of the colors still surrounding you in your field of light. Succeed or fail, that color then disappears from your field of light.</p>\n<p>Second, any creature that touches you or damages you with an unarmed attack or non-reach melee weapon is affected by a random remaining color from your field. As normal, this doesn't affect creatures you choose to touch.</p>\n<p>A creature can also remove a color from your field of light by using a specific spell, as described in <em>chromatic wall</em>. The effect ends early if each color disappears from your field of light, or if you choose to Dismiss it.</p>\n<hr />\n<p><strong>Craft Requirements</strong> The initial raw materials must include 1,600 gp of dawnsilver.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": "standard",
+                "type": "dawnsilver"
+            },
+            "price": {
+                "value": {
+                    "gp": 14000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "glamered"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "standard",
+                    "type": "dawnsilver"
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "glamered"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "iCJrRoIsjdf665yE": {
+        "_id": "iCJrRoIsjdf665yE",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/psychic-brigandine.webp",
+        "name": "Psychic Brigandine",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 1
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Transparent crystals as hard as steel take the place of metal plates on this suit of +2 greater invisibility splint mail. Also known as a coat of a thousand thoughts in Vudra and Jalmeray, where it was first developed by psychic warriors, it makes your mind an indomitable fortress. You gain resistance 5 to mental damage.</p>\n<p>Whenever you use the armor to become invisible, you also become psychically invisible. Each time you would be affected by an effect with the mental trait while you are invisible, attempt a @Check[flat|dc:17] check. On a success, it doesn't affect you.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "mental",
+                    "value": 5
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "greaterInvisibility"
+                ],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "greaterInvisibility"
+                    ],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -14,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "6AhDKX1dwRwFpQsU": {
+        "_id": "6AhDKX1dwRwFpQsU",
+        "img": "icons/equipment/chest/breastplate-layered-leather-studded-black.webp",
+        "name": "Splint Mail",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "splint-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This type of armor is chain mail reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of @UUID[Compendium.pf2e.equipment-srd.Item.Padded Armor] and a pair of @UUID[Compendium.pf2e.equipment-srd.Item.Gauntlet]{gauntlets}.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 13
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -10,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "OlGFuOcqy0bSdtTl": {
+        "_id": "OlGFuOcqy0bSdtTl",
+        "img": "icons/equipment/chest/breastplate-gorget-steel-white.webp",
+        "name": "Suit of Armoire",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Price</strong> An indeterminate amount of one's lifespan, spent driving to the magic item warehouse, navigating its labyrinthine corridors, and consuming meatballs. Also some gold.</p>\n<hr />\n<p>This classic, timeless suit of <em>+1 resilient full plate</em> is personally assembled from modular pieces of flat-packed duskwood, doubling as furniture and personal protective gear. To wear or remove the suit of armoire, you must succeed at a @Check[crafting|dc:41] check (yes, this includes the +10 modifier for an \"Incredibly Difficult\" challenge); on a failure, you and all creatures within @Template[emanation|distance:30]{30 feet} must succeed at a @Check[will|dc:31] save or be overcome with frustration at how you can't follow the simple, easy-to-understand diagrams for assembling the armoire, imposing a -1 status penalty to Will saves for 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Suit of Armoire Frustration]</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact; Once per day; You did not fail at the check to assemble the suit of armoire today</p>\n<hr />\n<p><strong>Effect</strong> You open a set of doors on the armoire's front, producing one fancy suit of clothes of your choosing.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">r</span> Interact; An enemy hits or critically hits you with a Strike, or you fail or critically fail a Reflex save; You did fail the check to assemble the suit of armoire at least once today</p>\n<hr />\n<p><strong>Effect</strong> You forgot a peg or bolt when you were assembling the suit of armoire, causing it to collapse to pieces around you, though this shields you from harm. The triggering attack is a failure, or you succeed at your Reflex save. The suit of armoire falls apart around you into its constituent panels, leaving you unarmored.</p>\n<hr />\n<p><em><strong>Note</strong>: This item originates from the 2022 Paizo April Fools Blog post.</em></p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Blog: April Fools"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "7jGnVnqFt2gFtU1g": {
+        "_id": "7jGnVnqFt2gFtU1g",
+        "img": "icons/equipment/chest/breastplate-layered-leather-blue.webp",
+        "name": "Tideplate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Rippling water motifs decorate this simple suit of +1 <em>resilient full plate</em>. The plate has been altered for underwater use, so it's check penalty doesn't apply to Acrobatics or Athletics checks in water or similar liquids. While wearing the armor, you gain a +2 item bonus to Athletics checks to Swim, and you can breathe underwater.</p>\n<p><strong>Activate—Ride the Waves</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per hour</p>\n<hr />\n<p><strong>Effect</strong> The ripples on the armor begin to undulate, matching the movement of any nearby water. The armor casts @UUID[Compendium.pf2e.spells-srd.Item.Water Walk] on you.</p>\n<p><strong>Activate—Submerge</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate, polymorph)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> You're in water that covers at least half of your body.</p>\n<hr />\n<p><strong>Effect</strong> You merge with the water for 10 minutes. While merged, you can't move, you can see through the water if it's clear enough, and you can hear what's going on outside of the water. Water typically can't take damage, but if the water you're merged in is subject to electricity damage or an ability or effect that destroys or dries water, you're expelled from the water and take @Damage[10d6] damage. <em>Control water</em> expels you without dealing damage.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "label": "Tideplate (Swim)",
+                    "predicate": [
+                        "action:swim"
+                    ],
+                    "selector": "athletics",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "hYBZK1kaGPeR85CH": {
+        "_id": "hYBZK1kaGPeR85CH",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/demon-armor.webp",
+        "name": "Unholy Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>Crafted from black iron, this crude suit of <em>+2 resilient full plate</em> is designed to make you look like a horned demon with your face peering out of the screaming maw of the beast.</p>\n<p>While wearing the armor, you can attack with the helmet's horns. They're a martial melee weapon with the effects of a +2 weapon potency rune. They deal 2d8 piercing damage and have the deadly d12 and unholy traits. On a critical hit with the horns, the target must succeed at a @Check[fortitude|dc:30] or become @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1} (or @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} on a critical failure). The horns can't be etched with any runes.</p>\n<p>If you're holy, you're @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} and can't recover from this condition while wearing unholy plate.</p><hr /><p><strong>Activate—Demonic Slip</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You cast @UUID[Compendium.pf2e.spells-srd.Item.Translocate].</p><hr /><p><strong>Craft Requirements</strong> You're unholy; supply one casting of <em>translocate</em>.</p>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "category": "martial",
+                    "damage": {
+                        "base": {
+                            "damageType": "piercing",
+                            "dice": 2,
+                            "die": "d8"
+                        }
+                    },
+                    "key": "Strike",
+                    "label": "PF2E.BattleForm.Attack.Horns",
+                    "slug": "horns",
+                    "traits": [
+                        "deadly-d12",
+                        "unholy"
+                    ]
+                },
+                {
+                    "key": "WeaponPotency",
+                    "selector": "{item|id}-attack",
+                    "value": 2
+                },
+                {
+                    "key": "Note",
+                    "outcome": [
+                        "criticalSuccess"
+                    ],
+                    "selector": "{item|id}-attack",
+                    "text": "PF2E.SpecificRule.Equipment.UnholyPlate.Note",
+                    "title": "{item|name}"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "bulwark",
+                    "divine",
+                    "invested",
+                    "unholy"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "ed2F0L3R6UNSFUmS": {
+        "_id": "ed2F0L3R6UNSFUmS",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/victory-plate.webp",
+        "name": "Victory Plate (Greater)",
+        "system": {
+            "acBonus": 6,
+            "baseItem": null,
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>The metal plates of this <em>+2 greater resilient full plate</em> are covered by a bright tabard featuring a distinctive coat of arms divided into four fields. This insignia magically records your recent victories, displaying one triumph in each field of the coat of arms, allowing you to call upon those victories for aid in future battles.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">F</span> envision</p>\n<p><strong>Trigger</strong> You kill or destroy a creature of a level equal to or greater than your <em>victory plate</em> (adjusted as usual if you add fundamental runes to victory plate). This creature must have one of the traits listed in the second activation</p>\n<p><strong>Effect</strong> You direct the armor to commemorate your victory. The coat of arms on the armor's tabard shifts to incorporate heraldry related to the slain creature, and the victory is recorded within the tabard. If you have already recorded four victories, choose one to replace with the new victory.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> envision, Interact</p>\n<p><strong>Frequency</strong> once per minute</p>\n<p><strong>Effect</strong> You touch one of the tabard's four fields representing one of your victories and recall your triumph over that creature. That creature vanishes from the tabard, and for 1 minute, you gain resistance 10 to a damage type based on the creature's trait (you gain resistance to only one type, even if the creature has more than one trait that could apply):</p>\n<ul>\n<li><strong>Aberration or Fey</strong> mental</li>\n<li><strong>Celestial</strong> good</li>\n<li><strong>Construct</strong> poison</li>\n<li><strong>Dragon or Elemental</strong> one energy type that matches one of the dragon's or elemental's traits</li>\n<li><strong>Fiend</strong> evil</li>\n<li><strong>Ooze</strong> precision, and the resistance is 20</li>\n<li><strong>Undead</strong> void</li>\n</ul>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Advanced Player's Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "nVlKU2et4EeReayr": {
+        "_id": "nVlKU2et4EeReayr",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/victory-plate.webp",
+        "name": "Victory Plate",
+        "system": {
+            "acBonus": 6,
+            "baseItem": "full-plate",
+            "bulk": {
+                "value": 4
+            },
+            "category": "heavy",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>The metal plates of this <em>+1 resilient full plate</em> are covered by a bright tabard featuring a distinctive coat of arms divided into four fields. This insignia magically records your recent victories, displaying one triumph in each field of the coat of arms, allowing you to call upon those victories for aid in future battles.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">F</span> envision</p>\n<p><strong>Trigger</strong> You kill or destroy a creature of a level equal to or greater than your <em>victory plate</em> (adjusted as usual if you add fundamental runes to victory plate). This creature must have one of the traits listed in the second activation</p>\n<p><strong>Effect</strong> You direct the armor to commemorate your victory. The coat of arms on the armor's tabard shifts to incorporate heraldry related to the slain creature, and the victory is recorded within the tabard. If you have already recorded four victories, choose one to replace with the new victory.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> envision, Interact</p>\n<p><strong>Frequency</strong> once per hour</p>\n<p><strong>Effect</strong> You touch one of the tabard's four fields representing one of your victories and recall your triumph over that creature. That creature vanishes from the tabard, and for 1 minute, you gain resistance 5 to a damage type based on the creature's trait (you gain resistance to only one type, even if the creature has more than one trait that could apply):</p>\n<ul>\n<li><strong>Aberration or Fey</strong> mental</li>\n<li><strong>Celestial</strong> good</li>\n<li><strong>Construct</strong> poison</li>\n<li><strong>Dragon or Elemental</strong> one energy type that matches one of the dragon's or elemental's traits</li>\n<li><strong>Fiend</strong> evil</li>\n<li><strong>Ooze</strong> precision, and the resistance is 10</li>\n<li><strong>Undead</strong> void</li>\n</ul>"
+            },
+            "dexCap": 0,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 675
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Advanced Player's Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -10,
+            "strength": 4,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "bulwark",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    }
+}

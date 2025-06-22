@@ -1,0 +1,3436 @@
+{
+    "vTEWlRBUD4VzVwxK": {
+        "_id": "vTEWlRBUD4VzVwxK",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/applereed-mutagen.webp",
+        "name": "Applereed Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<p>This gummy liquid disproportionately lengthens your legs, causing you to grow but making your movement awkward. The effect is very noticeable unless your clothes can adequately conceal it.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Athletics checks and you gain a +20 foot status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to AC and a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Applereed Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "0RTsyWutvO42O0zK": {
+        "_id": "0RTsyWutvO42O0zK",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/applereed-mutagen.webp",
+        "name": "Applereed Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<p>This gummy liquid disproportionately lengthens your legs, causing you to grow but making your movement awkward. The effect is very noticeable unless your clothes can adequately conceal it.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Athletics checks and you gain a +10 foot status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to AC and a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Applereed Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "8e37h6HBr4ZyBSGt": {
+        "_id": "8e37h6HBr4ZyBSGt",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/applereed-mutagen.webp",
+        "name": "Applereed Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<p>This gummy liquid disproportionately lengthens your legs, causing you to grow but making your movement awkward. The effect is very noticeable unless your clothes can adequately conceal it.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Athletics checks and you gain a +15 foot status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to AC and a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Applereed Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "O4SbscW0mhRRSbRK": {
+        "_id": "O4SbscW0mhRRSbRK",
+        "img": "icons/consumables/fruit/apricot-ripe-orange.webp",
+        "name": "Apricot of Bestial Might",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p>This yellow fruit's soft flesh is covered by waxy, fibrous leaves reminiscent of a pineapple. When you eat an apricot of bestial might, you transform into a boar-faced battle form with scaly skin. You can use feats with this item as if it were a bestial mutagen, improving your tusk unarmed attack as if it were a claw or jaws attack.</p>\n<p><strong>Benefit</strong> You gain 8 resistance to all physical damage and gain a tusk unarmed attack with the deadly d12 trait that deals 1d10 piercing damage.</p>\n<p><strong>Drawback</strong> You become @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}. If you perform an action with the auditory or linguistic traits, you must succeed at a @Check[flat|dc:5] or the action is lost.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Apricot of Bestial Might]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #167: Ready? Fight!"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "gDheph8YteBtnyKp": {
+        "_id": "gDheph8YteBtnyKp",
+        "img": "icons/consumables/potions/bottle-round-flask-fumes-purple.webp",
+        "name": "Bestial Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features transform into something bestial and lumbering.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Athletics checks and unarmed attack rolls. You gain a claw unarmed attack (3d8 slashing damage) with the agile trait and a jaws unarmed attack (3d10 piercing damage). @UUID[Compendium.pf2e.equipment-srd.Item.Striking] runes don't modify the damage caused by these attacks.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Reflex saves, Acrobatics checks, and Stealth Checks.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Bestial Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "IQK9N2mEOyAj3iWU": {
+        "_id": "IQK9N2mEOyAj3iWU",
+        "img": "icons/consumables/potions/bottle-round-flask-fumes-purple.webp",
+        "name": "Bestial Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features transform into something bestial and lumbering.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Athletics checks and unarmed attack rolls. You gain a claw unarmed attack (1d4 slashing damage) with the agile trait and a jaws unarmed attack (1d6 piercing damage). @UUID[Compendium.pf2e.equipment-srd.Item.Striking] runes don't modify the damage caused by these attacks.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Reflex saves, Acrobatics checks, and Stealth Checks.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Bestial Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "nS75vsM3x5jxlUqn": {
+        "_id": "nS75vsM3x5jxlUqn",
+        "img": "icons/consumables/potions/bottle-round-flask-fumes-purple.webp",
+        "name": "Bestial Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features transform into something bestial and lumbering.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Athletics checks and unarmed attack rolls. You gain a claw unarmed attack (4d8 slashing damage) with the agile trait and a jaws unarmed attack (4d10 piercing damage). @UUID[Compendium.pf2e.equipment-srd.Item.Striking] runes don't modify the damage caused by these attacks. You gain weapon specialization with the claw and jaws, or greater weapon specialization if you already have weapon specialization with these unarmed attacks.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Reflex saves, Acrobatics checks, and Stealth Checks.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Bestial Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VISk5uLPVIvNWovB": {
+        "_id": "VISk5uLPVIvNWovB",
+        "img": "icons/consumables/potions/bottle-round-flask-fumes-purple.webp",
+        "name": "Bestial Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features transform into something bestial and lumbering.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Athletics checks and unarmed attack rolls. You gain a claw unarmed attack (2d6 slashing damage) with the agile trait and a jaws unarmed attack (2d8 piercing damage). @UUID[Compendium.pf2e.equipment-srd.Item.Striking] runes don't modify the damage caused by these attacks.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Reflex saves, Acrobatics checks, and Stealth Checks.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Bestial Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZGojRKG1yYiVWemR": {
+        "_id": "ZGojRKG1yYiVWemR",
+        "img": "icons/consumables/potions/potion-vial-corked-purple.webp",
+        "name": "Cognitive Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your mind becomes clear, but physical matters seem ephemeral.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge]. Your critical failures on Recall Knowledge checks become failures instead. You become trained in one Intelligence-based skill [Arcana, Crafting, Lore, Occultism, Society], chosen at creation.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to weapon and unarmed attack rolls, Athletics checks, and acrobatics checks. You can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is reduced by 4.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Cognitive Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "wbr6rkyaVYnDhdgV": {
+        "_id": "wbr6rkyaVYnDhdgV",
+        "img": "icons/consumables/potions/potion-vial-corked-purple.webp",
+        "name": "Cognitive Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your mind becomes clear, but physical matters seem ephemeral.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge]. Your critical failures on Recall Knowledge checks become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to weapon and unarmed attack rolls, Athletics checks, and acrobatics checks. You can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is reduced by 4.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Cognitive Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VBK9i74dry8yf8f0": {
+        "_id": "VBK9i74dry8yf8f0",
+        "img": "icons/consumables/potions/potion-vial-corked-purple.webp",
+        "name": "Cognitive Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your mind becomes clear, but physical matters seem ephemeral.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge]. Your critical failures on Recall Knowledge checks become failures instead. You become trained in one skill, chosen at creation.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to weapon and unarmed attack rolls, Athletics checks, and acrobatics checks. You can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is reduced by 4.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Cognitive Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qpzL9UnTi4cDhy6J": {
+        "_id": "qpzL9UnTi4cDhy6J",
+        "img": "icons/consumables/potions/potion-vial-corked-purple.webp",
+        "name": "Cognitive Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your mind becomes clear, but physical matters seem ephemeral.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge]. Your critical failures on Recall Knowledge checks become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to weapon and unarmed attack rolls, Athletics checks, and acrobatics checks. You can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is reduced by 4.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Cognitive Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xanr7nay2UQeR4Ec": {
+        "_id": "xanr7nay2UQeR4Ec",
+        "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+        "name": "Deadweight Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 hour your joints loosen and bones thicken, making your body incredibly weighty and difficult to maneuver around.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Shove] and @UUID[Compendium.pf2e.actionspf2e.Item.Trip], to your Fortitude and Reflex DCs against attempts to Shove or Trip you, and to saving throws against effects that attempt to force you to move or knock you @UUID[Compendium.pf2e.conditionitems.Item.Prone]. You can attempt to Shove or Trip creatures up to two sizes larger than you.</p>\n<p><strong>Drawback</strong> You gain the @UUID[Compendium.pf2e.conditionitems.Item.Encumbered] condition and can't remove it while under the effects of the mutagen.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Deadweight Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JPALWW3w4z8STAYV": {
+        "_id": "JPALWW3w4z8STAYV",
+        "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+        "name": "Deadweight Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 minute your joints loosen and bones thicken, making your body incredibly weighty and difficult to maneuver around.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Shove] and @UUID[Compendium.pf2e.actionspf2e.Item.Trip], to your Fortitude and Reflex DCs against attempts to Shove or Trip you, and to saving throws against effects that attempt to force you to move or knock you @UUID[Compendium.pf2e.conditionitems.Item.Prone].</p>\n<p><strong>Drawback</strong> You gain the @UUID[Compendium.pf2e.conditionitems.Item.Encumbered] condition and can't remove it while under the effects of the mutagen.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Deadweight Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Wx5WhSNOmeICgHSC": {
+        "_id": "Wx5WhSNOmeICgHSC",
+        "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+        "name": "Deadweight Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 hour your joints loosen and bones thicken, making your body incredibly weighty and difficult to maneuver around.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Shove] and @UUID[Compendium.pf2e.actionspf2e.Item.Trip], to your Fortitude and Reflex DCs against attempts to Shove or Trip you, and to saving throws against effects that attempt to force you to move or knock you @UUID[Compendium.pf2e.conditionitems.Item.Prone]. You can attempt to Shove or Trip creatures up to three sizes larger than you.</p>\n<p><strong>Drawback</strong> You gain the @UUID[Compendium.pf2e.conditionitems.Item.Encumbered] condition and can't remove it while under the effects of the mutagen.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Deadweight Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qLwwxk1j04rgXSF9": {
+        "_id": "qLwwxk1j04rgXSF9",
+        "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+        "name": "Deadweight Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 10 minutes your joints loosen and bones thicken, making your body incredibly weighty and difficult to maneuver around.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.Shove] and @UUID[Compendium.pf2e.actionspf2e.Item.Trip], to your Fortitude and Reflex DCs against attempts to Shove or Trip you, and to saving throws against effects that attempt to force you to move or knock you @UUID[Compendium.pf2e.conditionitems.Item.Prone].</p>\n<p><strong>Drawback</strong> You gain the @UUID[Compendium.pf2e.conditionitems.Item.Encumbered] condition and can't remove it while under the effects of the mutagen.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Deadweight Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "WuzLBK78DgIt8SsN": {
+        "_id": "WuzLBK78DgIt8SsN",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/drakeheart-mutagen.webp",
+        "name": "Drakeheart Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your skin grows scales like a drake, and your eyesight become sharp and your pupils slitted, but your mind and reflexes slow.</p>\n<p><strong>Benefit</strong> You gain +6 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +3 item bonus to Perception checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus. You also gain the @UUID[Compendium.pf2e.actionspf2e.Item.Final Surge] action.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to Will saves, Reflex saves, and all skill checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge].</p>\n<p><strong>Duration</strong> 1 hour or until you use Final Surge, whichever comes first.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Drakeheart Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "GS4YvQieBS11JNYR": {
+        "_id": "GS4YvQieBS11JNYR",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/drakeheart-mutagen.webp",
+        "name": "Drakeheart Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your skin grows scales like a drake, and your eyesight become sharp and your pupils slitted, but your mind and reflexes slow.</p>\n<p><strong>Benefit</strong> You gain +4 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +1 item bonus to Perception checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus. You also gain the @UUID[Compendium.pf2e.actionspf2e.Item.Final Surge] action.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to Will saves, Reflex saves, and all skill checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge].</p>\n<p><strong>Duration</strong> 1 minute or until you use Final Surge, whichever comes first.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Drakeheart Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "M4ZOHOlne43ArjOC": {
+        "_id": "M4ZOHOlne43ArjOC",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/drakeheart-mutagen.webp",
+        "name": "Drakeheart Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your skin grows scales like a drake, and your eyesight become sharp and your pupils slitted, but your mind and reflexes slow.</p>\n<p><strong>Benefit</strong> You gain +7 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +4 item bonus to Perception checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus. You also gain the @UUID[Compendium.pf2e.actionspf2e.Item.Final Surge] action.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to Will saves, Reflex saves, and all skill checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge].</p>\n<p><strong>Duration</strong> 1 hour or until you use Final Surge, whichever comes first.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Drakeheart Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xY2MogTwH9Fd8UPG": {
+        "_id": "xY2MogTwH9Fd8UPG",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/drakeheart-mutagen.webp",
+        "name": "Drakeheart Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p><hr /><p>Your skin grows tough scales like a drake, your eyesight become sharp and your pupils slitted, and your limbs grow wiry and quick, but your mind and reflexes become slow.</p>\n<p><strong>Benefit</strong> You gain +5 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +2 item bonus to Perception checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus. You also gain the @UUID[Compendium.pf2e.actionspf2e.Item.Final Surge] action.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to Will saves, Reflex saves, and all skill checks to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge].</p>\n<p><strong>Duration</strong> 10 minutes or until you use Final Surge, whichever comes first.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Drakeheart Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xVtyaEnYZ1aJT4ki": {
+        "_id": "xVtyaEnYZ1aJT4ki",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/energy-mutagen.webp",
+        "name": "Energy Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When created, this mutagen is attuned to one of four energy types: acid, cold, electricity, or fire. When consumed, the mutagen suffuses your body with energy that spills out whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.</p>\n<p><strong>Benefit</strong> You gain resistance 15 to the attuned energy type. Whenever you score a hit with a melee weapon, add [[/r 1d6]] damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a @Template[cone|distance:30] of energy as a 2-action activity. This deals [[/r 2d6]] damage of the attuned type for every full 10 minutes of duration remaining (maximum 8d6) to each creature in the area, with a @Check[reflex|dc:25|basic|name:Greater Energy Mutagen] save.</p>\n<p><strong>Drawback</strong> You gain weakness 5 to the other three energy types.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Energy Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "mbrwudO35tItsldq": {
+        "_id": "mbrwudO35tItsldq",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/energy-mutagen.webp",
+        "name": "Energy Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When created, this mutagen is attuned to one of four energy types: acid, cold, electricity, or fire. When consumed, the mutagen suffuses your body with energy that spills out whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.</p>\n<p><strong>Benefit</strong> You gain resistance 5 to the attuned energy type. Whenever you score a hit with a melee weapon, add 1 damage of the attuned energy type.</p>\n<p><strong>Drawback</strong> You gain weakness 5 to the other three energy types.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Energy Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "34MbgwW1SGlowyk2": {
+        "_id": "34MbgwW1SGlowyk2",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/energy-mutagen.webp",
+        "name": "Energy Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When created, this mutagen is attuned to one of four energy types: acid, cold, electricity, or fire. When consumed, the mutagen suffuses your body with energy that spills out whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.</p>\n<p><strong>Benefit</strong> You gain resistance 20 to the attuned energy type. Whenever you score a hit with a melee weapon, add [[/r 2d6]] damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a @Template[cone|distance:30] of energy as a 2-action activity. This deals [[/r 3d6]] damage of the attuned type for every full 10 minutes of duration remaining (maximum 12d6) to each creature in the area, with a @Check[reflex|dc:32|basic] save.</p>\n<p><strong>Drawback</strong> You gain weakness 5 to the other three energy types.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Energy Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "SLJTJwyIRjuWjfuK": {
+        "_id": "SLJTJwyIRjuWjfuK",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/energy-mutagen.webp",
+        "name": "Energy Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>When created, this mutagen is attuned to one of four energy types: acid, cold, electricity, or fire. When consumed, the mutagen suffuses your body with energy that spills out whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.</p>\n<p><strong>Benefit</strong> You gain resistance 10 to the attuned energy type. Whenever you score a hit with a melee weapon, add [[/r 1d4]] damage of the attuned energy type.</p>\n<p><strong>Drawback</strong> You gain weakness 5 to the other three energy types.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Energy Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "MUL0ABe8h7Ugc1Jt": {
+        "_id": "MUL0ABe8h7Ugc1Jt",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/fury-cocktail.webp",
+        "name": "Fury Cocktail (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A fury cocktail is a fortifying ginger beer spiked with rum and a mixer. It's rumored to have originated from a barbarian-themed festival in a popular mead hall specializing in alchemical beverages.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to melee attack rolls and an additional effect depending on the additive chosen when the brew is created. The effects last 1 hour.</p><ul><li><strong>Animalistic</strong> Lemon juice and powdered claws or talons are added to the cocktail. You gain an unarmed attack in the brawling group of your choice between a jaws attack that deals 1d6 piercing damage or a claw attack that has the agile trait and deals 1d4 slashing damage.</li><li><strong>Double</strong> This cocktail is just stronger, with more ginger and more rum. You gain resistance 5 to physical damage.</li><li><strong>Mournful</strong> A few flower petals add a powerful aroma to the drink. You gain resistance 10 to void damage, or resistance 10 to vitality damage if you have the void healing ability.</li><li><strong>Skeptical</strong> A splash of bitters gives the drink a more complex flavor. You gain a +3 item bonus to saves against magic.</li><li><strong>Titanic</strong> Yuzu juice and powdered giant hair are added to this cocktail. If you're Medium or smaller, you gain the following effects: you become Large, are @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}, and increase your reach by 5 feet (or by 10 feet if you started out Tiny).</li><li><strong>Wyrmhide</strong> Pomegranate juice and elemental reagents are added to the cocktail. You gain resistance 10 to acid, cold, electricity, fire, and poison damage.</li></ul><p><strong>Drawback</strong> You take a –1 penalty to AC and a –2 penalty to Reflex saves.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Fury Cocktail (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "alchemical-food"
+                ],
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "BeX3ForBrKTQD4T5": {
+        "_id": "BeX3ForBrKTQD4T5",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/fury-cocktail.webp",
+        "name": "Fury Cocktail (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A fury cocktail is a fortifying ginger beer spiked with rum and a mixer. It's rumored to have originated from a barbarian-themed festival in a popular mead hall specializing in alchemical beverages.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to melee attack rolls and an additional effect depending on the additive chosen when the brew is created. The effects lasts 10 minutes.</p><ul><li><strong>Animalistic</strong> Lemon juice and powdered claws or talons are added to the cocktail. You gain an unarmed attack in the brawling group of your choice between a jaws attack that deals 1d6 piercing damage or a claw attack that has the agile trait and deals 1d4 slashing damage.</li><li><strong>Double</strong> This cocktail is just stronger, with more ginger and more rum. You gain resistance 1 to physical damage.</li><li><strong>Mournful</strong> A few flower petals add a powerful aroma to the drink. You gain resistance 1 to void damage, or resistance 1 to vitality damage if you have the void healing ability.</li><li><strong>Skeptical</strong> A splash of bitters gives the drink a more complex flavor. You gain a +1 item bonus to saves against magic.</li><li><strong>Titanic</strong> Yuzu juice and powdered giant hair are added to this cocktail. If you're Medium or smaller, you gain the following effects: you become Large, are @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}, and increase your reach by 5 feet (or by 10 feet if you started out Tiny).</li><li><strong>Wyrmhide</strong> Pomegranate juice and elemental reagents are added to the cocktail. You gain resistance 1 to acid, cold, electricity, fire, and poison damage.</li></ul><p><strong>Drawback</strong> You take a –1 penalty to AC and a –2 penalty to Reflex saves.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Fury Cocktail (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "alchemical-food"
+                ],
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JmxKmYQPQmUlauO4": {
+        "_id": "JmxKmYQPQmUlauO4",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/fury-cocktail.webp",
+        "name": "Fury Cocktail (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A fury cocktail is a fortifying ginger beer spiked with rum and a mixer. It's rumored to have originated from a barbarian-themed festival in a popular mead hall specializing in alchemical beverages.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to melee attack rolls and an additional effect depending on the additive chosen when the brew is created. The effects last 1 hour.</p><ul><li><strong>Animalistic</strong> Lemon juice and powdered claws or talons are added to the cocktail. You gain an unarmed attack in the brawling group of your choice between a jaws attack that deals 1d6 piercing damage or a claw attack that has the agile trait and deals 1d4 slashing damage.</li><li><strong>Double</strong> This cocktail is just stronger, with more ginger and more rum. You gain resistance 2 to physical damage.</li><li><strong>Mournful</strong> A few flower petals add a powerful aroma to the drink. You gain resistance 5 to void damage, or resistance 5 to vitality damage if you have the void healing ability.</li><li><strong>Skeptical</strong> A splash of bitters gives the drink a more complex flavor. You gain a +2 item bonus to saves against magic.</li><li><strong>Titanic</strong> Yuzu juice and powdered giant hair are added to this cocktail. If you're Medium or smaller, you gain the following effects: you become Large, are @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}, and increase your reach by 5 feet (or by 10 feet if you started out Tiny).</li><li><strong>Wyrmhide</strong> Pomegranate juice and elemental reagents are added to the cocktail. You gain resistance 5 to acid, cold, electricity, fire, and poison damage.</li></ul><p><strong>Drawback</strong> You take a –1 penalty to AC and a –2 penalty to Reflex saves.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Fury Cocktail (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 360
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "otherTags": [
+                    "alchemical-food"
+                ],
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "iN4giDBCWlc19Jsc": {
+        "_id": "iN4giDBCWlc19Jsc",
+        "img": "icons/consumables/potions/round-decorated-snake-green.webp",
+        "name": "Hydra Mutagen",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p>\n<hr />\n<p>You sprout a second head, increasing your awareness, intuition, and cognitive ability but also causing your physical capabilities to be impaired as both minds struggle to control a single body.</p>\n<p><strong>Benefit</strong> For 10 minutes, you gain all-around vision and a +3 item bonus to all Intelligence- and Wisdom-based skill checks. Once during the mutagen's effect, if you fail or critically fail a Will saving throw against a mental effect, you can treat the result as one degree of success better.</p>\n<p><strong>Drawback</strong> You are @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Hydra Mutagen]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 600
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "uwVTuejjSLl82jiA": {
+        "_id": "uwVTuejjSLl82jiA",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/ichthyosis-mutagen.webp",
+        "name": "Ichthyosis Mutagen",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p>After you drink this mutagen, your skin continually renews itself, thickening into large, scaly patches.</p>\n<hr />\n<p><strong>Benefit</strong> For 1 minute, you gain fast healing 2 and automatically succeed at flat checks to recover from persistent bleed damage.</p>\n<p><strong>Drawback</strong> Your thickened skin makes quick movement difficult, and your excess skin flakes off with the slightest movement. You take a -2 penalty to Reflex saves for 1 minute. Any creature attempting to @UUID[Compendium.pf2e.actionspf2e.Item.Track] you in the next 24 hours gains a +4 circumstance bonus to their check.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ichthyosis Mutagen]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 24
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #164: Hands of the Devil"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "TMtQnY6yvIRCpK9v": {
+        "_id": "TMtQnY6yvIRCpK9v",
+        "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+        "name": "Juggernaut Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your body becomes sturdy and ponderous.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Fortitude saves and 30 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points. When you roll a success on a Fortitude save, you get a critical success instead.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Will saves, Perception checks and initiative rolls.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Juggernaut Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xE0EdDrf734l2fQH": {
+        "_id": "xE0EdDrf734l2fQH",
+        "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+        "name": "Juggernaut Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your body becomes sturdy and ponderous.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Fortitude saves and 5 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Will saves, Perception checks and initiative rolls.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Juggernaut Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "1kNp6yOS0aZPBPzZ": {
+        "_id": "1kNp6yOS0aZPBPzZ",
+        "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+        "name": "Juggernaut Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your body becomes sturdy and ponderous.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Fortitude saves and 45 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points. When you roll a success on a Fortitude save you get a critical success instead, and your critical failures on Fortitude saves become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Will saves, Perception checks and initiative rolls.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Juggernaut Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "mj9i9GeQTADByNPZ": {
+        "_id": "mj9i9GeQTADByNPZ",
+        "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+        "name": "Juggernaut Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your body becomes sturdy and ponderous.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Fortitude saves and 10 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.</p>\n<p><strong>Drawback</strong> You take a -2 penalty to Will saves, Perception checks and initiative rolls.</p>\n<p><strong>Duration</strong> 10 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Juggernaut Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qoyelABKtk9DRSEk": {
+        "_id": "qoyelABKtk9DRSEk",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/prey-mutagen.webp",
+        "name": "Prey Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p><hr /><p>A mixture of fey blood and rare ingredients give you incredible speed but also cause you to become particularly attractive to predators.</p>\n<p><strong>Benefit</strong> You gain a +30 status bonus to your speed and are able to use the following reaction:</p>\n<p><strong>Timely Dodge</strong> <span class=\"action-glyph\">R</span></p>\n<p><strong>Trigger</strong> You are targeted by a Strike</p>\n<p><strong>Effect</strong> You dart aside, gaining a +3 circumstance bonus to AC, then Step after the Strike resolves.</p>\n<p><strong>Drawback</strong> The range at which creatures can detect you with scent or tremorsense doubles. Animals and beasts gain a +2 circumstance bonus to attack rolls against you.</p>\n<p>The duration is 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Prey Mutagen]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #194: Cult of the Cave Worm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "60DuFyGQoZhPj4To": {
+        "_id": "60DuFyGQoZhPj4To",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/prey-mutagen.webp",
+        "name": "Prey Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p><hr /><p>A mixture of fey blood and rare ingredients give you incredible speed but also cause you to become particularly attractive to predators.</p>\n<p><strong>Benefit</strong> You gain a +10 status bonus to your speed and are able to use the following reaction:</p>\n<p><strong>Timely Dodge</strong> <span class=\"action-glyph\">R</span></p>\n<p><strong>Trigger</strong> You are targeted by a Strike</p>\n<p><strong>Effect</strong> You dart aside, gaining a +1 circumstance bonus to AC, then Step after the Strike resolves.</p>\n<p><strong>Drawback</strong> The range at which creatures can detect you with scent or tremorsense doubles. Animals and beasts gain a +2 circumstance bonus to attack rolls against you.</p>\n<p>The duration is 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Prey Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #194: Cult of the Cave Worm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "fiBThkOOXEdcTSMf": {
+        "_id": "fiBThkOOXEdcTSMf",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/prey-mutagen.webp",
+        "name": "Prey Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p><hr /><p>A mixture of fey blood and rare ingredients give you incredible speed but also cause you to become particularly attractive to predators.</p>\n<p><strong>Benefit</strong> You gain a +40 status bonus to your speed and are able to use the following reaction:</p>\n<p><strong>Timely Dodge</strong> <span class=\"action-glyph\">R</span></p>\n<p><strong>Trigger</strong> You are targeted by a Strike</p>\n<p><strong>Effect</strong> You dart aside, gaining a +4 circumstance bonus to AC, then Step after the Strike resolves.</p>\n<p><strong>Drawback</strong> The range at which creatures can detect you with scent or tremorsense doubles. Animals and beasts gain a +2 circumstance bonus to attack rolls against you.</p>\n<p>The duration is 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Prey Mutagen]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #194: Cult of the Cave Worm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JiMljGYKx60DHs8O": {
+        "_id": "JiMljGYKx60DHs8O",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/prey-mutagen.webp",
+        "name": "Prey Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p><hr /><p>A mixture of fey blood and rare ingredients give you incredible speed but also cause you to become particularly attractive to predators.</p>\n<p><strong>Benefit</strong> You gain a +20 status bonus to your speed and are able to use the following reaction:</p>\n<p><strong>Timely Dodge</strong> <span class=\"action-glyph\">R</span></p>\n<p><strong>Trigger</strong> You are targeted by a Strike</p>\n<p><strong>Effect</strong> You dart aside, gaining a +2 circumstance bonus to AC, then Step after the Strike resolves.</p>\n<p><strong>Drawback</strong> The range at which creatures can detect you with scent or tremorsense doubles. Animals and beasts gain a +2 circumstance bonus to attack rolls against you.</p>\n<p>The duration is 10 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Prey Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #194: Cult of the Cave Worm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "eQDTsetadI8u8Kc0": {
+        "_id": "eQDTsetadI8u8Kc0",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/quicksilver-mutagen.webp",
+        "name": "Quicksilver Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You become swifter and nimbler but also fragile.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +15 foot status bonus to your Speed.</p>\n<p><strong>Drawback</strong> You take damage equal to twice your level; you can't recover Hit Points lost this way by any means while the mutagen lasts. You take a -2 penalty to Fortitude saves.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Quicksilver Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "5MKBwpE401uz4kNN": {
+        "_id": "5MKBwpE401uz4kNN",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/quicksilver-mutagen.webp",
+        "name": "Quicksilver Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You become swifter and nimbler but also fragile.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +5 foot status bonus to your Speed.</p>\n<p><strong>Drawback</strong> You take damage equal to twice your level; you can't recover Hit Points lost this way by any means while the mutagen lasts. You take a -2 penalty to Fortitude saves.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Quicksilver Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "4GXzTN6iSDGfYEAi": {
+        "_id": "4GXzTN6iSDGfYEAi",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/quicksilver-mutagen.webp",
+        "name": "Quicksilver Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You become swifter and nimbler but also fragile.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +20 foot status bonus to your Speed.</p>\n<p><strong>Drawback</strong> You take damage equal to twice your level; you can't recover Hit Points lost this way by any means while the mutagen lasts. You take a -2 penalty to Fortitude saves.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Quicksilver Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "n52BSbZsnx4Vmt2p": {
+        "_id": "n52BSbZsnx4Vmt2p",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/quicksilver-mutagen.webp",
+        "name": "Quicksilver Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You become swifter and nimbler but also fragile.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +10 foot status bonus to your Speed.</p>\n<p><strong>Drawback</strong> You take damage equal to twice your level; you can't recover Hit Points lost this way by any means while the mutagen lasts. You take a -2 penalty to Fortitude saves.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Quicksilver Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "se2g3LNsmQSsRv9w": {
+        "_id": "se2g3LNsmQSsRv9w",
+        "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
+        "name": "Sanguine Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 hour you gain greatly increased blood production, filtering out contagions and boosting your endurance but causing your body to bloat with blood.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Fortitude and Reflex saves. This bonus improves to +4 when you attempt a save against an effect that has the disease trait, poison trait, or would give you the @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] condition.</p>\n<p>When you roll a success on a save against a disease, poison, or effect that would give you the Fatigued condition, you get a critical success instead.</p>\n<p><strong>Drawback</strong> Whenever you take piercing or slashing damage, you take @Damage[1d6[bleed]].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Sanguine Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VIHsu1q3078gdQut": {
+        "_id": "VIHsu1q3078gdQut",
+        "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
+        "name": "Sanguine Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 minute you gain greatly increased blood production, filtering out contagions and boosting your endurance but causing your body to bloat with blood.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Fortitude and Reflex saves. This bonus improves to +2 when you attempt a save against an effect that has the disease trait, poison trait, or would give you the @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] condition.</p>\n<p><strong>Drawback</strong> Whenever you take piercing or slashing damage, you take @Damage[1d6[bleed]].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Sanguine Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vmwrU3lz1HFfadAS": {
+        "_id": "vmwrU3lz1HFfadAS",
+        "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
+        "name": "Sanguine Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 1 hour you gain greatly increased blood production, filtering out contagions and boosting your endurance but causing your body to bloat with blood.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Fortitude and Reflex saves. When you roll a success on a save against a disease, poison, or effect that would give you the @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] condition, you get a critical success instead and your critical failures on such saves become failures instead.</p>\n<p><strong>Drawback</strong> Whenever you take piercing or slashing damage, you take @Damage[1d6[bleed]].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Sanguine Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "pP7RqEkNYg5ayWqx": {
+        "_id": "pP7RqEkNYg5ayWqx",
+        "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
+        "name": "Sanguine Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>For 10 minutes you gain greatly increased blood production, filtering out contagions and boosting your endurance but causing your body to bloat with blood.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Fortitude and Reflex saves. This bonus improves to +3 when you attempt a save against an effect that has the disease trait, poison trait, or would give you the @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] condition.</p>\n<p><strong>Drawback</strong> Whenever you take piercing or slashing damage, you take @Damage[1d6[bleed]].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Sanguine Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Yej7lnnDYDZybGqo": {
+        "_id": "Yej7lnnDYDZybGqo",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/serene-mutagen.webp",
+        "name": "Serene Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You gain inner serenity, but you find violence off-putting.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Will saves and Perception, Medicine, Nature, Religion, and Survival checks. This bonus improves to +4 when you attempt Will saves against mental effects. When you roll a success on a Will save against a mental effect, you get a critical success instead.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to attack rolls and save DCs of offensive spells, and a -1 penalty per damage die to all weapon, unarmed attack, and spell damage.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Serene Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "bOPQDM54W8ZDoULY": {
+        "_id": "bOPQDM54W8ZDoULY",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/serene-mutagen.webp",
+        "name": "Serene Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You gain inner serenity, but you find violence off-putting.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Will saves and Perception, Medicine, Nature, Religion, and Survival checks. This bonus improves to +2 when you attempt Will saves against mental effects.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to attack rolls and save DCs of offensive spells, and a -1 penalty per damage die to all weapon, unarmed attack, and spell damage.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Serene Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ccrdVliTNBh2mNZf": {
+        "_id": "ccrdVliTNBh2mNZf",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/serene-mutagen.webp",
+        "name": "Serene Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You gain inner serenity, but you find violence off-putting.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Will saves and Perception, Medicine, Nature, Religion, and Survival checks. When you roll a success on a Will save against a mental effect, you get a critical success instead, and your critical failures on Will saves against mental effects become failures instead.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to attack rolls and save DCs of offensive spells, and a -1 penalty per damage die to all weapon, unarmed attack, and spell damage.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Serene Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "XEYveTvLH1lJ4jeI": {
+        "_id": "XEYveTvLH1lJ4jeI",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/alchemical-elixirs/serene-mutagen.webp",
+        "name": "Serene Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>You gain inner serenity, but you find violence off-putting.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Will saves and Perception, Medicine, Nature, Religion, and Survival checks. This bonus improves to +3 when you attempt Will saves against mental effects.</p>\n<p><strong>Drawback</strong> You take a -1 penalty to attack rolls and save DCs of offensive spells, and a -1 penalty per damage die to all weapon, unarmed attack, and spell damage.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Serene Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "uggpIk6vguWFXVli": {
+        "_id": "uggpIk6vguWFXVli",
+        "img": "icons/consumables/potions/potion-bottle-corked-fancy-blue.webp",
+        "name": "Silvertongue Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features become striking, and your voice becomes musical and commanding, though emotion clouds your reason.</p>\n<p><strong>Benefit</strong> You gain a +3 item bonus to Deception, Diplomacy, Intimidation and Performance checks. Your critical failures with any of these skills become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge] become critical failures.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Silvertongue Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "YwRAHWW8yUI07sy9": {
+        "_id": "YwRAHWW8yUI07sy9",
+        "img": "icons/consumables/potions/potion-bottle-corked-fancy-blue.webp",
+        "name": "Silvertongue Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features become striking, and your voice becomes musical and commanding, though emotion clouds your reason.</p>\n<p><strong>Benefit</strong> You gain a +1 item bonus to Deception, Diplomacy, Intimidation and Performance checks. Your critical failures with any of these skills become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge] become critical failures.</p>\n<p><strong>Duration</strong> 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Silvertongue Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "uD5vRYVOXNJ53sEE": {
+        "_id": "uD5vRYVOXNJ53sEE",
+        "img": "icons/consumables/potions/potion-bottle-corked-fancy-blue.webp",
+        "name": "Silvertongue Mutagen (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features become striking, and your voice becomes musical and commanding, though emotion clouds your reason.</p>\n<p><strong>Benefit</strong> You gain a +4 item bonus to Deception, Diplomacy, Intimidation and Performance checks. Your critical failures with any of these skills become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge] become critical failures.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Silvertongue Mutagen (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "lIExlUFBKvBue8hb": {
+        "_id": "lIExlUFBKvBue8hb",
+        "img": "icons/consumables/potions/potion-bottle-corked-fancy-blue.webp",
+        "name": "Silvertongue Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>Your features become striking, and your voice becomes musical and commanding, though emotion clouds your reason.</p>\n<p><strong>Benefit</strong> You gain a +2 item bonus to Deception, Diplomacy, Intimidation and Performance checks. Your critical failures with any of these skills become failures instead.</p>\n<p><strong>Drawback</strong> You take a -2 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures to @UUID[Compendium.pf2e.actionspf2e.Item.Recall Knowledge] become critical failures.</p>\n<p><strong>Duration</strong> 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Silvertongue Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "cqTCg6C0lvYUKQmx": {
+        "_id": "cqTCg6C0lvYUKQmx",
+        "img": "icons/consumables/potions/potion-bottle-corked-stopper-ornate-yellow.webp",
+        "name": "Stone Body Mutagen (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>This mutagen calcifies your body making it as hard as stone.</p>\n<p><strong>Benefit</strong> You gain resistance 10 to physical damage (except bludgeoning).</p>\n<p><strong>Drawback</strong> Your speeds are reduced by 10 feet (minimum 5 feet) and you take a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Stone Body Mutagen (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 920
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "5ftFTiKY0BMvhzL9": {
+        "_id": "5ftFTiKY0BMvhzL9",
+        "img": "icons/consumables/potions/potion-bottle-corked-stopper-ornate-yellow.webp",
+        "name": "Stone Body Mutagen (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>This mutagen calcifies your body making it as hard as stone.</p>\n<p><strong>Benefit</strong> You gain resistance 5 to physical damage (except bludgeoning).</p>\n<p><strong>Drawback</strong> Your speeds are reduced by 10 feet (minimum 5 feet) and you take a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 10 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Stone Body Mutagen (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 22
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "FZ6SMwiei6NnEp3e": {
+        "_id": "FZ6SMwiei6NnEp3e",
+        "img": "icons/consumables/potions/potion-bottle-corked-stopper-ornate-yellow.webp",
+        "name": "Stone Body Mutagen (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "mutagen",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> (manipulate)</p><hr /><p>This mutagen calcifies your body making it as hard as stone.</p>\n<p><strong>Benefit</strong> You gain resistance 5 to physical damage (except bludgeoning).</p>\n<p><strong>Drawback</strong> Your speeds are reduced by 10 feet (minimum 5 feet) and you take a -2 penalty to Reflex saves.</p>\n<p><strong>Duration</strong> 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Stone Body Mutagen (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "elixir",
+                    "mutagen",
+                    "polymorph"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

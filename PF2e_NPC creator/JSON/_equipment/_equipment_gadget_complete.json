@@ -1,0 +1,4513 @@
+{
+    "Qm0ZiyXail7Lv0dq": {
+        "_id": "Qm0ZiyXail7Lv0dq",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-armor-plating.webp",
+        "name": "Ablative Armor Plating (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement. The process of attaching the plating takes 10 minutes and grants the wearer of the armor the 20 temporary Hit Points for 1 hour or until lost. Removing the plating early destroys it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ablative Armor Plating (Greater)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "U9XNSFQzCOo6KMD1": {
+        "_id": "U9XNSFQzCOo6KMD1",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-armor-plating.webp",
+        "name": "Ablative Armor Plating (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement. The process of attaching the plating takes 10 minutes and grants the wearer of the armor 5 temporary Hit Points for 1 minute or until lost. Removing the plating early destroys it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ablative Armor Plating (Lesser)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xXvuQABxlRH2HXsO": {
+        "_id": "xXvuQABxlRH2HXsO",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-armor-plating.webp",
+        "name": "Ablative Armor Plating (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement. The process of attaching the plating takes 10 minutes and grants the wearer of the armor 30 temporary Hit Points for 1 hour or until lost. Removing the plating early destroys it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ablative Armor Plating (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 600
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "P7Evi8Wv8zIwLYtU": {
+        "_id": "P7Evi8Wv8zIwLYtU",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-armor-plating.webp",
+        "name": "Ablative Armor Plating (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement. The process of attaching the plating takes 10 minutes and grants the wearer of the armor 10 temporary Hit Points for 10 minutes or until lost. Removing the plating early destroys it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ablative Armor Plating (Moderate)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "RdsQliP7Gi1xe8xH": {
+        "_id": "RdsQliP7Gi1xe8xH",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-armor-plating.webp",
+        "name": "Ablative Armor Plating (True)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement. The process of attaching the plating takes 10 minutes and grants the wearer of the armor 40 temporary Hit Points for 1 hour or until lost. Removing the plating early destroys it.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ablative Armor Plating (True)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 19
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "SUn5qFbHYTLobgTt": {
+        "_id": "SUn5qFbHYTLobgTt",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-shield-plating.webp",
+        "name": "Ablative Shield Plating (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes. When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield 20 temporary Hit Points that last for 1 hour or until lost. Removing the plating early destroys it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qF2GDYQCpSZ12Nk7": {
+        "_id": "qF2GDYQCpSZ12Nk7",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-shield-plating.webp",
+        "name": "Ablative Shield Plating (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes. When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield 5 temporary Hit Points that last for 1 minute or until lost. Removing the plating early destroys it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "dwRqo9KQki2iCwHu": {
+        "_id": "dwRqo9KQki2iCwHu",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-shield-plating.webp",
+        "name": "Ablative Shield Plating (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes. When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield 30 temporary Hit Points that last for 1 hour or until lost. Removing the plating early destroys it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 600
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aY6Ukb7ZsMDelhmH": {
+        "_id": "aY6Ukb7ZsMDelhmH",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-shield-plating.webp",
+        "name": "Ablative Shield Plating (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes. When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield 10 temporary Hit Points that last for 10 minutes or until lost. Removing the plating early destroys it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "HD0RIJcRIIKKAdkn": {
+        "_id": "HD0RIJcRIIKKAdkn",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/ablative-shield-plating.webp",
+        "name": "Ablative Shield Plating (True)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes. When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield 40 temporary Hit Points that last for 1 hour or until lost. Removing the plating early destroys it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 19
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "LjTbLOTj0K0CKvsd": {
+        "_id": "LjTbLOTj0K0CKvsd",
+        "img": "icons/commodities/tech/antenna-powered-purple.webp",
+        "name": "Aetheric Irritant (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>An aetheric irritant is a chime that can emit a subsonic frequency that otherworldly beings find unpleasant. When you Activate an aetheric irritant, you sound the chime and place it on the ground in a square within your reach. The aetheric irritant affects an area in a @Template[type:emanation|distance:20]. Creatures with the fey, spirit, or undead traits must attempt a @Check[will|dc:28] save when they enter the affected area and at the beginning of every turn they are in the affected area. Those who fail the save treat the area as difficult terrain until the beginning of their next turn. A creature that critically succeeds at the save is immune to all aetheric irritants for 24 hours. An aetheric irritant continues to hum until it shakes itself to pieces after 10 minutes of being activated or it is moved, whichever comes first.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 275
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "3jUoOPFVoYtM7A9F": {
+        "_id": "3jUoOPFVoYtM7A9F",
+        "img": "icons/commodities/tech/antenna-powered-purple.webp",
+        "name": "Aetheric Irritant (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>An aetheric irritant is a chime that can emit a subsonic frequency that otherworldly beings find unpleasant. When you Activate an aetheric irritant, you sound the chime and place it on the ground in a square within your reach. The aetheric irritant affects an area in a @Template[type:emanation|distance:10]. Creatures with the fey, spirit, or undead traits must attempt a @Check[will|dc:15] save when they enter the affected area and at the beginning of every turn they are in the affected area. Those who fail the save treat the area as difficult terrain until the beginning of their next turn. A creature that critically succeeds at the save is immune to all aetheric irritants for 24 hours. An aetheric irritant continues to hum until it shakes itself to pieces after 10 minutes of being activated or it is moved, whichever comes first.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7jUxSSn0SFkSvUsq": {
+        "_id": "7jUxSSn0SFkSvUsq",
+        "img": "icons/commodities/tech/antenna-powered-purple.webp",
+        "name": "Aetheric Irritant (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>An aetheric irritant is a chime that can emit a subsonic frequency that otherworldly beings find unpleasant. When you Activate an aetheric irritant, you sound the chime and place it on the ground in a square within your reach. The aetheric irritant affects an area in a @Template[type:emanation|distance:30]. Creatures with the fey, spirit, or undead traits must attempt a @Check[will|dc:36] save when they enter the affected area and at the beginning of every turn they are in the affected area. Those who fail the save treat the area as difficult terrain until the beginning of their next turn. A creature that critically succeeds at the save is immune to all aetheric irritants for 24 hours. An aetheric irritant continues to hum until it shakes itself to pieces after 10 minutes of being activated or it is moved, whichever comes first.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "sY3Do9bKjwAC9TMV": {
+        "_id": "sY3Do9bKjwAC9TMV",
+        "img": "icons/commodities/tech/antenna-powered-purple.webp",
+        "name": "Aetheric Irritant (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>An aetheric irritant is a chime that can emit a subsonic frequency that otherworldly beings find unpleasant. When you Activate an aetheric irritant, you sound the chime and place it on the ground in a square within your reach. The aetheric irritant affects an area in a @Template[type:emanation|distance:15]. Creatures with the fey, spirit, or undead traits must attempt a @Check[will|dc:18] save when they enter the affected area and at the beginning of every turn they are in the affected area. Those who fail the save treat the area as difficult terrain until the beginning of their next turn. A creature that critically succeeds at the save is immune to all aetheric irritants for 24 hours. An aetheric irritant continues to hum until it shakes itself to pieces after 10 minutes of being activated or it is moved, whichever comes first.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 11
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "bwqyL0H9Ssa7dedV": {
+        "_id": "bwqyL0H9Ssa7dedV",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/blast-boots.webp",
+        "name": "Blast Boots (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump], without the need to Stride first.</p>\n<p>When you Activate the greater blast boots to High Jump, you can increase the vertical distance of your High Jump by up to 50 feet. When you Activate them to Long Jump, you can increase the horizontal distance of your Long Jump by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you @UUID[Compendium.pf2e.actionspf2e.Item.Leap] during the duration, you can move 30 feet in any direction, or your normal Leap distance, whichever is further.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 140
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "wornshoes"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "nybZVDfQWMhwvL2C": {
+        "_id": "nybZVDfQWMhwvL2C",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/blast-boots.webp",
+        "name": "Blast Boots (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump], without the need to Stride first.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "wornshoes"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "sK2zEyhxxP6UnhQk": {
+        "_id": "sK2zEyhxxP6UnhQk",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/blast-boots.webp",
+        "name": "Blast Boots (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump], without the need to Stride first. Higher-level versions increase the distance of your High Jump or Long Jump.</p>\n<p>When you Activate the major blast boots to High Jump, you can increase the vertical distance of your High Jump by up to 80 feet. When you Activate them to Long Jump, you can increase the horizontal distance of your Long Jump by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot Fly speed for the duration, but any time you Fly, you are @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} until the start of your next turn.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Blast Boots (Major)]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "wornshoes"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "FVB9noeUXXyau029": {
+        "_id": "FVB9noeUXXyau029",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/blast-boots.webp",
+        "name": "Blast Boots (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump], without the need to Stride first.</p>\n<p>When you Activate the moderate blast boots to High Jump, you can increase the vertical distance of your High Jump by up to 30 feet. When you Activate them to Long Jump, you can increase the horizontal distance of your Long Jump by up to 45 feet.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 11
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "wornshoes"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "e20qv4NhYsoTlXtw": {
+        "_id": "e20qv4NhYsoTlXtw",
+        "img": "systems/pf2e/icons/equipment/held-items/cauterizing-torch.webp",
+        "name": "Cauterizing Torch",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This small, clockwork torch device uses a trigger-operated sparker to ignite a flow of flammable gas, creating a short, hot flame capable of rapidly cauterizing wounds and helping to stop bleeding. The cauterizing torch is applied to yourself or an adjacent target. The target attempts an immediate flat check to end any persistent bleed effect with the lower DC for particularly effective assistance.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "o7kaj57buBADMLhV": {
+        "_id": "o7kaj57buBADMLhV",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/chameleon-suit.webp",
+        "name": "Chameleon Suit (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This complex clockwork outerwear, worn over armor or other clothing, is composed of thin, interlocking scales of myriad colors attached to numerous clockwork gears that can rotate between all visible colors and shades. When activated, the clockwork gears work double-time to temporarily switch and adjust the scales to match the exact coloration of the area around you, allowing you to blend in as long as you stay still. For 10 minutes, you can Hide without needing cover or concealment to do so. This doesn't allow you to @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] without ending your movement in cover or concealment, however, as the clockwork flips over and adjusts the scales to match your background as you move, giving the impression of rippling waves of color and revealing your movement. Once the duration expires, the overworked clockwork and scales fall apart.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 80
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "E8pKcXFDiCWz68Db": {
+        "_id": "E8pKcXFDiCWz68Db",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/chameleon-suit.webp",
+        "name": "Chameleon Suit (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This complex clockwork outerwear, worn over armor or other clothing, is composed of thin, interlocking scales of myriad colors attached to numerous clockwork gears that can rotate between all visible colors and shades. When activated, the clockwork gears work double-time to temporarily switch and adjust the scales to match the exact coloration of the area around you, allowing you to blend in as long as you stay still. For 1 hour, you can Hide without needing cover or concealment to do so. This doesn't allow you to @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] without ending your movement in cover or concealment, however, as the clockwork flips over and adjusts the scales to match your background as you move, giving the impression of rippling waves of color and revealing your movement. Once the duration expires, the overworked clockwork and scales fall apart.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 320
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "pbQXfUhBfGeg4Bc1": {
+        "_id": "pbQXfUhBfGeg4Bc1",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/chameleon-suit.webp",
+        "name": "Chameleon Suit",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This complex clockwork outerwear, worn over armor or other clothing, is composed of thin, interlocking scales of myriad colors attached to numerous clockwork gears that can rotate between all visible colors and shades. When activated, the clockwork gears work double-time to temporarily switch and adjust the scales to match the exact coloration of the area around you, allowing you to blend in as long as you stay still. For 1 minute, you can Hide without needing cover or concealment to do so. This doesn't allow you to @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] without ending your movement in cover or concealment, however, as the clockwork flips over and adjusts the scales to match your background as you move, giving the impression of rippling waves of color and revealing your movement. Once the duration expires, the overworked clockwork and scales fall apart.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 16
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "6Frd3SmMZZ49DnUZ": {
+        "_id": "6Frd3SmMZZ49DnUZ",
+        "img": "icons/equipment/head/goggles-leather-tan.webp",
+        "name": "Clockwork Goggles (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This heavy set of mechanical goggles contains a variety of different lenses for different situations, including lenses that filter light at different intensities and frequencies and even some that capture heat and other stimuli. Clockwork mechanisms can swap between the lenses rapidly as needed. However, many of these lenses can only capture a single stimulus once and then are forever etched with it, making them unsuitable for long-term use.</p>\n<p>When activated, the clockwork mechanism on the goggles rapidly switches between the different lenses, granting you low-light vision and darkvision for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Clockwork Goggles]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worneyepiece"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "MywpJQc2lVjWvAGA": {
+        "_id": "MywpJQc2lVjWvAGA",
+        "img": "icons/equipment/head/goggles-leather-tan.webp",
+        "name": "Clockwork Goggles (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This heavy set of mechanical goggles contains a variety of different lenses for different situations, including lenses that filter light at different intensities and frequencies and even some that capture heat and other stimuli. Clockwork mechanisms can swap between the lenses rapidly as needed. However, many of these lenses can only capture a single stimulus once and then are forever etched with it, making them unsuitable for long-term use.</p>\n<p>When activated, the clockwork mechanism on the goggles rapidly switches between the different lenses, granting you low-light vision, darkvision, and the effects of @UUID[Compendium.pf2e.spells-srd.Item.See the Unseen] for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Clockwork Goggles]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 80
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worneyepiece"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "jVJwCB5ztkXHD5ML": {
+        "_id": "jVJwCB5ztkXHD5ML",
+        "img": "icons/equipment/head/goggles-leather-tan.webp",
+        "name": "Clockwork Goggles",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This heavy set of mechanical goggles contains a variety of different lenses for different situations, including lenses that filter light at different intensities and frequencies and even some that capture heat and other stimuli. Clockwork mechanisms can swap between the lenses rapidly as needed. However, many of these lenses can only capture a single stimulus once and then are forever etched with it, making them unsuitable for long-term use.</p>\n<p>When activated, the clockwork mechanism on the goggles rapidly switches between the different lenses, granting you low-light vision for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Clockwork Goggles]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worneyepiece"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "gQuQetoDwP3GLtQy": {
+        "_id": "gQuQetoDwP3GLtQy",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/clockwork-spider-bomb.webp",
+        "name": "Clockwork Spider Bomb",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>While arachnophobes don't need to fear this contraption's spiderlike appearance, they should probably worry if it starts ticking. When you activate the spider bomb, you place it on the ground and the clockwork spider crawls 5 feet in a straight line, continuing to advance 5 feet in the same straight line at the end of each of your turns for the next 4 rounds (traveling a total of 25 feet). If it takes any damage during this time, its bulbous abdomen detonates in a raging flame, dealing @Damage[5d6[fire]] damage to all creatures in a @Template[burst|distance:5] (@Check[reflex|dc:24|basic|name:Clockwork Spider Bomb Explosion|traits:fire|showDC:all]). You can also activate it a second time with a single-action command word activation, causing it to explode. The spider bomb has an AC of 10, 5 Hit Points, and +0 to all saving throws. After it detonates, the spider bomb is completely destroyed, regardless of the effects of its detonation. If it survives to the end of the 4-round duration without being detonated, the spider harmlessly loses its explosive charge and falls apart.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 100
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "j7VThCkenoE4giZt": {
+        "_id": "j7VThCkenoE4giZt",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/cryomister.webp",
+        "name": "Cryomister (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a @Template[type:burst|distance:15], making the affected area difficult terrain for 1 minute; at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals @Damage[(5[splash])[cold]] splash damage to creatures in the area on activation. Creatures attempting to move through the affected area can attempt a @Check[acrobatics|dc:30|showDC:all] to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one Huge creature, two Large creatures, or four medium or smaller creatures.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 250
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "cold",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UYj4AxqiwtlTW8Kl": {
+        "_id": "UYj4AxqiwtlTW8Kl",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/cryomister.webp",
+        "name": "Cryomister (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a @Template[type:burst|distance:5], making the affected area difficult terrain for 1 minute; at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals @Damage[(1[splash])[cold]] splash damage to creatures in the area on activation. Creatures attempting to move through the affected area can attempt a @Check[acrobatics|dc:17|showDC:all] to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one or more medium creatures.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "cold",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "OkYPLMDxprdm24hH": {
+        "_id": "OkYPLMDxprdm24hH",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/cryomister.webp",
+        "name": "Cryomister (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a @Template[type:burst|distance:20], making the affected area difficult terrain for 1 minute; at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals @Damage[(8[splash])[cold]] splash damage to creatures in the area on activation. Creatures attempting to move through the affected area can attempt a @Check[acrobatics|dc:39|showDC:all] to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting Gargantuan creatures larger than a 20-by-20-foot space, such as a mu spore.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "cold",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "2EC73UbxVP9f0SR9": {
+        "_id": "2EC73UbxVP9f0SR9",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/cryomister.webp",
+        "name": "Cryomister (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a @Template[type:burst|distance:10], making the affected area difficult terrain for 1 minute; at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals @Damage[(3[splash])[cold]] splash damage to creatures in the area on activation. Creatures attempting to move through the affected area can attempt a @Check[acrobatics|dc:21|showDC:all] to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one Large creature or two Medium or smaller creatures.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "cold",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ntrmM8yBysmeqt71": {
+        "_id": "ntrmM8yBysmeqt71",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Electromuscular Stimulator",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>This rare gadget uses Stasian technology to grant someone a burst of activity, though its use can be painful. The electromuscular stimulator must be carefully attached to you, requiring 1 minute to do so. You can attach an electromuscular stimulator to yourself. When you Activate an attached electromuscular stimulator, roll a @Check[crafting|dc:@self.level] check, using the Crafting modifier of the creature who attached the stimulator to you, with a DC equal to the standard DC for your level. The effects of the activation depend on the result of the Crafting check.</p><hr /><p><strong>Critical Success</strong> You gain the @UUID[Compendium.pf2e.conditionitems.Item.Quickened] condition for 1 minute and can use the extra action each round only to Stride or Strike.</p>\n<p><strong>Success</strong> As critical success, but you also take @Damage[3[persistent,electricity]] damage.</p>\n<p><strong>Failure</strong> You gain the quickened condition for 2 rounds and can use the extra action each round only to Stride or Strike. You take 3 persistent electricity damage.</p>\n<p><strong>Critical Failure</strong> You take @Damage[2d6[electricity]] damage and 3 persistent electricity damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worn"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "LcNUAglIYiTxwmNo": {
+        "_id": "LcNUAglIYiTxwmNo",
+        "img": "icons/commodities/tech/bulb-vacuum.webp",
+        "name": "Etheric Essence Disruptor (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within 60 feet, with a [[/r 1d20+18]]{+18} counteract modifier and a counteract rank of 6.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "SRMgleqCK2tsZjvS": {
+        "_id": "SRMgleqCK2tsZjvS",
+        "img": "icons/commodities/tech/bulb-vacuum.webp",
+        "name": "Etheric Essence Disruptor (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within 30 feet, with a [[/r 1d20+7]]{+7} counteract modifier and a counteract rank of 2.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "KO7ZftYQrcE5GFkJ": {
+        "_id": "KO7ZftYQrcE5GFkJ",
+        "img": "icons/commodities/tech/bulb-vacuum.webp",
+        "name": "Etheric Essence Disruptor (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within 90 feet, with a [[/r 1d20+24]]{+24} counteract modifier and a counteract rank of 8.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "d49GcmPZ2xWxU8Zj": {
+        "_id": "d49GcmPZ2xWxU8Zj",
+        "img": "icons/commodities/tech/bulb-vacuum.webp",
+        "name": "Etheric Essence Disruptor (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within 40 feet, with a [[/r 1d20+13]]{+13} counteract modifier and a counteract rank of 4.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "e2Von0aDHB03Iz3f": {
+        "_id": "e2Von0aDHB03Iz3f",
+        "img": "systems/pf2e/icons/equipment/held-items/explosive-mine.webp",
+        "name": "Explosive Mine (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use Stealth to @UUID[Compendium.pf2e.actionspf2e.Item.Conceal an Object] before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.</p>\n<p>Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located. Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the @Damage[12d6[fire]|options:area-damage] damage to any creatures in a @Template[type:emanation|distance:5] with a @Check[reflex|dc:29|basic|options:area-effect] save.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7e57yUVtRgYLOFwT": {
+        "_id": "7e57yUVtRgYLOFwT",
+        "img": "systems/pf2e/icons/equipment/held-items/explosive-mine.webp",
+        "name": "Explosive Mine (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use Stealth to @UUID[Compendium.pf2e.actionspf2e.Item.Conceal an Object] before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.</p>\n<p>Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located. Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the @Damage[2d6[fire]|options:area-damage] damage to any creatures in a @Template[type:emanation|distance:5] with a @Check[reflex|dc:15|basic|options:area-effect] save.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "FBS2dhoOfSlcuPt6": {
+        "_id": "FBS2dhoOfSlcuPt6",
+        "img": "systems/pf2e/icons/equipment/held-items/explosive-mine.webp",
+        "name": "Explosive Mine (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use Stealth to @UUID[Compendium.pf2e.actionspf2e.Item.Conceal an Object] before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.</p>\n<p>Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located. Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the @Damage[18d6[fire]|options:area-damage] damage to any creatures in a @Template[type:emanation|distance:10] with a @Check[reflex|dc:38|basic|options:area-effect] save.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aiL53pkt0wFrsAQb": {
+        "_id": "aiL53pkt0wFrsAQb",
+        "img": "systems/pf2e/icons/equipment/held-items/explosive-mine.webp",
+        "name": "Explosive Mine (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use Stealth to @UUID[Compendium.pf2e.actionspf2e.Item.Conceal an Object] before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.</p>\n<p>Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located. Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the @Damage[6d6[fire]|options:area-damage] damage to any creatures in a @Template[type:emanation|distance:5] with a @Check[reflex|dc:20|basic|options:area-effect] save.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 40
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "9UGxCsNE778Y5rk0": {
+        "_id": "9UGxCsNE778Y5rk0",
+        "img": "systems/pf2e/icons/equipment/held-items/flare-beacon.webp",
+        "name": "Flare Beacon (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> Interact</p>\n<hr />\n<p>Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. A flare beacon in the air falls at a rate of 10 feet per round.</p>\n<hr />\n<p>The beacon shines bright light in a 100-foot radius and dim light in the next 100 feet. Creatures within a 20-foot radius of the beacon must succeed at a @Check[fortitude|dc:27|name:Fortitude|traits:dazzle] save or be dazzled until they are no longer within 20 feet of it. Additionally, on a critical failure, they are also blinded for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 180
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aP5wvs60j6VaKvWL": {
+        "_id": "aP5wvs60j6VaKvWL",
+        "img": "systems/pf2e/icons/equipment/held-items/flare-beacon.webp",
+        "name": "Flare Beacon (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a @Check[fortitude|dc:15] save or be @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] until they are no longer adjacent to it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VJ9mXi70JprHHA0z": {
+        "_id": "VJ9mXi70JprHHA0z",
+        "img": "systems/pf2e/icons/equipment/held-items/flare-beacon.webp",
+        "name": "Flare Beacon (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> Interact</p>\n<hr />\n<p>Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. A flare beacon in the air falls at a rate of 10 feet per round.</p>\n<hr />\n<p>The beacon shines bright light in a 180-foot radius and dim light in the next 180 feet. Creatures within a 30-foot radius of the beacon must succeed at a @Check[fortitude|dc:35|name:Fortitude|traits:dazzle] save or be dazzled until they are no longer within 30 feet of it. Additionally, on a critical failure, they are also blinded for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "WAQABCTFGuHvC0yR": {
+        "_id": "WAQABCTFGuHvC0yR",
+        "img": "systems/pf2e/icons/equipment/held-items/flare-beacon.webp",
+        "name": "Flare Beacon (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> Interact</p>\n<hr />\n<p>Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. A flare beacon in the air falls at a rate of 10 feet per round.</p>\n<hr />\n<p>The beacon shines bright light in a 60-foot radius and dim light in the next 60 feet. Creatures within a 10-foot radius of the beacon must succeed at a @Check[fortitude|dc:20|name:Fortitude|traits:dazzle] save or be dazzled until they are no longer within 10 feet of it.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 35
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "sm",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "8pQw1HUzJ4duZbio": {
+        "_id": "8pQw1HUzJ4duZbio",
+        "img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/gadget-skates.webp",
+        "name": "Gadget Skates",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate, move)</p><hr /><p>Gadget skates are metal devices that come in pairs and strap onto existing footwear (or a creature's feet). When you Activate gadget skates, clockwork gears reveal small wheels that propel you along the ground, moving you up to twice your Speed. During this movement, you must succeed at a @Check[acrobatics|dc:20] check to turn up to 90 degrees, and you can't turn more than once or more than 90 degrees. During the activation and after the activation is complete, you can't Stride, Step, or otherwise move on the ground until the end of your next turn. However, you can use this movement instead of a Stride to perform a @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump] just after the activation ends, in the direction of your last movement using the gadget skates.</p>\n<p>You can Sustain the Activation of your gadget skates for up to 1 minute. Starting on the turn after you Activate the gadget skates, the first time you Sustain the Activation each turn, you gain the effects of the activation again: you move up to twice your Speed in the same direction as your last movement with the gadget skates, and the restrictions continue to apply until you choose to cease Sustaining the Activation or you reach the maximum duration. Once the effect ends, the skates fall away and you can move normally.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 21
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "wornshoes"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "RtTzHaHMrXiml7ut": {
+        "_id": "RtTzHaHMrXiml7ut",
+        "img": "systems/pf2e/icons/equipment/held-items/galvasphere.webp",
+        "name": "Galvasphere",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A galvasphere animates a corpse to motion via electricity, rather than dark magic. When you Activate the galvasphere by inserting it into an adjacent intact Medium or Small humanoid corpse, the corpse animates as a galvaheart zombie for 1 minute. The galvaheart zombie has the statistics of a zombie shambler except that it's a construct instead of an undead, isn't unholy, can't be harmed by vitality energy, and is the same size as the corpse (Medium or Small). The zombie is your minion and performs the actions you choose when you Command it. If you don't Command it, it takes no action, twitching in place as the electricity that animates it slowly expends itself.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "rEx0S0p3cIzybhvV": {
+        "_id": "rEx0S0p3cIzybhvV",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/gecko-pads.webp",
+        "name": "Gecko Pads (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>Gecko pads are thin, clockwork devices shaped like palms, which can be strapped onto existing handwear or a creature's hands. When activated, they whir to life and improve your grip on surfaces, while slowly releasing a sticky substance stored within the device's surface to help you climb. The pads give you a climb Speed equal to your Speed as long as your hands are free.</p>\n<p>The climb Speed lasts for 1 hour.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 125
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngloves"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "L5AaEekLZ7Xt80FZ": {
+        "_id": "L5AaEekLZ7Xt80FZ",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/gecko-pads.webp",
+        "name": "Gecko Pads",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>Gecko pads are thin, clockwork devices shaped like palms, which can be strapped onto existing handwear or a creature's hands. When activated, they whir to life and improve your grip on surfaces, while slowly releasing a sticky substance stored within the device's surface to help you climb. The pads give you a climb Speed equal to your Speed as long as your hands are free.</p>\n<p>The climb Speed lasts for 10 minutes.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngloves"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "cjAyXfWmn0IpOsaY": {
+        "_id": "cjAyXfWmn0IpOsaY",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/impact-foam-chassis.webp",
+        "name": "Impact Foam Chassis (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> see below</p><hr /><p>While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute.</p>\n<p>While you're surrounded in foam, you are @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an @UUID[Compendium.pf2e.actionspf2e.Item.Escape] DC of 15; a creature can also remove it by spending three Interact actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points.</p>\n<p>A greater impact foam chassis prevents up to 100 falling damage and has 100 Hit Points.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 150
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "2kFaQDsMZmPIEOct": {
+        "_id": "2kFaQDsMZmPIEOct",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/impact-foam-chassis.webp",
+        "name": "Impact Foam Chassis (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> see below</p><hr /><p>While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute.</p>\n<p>While you're surrounded in foam, you are @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an @UUID[Compendium.pf2e.actionspf2e.Item.Escape] DC of 15; a creature can also remove it by spending three Interact actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points.</p>\n<p>A lesser impact foam chassis prevents up to 20 falling damage and has 20 Hit Points.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "YvmRcEky6fuIR0xp": {
+        "_id": "YvmRcEky6fuIR0xp",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/impact-foam-chassis.webp",
+        "name": "Impact Foam Chassis (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> see below</p><hr /><p>While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute.</p>\n<p>While you're surrounded in foam, you are @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an @UUID[Compendium.pf2e.actionspf2e.Item.Escape] DC of 15; a creature can also remove it by spending three Interact actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points.</p>\n<p>A greater impact foam chassis prevents up to 200 falling damage and has 200 Hit Points.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 650
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "CM0Hq7KKCwUv0BV6": {
+        "_id": "CM0Hq7KKCwUv0BV6",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/impact-foam-chassis.webp",
+        "name": "Impact Foam Chassis (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> see below</p><hr /><p>While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute.</p>\n<p>While you're surrounded in foam, you are @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an @UUID[Compendium.pf2e.actionspf2e.Item.Escape] DC of 15; a creature can also remove it by spending three Interact actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points.</p>\n<p>A moderate impact foam chassis prevents up to 50 falling damage and has 40 Hit Points.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "worngarment"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aBGKmzkHsaNH07Di": {
+        "_id": "aBGKmzkHsaNH07Di",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/instant-spy.webp",
+        "name": "Instant Spy",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>An instant spy is a tiny clockwork device that is small enough to be easily hidden. It contains the same audio-recording mechanisms as a clockwork spy, as well as a short-lived gemstone that can store up to 1 hour of sound to play back later.</p>\n<p>Once you have activated the instant spy, it surreptitiously begins recording all the sounds around it for an hour. In general, it can hear sounds that are clearly audible in the location where you activated it, but not sounds that would require a Perception check with a DC of 10 or greater to hear. The GM determines exactly what the instant spy can hear and record, as well as whether or not the recording is clear in a situation where the original sound is quiet, distorted, or intentionally obscured.</p>\n<p>When the recording is complete, once within the next 24 hours, you or another creature can use an Interact action to play back the stored audio in its entirety, after which the gem crumbles to dust. If no one plays the recorded sounds back within 1 day, the gem crumbles into dust anyway. This prevents the information from falling into the wrong hands later. It's typical to use the Conceal an Object action to hide an instant spy in a location once you've activated it, since if you don't hide it, it's relatively easy to discover in a thorough search, despite the fact that it's small and relatively unobtrusive.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Hiu4tSd0Ol8HvmaN": {
+        "_id": "Hiu4tSd0Ol8HvmaN",
+        "img": "icons/commodities/treasure/token-brass-round.webp",
+        "name": "Krasovnatype",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A krasovnatype (named after Dr. Krasovna Gerenevich) consists of a carefully prepared silvered glass plate charged by a Stasian coil. When you touch the front of the glass or hold it near a living creature within your reach, an image of that creature's aura is imprinted on the glass. Once a krasovnatype has an image on it, you can't use the glass plate on another creature. If you are trained in Occultism, you can look at the image and learn if the associated creature has innate, prepared, or spontaneous spellcasting, along with the tradition of that casting and the highest rank of spells they can cast. Referencing the image grants a +1 item bonus to any Recall Knowledge check regarding the creature.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JcFofHcCc2FDN99x": {
+        "_id": "JcFofHcCc2FDN99x",
+        "img": "icons/commodities/tech/diode-copper.webp",
+        "name": "Maelstromic Destabilizer (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A maelstromic destabilizer is a whirling gyroscope of burnished bronze and glass. It strengthens the bonds that hold a creature to this world by weakening those same bonds to every other nearby creature. When activated, the destabilizer emits a constant pleasant chime as it spins. For the next minute, the creature holding the gadget gains resistance 2 to spirit damage, while all creatures not immune to spirit damage in a @Template[type:emanation|distance:10] gains weakness 2 to spirit damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "spirit"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "xsPP4JVf1NJX0s7u": {
+        "_id": "xsPP4JVf1NJX0s7u",
+        "img": "icons/commodities/tech/diode-copper.webp",
+        "name": "Maelstromic Destabilizer (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A maelstromic destabilizer is a whirling gyroscope of burnished bronze and glass. It strengthens the bonds that hold a creature to this world by weakening those same bonds to every other nearby creature. When activated, the destabilizer emits a constant pleasant chime as it spins. For the next minute, the creature holding the gadget gains resistance 10 to spirit damage, while all creatures not immune to spirit damage in a @Template[type:emanation|distance:10] gains weakness 10 to spirit damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "spirit"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "P1DyjpDWtnMrXX1e": {
+        "_id": "P1DyjpDWtnMrXX1e",
+        "img": "icons/commodities/tech/diode-copper.webp",
+        "name": "Maelstromic Destabilizer (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>A maelstromic destabilizer is a whirling gyroscope of burnished bronze and glass. It strengthens the bonds that hold a creature to this world by weakening those same bonds to every other nearby creature. When activated, the destabilizer emits a constant pleasant chime as it spins. For the next minute, the creature holding the gadget gains resistance 5 to spirit damage, while all creatures not immune to spirit damage in a @Template[type:emanation|distance:10] gains weakness 5 to spirit damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 65
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "spirit"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "byFW6sILekJaPERu": {
+        "_id": "byFW6sILekJaPERu",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Material Essence Disruptor (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within 60 feet, with a [[/r 1d20+18]]{+18} counteract modifier and a counteract rank of 6.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "wu9cqBx65txvAODd": {
+        "_id": "wu9cqBx65txvAODd",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Material Essence Disruptor (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within 30 feet, with a [[/r 1d20+7]]{+7} counteract modifier and a counteract rank of 2.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "omWrYy6RY9rxeF50": {
+        "_id": "omWrYy6RY9rxeF50",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Material Essence Disruptor (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within 90 feet, with a [[/r 1d20+24]]{+24} counteract modifier and a counteract rank of 8.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "rfU6tyzEadCXHSSN": {
+        "_id": "rfU6tyzEadCXHSSN",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Material Essence Disruptor (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within 40 feet, with a [[/r 1d20+13]]{+13} counteract modifier and a counteract rank of 4.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "bU41sQCtuZKkmezD": {
+        "_id": "bU41sQCtuZKkmezD",
+        "img": "icons/commodities/treasure/token-brass-round.webp",
+        "name": "Moritype",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This plate of smoky glass is a variation on Dr. Krasovna Gerenevich's krasovnatype that is imprinted with void energies. Creating the plate requires a living thing to die as part of its electrical charging; most creators use insects or lab mice. The moritype creates an image in the same way as a krasovnatype, but also siphons off part of that aura. If used on a living creature, that creature must attempt a @Check[will|dc:27] save.</p><hr /><p><strong>Critical Success</strong> The creature is unaffected.</p>\n<p><strong>Success</strong> If the creature has any innate, prepared, or spontaneous spells, they're unable to Cast a Spell of their highest-ranked slot for 1 round. Cantrips and focus spells are unaffected.</p>\n<p><strong>Failure</strong> As success, except they can't cast the 2 highest ranks they have available.</p>\n<p><strong>Critical Failure</strong> As success, except they can't cast any spells other than cantrips and focus spells.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 200
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "void"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "kO31GgqGY37MDRff": {
+        "_id": "kO31GgqGY37MDRff",
+        "img": "systems/pf2e/icons/equipment/held-items/periscopic-viewfinder.webp",
+        "name": "Periscopic Viewfinder",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>This bronze, spherical device slowly rotates around a cluster of angled mirrors and a light-filled orb. When you activate the viewfinder, it spins rapidly and reflects light into the orb at the center. This reveals the area around you up to 30 feet in a burst of light, including objects and areas that aren't in your line of sight. This doesn't grant you any additional information that couldn't otherwise be gathered by your senses.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "XYweIphfMqFeEo7D": {
+        "_id": "XYweIphfMqFeEo7D",
+        "img": "icons/commodities/tech/coil-tesla-large.webp",
+        "name": "Portable Seal (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A portable seal is a stiff framework of copper wires and strategically placed hinges, so that when the device is snapped open it forms an instant geometric design. A tiny Stasian coil is attached, which when activated runs a mixture of occult energy and high-voltage electricity through the wire. The design covers a @Template[type:burst|distance:5] when unfolded and must be unfolded into an area free of major obstructions such as rocks or hostile creatures. When a creature with the summoned trait attempts to enter the seal's area or make a melee Strike against a creature in that area, the summoned creature must attempt a @Check[will|dc:20] save.</p><hr /><p><strong>Success</strong> The action occurs normally, and the creature is immune to the effects of this portable seal this round.</p>\n<p><strong>Failure</strong> The movement or Strike is disrupted, but the creature is immune to further effects of the portable seal this round.</p>\n<p><strong>Critical Failure</strong> The movement or Strike is disrupted.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 45
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VGQ18qI1Y8sLORuG": {
+        "_id": "VGQ18qI1Y8sLORuG",
+        "img": "icons/commodities/tech/coil-tesla-large.webp",
+        "name": "Portable Seal (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A portable seal is a stiff framework of copper wires and strategically placed hinges, so that when the device is snapped open it forms an instant geometric design. A tiny Stasian coil is attached, which when activated runs a mixture of occult energy and high-voltage electricity through the wire. The design covers a @Template[type:burst|distance:5] when unfolded and must be unfolded into an area free of major obstructions such as rocks or hostile creatures. When a creature with the summoned trait attempts to enter the seal's area or make a melee Strike against a creature in that area, the summoned creature must attempt a @Check[will|dc:36] save.</p><hr /><p><strong>Success</strong> The action occurs normally, and the creature is immune to the effects of this portable seal this round.</p>\n<p><strong>Failure</strong> The movement or Strike is disrupted, but the creature is immune to further effects of the portable seal this round.</p>\n<p><strong>Critical Failure</strong> The movement or Strike is disrupted.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "OfIhe6Fa6J4ZfZeL": {
+        "_id": "OfIhe6Fa6J4ZfZeL",
+        "img": "icons/commodities/tech/coil-tesla-large.webp",
+        "name": "Portable Seal (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p><hr /><p>A portable seal is a stiff framework of copper wires and strategically placed hinges, so that when the device is snapped open it forms an instant geometric design. A tiny Stasian coil is attached, which when activated runs a mixture of occult energy and high-voltage electricity through the wire. The design covers a @Template[type:burst|distance:5] when unfolded and must be unfolded into an area free of major obstructions such as rocks or hostile creatures. When a creature with the summoned trait attempts to enter the seal's area or make a melee Strike against a creature in that area, the summoned creature must attempt a @Check[will|dc:28] save.</p><hr /><p><strong>Success</strong> The action occurs normally, and the creature is immune to the effects of this portable seal this round.</p>\n<p><strong>Failure</strong> The movement or Strike is disrupted, but the creature is immune to further effects of the portable seal this round.</p>\n<p><strong>Critical Failure</strong> The movement or Strike is disrupted.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "k1S8AdYhi5JGRLh1": {
+        "_id": "k1S8AdYhi5JGRLh1",
+        "img": "systems/pf2e/icons/equipment/held-items/smoke-fan.webp",
+        "name": "Smoke Fan (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a smoke fan, it creates a cloud of colored smoke. The smoke fills a 20-foot radius. The creator chooses the smoke's color when creating the smoke fan, or the creator can choose for the smoke to be a mixture of colors. Creatures within the smoke's area are @UUID[Compendium.pf2e.conditionitems.Item.Concealed], and all other creatures are concealed to them. The smoke lasts for 1 minute or until dissipated by a strong wind.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 75
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "T6jPmGyInYATYOzr": {
+        "_id": "T6jPmGyInYATYOzr",
+        "img": "systems/pf2e/icons/equipment/held-items/smoke-fan.webp",
+        "name": "Smoke Fan",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>When you Activate a smoke fan, it creates a cloud of colored smoke. The smoke fills a 5-foot radius. The creator chooses the smoke's color when creating the smoke fan. Creatures within the smoke's area are @UUID[Compendium.pf2e.conditionitems.Item.Concealed], and all other creatures are concealed to them. The smoke lasts for 1 minute or until dissipated by a strong wind.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "0QiHkpL9mFwNU0Ts": {
+        "_id": "0QiHkpL9mFwNU0Ts",
+        "img": "systems/pf2e/icons/equipment/consumables/other-consumables/spring-loaded-net-launcher.webp",
+        "name": "Spring-Loaded Net Launcher",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>This small bronze cylinder is about the size of a potion bottle. When you activate the launcher, it fires an unattached net requiring only a single hand, and at a greater distance. As normal, you make a ranged attack roll against a Medium or smaller creature, but you can target a creature up to 60 feet away, instead of only 20 feet away. The net trap otherwise functions as an unattached @UUID[Compendium.pf2e.equipment-srd.Item.Net].</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "b2t3kttZipvg826A": {
+        "_id": "b2t3kttZipvg826A",
+        "img": "icons/commodities/gems/pearl-storm.webp",
+        "name": "Static Muscular Relay",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This glass orb has a Stasian coil in the center, allowing visible electricity to be safely seen within the glass. The electricity that dances within this orb can be transferred to the user of this gadget, allowing their muscles to react and respond much quicker. When activated, you gain a +2 circumstance bonus to Reflex saves and AC for 1 minute, or until you are hit by an attack or fail a Reflex saving throw, whichever happens first.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Static Muscular Relay]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 180
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "electricity",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "LCw1mtusKGterDR4": {
+        "_id": "LCw1mtusKGterDR4",
+        "img": "icons/commodities/tech/tube-chamber-lightning.webp",
+        "name": "Tangibility Resonator (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>One of the stranger devices to come out of the University of Lepidstadt is a twisted glass contraption that hums with electricity. This vibration is harmless to most but is massively disruptive to the locomotion of incorporeal creatures. When activated, one incorporeal creature within 15 feet must attempt a @Check[fortitude|dc:19] saving throw. Once used, the vibrations cause the glass to shatter.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is immobilized and @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "tJquEIyMHgbFEH9N": {
+        "_id": "tJquEIyMHgbFEH9N",
+        "img": "icons/commodities/tech/tube-chamber-lightning.webp",
+        "name": "Tangibility Resonator (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>One of the stranger devices to come out of the University of Lepidstadt is a twisted glass contraption that hums with electricity. This vibration is harmless to most but is massively disruptive to the locomotion of incorporeal creatures. When activated, one incorporeal creature within 15 feet must attempt a @Check[fortitude|dc:35] saving throw. Once used, the vibrations cause the glass to shatter.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is immobilized and @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Om6RqpjwuPINOepb": {
+        "_id": "Om6RqpjwuPINOepb",
+        "img": "icons/commodities/tech/tube-chamber-lightning.webp",
+        "name": "Tangibility Resonator (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>One of the stranger devices to come out of the University of Lepidstadt is a twisted glass contraption that hums with electricity. This vibration is harmless to most but is massively disruptive to the locomotion of incorporeal creatures. When activated, one incorporeal creature within 15 feet must attempt a @Check[fortitude|dc:27] saving throw. Once used, the vibrations cause the glass to shatter.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Immobilized] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is immobilized and @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "gadget",
+                    "sonic"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vR2EZPD9TcLrkBz6": {
+        "_id": "vR2EZPD9TcLrkBz6",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Vanishing Shocker (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>The vanishing shocker is a cube with extruding spikes at each corner. This inscrutable device channels occult energy through the electricity it produces, creating the result of invisible lighting. When activated, the cube floats above your head, creating a field of invisible electricity in a @Template[type:emanation|distance:10] that lasts for 1 round. You and creatures within the emanation are @UUID[Compendium.pf2e.conditionitems.Item.Concealed]. Creatures that enter or start their turn within the area must attempt a @Check[reflex|dc:33] save.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} and off-guard for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "electricity",
+                    "gadget",
+                    "illusion",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "l5V2Bbik0g6eLBUA": {
+        "_id": "l5V2Bbik0g6eLBUA",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Vanishing Shocker (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>The vanishing shocker is a cube with extruding spikes at each corner. This inscrutable device channels occult energy through the electricity it produces, creating the result of invisible lighting. When activated, the cube floats above your head, creating a field of invisible electricity in a @Template[type:emanation|distance:10] that lasts for 1 round. You and creatures within the emanation are @UUID[Compendium.pf2e.conditionitems.Item.Concealed]. Creatures that enter or start their turn within the area must attempt a @Check[reflex|dc:22] save.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} and off-guard for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "electricity",
+                    "gadget",
+                    "illusion",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "zftpNNqFzlmeuWl6": {
+        "_id": "zftpNNqFzlmeuWl6",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Vanishing Shocker (Major)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>The vanishing shocker is a cube with extruding spikes at each corner. This inscrutable device channels occult energy through the electricity it produces, creating the result of invisible lighting. When activated, the cube floats above your head, creating a field of invisible electricity in a @Template[type:emanation|distance:10] that lasts for 1 round. You and creatures within the emanation are @UUID[Compendium.pf2e.conditionitems.Item.Concealed]. Creatures that enter or start their turn within the area must attempt a @Check[reflex|dc:38] save.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} and off-guard for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 19
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "electricity",
+                    "gadget",
+                    "illusion",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "NnoESOFI359hAYjT": {
+        "_id": "NnoESOFI359hAYjT",
+        "img": "icons/commodities/treasure/token-silver-gem-cut.webp",
+        "name": "Vanishing Shocker (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>The vanishing shocker is a cube with extruding spikes at each corner. This inscrutable device channels occult energy through the electricity it produces, creating the result of invisible lighting. When activated, the cube floats above your head, creating a field of invisible electricity in a @Template[type:emanation|distance:10] that lasts for 1 round. You and creatures within the emanation are @UUID[Compendium.pf2e.conditionitems.Item.Concealed]. Creatures that enter or start their turn within the area must attempt a @Check[reflex|dc:27] save.</p><hr /><p><strong>Success</strong> The target is unaffected.</p>\n<p><strong>Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] for 1 round.</p>\n<p><strong>Critical Failure</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1} and off-guard for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 300
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Rival Academies"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "electricity",
+                    "gadget",
+                    "illusion",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "TUya8pXhEa70ahAi": {
+        "_id": "TUya8pXhEa70ahAi",
+        "img": "systems/pf2e/icons/default-icons/consumable.svg",
+        "name": "Wind-Up Cart",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 2
+            },
+            "category": "gadget",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p><hr /><p>This primitive device can be cobbled together from springs, wheels, and scrap and is commonly used to carry rocks or other dead weight forward to trigger traps. It can be loaded with up to 4 Bulk of items. Most creatures aren't small enough to fit on the cart, and even for Tiny creatures, it makes for a choppy ride; while riding the cart, a creature gains two actions at the start of each of its turns, instead of three. Once activated, the cart moves forward at a speed of 30 feet per round on your turn for up to 1 minute. If it strikes an obstruction, it attempts to continue its movement, pushing with an Athletics bonus of +5, once per round. The wind-up cart has AC 15, Hardness 2, 24 Hit Points, and a Break Threshold of 12. After its 1-minute duration completes, the cart collapses back into scrap.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "clockwork",
+                    "consumable",
+                    "gadget"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

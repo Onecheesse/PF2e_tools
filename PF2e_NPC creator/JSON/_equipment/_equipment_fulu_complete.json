@@ -1,0 +1,2754 @@
+{
+    "ne00KCUcrmRT3PM9": {
+        "_id": "ne00KCUcrmRT3PM9",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-anathema.webp",
+        "name": "Anathema Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 hour</p><hr /><p>First used by celestial-touched nephilim of Tianjing to weaken qlippoth, an anathema fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when activating the fulus: celestial, elemental, fey, fiend, monitor, or undead. If a creature with that trait starts its turn in the area, it must succeed at a @Check[fortitude|dc:30] saving throw or become @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 2} until the start of its next turn. On a critical success, the creature becomes temporarily immune to any anathema fulus for 1 hour. Regardless of the save result, if you subsequently cast @UUID[Compendium.pf2e.spells-srd.Item.Banishment] on such a creature in the area, the creature takes the –2 penalty described in that spell for adding a special cost of an object that's anathema to that creature. The fulu acts as that object; you don't need to add it. If a creature affected by this penalty rolls a saving throw against <em>banishment</em>, the caster can use a free action to force the result one step lower. Doing so burns the whole fulu out, ending the effect. If any of the fulu's pieces are moved or destroyed after activation, the effect ends.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 250
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-an-object-or-structure"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "GZo6icE8v07xQKKc": {
+        "_id": "GZo6icE8v07xQKKc",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Animal-Turning Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">r</span> envision</p>\n<p><strong>Trigger</strong> A creature with the animal trait successfully Strikes you.</p>\n<hr />\n<p>Frightened animals depicted on this fulu flee in all directions from a central figure (traditionally represented by a human hunter, but sometimes depicted as a skeletal undead creature or even a fiend with long, broken arms). You activate this fulu, gaining a +2 item bonus to AC against the triggering Strike. If this causes the Strike to miss, you become @UUID[Compendium.pf2e.conditionitems.Item.Concealed] from the triggering creature until the start of your next turn.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UuNVe6SDNztreNEN": {
+        "_id": "UuNVe6SDNztreNEN",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Apotropaic Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed over an entrance</p>\n<hr />\n<p>This unassuming yellow paper, affixed above a door or gate, flickers in the light. Pick an alignment trait: chaotic, good, lawful, or evil. When a creature with the opposing alignment trait of the fulu (good for an evil fulu, and so on) passes through the entrance, it must succeed at a @Check[fortitude|dc:17] save or become @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 2}; regardless of whether they succeed, the creature becomes temporarily immune for 1 day.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "VXxwxLwJiDODlUZq": {
+        "_id": "VXxwxLwJiDODlUZq",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Demolition Fulu (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A demolition fulu allows a saboteur or excavator to be far away from the scene when demolition happens. The fulu crumbles to ash over 5 minutes to 8 hours, as you determine when you place the fulu. Once the duration ends, the fulu lowers the Hardness of the object it's affixed to by an amount equal to the fulu's level and then deals @Damage[10d6[bludgeoning]] to the object. A demolition fulu serves as a hazard with a @Check[perception|dc:37] check to detect it and @Check[thievery|dc:37] check to disable it according to its type.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 2750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-ranged-weapon"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7WuJbX5c3SCB04Uw": {
+        "_id": "7WuJbX5c3SCB04Uw",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Demolition Fulu (Lesser)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A demolition fulu allows a saboteur or excavator to be far away from the scene when demolition happens. The fulu crumbles to ash over 5 minutes to 8 hours, as you determine when you place the fulu. Once the duration ends, the fulu lowers the Hardness of the object it's affixed to by an amount equal to the fulu's level and then deals @Damage[3d6[bludgeoning]] to the object. A demolition fulu serves as a hazard with a @Check[perception|dc:17] check to detect it and @Check[thievery|dc:17] check to disable it according to its type.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-ranged-weapon"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "pAldqSrzPotjYQe6": {
+        "_id": "pAldqSrzPotjYQe6",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Demolition Fulu (Moderate)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A demolition fulu allows a saboteur or excavator to be far away from the scene when demolition happens. The fulu crumbles to ash over 5 minutes to 8 hours, as you determine when you place the fulu. Once the duration ends, the fulu lowers the Hardness of the object it's affixed to by an amount equal to the fulu's level and then deals @Damage[6d6[bludgeoning]] to the object. A demolition fulu serves as a hazard with a @Check[perception|dc:28] check to detect it and @Check[thievery|dc:28] check to disable it according to its type.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 275
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-ranged-weapon"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "0Wxiz4hJPERJPDAF": {
+        "_id": "0Wxiz4hJPERJPDAF",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Detect Anathema Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Given to undisciplined acolytes at risk of breaking their vows, this fulu activates on its own if its wearer begins to perform an act anathema to a specific deity or cause, decided at the time of crafting. The fulu heats up when activated, giving you enough warning to correct your actions; if you proceed, the fulu immolates in a burst of flame. This deals @Damage[4d6[fire]] damage and brands your skin until you receive an appropriate @UUID[Compendium.pf2e.spells-srd.Item.Atone] ritual. Either way, activating the fulu consumes it.</p>\n<p><strong>Usage</strong> affixed to armor</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 100
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aKrslrjq22S9uRgF": {
+        "_id": "aKrslrjq22S9uRgF",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Discord Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 hour</p><hr /><p>Incorporating green in its writing, a <em>discord fulu</em> is a popular but unethical tool often deployed on romantic rivals to foil their advances. While the fulu is affixed to it, a creature treats its attitude toward other creatures as one step worse than it is. The creature also takes a –1 status penalty to Diplomacy checks. The first failure the creature rolls on a Diplomacy check becomes a critical failure instead, and the fulu turns to ash, ending its effect.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Discord Fulu]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 22
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "misfortune"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-ranged-weapon"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "2UQANe2ca1c8MO6Z": {
+        "_id": "2UQANe2ca1c8MO6Z",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Dragonfly Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">F</span> (concentrate)</p>\n<p><strong>Trigger</strong> You take the @UUID[Compendium.pf2e.actionspf2e.Item.Leap] action.</p><hr /><p>Tradition says the dragonfly fulu should be affixed to the upper back, like the wings of an insect. When you Activate this fulu, you gain a +2 status bonus to Athletics checks to @UUID[Compendium.pf2e.actionspf2e.Item.High Jump] or @UUID[Compendium.pf2e.actionspf2e.Item.Long Jump] for 1 minute. During this time, you can attempt an Athletics check to High Jump or Long Jump as a single action without the Stride requirement. You can also High Jump or Long Jump from a nonsolid substance, such as air or water, but if you use this power of the fulu, its effects ends after you jump.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 60
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "53mPIEbUw5RzQ6pc": {
+        "_id": "53mPIEbUw5RzQ6pc",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Escape Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> (concentrate)</p>\n<p><strong>Trigger</strong> You attempt to @UUID[Compendium.pf2e.actionspf2e.Item.Escape].</p><hr /><p>The <em>escape fulu</em> is a charm common among wealthy people, who wear the talisman in case of kidnapping. When you Activate this fulu, for 1 minute, you gain a +2 status bonus to your attempts to Escape as well as to Stealth checks to @UUID[Compendium.pf2e.actionspf2e.Item.Hide] and @UUID[Compendium.pf2e.actionspf2e.Item.Sneak].</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Escape Fulu]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "G3EIZLApRwt3hq13": {
+        "_id": "G3EIZLApRwt3hq13",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Firecracker Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You critically succeed at an attack roll with the affixed weapon.</p>\n<hr />\n<p>The fulu explodes and showers the area with bright sparks. The creature struck takes an additional @Damage[1d4[sonic]] damage and must succeed at a @Check[fortitude|dc:15] save or be @UUID[Compendium.pf2e.conditionitems.Item.Dazzled] for 1 round (or dazzled for 1 minute on a critical failure).</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-weapon"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "yYkxdzogiH7FPWVP": {
+        "_id": "yYkxdzogiH7FPWVP",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Fulu of Concealment",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to the ground in four spaces along a 10-foot radius circle</p>\n<p><strong>Duration</strong> 1 hour</p>\n<hr />\n<p>This fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when Activating the fulus: animal, beast, celestial, fey, fiend, humanoid, monitor, plant, or undead. Those within the fulus' circle upon activation (including the fulus themselves) gain the effect of @UUID[Compendium.pf2e.spells-srd.Item.Shared Invisibility]{Invisibility Sphere}, but only against creatures with the chosen trait. If any of the fulus are moved or destroyed after activation, the effect ends.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 40
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "illusion",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-ground-in-10-foot-radius"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "89uak2oyHnEuIn0b": {
+        "_id": "89uak2oyHnEuIn0b",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Fulu of Fire Suppression",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>The silver ink on this black paper charm ebbs in and out of sight, especially when caught out of the corner of your eye. Usually placed in the kitchen, this fulu slows the spread of fire in a 30-foot radius by half.</p>\n<p>If the fulu itself catches fire, as it burns, it releases a shower of water in a @Template[cone|distance:30], automatically putting out non-magical fires in this area and attempting to counteract any magical fire effects with a +7 counteract modifier and a counteract rank of 2; when this happens, the fulu's duration ends early</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZvOaZLwTT4kDbrF7": {
+        "_id": "ZvOaZLwTT4kDbrF7",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Fulu of Flood Suppression",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This blue fulu bears dark ink that slowly swirls and twists about itself, expanding and contracting on the paper over the course of the day in time with the tides. This fulu is most effective in the lowest area of a building, or near the most valuable or least-waterproof items. They're often seen as the rainy season approaches, with demand spiking just before a particularly large storm hits.</p>\n<p>The fulu slows the spread of flooding water in a 30-foot radius by half, repelling the remaining water away. If the fulu becomes submersed, as the ink dissolves in the water, it releases a rush of heat in a @Template[emanation|distance:10], harmlessly vaporizing non-magical water in this area into steam and attempting to counteract any magical water effects with a +7 counteract modifier and a counteract rank of 2; when this happens, the fulu's duration ends early.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "NJOOeJc7bpE7gkUn": {
+        "_id": "NJOOeJc7bpE7gkUn",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Fulu of the Drunken Monkey",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to armor</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You attempt a Fortitude save against an ingested poison.</p>\n<hr />\n<p>The monkey on this fulu sits on the point of the armor just over the bearer's stomach, happily drinking any intoxicants that come flowing down. When you activate the fulu, you gain a +2 status bonus on the triggering Fortitude save and on Fortitude saves against the same poison for the next minute. If the triggering poison was normal @UUID[Compendium.pf2e.equipment-srd.Item.Alcohol], you instead automatically succeed at the triggering save and gain a +4 status bonus on saves against alcohol for 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "G8h3vA0bSewbdrDS": {
+        "_id": "G8h3vA0bSewbdrDS",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Fulu of the Stoic Ox",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to armor</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You attempt a Fortitude save against a disease.</p>\n<hr />\n<p>The ox on this fulu rests vigilantly on the point of the armor right over the bearer's heart, protecting the bearer against diseases and safeguarding their health. When you activate the fulu, you gain a +2 status bonus on the triggering Fortitude save and on all Fortitude saves against the same disease for the next minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "mIqL9F9e1F1FmVgF": {
+        "_id": "mIqL9F9e1F1FmVgF",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Ghost Courier Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p><hr /><p>The inscription on a <em>ghost courier fulu</em> leaves space for a message, and a prominent red stamp indicates which ghost delivery fulu this fulu homes in on (see below). When you Activate this fulu, you dictate a message up to 25 words long that then magically appears on the paper in the language you spoke. The fulu then disappears into the Ethereal Plane, arriving at the assigned ghost delivery fulu in [[/r 2d10 #hours]]{2d10 hours}, provided that fulu is within 500 miles. There, the fulu's magic dissipates, but the message remains. If the fulu takes any damage in transit, it has a 50% chance to drop back into the Universe, intact but bereft of magic.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 100
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "3hhRWYl1O2FRfAbn": {
+        "_id": "3hhRWYl1O2FRfAbn",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Ghost Delivery Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 week</p>\n<p>A ghost delivery fulu's inscription resembles a dovecote with spirits around it, and it has a prominent stamp in red wax. This fulu activates once affixed, becoming the homing location of ghost courier fulus with a matching stamp. Delivered ghost courier fulu messages stick to the ghost delivery fulu but can be easily removed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 100
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Uzf9hqwec8fY2j4G": {
+        "_id": "Uzf9hqwec8fY2j4G",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Ghostbane Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to a weapon</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You successfully Strike an incorporeal creature with the weapon to which the fulu is affixed, but you haven't rolled damage.</p>\n<hr />\n<p>This white paper fulu bears red ink and attunes a weapon to the spiritual essence of an incorporeal creature. Upon activation, the weapon gains the benefit of the <em>ghost touch</em> property rune against the triggering incorporeal creature for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Ghostbane Fulu]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 40
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor-or-travelers-clothing"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "4642hELMtWF9jywN": {
+        "_id": "4642hELMtWF9jywN",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Golden Breath Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> (concentrate)</p>\n<p><strong>Trigger</strong> You take damage.</p><hr /><p>An enterprising chirurgeon reversed the forces evoked by a <em>void thousand-pains fulu</em> to create the <em>golden breath fulu</em>, which fortifies qi and the body as elements move out of balance. When you Activate this fulu, you regain @Damage[75[healing]] Hit Points and attempt a flat check to end any persistent damage affecting you. The fulu is particularly appropriate help for ending any persistent damage. Also, if you would regain more Hit Points from the fulu than your maximum, you can gain the excess as temporary Hit Points or distribute the excess among creatures of your choice within 30 feet. The temporary Hit Points last for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Golden Breath Fulu]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8100
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "healing",
+                    "magical",
+                    "talisman",
+                    "vitality"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "B3QOvE43Qn1H8t8n": {
+        "_id": "B3QOvE43Qn1H8t8n",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Inventor's Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> (concentrate)</p>\n<p><strong>Trigger</strong> You critically fail an action with the unstable trait.</p><hr /><p>Some inventors in Tian Xia put fried snacks near their innovations, a charm to make devices behave as intended. The practice rubbed off on other inventors, who replaced the food with a drawing on an <em>inventor's fulu</em>. When you Activate the fulu, your critical failure becomes a failure, and you can spend just 1 minute to return your innovation to full functionality. The fulu then burns up, and its effects end.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 50
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-an-innovation"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "FETCOUQa6rYtlAHB": {
+        "_id": "FETCOUQa6rYtlAHB",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Kaiju Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 week</p>\n<p>Despite the name, a kaiju fulu protects a building against damage of all sorts. When an affixed structure no larger than 100 feet × 100 feet and up to 50 feet tall takes damage, the structure is as hard as standard-grade adamantine against that damage and any damage that occurs within 1 hour thereafter. The fulu then crumbles to dust, and its effects end.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-load-bearing-wall-or-pillar"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "I2FmQuFJiJYmsTUd": {
+        "_id": "I2FmQuFJiJYmsTUd",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Magical Lock Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to a door, window, or container</p>\n<p><strong>Duration</strong> 1 hour</p>\n<hr />\n<p>The symbols on this fulu depict a lock and winding chains. Affixing this fulu over the seam or frame of the target locks it, even if it has no latch or existing lock. As many as nine fulus can be applied to the same target. One fulu equates a @UUID[Compendium.pf2e.equipment-srd.Item.Lock (Poor)]{Poor Lock} (DC 15), three a @UUID[Compendium.pf2e.equipment-srd.Item.Lock (Simple)]{Simple Lock} (DC 20), and nine an @UUID[Compendium.pf2e.equipment-srd.Item.Lock (Average)]{Average Lock} (DC 25).</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "jIlFuZaIgMPEzoyP": {
+        "_id": "jIlFuZaIgMPEzoyP",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Matchmaker Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to armor</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You attempt a Diplomacy check to Make an Impression.</p>\n<hr />\n<p>This red fulu contains blessings for one's relationship from Shelyn, goddess of beauty and love. You get a +2 status bonus to the Diplomacy check, and if you roll a critical failure on the check, you get a failure instead.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fortune",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "g6NpdrVR56B2jI64": {
+        "_id": "g6NpdrVR56B2jI64",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Mourner's Dawnlight Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> (concentrate, manipulate)</p><hr /><p>A <em>mourner's dawnlight fulu</em> is a stack of pages that resembles joss paper, used to locate the remains of the lost. When you Activate the fulu, you envision a specific object or deceased creature you're familiar with and want to find. You then rip the fulu into pieces and let them drift in the wind. If the item or creature you seek is within 500 feet, the pieces flutter through the air and land on the target, or on the surface closest to a buried or otherwise obscured target. If the torn fulu lands or fails to locate the desired target, its magic ends.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 120
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "igqlI1SbRPrXMtLT": {
+        "_id": "igqlI1SbRPrXMtLT",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Poracha Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Folklore from near the Forest of Spirits tells of the origin of the <em>poracha fulu</em>. Once, a traveler saved an eight-legged feline who turned out to be a poracha prince. In return, the prince gave the traveler a fulu that later prevented a fast-acting poison from slaying them. Traditionally, one wears a string of up to nine <em>poracha fulus</em>, which counts as one talisman. Each time you take persistent damage, one <em>poracha fulu</em> affixed to you negates the damage and crumbles to dust. This response is automatic, but you can use a free action (envision) to prevent your fulus from responding. If you do, any <em>poracha fulus</em> affixed to you never respond to that persistent damage.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "pDbWjlhIoQpUIvLb": {
+        "_id": "pDbWjlhIoQpUIvLb",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Privacy Ward Fulu (Chamber)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This fulu seeks to keep thieves, spies, and unwanted attention away from a room. A depiction of a lock appears in the center of this fulu, which is in turn surrounded by circles of broken keys. When applied to a wall inside a room, all creatures within the room gain an item bonus to Stealth checks against creatures outside the room.</p>\n<p>The fulu can shield a room of up to 90 square feet, grants a +2 item bonus, and has a duration of 24 hours. If you become hidden within the room, you automatically become undetected to creatures of the fulu's level or lower.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 120
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-wall"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UaSVmCl0JQ76kiYY": {
+        "_id": "UaSVmCl0JQ76kiYY",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Privacy Ward Fulu (Hallway)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This fulu seeks to keep thieves, spies, and unwanted attention away from a room. A depiction of a lock appears in the center of this fulu, which is in turn surrounded by circles of broken keys. When applied to a wall inside a room, all creatures within the room gain an item bonus to Stealth checks against creatures outside the room.</p>\n<p>The privacy ward fulu can shield a room of up to 10 square feet, grants a +1 item bonus, and has a duration of 1 hour.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-wall"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "PfVTTuTsErku7vss": {
+        "_id": "PfVTTuTsErku7vss",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Privacy Ward Fulu (Room)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This fulu seeks to keep thieves, spies, and unwanted attention away from a room. A depiction of a lock appears in the center of this fulu, which is in turn surrounded by circles of broken keys. When applied to a wall inside a room, all creatures within the room gain an item bonus to Stealth checks against creatures outside the room.</p>\n<p>The fulu can shield a room of up to 30 square feet, grants a +1 item bonus, and has a duration of 8 hours. If you become @UUID[Compendium.pf2e.conditionitems.Item.Hidden] within the room, you automatically become undetected to creatures of the fulu's level or lower.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-wall"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "tEI0hGZyPWYwVhJU": {
+        "_id": "tEI0hGZyPWYwVhJU",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Rebound Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to a shield</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You use the Shield Block reaction with the shield to which this fulu is affixed.</p>\n<hr />\n<p>The bronze-colored ink on this pale, silvery talisman sharply reflects light, enough that it seems to glow. When you activate the fulu, it reflects your foe's violence back against them. The foe that triggered the Shield Block reaction takes damage equal to your shield's Hardness or the damage they would have dealt before the Shield Block reaction, whichever is less.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 125
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-shield"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "mWOxG8asXbjCRVG9": {
+        "_id": "mWOxG8asXbjCRVG9",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Reflected Moonlight Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Trigger</strong> You fail to save against a death or void effect.</p><hr /><p>An acolyte accidentally left fulu paper outdoors overnight during a divine ceremony to Tsukiyo conducted only during a supermoon, creating the first reflected moonlight fulu. When you Activate this fulu, you reroll your saving throw against the triggering effect and take the better result. If this new roll is a critical success, the effect is reflected on its creator, who's treated as the effect's target, with any void damage converted to vitality damage. A reflected effect or spell affects only the original creator, even if it was an area spell or one that affects more than one creature.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 750
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fortune",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UtT7TVT7M6uJTlJH": {
+        "_id": "UtT7TVT7M6uJTlJH",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Restful Sleep Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to a creature</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Duration</strong> 1 hour</p>\n<hr />\n<p>This fulu depicts the five-spoke wheel of Qi Zhong, god of magic and medicine, and burns away slowly, like incense. If you fall asleep within the fulu's duration, you regain double the amount of Hit Points you usually gain from resting. You also gain a +2 status bonus to saves against mental effects that occur in your dreams, such as the @UUID[Compendium.pf2e.spells-srd.Item.Nightmare] spell.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 32
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qJMcnWmzColtya0Z": {
+        "_id": "qJMcnWmzColtya0Z",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Sentry Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> (concentrate, manipulate)</p><hr /><p>A sentry fulu depicts an armed guard. When you activate the fulu, it takes the shape of a Tiny humanoid guard made of paper and keeps watch over an area in a 20-foot burst. The guard has a Perception DC of 20, along with precise visual senses and imprecise hearing and vibrational sense to detect creatures moving in its area, including through the air. You dictate whether the guard remains still in its area or patrols it; if the latter, you also determine the path the guard takes, at a Speed of 25 feet. You also determine a password others must give the guard to bypass it. If a creature enters the area without giving the password, the sentry creates either an audible or mental alarm. An audible alarm has the sound and volume of a human shouting, as well as the auditory trait, allowing each creature that can hear it to attempt a @Check[perception|dc:15] check to wake up if they're asleep. The mental alert reaches you if you're within 60 feet of the active guard (see below). The guard remains active for 8 hours, and then the fulu is consumed.</p>\n<p>If you have more than one sentry fulu, you can set up several that function as a unit, provided their areas touch or overlap. When one sounds its alarm, the alarm passes through all of them, so you must be within range of only one to hear it or receive the mental alert. Creatures that give the correct password to one sentry fulu in a unit need not give that password again to the others. The destruction of one fulu-created guard in a unit sets off the alarm in others in connected areas.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-the-ground"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "NQvLv4qcTfK21y3H": {
+        "_id": "NQvLv4qcTfK21y3H",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Spirit-Sealing Fulu (Greater)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to one undead creature</p>\n<p><strong>Duration</strong> 1 round or 4 rounds</p>\n<hr />\n<p>This classic fulu seals the void energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a @Check[will|dc:27|name:spirit-sealing fulu|showDC:all] save or be @UUID[Compendium.pf2e.conditionitems.Item.Paralyzed] for 1 round. On a critical failure, the undead is paralyzed for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 155
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "incapacitation",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "9FiSGqe8s8531Tyh": {
+        "_id": "9FiSGqe8s8531Tyh",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Spirit-Sealing Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to one undead creature</p>\n<p><strong>Duration</strong> 1 round</p>\n<hr />\n<p>This classic fulu seals the void energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a @Check[will|dc:17|name:spirit-sealing fulu|showDC:all] save or be @UUID[Compendium.pf2e.conditionitems.Item.Paralyzed] for 1 round.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "incapacitation",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "NQuE19X1YMWjiWHl": {
+        "_id": "NQuE19X1YMWjiWHl",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Stormbreaker Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to armor</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> command</p>\n<p><strong>Trigger</strong> You would be forced to move, you would be teleported, or you would take cold, electricity, or sonic damage.</p>\n<hr />\n<p>This unassuming paper tag is inscribed with magical symbols. When you activate the fulu, it vanishes in a wisp of cloud, and you gain resistance 15 to cold, electricity, and sonic damage until the end of your next turn. For that duration, you ignore difficult terrain from wind and weather, and you can't be forcibly moved or teleported unless the effect counteracts the fulu (DC 40). These protections apply against the triggering effect.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Stormbreaker Fulu]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1900
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "s0btfYXKuufJhbyx": {
+        "_id": "s0btfYXKuufJhbyx",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Stumbling Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 hour</p>\n<p>The kitsune who first created a <em>stumbling fulu</em> advised the user to tuck the fulu under the target's belt for maximum effect. When the creature to which the fulu is affixed completes a Stride action, the creature must attempt a @Check[reflex|dc:17] save. On a failure, some element of the armor the fulu is affixed to comes undone, making the wearer @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}. On a critical failure, the target falls @UUID[Compendium.pf2e.conditionitems.Item.Prone] and is @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 2}. The clumsy condition remains until the target takes a total of 1 Interact action, plus 1 additional Interact action per value of the clumsy condition above 1, to properly reclothe itself. Once the fulu activates, it burns up, its magic lasting only as long as the conditions it has imposed.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "TXkHGUqvqIko7W9m": {
+        "_id": "TXkHGUqvqIko7W9m",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Blade)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:23|basic]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>This red fulu feels rigid, its edges sharp, and looking at it makes you feel feverish. The fulu deals @Damage[5d6[slashing]] as meridians burst and cut through flesh. On a failure or critical failure, if the target fails to take an action with the manipulate or move trait on each of its turns, it takes @Damage[1d6[persistent,slashing]].</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 90
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vuJi1kahoCAHHTSX": {
+        "_id": "vuJi1kahoCAHHTSX",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Burl)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:35|basic|traits:poison]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>Though this green fulu looks inviting, it has a foreboding aura. The fulu deals @Damage[10d8[poison]], causing the target's body to respond adversely to their qi. On a failure or critical failure, if the target takes fire damage, it takes @Damage[2d8[persistent,poison]] as well. These effects have the poison trait.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 2700
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Pb0WOuCR34FYGmuy": {
+        "_id": "Pb0WOuCR34FYGmuy",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Icicle)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:30|basic|traits:cold]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>Looking at this black fulu leaves you queasy and cold. The fulu deals @Damage[10d6[cold]] as the target's qi warps and drains. On a failure or critical failure, if the target takes damage from a poison or disease effect or becomes sickened, it takes @Damage[2d6[persistent,cold]]. These effects have the cold trait.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 630
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "7PhPuAFP4mQz9jDr": {
+        "_id": "7PhPuAFP4mQz9jDr",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Needle)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:27|basic]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>Picking up this white fulu feels like you've stabbed your hand with a pin. The fulu deals @Damage[7d6[piercing]] as hair, nails, and connective tissues stab inward. On a failure or critical failure, if the target then takes an action with the move trait, it takes @Damage[2d6[persistent,piercing]].</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 11
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 270
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "aH5MLDdkZ7aJA7hP": {
+        "_id": "aH5MLDdkZ7aJA7hP",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Stone)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:19|basic]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>This fulu's yellow parchment feels dusty and stiff. The fulu deals @Damage[3d6[bludgeoning]] as muscles swell to crush joints and bones. On a failure or critical failure, if the target takes electricity damage, it takes @Damage[1d6[persistent,bludgeoning]] as well.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Im9LfiRTfAJxPvzS": {
+        "_id": "Im9LfiRTfAJxPvzS",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Thousand-Pains Fulu (Void)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Duration</strong> 1 minute</p>\n<p>Created by a chirurgeon who threw away morality in search of endless life, a <em>thousand-pains fulu</em> blocks the natural flow of elements in the body. A creature to which the fulu is affixed must attempt a @Check[fortitude|dc:38|basic]. Failure or critical failure primes the target for persistent damage triggered by a specific condition that must be met within the fulu's duration.</p>\n<p>The black dot at the center of this purple fulu draws in energy like a bottomless hole. The fulu deals @Damage[12d10[void]] by dissipating the target's qi. On a failure or critical failure, if the target takes any other damage within 1 minute, it takes @Damage[2d10[persistent,void]] as well. These effects have the death and void traits. Each time the target takes this persistent damage, any creature within 30 feet of it can use a reaction to gain temporary Hit Points equal to the persistent damage taken, distributing the available temporary Hit Points among those that take the reaction. If the creature that affixed the fulu is within 30 feet, it instead gains all the available temporary Hit Points, if it wishes. These temporary Hit Points disappear after 1 minute.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "per": 1,
+                "value": {
+                    "gp": 8100
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-a-creature"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qSmhcV5NLzlBjfAz": {
+        "_id": "qSmhcV5NLzlBjfAz",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Tracking Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to creature or object</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<hr />\n<p>Used covertly by assassins and spies, this pair of fulus stick to one another when created but can be easily separated. Affix one fulu to a target before activating its pair. When activated, the unaffixed fulu flutters toward the affixed one at a speed of 30 feet per round, traveling for up to 1 hour and fluttering more rapidly the closer it comes to its pair. The unaffixed fulu always moves in a straight line towards the affixed fulu; it can't solve mazes or find its way through winding paths</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "5DiekAhNEjr6Vwi3": {
+        "_id": "5DiekAhNEjr6Vwi3",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-fancy.webp",
+        "name": "Traveler's Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You critically fail an attempt to Sense Direction</p>\n<p><strong>Requirements</strong> You're trained in Survival.</p>\n<hr />\n<p>This fulu shows a series of constellations and arrows depicting astronomical movements through the night sky. When you activate a traveler's fulu, the magic infuses your mind with sensations of deja vu, as if you'd been in this region before. You gain a success on the triggering check.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 7
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "097NJos0T8o7AMLi": {
+        "_id": "097NJos0T8o7AMLi",
+        "img": "systems/pf2e/icons/equipment/consumables/fulus/fulu-modest.webp",
+        "name": "Venomous Cure Fulu",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "fulu",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Usage</strong> affixed to armor</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">f</span> envision</p>\n<p><strong>Trigger</strong> You attempt a saving throw against an injected poison.</p>\n<hr />\n<p>This green fulu depicts venomous creatures and vermin. When activated, the venom from the fulu fights against the venom in your system, granting you a +2 status bonus to the triggering saving throw.</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "consumable",
+                    "fulu",
+                    "magical",
+                    "talisman"
+                ]
+            },
+            "usage": {
+                "value": "affixed-to-armor"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

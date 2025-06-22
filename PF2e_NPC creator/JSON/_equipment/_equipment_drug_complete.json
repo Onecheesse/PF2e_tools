@@ -1,0 +1,1467 @@
+{
+    "UMAXLDpI6YLSfYX1": {
+        "_id": "UMAXLDpI6YLSfYX1",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/alcohol.webp",
+        "name": "Alcohol",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Alcohol is a common substance available in stunning variety. The Price of a dose of alcohol depends on the specific beverage. You can't recover from the sickened condition from alcohol while affected.</p>\n<p>If you fail a saving throw against alcohol other than initial saves, the affliction's stage doesn't increase; the only way to increase the stage of alcohol's affliction is to consume more alcohol.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:12]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Stage 1</strong> +1 item bonus to saving throws against fear (10 minutes)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard], +1 item bonus to saving throws against fear effects (10 minutes)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}, off-guard, @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (10 minutes)</p>\n<p><strong>Stage 4</strong> @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 2} and @UUID[Compendium.pf2e.conditionitems.Item.Sickened]{Sickened 2} (10 minutes)</p>\n<p><strong>Stage 5</strong> clumsy 2, sickened 2, and stupefied 2 (10 minutes)</p>\n<p><strong>Stage 6</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] (8 hours)</p>\n<p><strong>Stage 7</strong> death</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "cp": 1
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "q5Hr2nZr8RQ9DSZM": {
+        "_id": "q5Hr2nZr8RQ9DSZM",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/blaze.webp",
+        "name": "Blaze",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>This acrid blend of black powder, honey, saltpeter, sulfur, and stranger ingredients sees plenty of use in the Mana Wastes, where magical environmental protection is unreliable. Users experience euphoric feelings of warmth and wellbeing followed by intense bouts of dehydration and disorientation.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:17]</p>\n<p><strong>Maximum Duration</strong> 4 hours</p>\n<p><strong>Stage 1</strong> +1 item bonus to saves versus fire effects, and you treat severe or extreme environmental heat effects as if they were one step lower (1 hour)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Blaze]</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1}, and you treat severe or extreme environmental heat effects as if they were one step lower (1 hour)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] and @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 2
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 7
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #178: Punks in a Powder Keg"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "PNwgGnN081l0cETR": {
+        "_id": "PNwgGnN081l0cETR",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/blood-sap.webp",
+        "name": "Blood Sap",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This potent drug is distilled from a certain tropical vine into a deep-red syrup that, over time, stains the user's lips and teeth a vivid shade of red.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:16]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Maximum Duration</strong> 3 hours</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1}, +1 item bonus to weapon and unarmed attack rolls, Acrobatics checks, and Athletics checks (10 minutes)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Slowed]{Slowed 1} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "2DoUHoueAyyP4lMN": {
+        "_id": "2DoUHoueAyyP4lMN",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/bloodeye-coffee.webp",
+        "name": "Bloodeye Coffee",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A strong blend including several spices common in the Padishah Empire of Kelesh, bloodeye coffee is a favorite morning drink across the Inner Sea region. The maximum addiction stage of bloodeye coffee never progresses beyond stage 1.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:14]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +1 item bonus to AC and saves to which you are taking penalties caused by the @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] condition (10 minutes)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 hour)</p>\n<p><strong>Stage 3</strong> can't recover from fatigued (1 day, after which the drug ends)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "sp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "rjUJEY424jyG9dGn": {
+        "_id": "rjUJEY424jyG9dGn",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/cytillesh.webp",
+        "name": "Cytillesh",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Deros use cytillesh in a variety of ways, and some surface-dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the virulent trait.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:15]</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 minute)</p>\n<p><strong>Stage 2</strong> lose all memories made in the previous hour (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "ZROIWl7TLxKbPDLr": {
+        "_id": "ZROIWl7TLxKbPDLr",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/demon-dust.webp",
+        "name": "Demon Dust",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>The save for addiction to demon dust is @Check[fortitude|dc:24|name:Demon Dust Addiction|traits:virulent|showDC:owner], and the addiction has the virulent trait.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:20|showDC:owner]</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +2 item bonus to Athletics checks and treat up to 4 Bulk as being negligible in weight (1 minute)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Demon Dust (Stage 1)]</p>\n<p><strong>Stage 2</strong> +2 item bonus to Athletics checks, treat up to 4 Bulk as being negligible in weight, and @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 hour)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Demon Dust (Stage 2)]</p>\n<p><strong>Stage 3</strong> stupefied 1 (1 hour)</p>\n<p><strong>Stage 4</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 hour)</p>\n<p><strong>Stage 5</strong> stupefied 2 and all memories made since you were first exposed to this dose of demon dust become hazy and vague (1 hour)</p>\n<p><strong>Stage 6</strong> stupefied 2 and all memories made in the previous 24 hours become hazy and vague (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 45
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Absalom, City of Lost Omens"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "inhaled",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "1CAPGpQczfq5exrs": {
+        "_id": "1CAPGpQczfq5exrs",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/diluted-hype.webp",
+        "name": "Diluted Hype",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A synthetic adrenaline supplement that increases awareness and reaction time. Diluted hype has been mixed with saltwater to allow for cheaper mass production.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:21]</p>\n<p><strong>Maximum Duration</strong> 1 minute</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Quickened] and can use the additional action to Step (1 round)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 round)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1} and stupefied 1 (1 round)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "dwaF9zHPK9823COa": {
+        "_id": "dwaF9zHPK9823COa",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/dreamtime-tea.webp",
+        "name": "Dreamtime Tea",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This lemony tea blended from rare Vudrani herbs and flowers is widely circulated by occult circles looking to transcend the boundaries of reality. The saving throw for addiction to dreamtime tea is DC 19.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:21]</p>\n<p><strong>Maximum Duration</strong> 30 minutes</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 minute)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] and can ask a question with the effects of @UUID[Compendium.pf2e.spells-srd.Item.Augury] except the flat check DC is 10 (10 minutes)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 13
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "26bM70yn28MjDT9A": {
+        "_id": "26bM70yn28MjDT9A",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/elven-absinthe.webp",
+        "name": "Elven Absinthe",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>Specialists in Kyonin prepare this emerald-green beverage.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:20]</p>\n<p><strong>Onset</strong> 1 hour</p>\n<p><strong>Maximum Duration</strong> 1 day</p>\n<p><strong>Stage 1</strong> +2 item bonus to Diplomacy and Performance checks (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} (1 hour)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 4} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "PTwm2NAcReBw2iUY": {
+        "_id": "PTwm2NAcReBw2iUY",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/flayleaf.webp",
+        "name": "Flayleaf",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>The flayleaf plant is relatively common, though the mildly euphoric effects of smoking its dried leaves increase when it's sourced from plants specifically grown to produce such effects.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested, Inhaled)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:12]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Maximum Duration</strong> 4 hours</p>\n<p><strong>Stage 1</strong> +1 item bonus to saving throws against mental effects (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] and +1 item bonus to saving throws against mental effects (1 hour)</p>\n<p><strong>Stage 3</strong> fatigued and @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 hour)</p>\n<p><strong>Stage 4</strong> fatigued, @UUID[Compendium.pf2e.conditionitems.Item.Frightened]{Frightened 2}, @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "inhaled",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "vl5dww56cbXo9QnP": {
+        "_id": "vl5dww56cbXo9QnP",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/grit.webp",
+        "name": "Grit",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>The save for addiction to grit is @Check[fortitude|dc:15|name:Grit Addiction|traits:virulent|showDC:owner], and the addiction has the virulent trait.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:15|showDC:owner]</p>\n<p><strong>Onset</strong> 1 minute</p>\n<p><strong>Maximum Duration</strong> 4 hours</p>\n<p><strong>Stage 1</strong> +1 item bonus to Athletics, Crafting, and Performance checks (10 minutes)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Grit (Stage 1)]</p>\n<p><strong>Stage 2</strong> +1 item bonus to Athletics, Crafting, and Performance checks, -2 item penalty to Perception checks (1 hour)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Grit (Stage 2)]</p>\n<p><strong>Stage 3</strong> -4 item penalty to Perception checks (1 hour)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Grit (Stage 3)]</p>\n<p><strong>Stage 4</strong> as stage 3 (1 hour)</p>\n<p><strong>Stage 5</strong> @UUID[Compendium.pf2e.conditionitems.Item.Confused]{Confusion} (1 round)</p>\n<p><strong>Stage 6</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] (remaining duration)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Absalom, City of Lost Omens"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "I2ZbXsfm0c9Eep4I": {
+        "_id": "I2ZbXsfm0c9Eep4I",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/grolna.webp",
+        "name": "Grolna",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<hr />\n<p>This caligni-made, murky-green drug supercharges a creature's olfactory senses at the expense of dulling their mind. Popular throughout the Darklands for its ability to transform normally dull scents and flavors into intense, euphoric experiences, grolna can also be a great aid to trackers who want to follow scent trails, turning ordinary humanoids into effective bloodhounds.</p>\n<p>Taking an additional dose of grolna while affected by the effects of stage 1 of a previous dose resets the duration of stage 1 and postpones the onset of stage 2 effects.</p>\n<hr />\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:13]</p>\n<p><strong>Onset</strong> 1 minute</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> gain scent (imprecise) 30 feet, gain a +3 item bonus to Survival checks to follow tracks, and become @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (6 hours)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #157: Devil at the Dreaming Palace"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "z3IG6t2o0zsfP2XQ": {
+        "_id": "z3IG6t2o0zsfP2XQ",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/hype.webp",
+        "name": "Hype",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p>A synthetic adrenaline supplement that increases awareness and reaction time.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:25]</p>\n<p><strong>Maximum Duration</strong> 1 minute</p>\n<p><strong>Stage 1</strong> quickened and can use the additional action to Step or Stride (1 round)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 round)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} and stupefied 2 (1 round)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 100
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "5lhQ79p0Z3j1VsY3": {
+        "_id": "5lhQ79p0Z3j1VsY3",
+        "img": "icons/consumables/drinks/tea-jug-gourd-brown.webp",
+        "name": "Matsuki's Medicinal Wine",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>Old Matsuki's private brew has quite the kick. In addition to making you tipsy, this medicinal wine works wonders in helping to recover from disease—including (ironically) drug addiction. Matsuki's medicinal wine functions as @UUID[Compendium.pf2e.equipment-srd.Item.Alcohol], except that its saving throw is a @Check[fortitude|dc:18] save. In addition, upon drinking a dose of Matsuki's medicinal wine, you gain a +2 item bonus to Fortitude saving throws against diseases and poisons for 24 hours. This applies to your daily save against a disease's progression; however, the bonus doesn't apply to any checks you attempt against Matsuki's medical wine itself.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Matsuki's Medicinal Wine]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #196: The Summer That Never Was"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "thqCdyIkkPUl2N3Y": {
+        "_id": "thqCdyIkkPUl2N3Y",
+        "img": "icons/commodities/materials/bowl-liquid-white.webp",
+        "name": "Midnight Milk (Experimental)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>Midnight milk is a strange and powerful drug, originally invented by the intellect devourers of the alien city of Ilvarandin to remotely steal the bodies of distant dreaming victims through the use of an artifact called the Dream Lens. Pure midnight milk is incredibly rare—almost all of that found beyond the vault of Ilvarandin is instead cut to reduce costs and expenses. Crafting a dose of this dangerous drug requires a wide range of reagents; the most difficult to acquire of these reagents are vials of refined \"sweat\" harvested via a mithral blade from the fleshy fronds of a rare form of cavetongue fungus known as authul, which grows wild only in remote corners of the Vaults of Orv. When an alchemist mixes midnight milk, they must do so while in a trancelike state that approximates the dreaming mind—a classic method of reaching this state involves the repetition of a wordless chant spoken in a specific meter and rhyme scheme (one that the poet Vumeshki unknowingly duplicated with his dream-inspired poem, \"Ilvarandin\"). Recently, an experimental form of the drug created by the alchemist Aliver Podiker has been developed, but so far, attempts to replicate refined midnight milk using these methods have met with failure.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:19]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +2 item bonus to Perception (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] (1 hour)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] (1 hour; while unconscious, the creature dreams of being drawn down into the Darklands to be ruled by sinister unseen forces—to the dreaming creature, the effect seems to last for years, and the creature is fatigued upon awakening from this stage)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 5
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 30
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #200: Seven Dooms for Sandpoint"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "L5cDsqIYsDsW7BKA": {
+        "_id": "L5cDsqIYsDsW7BKA",
+        "img": "icons/commodities/materials/bowl-liquid-white.webp",
+        "name": "Midnight Milk (Pure)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>Midnight milk is a strange and powerful drug, originally invented by the intellect devourers of the alien city of Ilvarandin to remotely steal the bodies of distant dreaming victims through the use of an artifact called the Dream Lens. Pure midnight milk is incredibly rare—almost all of that found beyond the vault of Ilvarandin is instead cut to reduce costs and expenses. Crafting a dose of this dangerous drug requires a wide range of reagents; the most difficult to acquire of these reagents are vials of refined \"sweat\" harvested via a mithral blade from the fleshy fronds of a rare form of cavetongue fungus known as authul, which grows wild only in remote corners of the Vaults of Orv. When an alchemist mixes midnight milk, they must do so while in a trancelike state that approximates the dreaming mind—a classic method of reaching this state involves the repetition of a wordless chant spoken in a specific meter and rhyme scheme (one that the poet Vumeshki unknowingly duplicated with his dream-inspired poem, \"Ilvarandin\"). Recently, an experimental form of the drug created by the alchemist Aliver Podiker has been developed, but so far, attempts to replicate refined midnight milk using these methods have met with failure.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:43]</p>\n<p><strong>Stage 1</strong> +3 item bonus to Perception checks and Will saving throws</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] (1 hour; the creature endures phantasmagoric nightmares as described in the text above—during this stage, the creature is a viable Dream Lens target, and once a creature recovers and awakens from stage 3, they're @UUID[Compendium.pf2e.conditionitems.Item.Fatigued])</p>\n<p><strong>Stage 3</strong> as stage 2 (1 day)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 14000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #200: Seven Dooms for Sandpoint"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "EX8Ta6J56SNrYbqJ": {
+        "_id": "EX8Ta6J56SNrYbqJ",
+        "img": "icons/commodities/materials/bowl-liquid-white.webp",
+        "name": "Midnight Milk (Refined)",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>Midnight milk is a strange and powerful drug, originally invented by the intellect devourers of the alien city of Ilvarandin to remotely steal the bodies of distant dreaming victims through the use of an artifact called the Dream Lens. Pure midnight milk is incredibly rare—almost all of that found beyond the vault of Ilvarandin is instead cut to reduce costs and expenses. Crafting a dose of this dangerous drug requires a wide range of reagents; the most difficult to acquire of these reagents are vials of refined \"sweat\" harvested via a mithral blade from the fleshy fronds of a rare form of cavetongue fungus known as authul, which grows wild only in remote corners of the Vaults of Orv. When an alchemist mixes midnight milk, they must do so while in a trancelike state that approximates the dreaming mind—a classic method of reaching this state involves the repetition of a wordless chant spoken in a specific meter and rhyme scheme (one that the poet Vumeshki unknowingly duplicated with his dream-inspired poem, \"Ilvarandin\"). Recently, an experimental form of the drug created by the alchemist Aliver Podiker has been developed, but so far, attempts to replicate refined midnight milk using these methods have met with failure.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:29]</p>\n<p><strong>Onset</strong> 1 minute</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +3 item bonus to Perception (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious] (1 hour; if the creature recovers from the dosage and wakes up before reaching Stage 3, they don't remember their vivid dreams but do wake up feeling revitalized as if they'd enjoyed a full 8 hours of sleep—this doesn't allow the creature to perform their daily preparations more often than once per day though)</p>\n<p><strong>Stage 3</strong> unconscious (1 hour; the vivid dreams the creature enjoys at stage 2 shift into phantasmagoric nightmares as described in the text above—during this stage, the creature is a viable <em>Dream Lens</em> target, and once a creature recovers and awakens from stage 3, they're @UUID[Compendium.pf2e.conditionitems.Item.Fatigued])</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #200: Seven Dooms for Sandpoint"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "bRqczrlQDaeUvg6b": {
+        "_id": "bRqczrlQDaeUvg6b",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/plasma-hype.webp",
+        "name": "Plasma Hype",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p>A synthetic adrenaline supplement that increases awareness and reaction time. Plasma hype has been infused with a specific mixture of Numerian fluids and other alchemical reagents to improve upon the original hype formula.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:30]</p>\n<p><strong>Maximum Duration</strong> 1 minute</p>\n<p><strong>Stage 1</strong> +10-foot status bonus to speed, quickened and can use the additional action to Step, Stride, Climb, or Swim (1 round)</p>\n<p><strong>Stage 2</strong> quickened and can use the additional action to Step or Stride (1 round)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} and @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 round)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 400
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Legends"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "JPGOrHeYxjdnUogT": {
+        "_id": "JPGOrHeYxjdnUogT",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/qat.webp",
+        "name": "Qat",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>The save for addiction to qat is @Check[fortitude|dc:14|name:Qat Addiction|showDC:owner], but the maximum addiction stage of qat never progresses beyond stage 1.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:14|showDC:owner]</p>\n<p><strong>Onset</strong> 10 minutes</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +1 item bonus to Reflex saves (10 minutes)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Qat (Stage 1)]</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "sp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Absalom, City of Lost Omens"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "Vy3z2cIQ8uJRUMYw": {
+        "_id": "Vy3z2cIQ8uJRUMYw",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/refined-pesh.webp",
+        "name": "Refined Pesh",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>When eaten or smoked, pesh gives users a sense of well-being, sometimes with hallucinations, aggression, and exhaustion.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested, Inhaled)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:12]</p>\n<p><strong>Onset</strong> 1 minute</p>\n<p><strong>Maximum Duration</strong> 6 hours</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 1} and a +2 item bonus to saves versus fear effects (1 minute)</p>\n<p><strong>Stage 2</strong> 1 temporary Hit Point per level (first time you reach this stage only), +2 item bonus to saves versus fear effects, @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 1}, and stupefied 1 (1 minute)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 2} and @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens World Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "inhaled",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "8BDBsf55gP0UW07Y": {
+        "_id": "8BDBsf55gP0UW07Y",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/scour.webp",
+        "name": "Scour",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This gritty powder improves responsiveness but suppresses thoughts and leaves you weakened. The saving throw for addiction to scour is DC 30, and the addiction is virulent.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested, Inhaled)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:25]</p>\n<p><strong>Onset</strong> 1 hour</p>\n<p><strong>Maximum Duration</strong> 6 hours</p>\n<p><strong>Stage 1</strong> @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 2} and +2 item bonus to Reflex saves and Dexterity-based skill checks (1 hour)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Fatigued] (1 hour)</p>\n<p><strong>Stage 3</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} and fatigued (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 80
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "inhaled",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "UfoaNXFA7AWZiXxI": {
+        "_id": "UfoaNXFA7AWZiXxI",
+        "img": "icons/consumables/drinks/alcohol-spirits-bottle-blue.webp",
+        "name": "Shiver",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>A compound produced from the hallucinogenic venom of certain spiders, shiver is common in black markets. The addiction to shiver has the virulent trait.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Ingested)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:19]</p>\n<p><strong>Maximum Duration</strong> 4 hours</p>\n<p><strong>Stage 1</strong> whenever you become @UUID[Compendium.pf2e.conditionitems.Item.Frightened], reduce that condition's value by 1 (10 minutes)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Clumsy]{Clumsy 2} (1 hour)</p>\n<p><strong>Stage 3</strong> asleep (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 3
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "qwCefJjr7AJSqYay": {
+        "_id": "qwCefJjr7AJSqYay",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/succubus-kiss.webp",
+        "name": "Succubus Kiss",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<hr />\n<p>The save for addiction to succubus kiss is @Check[fortitude|dc:28|name:Succubus Kiss Addiction|traits:virulent|showDC:owner], and the addiction has the virulent trait.</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:24|showDC:owner]</p>\n<p><strong>Onset</strong> 1 minute</p>\n<p><strong>Maximum Duration</strong> 8 hours</p>\n<p><strong>Stage 1</strong> +2 item bonus to initiative checks (10 minutes) and to all saving throws against emotion and mental effects</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Succubus Kiss (Stage 1)]</p>\n<p><strong>Stage 2</strong> as stage 1 plus @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1} (1 hour)</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Succubus Kiss (Stage 2)]</p>\n<p><strong>Stage 3</strong> as stage 2 plus @UUID[Compendium.pf2e.conditionitems.Item.Blinded]{Blindness} or @UUID[Compendium.pf2e.conditionitems.Item.Deafened]{Deafness} (1 hour)</p>\n<p><strong>Stage 4</strong> blindness and deafness (1 hour)</p>\n<p><strong>Stage 5</strong> @UUID[Compendium.pf2e.conditionitems.Item.Unconscious]</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Absalom, City of Lost Omens"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "ingested",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    },
+    "eKpL2j1JA92wndO6": {
+        "_id": "eKpL2j1JA92wndO6",
+        "img": "systems/pf2e/icons/equipment/alchemical-items/drugs/zerk.webp",
+        "name": "Zerk",
+        "system": {
+            "baseItem": null,
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "drug",
+            "containerId": null,
+            "damage": null,
+            "description": {
+                "value": "<p>This bitter paste is used among some gladiatorial rings for its short-term benefits in a fight.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact (Injury)</p>\n<p><strong>Saving Throw</strong> @Check[fortitude|dc:20]</p>\n<p><strong>Maximum Duration</strong> 1 hour</p>\n<p><strong>Stage 1</strong> +2 item bonus to Perception rolls for initiative, and if you have an addiction to zerk, your melee weapon and unarmed attacks deal an extra 2 damage during the first round of a combat encounter (1 minute)</p>\n<p><strong>Stage 2</strong> @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 1} (1 hour)</p>"
+            },
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 4
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "size": "med",
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "consumable",
+                    "drug",
+                    "injury",
+                    "poison"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            },
+            "uses": {
+                "autoDestroy": true,
+                "max": 1,
+                "value": 1
+            }
+        },
+        "type": "consumable"
+    }
+}

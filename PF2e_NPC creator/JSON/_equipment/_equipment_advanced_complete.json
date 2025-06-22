@@ -1,0 +1,5406 @@
+{
+    "YnPYSKCQBLIOtm0J": {
+        "_id": "YnPYSKCQBLIOtm0J",
+        "img": "icons/weapons/maces/mace-studded-steel.webp",
+        "name": "Aklys",
+        "system": {
+            "baseItem": "aklys",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>The aklys is a throwing club with a hook on one end and a lengthy cord attached to the other. Though aklyses aren't available in most shops, one might be purchased for 5 gp from a vendor that specializes in strange weapons.</p>"
+            },
+            "expend": null,
+            "group": "club",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Bestiary"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": "-"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "ranged-trip",
+                    "tethered",
+                    "thrown-20",
+                    "trip"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "iSceAVMkVv1uKK7t": {
+        "_id": "iSceAVMkVv1uKK7t",
+        "img": "icons/weapons/swords/sword-guard-gold-red.webp",
+        "name": "Aldori Dueling Sword",
+        "system": {
+            "baseItem": "aldori-dueling-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>An Aldori dueling sword is a slim, single-bladed dueling sword with a slight curve and a sharp, reinforced point.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens World Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "finesse",
+                    "versatile-p"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "mKEhLq7Ha4lvupMP": {
+        "_id": "mKEhLq7Ha4lvupMP",
+        "img": "icons/weapons/guns/gun-blunderbuss-bronze.webp",
+        "name": "Animate Dreamer",
+        "system": {
+            "baseItem": "dwarven-scattergun",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p><strong>Perception</strong> +26; precise vision 60 feet, imprecise hearing 30 feet</p>\n<p><strong>Communication</strong> telepathy (Common, and six other common languages)</p>\n<p><strong>Skills</strong> Arcana +30, Deception +27, Diplomacy +27, Occultism +30</p>\n<p><strong>Int</strong> +6, <strong>Wis</strong> +4, <strong>Cha</strong> +4</p>\n<p><strong>Will</strong> +26</p><hr /><p>The gunsmith that created this marvelous <em>+2 greater striking spell-storing dwarven scattergun</em> poured so much love and care into its creation that the weapon gained a spark of sentience. However, at first it was completely incapable of expressing itself. This led a seething frustration to grow within the weapon, as it yearned desperately to respond to the same love and affection that created it. Through decades of effort, it gained the ability to communicate emphatically, then telepathically. Now, the weapon is capable of exerting its influence over other inanimate objects. Despite the weapon's progress, years of feeling helpless have given the <em>animate dreamer</em> a singular goal: to obtain and occupy a body of its own.</p>\n<p>An <em>animate dreamer</em> is cunning, intelligent, and patient. It urges you to create a body for it and is willing to go to any lengths to see its goals come to fruition, including coercion, deception, and violence. An <em>animate dreamer</em> desires a permanent body but isn't picky about the body's form or the methods it has to use in order to gain it. Therefore, an <em>animate dreamer</em> is just as happy in a living body stolen from an innocent as it would be in an artificially constructed body, or even an undead corpse. If you refuse to work towards creating or obtaining a body for the <em>animate dreamer</em>, it will likely use its possession ability to try and take control of you and use your body to find a permanent replacement for itself.</p><hr /><p><strong>Activate—Unleash Spell</strong> <span class=\"action-glyph\">2</span> (manipulate)</p>\n<p><strong>Requirements</strong> The <em>animate dreamer</em> has a stored spell. It can see a creature it hit and damaged within the last minute, and that creature's within 120 feet of animate dreamer</p>\n<p><strong>Effect</strong> The <em>animate dreamer</em> casts its stored spell at a target that meets the requirements. This empties the spell from the weapon and allows a spell to be cast into it again. The <em>animate dreamer</em> has a spell attack roll of +25 and a spell DC of 33 with the stored spell.</p><hr /><p><strong>Activate—Animate Object</strong> <span class=\"action-glyph\">3</span> (manipulate)</p>\n<p><strong>Effect</strong> The <em>animate dreamer</em> focuses on a single unattended inanimate object in an area it can see and exerts its will over the object, temporarily levitating it around. The <em>animate dreamer</em> casts telekinetic hand as a 5th-rank occult spell.</p><hr /><p><strong>Activate—Possessive</strong> <span class=\"action-glyph\">3</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The <em>animate dreamer</em> attempts to achieve its goal of occupying a body of its own and casts possession as a 7th-rank spell with a spell DC of 33. The weapon still functions as a +2 greater striking spell-storing dwarven scattergun while this effect is active but loses all other special abilities until the spell expires and the <em>animate dreamer</em>'s intellect returns to it.</p>"
+            },
+            "expend": 1,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 50,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "spellStoring"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "spellStoring"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "concussive",
+                    "dwarf",
+                    "intelligent",
+                    "kickback",
+                    "occult",
+                    "scatter-10"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "tPwYYwxNqdGQp2nW": {
+        "_id": "tPwYYwxNqdGQp2nW",
+        "img": "systems/pf2e/icons/equipment/artifacts/axe-of-the-dwarven-lords.webp",
+        "name": "Axe of the Dwarven Lords",
+        "system": {
+            "baseItem": "dwarven-war-axe",
+            "bonus": {
+                "value": 4
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 3
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>The blade of this <em>+4 major striking @UUID[Compendium.pf2e.equipment-srd.Item.Keen] @UUID[Compendium.pf2e.equipment-srd.Item.Returning] @UUID[Compendium.pf2e.equipment-srd.Item.Quickstrike] dwarven waraxe</em> is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.</p>\n<p>The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional 1d6 damage to orcs.</p>\n<p>While the axe is in your possession, you gain a +4 item bonus when Crafting armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons.</p>\n<p>If you are a dwarf, you gain greater darkvision while holding the axe. If you are not a dwarf, you are @UUID[Compendium.pf2e.conditionitems.Item.Stupefied]{Stupefied 4} while holding the axe, and if you are an orc, you are also @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 4} and @UUID[Compendium.pf2e.conditionitems.Item.Enfeebled]{Enfeebled 4} while holding it.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> envision, Interact</p>\n<p><strong>Frequency</strong> once per week</p>\n<p><strong>Effect</strong> The axe casts a 10th-rank @UUID[Compendium.pf2e.spells-srd.Item.Summon Elemental] spell to conjure an elite elemental avalanche. The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can Dismiss the Spell.</p>\n<hr />\n<p><strong>Destruction</strong> If an orc beheads a dwarven king with the <em>Axe of the Dwarven Lords</em>, the axe rusts away to nothing.</p>"
+            },
+            "expend": null,
+            "group": "axe",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 26
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Gamemastery Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": "-"
+            },
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:craft",
+                        {
+                            "or": [
+                                "armor",
+                                "jewelry",
+                                "metalworking",
+                                "stonemasonry",
+                                "snare",
+                                "trap",
+                                "weapon"
+                            ]
+                        }
+                    ],
+                    "selector": "crafting",
+                    "type": "item",
+                    "value": 4
+                },
+                {
+                    "diceNumber": 1,
+                    "dieSize": "d6",
+                    "key": "DamageDice",
+                    "predicate": [
+                        "target:trait:orc"
+                    ],
+                    "selector": "{item|id}-damage"
+                },
+                {
+                    "key": "Sense",
+                    "predicate": [
+                        "self:trait:dwarf"
+                    ],
+                    "selector": "greater-darkvision"
+                },
+                {
+                    "alterations": [
+                        {
+                            "mode": "override",
+                            "property": "badge-value",
+                            "value": 4
+                        }
+                    ],
+                    "inMemoryOnly": true,
+                    "key": "GrantItem",
+                    "predicate": [
+                        {
+                            "not": "self:trait:dwarf"
+                        }
+                    ],
+                    "uuid": "Compendium.pf2e.conditionitems.Item.Stupefied"
+                },
+                {
+                    "alterations": [
+                        {
+                            "mode": "override",
+                            "property": "badge-value",
+                            "value": 4
+                        }
+                    ],
+                    "inMemoryOnly": true,
+                    "key": "GrantItem",
+                    "predicate": [
+                        "self:trait:orc"
+                    ],
+                    "uuid": "Compendium.pf2e.conditionitems.Item.Drained"
+                },
+                {
+                    "alterations": [
+                        {
+                            "mode": "override",
+                            "property": "badge-value",
+                            "value": 4
+                        }
+                    ],
+                    "inMemoryOnly": true,
+                    "key": "GrantItem",
+                    "predicate": [
+                        "self:trait:orc"
+                    ],
+                    "uuid": "Compendium.pf2e.conditionitems.Item.Enfeebled"
+                }
+            ],
+            "runes": {
+                "potency": 4,
+                "property": [
+                    "keen",
+                    "returning",
+                    "speed"
+                ],
+                "striking": 3
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 4,
+                    "property": [
+                        "keen",
+                        "returning",
+                        "speed"
+                    ],
+                    "striking": 3
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "dwarf",
+                    "magical",
+                    "sweep",
+                    "thrown-30",
+                    "two-hand-d12"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "68bqnb84kst3hFjP": {
+        "_id": "68bqnb84kst3hFjP",
+        "img": "systems/pf2e/icons/equipment/weapons/backpack-catapult.webp",
+        "name": "Backpack Catapult",
+        "system": {
+            "baseItem": null,
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 3
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d12"
+            },
+            "description": {
+                "value": "<p>This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an Interact action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are @UUID[Compendium.pf2e.conditionitems.Item.Concealed] within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack.</p>"
+            },
+            "expend": 1,
+            "group": "sling",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 20
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 240,
+            "reload": {
+                "value": "10"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "volley-50"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-plus-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "UogGzQfXDc32E1p7": {
+        "_id": "UogGzQfXDc32E1p7",
+        "img": "icons/weapons/guns/gun-worn-gold.webp",
+        "name": "Barricade Buster",
+        "system": {
+            "baseItem": "barricade-buster",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 3
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>Developed by a dromaar inventor from Alkenstar who brought the technology north to battle the Whispering Tyrant alongside the orc hordes of Belkzen, the barricade buster features eight barrels fixed around a central pivot attached to a handle and firing mechanism. A barricade buster fires spheres of metal with extreme velocity and very little accuracy.</p>"
+            },
+            "expend": 1,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 9
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 40,
+            "reload": {
+                "value": "0"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "kickback",
+                    "orc",
+                    "razing",
+                    "repeating",
+                    "volley-20"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "0lCXehyFlXdYxDfA": {
+        "_id": "0lCXehyFlXdYxDfA",
+        "img": "systems/pf2e/icons/equipment/weapons/bladed-diabolo.webp",
+        "name": "Bladed Diabolo",
+        "system": {
+            "baseItem": "bladed-diabolo",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>This weapon consists of two bladed discs joined by a central axel, and is spun on a rope whose ends are attached to wand-like sticks. The wielder can hurl the diabolo from the rope like a stone from a sling, or swing it on the rope in melee.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #151: The Show Must Go On"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": "-"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "backswing",
+                    "disarm",
+                    "finesse",
+                    "thrown-40",
+                    "trip"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "IEA7M6GGv4rnGLdW": {
+        "_id": "IEA7M6GGv4rnGLdW",
+        "img": "systems/pf2e/icons/equipment/weapons/bladed-hoop.webp",
+        "name": "Bladed Hoop",
+        "system": {
+            "baseItem": "bladed-hoop",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This circular hoop has blades along its outer edge. You can wield it in two hands (using the two-hand damage) or by spinning it around an arm. While you spin the hoop, it gains the free-hand trait. Setting the hoop spinning takes 1 Interact action. In addition to the normal restrictions of the free-hand trait, extended use of the arm for locomotion (such as to @UUID[Compendium.pf2e.actionspf2e.Item.Climb]) interferes with the hoop's spinning and forces you to Release the hoop. You can't spin a hoop underwater. Keeping the hoop spinning requires a free action each round, which has the concentrate and manipulate traits. You can keep a hoop spinning as an exploration activity, but doing so for more than 10 minutes makes you fatigued, similarly to @UUID[Compendium.pf2e.actionspf2e.Item.Hustle].</p>"
+            },
+            "expend": null,
+            "group": "knife",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "sp": 25
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #151: The Show Must Go On"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": null
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "finesse",
+                    "sweep",
+                    "two-hand-d8"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "uXug1JhufAQr8HOC": {
+        "_id": "uXug1JhufAQr8HOC",
+        "img": "systems/pf2e/icons/equipment/weapons/sawtooth-saber.webp",
+        "name": "Blood-Drinker",
+        "system": {
+            "baseItem": "sawtooth-saber",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This <em>+3 greater striking keen sawtooth saber</em> has a black blade that always seems freshly smeared with blood.</p><hr /><p><strong>Activate—Drink Blood</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Trigger</strong> You reduce a creature to 0 Hit Points with the weapon</p>\n<p><strong>Effect</strong> You gain a number of temporary Hit Points equal to twice the creature's level. If you're also wielding Fleshrender in your other hand, you instead gain temporary Hit Points equal to three times the creature's level. These Hit Points remain for 1 minute.</p><hr /><p><strong>Activate—Wall of Sabers</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per hour</p>\n<p><strong>Requirements</strong> Fleshrender is within 30 feet and isn't currently held by you</p>\n<p><strong>Effect</strong> A whirling wall of sawtooth sabers appear in the air between the paired weapons. All creatures in a line between you and Fleshrender take @Damage[10d6[slashing]] damage and @Damage[4d6[bleed]] damage (@Check[reflex|dc:38|basic] save).</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 24000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Adventure: Prey for Death"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "keen"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "keen"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "magical",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "bzhJNnkIXdVRbjAA": {
+        "_id": "bzhJNnkIXdVRbjAA",
+        "img": "icons/weapons/polearms/spear-hooked-broad.webp",
+        "name": "Broadspear",
+        "system": {
+            "baseItem": "broadspear",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>The spearhead of this weapon is in the shape of a long leaf.</p>"
+            },
+            "expend": null,
+            "group": "spear",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "reach",
+                    "sweep",
+                    "versatile-s"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "LxqA4VC4np2RLkQb": {
+        "_id": "LxqA4VC4np2RLkQb",
+        "img": "icons/weapons/axes/axe-battle-heavy-black.webp",
+        "name": "Butchering Axe",
+        "system": {
+            "baseItem": "butchering-axe",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d12"
+            },
+            "description": {
+                "value": "<p>Invented by Belkzen's zealous Steel-Eaters, the butchering axe has an oversized head and a long, thick haft counterbalanced with steel or stone. The weapon's sweeping strokes inflict immense damage, particularly against groups of foes, and can push dangerous opponents away to a safe distance. All of these qualities are particularly useful against the lumbering zombie hordes of the Whispering Tyrant. Correspondingly, butchering axes are often wielded by orc and half-orc Crimson Reclaimers of Lastwall.</p>"
+            },
+            "expend": null,
+            "group": "axe",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "orc",
+                    "shove",
+                    "sweep"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "JuR0cug2xq4sWxHR": {
+        "_id": "JuR0cug2xq4sWxHR",
+        "img": "icons/weapons/swords/scimitar-guard.webp",
+        "name": "Butterfly Sword",
+        "system": {
+            "baseItem": "butterfly-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>This short, single-edged sword typically features a cross guard that helps catch oncoming attacks. It's the preferred weapon of Butterfly Blades—highly skilled Gokan assassins. These swords are typically crafted and sold in pairs.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "disarm",
+                    "finesse",
+                    "monk",
+                    "parry",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "IBxtmyiVjWVqFawh": {
+        "_id": "IBxtmyiVjWVqFawh",
+        "img": "systems/pf2e/icons/default-icons/weapon.svg",
+        "name": "Capturing Spetum",
+        "system": {
+            "baseItem": "capturing-spetum",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>Hobgoblins use these polearms both as standard issue for aggressive military units and on an individual basis for hunting fugitives.</p>"
+            },
+            "expend": null,
+            "group": "polearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 9
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "hampering",
+                    "hobgoblin",
+                    "reach",
+                    "trip"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "JlakyeGJjNbryq6v": {
+        "_id": "JlakyeGJjNbryq6v",
+        "img": "systems/pf2e/icons/equipment/weapons/chain-sword.webp",
+        "name": "Chain Sword",
+        "system": {
+            "baseItem": "chain-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This weapon has a hilt like a longsword attached to several bladed segments connected by chain links. A highly technical weapon, the chain sword is valued by duelists and experienced soldiers alike in the nations of Nirmathas and Molthune.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "finesse",
+                    "reach",
+                    "sweep"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "0GEXLXh8M5Ce6oYT": {
+        "_id": "0GEXLXh8M5Ce6oYT",
+        "img": "systems/pf2e/icons/equipment/weapons/chakri.webp",
+        "name": "Chakri (Lost Omens)",
+        "system": {
+            "baseItem": "chakri",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>A chakri is a small, circular throwing weapon with a sharp outer edge.</p>"
+            },
+            "expend": null,
+            "group": "dart",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "cp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": 30,
+            "reload": {
+                "value": "-"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "deadly-d8",
+                    "thrown"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "BJuqdqbflAcuCJkt": {
+        "_id": "BJuqdqbflAcuCJkt",
+        "img": "systems/pf2e/icons/equipment/weapons/clockwork-macuahuitl.webp",
+        "name": "Clockwork Macuahuitl",
+        "system": {
+            "baseItem": "macuahuitl",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>This finely-made wooden club has a beautiful, lacquered finish that gleams in the sunlight. A heavy ring of gears lined with sharpened pieces of obsidian automatically and constantly spin around the bulk of the wooden club lengthwise. Striking a foe digs the obsidian gears into the enemy's flesh and tears it with its blades. The ever-turning gears also help to dislodge an enemy's defensive position against the weapon.</p>"
+            },
+            "expend": null,
+            "group": "club",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 550
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "backswing",
+                    "forceful",
+                    "versatile-b"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "TD44V3u77AMbOnTo": {
+        "_id": "TD44V3u77AMbOnTo",
+        "img": "systems/pf2e/icons/equipment/weapons/sawtooth-saber.webp",
+        "name": "Crimson Bluff",
+        "system": {
+            "baseItem": "sawtooth-saber",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This <em>+2 greater striking grievous sawtooth saber</em> has a red hilt and a purple-black blade. Favored by Red Mantis assassins who enjoy using illusions to confound their targets, a <em>crimson bluff</em> constantly flickers and flashes, creating brief afterimages that can be quite distracting. If you use a <em>crimson bluff</em> as part of a gesture when you @UUID[Compendium.pf2e.actionspf2e.Item.Create a Diversion], you gain a +2 item bonus to your Deception check.</p><hr /><p><strong>Activate—Shimmer Step</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You cast @UUID[Compendium.pf2e.spells-srd.Item.Blur] and then you Step or Stride.</p><hr /><p><strong>Activate—Swap Places</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> You are under the effects of <em>blur</em></p>\n<p><strong>Trigger</strong> An enemy would hit you with a melee Strike</p>\n<p><strong>Effect</strong> You swiftly dodge to the side as a momentary image of yourself manifests to distract the foe. The triggering Strike uses the outcome for one degree of success worse than the result of the attack roll. The duration of your <em>blur</em> effect is reduced by 2 rounds.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Adventure: Prey for Death"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "grievous"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "grievous"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "illusion",
+                    "magical",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "RN3m5Hb5LPbdZGoO": {
+        "_id": "RN3m5Hb5LPbdZGoO",
+        "img": "systems/pf2e/icons/equipment/weapons/daikyu.webp",
+        "name": "Daikyu",
+        "system": {
+            "baseItem": "daikyu",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>This asymmetrical bow, made of laminated bamboo, wood, and leather, stands 6 feet or more in height. It's most often used while mounted.</p>"
+            },
+            "expend": 1,
+            "group": "bow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": 80,
+            "reload": {
+                "value": "0"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "forceful",
+                    "propulsive"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-plus-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "Po1oeTDUaSUxeZxG": {
+        "_id": "Po1oeTDUaSUxeZxG",
+        "img": "systems/pf2e/icons/equipment/weapons/donchak.webp",
+        "name": "Donchak",
+        "system": {
+            "baseItem": "donchak",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This long metal pole has a large chakram attached at the end. A mechanism within the handle allows the wielder to launch and retract the chakram, which is connected with wire to the inside of the weapon. The donchak is seldom seen used outside training scenarios.</p>"
+            },
+            "expend": null,
+            "group": "polearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "hampering",
+                    "reach",
+                    "tethered",
+                    "thrown-20"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "aYzWoFt5uYY31zEQ": {
+        "_id": "aYzWoFt5uYY31zEQ",
+        "img": "systems/pf2e/icons/equipment/weapons/dwarven-dorn-dergar.webp",
+        "name": "Dwarven Dorn-Dergar",
+        "system": {
+            "baseItem": "dwarven-dorn-dergar",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>A heavy, weighted cube of metal at the end of a long chain, the dorn-dergar is used by dwarven berserkers and sappers who specialize in breaking through lines of shielded opponents or disabling enemy siege weapons.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "dwarf",
+                    "razing",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "jcIabnkJgjwzK6Og": {
+        "_id": "jcIabnkJgjwzK6Og",
+        "img": "icons/weapons/guns/gun-blunderbuss-bronze.webp",
+        "name": "Dwarven Scattergun",
+        "system": {
+            "baseItem": "dwarven-scattergun",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A favored weapon of dwarf scouts from Dongun Hold, the dwarven scattergun is a powerful weapon designed to take advantage of a dwarf's sturdy frame. A dwarven scattergun fires a large paper cartridge stuffed with black powder and knuckle-sized lumps of metal, creating a devastating burst so destructive that a foolish dwarf might find themself catching painful ricochets when firing at a too-close target. Some scatterguns are crafted with a clockwork firing tray that can quickly sort and load black powder and shot without needing a prepackaged cartridge, though this is largely an aesthetic feature with no real mechanical benefit.</p>"
+            },
+            "expend": 1,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 50,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "concussive",
+                    "dwarf",
+                    "kickback",
+                    "scatter-10"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "MYnh7w7EL3AcQT41": {
+        "_id": "MYnh7w7EL3AcQT41",
+        "img": "systems/pf2e/icons/equipment/weapons/dwarven-war-axe.webp",
+        "name": "Dwarven War Axe",
+        "system": {
+            "baseItem": "dwarven-war-axe",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>This favored weapon of the dwarves has a large, ornate head mounted on a thick handle. This powerful axe can be wielded with one hand or two.</p>"
+            },
+            "expend": null,
+            "group": "axe",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "dwarf",
+                    "sweep",
+                    "two-hand-d12"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "cFHUt5tTA7jVPtRh": {
+        "_id": "cFHUt5tTA7jVPtRh",
+        "img": "systems/pf2e/icons/equipment/weapons/explosive-dogslicer.webp",
+        "name": "Explosive Dogslicer",
+        "system": {
+            "baseItem": "explosive-dogslicer",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>An explosive dogslicer is a sneaky, explosive weapon that often brings perverse joy to the goblins who use them. At first glance, it appears to be a triple-bladed dogslicer with an oversized guard.</p>"
+            },
+            "expend": 1,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "meleeUsage": {
+                "damage": {
+                    "die": "d6",
+                    "type": "slashing"
+                },
+                "group": "sword",
+                "traits": [
+                    "agile",
+                    "backstabber",
+                    "critical-fusion",
+                    "finesse",
+                    "goblin"
+                ]
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 20,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "backstabber",
+                    "combination",
+                    "fatal-d10",
+                    "goblin",
+                    "scatter-5"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "xHdbwPOUgLPUtqLj": {
+        "_id": "xHdbwPOUgLPUtqLj",
+        "img": "systems/pf2e/icons/equipment/weapons/falcata.webp",
+        "name": "Falcata",
+        "system": {
+            "baseItem": "falcata",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>The falcata is a heavy, one-handed sword with a single cutting edge, usually flaring to be wider toward the point of the weapon and narrower toward the hilt.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "fatal-d12"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "yUgOLSyb4pGGxfCR": {
+        "_id": "yUgOLSyb4pGGxfCR",
+        "img": "systems/pf2e/icons/default-icons/weapon.svg",
+        "name": "Feng Huo Lun",
+        "system": {
+            "baseItem": "feng-huo-lun",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>Also known as wind and fire wheels, these large, flat steel rings feature several protruding blades typically stylized to resemble flames.</p>"
+            },
+            "expend": null,
+            "group": "knife",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "disarm",
+                    "finesse",
+                    "monk",
+                    "parry",
+                    "twin",
+                    "versatile-p"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "rfP9e1fnwjnIQSJK": {
+        "_id": "rfP9e1fnwjnIQSJK",
+        "img": "systems/pf2e/icons/equipment/weapons/fire-poi.webp",
+        "name": "Fire Poi",
+        "system": {
+            "baseItem": "fire-poi",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>These special poi are made from a rare, light metal or from fire-retardant fibers and can be ignited before being wielded. Igniting a pair of fire poi is an Interact action and requires 1 pint of @UUID[Compendium.pf2e.equipment-srd.Item.Oil (1 pint)]{Oil} for every 10 minutes the poi remain ignited.</p>\n<p>While lit, fire poi cast dim light in a 10-foot radius; in combat, they deal 1d4 bludgeoning plus 1d4 fire damage. On a critical hit with a lit fire poi, the target takes 1 persistent fire damage. The fire can be extinguished using the Interact action.</p>\n<p>When unlit, the poi deal only the listed bludgeoning damage. Regardless of whether it is lit, the poi's 1d4 bludgeoning damage is the weapon damage dice, so <em>striking</em> runes and other effects don't affect the fire damage.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #151: The Show Must Go On"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [
+                {
+                    "key": "RollOption",
+                    "label": "PF2E.SpecificRule.LitFirePoi",
+                    "option": "lit-fire-poi",
+                    "toggleable": true
+                },
+                {
+                    "damageType": "fire",
+                    "diceNumber": 1,
+                    "dieSize": "d4",
+                    "key": "DamageDice",
+                    "predicate": [
+                        "lit-fire-poi"
+                    ],
+                    "selector": "{item|_id}-damage"
+                },
+                {
+                    "critical": true,
+                    "damageCategory": "persistent",
+                    "damageType": "fire",
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "lit-fire-poi"
+                    ],
+                    "selector": "{item|_id}-damage",
+                    "value": 1
+                },
+                {
+                    "key": "TokenLight",
+                    "predicate": [
+                        "lit-fire-poi"
+                    ],
+                    "value": {
+                        "animation": {
+                            "intensity": 4,
+                            "speed": 1,
+                            "type": "torch"
+                        },
+                        "color": "#9b7337",
+                        "dim": 10,
+                        "shadows": 0.2
+                    }
+                },
+                {
+                    "key": "TokenEffectIcon",
+                    "predicate": [
+                        "lit-fire-poi"
+                    ],
+                    "value": "systems/pf2e/icons/equipment/weapons/fire-poi.webp"
+                }
+            ],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": null
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "backswing",
+                    "finesse",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "uPtU3QGn9UdskxFh": {
+        "_id": "uPtU3QGn9UdskxFh",
+        "img": "systems/pf2e/icons/equipment/weapons/nodachi.webp",
+        "name": "Flashblade (Greater)",
+        "system": {
+            "baseItem": "nodachi",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A sleek and impossibly lightweight blade attached to a haft scriven with lightning bolts make up this <em>+2 greater striking nodachi</em>.</p>\n<p><strong>Activate—Prepare Flash</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per 10 minutes</p><hr /><p><strong>Effect</strong> You concentrate with complete focus on your surroundings, breathing in the flashblade's magic to make you lighter and faster, and the blade of your sword more flexible. You Ready a melee Strike, increasing the flashblade's reach for that Strike to 20 feet. If the trigger doesn't occur, this doesn't count against the flashblade's frequency.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1900
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Tian Xia Character Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "striking": 1
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "brace",
+                    "deadly-d12",
+                    "magical",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "GWwbrnWBymUQn4JI": {
+        "_id": "GWwbrnWBymUQn4JI",
+        "img": "systems/pf2e/icons/equipment/weapons/nodachi.webp",
+        "name": "Flashblade (Major)",
+        "system": {
+            "baseItem": "nodachi",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A sleek and impossibly lightweight blade attached to a haft scriven with lightning bolts make up this <em>+3 greater striking nodachi</em>.</p>\n<p><strong>Activate—Prepare Flash</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per 10 minutes</p><hr /><p><strong>Effect</strong> You concentrate with complete focus on your surroundings, breathing in the flashblade's magic to make you lighter and faster, and the blade of your sword more flexible. You Ready a melee Strike, increasing the flashblade's reach for that Strike to 25 feet. If the trigger doesn't occur, this doesn't count against the flashblade's frequency.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 14700
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Tian Xia Character Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "striking": 1
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "brace",
+                    "deadly-d12",
+                    "magical",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "QKhVKfaum7DyF53w": {
+        "_id": "QKhVKfaum7DyF53w",
+        "img": "systems/pf2e/icons/equipment/weapons/nodachi.webp",
+        "name": "Flashblade",
+        "system": {
+            "baseItem": "nodachi",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A sleek and impossibly lightweight blade attached to a haft scriven with lightning bolts make up this <em>+1 striking nodachi</em>.</p>\n<p><strong>Activate—Prepare Flash</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per 10 minutes</p><hr /><p><strong>Effect</strong> You concentrate with complete focus on your surroundings, breathing in the flashblade's magic to make you lighter and faster, and the blade of your sword more flexible. You Ready a melee Strike, increasing the flashblade's reach for that Strike to 15 feet. If the trigger doesn't occur, this doesn't count against the flashblade's frequency.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 230
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Tian Xia Character Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "striking": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "striking": 1
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "brace",
+                    "deadly-d12",
+                    "magical",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "PTTB9orSB4RelXF3": {
+        "_id": "PTTB9orSB4RelXF3",
+        "img": "systems/pf2e/icons/equipment/weapons/sawtooth-saber.webp",
+        "name": "Fleshrender",
+        "system": {
+            "baseItem": "sawtooth-saber",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This <em>+3 greater striking animated dawnsilver sawtooth saber</em> has many serrated edges and gleams blinding white in bright light.</p>\n<p>If you're wielding Blood-Drinker in your other hand, increase <em>Fleshrender's</em> attack modifier to +32 instead of +24, and increase its fly Speed to 50 feet when you Set Free <em>Fleshrender</em>.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": "high",
+                "type": "dawnsilver"
+            },
+            "price": {
+                "value": {
+                    "gp": 24000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Adventure: Prey for Death"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "dancing"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "high",
+                    "type": "dawnsilver"
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "dancing"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "magical",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "EPhsyiO4jYl0jWoC": {
+        "_id": "EPhsyiO4jYl0jWoC",
+        "img": "systems/pf2e/icons/equipment/weapons/flingflenser.webp",
+        "name": "Flingflenser",
+        "system": {
+            "baseItem": "flingflenser",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>A flingflenser is a goblin-designed weapon ending in an ovoid tube with a hatch and handle on the narrow end. A cluster of circular blades held together and attached to a black powder packet with a thin leather strap serves as ammunition and is loaded through the hatch before being fired with a flintlock or other external ignition mechanism. The flingflenser's sturdy design also places it among the more reliable goblin weapons.</p>"
+            },
+            "expend": 1,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 30,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "backstabber",
+                    "fatal-d10",
+                    "goblin",
+                    "scatter-5"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "ucz1WdBA0Ma34OsS": {
+        "_id": "ucz1WdBA0Ma34OsS",
+        "img": "systems/pf2e/icons/equipment/weapons/flying-talon.webp",
+        "name": "Flying Talon",
+        "system": {
+            "baseItem": "flying-talon",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>This weapon consists of a three-pronged barbed hook attached to a length of chain. It can be used in melee to stab foes or hurled at a range. Some kobolds are particularly fond of using flying talons, especially as a sort of badge of office above those who serve them.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "kobold",
+                    "ranged-trip",
+                    "tethered",
+                    "thrown-10",
+                    "trip"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "IoJ0WpfUPWGuaqBG": {
+        "_id": "IoJ0WpfUPWGuaqBG",
+        "img": "icons/weapons/maces/mace-round-steel.webp",
+        "name": "Gada",
+        "system": {
+            "baseItem": "gada",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A large spherical head with a spike on top sits mounted to a long shaft.</p>"
+            },
+            "expend": null,
+            "group": "club",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "backswing",
+                    "two-hand-d12",
+                    "vanara"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "xxSpHT2vnCFxTr0q": {
+        "_id": "xxSpHT2vnCFxTr0q",
+        "img": "icons/weapons/guns/rifle-fluted.webp",
+        "name": "Ghosthand's Comet",
+        "system": {
+            "baseItem": null,
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "force",
+                "dice": 5,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>The barrel of this long rifle is translucent in places, forming a swirled pattern along the metal, and its stock is formed of crimson wood. <em>Ghosthand's Comet</em> is a <em>+4 major striking beast-bane greater impactful advanced firearm</em> with a range increment of 300 feet. It deals 5d8 force damage and has the backstabber, concussive, kickback, and fatal d12 traits. As a star gun, Ghosthand's Comet runs on magic and doesn't use ammunition or black powder. The weapon is silent when fired.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">F</span> (concentrate)</p>\n<p><strong>Trigger</strong> You attempt a ranged Strike with <em>Ghosthand's Comet</em></p>\n<p><strong>Effect</strong> For the triggering Strike, <em>Ghosthand's Comet</em> changes its damage type to your choice of acid, cold, electricity, fire, or sonic.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Effect</strong> On your next attempt at a ranged Strike with <em>Ghosthand's Comet</em>, the shot phases through any material or magical obstacle, such as a wall of force, in its path, ignoring all cover. You must attempt the Strike by the end of your turn or this effect is lost.</p><hr /><p><strong>Destruction</strong> If the Grim Reaper slays the wielder of <em>Ghosthand's Comet</em>, the Reaper's scythe, as it strikes the killing blow, is destined to slice the star gun in half.</p>"
+            },
+            "expend": null,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 23
+            },
+            "material": {
+                "grade": "high",
+                "type": "inubrix"
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 300,
+            "reload": {
+                "value": null
+            },
+            "rules": [
+                {
+                    "diceNumber": 1,
+                    "dieSize": "d6",
+                    "key": "DamageDice",
+                    "label": "PF2E.WeaponPropertyRune.bane.Name",
+                    "predicate": [
+                        "target:trait:beast"
+                    ],
+                    "selector": "{item|id}-damage"
+                },
+                {
+                    "domain": "damage",
+                    "key": "RollOption",
+                    "option": "ghosthands-comet-damage",
+                    "suboptions": [
+                        {
+                            "label": "PF2E.TraitAcid",
+                            "value": "acid"
+                        },
+                        {
+                            "label": "PF2E.TraitCold",
+                            "value": "cold"
+                        },
+                        {
+                            "label": "PF2E.TraitElectricity",
+                            "value": "electricity"
+                        },
+                        {
+                            "label": "PF2E.TraitFire",
+                            "value": "fire"
+                        },
+                        {
+                            "label": "PF2E.TraitSonic",
+                            "value": "sonic"
+                        }
+                    ],
+                    "toggleable": true
+                },
+                {
+                    "key": "DamageAlteration",
+                    "mode": "override",
+                    "predicate": [
+                        "ghosthands-comet-damage"
+                    ],
+                    "property": "damage-type",
+                    "selectors": [
+                        "{item|id}-damage"
+                    ],
+                    "slug": "base",
+                    "value": "{item|flags.pf2e.rulesSelections.ghosthandsCometDamage}"
+                }
+            ],
+            "runes": {
+                "potency": 4,
+                "property": [
+                    "bane",
+                    "greaterImpactful"
+                ],
+                "striking": 3
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "high",
+                    "type": "inubrix"
+                },
+                "runes": {
+                    "potency": 4,
+                    "property": [
+                        "bane",
+                        "greaterImpactful"
+                    ],
+                    "striking": 3
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "artifact",
+                    "backstabber",
+                    "concussive",
+                    "fatal-d12",
+                    "kickback",
+                    "magical"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "oSQET5hKn9q4xlrl": {
+        "_id": "oSQET5hKn9q4xlrl",
+        "img": "systems/pf2e/icons/equipment/weapons/gnome-flickmace.webp",
+        "name": "Gnome Flickmace",
+        "system": {
+            "baseItem": "gnome-flickmace",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>More a flail than a mace, this weapon has a short handle attached to a length of chain with a ball at the end. The ball is propelled to its reach with the flick of the wrist, the momentum of which brings the ball back to the wielder after the strike.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "gnome",
+                    "reach",
+                    "sweep"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "srCxiFF44RcuRMHD": {
+        "_id": "srCxiFF44RcuRMHD",
+        "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
+        "name": "Heavenly Rolling Flames",
+        "system": {
+            "baseItem": "feng-huo-lun",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>This set of <em>+2 greater striking flaming feng huo lun</em> is warm to the touch and wreathed in the bright red and orange glow of a constantly flickering flame. While wielded, you gain cold resistance 2, and you treat the effects of environmental cold as one degree lower. Heavenly rolling flames can be Activated only if you wield two of them, and Activating them counts against the frequency for both weapons.</p>\n<p><strong>Activate—Rolling Flight</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per hour</p><hr /><p><strong>Effect</strong> You attach the wheels to your feet, and their constant movement and energy allow you to move through the air. You gain a fly Speed of 20 feet for 10 minutes. While in use in this way, you can't wield the wheels as weapons. You can spend an Interact action at any time to end this effect and re-grip the heavenly rolling flames. If you lack enough free hands to wield them, you drop them in your space.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Rolling Flight]</p>\n<p><strong>Activate—Speed of Heaven</strong> <span class=\"action-glyph\">2</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You cast @UUID[Compendium.pf2e.spells-srd.Item.Haste] as a 3rd-rank occult spell, but you can target only yourself.</p>"
+            },
+            "expend": null,
+            "group": "knife",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Tian Xia Character Guide"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "cold",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "flaming"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "flaming"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "disarm",
+                    "finesse",
+                    "magical",
+                    "monk",
+                    "parry",
+                    "twin",
+                    "versatile-p"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "a5DlDpB3RuSIvLIC": {
+        "_id": "a5DlDpB3RuSIvLIC",
+        "img": "icons/weapons/bows/shortbow-recurve-bone.webp",
+        "name": "Hongali Hornbow",
+        "system": {
+            "baseItem": "hongali-hornbow",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>These immense bows are traditionally made from the horns of great beasts, though modern residents of Hongal, the northernmost nation in Tian Xia, often use composite materials or even small trees as the weapon's base. While Hongali hornbows have a shorter range than other bows, they make up for it by focusing the power of the longbow at a short distance and can be used from horseback-perfect for the skirmishing fighting style of mounted Hongali troops. While it's difficult for those in Avistan to get their hands on these Hongali weapons, a small warband of beast-riding orcs from the Hold of Belkzen managed to arm themselves with Hongali hornbows and cut a bloody swathe through adventurers and neighboring militaries alike for several years before they were finally defeated via a desperate ambush. The stories of that warband spread, causing Avistani adventurers with little knowledge of Tian Xia to associate the bows with orcs. Hongali characters have access to the Hongali hornbow.</p>"
+            },
+            "expend": 1,
+            "group": "bow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 11
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": 40,
+            "reload": {
+                "value": "0"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d6",
+                    "propulsive"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-plus-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "O3XAH3VkOx9a0FyD": {
+        "_id": "O3XAH3VkOx9a0FyD",
+        "img": "systems/pf2e/icons/equipment/weapons/hook-sword.webp",
+        "name": "Hook Sword",
+        "system": {
+            "baseItem": "hook-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This long sword has a hook near the tip, making it easy to snag an opponent or their weapons.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "disarm",
+                    "monk",
+                    "parry",
+                    "trip",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "urcBTs4AgSq8u5FJ": {
+        "_id": "urcBTs4AgSq8u5FJ",
+        "img": "systems/pf2e/icons/default-icons/weapon.svg",
+        "name": "Kaldemash's Lament",
+        "system": {
+            "baseItem": null,
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "force",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>Resembling little more than a simple iron pipe with a handle, <em>Kaldemash's Lament</em> is one of the most well-known star guns in all of Arcadia. Legends state the Crowned Regent Kaldemash helped forge one of the first star guns millennia ago. While the star gun served Kaldemash as a powerful weapon, its most notable achievement was the accidental killing of one of Kaldemash's greatest friends. This death is what caused the regent to recognize the true destructive power of the star guns and led to him developing the Star Code, a set of rules of engagement and proper use of firearms still in use in Arcadia today. Although Kaldemash never named the weapon himself, all legends that mention the weapon refer to it as <em>Kaldemash's Lament</em>.</p>\n<p>The legendary weapon is a +3 major striking quickstrike advanced firearm with a range increment of 90 feet. It deals @Damage[4d6[force]] damage (with the major striking rune included) and has the concealable, concussive, and fatal d10 traits. You don't take a penalty when dealing nonlethal damage with the weapon. Like most star guns, <em>Kaldemash's Lament</em> uses magic to function and doesn't require ammunition or black powder.</p>\n<p>If you use <em>Kaldemash's Lament</em> as part of a duel in which all parties are in agreement on the terms, the gun's supernatural instincts help you make the quickest draw. You roll twice and take the higher result on your initiative roll for the duel; this is a fortune effect. In addition, you can draw <em>Kaldemash's Lament</em> as a free action at the start of your turn during the duel. If you attempt to fire the star gun in bad faith at a dueling opponent once they have surrendered, been defeated, or the duel is over, <em>Kaldemash's Lament</em> flies out of your hand and you can't pick it up, hold it, or wield it for 10 minutes.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">F</span> (concentrate)</p>\n<p><strong>Trigger</strong> You target a creature with an attack</p><hr /><p><strong>Effect</strong> You adjust the damage that <em>Kaldemash's Lament</em> deals before firing. <em>Kaldemash's Lament</em>'s damage type changes to either electricity, fire, or force until you change the type again.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per minute</p><hr /><p><strong>Effect</strong> You leave <em>Kaldemash's Lament</em> to fire on its own. You release the star gun and it begins to move independently, flying through the air and firing. You still gain the benefits of the gun's quickstrike rune while it's moving independently. It has a space of 5 feet but doesn't block or impede enemies attempting to move through that space. It always remains within 30 feet of you and intentionally resists being taken or otherwise moved; all attempts to Grab it fail. <em>Kaldemash's Lament</em> moves this way for 3 rounds, after which it returns to your hand. If you don't have a free hand to hold it, the gun instead holsters itself on your person.</p>\n<p>While <em>Kaldemash's Lament</em> is moving independently, you can Sustain the activation to have it make a Strike against a creature. It makes a ranged Strike using your attack modifier while wielding it or a +31 bonus, whichever is higher. This attack increases your multiple attack penalty as normal, and the gun uses your multiple attack penalty when determining its attack bonus. Since the star gun is constantly moving and attempting to line up the appropriate shot, creatures it targets are @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] to the gun's attacks.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">3</span> (concentrate, manipulate)</p><hr /><p><strong>Effect</strong> You unleash a barrage of attacks in an instant. You deal Strike damage to all creatures in a @Template[type:cone|distance:30] (@Check[reflex|dc:45|basic] save). This barrage counts as three attacks for your multiple attack penalty.</p>"
+            },
+            "expend": null,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 90,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "speed"
+                ],
+                "striking": 3
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "speed"
+                    ],
+                    "striking": 3
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "concealable",
+                    "concussive",
+                    "fatal-d10"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "6v4aedCiIAoSJfiL": {
+        "_id": "6v4aedCiIAoSJfiL",
+        "img": "systems/pf2e/icons/equipment/weapons/kalis.webp",
+        "name": "Kalis",
+        "system": {
+            "baseItem": "kalis",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A larger version of the asymmetrical, wavy-bladed kris, this double-edged sword is effective at creating grievous injuries.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d8",
+                    "versatile-p"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "8XwE8hsWBFoIdoDC": {
+        "_id": "8XwE8hsWBFoIdoDC",
+        "img": "icons/weapons/daggers/dagger-curved-green.webp",
+        "name": "Karambit",
+        "system": {
+            "baseItem": "karambit",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>This small, curved blade resembles a tiger's claw and is capable of delivering deep wounds.</p>"
+            },
+            "expend": null,
+            "group": "knife",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "fatal-d8",
+                    "finesse",
+                    "versatile-s"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "1gi4mdZYNgPrzWHc": {
+        "_id": "1gi4mdZYNgPrzWHc",
+        "img": "systems/pf2e/icons/equipment/weapons/specific-magic-weapons/lifes-last-breath.webp",
+        "name": "Life's Last Breath",
+        "system": {
+            "baseItem": "rhoka-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>The twin serrated blades of this legendary rhoka sword are dull black and constantly drip with blood. <em>Life's Last Breath</em> is said to have been forged centuries ago for an unknown urdefhan general and has since fallen into the hands of countless other powerful urdefhan warlords.</p>\n<p><em>Life's Last Breath</em> is a <em>+3 greater striking @UUID[Compendium.pf2e.equipment-srd.Item.Unholy] @UUID[Compendium.pf2e.equipment-srd.Item.Wounding] rhoka sword</em> with the following special abilities.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">R</span> command</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Requirements</strong> You successfully Strike a creature with <em>Life's Last Breath</em></p>\n<hr />\n<p><strong>Effect</strong> You cast a 9th-rank @UUID[Compendium.pf2e.spells-srd.Item.Paralyze] spell on the target.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">R</span> envision</p>\n<p><strong>Frequency</strong> once per 10 minutes</p>\n<p><strong>Trigger</strong> You successfully Strike a creature with <em>Life's Last Breath</em></p>\n<hr />\n<p><strong>Effect</strong> The target must succeed at a @Check[fortitude|dc:38] or take @Damage[4d6[void]] damage; you gain an equal amount of temporary Hit Points that last 1 minute.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 23500
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #155: Lord of the Black Sands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "unholy",
+                    "wounding"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "unholy",
+                        "wounding"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "deadly-d8",
+                    "evil",
+                    "holy",
+                    "magical",
+                    "two-hand-d10"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "KtarUneAx0hibGtW": {
+        "_id": "KtarUneAx0hibGtW",
+        "img": "systems/pf2e/icons/equipment/weapons/nodachi.webp",
+        "name": "Nodachi",
+        "system": {
+            "baseItem": "nodachi",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>Also known as a zhanmadao, the exceptionally long blade of the nodachi is designed to neutralize enemy mounts and counter the advantages of cavalry units. Its shape and size make it somewhat impractical for close combat but highly effective against charging opponents.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "brace",
+                    "deadly-d12",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "J6H5UbLVsSXShoTs": {
+        "_id": "J6H5UbLVsSXShoTs",
+        "img": "icons/weapons/axes/axe-battle-heavy-jagged.webp",
+        "name": "Orc Necksplitter",
+        "system": {
+            "baseItem": "orc-necksplitter",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>This single-bladed bearded axe has a jagged blade that's perfect for separating bone from tendon and cartilage.</p>"
+            },
+            "expend": null,
+            "group": "axe",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "forceful",
+                    "orc",
+                    "sweep"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "EvBQcbkiYUusdFKY": {
+        "_id": "EvBQcbkiYUusdFKY",
+        "img": "icons/weapons/bows/bow-ornamental-carved-brown.webp",
+        "name": "Phalanx Piercer",
+        "system": {
+            "baseItem": "phalanx-piercer",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>This massive bow is made from bone or wood reinforced with flexible metal strips and strung with reinforced cord. Designed by hobgoblin engineers to take down shielded opponents, the phalanx piercer fires heavy, iron-shod bolts.</p>"
+            },
+            "expend": 1,
+            "group": "bow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 80,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "concussive",
+                    "hobgoblin",
+                    "propulsive",
+                    "razing",
+                    "volley-30"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-plus-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "8ncDuZSIZAHl7PW8": {
+        "_id": "8ncDuZSIZAHl7PW8",
+        "img": "systems/pf2e/icons/equipment/weapons/repeating-crossbow.webp",
+        "name": "Repeating Crossbow",
+        "system": {
+            "baseItem": "repeating-crossbow",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger.</p>"
+            },
+            "expend": 1,
+            "group": "crossbow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 15
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 120,
+            "reload": {
+                "value": "0"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "repeating"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "zcrIuILnp6oh4dr9": {
+        "_id": "zcrIuILnp6oh4dr9",
+        "img": "systems/pf2e/icons/equipment/weapons/repeating-hand-crossbow.webp",
+        "name": "Repeating Hand Crossbow",
+        "system": {
+            "baseItem": "repeating-hand-crossbow",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts.</p>"
+            },
+            "expend": 1,
+            "group": "crossbow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 60,
+            "reload": {
+                "value": "0"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "repeating"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "k8V3wTG1gMU5ksUr": {
+        "_id": "k8V3wTG1gMU5ksUr",
+        "img": "systems/pf2e/icons/equipment/weapons/rhoka-sword.webp",
+        "name": "Rhoka Sword",
+        "system": {
+            "baseItem": "rhoka-sword",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>The rhoka sword is the preferred weapon of urdefhan soldiers, though all urdefhans know how to wield these instruments of war.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #165: Eyes of Empty Death"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": null
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d8",
+                    "two-hand-d10"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "nz8Cx3SiRWANdlJE": {
+        "_id": "nz8Cx3SiRWANdlJE",
+        "img": "systems/pf2e/icons/equipment/weapons/specific-magic-weapons/rowan-rifle-electricity.webp",
+        "name": "Rowan Rifle",
+        "system": {
+            "baseItem": null,
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "fire",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>In a dense forest within Arcadia, djezet fell from the sky millennia ago, even before Earthfall. While this metal was poisonous to most of the plant life growing nearby, one stubborn rowan tree refused to die, its roots slowly absorbing djezet in small particles from the ground until the entire plant was suffused with it. Fey bowyers discovered the remarkable plant and coaxed it into growing into a very particular shape, its branching trunks woven together into a tightly twisted and naturally rifled barrel.</p>\n<p>These legendary starmetal weapons are Arcadia's greatest treasures. The Rowan Rifle star gun is a <em>+2 greater fearsome quickstrike greater striking</em> advanced firearm with a range of increment of 300 feet. It deals @Damage[1d8[fire]] damage and has the backstabber, concussive, and fatal d12 traits.</p>\n<p>As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or black powder. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the fey trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.</p><hr /><p><strong>Activate—Season's Cycle</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Effect</strong> You will the Rowan Rifle to change the energy it fires from the white-hot energy of summer that glows like a star to the shivering chill of winter, the crackling electricity of the storm, or even the sonic vibrations of a roar. The Rowan Rifle's damage type changes from its current damage type to cold, electricity, fire, or sonic. On the next sunrise, the Rowan Rifle returns to dealing fire damage.</p><hr /><p><strong>Activate—Skymetal Shot</strong> <span class=\"action-glyph\">2</span> (manipulate)</p>\n<p><strong>Effect</strong> The Rowan Rifle fires a @Template[type:line|distance:60] of liquid djezet that wraps around all creatures in the affected area before hardening, which impedes them with metallic vines unless the affected creature succeeds at a @Check[reflex|dc:35] save. A creature who fails the save takes a –15-foot circumstance penalty to their Speeds, and a creature who critically fails is @UUID[Compendium.pf2e.conditionitems.Item.Immobilized]. A creature who succeeds at a [[/act escape]]{DC 35} @UUID[Compendium.pf2e.actionspf2e.Item.Escape] check ends this effect. Otherwise, the djezet vines last for 10 minutes before crumbling away.</p><hr /><p><strong>Activate—Briarbough Brachiaport</strong> 1 minute (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per 10 minutes</p>\n<p><strong>Effect</strong> You hold aloft the Rowan Rifle and step into a tree in Briarbough, and you use @UUID[Compendium.pf2e.spells-srd.Item.Nature's Pathway] to travel to another tree in Briarbough.</p>"
+            },
+            "expend": null,
+            "group": "firearm",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 16
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "range": 300,
+            "reload": {
+                "value": null
+            },
+            "rules": [
+                {
+                    "alwaysActive": true,
+                    "domain": "damage",
+                    "key": "RollOption",
+                    "option": "rowan-rifle-damage",
+                    "selection": "fire",
+                    "suboptions": [
+                        {
+                            "label": "PF2E.TraitCold",
+                            "value": "cold"
+                        },
+                        {
+                            "label": "PF2E.TraitElectricity",
+                            "value": "electricity"
+                        },
+                        {
+                            "label": "PF2E.TraitFire",
+                            "value": "fire"
+                        },
+                        {
+                            "label": "PF2E.TraitSonic",
+                            "value": "sonic"
+                        }
+                    ],
+                    "toggleable": true,
+                    "value": true
+                },
+                {
+                    "key": "DamageAlteration",
+                    "mode": "override",
+                    "property": "damage-type",
+                    "selectors": [
+                        "{item|id}-damage"
+                    ],
+                    "value": "{item|flags.pf2e.rulesSelections.rowanRifleDamage}"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "greaterFearsome",
+                    "speed"
+                ],
+                "striking": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "greaterFearsome",
+                        "speed"
+                    ],
+                    "striking": 2
+                }
+            },
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "unique",
+                "value": [
+                    "backstabber",
+                    "concussive",
+                    "fatal-d12",
+                    "primal"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "wkzxLpSe7LN6c5Ld": {
+        "_id": "wkzxLpSe7LN6c5Ld",
+        "img": "systems/pf2e/icons/equipment/weapons/sawtooth-saber.webp",
+        "name": "Sawtooth Saber",
+        "system": {
+            "baseItem": "sawtooth-saber",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>The signature weapon of the Red Mantis assassins, this curved blade is serrated like a saw, hence the name.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "twin"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "WiPcevdeD4YoTLRa": {
+        "_id": "WiPcevdeD4YoTLRa",
+        "img": "systems/pf2e/icons/equipment/weapons/shauth-lash.webp",
+        "name": "Shauth Lash",
+        "system": {
+            "baseItem": null,
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This metal chain bears hook-like barbs made of alchemically strengthened urdefhan teeth. Magical shauth lashes have the same ability to channel an urdefhan wielder's Wicked Bite as magical shauth blades, and urdefhans hold these weapons with the same reverence as they do shauth blades.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #165: Eyes of Empty Death"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d10",
+                    "finesse",
+                    "trip"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "ye7cYmornhgnnOlu": {
+        "_id": "ye7cYmornhgnnOlu",
+        "img": "systems/pf2e/icons/equipment/weapons/sickle-saber.webp",
+        "name": "Sickle-saber",
+        "system": {
+            "baseItem": "sickle-saber",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>A classical weapon of Irrisenis who lacked magical talent, the sickle-saber has seen a resurgence since the coronation of Queen Anastasia. The queen was fascinated with the sickle-sabers in the palace treasury, and now the unusual blades are carried by her honor guard and Irriseni diplomats alike. The sickle-saber's blade curves multiple times along its 4-foot length, and its hilt is similarly curved. A small, secondary grip on the blade lets the wielder rapidly and unpredictably twist the cutting edges. Characters from Irrisen have access to the sickle-saber.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "backswing",
+                    "forceful"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "TQ3kT9pUFQNkH2dG": {
+        "_id": "TQ3kT9pUFQNkH2dG",
+        "img": "systems/pf2e/icons/equipment/weapons/spiral-rapier.webp",
+        "name": "Spiral Rapier",
+        "system": {
+            "baseItem": "spiral-rapier",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>An old Taldan dueling weapon from the empire's height, this rapier has a thicker blade than normal, which is shaped into a corkscrew-like spiral well suited to catching enemy weapons. Characters from Taldor have access to the spiral rapier.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "disarm",
+                    "finesse",
+                    "parry"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "0z3x5UzMlZLcDOUv": {
+        "_id": "0z3x5UzMlZLcDOUv",
+        "img": "systems/pf2e/icons/default-icons/weapon.svg",
+        "name": "Spirit Thresher",
+        "system": {
+            "baseItem": "spirit-thresher",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d12"
+            },
+            "description": {
+                "value": "<p>Bones, some solid and others splintered, are affixed to metal chains at the end of a long stick to form a powerful flail. Many kholo warriors insist the vicious crack the weapon makes as it strikes loosens fragments of the soul like husks struck from grains.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "gnoll",
+                    "sweep",
+                    "versatile-s"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "yyZ3iD8IXMIrrWL1": {
+        "_id": "yyZ3iD8IXMIrrWL1",
+        "img": "systems/pf2e/icons/equipment/weapons/switchscythe.webp",
+        "name": "Switchscythe",
+        "system": {
+            "baseItem": "switchscythe",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "piercing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>Another complex gnome invention, the switchscythe is designed for versatility. The curved blade is partly hollow, containing a long rod of wood or metal; the rod can be pulled perpendicular to the blade, turning the switchscythe from a sweeping, axe-like blade into a hooked pick capable of grappling a foe.</p>"
+            },
+            "expend": null,
+            "group": "pick",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Grand Bazaar"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "fatal-d10",
+                    "gnome"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "kedgBVNDRAdmseRe": {
+        "_id": "kedgBVNDRAdmseRe",
+        "img": "systems/pf2e/icons/equipment/weapons/tamchal-chakram.webp",
+        "name": "Tamchal Chakram",
+        "system": {
+            "baseItem": "tamchal-chakram",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>These circular weapons are among the many strange weapons used by urdefhans. The sharp metal circle contains numerous protruding blades, while an angled central handle provides a decent grip that spins the weapon as it's thrown.</p>"
+            },
+            "expend": null,
+            "group": "dart",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #164: Hands of the Devil"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": "-"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "deadly-d6",
+                    "finesse",
+                    "thrown-20"
+                ]
+            },
+            "usage": {
+                "canBeAmmo": false,
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "wbJPWXKzQBKYZ74s": {
+        "_id": "wbJPWXKzQBKYZ74s",
+        "img": "systems/pf2e/icons/equipment/weapons/taw-launcher.webp",
+        "name": "Taw Launcher",
+        "system": {
+            "baseItem": "taw-launcher",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d10"
+            },
+            "description": {
+                "value": "<p>This complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes.</p>"
+            },
+            "expend": 1,
+            "group": "crossbow",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 100,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "conrasu",
+                    "deadly-d10",
+                    "modular"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "Brs4linGy3GAod5y": {
+        "_id": "Brs4linGy3GAod5y",
+        "img": "systems/pf2e/icons/default-icons/weapon.svg",
+        "name": "Three-Section Naginata",
+        "system": {
+            "baseItem": "three-section-naginata",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d8"
+            },
+            "description": {
+                "value": "<p>A fusion of a naginata and sansetsukon, this three-section weapon has a sweeping, curved blade along each of the outer sections. Though difficult for anyone but an expert weapon master to use effectively, the three-section naginata can be wielded at devastating speed to slice or smash apart a foe.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 12
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d8",
+                    "forceful",
+                    "sweep",
+                    "versatile-b"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "zO6Fvq7ghEXpJgJR": {
+        "_id": "zO6Fvq7ghEXpJgJR",
+        "img": "systems/pf2e/icons/equipment/weapons/tricky-pick.webp",
+        "name": "Tricky Pick",
+        "system": {
+            "baseItem": "tricky-pick",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This ingenious kobold pick conceals several hidden traps that the wielder can activate to trick and befuddle foes with a variety of damaging blades and bludgeoning surfaces.</p>"
+            },
+            "expend": null,
+            "group": "pick",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "backstabber",
+                    "fatal-d10",
+                    "kobold",
+                    "modular"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "sY3UJ34xJ4MA0FMK": {
+        "_id": "sY3UJ34xJ4MA0FMK",
+        "img": "icons/weapons/daggers/dagger-double-black.webp",
+        "name": "Visap",
+        "system": {
+            "baseItem": "visap",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 0.1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d4"
+            },
+            "description": {
+                "value": "<p>Two small, curved blades extend from a single hilt. There's a hollow area inside that vishkanyas can use to store an unused dose of their blood, or other poison, for the future.</p>"
+            },
+            "expend": null,
+            "group": "knife",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "agile",
+                    "finesse",
+                    "injection",
+                    "versatile-p",
+                    "vishkanya"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    },
+    "QAEVaSQ3SCT8AuBX": {
+        "_id": "QAEVaSQ3SCT8AuBX",
+        "img": "systems/pf2e/icons/equipment/weapons/whip-claw.webp",
+        "name": "Whip Claw",
+        "system": {
+            "baseItem": "whip-claw",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>The whip claw is a long tether affixed to claw-like daggers, allowing the wielder to fling and retract them with deadly precision. Catfolk first developed this weapon to provide extended reach when hunting dangerous animals, and they wield them with unmatched expertise.</p>"
+            },
+            "expend": null,
+            "group": "flail",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "catfolk",
+                    "finesse",
+                    "hampering",
+                    "reach"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "fZxI5GkBFfAUUf1z": {
+        "_id": "fZxI5GkBFfAUUf1z",
+        "img": "systems/pf2e/icons/equipment/weapons/wrecker.webp",
+        "name": "Wrecker",
+        "system": {
+            "baseItem": "wrecker",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 2
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "bludgeoning",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>The wrecker combines a dwarven dorn-dergar with a heavy, gear-reinforced arm cover that allows it to be fired like an oversized sling, then retrieved and reloaded by manually activating a clockwork spool. A wrecker must be loaded to be switched from its ranged configuration to its melee configuration.</p>"
+            },
+            "expend": 1,
+            "group": "sling",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "meleeUsage": {
+                "damage": {
+                    "die": "d8",
+                    "type": "bludgeoning"
+                },
+                "group": "flail",
+                "traits": [
+                    "dwarf",
+                    "razing",
+                    "reach"
+                ]
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "range": 20,
+            "reload": {
+                "value": "1"
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "combination",
+                    "dwarf",
+                    "ranged-trip",
+                    "razing"
+                ]
+            },
+            "usage": {
+                "value": "held-in-two-hands"
+            }
+        },
+        "type": "weapon"
+    },
+    "LdOXiIVgRWpnOtcd": {
+        "_id": "LdOXiIVgRWpnOtcd",
+        "img": "systems/pf2e/icons/equipment/weapons/zulfikar.webp",
+        "name": "Zulfikar",
+        "system": {
+            "baseItem": "zulfikar",
+            "bonus": {
+                "value": 0
+            },
+            "bonusDamage": {
+                "value": 0
+            },
+            "bulk": {
+                "value": 1
+            },
+            "category": "advanced",
+            "containerId": null,
+            "damage": {
+                "damageType": "slashing",
+                "dice": 1,
+                "die": "d6"
+            },
+            "description": {
+                "value": "<p>This curved blade has a bifurcated tip, creating what looks like a second blade. It's a customary practice among zulfikar users to have religious or personal inscriptions upon the blade.</p>"
+            },
+            "expend": null,
+            "group": "sword",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "range": null,
+            "reload": {
+                "value": null
+            },
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "striking": 0
+            },
+            "size": "med",
+            "splashDamage": {
+                "value": 0
+            },
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "deadly-d8",
+                    "disarm",
+                    "sweep",
+                    "versatile-p"
+                ]
+            },
+            "usage": {
+                "value": "held-in-one-hand"
+            }
+        },
+        "type": "weapon"
+    }
+}

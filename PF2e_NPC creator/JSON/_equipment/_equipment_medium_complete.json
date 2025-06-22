@@ -1,0 +1,2984 @@
+{
+    "hCutQISjPJaKGYtj": {
+        "_id": "hCutQISjPJaKGYtj",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Aurochs Hide Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Made of the sturdy, thick hide of the aurochs and tempered to be both flexible and durable, this <em>+1 resilient hide armor</em> is imbued with the aurochs' natural defenses against venomous predators. You gain resistance 5 to poison damage.</p>\n<p><strong>Activate—Stubborn Skin</strong> <span class=\"action-glyph\">1</span></p>\n<p>You pull the layers of the armor taut, stiffening your body against incoming forces for 1 minute. While the armor is taut, you have a –1 penalty to Reflex saves and a +2 item bonus to Fortitude saves.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Stubborn Skin]</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #209: Destroyer's Doom"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "poison",
+                    "value": 5
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "mrgtvEbYTjGpOi7F": {
+        "_id": "mrgtvEbYTjGpOi7F",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Bakuwa Lizardfolk Bony Plates",
+        "system": {
+            "acBonus": 4,
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Note</strong> Bakuwa Lizardfolk heritage only</p><hr /><p>Your plates are medium armor in the plate armor group that grant a +4 item bonus to AC, a Dex cap of +1, a check penalty of –2, a Speed penalty of –5 feet, a Strength value of +3, and have the aquadynamic and comfort traits. You can never wear other armor or remove your plates. You can etch armor runes onto your plates.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Lost Omens Tian Xia Character Guide"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "aquadynamic",
+                    "comfort"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "JU6gJSmibl5Q3k6F": {
+        "_id": "JU6gJSmibl5Q3k6F",
+        "img": "icons/equipment/chest/breastplate-banded-steel-studded.webp",
+        "name": "Breastplate of the Mountain",
+        "system": {
+            "acBonus": 4,
+            "apex": {
+                "attribute": "con"
+            },
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Constructed of dull gray metal, this breastplate is decorated with the symbol of a craggy black mountaintop. This breastplate functions as a <em>+3 greater resilient breastplate</em>. When you're Shoved or otherwise forced to move, you can reduce the amount you move by up to 10 feet. When you invest the breastplate, you either increase your Constitution modifier by 1 or increase it to +4, whichever would give you a higher value.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You pound a solid and constant rhythm on your breastplate and cast a 7th-rank regeneration spell on yourself.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> With a single tap, you gain immunity to poison for 1 minute.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Breastplate of the Mountain]</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">R</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You fail or critically fail a Fortitude saving throw</p><hr /><p><strong>Effect</strong> If you failed the saving throw, it becomes a success. If you critically failed, it becomes a failure instead.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 3,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "apex",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "r0ifJfoz8aqf0mwk": {
+        "_id": "r0ifJfoz8aqf0mwk",
+        "img": "icons/equipment/chest/breastplate-collared-steel.webp",
+        "name": "Breastplate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Though referred to as a breastplate, this type of armor consists of several pieces of plate or @UUID[Compendium.pf2e.equipment-srd.Item.Half Plate] armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 8
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "Hg7btiITMu6Zf2EU": {
+        "_id": "Hg7btiITMu6Zf2EU",
+        "img": "systems/pf2e/icons/equipment/armor/ceramic-plate.webp",
+        "name": "Ceramic Plate",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "ceramic-plate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Traditional armor from Senghor, ceramic plate alleviates the need for metallurgy and smithing, instead relying on ceramic firing, glazing, and strong cord work with a backing of leather and thick canvas. Ceramic plate that follows Senghor's style is colorful and artistic, and is built with the armor latches armor adjustment.</p>"
+            },
+            "dexCap": 2,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "adjusted",
+                    "noisy"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "Kf4eJEXnFPuAsseP": {
+        "_id": "Kf4eJEXnFPuAsseP",
+        "img": "systems/pf2e/icons/equipment/armor/chainmail.webp",
+        "name": "Chain Mail",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "chain-mail",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body.</p>"
+            },
+            "dexCap": 1,
+            "group": "chain",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "flexible",
+                    "noisy"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "bZHqPBdQjPS02Rd4": {
+        "_id": "bZHqPBdQjPS02Rd4",
+        "img": "systems/pf2e/icons/equipment/armor/coral-armor.webp",
+        "name": "Coral Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "coral-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>A good option for undersea explorers and aquatic peoples alike, coral armor consists of panels of carved coral. If worn underwater, some of this coral can even be alive.</p>"
+            },
+            "dexCap": 2,
+            "group": "skeletal",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "adjusted",
+                    "aquadynamic"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "AqVJOBjXbeao5An7": {
+        "_id": "AqVJOBjXbeao5An7",
+        "img": "icons/equipment/chest/breastplate-layered-leather-studded.webp",
+        "name": "Energizing Lattice",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "lattice-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+2 resilient fortification lattice armor</em> has latticework of fine golden wire. After negating a critical hit with its <em>fortification</em> rune, the latticework glows for 1 minute, shedding bright light in a 20-foot radius (and dim light for the next 20 feet). You can Dismiss this light.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Energizing Lattice]</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (concentrate, force)</p>\n<p><strong>Requirements</strong> The <em>energizing lattice</em> is glowing because it negated an enemy's critical hit</p>\n<p><strong>Effect</strong> You release the lattice's energy and make a weapon or unarmed attack Strike that deals 6d6 additional force damage. If your Strike fails, but doesn't critically fail, the target still takes half the force damage. The latticework ceases glowing after the Strike.</p>"
+            },
+            "dexCap": 1,
+            "group": "chain",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 3000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "fortification"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "fortification"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "light"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "hRwnNTMj7wa8S4Ji": {
+        "_id": "hRwnNTMj7wa8S4Ji",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/ghoul-hide.webp",
+        "name": "Ghoul Hide",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Stitched together from pieces of ghoul skin, this suit of <em>+1 hide armor</em> grants you a +1 item bonus to saving throws against curses and makes you immune to the stench of ghouls. Ghoul hide with a resilient rune increases the resilient rune's item bonus to saving throws against curses by 1 (maximum +4).</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 220
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "item:trait:curse"
+                    ],
+                    "selector": "saving-throw",
+                    "type": "item",
+                    "value": 1
+                },
+                {
+                    "key": "AdjustModifier",
+                    "mode": "add",
+                    "predicate": [
+                        "item:trait:curse"
+                    ],
+                    "selector": "saving-throw",
+                    "slug": "resilient",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": 0,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "iwsNMFqLdORjkotL": {
+        "_id": "iwsNMFqLdORjkotL",
+        "img": "icons/equipment/chest/breastplate-layered-steel-grey.webp",
+        "name": "Hardshell Surki Carapace",
+        "system": {
+            "acBonus": 4,
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Note</strong> Hardshell Surki heritage only</p><hr /><p>Your carapace is medium armor in the plate armor group that grants a +4 item bonus to AC, a Dex cap of +1, a check penalty of –2, a Speed penalty of –5 feet, a Strength value of +3, and has the comfort trait. You can never wear other armor or remove your carapace. You can etch armor runes onto your carapace.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "comfort"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "LF7HSNnlGxLJyDZS": {
+        "_id": "LF7HSNnlGxLJyDZS",
+        "img": "icons/equipment/chest/breastplate-layered-steel.webp",
+        "name": "Hellknight Breastplate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "hellknight-breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Hellknights wear a variety of armors decorated with designs specific to the order. Hellknight breastplate serves those in the order who lack the training to wear heavy armor.</p>\n<p>A character who is a member of the Hellknights has access to these uncommon armors.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 10
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "AnwzlOs0njF9Jqnr": {
+        "_id": "AnwzlOs0njF9Jqnr",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Hide Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility.</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "2uHcTZ40oZ62R9gy": {
+        "_id": "2uHcTZ40oZ62R9gy",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/celestial-armor.webp",
+        "name": "Holy Chain",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "chain-mail",
+            "bulk": {
+                "value": 1
+            },
+            "category": "medium",
+            "checkPenalty": 0,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+2 resilient chain mail</em> is made of fine white links of a strange and slightly translucent pale metal, and the sleeves and skirt are fashioned into smaller trails that resemble feathers. Unlike normal chain mail, <em>holy chain</em> has no Speed reduction, its armor check penalty is 0, and its Bulk is 1.</p>\n<p>You gain a +1 circumstance bonus to AC and saving throws against fiends. You appear radiant while you wear the armor, giving you a +2 item bonus to Diplomacy checks against all creatures except fiends.</p>\n<p>If you're unholy, you're @UUID[Compendium.pf2e.conditionitems.Item.Drained]{Drained 2} while wearing <em>holy chain</em>. You can't recover from this condition while wearing the armor.</p><hr /><p><strong>Activate—Celestial Flight</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> The armor sprouts glowing wings that grant you a fly Speed of 30 feet. The wings shed bright light in a 40-foot radius (and dim light to the next 40 feet). The wings fade away after 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Holy Chain]</p><hr /><p><strong>Craft Requirements</strong> You're holy.</p>"
+            },
+            "dexCap": 1,
+            "group": "chain",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "origin:trait:fiend"
+                    ],
+                    "selector": [
+                        "ac",
+                        "saving-throw"
+                    ],
+                    "type": "circumstance",
+                    "value": 1
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        {
+                            "not": "target:trait:fiend"
+                        }
+                    ],
+                    "selector": "diplomacy",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": 0,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "divine",
+                    "holy",
+                    "invested",
+                    "noisy"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "aLA7pikfeNIAAGLw": {
+        "_id": "aLA7pikfeNIAAGLw",
+        "img": "icons/equipment/chest/breastplate-banded-steel.webp",
+        "name": "Impenetrable Scale",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "scale-mail",
+            "bulk": {
+                "value": 3
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Made of overlapping, lustrous black scales of standard-grade adamantine, this +2 <em>greater resilient @UUID[Compendium.pf2e.equipment-srd.Item.Fortification] adamantine scale mail</em> seems to momentarily thicken at the point of impact when hit.</p>\n<p>Whenever the armor's <em>fortification</em> rune successfully turns a significant foe's critical hit into a normal hit, one of the scales on the armor turns violet. You gain resistance to physical damage equal to the number of violet scales, to a maximum of 8.</p>\n<p>At dawn each day, all the violet scales return to normal.</p>\n<hr />\n<p><strong>Craft Requirements</strong> The initial raw materials must include 1,600 gp of adamantine.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Impenetrable Scale]</p>"
+            },
+            "dexCap": 2,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 17
+            },
+            "material": {
+                "grade": "standard",
+                "type": "adamantine"
+            },
+            "price": {
+                "value": {
+                    "gp": 12800
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [
+                    "fortification"
+                ],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "standard",
+                    "type": "adamantine"
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [
+                        "fortification"
+                    ],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "3ZfGYXKfBjHOZO7d": {
+        "_id": "3ZfGYXKfBjHOZO7d",
+        "img": "icons/equipment/chest/breastplate-rivited-red.webp",
+        "name": "Lamellar Breastplate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "lamellar-breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Slats of lacquered steel or other metal held together with cord, whether leather or silk, make up most lamellar breastplates. The lacquering prevents the metal from corroding.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 7
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "hindering",
+                    "laminar"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "IyBL38UtL4MDN6b5": {
+        "_id": "IyBL38UtL4MDN6b5",
+        "img": "systems/pf2e/icons/equipment/armor/lattice-armor.webp",
+        "name": "Lattice Armor",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "lattice-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Also known as \"varman\" in some parts of the Impossible Lands, this armor is made from fine metal cables woven into latticework patterns with plated segments to protect the head, neck, and shoulders. This armor disperses blows much like rings of chain mail but is much tighter in construction, making it quieter.</p>"
+            },
+            "dexCap": 1,
+            "group": "chain",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder War of Immortals"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "jAKYIqG2BNO7yffJ": {
+        "_id": "jAKYIqG2BNO7yffJ",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/leopards-armor.webp",
+        "name": "Leopard's Armor",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "chain-mail",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Made of cobalt-colored steel rings that flow down the entire length of the garment, this <em>+1 resilient chain mail</em> includes an armored face covering. The armor is said to be based on the same armor once worn by Azure Leopard, one of Old-Mage Jatembe's magic warriors.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">2</span> command, envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> You call upon the ferocity and grace of the leopard. The armor's rings flatten out to become a solid piece of flexible armor. You gain a +2 item bonus to Stealth checks and Intimidation checks to @UUID[Compendium.pf2e.actionspf2e.Item.Demoralize], but take a -2 penalty to Diplomacy and Society checks.</p>\n<p>This lasts for 1 hour, but you can Activate the armor again to revert it back to its original form.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Leopard's Armor]</p>"
+            },
+            "dexCap": 1,
+            "group": "chain",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 700
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder #170: Spoken on the Song Wind"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "flexible",
+                    "magical",
+                    "noisy"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "l3ZsKprMlJCRbgb6": {
+        "_id": "l3ZsKprMlJCRbgb6",
+        "img": "icons/magic/nature/leaf-armor-scale-green.webp",
+        "name": "Mamlambo Scale",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "scale-mail",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>The faint glow beneath the thick, algae-green scales of this suit of <em>+1 resilient scale mail</em> hints at the armor's source.</p><hr /><p><strong>Activate—Luminous Lure</strong> <span class=\"action-glyph\">1</span> (concentrate, light, manipulate, mental, visual)</p>\n<p><strong>Frequency</strong> Once per day</p>\n<p><strong>Effect</strong> The <em>mamlambo scale</em> sheds dim light in a 20-foot emanation. The light has a duration of 1 minute, but you can extinguish the light with an Interact action. A creature that begins its turn in the light must attempt a @Check[will|dc:26] save. Regardless of the save's result, the creature is temporarily immune for 1 hour.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Luminous Lure]</p><hr /><p><strong>Critical Success</strong> The creature is unaffected.</p>\n<p><strong>Success</strong> The creature is @UUID[Compendium.pf2e.conditionitems.Item.Slowed]{Slowed 1} for 1 round.</p>\n<p><strong>Failure</strong> The creature is @UUID[Compendium.pf2e.conditionitems.Item.Fascinated], and for as long as it remains in the light, it must spend at least 1 of its actions on each of its turns to move closer to the source of the light. If the creature ends its movement adjacent to you, it is slowed 1 until it is out of the light or until you make a Strike against it.</p>\n<p><strong>Critical Failure</strong> As failure, but the creature is also @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] against the first Strike you make against it while it is slowed.</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the scales and hide of a mamlambo.</p>"
+            },
+            "dexCap": 2,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 990
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Howl of the Wild"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "Iic9QpNemaumfkHc": {
+        "_id": "Iic9QpNemaumfkHc",
+        "img": "systems/pf2e/icons/equipment/cursed-items/medusa-armor.webp",
+        "name": "Medusa Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "scale-mail",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 adamantine scale mail</em> appears to have a <em>fortification</em> rune but grants none of its effects. Whenever you are critically hit, after taking damage, you become petrified for 1 round. Once the curse has activated for the first time, the armor fuses to you.</p>"
+            },
+            "dexCap": 2,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 14
+            },
+            "material": {
+                "grade": "standard",
+                "type": "adamantine"
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder GM Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": "standard",
+                    "type": "adamantine"
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "cursed",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "I8b3oNLl5MIMrG4r": {
+        "_id": "I8b3oNLl5MIMrG4r",
+        "img": "systems/pf2e/icons/equipment/armor/niyahaat.webp",
+        "name": "Niyaháat",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "niyahaat",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Erutaki communities deep in the Crown of the World, where wood is hard to come by, fashion armor from slats and strips of bone or horn, along with whole bones or horns. Wealthier wearers sometimes pay for decorative embellishments made of more precious materials. Niyaháat is usually woven together with strong cord, forming a suit like a breastplate. This suit is worn over heavy clothing or a surcoat like padded armor. Some suits incorporate parts of powerful creatures, creating a storied history for the suit and its wearers.</p>"
+            },
+            "dexCap": 2,
+            "group": "skeletal",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 5
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "laminar"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "GDSclGF1yk0sw86V": {
+        "_id": "GDSclGF1yk0sw86V",
+        "img": "icons/equipment/chest/breastplate-banded-steel-grey.webp",
+        "name": "Numerian Steel Breastplate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This +1 resilient breastplate is constructed from the salvaged armor plating of one of Numeria's large robots. It protects the wearer from harsh elements and common laser fire, granting the wearer fire resistance 5.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> command</p>\n<p><strong>Frequency</strong> once per day</p>\n<hr />\n<p><strong>Effect</strong> You activate the remnants of mysterious technology within the breastplate to encase yourself in an electric field. For 1 minute, adjacent creatures that hit you with a melee Strike, as well as creatures that touch you or hit you with an unarmed attack, take @Damage[1d10[electricity]] damage per hit.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 900
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Society Scenario #1-24: Lightning Strikes, Stars Fall"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "fire",
+                    "value": 5
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "rare",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "C4XKMcHZoGzrAZBl": {
+        "_id": "C4XKMcHZoGzrAZBl",
+        "img": "systems/pf2e/icons/equipment/armor/specific-magic-armor/rhino-hide.webp",
+        "name": "Onslaught Hide",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -1,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+1 resilient hide armor</em> is decorated with the horns of many slain beasts. It has an armor check penalty of –1 instead of –2. When you use the @UUID[Compendium.pf2e.feats-srd.Item.Sudden Charge] class feat while wearing this armor, your Strike deals an additional @Damage[1d8[untyped]] damage.</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 9
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 700
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "domain": "damage",
+                    "key": "RollOption",
+                    "label": "Sudden Charge",
+                    "option": "action:sudden-charge",
+                    "predicate": [
+                        "sudden-charge"
+                    ],
+                    "toggleable": true
+                },
+                {
+                    "diceNumber": 1,
+                    "dieSize": "d8",
+                    "key": "DamageDice",
+                    "predicate": [
+                        "action:sudden-charge"
+                    ],
+                    "selector": "strike-damage"
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": 0,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "N42lmp3Ft6EsSvzg": {
+        "_id": "N42lmp3Ft6EsSvzg",
+        "img": "systems/pf2e/icons/equipment/armor/power-suit.webp",
+        "name": "Power Suit",
+        "system": {
+            "acBonus": 5,
+            "baseItem": "power-suit",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Your innovation is a cutting-edge suit of medium armor with a variety of attached gizmos and devices.</p>"
+            },
+            "dexCap": 1,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "AdjustModifier",
+                    "mode": "downgrade",
+                    "predicate": [
+                        "bonus:proficiency",
+                        {
+                            "not": "feature:armor-innovation"
+                        }
+                    ],
+                    "requiresInvested": false,
+                    "selector": "ac",
+                    "value": 0
+                }
+            ],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "unique",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "FKNgrFDIRBumr6P5": {
+        "_id": "FKNgrFDIRBumr6P5",
+        "img": "icons/equipment/chest/breastplate-sculpted-grey.webp",
+        "name": "Rebounding Breastplate",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+3 greater resilient greater fortification breastplate</em> absorbs impacts for later release. While wearing the armor, you gain resistance 5 to bludgeoning, piercing, and slashing damage and resistance 10 to force damage. Keep track of how much damage the armor prevents from enemy attacks, as the armor absorbs that damage.</p>\n<p>After 1 minute, the absorbed damage disperses harmlessly and resets to 0. Only damage caused by foes or hazards powers the armor, not damage you take from yourself, allies, or the environment.</p>\n<hr />\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p><strong>Requirements</strong> Your armor has absorbed at least 30 damage</p>\n<p><strong>Effect</strong> The absorbed energy explodes from your armor in a pulse of force. Creatures in a @Template[emanation|distance:30] take @Damage[10d6[force]|options:area-damage] damage with a @Check[fortitude|dc:43|basic|showDC:all|options:area-effect] save. On a failure, they're pushed 10 feet away from you, and on a critical failure, they're pushed 20 feet away from you and fall @UUID[Compendium.pf2e.conditionitems.Item.Prone]. The armor's absorbed damage resets to 0.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 20
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 70000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Secrets of Magic"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "Resistance",
+                    "type": "force",
+                    "value": 10
+                },
+                {
+                    "key": "Resistance",
+                    "type": [
+                        "bludgeoning",
+                        "piercing",
+                        "slashing"
+                    ],
+                    "value": 5
+                }
+            ],
+            "runes": {
+                "potency": 3,
+                "property": [
+                    "greaterFortification"
+                ],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 3,
+                    "property": [
+                        "greaterFortification"
+                    ],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "force",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "RODC2TYO4cUg6fXu": {
+        "_id": "RODC2TYO4cUg6fXu",
+        "img": "systems/pf2e/icons/equipment/armor/coral-armor.webp",
+        "name": "Reef Heart (Greater)",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "coral-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 greater resilient coral armor</em>, often favored by allies of merfolk and aquatic elves, is made of living coral carefully harvested from the ocean depths. Legends speak of a variety of similar coral armors with distinct powers, but surface-dwellers know of <em>reef heart</em> as a magic armor that makes it easier for them to travel under the sea. <em>Reef heart</em> enables you to breathe underwater and gives you a swim Speed equal to your land Speed.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">3</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You cast a 7th rank @UUID[Compendium.pf2e.spells-srd.Item.Coral Eruption]. If you conjure the coral underwater, it ceases dealing damage after 1 minute, but its duration is unlimited. If the magical coral remains in place for 1 year, it becomes non-magical coral from which a reef might grow.</p>"
+            },
+            "dexCap": 2,
+            "group": "skeletal",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "BaseSpeed",
+                    "selector": "swim",
+                    "value": "@actor.attributes.speed.total"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "aquadynamic"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "uuBhzN6xrplrwKyI": {
+        "_id": "uuBhzN6xrplrwKyI",
+        "img": "systems/pf2e/icons/equipment/armor/coral-armor.webp",
+        "name": "Reef Heart",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "coral-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 resilient coral armor</em>, often favored by allies of merfolk and aquatic elves, is made of living coral carefully harvested from the ocean depths. Legends speak of a variety of similar coral armors with distinct powers, but surface-dwellers know of <em>reef heart</em> as a magic armor that makes it easier for them to travel under the sea. <em>Reef heart</em> enables you to breathe underwater and gives you a swim Speed equal to half your land Speed.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">3</span> (concentrate, manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You cast @UUID[Compendium.pf2e.spells-srd.Item.Coral Eruption]. If you conjure the coral underwater, it ceases dealing damage after 1 minute, but its duration is unlimited. If the magical coral remains in place for 1 year, it becomes non-magical coral from which a reef might grow.</p>"
+            },
+            "dexCap": 2,
+            "group": "skeletal",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 12
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "BaseSpeed",
+                    "selector": "swim",
+                    "value": "floor(@actor.attributes.speed.total/2)"
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "aquadynamic"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "0KHgAaDi3tmu32Hq": {
+        "_id": "0KHgAaDi3tmu32Hq",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Rite of Reinforcement Exoskeleton",
+        "system": {
+            "acBonus": 4,
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Note</strong> Conrasu Rite of Reinforcement Heritage Only</p>\n<hr />\n<p>Your woven exoskeleton rivals the hardest armors that can be found. Your exoskeleton is medium armor in the plate armor group that grants a +4 item bonus to AC, a Dex cap of +1, a check penalty of -2, a speed penalty of -5 feet, and a Strength value of +3, and has the comfort trait. You can never wear other armor or remove your exoskeleton. You can etch armor runes onto your exoskeleton as normal.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens The Mwangi Expanse"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "rare",
+                "value": [
+                    "comfort"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "YMQr577asquZIP65": {
+        "_id": "YMQr577asquZIP65",
+        "img": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
+        "name": "Scale Mail",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "scale-mail",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs.</p>"
+            },
+            "dexCap": 2,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 4
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "oE6tZBBbP59DOWFM": {
+        "_id": "oE6tZBBbP59DOWFM",
+        "img": "systems/pf2e/icons/equipment/armor/niyahaat.webp",
+        "name": "Smoldering Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "niyahaat",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+1 resilient fire-resistant niyaháat</em> is often created to mark the passage of an Erutaki warrior into adulthood, formed from plates salvaged from the exploded remains of a firewyrm elemental, with larger pieces protecting the chest, shoulders, and head. As you fight, the armor glows red hot.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The armor is sheathed in a @UUID[Compendium.pf2e.spells-srd.Item.Fire Shield].</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You're dealt 30 or more fire damage, before any reduction from your fire resistance</p>\n<p><strong>Requirements</strong> You've used the <em>fire shield</em> activation already today</p>\n<p><strong>Effect</strong> The <em>fire shield</em> activation recharges.</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the carapace of a firewyrm.</p>"
+            },
+            "dexCap": 2,
+            "group": "skeletal",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 975
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [
+                    "fireResistant"
+                ],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [
+                        "fireResistant"
+                    ],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "fire",
+                    "laminar"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "56CTZheeNhNPpLo1": {
+        "_id": "56CTZheeNhNPpLo1",
+        "img": "systems/pf2e/icons/equipment/armor/subterfuge-suit.webp",
+        "name": "Subterfuge Suit",
+        "system": {
+            "acBonus": 2,
+            "baseItem": "subterfuge-suit",
+            "bulk": {
+                "value": 1
+            },
+            "category": "medium",
+            "checkPenalty": -1,
+            "containerId": null,
+            "description": {
+                "value": "<p>Your innovation is a cutting-edge suit of medium armor with a variety of attached gizmos and devices.</p>"
+            },
+            "dexCap": 4,
+            "group": "composite",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Guns & Gears"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "AdjustModifier",
+                    "mode": "downgrade",
+                    "predicate": [
+                        "bonus:proficiency",
+                        {
+                            "not": "feature:armor-innovation"
+                        }
+                    ],
+                    "requiresInvested": false,
+                    "selector": "ac",
+                    "value": 0
+                }
+            ],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": 0,
+            "strength": 0,
+            "traits": {
+                "rarity": "unique",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "4XYnZij3BqhFuayG": {
+        "_id": "4XYnZij3BqhFuayG",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Tales in Timber (Greater)",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "wooden-breastplate",
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Dozens of pictorial stories—told in wood carvings, painting, or pyrography—adorn every outer surface of this <em>+2 resilient wooden breastplate</em>. All are old, and many truly ancient, depicting tales set eons ago on the Plane of Wood. You gain a +2 item bonus to Nature checks to Recall Knowledge. If you know the @UUID[Compendium.pf2e.spells-srd.Item.Collective Memories] ritual, you can use Nature instead of Occultism if you're the primary caster.</p>\n<hr />\n<p><strong>Activate—Statue Disguise</strong> <span class=\"action-glyph\">2</span></p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The armor makes you look like a wooden statue version of one of the creatures depicted on the armor for 1 hour. This is a 3rd-rank @UUID[Compendium.pf2e.spells-srd.Item.Illusory Disguise], but it can make you look like any creature depicted on the armor. This doesn't change your size or the capabilities of your body, and it scales the appearance of the creature to match yours. You can Dismiss the activation. This disguise is just real enough to make you somewhat closer to a creature of wood. You're affected by two spells while it lasts: 4th-rank @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience] and @UUID[Compendium.pf2e.spells-srd.Item.Speak with Plants]. If you stand still, you gain a +2 item bonus to Deception checks and DCs to appear as an inanimate wooden statue, in addition to the status bonus to Deception from <em>illusory disguise</em>.</p>"
+            },
+            "dexCap": 2,
+            "group": "wood",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 13
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 2800
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": true,
+                "title": "Pathfinder Rage of Elements"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:recall-knowledge"
+                    ],
+                    "selector": "nature",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical",
+                    "wood"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "o9y5aRGsbH5x77Mn": {
+        "_id": "o9y5aRGsbH5x77Mn",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Tales in Timber (Major)",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "wooden-breastplate",
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Dozens of pictorial stories—told in wood carvings, painting, or pyrography—adorn every outer surface of this <em>+2 greater resilient wooden breastplate</em>. All are old, and many truly ancient, depicting tales set eons ago on the Plane of Wood. You gain a +3 item bonus to Nature checks to Recall Knowledge. If you know the @UUID[Compendium.pf2e.spells-srd.Item.Collective Memories] ritual, you can use Nature instead of Occultism if you're the primary caster.</p>\n<hr />\n<p><strong>Activate—Statue Disguise</strong> <span class=\"action-glyph\">2</span></p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The armor makes you look like a wooden statue version of one of the creatures depicted on the armor for 1 hour. This is a 3rd-rank @UUID[Compendium.pf2e.spells-srd.Item.Illusory Disguise], but it can make you look like any creature depicted on the armor. This doesn't change your size or the capabilities of your body, and it scales the appearance of the creature to match yours. You can Dismiss the activation. This disguise is just real enough to make you somewhat closer to a creature of wood. You're affected by two spells while it lasts: 6th-rank @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience] and @UUID[Compendium.pf2e.spells-srd.Item.Speak with Plants]. If you stand still, you gain a +2 item bonus to Deception checks and DCs to appear as an inanimate wooden statue, in addition to the status bonus to Deception from <em>illusory disguise</em>.</p>"
+            },
+            "dexCap": 2,
+            "group": "wood",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 22000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": true,
+                "title": "Pathfinder Rage of Elements"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:recall-knowledge"
+                    ],
+                    "selector": "nature",
+                    "type": "item",
+                    "value": 3
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical",
+                    "wood"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "gg6XF2dWafE0pcHu": {
+        "_id": "gg6XF2dWafE0pcHu",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Tales in Timber",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "wooden-breastplate",
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Dozens of pictorial stories—told in wood carvings, painting, or pyrography—adorn every outer surface of this <em>+1 resilient wooden breastplate</em>. All are old, and many truly ancient, depicting tales set eons ago on the Plane of Wood. You gain a +2 item bonus to Nature checks to Recall Knowledge. If you know the @UUID[Compendium.pf2e.spells-srd.Item.Collective Memories] ritual, you can use Nature instead of Occultism if you're the primary caster.</p>\n<hr />\n<p><strong>Activate—Statue Disguise</strong> <span class=\"action-glyph\">2</span></p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The armor makes you look like a wooden statue version of one of the creatures depicted on the armor for 1 hour. This is a 3rd-rank @UUID[Compendium.pf2e.spells-srd.Item.Illusory Disguise], but it can make you look like any creature depicted on the armor. This doesn't change your size or the capabilities of your body, and it scales the appearance of the creature to match yours. You can Dismiss the activation. This disguise is just real enough to make you somewhat closer to a creature of wood. You're affected by two spells while it lasts: @UUID[Compendium.pf2e.spells-srd.Item.Oaken Resilience] and @UUID[Compendium.pf2e.spells-srd.Item.Speak with Plants]. If you stand still, you gain a +2 item bonus to Deception checks and DCs to appear as an inanimate wooden statue, in addition to the status bonus to Deception from <em>illusory disguise</em>.</p>"
+            },
+            "dexCap": 2,
+            "group": "wood",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": true,
+                "title": "Pathfinder Rage of Elements"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:recall-knowledge"
+                    ],
+                    "selector": "nature",
+                    "type": "item",
+                    "value": 2
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical",
+                    "wood"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "KA0Ku5qOQfXqw3BK": {
+        "_id": "KA0Ku5qOQfXqw3BK",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Titan Nagaji Scales",
+        "system": {
+            "acBonus": 4,
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Note</strong> Titan Nagaji heritage only</p>\n<hr />\n<p>Your scales are medium armor in the plate armor group that grant a +4 item bonus to AC, a Dex cap of +1, a check penalty of –2, a Speed penalty of –5 feet, a Strength value of +3, and have the comfort trait.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "comfort"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "7cy9gLlKX2vNja0a": {
+        "_id": "7cy9gLlKX2vNja0a",
+        "img": "systems/pf2e/icons/default-icons/armor.svg",
+        "name": "Tough Skin",
+        "system": {
+            "acBonus": 4,
+            "baseItem": null,
+            "bulk": {
+                "value": 0
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p><strong>Note</strong> Tough Skin ancestry feat only</p>\n<hr />\n<p>Your skin is medium armor in the plate armor group that grants a +4 item bonus to AC, and has a Dex cap of +1, a check penalty of –2, a Speed penalty of –5 feet, a Strength value of +3, and the comfort trait. You can never wear other armor or remove your hide. You can etch armor runes onto your hide.</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 1
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {}
+            },
+            "publication": {
+                "license": "OGL",
+                "remaster": false,
+                "title": "Pathfinder Lost Omens Impossible Lands"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "comfort"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "1X0E707FWf9jJgPK": {
+        "_id": "1X0E707FWf9jJgPK",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Troll Hide",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Tissue from a living forest troll has been integrated through this hide armor. This armor has two organic receptacles on its back that can each hold a single @UUID[Compendium.pf2e.equipment-srd.Item.Elixir of Life (Lesser)]{Elixir of Life}. One elixir takes 3 Interact actions to install. For the armor to function properly, each elixir must be the same level.</p>\n<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<p><strong>Requirements</strong> Two elixirs of life are installed in the armor</p><hr /><p><strong>Effect</strong> Regenerating tissue from the armor fills your wounds for 8 rounds. At the start of each of your turns, you regain Hit Points equal to the level of the loaded elixirs. Each time you regain at least 13 Hit Points from the armor, you regrow one damaged or ruined organ. During a round that you regain 9 or more Hit Points from the armor, you can reattach severed body parts by spending an Interact action to hold the body part to the area it was severed from. If you take electricity or fire damage, the armor deactivates until the end of your next turn. (Similar armor from other types of trolls might be deactivated by different damage types.) In the event the armor itself is damaged, it will restore its own Hit Points before it resumes healing you. The activation uses up the elixirs, and the armor can't be activated again until two new ones are installed.</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 15
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "alchemical",
+                    "healing"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "tzFMetc4VK6goDm2": {
+        "_id": "tzFMetc4VK6goDm2",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Trollhound Vest",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This suit of <em>+1 hide armor</em> is sickly green and covered in thick warts and nodules, fashioned from the hide of a trollhound and imbued with some of the beast's vitality. Wearing this armor gives you a –1 circumstance penalty to all checks made using Diplomacy to interact with trolls and a +1 circumstance bonus to Diplomacy checks used to @UUID[Compendium.pf2e.actionspf2e.Item.Make an Impression] in communities traditionally plagued by troll attacks.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">r</span> (manipulate)</p>\n<p><strong>Trigger</strong> You take damage from a melee attack while you have half or fewer of your normal maximum Hit Points</p>\n<p><strong>Effect</strong> Your body knits itself back together, healing you for @Damage[3d8[healing]] Hit Points.</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the hides of at least two trollhounds.</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 6
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 230
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "target:trait:troll"
+                    ],
+                    "selector": "diplomacy",
+                    "slug": "trollhound-vest-penalty",
+                    "type": "circumstance",
+                    "value": -1
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        "action:make-an-impression",
+                        "troll-plagued-community"
+                    ],
+                    "selector": "diplomacy",
+                    "type": "circumstance",
+                    "value": 1
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "XKON66YXYLXlGPPg": {
+        "_id": "XKON66YXYLXlGPPg",
+        "img": "icons/equipment/chest/breastplate-gorget-steel-purple.webp",
+        "name": "Warleader's Bulwark (Greater)",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -3,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+2 resilient breastplate</em> is made from shining bronze overlaid with reinforcing golden panels emblazoned with images of loyal soldiers. Wearing this breastplate grants you a commanding aura. You gain a +3 item bonus to Diplomacy checks, but you take a -3 item penalty to Stealth checks to @UUID[Compendium.pf2e.actionspf2e.Item.Hide] and @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] and Deception checks to @UUID[Compendium.pf2e.actionspf2e.Item.Impersonate].</p><hr /><p><strong>Activate—Command Bravery</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You grant allies within 100 feet a +2 status bonus to saves against fear effects for 1 minute. When you activate this ability, each affected ally who's @UUID[Compendium.pf2e.conditionitems.Item.Frightened] reduces their frightened value by 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Command Bravery]</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 18
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 22000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "diplomacy",
+                    "type": "item",
+                    "value": 3
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        {
+                            "or": [
+                                "action:hide",
+                                "action:sneak",
+                                "action:impersonate"
+                            ]
+                        }
+                    ],
+                    "selector": [
+                        "deception",
+                        "stealth"
+                    ],
+                    "type": "item",
+                    "value": -3
+                }
+            ],
+            "runes": {
+                "potency": 2,
+                "property": [],
+                "resilient": 2
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 2,
+                    "property": [],
+                    "resilient": 2
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "RUEAV5LMUGFHcXcW": {
+        "_id": "RUEAV5LMUGFHcXcW",
+        "img": "icons/equipment/chest/breastplate-gorget-steel-purple.webp",
+        "name": "Warleader's Bulwark",
+        "system": {
+            "acBonus": 4,
+            "baseItem": "breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+1 resilient breastplate</em> is made from shining bronze overlaid with reinforcing golden panels emblazoned with images of loyal soldiers. Wearing this breastplate grants you a commanding aura. You gain a +2 item bonus to Diplomacy checks, but you take a -2 item penalty to Stealth checks to @UUID[Compendium.pf2e.actionspf2e.Item.Hide] and @UUID[Compendium.pf2e.actionspf2e.Item.Sneak] and Deception checks to @UUID[Compendium.pf2e.actionspf2e.Item.Impersonate].</p><hr /><p><strong>Activate—Command Bravery</strong> <span class=\"action-glyph\">1</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p><hr /><p><strong>Effect</strong> You grant allies within 100 feet a +2 status bonus to saves against fear effects for 1 minute. When you activate this ability, each affected ally who's @UUID[Compendium.pf2e.conditionitems.Item.Frightened] reduces their frightened value by 1.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Command Bravery]</p>"
+            },
+            "dexCap": 1,
+            "group": "plate",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 10
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 1000
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Player Core 2"
+            },
+            "quantity": 1,
+            "rules": [
+                {
+                    "key": "FlatModifier",
+                    "selector": "diplomacy",
+                    "type": "item",
+                    "value": 2
+                },
+                {
+                    "key": "FlatModifier",
+                    "predicate": [
+                        {
+                            "or": [
+                                "action:hide",
+                                "action:sneak",
+                                "action:impersonate"
+                            ]
+                        }
+                    ],
+                    "selector": [
+                        "deception",
+                        "stealth"
+                    ],
+                    "type": "item",
+                    "value": -2
+                }
+            ],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 1
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 1
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 3,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "tBGhH7AHyvJQZC5d": {
+        "_id": "tBGhH7AHyvJQZC5d",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Wolfjaw Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>Barbarians, druids and other outlanders are often forced to spend the harsh winter months protecting their communities from one of the deadliest predators to stalk the forests and taiga of the northern reaches, the fearsome witchwarg. This <em>+1 hide armor</em> is assembled from the hide and fur of a trio of witchwargs, and it conveys on the wearer both an attack akin to the witchwargs' deadly jaws and the ability to channel the frigid cold of the witchwarg's Winter Breath.</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">2</span> (cold, manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You breathe a cloud of frost in a @Template[cone|distance:15] that deals @Damage[5d8[cold]] damage (@Check[reflex|dc:23|basic]).</p><hr /><p><strong>Activate</strong> <span class=\"action-glyph\">1</span> (manipulate)</p>\n<p><strong>Frequency</strong> once per hour</p>\n<p><strong>Effect</strong> You gain a jaws unarmed attack that you make using your hands. This attack deals 1d8 piercing damage plus 1 cold damage, is in the brawling group, and has the trip and unarmed traits.</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Wolfjaw Armor]</p><hr /><p><strong>Craft Requirements</strong> The initial raw materials must include the hides of at least three witchwargs.</p>\n<p><em>Note: A duration for the activation effect was not included in the statblock by Paizo. We have assumed a 1 minute duration for the effect</em></p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 7
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 355
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": [
+                    "primal"
+                ]
+            }
+        },
+        "type": "armor"
+    },
+    "QPgkjNm2uIV5tsRd": {
+        "_id": "QPgkjNm2uIV5tsRd",
+        "img": "icons/equipment/chest/breastplate-collared-leather-brown.webp",
+        "name": "Wooden Breastplate",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "wooden-breastplate",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>A suit of carved and tempered wood, a wooden breastplate resembles a metal breastplate in shape and function. Such suits can be carved from large pieces of wood, but they most often come from wood coaxed magically from special trees, whether by druids, elves, fey, or plant creatures such as arboreals or leshies.</p>"
+            },
+            "dexCap": 2,
+            "group": "wood",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 0
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 6
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder Treasure Vault (Remastered)"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 0,
+                "property": [],
+                "resilient": 0
+            },
+            "size": "med",
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "common",
+                "value": []
+            }
+        },
+        "type": "armor"
+    },
+    "LTQDnvgZtY495c3x": {
+        "_id": "LTQDnvgZtY495c3x",
+        "img": "icons/equipment/chest/vest-leather-tattered-white.webp",
+        "name": "Zetogeki Hide Armor",
+        "system": {
+            "acBonus": 3,
+            "baseItem": "hide-armor",
+            "bulk": {
+                "value": 2
+            },
+            "category": "medium",
+            "checkPenalty": -2,
+            "containerId": null,
+            "description": {
+                "value": "<p>This <em>+1 fire-resistant hide armor</em> is adorned with the shale-like scales of the zetogeki, a giant reptile that dwells near sites of volcanic activity. Like the armor's namesake, you can adjust the scales to better absorb kinetic energy at the cost of some mobility.</p><hr /><p><strong>Activate—Shift Scales</strong> <span class=\"action-glyph\">1</span></p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> Until the end of your next turn, you gain resistance 5 to bludgeoning, piercing, and slashing damage, but your Speeds are reduced by 10 feet (minimum 5 feet).</p>\n<p>@UUID[Compendium.pf2e.equipment-effects.Item.Effect: Shift Scales]</p>"
+            },
+            "dexCap": 2,
+            "group": "leather",
+            "hardness": 0,
+            "hp": {
+                "max": 0,
+                "value": 0
+            },
+            "level": {
+                "value": 8
+            },
+            "material": {
+                "grade": null,
+                "type": null
+            },
+            "price": {
+                "value": {
+                    "gp": 500
+                }
+            },
+            "publication": {
+                "license": "ORC",
+                "remaster": true,
+                "title": "Pathfinder #208: Hoof, Cinder, and Storm"
+            },
+            "quantity": 1,
+            "rules": [],
+            "runes": {
+                "potency": 1,
+                "property": [
+                    "fireResistant"
+                ],
+                "resilient": 0
+            },
+            "size": "med",
+            "specific": {
+                "material": {
+                    "grade": null,
+                    "type": null
+                },
+                "runes": {
+                    "potency": 1,
+                    "property": [
+                        "fireResistant"
+                    ],
+                    "resilient": 0
+                }
+            },
+            "speedPenalty": -5,
+            "strength": 2,
+            "traits": {
+                "rarity": "uncommon",
+                "value": [
+                    "earth",
+                    "invested",
+                    "magical"
+                ]
+            }
+        },
+        "type": "armor"
+    }
+}
