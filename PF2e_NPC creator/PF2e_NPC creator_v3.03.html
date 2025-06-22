@@ -396,7 +396,7 @@
          @media print {
             @page { size: A4; margin: 15mm; @top-left { content: ""; } @top-right { content: ""; } @bottom-left { content: ""; } @bottom-right { content: ""; } }
             body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
-            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section, .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn { display: none !important; }
+            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section:not(#item-details-section), .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn, #json-output-container, #image-prompt-container { display: none !important; }
             .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
             #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
             h3, h4 { color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important; page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt; }
@@ -408,8 +408,9 @@
             p, ul, li { margin: 0 0 4pt 0; } ul { padding-left: 20px; } li { margin-bottom: 2pt; }
             .action-icon { width: 18px; height: 18px; line-height: 16px; font-size: 0.7rem; border-color: #000 !important; color: #000 !important; background: #fff !important; margin-right: 0.2rem; }
             #statblock-display-container > div:last-of-type, #statblock-display-container > div:last-of-type p:last-of-type { margin-bottom: 0 !important; }
-            #json-print-container:not(:empty), #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
-            #json-print-container:empty, #item-details-section:empty { display: none !important; }
+            #item-details-section:not(:empty) { display: block !important; page-break-before: always; }
+            #json-print-container:not(:empty) { display: block !important; page-break-before: always; }
+            #item-details-section:empty, #json-print-container:empty { display: none !important; }
             #json-print-container h4, #item-details-section h4 { font-size: 11pt; border-bottom: 1px solid #333; margin-bottom: 3pt; }
             #json-print-container pre { font-family: monospace; font-size: 7pt; color: #000; background-color: #f4f4f4; padding: 1em; border: 1px solid #ccc; white-space: pre-wrap; word-wrap: break-word; }
             a, i.lucide { display: none !important; }
@@ -512,8 +513,12 @@
                             <button id="history-next" class="btn" style="padding: 0.5rem; background-color: var(--button-main);"><i data-lucide="chevron-right" style="margin:0;"></i></button>
                         </div>
                     </div>
+                    
+                    <!-- CORRECTED ORDER FOR PDF EXPORT -->
                     <div id="statblock-display-container"></div>
+                    <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
                     <div id="json-print-container"></div>
+
                     <div id="image-prompt-container" class="form-section" style="margin-top: 2rem;">
                         <h4><i data-lucide="sparkles" style="color: var(--gold); display: inline-block; vertical-align: middle; margin-right: 0.5rem;"></i><span data-lang-key="imagePromptGenerator">Image Prompt Generator (AI)</span></h4>
                         <p data-lang-key="imagePromptIntro" style="font-size: 0.9rem;">Copy this prompt and paste it into an image generation tool like Gemini to get a visual representation of your creature.</p>
@@ -537,8 +542,6 @@
                             <button id="share-current-creature-btn" class="btn" style="background-color: var(--gold); flex: 1;"><i data-lucide="share-2"></i><span data-lang-key="shareCreature">Share</span></button>
                         </div>
                     </div>
-                    <!-- NEW: Item/Spell Details Section -->
-                    <div id="item-details-section" class="form-section" style="margin-top: 2rem;"></div>
                 </div>
             </div>
         </div>
@@ -594,7 +597,7 @@
 
     <!-- VERSION INFO -->
     <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
-        <span data-lang-key="version">Version</span>: 3.03
+        <span data-lang-key="version">Version</span>: 3.02
     </div>
 
 <script type="module">
@@ -761,6 +764,8 @@ const translations = {
         rangedAttacks: "Útoky na dálku",
         spellcasting: "Sesílání Kouzel",
         itemSpellDetails: "Detaily Předmětů a Kouzel",
+        items: "Předměty",
+        spells: "Kouzla",
         loreStory: "Lore / Příběh",
         strength: "Síla (Str)",
         dexterity: "Obratnost (Dex)",
@@ -977,6 +982,8 @@ const translations = {
         rangedAttacks: "Ranged Attacks",
         spellcasting: "Spellcasting",
         itemSpellDetails: "Item & Spell Details",
+        items: "Items",
+        spells: "Spells",
         loreStory: "Lore / Story",
         strength: "Strength (Str)",
         dexterity: "Dexterity (Dex)",
@@ -1273,11 +1280,14 @@ function transformInternalToFoundry(data) {
             if (!spell || !spell.name_en) return null;
             const spellData = findInDatabase(spell.name_en, state.gameData.spells);
             if (!spellData) {
+                // Fallback: create a stub item if not found.
                 return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}};
             }
-            // Create a full copy of the spell from DB to import into Foundry
-            const foundrySpell = JSON.parse(JSON.stringify(spellData)); // Deep copy
+            // **CORRECTED**: Create a full copy of the spell from the DB to import into Foundry.
+            const foundrySpell = JSON.parse(JSON.stringify(spellData)); // Deep copy.
             foundrySpell.system.location = { value: spellcastingEntryId };
+            // Ensure the _id is unique for this actor instance.
+            foundrySpell._id = generateId(); 
             return foundrySpell;
         };
 
@@ -1291,7 +1301,8 @@ function transformInternalToFoundry(data) {
         if (!item || !item.name) return;
         const itemData = findInDatabase(item.name, state.gameData.equipment);
         if (itemData) {
-             const foundryItem = JSON.parse(JSON.stringify(itemData));
+             const foundryItem = JSON.parse(JSON.stringify(itemData)); // Deep copy
+             foundryItem._id = generateId(); // Ensure unique ID for this actor
              items.push(foundryItem);
         }
     });
@@ -1415,53 +1426,65 @@ function renderItemDetails(creature) {
     const container = getElement('item-details-section');
     if (!creature || !state.gameData) {
         container.innerHTML = '';
+        container.style.display = 'none';
         return;
     }
 
-    let allItems = [];
-    if (creature.equipment) {
-        allItems = allItems.concat(creature.equipment.map(item => ({...item, isSpell: false})));
-    }
-    if (creature.spellcasting) {
-        const spells = (creature.spellcasting.cantrips || []).concat((creature.spellcasting.spells || []).flatMap(g => g.list || []));
-        allItems = allItems.concat(spells.map(spell => ({name: typeof spell === 'object' ? spell.name_en : spell, isSpell: true})));
-    }
+    const equipment = creature.equipment || [];
+    const spells = (creature.spellcasting?.cantrips || []).concat((creature.spellcasting?.spells || []).flatMap(g => g.list || []));
 
-    const uniqueItems = [...new Map(allItems.map(item => [item.name, item])).values()].filter(item => item.name); // Get unique items and filter out any with no name
-
-    if (uniqueItems.length === 0) {
+    if (equipment.length === 0 && spells.length === 0) {
         container.innerHTML = '';
+        container.style.display = 'none';
         return;
     }
 
-    let html = `<h4>${t.itemSpellDetails}</h4>`;
-    uniqueItems.forEach(item => {
-        const db = item.isSpell ? state.gameData.spells : state.gameData.equipment;
-        const data = findInDatabase(item.name, db);
-        const itemTypeLabel = item.isSpell ? (state.lang === 'cs' ? '(Kouzlo)' : '(Spell)') : (state.lang === 'cs' ? '(Předmět)' : '(Item)');
-        
-        html += `<div class="item-detail">`;
-        if (data) {
-            const actionCost = item.isSpell ? getSpellActionCost(data) : (data.system?.actions ? data.system.actions.value : null);
-            const sourceBook = data.system?.publication?.title || data.source?.book || 'N/A';
-            const sourcePage = data.system?.publication?.page || data.source?.page || 'N/A';
-            const description = data.system?.description?.value || data.description || '';
+    let html = `<h3>${t.itemSpellDetails}</h3>`;
 
-            html += `<h5>
-                        <div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div>
-                        <span>${data.name} <em style="font-weight:400; font-size: 0.9rem; color: var(--text-medium);">${itemTypeLabel}</em></span>
-                    </h5>
-                    <p><b>Source: </b><i>${sourceBook}</i></p>
-                    <hr>
-                    <div>${description}</div>`;
-        } else {
-            const notFoundKey = item.isSpell ? 'spellNotFound' : 'itemNotFound';
-            html += `<h5><span>${item.name} <em style="font-weight:400; font-size: 0.9rem; color: var(--text-medium);">${itemTypeLabel}</em></span></h5><p><em>${t[notFoundKey]}</em></p>`;
-        }
-        html += `</div>`;
-    });
+    if (equipment.length > 0) {
+        html += `<h4 data-lang-key="items">${t.items}</h4>`;
+        equipment.forEach(item => {
+            const data = findInDatabase(item.name, state.gameData.equipment);
+            html += `<div class="item-detail">`;
+            if (data) {
+                const actionCost = data.system?.actions ? data.system.actions.value : null;
+                const sourceBook = data.system?.publication?.title || 'N/A';
+                const description = data.system?.description?.value || '';
+                html += `<h5><div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div><span>${data.name}</span></h5>
+                         <p><b>Source: </b><i>${sourceBook}</i></p><hr><div>${description}</div>`;
+            } else {
+                html += `<h5><span>${item.name}</span></h5><p><em>${t.itemNotFound}</em></p>`;
+            }
+            html += `</div>`;
+        });
+    }
+
+    if (spells.length > 0) {
+        html += `<h4 data-lang-key="spells">${t.spells}</h4>`;
+        spells.forEach(spell => {
+            const en_name = typeof spell === 'object' ? spell.name_en : spell;
+            if (!en_name) return;
+            const cz_name = typeof spell === 'object' ? spell.name_cz : null;
+            const data = findInDatabase(en_name, state.gameData.spells);
+            html += `<div class="item-detail">`;
+            if (data) {
+                const displayName = (cz_name && state.lang === 'cs') ? `${en_name} (${cz_name})` : en_name;
+                const actionCost = getSpellActionCost(data);
+                const sourceBook = data.system?.publication?.title || 'N/A';
+                const description = data.system?.description?.value || '';
+                html += `<h5><div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div><span>${displayName}</span></h5>
+                         <p><b>Source: </b><i>${sourceBook}</i></p><hr><div>${description}</div>`;
+            } else {
+                html += `<h5><span>${en_name}</span></h5><p><em>${t.spellNotFound}</em></p>`;
+            }
+            html += `</div>`;
+        });
+    }
+
     container.innerHTML = html;
+    container.style.display = 'block';
 }
+
 
 // --- ENCOUNTER TAB LOGIC ---
 function setupEncounterListeners() { getElement('add-monster-btn').addEventListener('click', () => { addMonsterRow(); calculateEncounter(); }); getElements('#encounter-content input, #encounter-content select').forEach(el => el.addEventListener('change', calculateEncounter)); }
@@ -1500,7 +1523,7 @@ async function handleGenerate() {
 6.  Equipment 'name' MUST be the exact, official English name.`;
 
         const equipmentNames = state.gameData.equipment.map(item => item.name).filter(Boolean);
-        const equipmentInstruction = equipmentNames.length > 0 ? `When selecting equipment, you MUST choose items exclusively from this list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list.` : 'The creature should have no equipment.';
+        const equipmentInstruction = equipmentNames.length > 0 ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), give it suitable equipment (weapons, armor). When selecting equipment, you MUST choose items exclusively from this list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list.` : 'The creature should have no equipment.';
         
         const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${equipmentInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
         
@@ -1521,32 +1544,15 @@ async function loadAllGameData() {
     if (generateBtn) { generateBtn.disabled = true; const span = generateBtn.querySelector('span'); if (span) span.textContent = t.dataLoading; }
 
     const equipmentFiles = [
-        '_equipment_advanced_complete.json',
-        '_equipment_ammo_complete.json',
-        '_equipment_catalyst_complete.json',
-        '_equipment_drug_complete.json',
-        '_equipment_elixir_complete.json',
-        '_equipment_fulu_complete.json',
-        '_equipment_gadget_complete.json',
-        '_equipment_heavy-barding_complete.json',
-        '_equipment_heavy_complete.json',
-        '_equipment_light-barding_complete.json',
-        '_equipment_light_complete.json',
-        '_equipment_martial_complete.json',
-        '_equipment_medium_complete.json',
-        '_equipment_mutagen_complete.json',
-        '_equipment_oil_complete.json',
-        '_equipment_other_complete.json',
-        '_equipment_poison_complete.json',
-        '_equipment_potion_complete.json',
-        '_equipment_scroll_complete.json',
-        '_equipment_simple_complete.json',
-        '_equipment_snare_complete.json',
-        '_equipment_talisman_complete.json',
-        '_equipment_toolkit_complete.json',
-        '_equipment_unarmed_complete.json',
-        '_equipment_unarmored_complete.json',
-        '_equipment_wand_complete.json'
+        '_equipment_advanced_complete.json', '_equipment_ammo_complete.json', '_equipment_catalyst_complete.json',
+        '_equipment_drug_complete.json', '_equipment_elixir_complete.json', '_equipment_fulu_complete.json',
+        '_equipment_gadget_complete.json', '_equipment_heavy-barding_complete.json', '_equipment_heavy_complete.json',
+        '_equipment_light-barding_complete.json', '_equipment_light_complete.json', '_equipment_martial_complete.json',
+        '_equipment_medium_complete.json', '_equipment_mutagen_complete.json', '_equipment_oil_complete.json',
+        '_equipment_other_complete.json', '_equipment_poison_complete.json', '_equipment_potion_complete.json',
+        '_equipment_scroll_complete.json', '_equipment_simple_complete.json', '_equipment_snare_complete.json',
+        '_equipment_talisman_complete.json', '_equipment_toolkit_complete.json', '_equipment_unarmed_complete.json',
+        '_equipment_unarmored_complete.json', '_equipment_wand_complete.json'
     ];
 
     const mainDataFiles = {
@@ -1582,6 +1588,7 @@ async function loadAllGameData() {
         
         state.gameData = loadedData;
         console.log("All game data loaded and merged successfully.");
+        console.log(`Loaded ${loadedData.equipment.length} equipment items.`);
 
     } catch (error) {
         console.error("Critical error loading game data:", error);
@@ -1650,7 +1657,19 @@ window.onload = () => {
     getElement('copy-image-prompt-btn').addEventListener('click', (e) => copyToClipboard(getElement('image-prompt-output').value, e.currentTarget, translations[state.lang]));
     getElement('copy-json-btn').addEventListener('click', (e) => copyToClipboard(getElement('json-output').value, e.currentTarget, translations[state.lang]));
     getElement('download-json-btn').addEventListener('click', () => { if (!state.currentJson) return; const name = (state.currentCreature.name || 'Random').replace(/[^a-z0-9]/gi, '_'); const blob = new Blob([state.currentJson], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `PF2_FoundryNPC_${name}.json`; a.click(); URL.revokeObjectURL(a.href); });
-    getElement('export-pdf-btn').addEventListener('click', () => { if (!state.currentCreature) { alert(state.lang === 'cs' ? 'Nejprve vygenerujte stvoření.' : 'Please generate a creature first.'); return; } getElement('json-print-container').innerHTML = state.currentJson ? `<h4>${translations[state.lang].jsonStatblock}</h4><pre>${state.currentJson}</pre>` : ''; window.print(); });
+    getElement('export-pdf-btn').addEventListener('click', () => { 
+        if (!state.currentCreature) { 
+            alert(state.lang === 'cs' ? 'Nejprve vygenerujte stvoření.' : 'Please generate a creature first.'); 
+            return; 
+        } 
+        const jsonPrintContainer = getElement('json-print-container');
+        if (state.currentJson) {
+            jsonPrintContainer.innerHTML = `<h4>${translations[state.lang].jsonStatblock}</h4><pre>${state.currentJson}</pre>`;
+        } else {
+            jsonPrintContainer.innerHTML = '';
+        }
+        window.print(); 
+    });
     getElement('save-creature-btn').addEventListener('click', saveCurrentCreature);
     getElement('share-current-creature-btn').addEventListener('click', () => { if (state.currentCreature) handleShare(state.currentCreature, state.currentPrompt); else alert(state.lang === 'cs' ? 'Nejprve vygenerujte stvoření.' : 'First, generate a creature.'); });
     getElement('cancel-import-btn').addEventListener('click', () => getElement('import-modal').classList.remove('show'));
@@ -1665,6 +1684,7 @@ window.onload = () => {
     getElement('lang-btn').textContent = state.lang.toUpperCase();
     updateLanguage(); 
     renderStatblock(null); 
+    renderItemDetails(null);
     updateHistoryUI(); 
     if (typeof lucide !== 'undefined') lucide.createIcons(); 
     checkForShareDataInUrl();
