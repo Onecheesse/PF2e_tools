@@ -1,0 +1,1704 @@
+[
+  {
+    "_id": "kquBnQ0kObZztnBc",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "+1 Status to All Saves vs. Magic",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": ""
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "FlatModifier",
+          "predicate": [
+            "item:magical"
+          ],
+          "selector": "saving-throw",
+          "type": "status",
+          "value": 1
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "9qV49KjZujZnSp6w",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "All-Around Vision",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.AllAroundVision]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "ActiveEffectLike",
+          "mode": "override",
+          "path": "system.attributes.flanking.flankable",
+          "value": false
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "HBrBrUzjfvj2gDXB",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Aquatic Ambush",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.AquaticAmbush]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "RollOption",
+          "option": "aquatic-ambush",
+          "toggleable": true
+        },
+        {
+          "key": "EphemeralEffect",
+          "predicate": [
+            "aquatic-ambush"
+          ],
+          "selectors": [
+            "strike-attack-roll",
+            "strike-damage"
+          ],
+          "uuid": "Compendium.pf2e.conditionitems.Item.Off-Guard"
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "2YRDYVnC1eljaXKK",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "At-Will Spells",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.AtWillSpells]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "hFtNbo1LKYCoDy2O",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Attack of Opportunity",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.AttackOfOpportunity]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Bestiary"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "v61oEQaDdcRpaZ9X",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Aura",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Aura]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "nZMQh4AaBr291TUf",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Buck",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Check[reflex|dc:]</p>\n<p>@Localize[PF2E.NPC.Abilities.Glossary.Buck]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "uG0Z8PsyZtsYuvGR",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Catch Rock",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.CatchRock]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Bestiary"
+      },
+      "rules": [
+        {
+          "key": "RollOption",
+          "option": "catch-rock",
+          "toggleable": true
+        },
+        {
+          "key": "FlatModifier",
+          "predicate": [
+            "catch-rock"
+          ],
+          "selector": [
+            "ac",
+            "saving-throw"
+          ],
+          "type": "circumstance",
+          "value": 4
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "USyDPcSdzcm024zT",
+    "img": "systems/pf2e/icons/actions/TwoActions.webp",
+    "name": "Change Formation",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 2
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ChangeFormation]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder NPC Core"
+      },
+      "rules": [],
+      "traits": {
+        "value": [
+          "concentrate",
+          "move"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "eQM5hQ1W3d1uen97",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Change Shape",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ChangeShape]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": [
+          "concentrate",
+          "polymorph"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "kakyXBG5WA8c6Zfd",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Constant Spells",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ConstantSpells]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "g26YiEIfSHCpLocV",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Constrict",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Damage[(0)[bludgeoning]], @Check[fortitude|dc:|basic]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.Constrict]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "52CdldlWMiVTZk1F",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Coven",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Coven]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": [
+          "mental",
+          "occult"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "qCCLZhnp2HhP3Ex6",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Darkvision",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Darkvision]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "Z025dWgZtawbuRLI",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Disease",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Disease]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "zU3Ovaet4xQ5Gmvy",
+    "img": "systems/pf2e/icons/actions/TwoActions.webp",
+    "name": "Engulf",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 2
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Check[reflex|dc:], @Damage[(0)[damageType]] damage, Escape DC [0], Rupture [0]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.Engulf]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "fJSNOw4zHGbIm4bZ",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Fast Healing",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.FastHealing]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "FastHealing",
+          "value": 5
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "N1kstYbHScxgUQtN",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Ferocity",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "deathNote": true,
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Ferocity]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "OvqohW9YuahnFaiX",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Form Up",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.FormUp]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Bestiary 3"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "etMnv73EIdEZrYYu",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Frightful Presence",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>0 feet @Check[will|dc:]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.FrightfulPresence]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "Aura",
+          "radius": 0,
+          "slug": "frightful-presence",
+          "traits": [
+            "emotion",
+            "fear",
+            "mental"
+          ]
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": [
+          "aura",
+          "emotion",
+          "fear",
+          "mental"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "Tkd8sH4pwFIPzqTr",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Grab",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Grab]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "OmV6E3aELvq9CkK1",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Greater Constrict",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Damage[(0)[bludgeoning]], @Check[fortitude|dc:|basic]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.GreaterConstrict]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "4Ho2xMPEC05aSxzr",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Greater Darkvision",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.GreaterDarkvision]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "i18TlebMzwONyPhI",
+    "img": "systems/pf2e/icons/actions/FreeAction.webp",
+    "name": "Improved Grab",
+    "system": {
+      "actionType": {
+        "value": "free"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ImprovedGrab]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "LbnsT8yXchHMQT3t",
+    "img": "systems/pf2e/icons/actions/FreeAction.webp",
+    "name": "Improved Knockdown",
+    "system": {
+      "actionType": {
+        "value": "free"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ImprovedKnockdown]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "6l7e7CHQLESlI57U",
+    "img": "systems/pf2e/icons/actions/FreeAction.webp",
+    "name": "Improved Push",
+    "system": {
+      "actionType": {
+        "value": "free"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ImprovedPush]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "BCLvAx4Pz4MLa2pu",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Knockdown",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Knockdown]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "sebk9XseMCRkDqRg",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Lifesense",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Lifesense]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "I0HYG0ctCLP5JRsW",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Light Blindness",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.LightBlindness]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "fFu2sZz4KB01fVRc",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Low-Light Vision",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.LowLightVision]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "1obHWaFiFI1pnC3R",
+    "img": "systems/pf2e/icons/actions/ThreeActions.webp",
+    "name": "Master's Eye",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 3
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>The master observes the world through the raktavarna's eyes instead of their own, using the raktavarna's Perception and darkvision. This lasts until the end of the master's next turn, but the master can Sustain the activity.</p>\n<p>This ability functions at any range, even on different planes of existence. If the raktavarna dies while their master is using this ability, the master is @UUID[Compendium.pf2e.conditionitems.Item.Stunned]{Stunned 5}.</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "value": [
+          "concentrate",
+          "divine",
+          "scrying"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "wCnsRCHvtZkZTmO0",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Nimble Dodge",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p><strong>Trigger</strong> A creature targets you with an attack and you can see the attacker.</p>\n<p><strong>Requirements</strong> You are not encumbered</p>\n<hr />\n<p>You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Core Rulebook"
+      },
+      "rules": [
+        {
+          "domain": "ac",
+          "key": "RollOption",
+          "option": "nimble-dodge",
+          "toggleable": true
+        },
+        {
+          "key": "FlatModifier",
+          "predicate": [
+            "nimble-dodge"
+          ],
+          "selector": "ac",
+          "type": "circumstance",
+          "value": 2
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "kFv54DisTfCMTBEY",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Poison",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Poison]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "0B39GdScyZMPWalX",
+    "img": "systems/pf2e/icons/actions/TwoActions.webp",
+    "name": "Power Attack",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 2
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.PowerAttack]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": ""
+      },
+      "rules": [
+        {
+          "domain": "damage",
+          "key": "RollOption",
+          "option": "power-attack",
+          "toggleable": true
+        },
+        {
+          "diceNumber": 1,
+          "key": "DamageDice",
+          "predicate": [
+            "power-attack"
+          ],
+          "selector": "melee-strike-damage"
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "BYF0XL1ZtdkRda3u",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Pull",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Pull]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "t6cx9FOODmeZQNYl",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Push",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Push]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "W7SbTykXrNwxDzJc",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Reactive Strike",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ReactiveStrike]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "lR9R5Vld8Eu2Dha5",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Regeneration",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "deathNote": true,
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Regeneration]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "deactivatedBy": [],
+          "key": "FastHealing",
+          "type": "regeneration",
+          "value": 5
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "3JOi2cMcGhT3eze1",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Rend",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Rend]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "IQtb58p4EaeUzTN1",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Retributive Strike",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.RetributiveStrike]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Bestiary"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "rqfnQ5VHT5hxm25r",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Scent",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Scent]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "m4HQ2o5aPxjXf2kY",
+    "img": "systems/pf2e/icons/actions/Reaction.webp",
+    "name": "Shield Block",
+    "system": {
+      "actionType": {
+        "value": "reaction"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ShieldBlock]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "AWvNPE4U0kEJSL1T",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Sneak Attack",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>The creature's Strikes deal an additional 1d6 precision damage to @UUID[Compendium.pf2e.conditionitems.Item.Off-Guard] creatures.</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": "Pathfinder Bestiary"
+      },
+      "rules": [
+        {
+          "category": "precision",
+          "diceNumber": 1,
+          "dieSize": "d6",
+          "key": "DamageDice",
+          "predicate": [
+            "target:condition:off-guard"
+          ],
+          "selector": "strike-damage"
+        },
+        {
+          "key": "RollOption",
+          "label": "PF2E.SpecificRule.TOTMToggle.OffGuard",
+          "option": "target:condition:off-guard",
+          "toggleable": "totm"
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "PqGX4Dgy9siZJitH",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Stench",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Check[fortitude|dc:]</p><hr /><p>@Localize[PF2E.NPC.Abilities.Glossary.Stench]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "Aura",
+          "radius": 0,
+          "slug": "stench",
+          "traits": [
+            "olfactory"
+          ]
+        }
+      ],
+      "traits": {
+        "value": [
+          "aura",
+          "olfactory"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "uJSseLa57HZYSMUu",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Swallow Whole",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>[Listed Size], @Damage[(0)[bludgeoning]], Rupture [0]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.SwallowWhole]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": [
+          "attack"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "baA0nSMhQyFyJIia",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Swarm Mind",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.SwarmMind]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "kdhbPaBMK1d1fpbA",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Telepathy",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Telepathy]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": [
+          "aura",
+          "magical",
+          "mental"
+        ]
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "JcaIJLGGmst79f1Y",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Thoughtsense",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Thoughtsense]</p>"
+      },
+      "publication": {
+        "license": "OGL",
+        "remaster": false,
+        "title": ""
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "a0tx6exmB9v9CUsj",
+    "img": "systems/pf2e/icons/actions/OneAction.webp",
+    "name": "Throw Rock",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 1
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.ThrowRock]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "UNah0bxXxkcZjxO3",
+    "img": "systems/pf2e/icons/actions/ThreeActions.webp",
+    "name": "Trample",
+    "system": {
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 3
+      },
+      "category": "offensive",
+      "description": {
+        "value": "<p>[Size], [Listed Strike], @Check[reflex|dc:|basic]</p>\n<hr />\n<p>@Localize[PF2E.NPC.Abilities.Glossary.Trample]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "j2wsK6IsW5yMW1jW",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Tremorsense",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Tremorsense]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "EawOw47nHueUPnYc",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Troop Defenses",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.TroopDefenses]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder NPC Core"
+      },
+      "rules": [],
+      "traits": {
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "MXI6zwrvbQNIv7ji",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Troop Movement",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.TroopMovement]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder NPC Core"
+      },
+      "rules": [],
+      "traits": {
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "TTCw5NusiSSkJU1x",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Void Healing",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "defensive",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.NegativeHealing]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [
+        {
+          "key": "ActiveEffectLike",
+          "mode": "override",
+          "path": "system.attributes.hp.negativeHealing",
+          "value": true
+        }
+      ],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  },
+  {
+    "_id": "VdSMQ6yRZ3YXNXHL",
+    "img": "systems/pf2e/icons/actions/Passive.webp",
+    "name": "Wavesense",
+    "system": {
+      "actionType": {
+        "value": "passive"
+      },
+      "actions": {
+        "value": null
+      },
+      "category": "interaction",
+      "description": {
+        "value": "<p>@Localize[PF2E.NPC.Abilities.Glossary.Wavesense]</p>"
+      },
+      "publication": {
+        "license": "ORC",
+        "remaster": true,
+        "title": "Pathfinder Monster Core"
+      },
+      "rules": [],
+      "traits": {
+        "rarity": "common",
+        "value": []
+      }
+    },
+    "type": "action"
+  }
+]
