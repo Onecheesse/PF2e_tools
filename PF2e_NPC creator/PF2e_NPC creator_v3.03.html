@@ -446,10 +446,10 @@
         @media print {
             @page { size: A4; margin: 15mm; @top-left { content: ""; } @top-right { content: ""; } @bottom-left { content: ""; } @bottom-right { content: ""; } }
             body { background: #fff !important; color: #000 !important; font-family: 'Open Sans', sans-serif; font-size: 9pt; line-height: 1.2; margin: 0; padding: 0; }
-            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, .form-section, .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn { display: none !important; }
+            header, nav, footer, .tab-button, #generator-content > h2, #generator-content > p.mb-4, #image-prompt-container, #json-output-container, .flex.space-x-4, .modal-overlay, [style*="position: fixed"], h3[data-lang-key="generationResults"], #history-prev, #history-next, #history-counter, #save-creature-btn { display: none !important; }
             .main-content, #statblock-display-container { padding: 0 !important; border: none !important; box-shadow: none !important; background: none !important; }
             #statblock-display-container { display: block !important; width: 100%; box-sizing: border-box; page-break-after: avoid; }
-            #item-details-section { page-break-before: auto; page-break-inside: avoid; }
+            #item-details-section { page-break-before: auto; page-break-inside: avoid; margin-top: 2rem; }
             #json-print-container { page-break-before: always; }
             h3, h4, #item-details-section h5 { color: #000 !important; font-family: 'Cormorant Garamond', serif; border-color: #333 !important; page-break-after: avoid; margin-top: 10pt; margin-bottom: 3pt; }
             h3 { font-size: 18pt; } h4 { font-size: 11pt; border-bottom-width: 1px; }
@@ -1272,14 +1272,19 @@ function transformInternalToFoundry(data) {
     const getCorrectedDamageType = (type) => getCorrectedKeyword(type, CZECH_TO_ENGLISH_DAMAGE_MAP);
 
     (data.meleeAttacks || []).forEach(attack => {
+        if (!attack.name || !attack.toHit || !attack.damage) return;
         let reachValue = null;
         const filteredTraits = (attack.traits || []).filter(trait => { const reachMatch = trait.match(/^reach (\d+)/i); if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; } return true; });
         items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage?.formula || '1d4', damageType: getCorrectedDamageType(attack.damage?.type) } }, traits: { value: getCorrectedTraits(filteredTraits) }, ...(reachValue !== null && { reach: { value: reachValue } }) }});
     });
 
-    (data.rangedAttacks || []).forEach(attack => items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage?.formula || '1d4', damageType: getCorrectedDamageType(attack.damage?.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
+    (data.rangedAttacks || []).forEach(attack => {
+        if (!attack.name || !attack.toHit || !attack.damage) return;
+        items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage?.formula || '1d4', damageType: getCorrectedDamageType(attack.damage?.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }});
+    });
     
     (data.specialAbilities || []).forEach(ability => {
+        if (!ability.name || !ability.actionCost) return;
         const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
         if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
         else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
@@ -1295,11 +1300,20 @@ function transformInternalToFoundry(data) {
         const createSpellItem = (spell, level) => {
             if (!spell || !spell.name_en) return null;
             const spellData = findInDatabase(spell.name_en, state.gameData.spells);
-            if (!spellData) {
-                return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}};
+            const foundrySpell = {
+                _id: generateId(),
+                name: spell.name_en,
+                type: 'spell',
+                system: {
+                    level: { value: level },
+                    location: { value: spellcastingEntryId },
+                    description: { value: `<p>Official data for this spell could not be found.</p>` }
+                }
+            };
+            if (spellData && spellData._id) {
+                foundrySpell.system.sourceId = spellData._id;
+                delete foundrySpell.system.description; // Remove placeholder if found
             }
-            const foundrySpell = JSON.parse(JSON.stringify(spellData));
-            foundrySpell.system.location = { value: spellcastingEntryId };
             return foundrySpell;
         };
 
@@ -1313,12 +1327,13 @@ function transformInternalToFoundry(data) {
         if (!item || !item.name) return;
         const itemData = findInDatabase(item.name, state.gameData.equipment);
         if (itemData) {
-            const foundryItem = JSON.parse(JSON.stringify(itemData));
+            const foundryItem = JSON.parse(JSON.stringify(itemData)); // Full copy
+            foundryItem._id = generateId(); // Ensure unique ID within this actor
             items.push(foundryItem);
         }
     });
 
-    const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
+    const foundrySkills = {}; (data.skills || []).forEach(skill => { if(skill.name_en){ const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; }});
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
     const speedValue = parseInt(data.speed) || 25;
     
@@ -1340,56 +1355,6 @@ function updateLanguage() {
     if (state.activeTab === 'saved') renderSavedTab();
     renderStatblock(state.currentCreature);
     if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-function renderEncounterTab() {
-    const t = translations[state.lang]; const container = getElement('encounter-content');
-    container.innerHTML = `<h2 data-lang-key="encounterTitle">${t.encounterTitle}</h2><p class="mb-4" data-lang-key="encounterIntro">${t.encounterIntro}</p><div class="grid grid-cols-2 gap-8 mb-8" id="encounter-grid"><div><h3 data-lang-key="calculatorTitle">${t.calculatorTitle}</h3><div class="form-section"><label for="playerLevel" data-lang-key="playerLevel">${t.playerLevel}:</label><input type="number" id="playerLevel" value="1" min="1"></div><div class="form-section"><label for="numPlayers" data-lang-key="numPlayers">${t.numPlayers}:</label><input type="number" id="numPlayers" value="4" min="1"></div><div class="form-section"><label for="difficulty" data-lang-key="targetDifficulty">${t.targetDifficulty}:</label><select id="difficulty"><option value="trivial" data-lang-key="difficultyTrivial">${t.difficultyTrivial}</option><option value="low" data-lang-key="difficultyLow">${t.difficultyLow}</option><option value="moderate" selected data-lang-key="difficultyModerate">${t.difficultyModerate}</option><option value="severe" data-lang-key="difficultySevere">${t.difficultySevere}</option><option value="extreme" data-lang-key="difficultyExtreme">${t.difficultyExtreme}</option></select></div><h4 data-lang-key="addMonsters">${t.addMonsters}</h4><div id="monster-list"></div><button id="add-monster-btn" class="btn btn-secondary mt-4"><span data-lang-key="addMonster">${t.addMonster}</span></button></div><div><h3 data-lang-key="results">${t.results}</h3><div id="encounter-results" class="form-section"></div><h3 data-lang-key="rewards">${t.rewards}</h3><div id="encounter-rewards" class="form-section"></div></div></div><h3 data-lang-key="balancingTipsTitle">${t.balancingTipsTitle}</h3><ul class="list-disc list-inside space-y-2">${(t.balancingTips || []).map(tip => `<li>${tip}</li>`).join('')}</ul>`;
-    addMonsterRow(); calculateEncounter(); setupEncounterListeners();
-}
-
-function renderMonsterGuideTab() {
-     const t = translations[state.lang]; const container = getElement('monster-guide-content');
-    const guideSection = ({ titleKey, descKey, listKey, importantKey }) => { let listItemsHTML = (listKey ? (t[listKey] || []).map(item => `<li>${item}</li>`).join('') : ''); if (importantKey && t[importantKey]) { listItemsHTML = `<li>${t[importantKey]}</li>` + listItemsHTML; } return `<div class="form-section mb-8"><h3 data-lang-key="${titleKey}">${t[titleKey]}</h3>${descKey ? `<p class="mb-2" data-lang-key="${descKey}">${t[descKey]}</p>` : ''}${listItemsHTML ? `<ul class="list-disc list-inside space-y-2">${listItemsHTML}</ul>` : ''}</div>`; };
-    container.innerHTML = `<h2 data-lang-key="guideTitle">${t.guideTitle}</h2><p class="mb-4" data-lang-key="guideIntro">${t.guideIntro}</p>${guideSection({ titleKey: 'conceptRoleTitle', descKey: 'conceptRoleDesc', listKey: 'conceptRoleList' })}<div class="form-section mb-8"><h3 data-lang-key="statblockStructureTitle">${t.statblockStructureTitle}</h3><p data-lang-key="statblockStructureDesc">${t.statblockStructureDesc}</p><div style="overflow-x:auto;"><table style="min-width:100%; border-collapse: collapse; margin-top:1rem;"><thead><tr style="background-color: var(--border-strong); color: var(--text-light); text-align: left;"><th style="padding: 0.5rem;" data-lang-key="level">${t.level}</th><th style="padding: 0.5rem;">AC</th><th style="padding: 0.5rem;" data-lang-key="fortitude">${t.fortitude}</th><th style="padding: 0.5rem;" data-lang-key="reflex">${t.reflex}</th><th style="padding: 0.5rem;" data-lang-key="will">${t.will}</th><th style="padding: 0.5rem;">HP</th><th style="padding: 0.5rem;" data-lang-key="attack">${t.attack}</th><th style="padding: 0.5rem;" data-lang-key="damage">${t.damage}</th></tr></thead><tbody>
-        ${[{ level: 1, ac: 15, fort: '+4', ref: '+4', will: '+3', hp: 18, attack: '+7', dmg: 5 },{ level: 5, ac: 20, fort: '+11', ref: '+9', will: '+8', hp: 68, attack: '+13', dmg: 14 },{ level: 10, ac: 26, fort: '+18', ref: '+16', will: '+15', hp: 203, attack: '+20', dmg: 26 },{ level: 15, ac: 35, fort: '+26', ref: '+26', will: '+23', hp: 328, attack: '+28', dmg: 41 },{ level: 20, ac: 44, fort: '+32', ref: '+31', will: '+33', hp: 365, attack: '+35', dmg: 46 },].map((row, i) => `<tr style="background-color: ${i % 2 === 0 ? 'var(--paper-light)' : 'var(--paper-medium)'};">${Object.values(row).map(val => `<td style="padding: 0.5rem; border: 1px solid var(--border-subtle);">${val}</td>`).join('')}</tr>`).join('')}
-        </tbody></table></div><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="statblockTableDisclaimer">${t.statblockTableDisclaimer}</p></div><div class="form-section mb-8"><h3 data-lang-key="abilityGenerationTitle">${t.abilityGenerationTitle}</h3><p data-lang-key="abilityGenerationDesc1">${t.abilityGenerationDesc1}</p><p data-lang-key="abilityGenerationDesc2">${t.abilityGenerationDesc2}</p><ul class="list-disc list-inside space-y-1">${(t.abilityGenerationList || []).map(item => `<li>${item}</li>`).join('')}</ul><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="abilityGenerationDisclaimer">${t.abilityGenerationDisclaimer}</p></div>${guideSection({ titleKey: 'eliteWeakTemplatesTitle', descKey: 'eliteWeakTemplatesDesc', listKey: 'eliteWeakTemplatesList', importantKey: 'eliteWeakTemplatesImportant' })}<div class="form-section mb-8"><h3 data-lang-key="givingSpellsTitle">${t.givingSpellsTitle}</h3><p data-lang-key="givingSpellsDesc">${t.givingSpellsDesc}</p><ul class="list-disc list-inside space-y-1"><li>${t.spellTypes}</li><li>${t.spellSelection}</li><li><span>${t.spellDCAttacks}</span><div style="overflow-x:auto; margin-top: 0.5rem;"><table style="min-width:100%; border-collapse: collapse;"><thead><tr style="background-color: var(--border-strong); color: var(--text-light); text-align: left;"><th style="padding: 0.5rem;" data-lang-key="level">${t.level}</th><th>${t.dc} (${state.lang === 'cs' ? 'Extrémní' : 'Extreme'})</th><th>${t.attack} (${state.lang === 'cs' ? 'Extrémní' : 'Extreme'})</th><th>${t.dc} (${state.lang === 'cs' ? 'Vysoká' : 'High'})</th><th>${t.attack} (${state.lang === 'cs' ? 'Vysoká' : 'High'})</th></tr></thead><tbody>
-        ${[{ level: 1, dcE: 18, atkE: '+10', dcH: 17, atkH: '+9' },{ level: 5, dcE: 22, atkE: '+14', dcH: 21, atkH: '+13' },{ level: 10, dcE: 27, atkE: '+19', dcH: 26, atkH: '+18' },{ level: 15, dcE: 32, atkE: '+24', dcH: 31, atkH: '+23' },{ level: 20, dcE: 37, atkE: '+29', dcH: 36, atkH: '+28' },].map((row, i) => `<tr style="background-color: ${i % 2 === 0 ? 'var(--paper-light)' : 'var(--paper-medium)'};">${Object.values(row).map(val => `<td style="padding: 0.5rem; border: 1px solid var(--border-subtle);">${val}</td>`).join('')}</tr>`).join('')}
-        </tbody></table></div><p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 0.5rem;" data-lang-key="spellDCAttacksDisclaimer">${t.spellDCAttacksDisclaimer}</p></li></ul></div>${guideSection({ titleKey: 'loreIntegrationTitle', descKey: 'loreIntegrationDesc', listKey: 'loreIntegrationList' })}<div class="form-section mb-8"><h3 data-lang-key="cryptidTitle">${t.cryptidTitle}</h3><p data-lang-key="cryptidIntro">${t.cryptidIntro}</p><div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">${guideSection({ titleKey: 'experimentalCryptidTitle', descKey: 'experimentalCryptidDesc', listKey: 'experimentalCryptidList' })}${guideSection({ titleKey: 'mutantCryptidTitle', descKey: 'mutantCryptidDesc', listKey: 'mutantCryptidList' })}${guideSection({ titleKey: 'primevalCryptidTitle', descKey: 'primevalCryptidDesc', listKey: 'primevalCryptidList' })}${guideSection({ titleKey: 'rumoredCryptidTitle', descKey: 'rumoredCryptidDesc', listKey: 'rumoredCryptidList' })}</div></div>`;
-}
-
-function renderSavedTab() {
-    const t = translations[state.lang]; const container = getElement('saved-content');
-    const sortedCreatures = [...state.savedCreatures].sort((a, b) => b.id - a.id);
-    let content = `<h2 data-lang-key="savedCreaturesTitle">${t.savedCreaturesTitle}</h2>`;
-    if (sortedCreatures.length === 0) content += `<p data-lang-key="noSavedCreatures">${t.noSavedCreatures}</p>`;
-    else { content += `<div class="saved-creature-list">${sortedCreatures.map(item => `<div class="saved-creature-item" data-id="${item.id}"><h4>${item.creatureData.name}</h4><div class="saved-creature-meta"><span><strong>${t.level}:</strong> ${item.creatureData.level}</span><span><strong>${t.savedOn}</strong> ${new Date(item.timestamp).toLocaleString(state.lang)}</span></div><p class="saved-creature-prompt"><strong>${t.usedPrompt}</strong> ${item.prompt || (state.lang === 'cs' ? 'Náhodné stvoření' : 'Random creature')}</p><div class="saved-creature-actions"><button class="btn btn-primary btn-load" data-id="${item.id}"><i data-lucide="upload-cloud"></i> <span data-lang-key="loadCreature">${t.loadCreature}</span></button><button class="btn btn-secondary btn-share" data-id="${item.id}"><i data-lucide="share-2"></i> <span data-lang-key="shareCreature">${t.shareCreature}</span></button><button class="btn btn-danger btn-delete" data-id="${item.id}"><i data-lucide="trash-2"></i> <span data-lang-key="deleteCreature">${t.deleteCreature}</span></button></div></div>`).join('')}</div>`; }
-    container.innerHTML = content;
-    setupSavedTabListeners();
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-function getActionIcon(cost, t) {
-    if (!cost) return '';
-    const single = '<span class="action-icon">A</span>';
-    if (cost === '1' || cost === 1) return single;
-    if (cost === '2' || cost === 2) return single.repeat(2);
-    if (cost === '3' || cost === 3) return single.repeat(3);
-    if (cost === 'reaction') return '<span class="action-icon reaction">R</span>';
-    if (cost === 'free') return '<span class="action-icon free">F</span>';
-    if (cost === 'passive') return `<span style="color: var(--text-medium); font-style: italic; font-size: 0.9rem;">${t.passive || 'Passive'}</span>`;
-    return '';
-}
-
-function getSpellActionCost(spellData) {
-    if (!spellData || !spellData.system?.time?.value) return '';
-    const time = spellData.system.time.value.toLowerCase();
-    if (time.includes('reaction')) return 'reaction';
-    if (time.includes('free')) return 'free';
-    if (time.includes('1 action') || time.includes('one action')) return '1';
-    if (time.includes('2 actions') || time.includes('two actions')) return '2';
-    if (time.includes('3 actions') || time.includes('three actions')) return '3';
-    return '';
 }
 
 function renderStatblock(creature) {
@@ -1441,7 +1406,7 @@ function renderItemDetails(creature) {
         return;
     }
 
-    const allSpells = creature.spellcasting ? (creature.spellcasting.cantrips || []).concat((creature.spellcasting.spells || []).flatMap(g => g.list)) : [];
+    const allSpells = creature.spellcasting ? (creature.spellcasting.cantrips || []).concat((creature.spellcasting.spells || []).flatMap(g => g.list || [])) : [];
     const allEquipment = creature.equipment || [];
 
     if (allSpells.length === 0 && allEquipment.length === 0) {
@@ -1454,18 +1419,18 @@ function renderItemDetails(creature) {
 
     if (allSpells.length > 0) {
         html += `<h5>${t.detailsSpells}</h5>`;
-        const uniqueSpells = [...new Map(allSpells.map(s => [s.name_en, s])).values()];
+        const uniqueSpells = [...new Map(allSpells.map(s => s && [s.name_en, s])).values()].filter(Boolean);
         uniqueSpells.forEach(spell => {
-            if (!spell || !spell.name_en) return;
             const data = findInDatabase(spell.name_en, state.gameData.spells);
             if (data) {
                 const actionCost = getSpellActionCost(data);
+                const source = data.source || {};
                 html += `<div class="detail-entry">
                             <div class="detail-entry-header">
                                 <div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div>
                                 <span>${data.name}</span>
                             </div>
-                            <p class="detail-entry-source"><b>Source: </b><i>${data.source?.book || 'N/A'} pg. ${data.source?.page || 'N/A'}</i></p>
+                            <p class="detail-entry-source"><b>Source: </b><i>${source.book || 'N/A'} pg. ${source.page || 'N/A'}</i></p>
                             <hr>
                             <div>${data.description || ''}</div>
                          </div>`;
@@ -1475,18 +1440,18 @@ function renderItemDetails(creature) {
 
     if (allEquipment.length > 0) {
         html += `<h5>${t.detailsEquipment}</h5>`;
-        const uniqueEquipment = [...new Map(allEquipment.map(item => [item.name, item])).values()];
+        const uniqueEquipment = [...new Map(allEquipment.map(item => item && [item.name, item])).values()].filter(Boolean);
         uniqueEquipment.forEach(item => {
-            if (!item || !item.name) return;
             const data = findInDatabase(item.name, state.gameData.equipment);
              if (data) {
                 const actionCost = data.system?.actions ? data.system.actions.value : null;
+                const source = data.source || {};
                 html += `<div class="detail-entry">
                             <div class="detail-entry-header">
                                 <div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div>
                                 <span>${data.name}</span>
                             </div>
-                            <p class="detail-entry-source"><b>Source: </b><i>${data.source?.book || 'N/A'} pg. ${data.source?.page || 'N/A'}</i></p>
+                            <p class="detail-entry-source"><b>Source: </b><i>${source.book || 'N/A'} pg. ${source.page || 'N/A'}</i></p>
                             <hr>
                             <div>${data.description || ''}</div>
                          </div>`;
@@ -1566,22 +1531,19 @@ async function loadAllGameData() {
 
     try {
         const mainFilesPromises = Object.values(mainDataFiles).map(fetchJson);
-        const mainFilesData = await Promise.all(mainFilesPromises);
+        const equipmentPromises = equipmentFiles.map(file => fetchJson(`JSON/_equipment/${file}`));
+        
+        const [mainFilesData, equipmentDataArrays] = await Promise.all([
+            Promise.all(mainFilesPromises),
+            Promise.all(equipmentPromises)
+        ]);
         
         const loadedData = Object.keys(mainDataFiles).reduce((acc, key, index) => {
             acc[key] = mainFilesData[index];
             return acc;
         }, {});
 
-        const equipmentPromises = equipmentFiles.map(file => fetchJson(`JSON/_equipment/${file}`));
-        const equipmentDataArrays = await Promise.all(equipmentPromises);
-
         loadedData.equipment = equipmentDataArrays.flat();
-        
-        loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
-            if (spell && spell.name) map[spell.name.toLowerCase()] = spell;
-            return map;
-        }, {});
         
         state.gameData = loadedData;
         console.log("All game data loaded and merged successfully.");
