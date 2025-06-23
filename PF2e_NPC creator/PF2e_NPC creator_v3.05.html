@@ -1258,7 +1258,6 @@ function findInDatabase(name, dbArray) {
     return dbArray.find(item => item && item.name && item.name.toLowerCase() === trimmedName) || null;
 }
 
-// TUTO FUNKCI KOMPLETNĚ NAHRAĎTE VE SVÉM KÓDU
 function transformInternalToFoundry(data) {
     if (!data) return null;
     let items = [];
@@ -1274,21 +1273,26 @@ function transformInternalToFoundry(data) {
     const getCorrectedTraits = (traits) => (traits || []).map(t => getCorrectedKeyword(t, CZECH_TO_ENGLISH_TRAIT_MAP));
     const getCorrectedDamageType = (type) => getCorrectedKeyword(type, CZECH_TO_ENGLISH_DAMAGE_MAP);
 
-    // --- Ostatní věci (útoky, schopnosti, kouzla) zůstávají stejné ---
+    // Zpracování útoků
     (data.meleeAttacks || []).forEach(attack => {
         let reachValue = null;
         const filteredTraits = (attack.traits || []).filter(trait => { const reachMatch = trait.match(/^reach (\d+)/i); if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; } return true; });
         items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, traits: { value: getCorrectedTraits(filteredTraits) }, ...(reachValue !== null && { reach: { value: reachValue } }) }});
     });
     (data.rangedAttacks || []).forEach(attack => items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
+    
+    // OPRAVA ZDE: Správné zpracování Speciálních Schopností (Akcí)
     (data.specialAbilities || []).forEach(ability => {
         const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
         if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
         else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
         else if (cost === 'passive') { type = 'passive'; count = null; }
         else if (count === 1) icon = ' [A]'; else if (count === 2) icon = ' [AA]'; else if (count === 3) icon = ' [AAA]';
+        // TENTO ŘÁDEK CHYBĚL A TEĎ JE ZPÁTKY
         items.push({ _id: generateId(), name: `${ability.name}${icon}`, type: 'action', system: { description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` }, actionType: { value: type }, actions: { value: count }, traits: { value: getCorrectedTraits(ability.traits) } }});
     });
+
+    // Zpracování kouzel
     if (data.spellcasting && data.spellcasting.type) {
         const spellcastingEntryId = generateId();
         items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
@@ -1304,43 +1308,30 @@ function transformInternalToFoundry(data) {
         (data.spellcasting.cantrips || []).map(spell => createSpellItem(spell, 0)).filter(Boolean).forEach(item => items.push(item));
         (data.spellcasting.spells || []).forEach(group => { (group.list || []).map(spell => createSpellItem(spell, group.level)).filter(Boolean).forEach(item => items.push(item)); });
     }
-
-    // =================================================================
-    // ZDE JE KLÍČOVÁ OPRAVA A VYLEPŠENÍ PRO EXPORT VYBAVENÍ
-    // =================================================================
+    
+    // ZDE JE VYLEPŠENÝ EXPORT VYBAVENÍ
     if (state.gameData && state.gameData.equipment && data.equipment) {
         console.log("Exportuji vybavení do Foundry JSON...");
-        const allEquipment = state.gameData.equipment; // Použijeme už připravený "plochý" seznam
+        const allEquipment = state.gameData.equipment;
 
         (data.equipment || []).forEach(itemFromAI => {
             if (!itemFromAI || !itemFromAI.name) {
                 console.warn("AI vrátila item bez jména, přeskakuji.");
                 return;
             }
-
-            // Najdeme kompletní data pro item
             const itemData = findInDatabase(itemFromAI.name, allEquipment);
-
             if (itemData) {
-                // ÚSPĚCH: Našli jsme item v naší databázi
-                console.log(`ÚSPĚCH: Item "${itemFromAI.name}" nalezen v databázi. Přidávám do exportu.`);
-                
-                // Vytvoříme hlubokou kopii, abychom nezasahovali do původních dat
+                console.log(`ÚSPĚCH: Item "${itemFromAI.name}" nalezen. Přidávám do exportu.`);
                 const foundryItem = JSON.parse(JSON.stringify(itemData)); 
-                
-                // Dáme mu nové unikátní ID pro tohoto konkrétního NPC
                 foundryItem._id = generateId(); 
-                
-                // Přidáme kompletní item do seznamu pro export
                 items.push(foundryItem);
             } else {
-                // CHYBA: Item se nenašel. AI pravděpodobně vrátila jméno s překlepem.
-                console.warn(`CHYBA: Item "${itemFromAI.name}" vrácený AI nebyl nalezen v databázi. Nebude exportován.`);
+                console.warn(`CHYBA: Item "${itemFromAI.name}" od AI nebyl nalezen. Nebude exportován.`);
             }
         });
     }
 
-    // --- Sestavení finálního objektu (beze změny) ---
+    // Sestavení finálního objektu
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
     const speedValue = parseInt(data.speed) || 25;
