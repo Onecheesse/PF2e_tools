@@ -1331,7 +1331,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.7" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.8" }, }, items };
 }
 
 
@@ -1510,8 +1510,8 @@ function calculateEncounter() { const t = translations[state.lang]; const pLvl =
 
 // --- GENERATOR TAB LOGIC ---
 
-// Helper function to select a manageable list of equipment for the AI
-function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
+// UPDATED: Helper function to select a manageable list of equipment for the AI
+function selectEquipmentForPrompt(level, maxPerCategory = 8, totalMax = 160) {
     if (!state.gameData || !state.gameData.categorizedEquipment) return [];
     
     const allSelectedItems = [];
@@ -1521,13 +1521,17 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
         const itemsInCategory = state.gameData.categorizedEquipment[category];
         
         if (!Array.isArray(itemsInCategory)) {
-            console.warn(`Data for equipment category '${category}' is not an array, skipping. Content:`, itemsInCategory);
+            console.warn(`Data for equipment category '${category}' is not an array, skipping.`);
             continue;
         }
         
-        const levelAppropriateItems = itemsInCategory.filter(item => 
-            item && item.system && item.system.level && item.system.level.value <= level
-        );
+        // UPDATED FILTER: Include items with no level (or level 0) and level-appropriate items.
+        const levelAppropriateItems = itemsInCategory.filter(item => {
+            if (!item || !item.system) return false;
+            const itemLevel = item.system.level?.value;
+            // Include if level is not defined (level 0 items), or if level is <= creature level.
+            return typeof itemLevel === 'undefined' || itemLevel <= level;
+        });
 
         const shuffled = levelAppropriateItems.sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, maxPerCategory);
@@ -1541,15 +1545,18 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     return [...new Set(finalSelection.map(item => item.name).filter(Boolean))];
 }
 
-// NEW: Helper function to select spells for the AI prompt
+// UPDATED: Helper function to select spells for the AI prompt
 function selectSpellsForPrompt(creatureLevel, maxSpells = 200) {
     if (!state.gameData || !Array.isArray(state.gameData.spells)) return [];
 
+    // Max spell level for a creature is typically half its level, rounded up.
     const maxSpellSlot = Math.ceil(creatureLevel / 2);
 
-    const appropriateSpells = state.gameData.spells.filter(spell =>
-        spell && spell.system?.level?.value <= maxSpellSlot
-    );
+    const appropriateSpells = state.gameData.spells.filter(spell => {
+        if (!spell || !spell.system?.level?.value) return false;
+        // Include cantrips (level 0) and spells up to the max spell slot.
+        return spell.system.level.value <= maxSpellSlot;
+    });
 
     const shuffled = appropriateSpells.sort(() => 0.5 - Math.random());
     const selection = shuffled.slice(0, maxSpells);
@@ -1581,25 +1588,23 @@ async function handleGenerate() {
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
         const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
-1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
-2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
-3.  For physical resistance, create separate entries for 'slashing', 'piercing', and 'bludgeoning' if needed; do not use a generic 'physical'.
-4.  The 'type' in 'weaknesses' must be a damage type (e.g., 'cold'), not a generic word like 'vulnerability' or 'zranitelnost'.
-5.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
-6.  Equipment 'name' MUST be the exact, official English name.`;
+1.  All 'traits' in any part of the statblock.
+2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses'.
+3.  The 'name_en' for spells MUST be the exact, official English name.
+4.  Equipment 'name' MUST be the exact, official English name.`;
 
         const equipmentNames = selectEquipmentForPrompt(level);
-        const equipmentInstruction = equipmentNames.length > 0 
-            ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), you MUST equip it with suitable items (weapons, armor, etc.). When selecting equipment, you MUST choose items exclusively from this level-appropriate list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list. If the creature concept (like a natural beast or ooze) does not use equipment, do not assign any.` 
-            : 'The creature should have no equipment.';
-        
-        // NEW: Add instruction for spells
         const spellNames = selectSpellsForPrompt(level);
-        const spellInstruction = spellNames.length > 0
-            ? `If the creature casts spells, you MUST choose spells exclusively from this level-appropriate list: [${spellNames.join(', ')}]. The 'name_en' in the output JSON for a spell must be an exact match from this list. If the creature concept is not a spellcaster, do not assign any spells.`
-            : 'The creature should not have any spells.';
 
-        const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${equipmentInstruction} ${spellInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
+        // NEW, SIMPLIFIED PROMPT INSTRUCTION
+        const dataListsInstruction = `
+            When selecting equipment or spells, you MUST choose their English names ('name' for equipment, 'name_en' for spells) *exclusively* from the following lists.
+            - available_equipment: [${equipmentNames.join(', ')}]
+            - available_spells: [${spellNames.join(', ')}]
+            If the creature concept does not logically use equipment (e.g., a beast, ooze) or does not cast spells, leave the corresponding JSON fields as empty arrays. Do not invent items or spells not on these lists.
+        `;
+        
+        const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${dataListsInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
         
         const response = await fetch(`${API_URL}?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(statblockPayload) });
         if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.error?.message || `HTTP error: ${response.status}`); }
@@ -1719,7 +1724,7 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 window.onload = () => {
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.7`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.8`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
