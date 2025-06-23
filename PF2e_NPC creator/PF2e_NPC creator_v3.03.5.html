@@ -1130,7 +1130,7 @@ const SIZE_MAP_FOUNDRY_TO_APP = { tiny: 'Tiny', sm: 'Small', med: 'Medium', lg: 
 const SIZE_MAP_APP_TO_FOUNDRY = { Tiny: 'tiny', Small: 'sm', Medium: 'med', Large: 'lg', Huge: 'huge', Gargantuan: 'grg' };
 const CONDITION_UUID_MAP = { "frightened": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "vyděšený": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "paralyzed": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "paralyzovaný": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "drained": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "vysátý": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "confused": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "zmatený": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "slowed": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "zpomalený": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "stunned": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V", "omráčený": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V" };
 const API_KEY = "";
-const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 
 // --- STATE MANAGEMENT ---
@@ -1312,15 +1312,16 @@ function transformInternalToFoundry(data) {
         });
     }
     
-    // START CHANGE: Ensure equipment data is handled correctly
-    // The `data.equipment` now holds full item objects, not just names.
-    (data.equipment || []).forEach(itemData => {
-        if (!itemData || !itemData.name) return; // Skip if it's not a valid item object.
-        const foundryItem = JSON.parse(JSON.stringify(itemData)); // Deep copy the item data
-        foundryItem._id = generateId(); // Assign a new unique ID for Foundry
-        items.push(foundryItem);
+    (data.equipment || []).forEach(item => {
+        if (!item || !item.name) return;
+        const allEquipment = Object.values(state.gameData.categorizedEquipment).flat();
+        const itemData = findInDatabase(item.name, allEquipment);
+        if (itemData) {
+             const foundryItem = JSON.parse(JSON.stringify(itemData));
+             foundryItem._id = generateId();
+             items.push(foundryItem);
+        }
     });
-    // END CHANGE
 
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
@@ -1330,7 +1331,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.04" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.5" }, }, items };
 }
 
 
@@ -1390,12 +1391,11 @@ function getSpellActionCost(spellData) {
     const time = spellData.system.time.value.toLowerCase();
     if (time.includes('reaction')) return 'reaction';
     if (time.includes('free')) return 'free';
-    if (time.includes('1 action') || time.includes('one action') || time.includes('1 akce')) return '1';
-    if (time.includes('2 actions') || time.includes('two actions') || time.includes('2 akce')) return '2';
-    if (time.includes('3 actions') || time.includes('three actions') || time.includes('3 akce')) return '3';
+    if (time.includes('1 action') || time.includes('one action')) return '1';
+    if (time.includes('2 actions') || time.includes('two actions')) return '2';
+    if (time.includes('3 actions') || time.includes('three actions')) return '3';
     return '';
 }
-
 
 function renderStatblock(creature) {
     const t = translations[state.lang];
@@ -1404,33 +1404,27 @@ function renderStatblock(creature) {
     
     const renderAttacks = (attacks, typeKey) => (attacks && attacks.length > 0) ? `<div class="mb-4"><h4>${t[typeKey]}</h4>${attacks.map(attack => `<div class="attack-entry"><p><strong>${attack.name}</strong> <span style="color: var(--text-medium);">(${(attack.traits || []).join(', ') || t.noTraits})</span></p><p>${attack.toHit} ${t.toHit}, ${t.damage}: ${attack.damage.formula} ${attack.damage.type}${attack.range ? `, ${t.range}: ${attack.range}` : ''}</p></div>`).join('')}</div>` : '';
     
-    // START CHANGE: Update equipment rendering to show names from full item objects.
     const renderEquipment = (items) => {
         if (!items || items.length === 0) return '';
-        // Now `items` is an array of full objects, so we access `item.name`.
         const itemLinks = items.map(item => item.name).join(', ');
         return `<div class="mb-4"><h4>${t.equipment}</h4><p>${itemLinks}</p></div>`;
     };
-    // END CHANGE
 
     function renderSpellcasting(spellcasting, t) {
         if (!state.gameData || !state.gameData.spells || !spellcasting || !spellcasting.type || (!spellcasting.cantrips?.length && !spellcasting.spells?.length)) return '';
         const createSpellLinks = (spellList) => (spellList || []).map(spell => {
             const isObject = typeof spell === 'object' && spell !== null;
             const en_name = isObject ? spell.name_en : spell;
-            if (!en_name) return '';
+            if (!en_name) return ''; // Skip if name is missing
             const cz_name = isObject ? spell.name_cz : null;
             const displayName = (cz_name && state.lang === 'cs') ? `${en_name} (${cz_name})` : en_name;
-            
-            // This is the key part: Find the spell data to get its action cost.
             const spellData = findInDatabase(en_name, state.gameData.spells);
             const actionIcon = getActionIcon(getSpellActionCost(spellData), t);
-            
             return `<div style="display: flex; align-items: center; margin-bottom: 0.25rem;"><div class="action-icon-wrapper">${actionIcon}</div><span>${displayName}</span></div>`;
         }).join('');
 
         const cantripsHtml = createSpellLinks(spellcasting.cantrips);
-        const spellsByLevelHtml = (spellcasting.spells || []).sort((a, b) => b.level - a.level).map(group => `<div class="spell-level-group"><h4>${t.level} ${group.level}</h4><div>${createSpellLinks(group.list)}</div></div>`).join('');
+        const spellsByLevelHtml = (spellcasting.spells || []).sort((a, b) => a.level - b.level).map(group => `<div class="spell-level-group"><h4>${t.level} ${group.level}</h4><div>${createSpellLinks(group.list)}</div></div>`).join('');
         return `<div class="mb-4"><h4 data-lang-key="spellcasting">${t.spellcasting} (${spellcasting.type})</h4><p>${t.dc}: ${spellcasting.dc || 'N/A'}, ${t.attack}: ${spellcasting.attack || 'N/A'}</p><div class="spell-list-columns">${cantripsHtml ? `<div class="spell-level-group"><h4>${t.cantrips}</h4><div>${cantripsHtml}</div></div>` : ''}${spellsByLevelHtml}</div></div>`;
     }
 
@@ -1465,21 +1459,21 @@ function renderItemDetails(creature) {
 
     if (equipment.length > 0) {
         html += `<h4 data-lang-key="items">${t.items}</h4>`;
-        // START CHANGE: equipment is now an array of full item objects.
-        equipment.forEach(data => {
+        const allEquipment = Object.values(state.gameData.categorizedEquipment).flat();
+        equipment.forEach(item => {
+            const data = findInDatabase(item.name, allEquipment);
             html += `<div class="item-detail">`;
-            if (data && data.name) {
+            if (data) {
                 const actionCost = data.system?.actions ? data.system.actions.value : null;
                 const sourceBook = data.system?.publication?.title || 'N/A';
                 const description = data.system?.description?.value || '';
                 html += `<h5><div class="action-icon-wrapper">${getActionIcon(actionCost, t)}</div><span>${data.name}</span></h5>
                          <p><b>Source: </b><i>${sourceBook}</i></p><hr><div>${description}</div>`;
             } else {
-                 html += `<h5><span>${(state.lang === 'cs' ? 'Neznámý předmět' : 'Unknown Item')}</span></h5><p><em>${t.itemNotFound}</em></p>`;
+                html += `<h5><span>${item.name}</span></h5><p><em>${t.itemNotFound}</em></p>`;
             }
             html += `</div>`;
         });
-        // END CHANGE
     }
 
     if (spells.length > 0) {
@@ -1516,57 +1510,35 @@ function calculateEncounter() { const t = translations[state.lang]; const pLvl =
 
 // --- GENERATOR TAB LOGIC ---
 
-// START NEW FUNCTION: Find best equipment match based on AI description
-/**
- * Searches the equipment database to find the best item matching the AI's description.
- * @param {object} equipmentRequest - The object from AI with 'description' and 'keywords'.
- * @param {number} creatureLevel - The level of the creature, used for scoring.
- * @returns {object|null} The best matching full item object from the database, or null.
- */
-function findBestEquipmentMatch(equipmentRequest, creatureLevel) {
-    if (!equipmentRequest || !equipmentRequest.description || !state.gameData.equipment) return null;
+// NEW: Helper function to select a manageable list of equipment for the AI
+function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
+    if (!state.gameData || !state.gameData.categorizedEquipment) return [];
+    
+    const allSelectedItems = [];
+    const categories = Object.keys(state.gameData.categorizedEquipment);
 
-    const allItems = state.gameData.equipment;
-    const searchTokens = (equipmentRequest.description + ' ' + (equipmentRequest.keywords || []).join(' ')).toLowerCase().split(/\s+/).filter(Boolean);
+    for (const category of categories) {
+        const itemsInCategory = state.gameData.categorizedEquipment[category] || [];
+        
+        // Filter items by level
+        const levelAppropriateItems = itemsInCategory.filter(item => 
+            item && item.system && item.system.level && item.system.level.value <= level
+        );
 
-    let bestMatch = { item: null, score: -1 };
-
-    allItems.forEach(item => {
-        if (!item.name) return;
-
-        let score = 0;
-        const itemText = (
-            item.name + ' ' + 
-            (item.system?.category || '') + ' ' + 
-            (item.system?.group || '') + ' ' + 
-            (item.system?.traits?.value?.join(' ') || '')
-        ).toLowerCase();
-
-        // Score based on matching tokens
-        searchTokens.forEach(token => {
-            if (itemText.includes(token)) {
-                score++;
-            }
-        });
-
-        // Penalize if level is too far off, but don't disqualify
-        const itemLevel = item.system?.level?.value || 0;
-        const levelDifference = Math.abs(creatureLevel - itemLevel);
-        score -= levelDifference * 0.5;
-
-        // Give a bonus for exact name match fragments
-        if (item.name.toLowerCase().includes(searchTokens[0])) {
-            score += 2;
-        }
-
-        if (score > bestMatch.score) {
-            bestMatch = { item: item, score: score };
-        }
-    });
-
-    return bestMatch.item;
+        // Shuffle and take a sample
+        const shuffled = levelAppropriateItems.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, maxPerCategory);
+        
+        allSelectedItems.push(...selected);
+    }
+    
+    // Final shuffle and cap to total max
+    const finalShuffled = allSelectedItems.sort(() => 0.5 - Math.random());
+    const finalSelection = finalShuffled.slice(0, totalMax);
+    
+    // Return only the names, ensuring they are unique
+    return [...new Set(finalSelection.map(item => item.name).filter(Boolean))];
 }
-// END NEW FUNCTION
 
 async function handleGenerate() {
     const t = translations[state.lang];
@@ -1578,67 +1550,41 @@ async function handleGenerate() {
     generateBtn.disabled = true; generateBtn.innerHTML = `<i data-lucide="loader-2" style="animation: spin 1s linear infinite;"></i> ${t.generating}`; if (typeof lucide !== 'undefined') lucide.createIcons(); errorDiv.textContent = '';
     
     const userPrompt = getElement('generator-prompt').value.trim();
-    const level = getElement('creature-level').value;
+    const level = parseInt(getElement('creature-level').value, 10);
     const finalPrompt = userPrompt || (state.lang === 'cs' ? `Vymysli zcela nové a originální monstrum pro Pathfinder 2e vhodné pro úroveň ${level}. Dej mu kreativní české jméno, vzhled, chování a příběh. V názvu ani popisu nepoužívej slova 'náhodný' nebo 'stvoření'.` : `Invent a completely new and original monster for Pathfinder 2e suitable for level ${level}. Give it a creative name, appearance, behavior, and lore. Do not use the words 'random' or 'creature' in its name or description.`);
     
     const apiKey = state.localApiKey || API_KEY;
     try {
-        // --- START OF SCHEMA AND PROMPT CHANGES ---
-        
-        // 1. New schema for equipment: Ask for a description, not a specific name.
-        const equipmentSchema = {
-            type: "OBJECT",
-            properties: {
-                description: { type: "STRING", description: "A short, descriptive phrase for the item (e.g., 'masterwork longsword', 'heavy steel shield', 'potion of healing')." },
-                keywords: { type: "ARRAY", items: { type: "STRING" }, description: "Keywords like 'magical', 'alchemical', 'two-handed'." }
-            },
-            required: ["description"]
-        };
-
-        // 2. Updated schema for spells, still requiring exact names.
         const spellNameSchema = { type: "OBJECT", properties: { name_en: { type: "STRING" }, name_cz: { type: "STRING" } }, required: ["name_en"] };
         const spellcastingSchema = { type: "OBJECT", properties: { type: { type: "STRING" }, ability: { type: "STRING" }, dc: { type: "NUMBER" }, attack: { type: "STRING" }, cantrips: { type: "ARRAY", items: spellNameSchema }, spells: { type: "ARRAY", items: { type: "OBJECT", properties: { level: { type: "NUMBER" }, list: { type: "ARRAY", items: spellNameSchema } }, required: ["level", "list"] } } } };
-        
-        // 3. Main statblock schema using the new equipment schema.
         const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
-        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, 
-            equipment: { type: "ARRAY", items: equipmentSchema }, // Using the new schema here
-            meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
+        const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING", description: "MUST be an exact name from the provided list of valid equipment." }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
+        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
         
-        // 4. New, simpler instructions.
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
         const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
-1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile').
-2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'mental').
-3.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks.`;
+1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
+2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
+3.  For physical resistance, create separate entries for 'slashing', 'piercing', and 'bludgeoning' if needed; do not use a generic 'physical'.
+4.  The 'type' in 'weaknesses' must be a damage type (e.g., 'cold'), not a generic word like 'vulnerability' or 'zranitelnost'.
+5.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
+6.  Equipment 'name' MUST be the exact, official English name.`;
+
+        // NEW: Use the smart selection function
+        const equipmentNames = selectEquipmentForPrompt(level);
+        const equipmentInstruction = equipmentNames.length > 0 
+            ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), you MUST equip it with suitable items (weapons, armor, etc.). When selecting equipment, you MUST choose items exclusively from this level-appropriate list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list. If the creature concept (like a natural beast or ooze) does not use equipment, do not assign any.` 
+            : 'The creature should have no equipment.';
         
-        // New instruction for equipment: Tell the AI *how* to describe, not *what* to pick.
-        const equipmentInstruction = "For the 'equipment' field, describe suitable items based on the creature's concept. Do not provide specific item names, but rather a description (e.g., 'heavy crossbow', 'chain mail', 'minor healing potion').";
-
-        // New instruction for spells: Provide the list of valid spell names to prevent hallucination.
-        const spellNames = state.gameData.spells.map(spell => spell.name).filter(Boolean);
-        const spellInstruction = `If the creature casts spells, you MUST choose spell names exclusively from this list of valid English spell names: [${spellNames.join(', ')}]. The 'name_en' in the output JSON for a spell must be an exact match from this list.`;
-
-        const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${equipmentInstruction} ${spellInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
+        const statblockPayload = { contents: [{ role: "user", parts: [{ text: `Create a Pathfinder 2e Remastered creature. Concept: "${finalPrompt}". Generate ONLY JSON, strictly adhering to the schema. Stats must be appropriate for level ${level}. ${languageInstruction} ${exportRules} ${equipmentInstruction}` }] }], generationConfig: { responseMimeType: "application/json", responseSchema: statblockSchema } };
         
-        // --- END OF SCHEMA AND PROMPT CHANGES ---
-
         const response = await fetch(`${API_URL}?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(statblockPayload) });
         if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.error?.message || `HTTP error: ${response.status}`); }
         const responseData = await response.json();
-        const creatureDataFromAI = JSON.parse(responseData.candidates[0].content.parts[0].text);
+        const creatureData = JSON.parse(responseData.candidates[0].content.parts[0].text);
         
-        // --- START NEW PROCESSING STEP ---
-        // After getting the response, process the equipment requests.
-        const processedEquipment = (creatureDataFromAI.equipment || [])
-            .map(request => findBestEquipmentMatch(request, creatureDataFromAI.level))
-            .filter(Boolean); // Filter out any nulls if no match was found
-
-        creatureDataFromAI.equipment = processedEquipment;
-        // --- END NEW PROCESSING STEP ---
-
-        updateGeneratorState(creatureDataFromAI, userPrompt, level);
-        addToHistory(creatureDataFromAI, userPrompt, level);
+        updateGeneratorState(creatureData, userPrompt, level);
+        addToHistory(creatureData, userPrompt, level);
 
     } catch (err) { console.error("Error during generation:", err); errorDiv.textContent = `AI Generation Error: ${err.message}. Check console (F12).`; } finally { generateBtn.disabled = false; generateBtn.innerHTML = `<i data-lucide="sparkles"></i> ${t.generateCreature}`; if (typeof lucide !== 'undefined') lucide.createIcons(); }
 }
@@ -1680,11 +1626,21 @@ async function loadAllGameData() {
             acc[key] = mainFilesData[index];
             return acc;
         }, {});
-
-        const equipmentPromises = equipmentFiles.map(file => fetchJson(`JSON/_equipment/${file}`));
+        
+        // NEW: Categorize equipment as it's loaded
+        loadedData.categorizedEquipment = {};
+        const equipmentPromises = equipmentFiles.map(file => 
+            fetchJson(`JSON/_equipment/${file}`).then(items => {
+                // Use the filename to create a category key
+                const categoryKey = file.replace('_equipment_', '').replace('_complete.json', '').replace('-', '_');
+                loadedData.categorizedEquipment[categoryKey] = items;
+                return items; // return for flattening later
+            })
+        );
         const equipmentDataArrays = await Promise.all(equipmentPromises);
 
-        loadedData.equipment = equipmentDataArrays.flat();
+        // For backward compatibility and functions that need a flat list
+        loadedData.equipment = equipmentDataArrays.flat(); 
         
         loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
             if (spell && spell.name) map[spell.name.toLowerCase()] = spell;
@@ -1693,8 +1649,7 @@ async function loadAllGameData() {
         
         state.gameData = loadedData;
         console.log("All game data loaded and merged successfully.");
-        console.log(`Loaded ${loadedData.equipment.length} equipment items.`);
-        console.log(`Loaded ${loadedData.spells.length} spells.`);
+        console.log(`Loaded ${loadedData.equipment.length} equipment items into ${Object.keys(loadedData.categorizedEquipment).length} categories.`);
 
     } catch (error) {
         console.error("Critical error loading game data:", error);
@@ -1742,6 +1697,12 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 
 // --- INITIALIZATION AND EVENT LISTENERS ---
 window.onload = () => {
+    // Correctly locate the version span and update it.
+    const versionSpan = document.querySelector('div[style*="position: fixed"]');
+    if (versionSpan) {
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.5`;
+    }
+
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
     loadAllGameData();
     loadSavedCreaturesFromStorage();
