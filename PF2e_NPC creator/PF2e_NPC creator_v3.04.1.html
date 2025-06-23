@@ -1312,16 +1312,18 @@ function transformInternalToFoundry(data) {
         });
     }
     
-    (data.equipment || []).forEach(item => {
-        if (!item || !item.name) return;
-        const allEquipment = Object.values(state.gameData.categorizedEquipment).flat();
-        const itemData = findInDatabase(item.name, allEquipment);
-        if (itemData) {
-             const foundryItem = JSON.parse(JSON.stringify(itemData));
-             foundryItem._id = generateId();
-             items.push(foundryItem);
-        }
-    });
+    if (state.gameData && state.gameData.categorizedEquipment && data.equipment) {
+        (data.equipment || []).forEach(item => {
+            if (!item || !item.name) return;
+            const allEquipment = Object.values(state.gameData.categorizedEquipment).flat();
+            const itemData = findInDatabase(item.name, allEquipment);
+            if (itemData) {
+                 const foundryItem = JSON.parse(JSON.stringify(itemData));
+                 foundryItem._id = generateId();
+                 items.push(foundryItem);
+            }
+        });
+    }
 
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
@@ -1331,7 +1333,21 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.04, }, items };
+    return { 
+        name: data.name, 
+        type: 'npc', 
+        system: { 
+            details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, 
+            abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, 
+            attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, 
+            saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, 
+            perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, 
+            traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, 
+            skills: foundrySkills, 
+            source: { value: "PF2 NPC Generator v3.04" }, // OPRAVA ZDE
+            items 
+        } 
+    };
 }
 
 
