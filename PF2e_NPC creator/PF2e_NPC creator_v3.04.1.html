@@ -1570,7 +1570,7 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     return [...new Set(itemNames)];
 }
 
-async function handleGenerate() {
+sync function handleGenerate() {
     const t = translations[state.lang];
     const generateBtn = getElement('generate-btn');
     const errorDiv = getElement('generator-error');
@@ -1610,12 +1610,27 @@ async function handleGenerate() {
         const response = await fetch(`${API_URL}?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(statblockPayload) });
         if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.error?.message || `HTTP error: ${response.status}`); }
         const responseData = await response.json();
-        const creatureData = JSON.parse(responseData.candidates[0].content.parts[0].text);
+
+        // --- DETEKTIVNÍ KROK ZAČÍNÁ ZDE ---
+        // Než se pokusíme JSON zpracovat, podíváme se na něj.
+        const rawJsonText = responseData.candidates[0].content.parts[0].text;
+        console.log("RAW ODPOVĚĎ OD AI (před parsováním):");
+        console.log(rawJsonText); // Vypíšeme, co přesně AI poslala
+
+        const creatureData = JSON.parse(rawJsonText); // Tento řádek stále může selhat, ale teď uvidíme proč.
+        // --- DETEKTIVNÍ KROK KONČÍ ZDE ---
         
         updateGeneratorState(creatureData, userPrompt, level);
         addToHistory(creatureData, userPrompt, level);
 
-    } catch (err) { console.error("Error during generation:", err); errorDiv.textContent = `AI Generation Error: ${err.message}. Check console (F12).`; } finally { generateBtn.disabled = false; generateBtn.innerHTML = `<i data-lucide="sparkles"></i> ${t.generateCreature}`; if (typeof lucide !== 'undefined') lucide.createIcons(); }
+    } catch (err) { 
+        console.error("Error during generation:", err); 
+        errorDiv.textContent = `AI Generation Error: ${err.message}. Check console (F12).`; 
+    } finally { 
+        generateBtn.disabled = false; 
+        generateBtn.innerHTML = `<i data-lucide="sparkles"></i> ${t.generateCreature}`; 
+        if (typeof lucide !== 'undefined') lucide.createIcons(); 
+    }
 }
 
 async function loadAllGameData() {
