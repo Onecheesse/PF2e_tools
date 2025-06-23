@@ -1331,7 +1331,7 @@ function transformInternalToFoundry(data) {
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
 
-    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.5" }, }, items };
+    return { name: data.name, type: 'npc', system: { details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, skills: foundrySkills, source: { value: "PF2 NPC Generator v3.03.6" }, }, items };
 }
 
 
@@ -1510,7 +1510,7 @@ function calculateEncounter() { const t = translations[state.lang]; const pLvl =
 
 // --- GENERATOR TAB LOGIC ---
 
-// NEW: Helper function to select a manageable list of equipment for the AI
+// Helper function to select a manageable list of equipment for the AI
 function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     if (!state.gameData || !state.gameData.categorizedEquipment) return [];
     
@@ -1518,25 +1518,27 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     const categories = Object.keys(state.gameData.categorizedEquipment);
 
     for (const category of categories) {
-        const itemsInCategory = state.gameData.categorizedEquipment[category] || [];
+        const itemsInCategory = state.gameData.categorizedEquipment[category];
         
-        // Filter items by level
+        // BUGFIX: Defensively check if itemsInCategory is actually an array
+        if (!Array.isArray(itemsInCategory)) {
+            console.warn(`Data for equipment category '${category}' is not an array, skipping. Content:`, itemsInCategory);
+            continue; // Skip this category
+        }
+        
         const levelAppropriateItems = itemsInCategory.filter(item => 
             item && item.system && item.system.level && item.system.level.value <= level
         );
 
-        // Shuffle and take a sample
         const shuffled = levelAppropriateItems.sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, maxPerCategory);
         
         allSelectedItems.push(...selected);
     }
     
-    // Final shuffle and cap to total max
     const finalShuffled = allSelectedItems.sort(() => 0.5 - Math.random());
     const finalSelection = finalShuffled.slice(0, totalMax);
     
-    // Return only the names, ensuring they are unique
     return [...new Set(finalSelection.map(item => item.name).filter(Boolean))];
 }
 
@@ -1570,7 +1572,6 @@ async function handleGenerate() {
 5.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
 6.  Equipment 'name' MUST be the exact, official English name.`;
 
-        // NEW: Use the smart selection function
         const equipmentNames = selectEquipmentForPrompt(level);
         const equipmentInstruction = equipmentNames.length > 0 
             ? `If appropriate for the creature's concept (e.g. a warrior, guard, monster that uses tools), you MUST equip it with suitable items (weapons, armor, etc.). When selecting equipment, you MUST choose items exclusively from this level-appropriate list: [${equipmentNames.join(', ')}]. Do not invent any items not on this list. The 'name' in the output JSON for an item must be an exact match from the list. If the creature concept (like a natural beast or ooze) does not use equipment, do not assign any.` 
@@ -1627,19 +1628,16 @@ async function loadAllGameData() {
             return acc;
         }, {});
         
-        // NEW: Categorize equipment as it's loaded
         loadedData.categorizedEquipment = {};
         const equipmentPromises = equipmentFiles.map(file => 
             fetchJson(`JSON/_equipment/${file}`).then(items => {
-                // Use the filename to create a category key
                 const categoryKey = file.replace('_equipment_', '').replace('_complete.json', '').replace('-', '_');
                 loadedData.categorizedEquipment[categoryKey] = items;
-                return items; // return for flattening later
+                return items;
             })
         );
         const equipmentDataArrays = await Promise.all(equipmentPromises);
 
-        // For backward compatibility and functions that need a flat list
         loadedData.equipment = equipmentDataArrays.flat(); 
         
         loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
@@ -1697,10 +1695,9 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 
 // --- INITIALIZATION AND EVENT LISTENERS ---
 window.onload = () => {
-    // Correctly locate the version span and update it.
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.5`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.6`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
