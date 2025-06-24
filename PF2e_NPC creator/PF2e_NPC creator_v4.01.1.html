@@ -1345,7 +1345,7 @@ function transformInternalToFoundry(data) {
         let reachValue = null;
         const filteredTraits = (attack.traits || []).filter(trait => {
             const reachMatch = (trait || '').match(/^reach (\d+)/i);
-            if (reachMatch) { reachValue = parseInt(reachMatch, 10); return false; }
+            if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; }
             return true;
         });
         items.push({
@@ -1389,16 +1389,28 @@ function transformInternalToFoundry(data) {
         });
     });
     
+    // Process Spells and Equipment... (kód zůstává, je v pořádku)
+
     // --- Core Attribute and Trait Sanitization ---
     const structuredSenses = (data.senses || []).map(senseStr => {
-        if (!senseStr) return null;
+        if (!senseStr || typeof senseStr !== 'string') return null;
         const s = senseStr.toLowerCase().trim().replace(/[,.]$/, '');
         const match = s.match(/([\w-]+(?:\s[\w-]+)?)\s*(\d+)?/);
-        if (!match) return { type: s.replace(/ vision/g, '').trim() };
-        let type = match.replace(/ vision/g, '').replace(/ft/g, '').trim();
-        const value = match;
+
+        if (!match) {
+            const simpleType = s.replace(/ vision/g, '').trim();
+            if (simpleType) return { type: simpleType };
+            return null;
+        }
+
+        const type = match[1].replace(/ vision/g, '').replace(/ft/g, '').trim();
+        const value = match[2];
+        
         const senseObj = { type: type };
-        if (value) senseObj.value = parseInt(value);
+        if (value) {
+            senseObj.value = parseInt(value, 10);
+        }
+        
         return senseObj;
     }).filter(s => s && s.type);
 
@@ -1409,11 +1421,15 @@ function transformInternalToFoundry(data) {
     });
 
     let speedValue = parseInt(data.speed) || 25;
-    if (speedValue < 5 || speedValue % 5 !== 0) speedValue = 25; // Sanitize speed
+    if (speedValue < 5 || speedValue % 5 !== 0) speedValue = 25;
+    
+    const hpParts = (data.hp || '10').toString().split('/');
+    const hpValue = parseInt(hpParts[0]) || 10;
+    const hpMax = parseInt(hpParts[1]) || hpValue;
 
     const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), exceptions: [] } : null).filter(i => i && VALID_DAMAGE_TYPES.has(i.type));
-    const resistances = (data.resistances || []).map(r => { const p = (r || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(p), value: parseInt(p) || 0, exceptions: [] } : null }).filter(r => r && VALID_DAMAGE_TYPES.has(r.type));
-    const weaknesses = (data.weaknesses || []).map(w => { const p = (w || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(w), value: parseInt(w) || 0, exceptions: [] } : null }).filter(w => w && VALID_DAMAGE_TYPES.has(w.type));
+    const resistances = (data.resistances || []).map(r => { const p = (r || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(p[0]), value: parseInt(p[1]) || 0, exceptions: [] } : null }).filter(r => r && VALID_DAMAGE_TYPES.has(r.type));
+    const weaknesses = (data.weaknesses || []).map(w => { const p = (w || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(w[0]), value: parseInt(w[1]) || 0, exceptions: [] } : null }).filter(w => w && VALID_DAMAGE_TYPES.has(w.type));
 
     // Final Assembly
     return {
@@ -1423,8 +1439,8 @@ function transformInternalToFoundry(data) {
             abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } },
             attributes: {
                 ac: { value: parseInt(data.ac) || 10 },
-                hp: { value: parseInt(data.hp) || 10, max: parseInt(data.hp) || 10 },
-                speed: { value: speedValue },
+                hp: { value: hpValue, max: hpMax },
+                speed: { value: speedValue, otherSpeeds: [] },
                 immunities, resistances, weaknesses
             },
             saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } },
@@ -1436,12 +1452,11 @@ function transformInternalToFoundry(data) {
                 languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()), custom: "" }
             },
             skills: foundrySkills,
-            source: { value: `PF2 NPC Generator v4.02` },
+            source: { value: `PF2 NPC Generator v4.0.2` },
             items
         }
     };
 }
-
 
 // --- RENDER FUNCTIONS ---
 function updateLanguage() {
@@ -1892,7 +1907,7 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 window.onload = () => {
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 4.01.1`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 4.0.2`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
