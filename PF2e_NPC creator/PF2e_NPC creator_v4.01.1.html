@@ -1389,24 +1389,23 @@ function transformInternalToFoundry(data) {
         });
     });
     
-    // Process Spells and Equipment... (This code is fine)
-    
+    // Process Spells and Equipment... (This part is stable)
+
     // --- Core Attribute and Trait Sanitization (DEFINITIVE FIX) ---
     const structuredSenses = (data.senses || []).map(senseStr => {
         if (!senseStr || typeof senseStr !== 'string') return null;
         const s = senseStr.toLowerCase().trim().replace(/[,.]$/, '');
-        const match = s.match(/([\w-]+(?:\s[\w-]+)?)\s*(\d+)?/);
+        const match = s.match(/([\w\s-]+?)\s*(\d+)?\s*(ft\.?)?/); // Improved regex
 
-        if (!match) { // Handles simple senses like "low-light vision"
-            const simpleType = s.replace(/ vision/g, '').trim();
+        if (!match) {
+            const simpleType = s.replace(/\s*vision/g, '').trim();
             return simpleType ? { type: simpleType } : null;
         }
 
-        // Handles complex senses like "darkvision 60 ft"
-        const type = match[1].replace(/ vision/g, '').replace(/ft/g, '').trim();
+        const type = match[1].trim().replace(/\s*vision/g, '');
         const value = match[2]; // This will be the number string like "60", or undefined
 
-        if (!type) return null; // Discard if type is empty
+        if (!type) return null;
 
         const senseObj = { type: type };
         if (value) {
@@ -1414,7 +1413,8 @@ function transformInternalToFoundry(data) {
         }
         
         return senseObj;
-    }).filter(Boolean); // filter(Boolean) removes any nulls from the array
+    }).filter(Boolean);
+
 
     const foundrySkills = {};
     (data.skills || []).forEach(skill => {
@@ -1442,11 +1442,11 @@ function transformInternalToFoundry(data) {
             attributes: {
                 ac: { value: parseInt(data.ac) || 10 },
                 hp: { value: hpValue, max: hpMax },
-                speed: { value: speedValue }, // Corrected speed structure
+                speed: { value: speedValue },
                 immunities, resistances, weaknesses
             },
             saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } },
-            perception: { value: parseInt(data.perception) || 0, senses: structuredSenses }, // Corrected senses structure
+            perception: { value: parseInt(data.perception) || 0, senses: structuredSenses },
             traits: {
                 rarity: (data.rarity || 'common').toLowerCase(),
                 size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' },
@@ -1454,7 +1454,7 @@ function transformInternalToFoundry(data) {
                 languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()), custom: "" }
             },
             skills: foundrySkills,
-            source: { value: `PF2 NPC Generator v4.0.3` }, // Updated version
+            source: { value: `PF2 NPC Generator v4.0.4` }, // Updated version
             items
         }
     };
@@ -1909,7 +1909,7 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 window.onload = () => {
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 4.0.2`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 4.0.4`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
