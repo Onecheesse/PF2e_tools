@@ -621,7 +621,7 @@
 <script type="module">
 // This script contains all the logic for the application.
 
-// --- DATA & MAPPINGS ---
+// --- DATA & MAPPINGS (v4.02) ---
 const translations = {
     cs: {
         appName: "PF2 NPC Generator",
@@ -1139,9 +1139,8 @@ const CONDITION_UUID_MAP = {
     "prone": "Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60", "sražený": "Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60",
     "flat-footed": "Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg", "bez přípravy": "Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg",
 };
-
 const CZECH_TO_ENGLISH_DAMAGE_MAP = { 'oheň': 'fire', 'chlad': 'cold', 'kyselina': 'acid', 'elektřina': 'electricity', 'hrom': 'sonic', 'síla': 'force', 'jed': 'poison', 'mentální': 'mental', 'pozitivní': 'positive', 'negativní': 'negative', 'sečné': 'slashing', 'bodné': 'piercing', 'drtivé': 'bludgeoning', 'krvácení': 'bleed', 'fyzické': 'physical', 'nezařazené': 'untyped' };
-const CZECH_TO_ENGLISH_TRAIT_MAP = { 'éterický': 'ethereal', 'magický': 'magical', 'oheň': 'fire', 'voda': 'water', 'vzduch': 'air', 'země': 'earth', 'humanoid': 'humanoid', 'duch': 'spirit', 'nemrtvý': 'undead', 'zvíře': 'animal', 'bestie': 'beast', 'mrštný': 'agile', 'jemný': 'finesse', 'jed': 'poison', 'nemoc': 'disease', 'iluze': 'illusion', 'mentální': 'mental', 'ovládání': 'compulsion', 'vyvolání': 'evocation' }; // Added evocation
+const CZECH_TO_ENGLISH_TRAIT_MAP = { 'éterický': 'ethereal', 'magický': 'magical', 'oheň': 'fire', 'voda': 'water', 'vzduch': 'air', 'země': 'earth', 'humanoid': 'humanoid', 'duch': 'spirit', 'nemrtvý': 'undead', 'zvíře': 'animal', 'bestie': 'beast', 'mrštný': 'agile', 'jemný': 'finesse', 'jed': 'poison', 'nemoc': 'disease', 'iluze': 'illusion', 'mentální': 'mental', 'ovládání': 'compulsion', 'vyvolání': 'evocation', 'přesný': 'precise', 'trénovaný': 'trained' }; // Added precise, trained
 
 const API_KEY = "";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
@@ -1335,22 +1334,18 @@ function transformInternalToFoundry(data) {
     const generateId = () => (Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)).slice(0, 16);
 
     // --- Data Sanitization Setup ---
-    // Create a set of valid keywords to check against. This prevents invalid data from the AI from breaking the import.
     const VALID_DAMAGE_TYPES = new Set(Object.values(CZECH_TO_ENGLISH_DAMAGE_MAP));
     const VALID_TRAITS = new Set(Object.values(CZECH_TO_ENGLISH_TRAIT_MAP));
-
-    // Helper to sanitize traits
-    const sanitizeAndGetTraits = (traits) => {
-        if (!traits) return [];
-        return getCorrectedTraits(traits).filter(trait => VALID_TRAITS.has(trait));
-    };
+    const getCorrectedKeyword = (word, map) => { const lw = (word || 'untyped').trim().toLowerCase(); return map[lw] || lw; };
+    const getCorrectedDamageType = (type) => getCorrectedKeyword(type, CZECH_TO_ENGLISH_DAMAGE_MAP);
+    const sanitizeAndGetTraits = (traits) => (traits || []).map(t => getCorrectedKeyword(t, CZECH_TO_ENGLISH_TRAIT_MAP)).filter(trait => VALID_TRAITS.has(trait));
 
     // Process Attacks
     (data.meleeAttacks || []).forEach(attack => {
         let reachValue = null;
         const filteredTraits = (attack.traits || []).filter(trait => {
             const reachMatch = (trait || '').match(/^reach (\d+)/i);
-            if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; }
+            if (reachMatch) { reachValue = parseInt(reachMatch, 10); return false; }
             return true;
         });
         items.push({
@@ -1358,23 +1353,21 @@ function transformInternalToFoundry(data) {
             system: {
                 bonus: { value: parseInt(attack.toHit) || 0 },
                 damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } },
-                traits: { value: sanitizeAndGetTraits(filteredTraits) }, // Sanitized
+                traits: { value: sanitizeAndGetTraits(filteredTraits) },
                 ...(reachValue !== null && { reach: { value: reachValue } })
             }
         });
     });
     (data.rangedAttacks || []).forEach(attack => {
-        // AI sometimes mislabels ranged spells as attacks, we can try to catch that.
-        const isLikelySpell = (attack.traits || []).includes('evocation') || (attack.traits || []).includes('conjuration');
-        const itemType = isLikelySpell ? 'action' : 'melee';
-
+        const isLikelySpell = (attack.traits || []).some(t => ['evocation', 'conjuration', 'illusion'].includes(t));
         items.push({
-            _id: generateId(), name: attack.name, type: itemType, // Changed to be more dynamic
+            _id: generateId(), name: attack.name, type: 'melee',
             system: {
+                description: { value: isLikelySpell ? `<p>Ranged spell-like attack.</p>` : '' },
                 bonus: { value: parseInt(attack.toHit) || 0 },
                 damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } },
                 range: { value: parseInt(attack.range) || null },
-                traits: { value: sanitizeAndGetTraits(attack.traits) } // Sanitized
+                traits: { value: sanitizeAndGetTraits(attack.traits) }
             }
         });
     });
@@ -1386,60 +1379,43 @@ function transformInternalToFoundry(data) {
         if (cost === 'reaction') { type = 'reaction'; count = null; }
         else if (cost === 'free') { type = 'free'; count = null; }
         else if (cost === 'passive') { type = 'passive'; count = null; }
-
         items.push({
             _id: generateId(), name: ability.name, type: 'action',
             system: {
                 description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` },
                 actionType: { value: type }, actions: { value: count },
-                traits: { value: sanitizeAndGetTraits(ability.traits) } // Sanitized
+                traits: { value: sanitizeAndGetTraits(ability.traits) }
             }
         });
     });
-
-    // Process Spells (already robust)
-    if (data.spellcasting && data.spellcasting.type) {
-        // ... (tato část kódu zůstává stejná)
-    }
     
-    // Process Equipment (already robust)
-    if (state.gameData && state.gameData.equipment && data.equipment) {
-        // ... (tato část kódu zůstává stejná)
-    }
-
-    // --- Sanitize Core Attributes ---
+    // --- Core Attribute and Trait Sanitization ---
     const structuredSenses = (data.senses || []).map(senseStr => {
         if (!senseStr) return null;
         const s = senseStr.toLowerCase().trim().replace(/[,.]$/, '');
-        const match = s.match(/(\w+(?:-\w+)?(?:\s\w+)?)\s*(\d+)?/);
-        if (!match) return { type: s.trim().replace(/ vision/g, '') }; // e.g. "low-light vision" -> "low-light"
-        let type = match[1].replace(/ vision/g, '').replace(/ft/g, '').trim();
-        const value = match[2] || "";
-        return { type, value: value.toString() };
+        const match = s.match(/([\w-]+(?:\s[\w-]+)?)\s*(\d+)?/);
+        if (!match) return { type: s.replace(/ vision/g, '').trim() };
+        let type = match.replace(/ vision/g, '').replace(/ft/g, '').trim();
+        const value = match;
+        const senseObj = { type: type };
+        if (value) senseObj.value = parseInt(value);
+        return senseObj;
     }).filter(s => s && s.type);
 
-    const structuredLanguages = { value: (data.languages || []).map(l => l.toLowerCase().trim()), custom: "" };
-    
     const foundrySkills = {};
     (data.skills || []).forEach(skill => {
         const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en];
         if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0 };
     });
 
-    const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
-    const speedValue = parseInt(data.speed) || 25;
+    let speedValue = parseInt(data.speed) || 25;
+    if (speedValue < 5 || speedValue % 5 !== 0) speedValue = 25; // Sanitize speed
 
-    // Sanitize immunities, resistances, weaknesses
-    const immunities = (data.immunities || [])
-        .map(i => i ? { type: getCorrectedDamageType(i), exceptions: [] } : null)
-        .filter(i => i && VALID_DAMAGE_TYPES.has(i.type)); // Filter out invalid types
-    const resistances = (data.resistances || [])
-        .map(r => { const parts = (r || '').split(' '); return parts.length === 2 ? { type: getCorrectedDamageType(parts[0]), value: parseInt(parts[1]) || 0, exceptions: [] } : null })
-        .filter(r => r && VALID_DAMAGE_TYPES.has(r.type)); // Filter out invalid types
-    const weaknesses = (data.weaknesses || [])
-        .map(w => { const parts = (w || '').split(' '); return parts.length === 2 ? { type: getCorrectedDamageType(parts[0]), value: parseInt(parts[1]) || 0, exceptions: [] } : null })
-        .filter(w => w && VALID_DAMAGE_TYPES.has(w.type)); // Filter out invalid types
+    const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), exceptions: [] } : null).filter(i => i && VALID_DAMAGE_TYPES.has(i.type));
+    const resistances = (data.resistances || []).map(r => { const p = (r || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(p), value: parseInt(p) || 0, exceptions: [] } : null }).filter(r => r && VALID_DAMAGE_TYPES.has(r.type));
+    const weaknesses = (data.weaknesses || []).map(w => { const p = (w || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(w), value: parseInt(w) || 0, exceptions: [] } : null }).filter(w => w && VALID_DAMAGE_TYPES.has(w.type));
 
+    // Final Assembly
     return {
         name: data.name, type: 'npc',
         system: {
@@ -1447,8 +1423,8 @@ function transformInternalToFoundry(data) {
             abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } },
             attributes: {
                 ac: { value: parseInt(data.ac) || 10 },
-                hp: { value: hpValue, max: hpMax, temp: 0 },
-                speed: { value: speedValue, otherSpeeds: [] },
+                hp: { value: parseInt(data.hp) || 10, max: parseInt(data.hp) || 10 },
+                speed: { value: speedValue },
                 immunities, resistances, weaknesses
             },
             saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } },
@@ -1456,11 +1432,11 @@ function transformInternalToFoundry(data) {
             traits: {
                 rarity: (data.rarity || 'common').toLowerCase(),
                 size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' },
-                value: sanitizeAndGetTraits(data.traits) || [], // Sanitized
-                languages: structuredLanguages
+                value: sanitizeAndGetTraits(data.traits) || [],
+                languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()), custom: "" }
             },
             skills: foundrySkills,
-            source: { value: `PF2 NPC Generator v4.01` },
+            source: { value: `PF2 NPC Generator v4.02` },
             items
         }
     };
