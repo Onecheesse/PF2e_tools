@@ -622,6 +622,7 @@
 // This script contains all the logic for the application.
 
 // --- DATA & MAPPINGS ---
+// --- DATA & MAPPINGS ---
 const translations = {
     cs: {
         appName: "PF2 NPC Generator",
@@ -1128,7 +1129,6 @@ const SKILL_MAP_FOUNDRY_TO_EN = { acr: 'Acrobatics', arc: 'Arcana', ath: 'Athlet
 const SKILL_MAP_EN_TO_FOUNDRY = Object.fromEntries(Object.entries(SKILL_MAP_FOUNDRY_TO_EN).map(([key, value]) => [value, key]));
 const SIZE_MAP_FOUNDRY_TO_APP = { tiny: 'Tiny', sm: 'Small', med: 'Medium', lg: 'Large', huge: 'Huge', grg: 'Gargantuan' };
 const SIZE_MAP_APP_TO_FOUNDRY = { Tiny: 'tiny', Small: 'sm', Medium: 'med', Large: 'lg', Huge: 'huge', Gargantuan: 'grg' };
-const CONDITION_UUID_MAP = { "frightened": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "vyděšený": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "paralyzed": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "paralyzovaný": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "drained": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "vysátý": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "confused": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "zmatený": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "slowed": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "zpomalený": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "stunned": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V", "omráčený": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V" };
 const API_KEY = "";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
@@ -1178,12 +1178,14 @@ function copyToClipboard(textToCopy, btnElem, t) {
 function formatFoundryVTTText(description) {
     if (!description) return '';
     let text = description;
+    const conditionMap = state.gameData.conditionMap || {};
     text = text.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `@Check[type:${type.toLowerCase()}|dc:${dc}${basic ? '|basic:true' : ''}]{${basic ? 'Basic ' : ''}${type.charAt(0).toUpperCase() + type.slice(1)} DC ${dc}}`);
     text = text.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `@Damage[${formula.trim()}[${type.trim()}${persistent ? ',persistent' : ''}]]{${formula.trim()} ${type.trim()} ${persistent ? 'persistent ' : ''}damage}`);
     text = text.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => {
-        const uuid = CONDITION_UUID_MAP[name.toLowerCase()];
+        const lowerCaseName = name.toLowerCase();
+        const uuid = conditionMap[lowerCaseName];
         const label = `${name.charAt(0).toUpperCase() + name.slice(1)} ${value}`;
-        return uuid ? `@UUID[${uuid}]{${label}}` : label;
+        return uuid ? `@UUID[${uuid}]{${label}}` : `<strong>${label}</strong>`;
     });
     text = text.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type}}`);
     return text;
@@ -1259,7 +1261,14 @@ function findInDatabase(name, dbArray) {
 }
 
 function transformInternalToFoundry(data) {
-    if (!data) return null;
+    console.log("--- ZAČÍNÁM PŘEKLAD PRO FOUNDRY ---");
+    if (!data) {
+        console.error("Chyba: Do překladu nepřišla žádná data.");
+        return null;
+    }
+
+    console.log("Data od AI, která překládám:", JSON.parse(JSON.stringify(data)));
+
     let items = [];
     const generateId = () => (Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)).slice(0, 16);
 
@@ -1273,75 +1282,63 @@ function transformInternalToFoundry(data) {
     const getCorrectedTraits = (traits) => (traits || []).map(t => getCorrectedKeyword(t, CZECH_TO_ENGLISH_TRAIT_MAP));
     const getCorrectedDamageType = (type) => getCorrectedKeyword(type, CZECH_TO_ENGLISH_DAMAGE_MAP);
 
-    // Zpracování útoků
-    (data.meleeAttacks || []).forEach(attack => {
-        let reachValue = null;
-        const filteredTraits = (attack.traits || []).filter(trait => { const reachMatch = trait.match(/^reach (\d+)/i); if (reachMatch) { reachValue = parseInt(reachMatch[1], 10); return false; } return true; });
-        items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, traits: { value: getCorrectedTraits(filteredTraits) }, ...(reachValue !== null && { reach: { value: reachValue } }) }});
-    });
-    (data.rangedAttacks || []).forEach(attack => items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
-    
-    // OPRAVA ZDE: Správné zpracování Speciálních Schopností (Akcí)
+    // --- Zpracování schopností a útoků ---
+    console.log("Zpracovávám útoky a schopnosti...");
+    (data.meleeAttacks || []).forEach(attack => { items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, traits: { value: getCorrectedTraits(attack.traits) } }}); });
+    (data.rangedAttacks || []).forEach(attack => { items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
     (data.specialAbilities || []).forEach(ability => {
         const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
         if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
         else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
         else if (cost === 'passive') { type = 'passive'; count = null; }
         else if (count === 1) icon = ' [A]'; else if (count === 2) icon = ' [AA]'; else if (count === 3) icon = ' [AAA]';
-        // TENTO ŘÁDEK CHYBĚL A TEĎ JE ZPÁTKY
         items.push({ _id: generateId(), name: `${ability.name}${icon}`, type: 'action', system: { description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` }, actionType: { value: type }, actions: { value: count }, traits: { value: getCorrectedTraits(ability.traits) } }});
     });
+    console.log(`Po zpracování schopností je v 'items' celkem ${items.length} položek.`);
 
-    // Zpracování kouzel
+    // --- Zpracování kouzel ---
     if (data.spellcasting && data.spellcasting.type) {
+        console.log("Zpracovávám kouzla...");
+        // ... (kód pro kouzla, který už fungoval) ...
         const spellcastingEntryId = generateId();
         items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
-        const createSpellItem = (spell, level) => {
-            if (!spell || !spell.name_en) return null;
-            const spellData = findInDatabase(spell.name_en, state.gameData.spells);
-            if (!spellData) { return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}}; }
-            const foundrySpell = JSON.parse(JSON.stringify(spellData));
-            foundrySpell.system.location = { value: spellcastingEntryId };
-            foundrySpell._id = generateId(); 
-            return foundrySpell;
-        };
+        const createSpellItem = (spell, level) => { if (!spell || !spell.name_en) return null; const spellData = findInDatabase(spell.name_en, state.gameData.spells); if (!spellData) { return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}}; } const foundrySpell = JSON.parse(JSON.stringify(spellData)); foundrySpell.system.location = { value: spellcastingEntryId }; foundrySpell._id = generateId(); return foundrySpell; };
         (data.spellcasting.cantrips || []).map(spell => createSpellItem(spell, 0)).filter(Boolean).forEach(item => items.push(item));
         (data.spellcasting.spells || []).forEach(group => { (group.list || []).map(spell => createSpellItem(spell, group.level)).filter(Boolean).forEach(item => items.push(item)); });
+        console.log(`Po zpracování kouzel je v 'items' celkem ${items.length} položek.`);
     }
-    
-    // ZDE JE VYLEPŠENÝ EXPORT VYBAVENÍ
+
+    // --- Zpracování vybavení ---
     if (state.gameData && state.gameData.equipment && data.equipment) {
-        console.log("Exportuji vybavení do Foundry JSON...");
+        console.log("Zpracovávám vybavení...");
         const allEquipment = state.gameData.equipment;
+        if (data.equipment.length === 0) { console.log("AI nevrátila žádné vybavení."); }
 
         (data.equipment || []).forEach(itemFromAI => {
-            if (!itemFromAI || !itemFromAI.name) {
-                console.warn("AI vrátila item bez jména, přeskakuji.");
-                return;
-            }
+            if (!itemFromAI || !itemFromAI.name) { console.warn("AI vrátila item bez jména, přeskakuji."); return; }
             const itemData = findInDatabase(itemFromAI.name, allEquipment);
             if (itemData) {
-                console.log(`ÚSPĚCH: Item "${itemFromAI.name}" nalezen. Přidávám do exportu.`);
-                const foundryItem = JSON.parse(JSON.stringify(itemData)); 
-                foundryItem._id = generateId(); 
+                console.log(`%cÚSPĚCH: Item "${itemFromAI.name}" nalezen. Přidávám do exportu.`, "color: lightgreen;");
+                const foundryItem = JSON.parse(JSON.stringify(itemData));
+                foundryItem._id = generateId();
                 items.push(foundryItem);
             } else {
-                console.warn(`CHYBA: Item "${itemFromAI.name}" od AI nebyl nalezen. Nebude exportován.`);
+                console.warn(`%cCHYBA: Item "${itemFromAI.name}" od AI nebyl nalezen. Nebude exportován.`, "color: orange;");
             }
         });
+        console.log(`Po zpracování vybavení je v 'items' celkem ${items.length} položek.`);
     }
 
-    // Sestavení finálního objektu
+    // --- Sestavení finálního objektu ---
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
     const speedValue = parseInt(data.speed) || 25;
     const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), source: null } : null).filter(Boolean);
     const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
-
-    return { 
-        name: data.name, 
-        type: 'npc', 
+    
+    const finalObject = { 
+        name: data.name, type: 'npc', 
         system: { 
             details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, 
             abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, 
@@ -1354,6 +1351,11 @@ function transformInternalToFoundry(data) {
             items 
         } 
     };
+
+    console.log("--- PŘEKLAD PRO FOUNDRY DOKONČEN ---");
+    console.log("Finální objekt pro export:", finalObject);
+
+    return finalObject;
 }
 
 
@@ -1532,7 +1534,7 @@ function calculateEncounter() { const t = translations[state.lang]; const pLvl =
 
 // --- GENERATOR TAB LOGIC ---
 
-// Helper function to select a manageable list of equipment for the AI
+// TUTO FUNKCI KOMPLETNĚ NAHRAĎTE VE SVÉM KÓDU
 function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     if (!state.gameData || !state.gameData.categorizedEquipment) {
         console.warn("Categorized equipment data is not available for selection.");
@@ -1567,12 +1569,7 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     return [...new Set(itemNames)];
 }
 
-/**
- * Algoritmus pro výběr vhodných kouzel pro stvoření.
- * @param {number} creatureLevel - Úroveň stvoření.
- * @param {string} tradition - Magická tradice ("arcane", "primal", atd.).
- * @returns {object} - Objekt se seznamem kantrip a kouzel.
- */
+// TUTO NOVOU FUNKCI PŘIDEJTE DO SVÉHO KÓDU
 function selectSpellsForCreature(creatureLevel, tradition) {
     if (!state.gameData || !Array.isArray(state.gameData.spells)) {
         console.warn("Spell data is not available for selection.");
@@ -1631,6 +1628,7 @@ function selectSpellsForCreature(creatureLevel, tradition) {
     };
 }
 
+
 async function handleGenerate() {
     const t = translations[state.lang];
     const generateBtn = getElement('generate-btn');
@@ -1659,10 +1657,14 @@ async function handleGenerate() {
         const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
-        const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
-1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
-2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
-3.  The 'spellcasting' object must be included ONLY if the creature is a spellcaster. If it's not, omit the 'spellcasting' key entirely.`;
+        const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords.
+This applies to all 'traits', 'damage' types, and 'equipment' names.
+To make descriptions interactive, use these special tags:
+- For a damage roll: [Damage:1d6+3|fire] or [Damage:2d8|slashing|persistent]
+- For a check or save: [Check:will|25] or [Check:acrobatics|30|basic]
+- To apply a condition: [Condition:frightened|2]
+- For a visual template: [Template:burst|10] or [Template:cone|30]
+Use these tags inside the 'description' field of abilities.`;
 
         const equipmentNames = selectEquipmentForPrompt(level);
         const equipmentInstruction = equipmentNames.length > 0 
@@ -1676,7 +1678,6 @@ async function handleGenerate() {
         const responseData = await response.json();
         const creatureData = JSON.parse(responseData.candidates[0].content.parts[0].text);
 
-        // --- KROK 2: POKUD AI VRÁTILA PROFIL KOUZELNÍKA, NÁŠ KÓD VYBERE KOUZLA ---
         if (creatureData.spellcasting) {
             const spellList = selectSpellsForCreature(level, creatureData.spellcasting.type);
             creatureData.spellcasting.cantrips = spellList.cantrips;
@@ -1710,7 +1711,6 @@ async function loadAllGameData() {
         conditions: 'JSON/conditions_complete.json',
         actions: 'JSON/actions_complete.json',
         bestiary_abilities: 'JSON/bestiary-ability-glossary-srd_complete.json',
-        // Načteme velký soubor jako "flatEquipment" (plochý seznam)
         flatEquipment: 'JSON/equipment_complete.json'
     };
 
@@ -1729,39 +1729,41 @@ async function loadAllGameData() {
             loadedData[key] = allData[index];
         });
 
-        // =================================================================
-        // ZDE JE TO KOUZLO: Automatické třídění podle kategorie v itemu
-        // =================================================================
         if (Array.isArray(loadedData.flatEquipment)) {
-            // Vytvoříme prázdný objekt pro naše "přihrádky"
             loadedData.categorizedEquipment = {};
-            // Projdeme každý item z velké hromady
             for (const item of loadedData.flatEquipment) {
-                // Najdeme jeho kategorii, pokud ji nemá, dáme ho do "other"
                 const category = item?.system?.category || 'other';
-                // Pokud přihrádka pro tuto kategorii ještě neexistuje, vytvoříme ji
                 if (!loadedData.categorizedEquipment[category]) {
                     loadedData.categorizedEquipment[category] = [];
                 }
-                // Vložíme item do správné přihrádky
                 loadedData.categorizedEquipment[category].push(item);
             }
         } else {
-            loadedData.categorizedEquipment = {}; // Pojistka
+            loadedData.categorizedEquipment = {};
         }
 
-        // Původní velkou hromadu přejmenujeme na 'equipment' pro zpětnou kompatibilitu
         loadedData.equipment = loadedData.flatEquipment;
-        delete loadedData.flatEquipment; // Už ji nepotřebujeme
+        delete loadedData.flatEquipment;
 
         loadedData.spellMap = (loadedData.spells || []).reduce((map, spell) => {
             if (spell && spell.name) map[spell.name.toLowerCase()] = spell;
             return map;
         }, {});
+        
+        // Vytvoření mapy kondicí
+        loadedData.conditionMap = (loadedData.conditions || []).reduce((map, condition) => {
+            if (condition && condition.name) {
+                map[condition.name.toLowerCase()] = `Compendium.pf2e.conditionitems.Item.${condition._id}`;
+            }
+            return map;
+        }, {});
+
 
         state.gameData = loadedData;
         console.log("Game data loaded. Equipment dynamically categorized.");
         console.log(`Loaded ${state.gameData.equipment.length} total items into ${Object.keys(state.gameData.categorizedEquipment).length} categories.`);
+        console.log(`Loaded ${Object.keys(state.gameData.conditionMap).length} conditions.`);
+
 
     } catch (error) {
         console.error("Critical error loading game data:", error);
