@@ -1389,30 +1389,32 @@ function transformInternalToFoundry(data) {
         });
     });
     
-    // Process Spells and Equipment... (kód zůstává, je v pořádku)
-
-    // --- Core Attribute and Trait Sanitization ---
+    // Process Spells and Equipment... (This code is fine)
+    
+    // --- Core Attribute and Trait Sanitization (DEFINITIVE FIX) ---
     const structuredSenses = (data.senses || []).map(senseStr => {
         if (!senseStr || typeof senseStr !== 'string') return null;
         const s = senseStr.toLowerCase().trim().replace(/[,.]$/, '');
         const match = s.match(/([\w-]+(?:\s[\w-]+)?)\s*(\d+)?/);
 
-        if (!match) {
+        if (!match) { // Handles simple senses like "low-light vision"
             const simpleType = s.replace(/ vision/g, '').trim();
-            if (simpleType) return { type: simpleType };
-            return null;
+            return simpleType ? { type: simpleType } : null;
         }
 
+        // Handles complex senses like "darkvision 60 ft"
         const type = match[1].replace(/ vision/g, '').replace(/ft/g, '').trim();
-        const value = match[2];
-        
+        const value = match[2]; // This will be the number string like "60", or undefined
+
+        if (!type) return null; // Discard if type is empty
+
         const senseObj = { type: type };
         if (value) {
             senseObj.value = parseInt(value, 10);
         }
         
         return senseObj;
-    }).filter(s => s && s.type);
+    }).filter(Boolean); // filter(Boolean) removes any nulls from the array
 
     const foundrySkills = {};
     (data.skills || []).forEach(skill => {
@@ -1428,8 +1430,8 @@ function transformInternalToFoundry(data) {
     const hpMax = parseInt(hpParts[1]) || hpValue;
 
     const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), exceptions: [] } : null).filter(i => i && VALID_DAMAGE_TYPES.has(i.type));
-    const resistances = (data.resistances || []).map(r => { const p = (r || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(p[0]), value: parseInt(p[1]) || 0, exceptions: [] } : null }).filter(r => r && VALID_DAMAGE_TYPES.has(r.type));
-    const weaknesses = (data.weaknesses || []).map(w => { const p = (w || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(w[0]), value: parseInt(w[1]) || 0, exceptions: [] } : null }).filter(w => w && VALID_DAMAGE_TYPES.has(w.type));
+    const resistances = (data.resistances || []).map(r => { const p = (r || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(p[0]), value: parseInt(p[1], 10) || 0, exceptions: [] } : null }).filter(r => r && VALID_DAMAGE_TYPES.has(r.type));
+    const weaknesses = (data.weaknesses || []).map(w => { const p = (w || '').split(' '); return p.length === 2 ? { type: getCorrectedDamageType(w[0]), value: parseInt(w[1], 10) || 0, exceptions: [] } : null }).filter(w => w && VALID_DAMAGE_TYPES.has(w.type));
 
     // Final Assembly
     return {
@@ -1440,11 +1442,11 @@ function transformInternalToFoundry(data) {
             attributes: {
                 ac: { value: parseInt(data.ac) || 10 },
                 hp: { value: hpValue, max: hpMax },
-                speed: { value: speedValue, otherSpeeds: [] },
+                speed: { value: speedValue }, // Corrected speed structure
                 immunities, resistances, weaknesses
             },
             saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } },
-            perception: { value: parseInt(data.perception) || 0, senses: structuredSenses },
+            perception: { value: parseInt(data.perception) || 0, senses: structuredSenses }, // Corrected senses structure
             traits: {
                 rarity: (data.rarity || 'common').toLowerCase(),
                 size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' },
@@ -1452,7 +1454,7 @@ function transformInternalToFoundry(data) {
                 languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()), custom: "" }
             },
             skills: foundrySkills,
-            source: { value: `PF2 NPC Generator v4.0.2` },
+            source: { value: `PF2 NPC Generator v4.0.3` }, // Updated version
             items
         }
     };
@@ -1734,7 +1736,7 @@ function selectSpellsForCreature(creatureLevel, tradition) {
     };
 }
 
-async function handleGenerate() {
+sync function handleGenerate() {
     const t = translations[state.lang];
     const generateBtn = getElement('generate-btn');
     const errorDiv = getElement('generator-error');
@@ -1761,7 +1763,6 @@ async function handleGenerate() {
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
         
-        // NEW: Stricter instructions and a "cheat sheet" for the AI
         const systemInstruction = `CRITICAL EXPORT RULES: You MUST follow these rules exactly for the JSON to be valid.
 1. Use ONLY official English Pathfinder 2e keywords for machine-readable fields. DO NOT translate them. This applies to:
    a. All 'traits' (e.g., 'humanoid', 'fire', 'agile', 'evocation', 'finesse'). DO NOT use non-existent traits like 'combat' or 'evocative'.
@@ -1801,6 +1802,7 @@ async function handleGenerate() {
         if (typeof lucide !== 'undefined') lucide.createIcons(); 
     }
 }
+
 
 async function loadAllGameData() {
     const t = translations[state.lang] || translations.en;
