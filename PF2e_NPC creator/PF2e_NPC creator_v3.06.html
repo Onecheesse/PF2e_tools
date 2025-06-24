@@ -615,13 +615,12 @@
 
     <!-- VERSION INFO -->
     <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
-        <span data-lang-key="version">Version</span>: 3.04
+        <span data-lang-key="version">Version</span>: 4.01
     </div>
 
 <script type="module">
 // This script contains all the logic for the application.
 
-// --- DATA & MAPPINGS ---
 // --- DATA & MAPPINGS ---
 const translations = {
     cs: {
@@ -1129,6 +1128,21 @@ const SKILL_MAP_FOUNDRY_TO_EN = { acr: 'Acrobatics', arc: 'Arcana', ath: 'Athlet
 const SKILL_MAP_EN_TO_FOUNDRY = Object.fromEntries(Object.entries(SKILL_MAP_FOUNDRY_TO_EN).map(([key, value]) => [value, key]));
 const SIZE_MAP_FOUNDRY_TO_APP = { tiny: 'Tiny', sm: 'Small', med: 'Medium', lg: 'Large', huge: 'Huge', grg: 'Gargantuan' };
 const SIZE_MAP_APP_TO_FOUNDRY = { Tiny: 'tiny', Small: 'sm', Medium: 'med', Large: 'lg', Huge: 'huge', Gargantuan: 'grg' };
+const CONDITION_UUID_MAP = {
+    "frightened": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL", "vyděšený": "Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL",
+    "paralyzed": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF", "paralyzovaný": "Compendium.pf2e.conditionitems.Item.6uEgoh53GbXuHpTF",
+    "drained": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N", "vysátý": "Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oP6N",
+    "confused": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA", "zmatený": "Compendium.pf2e.conditionitems.Item.yblD8fOR1J8bAsoA",
+    "slowed": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3", "zpomalený": "Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3",
+    "stunned": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V", "omráčený": "Compendium.pf2e.conditionitems.Item.01XIz3ESsD5TAb4V",
+    "grabbed": "Compendium.pf2e.conditionitems.Item.kWPEVR_uGb6k4Hjx", "chycený": "Compendium.pf2e.conditionitems.Item.kWPEVR_uGb6k4Hjx",
+    "prone": "Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60", "sražený": "Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60",
+    "flat-footed": "Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg", "bez přípravy": "Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg",
+};
+
+const CZECH_TO_ENGLISH_DAMAGE_MAP = { 'oheň': 'fire', 'chlad': 'cold', 'kyselina': 'acid', 'elektřina': 'electricity', 'hrom': 'sonic', 'síla': 'force', 'jed': 'poison', 'mentální': 'mental', 'pozitivní': 'positive', 'negativní': 'negative', 'sečné': 'slashing', 'bodné': 'piercing', 'drtivé': 'bludgeoning', 'krvácení': 'bleed', 'fyzické': 'physical', 'nezařazené': 'untyped' };
+const CZECH_TO_ENGLISH_TRAIT_MAP = { 'éterický': 'ethereal', 'magický': 'magical', 'oheň': 'fire', 'voda': 'water', 'vzduch': 'air', 'země': 'earth', 'humanoid': 'humanoid', 'duch': 'spirit', 'nemrtvý': 'undead', 'zvíře': 'animal', 'bestie': 'beast', 'mrštný': 'agile', 'jemný': 'finesse', 'jed': 'poison', 'nemoc': 'disease', 'iluze': 'illusion', 'mentální': 'mental', 'ovládání': 'compulsion' };
+
 const API_KEY = "";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
@@ -1175,31 +1189,116 @@ function copyToClipboard(textToCopy, btnElem, t) {
     document.body.removeChild(textArea);
 }
 
+/**
+ * Transforms a simple placeholder syntax into Foundry VTT's rich content links.
+ * @param {string} description The text containing placeholders.
+ * @returns {string} The transformed text with Foundry-compatible links.
+ */
 function formatFoundryVTTText(description) {
     if (!description) return '';
     let text = description;
-    const conditionMap = state.gameData.conditionMap || {};
-    text = text.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `@Check[type:${type.toLowerCase()}|dc:${dc}${basic ? '|basic:true' : ''}]{${basic ? 'Basic ' : ''}${type.charAt(0).toUpperCase() + type.slice(1)} DC ${dc}}`);
-    text = text.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `@Damage[${formula.trim()}[${type.trim()}${persistent ? ',persistent' : ''}]]{${formula.trim()} ${type.trim()} ${persistent ? 'persistent ' : ''}damage}`);
-    text = text.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => {
-        const lowerCaseName = name.toLowerCase();
-        const uuid = conditionMap[lowerCaseName];
-        const label = `${name.charAt(0).toUpperCase() + name.slice(1)} ${value}`;
-        return uuid ? `@UUID[${uuid}]{${label}}` : `<strong>${label}</strong>`;
+
+    // Regex for [Check:type|dc|options...]
+    // e.g., [Check:will|25] or [Check:reflex|30|basic] or [Check:athletics|22|traits:attack]
+    text = text.replace(/\[Check:(\w+)\|(\d+)(.*?)\]/g, (match, type, dc, optionsStr) => {
+        const options = (optionsStr || '').split('|').filter(Boolean);
+        let params = [`type:${type.toLowerCase()}`, `dc:${dc}`];
+        let label = `${type.charAt(0).toUpperCase() + type.slice(1)} DC ${dc}`;
+
+        options.forEach(opt => {
+            if (opt === 'basic') {
+                params.push('basic:true');
+                label = `Basic ${label}`;
+            } else if (opt.startsWith('traits:')) {
+                params.push(opt); // e.g., traits:attack,magical
+            }
+        });
+        return `[[@Check[${params.join('|')}]]{${label}]]`;
     });
-    text = text.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type}}`);
+    
+    // Regex for [Damage:formula|type|options...]
+    // e.g., [Damage:2d6+3|fire] or [Damage:4d8|slashing|persistent]
+    text = text.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(.*?)\]/g, (match, formula, type, optionsStr) => {
+        const options = (optionsStr || '').split('|').filter(Boolean);
+        let damageType = type.trim();
+        let label = `${formula.trim()} ${damageType}`;
+        let damageString = `${formula.trim()}[${damageType}`;
+        
+        if (options.includes('persistent')) {
+            damageString += ',persistent';
+            label += ' persistent';
+        }
+        damageString += ']';
+
+        return `[[@Damage[${damageString}]]{${label} damage}]]`;
+    });
+
+    // Regex for [Condition:name|value]
+    // e.g., [Condition:frightened|2]
+    text = text.replace(/\[Condition:(\w+)\|?(\d*)\]/g, (match, name, value) => {
+        const lowerName = name.toLowerCase();
+        const uuid = CONDITION_UUID_MAP[lowerName];
+        let label = `${name.charAt(0).toUpperCase() + name.slice(1)}`;
+        if (value) {
+           label += ` ${value}`;
+        }
+        return uuid ? `[[@UUID[${uuid}]{${label}]]]` : `<strong>${label}</strong>`;
+    });
+
+    // Regex for [Template:type|distance|options...]
+    // e.g., [Template:cone|60] or [Template:line|120|width:10]
+    text = text.replace(/\[Template:(\w+)\|(\d+)(.*?)\]/g, (match, type, distance, optionsStr) => {
+        const options = (optionsStr || '').split('|').filter(Boolean);
+        let params = [`type:${type.toLowerCase()}`, `distance:${distance}`];
+        options.forEach(opt => {
+            if (opt.startsWith('width:')) {
+                params.push(opt);
+            }
+        });
+        const label = `${distance}-foot ${type}`;
+        return `[[@Template[${params.join('|')}]]{${label}]]`;
+    });
+    
     return text;
 }
 
+
+/**
+ * Transforms rich content placeholders into human-readable text for the web UI.
+ * @param {string} text The text containing placeholders.
+ * @param {object} t The translation object.
+ * @returns {string} The transformed text for display.
+ */
 function formatDescriptionForDisplay(text, t) {
     if (!text) return '';
     let readableText = text;
-    readableText = readableText.replace(/\[Check:(\w+)\|(\d+)(?:\|(basic))?\]/g, (match, type, dc, basic) => `záchranný hod na ${t[type.charAt(0).toUpperCase() + type.slice(1)] || type} se SO ${dc}${basic ? ' základní' : ''}`);
-    readableText = readableText.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(?:\|(persistent))?\]/g, (match, formula, type, persistent) => `<strong>${formula.trim()}${persistent ? ' přetrvávajícího' : ''} ${type.trim()} ${t.damage || 'damage'}</strong>`);
-    readableText = readableText.replace(/\[Condition:(\w+)\|(\d+)\]/g, (match, name, value) => `<strong>${name.charAt(0).toUpperCase() + name.slice(1)} ${value}</strong>`);
-    readableText = readableText.replace(/\[Template:(\w+)\|(\d+)\]/g, (match, type, distance) => `<strong>${distance}-stopový ${type}</strong>`);
+    
+    readableText = readableText.replace(/\[Check:(\w+)\|(\d+)(.*?)\]/g, (match, type, dc, optionsStr) => {
+        const isBasic = (optionsStr || '').includes('basic');
+        const checkType = t[type.charAt(0).toUpperCase() + type.slice(1)] || type;
+        return `<strong>${isBasic ? 'základní ' : ''}${t.saves || 'záchranný hod'} na ${checkType} se SO ${dc}</strong>`;
+    });
+
+    readableText = readableText.replace(/\[Damage:([^|\]]+)\|([^|\]]+)(.*?)\]/g, (match, formula, type, optionsStr) => {
+        const isPersistent = (optionsStr || '').includes('persistent');
+        return `<strong>${formula.trim()}${isPersistent ? ' přetrvávajícího' : ''} ${type.trim()} ${t.damage || 'poškození'}</strong>`;
+    });
+    
+    readableText = readableText.replace(/\[Condition:(\w+)\|?(\d*)\]/g, (match, name, value) => {
+        let label = `${name.charAt(0).toUpperCase() + name.slice(1)}`;
+        if (value) label += ` ${value}`;
+        return `<strong>${label}</strong>`;
+    });
+    
+    readableText = readableText.replace(/\[Template:(\w+)\|(\d+)(.*?)\]/g, (match, type, distance, optionsStr) => {
+        const widthMatch = (optionsStr || '').match(/width:(\d+)/);
+        const widthText = widthMatch ? ` a šířce ${widthMatch[1]} stop` : '';
+        return `<strong>${distance}-stopový ${type}${widthText}</strong>`;
+    });
+
     return readableText;
 }
+
 
 function encodeCreatureForUrl(dataToEncode) {
     try {
@@ -1261,101 +1360,135 @@ function findInDatabase(name, dbArray) {
 }
 
 function transformInternalToFoundry(data) {
-    console.log("--- ZAČÍNÁM PŘEKLAD PRO FOUNDRY ---");
-    if (!data) {
-        console.error("Chyba: Do překladu nepřišla žádná data.");
-        return null;
-    }
-
-    console.log("Data od AI, která překládám:", JSON.parse(JSON.stringify(data)));
-
+    if (!data) return null;
     let items = [];
     const generateId = () => (Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)).slice(0, 16);
 
-    const CZECH_TO_ENGLISH_DAMAGE_MAP = { 'oheň': 'fire', 'chlad': 'cold', 'kyselina': 'acid', 'elektřina': 'electricity', 'hrom': 'sonic', 'síla': 'force', 'jed': 'poison', 'mentální': 'mental', 'pozitivní': 'positive', 'negativní': 'negative', 'sečné': 'slashing', 'bodné': 'piercing', 'drtivé': 'bludgeoning', 'krvácení': 'bleed', 'fyzické': 'physical' };
-    const CZECH_TO_ENGLISH_TRAIT_MAP = { 'éterický': 'ethereal', 'magický': 'magical', 'oheň': 'fire', 'voda': 'water', 'vzduch': 'air', 'země': 'earth', 'humanoid': 'humanoid', 'duch': 'spirit', 'nemrtvý': 'undead', 'zvíře': 'animal', 'bestie': 'beast', 'mrštný': 'agile', 'jemný': 'finesse', 'jed': 'poison' };
-    
     const getCorrectedKeyword = (word, map) => {
-        const lw = (word || 'untyped').toLowerCase();
+        const lw = (word || 'untyped').trim().toLowerCase();
         return map[lw] || lw;
     };
     const getCorrectedTraits = (traits) => (traits || []).map(t => getCorrectedKeyword(t, CZECH_TO_ENGLISH_TRAIT_MAP));
     const getCorrectedDamageType = (type) => getCorrectedKeyword(type, CZECH_TO_ENGLISH_DAMAGE_MAP);
 
-    // --- Zpracování schopností a útoků ---
-    console.log("Zpracovávám útoky a schopnosti...");
-    (data.meleeAttacks || []).forEach(attack => { items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, traits: { value: getCorrectedTraits(attack.traits) } }}); });
-    (data.rangedAttacks || []).forEach(attack => { items.push({ _id: generateId(), name: attack.name, type: 'melee', system: { bonus: { value: parseInt(attack.toHit) || 0 }, damageRolls: { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } }, range: { value: parseInt(attack.range) || null }, traits: { value: getCorrectedTraits(attack.traits) } }}));
+    // Process Attacks
+    (data.meleeAttacks || []).forEach(attack => {
+        let reachValue = null;
+        const filteredTraits = (attack.traits || []).filter(trait => { 
+            const reachMatch = (trait || '').match(/^reach (\d+)/i); 
+            if (reachMatch) { 
+                reachValue = parseInt(reachMatch[1], 10); 
+                return false; 
+            } 
+            return true; 
+        });
+        const damageRolls = { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } };
+        
+        items.push({ 
+            _id: generateId(), 
+            name: attack.name, 
+            type: 'melee', 
+            system: { 
+                bonus: { value: parseInt(attack.toHit) || 0 }, 
+                damageRolls, 
+                traits: { value: getCorrectedTraits(filteredTraits) },
+                ...(reachValue !== null && { reach: { value: reachValue } }) 
+            }
+        });
+    });
+
+    (data.rangedAttacks || []).forEach(attack => {
+        const damageRolls = { '0': { damage: attack.damage.formula, damageType: getCorrectedDamageType(attack.damage.type) } };
+        items.push({ 
+            _id: generateId(), 
+            name: attack.name, 
+            type: 'melee', // Foundry uses 'melee' for ranged weapon strikes too
+            system: { 
+                bonus: { value: parseInt(attack.toHit) || 0 }, 
+                damageRolls,
+                range: { value: parseInt(attack.range) || null }, 
+                traits: { value: getCorrectedTraits(attack.traits) } 
+            }
+        });
+    });
+    
+    // Process Special Abilities (Actions) with new formatting
     (data.specialAbilities || []).forEach(ability => {
-        const cost = ability.actionCost; let type = 'action', count = parseInt(cost) || null, icon = '';
+        const cost = ability.actionCost; 
+        let type = 'action', count = parseInt(cost) || null, icon = '';
         if (cost === 'reaction') { type = 'reaction'; icon = ' [R]'; count = null; }
         else if (cost === 'free') { type = 'free'; icon = ' [F]'; count = null; }
         else if (cost === 'passive') { type = 'passive'; count = null; }
         else if (count === 1) icon = ' [A]'; else if (count === 2) icon = ' [AA]'; else if (count === 3) icon = ' [AAA]';
-        items.push({ _id: generateId(), name: `${ability.name}${icon}`, type: 'action', system: { description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` }, actionType: { value: type }, actions: { value: count }, traits: { value: getCorrectedTraits(ability.traits) } }});
-    });
-    console.log(`Po zpracování schopností je v 'items' celkem ${items.length} položek.`);
-
-    // --- Zpracování kouzel ---
-    if (data.spellcasting && data.spellcasting.type) {
-        console.log("Zpracovávám kouzla...");
-        // ... (kód pro kouzla, který už fungoval) ...
-        const spellcastingEntryId = generateId();
-        items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
-        const createSpellItem = (spell, level) => { if (!spell || !spell.name_en) return null; const spellData = findInDatabase(spell.name_en, state.gameData.spells); if (!spellData) { return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}}; } const foundrySpell = JSON.parse(JSON.stringify(spellData)); foundrySpell.system.location = { value: spellcastingEntryId }; foundrySpell._id = generateId(); return foundrySpell; };
-        (data.spellcasting.cantrips || []).map(spell => createSpellItem(spell, 0)).filter(Boolean).forEach(item => items.push(item));
-        (data.spellcasting.spells || []).forEach(group => { (group.list || []).map(spell => createSpellItem(spell, group.level)).filter(Boolean).forEach(item => items.push(item)); });
-        console.log(`Po zpracování kouzel je v 'items' celkem ${items.length} položek.`);
-    }
-
-    // --- Zpracování vybavení ---
-    if (state.gameData && state.gameData.equipment && data.equipment) {
-        console.log("Zpracovávám vybavení...");
-        const allEquipment = state.gameData.equipment;
-        if (data.equipment.length === 0) { console.log("AI nevrátila žádné vybavení."); }
-
-        (data.equipment || []).forEach(itemFromAI => {
-            if (!itemFromAI || !itemFromAI.name) { console.warn("AI vrátila item bez jména, přeskakuji."); return; }
-            const itemData = findInDatabase(itemFromAI.name, allEquipment);
-            if (itemData) {
-                console.log(`%cÚSPĚCH: Item "${itemFromAI.name}" nalezen. Přidávám do exportu.`, "color: lightgreen;");
-                const foundryItem = JSON.parse(JSON.stringify(itemData));
-                foundryItem._id = generateId();
-                items.push(foundryItem);
-            } else {
-                console.warn(`%cCHYBA: Item "${itemFromAI.name}" od AI nebyl nalezen. Nebude exportován.`, "color: orange;");
+        
+        items.push({ 
+            _id: generateId(), 
+            name: `${ability.name}${icon}`, 
+            type: 'action', 
+            system: { 
+                description: { value: `<p>${formatFoundryVTTText(ability.description)}</p>` }, 
+                actionType: { value: type }, 
+                actions: { value: count }, 
+                traits: { value: getCorrectedTraits(ability.traits) } 
             }
         });
-        console.log(`Po zpracování vybavení je v 'items' celkem ${items.length} položek.`);
+    });
+
+    // Process Spells
+    if (data.spellcasting && data.spellcasting.type) {
+        const spellcastingEntryId = generateId();
+        items.push({ _id: spellcastingEntryId, name: `${data.spellcasting.type.charAt(0).toUpperCase() + data.spellcasting.type.slice(1)} Spells`, type: 'spellcastingEntry', system: { ability: { value: data.spellcasting.ability?.toLowerCase() || 'cha' }, tradition: { value: data.spellcasting.type.toLowerCase() || 'arcane' }, spelldc: { value: parseInt(data.spellcasting.attack) || 10, dc: parseInt(data.spellcasting.dc) || 10 } } });
+        const createSpellItem = (spell, level) => {
+            if (!spell || !spell.name_en) return null;
+            const spellData = findInDatabase(spell.name_en, state.gameData.spells);
+            if (!spellData) { return { _id: generateId(), name: spell.name_en, type: 'spell', system: { level: { value: level }, location: { value: spellcastingEntryId }, description: { value: `<p>Official data for this spell could not be found.</p>`}}}; }
+            const foundrySpell = JSON.parse(JSON.stringify(spellData));
+            foundrySpell.system.location = { value: spellcastingEntryId };
+            foundrySpell._id = generateId(); 
+            return foundrySpell;
+        };
+        (data.spellcasting.cantrips || []).map(spell => createSpellItem(spell, 0)).filter(Boolean).forEach(item => items.push(item));
+        (data.spellcasting.spells || []).forEach(group => { (group.list || []).map(spell => createSpellItem(spell, group.level)).filter(Boolean).forEach(item => items.push(item)); });
+    }
+    
+    // Process Equipment
+    if (state.gameData && state.gameData.equipment && data.equipment) {
+        (data.equipment || []).forEach(itemFromAI => {
+            if (!itemFromAI || !itemFromAI.name) return;
+            const itemData = findInDatabase(itemFromAI.name, state.gameData.equipment);
+            if (itemData) {
+                const foundryItem = JSON.parse(JSON.stringify(itemData)); 
+                foundryItem._id = generateId(); 
+                items.push(foundryItem);
+            }
+        });
     }
 
-    // --- Sestavení finálního objektu ---
+    // Build the final object
     const foundrySkills = {}; (data.skills || []).forEach(skill => { const key = SKILL_MAP_EN_TO_FOUNDRY[skill.name_en]; if (key) foundrySkills[key] = { value: parseInt(skill.bonus) || 0, rank: 1 }; });
     const hpParts = (data.hp || '10').split('/') || [10, 10]; const hpValue = parseInt(hpParts[0]) || 10; const hpMax = parseInt(hpParts[1]) || hpValue;
     const speedValue = parseInt(data.speed) || 25;
-    const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), source: null } : null).filter(Boolean);
-    const resistances = (data.resistances || []).map(r => r ? { type: getCorrectedDamageType(r.split(' ')[0]), value: parseInt(r.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
-    const weaknesses = (data.weaknesses || []).map(w => w ? { type: getCorrectedDamageType(w.split(' ')[0]), value: parseInt(w.split(' ')[1]) || 0, source: null } : null).filter(Boolean);
     
-    const finalObject = { 
-        name: data.name, type: 'npc', 
+    // Correctly format immunities, resistances, weaknesses
+    const immunities = (data.immunities || []).map(i => i ? { type: getCorrectedDamageType(i), exceptions: [] } : null).filter(Boolean);
+    const resistances = (data.resistances || []).map(r => { const parts = (r || '').split(' '); return parts.length === 2 ? { type: getCorrectedDamageType(parts[0]), value: parseInt(parts[1]) || 0, exceptions: [] } : null }).filter(Boolean);
+    const weaknesses = (data.weaknesses || []).map(w => { const parts = (w || '').split(' '); return parts.length === 2 ? { type: getCorrectedDamageType(parts[0]), value: parseInt(parts[1]) || 0, exceptions: [] } : null }).filter(Boolean);
+
+    return { 
+        name: data.name, 
+        type: 'npc', 
         system: { 
             details: { level: { value: parseInt(data.level) || 0 }, publicNotes: `<p>${formatFoundryVTTText(data.lore)}</p>` || '' }, 
             abilities: { str: { mod: parseInt(data.attributes.Str) || 0 }, dex: { mod: parseInt(data.attributes.Dex) || 0 }, con: { mod: parseInt(data.attributes.Con) || 0 }, int: { mod: parseInt(data.attributes.Int) || 0 }, wis: { mod: parseInt(data.attributes.Wis) || 0 }, cha: { mod: parseInt(data.attributes.Cha) || 0 } }, 
             attributes: { ac: { value: parseInt(data.ac) || 10 }, hp: { value: hpValue, max: hpMax, temp: 0 }, speed: { value: speedValue, label: `${speedValue} feet`, otherSpeeds: [] }, immunities, resistances, weaknesses }, 
             saves: { fortitude: { value: parseInt(data.saves.Fort) || 0 }, reflex: { value: parseInt(data.saves.Ref) || 0 }, will: { value: parseInt(data.saves.Will) || 0 } }, 
-            perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s })) }, 
-            traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: data.languages || [] } }, 
+            perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s.toLowerCase().trim() })) }, 
+            traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()) } }, 
             skills: foundrySkills, 
-            source: { value: "PF2 NPC Generator v3.04" },
+            source: { value: `PF2 NPC Generator v4.01` },
             items 
         } 
     };
-
-    console.log("--- PŘEKLAD PRO FOUNDRY DOKONČEN ---");
-    console.log("Finální objekt pro export:", finalObject);
-
-    return finalObject;
 }
 
 
@@ -1452,6 +1585,7 @@ function renderStatblock(creature) {
         return `<div class="mb-4"><h4 data-lang-key="spellcasting">${t.spellcasting} (${spellcasting.type})</h4><p>${t.dc}: ${spellcasting.dc || 'N/A'}, ${t.attack}: ${spellcasting.attack || 'N/A'}</p><div class="spell-list-columns">${cantripsHtml ? `<div class="spell-level-group"><h4>${t.cantrips}</h4><div>${cantripsHtml}</div></div>` : ''}${spellsByLevelHtml}</div></div>`;
     }
 
+    // UPDATED to use formatDescriptionForDisplay
     container.innerHTML = `<div class="statblock-header"><div><h3 class="font-handwritten">${displayCreature.name}</h3><p class="font-script">${displayCreature.rarity} ${displayCreature.size} ${(displayCreature.traits || []).join(', ')}</p></div><div class="statblock-level"><span data-lang-key="creatureLabel">${t.creatureLabel}</span> <span>${displayCreature.level}</span></div></div>
         <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 1rem 0;"><div class="stat-section"><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>AC</strong> ${displayCreature.ac}</div><div><strong>HP</strong> ${displayCreature.hp}</div><div><strong>${t.speed}</strong> ${displayCreature.speed}</div></div><div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.fortitude.substring(0,4)}</strong> ${displayCreature.saves.Fort}</div><div><strong>${t.reflex.substring(0,4)}</strong> ${displayCreature.saves.Ref}</div><div><strong>${t.will.substring(0,4)}</strong> ${displayCreature.saves.Will}</div></div><div><p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Vnímání' : 'Perception')}</strong> ${displayCreature.perception}</p>${(displayCreature.senses || []).length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Smysly' : 'Senses')}</strong> ${displayCreature.senses.join(', ')}</p>` : ''}${(displayCreature.languages || []).length > 0 ? `<p style="margin:0.25rem 0;"><strong>${(state.lang === 'cs' ? 'Jazyky' : 'Languages')}</strong> ${displayCreature.languages.join(', ')}</p>` : ''}</div></div><div class="stat-section"><div class="grid grid-cols-2 gap-x-4 gap-y-1" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 0.75rem;"><div><strong>${t.strength.substring(0,3)}</strong> ${displayCreature.attributes.Str}</div><div><strong>${t.dexterity.substring(0,3)}</strong> ${displayCreature.attributes.Dex}</div><div><strong>${t.constitution.substring(0,3)}</strong> ${displayCreature.attributes.Con}</div><div><strong>${t.intelligence.substring(0,3)}</strong> ${displayCreature.attributes.Int}</div><div><strong>${t.wisdom.substring(0,3)}</strong> ${displayCreature.attributes.Wis}</div><div><strong>${t.charisma.substring(0,3)}</strong> ${displayCreature.attributes.Cha}</div></div><div><h4 style="margin: 0 0 0.5rem 0; padding: 0; border: 0;">${t.skills}</h4><p style="margin:0; line-height: 1.5;">${(displayCreature.skills && displayCreature.skills.length > 0) ? displayCreature.skills.map(skill => `${(state.lang === 'cs' ? skill.name_cz : skill.name_en)} ${skill.bonus}`).join(', ') : (state.lang === 'cs' ? 'Žádné' : 'None')}</p></div></div></div>
         <div id="defenses-grid" class="mb-4">${(displayCreature.immunities && displayCreature.immunities.length > 0) ? `<div><h4>${t.immunities}</h4><p>${displayCreature.immunities.join(', ')}</p></div>` : ''}${(displayCreature.resistances && displayCreature.resistances.length > 0) ? `<div><h4>${t.resistances}</h4><p>${displayCreature.resistances.join(', ')}</p></div>` : ''}${(displayCreature.weaknesses && displayCreature.weaknesses.length > 0) ? `<div><h4>${t.weaknesses}</h4><p>${displayCreature.weaknesses.join(', ')}</p></div>` : ''}</div>
@@ -1460,6 +1594,7 @@ function renderStatblock(creature) {
         <div class="mb-4">${(displayCreature.specialAbilities || []).length > 0 ? `<h4>${t.specialAbilitiesActions}</h4>` : ''}<ul id="special-abilities-list">${(displayCreature.specialAbilities || []).map(sa => `<li><div class="action-icon-wrapper">${getActionIcon(sa.actionCost, t)}</div><div><strong>${sa.name}:</strong> ${formatDescriptionForDisplay(sa.description, t)}</div></li>`).join('')}</ul></div>
         <div class="mt-4"><h4 data-lang-key="appearance">${t.appearance}</h4><p style="white-space: pre-wrap;">${displayCreature.appearance || ''}</p></div><div class="mt-4"><h4 data-lang-key="behavior">${t.behavior}</h4><p style="white-space: pre-wrap;">${displayCreature.behavior || ''}</p></div><div class="mt-4"><h4 data-lang-key="loreStory">${t.loreStory}</h4><p style="white-space: pre-wrap;">${formatDescriptionForDisplay(displayCreature.lore, t)}</p></div>`;
 }
+
 
 function renderItemDetails(creature) {
     const t = translations[state.lang];
@@ -1534,7 +1669,7 @@ function calculateEncounter() { const t = translations[state.lang]; const pLvl =
 
 // --- GENERATOR TAB LOGIC ---
 
-// TUTO FUNKCI KOMPLETNĚ NAHRAĎTE VE SVÉM KÓDU
+// Helper function to select a manageable list of equipment for the AI
 function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     if (!state.gameData || !state.gameData.categorizedEquipment) {
         console.warn("Categorized equipment data is not available for selection.");
@@ -1569,7 +1704,12 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     return [...new Set(itemNames)];
 }
 
-// TUTO NOVOU FUNKCI PŘIDEJTE DO SVÉHO KÓDU
+/**
+ * Algoritmus pro výběr vhodných kouzel pro stvoření.
+ * @param {number} creatureLevel - Úroveň stvoření.
+ * @param {string} tradition - Magická tradice ("arcane", "primal", atd.).
+ * @returns {object} - Objekt se seznamem kantrip a kouzel.
+ */
 function selectSpellsForCreature(creatureLevel, tradition) {
     if (!state.gameData || !Array.isArray(state.gameData.spells)) {
         console.warn("Spell data is not available for selection.");
@@ -1628,7 +1768,6 @@ function selectSpellsForCreature(creatureLevel, tradition) {
     };
 }
 
-
 async function handleGenerate() {
     const t = translations[state.lang];
     const generateBtn = getElement('generate-btn');
@@ -1644,27 +1783,23 @@ async function handleGenerate() {
     
     const apiKey = state.localApiKey || API_KEY;
     try {
-        // ZMĚNA SCHÉMATU: spellcasting už neobsahuje seznam kouzel.
         const spellcastingSchema = { type: "OBJECT", properties: { 
             type: { type: "STRING", enum: ["arcane", "divine", "occult", "primal"] }, 
             ability: { type: "STRING", enum: ["str", "dex", "con", "int", "wis", "cha"] }, 
             dc: { type: "NUMBER" }, 
             attack: { type: "STRING" } 
         }, required: ["type", "ability", "dc", "attack"]};
-
-        const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
+        // UPDATED: Description now includes instructions for inline formatting placeholders
+        const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING", description: "Description of the ability. Use placeholders for game mechanics: [Check:type|dc], [Damage:formula|type], [Condition:name|value], [Template:type|distance]." }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
         const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING", description: "MUST be an exact name from the provided list of valid equipment." }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
-        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
+        const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING", description: "Lore of the creature. Can also use placeholders like [Check:will|20] for interactive story elements." } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
         
         const languageInstruction = state.lang === 'cs' ? "All descriptive text fields (like 'name', 'description', 'appearance') MUST be in Czech. The ONLY exceptions are the specific, machine-readable fields mentioned below." : "All text fields must be in English.";
-        const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords.
-This applies to all 'traits', 'damage' types, and 'equipment' names.
-To make descriptions interactive, use these special tags:
-- For a damage roll: [Damage:1d6+3|fire] or [Damage:2d8|slashing|persistent]
-- For a check or save: [Check:will|25] or [Check:acrobatics|30|basic]
-- To apply a condition: [Condition:frightened|2]
-- For a visual template: [Template:burst|10] or [Template:cone|30]
-Use these tags inside the 'description' field of abilities.`;
+        const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
+1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
+2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
+3.  The 'spellcasting' object must be included ONLY if the creature is a spellcaster. If it's not, omit the 'spellcasting' key entirely.
+4.  In the 'description' field for abilities and lore, use simple placeholders for game mechanics: [Check:will|25], [Damage:2d6|fire], [Condition:frightened|2], [Template:cone|30].`;
 
         const equipmentNames = selectEquipmentForPrompt(level);
         const equipmentInstruction = equipmentNames.length > 0 
@@ -1749,21 +1884,10 @@ async function loadAllGameData() {
             if (spell && spell.name) map[spell.name.toLowerCase()] = spell;
             return map;
         }, {});
-        
-        // Vytvoření mapy kondicí
-        loadedData.conditionMap = (loadedData.conditions || []).reduce((map, condition) => {
-            if (condition && condition.name) {
-                map[condition.name.toLowerCase()] = `Compendium.pf2e.conditionitems.Item.${condition._id}`;
-            }
-            return map;
-        }, {});
-
 
         state.gameData = loadedData;
         console.log("Game data loaded. Equipment dynamically categorized.");
         console.log(`Loaded ${state.gameData.equipment.length} total items into ${Object.keys(state.gameData.categorizedEquipment).length} categories.`);
-        console.log(`Loaded ${Object.keys(state.gameData.conditionMap).length} conditions.`);
-
 
     } catch (error) {
         console.error("Critical error loading game data:", error);
@@ -1813,7 +1937,7 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 window.onload = () => {
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 3.03.6`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 4.01`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
