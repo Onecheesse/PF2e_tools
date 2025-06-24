@@ -1576,6 +1576,69 @@ function selectEquipmentForPrompt(level, maxPerCategory = 7, totalMax = 150) {
     return [...new Set(itemNames)];
 }
 
+ * Algoritmus pro výběr vhodných kouzel pro stvoření.
+ * @param {number} creatureLevel - Úroveň stvoření.
+ * @param {string} tradition - Magická tradice ("arcane", "primal", atd.).
+ * @returns {object} - Objekt se seznamem kantrip a kouzel.
+ */
+function selectSpellsForCreature(creatureLevel, tradition) {
+    if (!state.gameData || !Array.isArray(state.gameData.spells)) {
+        console.warn("Spell data is not available for selection.");
+        return { cantrips: [], spells: [] };
+    }
+
+    // 1. Určíme nejvyšší úroveň kouzla, které může stvoření sesílat.
+    // Pravidlo: polovina úrovně stvoření, zaokrouhleno nahoru, max. 10.
+    const maxSpellRank = Math.min(10, Math.ceil(creatureLevel / 2));
+
+    // 2. Vyfiltrujeme VŠECHNA kouzla podle tradice a maximální úrovně.
+    const availableSpells = state.gameData.spells.filter(spell => 
+        spell.system.level?.value <= maxSpellRank &&
+        spell.system.traits.traditions.includes(tradition)
+    );
+
+    // 3. Rozdělíme kouzla do kategorií pro lepší výběr.
+    const cantrips = availableSpells.filter(s => s.system.level.value === 0);
+    const leveledSpells = availableSpells.filter(s => s.system.level.value > 0);
+
+    const attackSpells = leveledSpells.filter(s => s.system.damage || s.system.defense?.save);
+    const utilitySpells = leveledSpells.filter(s => !s.system.damage && !s.system.defense?.save);
+
+    // 4. Náhodně vybereme finální seznam kouzel.
+    const finalCantrips = cantrips.sort(() => 0.5 - Math.random()).slice(0, 4); // Vezmeme max 4 kantripy
+    
+    let finalSpellsByLevel = {};
+
+    // Vybereme 1-2 útočná kouzla nejvyšší úrovně
+    const topAttackSpells = attackSpells.filter(s => s.system.level.value === maxSpellRank)
+                                     .sort(() => 0.5 - Math.random())
+                                     .slice(0, 2);
+    
+    // Vybereme 1-2 užitečná kouzla
+    const someUtilitySpells = utilitySpells.sort(() => 0.5 - Math.random())
+                                           .slice(0, 2);
+    
+    // Spojíme je dohromady a roztřídíme podle úrovní
+    [...topAttackSpells, ...someUtilitySpells].forEach(spell => {
+        const level = spell.system.level.value;
+        if (!finalSpellsByLevel[level]) {
+            finalSpellsByLevel[level] = [];
+        }
+        finalSpellsByLevel[level].push({ name_en: spell.name, name_cz: spell.name }); // Prozatím dáváme stejné jméno
+    });
+
+    // Převedeme na formát pole, který používá zbytek kódu
+    const finalSpells = Object.keys(finalSpellsByLevel).map(level => ({
+        level: parseInt(level),
+        list: finalSpellsByLevel[level]
+    }));
+
+    return {
+        cantrips: finalCantrips.map(s => ({ name_en: s.name, name_cz: s.name })),
+        spells: finalSpells
+    };
+}
+
 async function handleGenerate() {
     const t = translations[state.lang];
     const generateBtn = getElement('generate-btn');
@@ -1591,8 +1654,14 @@ async function handleGenerate() {
     
     const apiKey = state.localApiKey || API_KEY;
     try {
-        const spellNameSchema = { type: "OBJECT", properties: { name_en: { type: "STRING" }, name_cz: { type: "STRING" } }, required: ["name_en"] };
-        const spellcastingSchema = { type: "OBJECT", properties: { type: { type: "STRING" }, ability: { type: "STRING" }, dc: { type: "NUMBER" }, attack: { type: "STRING" }, cantrips: { type: "ARRAY", items: spellNameSchema }, spells: { type: "ARRAY", items: { type: "OBJECT", properties: { level: { type: "NUMBER" }, list: { type: "ARRAY", items: spellNameSchema } }, required: ["level", "list"] } } } };
+        // ZMĚNA SCHÉMATU: spellcasting už neobsahuje seznam kouzel.
+        const spellcastingSchema = { type: "OBJECT", properties: { 
+            type: { type: "STRING", enum: ["arcane", "divine", "occult", "primal"] }, 
+            ability: { type: "STRING", enum: ["str", "dex", "con", "int", "wis", "cha"] }, 
+            dc: { type: "NUMBER" }, 
+            attack: { type: "STRING" } 
+        }, required: ["type", "ability", "dc", "attack"]};
+
         const specialAbilitySchema = { type: "OBJECT", properties: { name: { type: "STRING" }, description: { type: "STRING" }, actionCost: { type: "STRING", enum: ["1", "2", "3", "reaction", "free", "passive"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "description", "actionCost"] };
         const equipmentSchema = { type: "OBJECT", properties: { name: { type: "STRING", description: "MUST be an exact name from the provided list of valid equipment." }, type: { type: "STRING", enum: ["weapon", "armor", "other"] } }, required: ["name", "type"] };
         const statblockSchema = { type: "OBJECT", properties: { name: { type: "STRING" }, level: { type: "NUMBER" }, rarity: { type: "STRING", enum: ["Common", "Uncommon", "Rare", "Unique"] }, size: { type: "STRING", enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] }, traits: { type: "ARRAY", items: { type: "STRING" } }, perception: { type: "STRING" }, senses: { type: "ARRAY", items: { type: "STRING" } }, languages: { type: "ARRAY", items: { type: "STRING" } }, skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name_cz: { type: "STRING" }, name_en: { type: "STRING" }, bonus: { type: "STRING" } }, required: ["name_cz", "name_en", "bonus"] } }, ac: { type: "NUMBER" }, hp: { type: "STRING" }, immunities: { type: "ARRAY", items: { type: "STRING" } }, resistances: { type: "ARRAY", items: { type: "STRING" } }, weaknesses: { type: "ARRAY", items: { type: "STRING" } }, speed: { type: "STRING" }, saves: { type: "OBJECT", properties: { Fort: { type: "STRING" }, Ref: { type: "STRING" }, Will: { type: "STRING" } } }, attributes: { type: "OBJECT", properties: { Str: { type: "STRING" }, Dex: { type: "STRING" }, Con: { type: "STRING" }, Int: { type: "STRING" }, Wis: { type: "STRING" }, Cha: { type: "STRING" } } }, equipment: { type: "ARRAY", items: equipmentSchema }, meleeAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage"] } }, rangedAttacks: { type: "ARRAY", items: { type: "OBJECT", properties: { name: { type: "STRING" }, toHit: { type: "STRING" }, damage: { type: "OBJECT", properties: { formula: { type: "STRING" }, type: { type: "STRING" } }, required: ["formula", "type"] }, range: { type: "STRING" }, traits: { type: "ARRAY", items: { "type": "STRING" } } }, required: ["name", "toHit", "damage", "range"] } }, spellcasting: spellcastingSchema, specialAbilities: { type: "ARRAY", items: specialAbilitySchema }, appearance: { type: "STRING" }, behavior: { type: "STRING" }, lore: { type: "STRING" } }, required: ["name", "level", "rarity", "size", "traits", "perception", "ac", "hp", "speed", "saves", "attributes", "appearance", "behavior", "lore"] };
@@ -1601,10 +1670,7 @@ async function handleGenerate() {
         const exportRules = `CRITICAL EXPORT RULES: For the JSON to be valid for Foundry VTT, certain fields MUST use official English Pathfinder 2e keywords. DO NOT translate these keywords. This applies to:
 1.  All 'traits' in any part of the statblock (e.g., use 'humanoid', 'fire', 'agile'; NOT 'humanoidní', 'oheň', 'mrštný').
 2.  The 'type' field in 'damage', 'immunities', 'resistances', and 'weaknesses' (e.g., use 'slashing', 'fire', 'cold', 'mental'; NOT 'sečné', 'oheň', 'mentální', 'fyzické').
-3.  For physical resistance, create separate entries for 'slashing', 'piercing', and 'bludgeoning' if needed; do not use a generic 'physical'.
-4.  The 'type' in 'weaknesses' must be a damage type (e.g., 'cold'), not a generic word like 'vulnerability' or 'zranitelnost'.
-5.  The 'name_en' for spells MUST be the exact, official English name from the rulebooks to ensure it can be found in the database (e.g., 'Mirror Image', 'Light'). The 'name_cz' can be the Czech translation.
-6.  Equipment 'name' MUST be the exact, official English name.`;
+3.  The 'spellcasting' object must be included ONLY if the creature is a spellcaster. If it's not, omit the 'spellcasting' key entirely.`;
 
         const equipmentNames = selectEquipmentForPrompt(level);
         const equipmentInstruction = equipmentNames.length > 0 
@@ -1616,15 +1682,14 @@ async function handleGenerate() {
         const response = await fetch(`${API_URL}?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(statblockPayload) });
         if (!response.ok) { const errorData = await response.json(); throw new Error(errorData.error?.message || `HTTP error: ${response.status}`); }
         const responseData = await response.json();
+        const creatureData = JSON.parse(responseData.candidates[0].content.parts[0].text);
 
-        // --- DETEKTIVNÍ KROK ZAČÍNÁ ZDE ---
-        // Než se pokusíme JSON zpracovat, podíváme se na něj.
-        const rawJsonText = responseData.candidates[0].content.parts[0].text;
-        console.log("RAW ODPOVĚĎ OD AI (před parsováním):");
-        console.log(rawJsonText); // Vypíšeme, co přesně AI poslala
-
-        const creatureData = JSON.parse(rawJsonText); // Tento řádek stále může selhat, ale teď uvidíme proč.
-        // --- DETEKTIVNÍ KROK KONČÍ ZDE ---
+        // --- KROK 2: POKUD AI VRÁTILA PROFIL KOUZELNÍKA, NÁŠ KÓD VYBERE KOUZLA ---
+        if (creatureData.spellcasting) {
+            const spellList = selectSpellsForCreature(level, creatureData.spellcasting.type);
+            creatureData.spellcasting.cantrips = spellList.cantrips;
+            creatureData.spellcasting.spells = spellList.spells;
+        }
         
         updateGeneratorState(creatureData, userPrompt, level);
         addToHistory(creatureData, userPrompt, level);
