@@ -628,7 +628,7 @@
 
     <!-- VERSION INFO -->
     <div style="position: fixed; bottom: 0.5rem; right: 1rem; font-size: 0.8rem; color: var(--text-medium); z-index: 100; background-color: rgba(248, 245, 233, 0.7); padding: 0.25rem 0.5rem; border-radius: 4px;">
-        <span data-lang-key="version">Version</span>: 5.01
+        <span data-lang-key="version">Version</span>: 5.02
     </div>
 
 <script type="module">
@@ -1507,7 +1507,7 @@ function transformInternalToFoundry(data) {
             perception: { value: parseInt(data.perception) || 0, senses: (data.senses || []).map(s => ({ type: s.toLowerCase().trim() })) }, 
             traits: { rarity: (data.rarity || 'common').toLowerCase(), size: { value: SIZE_MAP_APP_TO_FOUNDRY[data.size] || 'med' }, value: getCorrectedTraits(data.traits) || [], languages: { value: (data.languages || []).map(l => l.toLowerCase().trim()) } }, 
             skills: foundrySkills, 
-            source: { value: `PF2 NPC Generator v5.01` },
+            source: { value: `PF2 NPC Generator v5.02` },
         } 
     };
 }
@@ -2016,7 +2016,7 @@ function setupSavedTabListeners() { getElement('saved-content').addEventListener
 window.onload = () => {
     const versionSpan = document.querySelector('div[style*="position: fixed"]');
     if (versionSpan) {
-        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 5.01`;
+        versionSpan.innerHTML = `<span data-lang-key="version">${translations[state.lang]?.version || 'Version'}</span>: 5.02`;
     }
 
     state.lang = localStorage.getItem('pf2-npc-lang') || 'en';
