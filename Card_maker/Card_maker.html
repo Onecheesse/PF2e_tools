@@ -93,16 +93,23 @@
 <div class="max-w-7xl mx-auto">
     
     <div class="flex justify-between items-center mb-6">
-        <!-- NOVÉ: Přepínač Dark Mode (Levý roh) -->
-        <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-            <!-- Ikona pro světlý režim (Měsíc) -->
-            <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 12.003 12.003 0 0012 21a12.003 12.003 0 008.354-5.646z"></path></svg>
-            <!-- Ikona pro tmavý režim (Slunce) -->
-            <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-        </button>
+        <div class="flex space-x-3">
+            <!-- NOVÉ: Tlačítko pro info -->
+            <button onclick="showInfoModal()" class="p-2 rounded-full bg-blue-200 text-blue-700 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-300 dark:hover:bg-blue-600 transition" title="Informace a návod">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
 
-        <!-- Verze aplikace V_0.14 -->
-        <p class="text-xs text-gray-400 text-right">V_0.14</p>
+            <!-- NOVÉ: Přepínač Dark Mode (Levý roh) -->
+            <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition" title="Přepnout režim">
+                <!-- Ikona pro světlý režim (Měsíc) -->
+                <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 12.003 12.003 0 0012 21a12.003 12.003 0 008.354-5.646z"></path></svg>
+                <!-- Ikona pro tmavý režim (Slunce) -->
+                <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            </button>
+        </div>
+
+        <!-- Verze aplikace V_0.15 -->
+        <p class="text-xs text-gray-400 text-right">V_0.15</p>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -335,7 +342,7 @@
 
 <canvas id="hiddenCanvas" width="744" height="1038"></canvas>
 
-<!-- NOVÉ: Modální okno pro zoomování -->
+<!-- Modální okno pro detailní náhled (Zoom) -->
 <div id="zoomModal" class="modal hidden">
     <div class="modal-content bg-gray-900 shadow-2xl p-4 relative">
         <button onclick="closeZoomModal()" class="absolute top-2 right-2 text-white text-3xl hover:text-red-400 z-50">
@@ -346,6 +353,46 @@
     </div>
 </div>
 
+<!-- NOVÉ: Modální okno pro informace a návod -->
+<div id="infoModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full lg:w-2/3">
+        <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
+            &times;
+        </button>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.15</h2>
+        
+        <div class="space-y-4 text-gray-700 dark:text-gray-300">
+            <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400">Co nástroj umí?</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li class="font-bold">
+                    Analýza Screenshotů (Gemini AI)
+                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Nástroj dokáže analyzovat jeden nebo více herních screenshotů, extrahovat z nich text a strukturovat ho do atributů a popisů. Automaticky detekuje typ předmětu (kouzlo, zbraň, atd.) a generuje český překlad popisu.</p>
+                </li>
+                <li class="font-bold">
+                    Dynamické rozměry a Rámečky
+                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Karta se dynamicky roztáhne na potřebnou délku (přidáním dalších sekcí pro popis), pokud je text delší. Styl rámečku karty se mění podle zvoleného typu předmětu.</p>
+                </li>
+                <li class="font-bold">
+                    Export pro tisk
+                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Generuje PDF s přesnými rozměry 63mm x 88mm (včetně ořezových značek) pro snadný tisk a obsahuje možnost výběru ENG/CZ popisu.</p>
+                </li>
+                <li class="font-bold">
+                    Správa Atributů
+                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Umožňuje přidávat, odebírat a přetahovat (Drag & Drop) atributy pro manuální uspořádání.</p>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 pt-4 border-t dark:border-gray-700">Jak s nástrojem pracovat:</h3>
+            <ol class="list-decimal list-inside space-y-3 ml-4">
+                <li>**Vložení zdroje:** Použijte pole "Analýza Screenshotů" k nahrání obrázku nebo vložení obrázku ze schránky (Ctrl+V).</li>
+                <li>**Analýza:** Klikněte na tlačítko "Analyzovat Všechny Screenshoty". Nástroj se pokusí automaticky vyplnit všechna pole, včetně přeloženého popisu (CZ).</li>
+                <li>**Obrázek itemu:** Nahrajte oříznutý obrázek do sekce "Obrázek itemu", který se zobrazí na kartě.</li>
+                <li>**Nastavení & Kontrola:** Zkontrolujte vyplněné informace. Pomocí Drag & Drop seřaďte atributy a ujistěte se, že je správně zvolen "Typ předmětu" a jazyk pro tisk.</li>
+                <li>**Export:** Pro finální tisk použijte "Stáhnout PDF". Pro uložení dat pro pozdější editaci použijte "Stáhnout JSON".</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
 <script>
     // --- KONSTANTY PRO KARTU ---
@@ -389,6 +436,8 @@
     const sunIcon = document.getElementById('sunIcon');
     const langEngButton = document.getElementById('langEng');
     const langCzButton = document.getElementById('langCz');
+    const infoModal = document.getElementById('infoModal'); // NOVÉ: Info Modal
+    const zoomModal = document.getElementById('zoomModal'); // Zoom Modal
 
 
     // Pořadí pro automatické řazení atributů
@@ -478,20 +527,15 @@
         if (body.classList.contains('dark')) {
             body.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-            // Zajištění správné aktualizace ikon
-            moonIcon.classList.remove('hidden');
-            sunIcon.classList.add('hidden');
         } else {
             body.classList.add('dark');
             localStorage.setItem('theme', 'dark');
-            // Zajištění správné aktualizace ikon
-            moonIcon.classList.add('hidden');
-            sunIcon.classList.remove('hidden');
         }
-        // updateThemeIcons(); // Tato funkce je volána uvnitř, ale pro jistotu ji necháme níže
+        updateThemeIcons();
     }
     
     function updateThemeIcons() {
+        // Kontroluje aktuální stav DOM třídy
         if (body.classList.contains('dark')) {
             moonIcon.classList.add('hidden');
             sunIcon.classList.remove('hidden');
@@ -504,33 +548,34 @@
     // --- FUNKCE PRO JAZYK TISKU ---
     window.setPrintLanguage = function(lang) {
         printLanguage = lang;
-        
+        localStorage.setItem('printLanguage', lang); // Uložit volbu
+
         // VYLEPŠENÁ INDIKACE: Resetování a nastavení tříd pro aktivní tlačítko
-        
-        // 1. Reset
-        const commonClasses = ['px-3', 'py-1', 'rounded-lg', 'font-bold', 'transition', 'duration-150'];
-        const inactiveClasses = ['bg-gray-200', 'text-gray-700', 'hover:bg-gray-300', 'dark:bg-gray-700', 'dark:text-gray-200', 'dark:hover:bg-gray-600'];
         const activeClasses = ['bg-indigo-500', 'text-white', 'hover:bg-indigo-600', 'dark:bg-indigo-600', 'dark:hover:bg-indigo-700'];
+        const inactiveClasses = ['bg-gray-200', 'text-gray-700', 'hover:bg-gray-300', 'dark:bg-gray-700', 'dark:text-gray-200', 'dark:hover:bg-gray-600'];
 
         const setClasses = (btn, isActive) => {
-            // Odebrat všechny aktivní třídy
-            btn.classList.remove(...activeClasses);
-            // Odebrat všechny neaktivní třídy
-            btn.classList.remove(...inactiveClasses);
-            
+            btn.classList.remove(...activeClasses, ...inactiveClasses);
             if (isActive) {
                 btn.classList.add(...activeClasses);
-                btn.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200'); // Jen pro jistotu
             } else {
                 btn.classList.add(...inactiveClasses);
             }
         };
 
-
         setClasses(langEngButton, lang === 'ENG');
         setClasses(langCzButton, lang === 'CZ');
 
         updatePreview();
+    }
+
+    // --- FUNKCE PRO INFO MODAL ---
+    window.showInfoModal = function() {
+        infoModal.classList.remove('hidden');
+    }
+
+    window.closeInfoModal = function() {
+        infoModal.classList.add('hidden');
     }
 
     // --- UTILITY FUNKCE ---
@@ -765,10 +810,12 @@
                     itemImagePreview.innerHTML = '';
                     itemImagePreview.classList.remove('text-gray-500', 'border-dashed');
                     // Oprava: Zajištění, že se do náhledu vkládá img element a má správné styly
-                    itemImagePreview.appendChild(img);
-                    img.style.objectFit = 'contain';
-                    img.style.width = '100%';
-                    img.style.height = '100%';
+                    const previewImg = document.createElement('img');
+                    previewImg.src = img.src;
+                    previewImg.style.objectFit = 'contain';
+                    previewImg.style.width = '100%';
+                    previewImg.style.height = '100%';
+                    itemImagePreview.appendChild(previewImg);
                     
                     updatePreview();
                 }
@@ -1564,8 +1611,7 @@
     
     // --- MODAL A ZOOM FUNKCE ---
     
-    const zoomModal = document.getElementById('zoomModal');
-    const zoomCanvas = document.getElementById('zoomCanvas');
+    // Zbytek funkcí showZoomModal a closeZoomModal je definován níže.
 
     window.showZoomModal = function() {
         const finalWidth = ctx.canvas.width;
