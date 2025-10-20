@@ -94,9 +94,8 @@
     
     <div class="flex justify-between items-center mb-6">
         <div class="flex space-x-3">
-             <!-- NOVÉ: Tlačítko pro reset -->
-             <!-- Odstraněno confirm() z resetAllFields -->
-             <button onclick="resetAllFields()" class="p-2 rounded-full bg-red-200 text-red-700 dark:bg-red-700 dark:text-red-100 hover:bg-red-300 dark:hover:bg-red-600 transition" title="Vyčistit všechna pole">
+             <!-- NOVÉ: Tlačítko pro reset (volá showResetModal) -->
+             <button onclick="showResetModal()" class="p-2 rounded-full bg-red-200 text-red-700 dark:bg-red-700 dark:text-red-100 hover:bg-red-300 dark:hover:bg-red-600 transition" title="Vyčistit všechna pole">
                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
              </button>
             <!-- NOVÉ: Tlačítko pro info -->
@@ -113,8 +112,8 @@
             </button>
         </div>
 
-        <!-- Verze aplikace V_0.18 (Zvýšeno z V_0.17) -->
-        <p class="text-xs text-gray-400 text-right">V_0.18</p>
+        <!-- Verze aplikace V_0.19 (Zvýšeno z V_0.18) -->
+        <p class="text-xs text-gray-400 text-right">V_0.19</p>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -128,13 +127,13 @@
         <!-- Panel pro zadávání informací (Levá strana) -->
         <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg h-full relative">
             
-            <!-- Překrytí pro načítání -->
+            <!-- Překrytí pro načítání (pro AI analýzu nebo překlad) -->
             <div id="loadingOverlay" class="loading-overlay hidden">
                 <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                <p class="mt-4 text-lg font-semibold text-indigo-700">Analyzuji obrázky...</p>
+                <p class="mt-4 text-lg font-semibold text-indigo-700" id="loadingMessage">Analyzuji obrázky...</p>
                 <p class="text-sm text-gray-500">Může to trvat několik sekund.</p>
             </div>
 
@@ -219,7 +218,7 @@
 
             <!-- Vlastní obrázek pro zobrazení na kartě -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
-                <label for="itemImageUpload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Obrázek itemu (Zobrazí se na kartě)</label>
+                <label for="itemImageUpload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">3. Obrázek itemu (Zobrazí se na kartě)</label>
                 
                 <div class="flex space-x-2 items-center">
                     <input type="file" id="itemImageUpload" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 dark:file:bg-green-700 dark:file:text-white dark:hover:file:bg-green-600">
@@ -234,9 +233,34 @@
                 </div>
             </div>
 
+            <!-- NOVÉ: Sekce pro Měřáky/Charges -->
+            <div class="mb-6 border-b pb-4 dark:border-gray-700">
+                <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">4. Měřáky (Charges/Použití)</h3>
+                <label for="usesType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Typ měřáku</label>
+                <select id="usesType" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white mb-3" onchange="updatePreview()">
+                    <option value="">Žádný měřák</option>
+                    <option value="DOTS">Tečky (Charges)</option>
+                    <option value="HEARTS">Srdce (Životy)</option>
+                    <option value="DICE">Kostky (Použití za den/kolo)</option>
+                    <option value="BAR">Bar (Procenta/Stav)</option>
+                </select>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="maxUses" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Max. Použití</label>
+                        <input type="number" id="maxUses" value="0" min="0" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" oninput="updatePreview()">
+                    </div>
+                    <div>
+                        <label for="currentUses" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Aktuální Použití</label>
+                        <input type="number" id="currentUses" value="0" min="0" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" oninput="updatePreview()">
+                    </div>
+                </div>
+            </div>
+            <!-- Konec Měřáků -->
+
 
             <!-- Klíčové Atributy (Flexibilní a seřazené) -->
-            <h3 class="text-xl font-semibold mb-1 text-gray-700 dark:text-gray-200">3. Klíčové Atributy</h3>
+            <h3 class="text-xl font-semibold mb-1 text-gray-700 dark:text-gray-200">5. Klíčové Atributy</h3>
             <!-- NOVÁ POZNÁMKA K DRAG & DROP -->
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Atributy můžete přetahovat (Drag & Drop) pro manuální změnu pořadí.</p>
             
@@ -250,13 +274,19 @@
 
             <!-- Popis (ENG - primární) -->
             <div class="mt-6 mb-4">
-                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4. Popis Itemu/Kouzla (Originální jazyk)</label>
+                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">6. Popis Itemu/Kouzla (Originální jazyk)</label>
                 <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white"></textarea>
             </div>
             
              <!-- NOVÉ: Popis (CZ - přeložený) -->
             <div class="mb-6">
-                <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4b. Popis Itemu/Kouzla (Přeložený do CZ)</label>
+                <div class="flex justify-between items-center mb-1">
+                    <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">6b. Popis Itemu/Kouzla (Přeložený do CZ)</label>
+                     <!-- Tlačítko pro manuální překlad -->
+                    <button onclick="translateDescription()" class="bg-blue-500 text-white text-xs px-3 py-1 rounded-full hover:bg-blue-600 transition duration-150 disabled:opacity-50" id="translateButton">
+                        <span id="translateText">Přeložit pomocí AI</span>
+                    </button>
+                </div>
                 <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis. Můžete jej upravit."></textarea>
             </div>
 
@@ -305,7 +335,7 @@
 
     <!-- NOVÁ SEKCE PRO API KLÍČ -->
     <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-        <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">5. Nastavení Gemini API</h2>
+        <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">7. Nastavení Gemini API</h2>
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
             <div class="flex-grow w-full">
                 <label for="geminiApiKey" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -335,13 +365,31 @@
     </div>
 </div>
 
+<!-- NOVÉ: Modální okno pro reset (Konfirmace) -->
+<div id="resetModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-md text-center">
+        <h2 class="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Opravdu resetovat?</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">Tato akce vymaže všechna data, včetně názvu, popisů, atributů a nahraných obrázků.</p>
+        
+        <div class="flex justify-center space-x-4">
+            <button onclick="closeResetModal()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition">
+                Zrušit
+            </button>
+            <button onclick="performReset()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                Ano, vymazat vše
+            </button>
+        </div>
+    </div>
+</div>
+
+
 <!-- NOVÉ: Modální okno pro informace a návod -->
 <div id="infoModal" class="modal hidden">
     <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full lg:w-2/3">
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.18</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.19</h2>
         
         <div class="space-y-4 text-gray-700 dark:text-gray-300">
             <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400">Co nástroj umí?</h3>
@@ -362,14 +410,18 @@
                     Správa Atributů
                     <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Umožňuje přidávat, odebírat a přetahovat (Drag & Drop) atributy pro manuální uspořádání.</p>
                 </li>
+                <li class="font-bold">
+                    Dynamické Měřáky (Charges/Uses)
+                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Pod obrázkem itemu se dynamicky vykreslí měřák (tečky, srdce, bar) pro zobrazení počtu použití nebo stavu, pokud jsou data zadána.</p>
+                </li>
             </ul>
 
             <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 pt-4 border-t dark:border-gray-700">Jak s nástrojem pracovat:</h3>
             <ol class="list-decimal list-inside space-y-3 ml-4">
                 <li>**Vložení zdroje:** Použijte pole "Analýza Screenshotů" k nahrání obrázku nebo vložení obrázku ze schránky (Ctrl+V).</li>
-                <li>**Analýza:** Klikněte na tlačítko "Analyzovat Všechny Screenshoty". Nástroj se pokusí automaticky vyplnit všechna pole, včetně přeloženého popisu (CZ).</li>
+                <li>**Analýza:** Klikněte na tlačítko "Analyzovat Všechny Screenshoty". Nástroj se pokusí automaticky vyplnit všechna pole, včetně přeloženého popisu (CZ). *Alternativně použijte tlačítko 'Přeložit pomocí AI' pro manuální překlad popisu.*</li>
                 <li>**Obrázek itemu:** Nahrajte oříznutý obrázek do sekce "Obrázek itemu", který se zobrazí na kartě.</li>
-                <li>**Nastavení & Kontrola:** Zkontrolujte vyplněné informace. Pomocí Drag & Drop seřaďte atributy a ujistěte se, že je správně zvolen "Typ předmětu" a jazyk pro tisk.</li>
+                <li>**Nastavení & Kontrola:** Zkontrolujte vyplněné informace, nastavte měřáky a pomocí Drag & Drop seřaďte atributy. Ujistěte se, že je správně zvolen "Typ předmětu" a jazyk pro tisk.</li>
                 <li>**Export:** Pro finální tisk použijte "Stáhnout PDF". Pro uložení dat pro pozdější editaci použijte "Stáhnout JSON".</li>
             </ol>
         </div>
@@ -387,7 +439,8 @@
 
     const PADDING = 30; // Vnitřní padding karty v pixelech
     const IMAGE_SIZE = 300; // Velikost čtvercového obrázku itemu v pixelech
-    
+    const CHARGES_HEIGHT = 40; // NOVÉ: Výška pro měřáky
+
     // Globální Canvas API klíč (pokud existuje) - Zajištění, že se používá lokální klíč, pokud je definován
     const CANVAS_API_KEY = typeof __gemini_api_key !== 'undefined' ? __gemini_api_key : '';
 
@@ -405,6 +458,9 @@
     const hiddenCtx = hiddenCanvas.getContext('2d');
     const analyzeButton = document.getElementById('analyzeButton');
     const loadingOverlay = document.getElementById('loadingOverlay');
+    const loadingMessage = document.getElementById('loadingMessage');
+    const translateButton = document.getElementById('translateButton');
+    const translateText = document.getElementById('translateText');
     const itemImagePreview = document.getElementById('itemImagePreview');
     const analysisImageUpload = document.getElementById('analysisImageUpload');
     const analysisImagePreviewsContainer = document.getElementById('analysisImagePreviewsContainer');
@@ -414,6 +470,9 @@
     const attributesContainer = document.getElementById('attributesContainer');
     const jsonInput = document.getElementById('jsonInput'); // NOVÉ: pro JSON vstup
     const jsonFileUpload = document.getElementById('jsonFileUpload'); // NOVÉ: file input pro JSON
+    const usesTypeInput = document.getElementById('usesType');
+    const maxUsesInput = document.getElementById('maxUses');
+    const currentUsesInput = document.getElementById('currentUses');
     const body = document.body;
     const moonIcon = document.getElementById('moonIcon');
     const sunIcon = document.getElementById('sunIcon');
@@ -421,6 +480,7 @@
     const langCzButton = document.getElementById('langCz');
     const infoModal = document.getElementById('infoModal'); // NOVÉ: Info Modal
     const zoomModal = document.getElementById('zoomModal'); // Zoom Modal
+    const resetModal = document.getElementById('resetModal'); // NOVÉ: Reset Modal
 
 
     // Pořadí pro automatické řazení atributů
@@ -452,7 +512,8 @@
             attributes: [
                 { key: 'Cena', value: '10 gp' },
                 { key: 'Vzácnost', value: 'Common' }
-            ]
+            ],
+            uses: { usesType: 'DOTS', maxUses: 3, currentUses: 3 }
         },
         'WEAPON': {
             title: 'Otrávený Dýka', translation: 'Poisoned Dagger',
@@ -462,7 +523,8 @@
                 { key: 'Cena', value: '30 gp' },
                 { key: 'Poškození', value: '1d4 piercing + Poison' },
                 { key: 'Typ', value: 'Lehká zbraň, Finesse' }
-            ]
+            ],
+            uses: { usesType: '', maxUses: 0, currentUses: 0 }
         },
         'SPELL': {
             title: 'Ohnivá Zeď', translation: 'Wall of Fire',
@@ -472,7 +534,8 @@
                 { key: 'Level', value: '4' },
                 { key: 'Akce', value: '2' },
                 { key: 'Dosah', value: '120 ft' }
-            ]
+            ],
+            uses: { usesType: 'DICE', maxUses: 1, currentUses: 1 }
         },
         'CONSUMABLE': {
             title: 'Léčivý lektvar', translation: 'Healing Potion',
@@ -481,7 +544,8 @@
             attributes: [
                 { key: 'Cena', value: '50 gp' },
                 { key: 'Dávky', value: '1' }
-            ]
+            ],
+            uses: { usesType: '', maxUses: 0, currentUses: 0 }
         },
         'EQUIPMENT': {
             title: 'Kroužková zbroj', translation: 'Chainmail',
@@ -491,7 +555,8 @@
                 { key: 'Cena', value: '50 gp' },
                 { key: 'AC Bonus', value: '+4' },
                 { key: 'Váha', value: 'Těžká' }
-            ]
+            ],
+            uses: { usesType: '', maxUses: 0, currentUses: 0 }
         },
         'OTHER': {
             title: 'Mapa starověké krypty', translation: 'Ancient Crypt Map',
@@ -500,7 +565,8 @@
             attributes: [
                 { key: 'Vzácnost', value: 'Unique' },
                 { key: 'Hodnota', value: 'N/A' }
-            ]
+            ],
+            uses: { usesType: '', maxUses: 0, currentUses: 0 }
         }
     };
     
@@ -529,6 +595,48 @@
             sunIcon.classList.add('hidden');
         }
     }
+    
+    // --- FUNKCE PRO KONFIRMACE A RESET ---
+    window.showResetModal = function() {
+        resetModal.classList.remove('hidden');
+    }
+    
+    window.closeResetModal = function() {
+        resetModal.classList.add('hidden');
+    }
+
+    window.performReset = function() {
+        closeResetModal(); // Zavře modální okno
+
+        // Reset textových polí
+        document.getElementById('cardTitle').value = '';
+        document.getElementById('cardTranslation').value = '';
+        document.getElementById('cardDescription').value = '';
+        document.getElementById('cardDescriptionCz').value = '';
+        
+        // Reset typu karty
+        cardTypeInput.value = 'ITEM';
+        
+        // Reset měřáků
+        usesTypeInput.value = '';
+        maxUsesInput.value = '0';
+        currentUsesInput.value = '0';
+        
+        // Reset atributů
+        clearAttributes();
+        
+        // Reset obrázku itemu
+        removeItemImage();
+        
+        // Reset JSON pole
+        jsonInput.value = '';
+
+        // Reset analýzy obrázků
+        clearAllScreenshots();
+        
+        updatePreview();
+        console.log("Všechna pole byla vyčištěna (V_0.19).");
+    }
 
     // --- FUNKCE PRO JAZYK TISKU ---
     window.setPrintLanguage = function(lang) {
@@ -552,35 +660,6 @@
         setClasses(langCzButton, lang === 'CZ');
 
         updatePreview();
-    }
-    
-    // --- NOVÁ FUNKCE: Vyčištění všech polí (Reset) ---
-    window.resetAllFields = function() {
-        // NOTE: Původní kód obsahoval confirm() a alert(). Ty byly odebrány, protože jsou v Canvasu zakázány.
-        
-        // Reset textových polí
-        document.getElementById('cardTitle').value = '';
-        document.getElementById('cardTranslation').value = '';
-        document.getElementById('cardDescription').value = '';
-        document.getElementById('cardDescriptionCz').value = '';
-        
-        // Reset typu karty
-        cardTypeInput.value = 'ITEM';
-        
-        // Reset atributů
-        clearAttributes();
-        
-        // Reset obrázku itemu
-        removeItemImage();
-        
-        // Reset JSON pole
-        jsonInput.value = '';
-
-        // Reset analýzy obrázků
-        clearAllScreenshots();
-        
-        updatePreview();
-        console.log("Všechna pole byla vyčištěna.");
     }
     
     // --- NOVÁ FUNKCE: Odebrání obrázku itemu ---
@@ -619,6 +698,10 @@
         analyzeButton.disabled = analysisImagesBase64.length === 0 || !hasKey;
         analysisControls.style.display = analysisImagesBase64.length > 0 ? 'flex' : 'none';
         
+        // Tlačítko pro překlad je aktivní, pokud existuje API klíč a je nějaký text k překladu
+        const hasTextToTranslate = document.getElementById('cardDescription').value.trim().length > 0;
+        translateButton.disabled = !hasKey || !hasTextToTranslate;
+
         // Zobrazí/skryje tip, pokud je klíč z Canvasu aktivní
         const apiKeyHint = document.getElementById('apiKeyHint');
         if (apiKeyHint) {
@@ -627,10 +710,12 @@
         }
     }
 
-    function setLoading(isLoading) {
+    function setLoading(isLoading, message = "Analyzuji obrázky...") {
+        loadingMessage.textContent = message;
         if (isLoading) {
             loadingOverlay.classList.remove('hidden');
             analyzeButton.disabled = true;
+            translateButton.disabled = true;
         } else {
             // Stav tlačítka bude řídit updateAnalyzeButtonState()
             loadingOverlay.classList.add('hidden');
@@ -684,7 +769,18 @@
         document.getElementById('cardDescription').value = template.description;
         document.getElementById('cardDescriptionCz').value = template.descriptionCz; // NOVÉ
         
-        // 2. Nastavení atributů
+        // 2. Nastavení měřáků
+        if (template.uses) {
+             usesTypeInput.value = template.uses.usesType;
+             maxUsesInput.value = template.uses.maxUses;
+             currentUsesInput.value = template.uses.currentUses;
+        } else {
+             usesTypeInput.value = '';
+             maxUsesInput.value = '0';
+             currentUsesInput.value = '0';
+        }
+        
+        // 3. Nastavení atributů
         clearAttributes();
         template.attributes.forEach(attr => {
              manageAttributes('add', null, attr.key, attr.value);
@@ -716,7 +812,6 @@
             
         } catch (e) {
             console.error("Chyba při parsování JSON:", e);
-            // Zrušeno alert("Chyba: Neplatný JSON formát. Zkontrolujte syntaxi.")
         }
     }
 
@@ -876,8 +971,81 @@
         }
     });
 
-    // --- LOGIKA LLM ANALÝZY ---
+    // --- LOGIKA LLM ANALÝZY A PŘEKLADU ---
     
+    // NOVÁ FUNKCE: Manuální překlad popisu
+    window.translateDescription = async function() {
+        const apiKey = getApiKey();
+        const textToTranslate = document.getElementById('cardDescription').value.trim();
+
+        if (!apiKey) {
+            console.error("Prosím, zadejte svůj Gemini API klíč pro překlad.");
+            return;
+        }
+        if (!textToTranslate) {
+            console.error("Prosím, zadejte text do pole Originální jazyk pro překlad.");
+            return;
+        }
+
+        setLoading(true, "Překládám popis...");
+
+        const systemPrompt = "Jsi profesionální překladatel pro TTRPG hry. Přelož následující text do češtiny. Ponechej herní termíny (jako názvy kouzel, dovednosti, typy kostek (d4, d6, 1d8), číselné hodnoty, atd.) V PŮVODNÍM JAZYCE (nejčastěji angličtina), ale zbytek textu přelož plynule do češtiny. Použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Zachovej formátování odstavců (\\n\\n).";
+        
+        const payload = {
+            contents: [{ parts: [{ text: textToTranslate }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+        };
+        
+        try {
+            const API_URL = GEMINI_API_BASE_URL + apiKey;
+            const MAX_RETRIES = 5;
+            let response;
+            
+            translateButton.disabled = true;
+            translateText.textContent = "Překládám...";
+
+            for (let i = 0; i < MAX_RETRIES; i++) {
+                try {
+                    response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (response.ok) break;
+
+                } catch (e) {
+                    if (i === MAX_RETRIES - 1) throw e;
+                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+                }
+            }
+
+            if (!response.ok) {
+                const errorBody = await response.text();
+                throw new Error(`API error: ${response.statusText}. Chyba: ${errorBody}`);
+            }
+
+            const result = await response.json();
+            const translatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (translatedText) {
+                document.getElementById('cardDescriptionCz').value = translatedText;
+                updatePreview();
+                console.log("Překlad úspěšný.");
+            } else {
+                throw new Error("API nevrátilo překlad.");
+            }
+
+        } catch (error) {
+            console.error("Chyba při překladu:", error);
+        } finally {
+            setLoading(false);
+            translateText.textContent = "Přeložit pomocí AI";
+            updateAnalyzeButtonState();
+        }
+    }
+
+
     async function analyzeScreenshots() {
         const apiKey = getApiKey();
 
@@ -900,6 +1068,9 @@
                 cardType: { type: "STRING", description: "Identifikovaný typ předmětu. Musí být jedno z: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER." },
                 description: { type: "STRING", description: "Hlavní popis nebo efekt předmětu/kouzla v původním jazyce. Text by měl být souvislý. Použijte **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro nové odstavce použijte dvě zalomení řádku (Enter)." },
                 descriptionCz: { type: "STRING", description: "Přesný překlad pole 'description' do češtiny. Ponechte názvy předmětů, kouzel, levely, skilly a čísla v angličtině/původním jazyce. Přeložte pouze popis a souvislé texty." },
+                maxUses: { type: "NUMBER", description: "Maximální počet použití (charges) nebo životů itemu. 0, pokud neaplikovatelné." },
+                currentUses: { type: "NUMBER", description: "Aktuální počet použití (charges) nebo životů itemu. 0, pokud neaplikovatelné." },
+                usesType: { type: "STRING", description: "Typ vizuálního měřáku. Musí být jedno z: '', 'DOTS', 'HEARTS', 'DICE', 'BAR'. Prázdný řetězec, pokud neaplikovatelné." },
                 attributes: {
                     type: "ARRAY",
                     description: "Pole klíčových atributů. Například Level, Cena, Typ, Damage, Vzácnost, atd. Překlážejte Klíč, ne Hodnotu.",
@@ -912,10 +1083,10 @@
                     }
                 }
             },
-            required: ["title", "cardType", "description", "descriptionCz", "attributes"] // Přidáno descriptionCz
+            required: ["title", "cardType", "description", "descriptionCz", "attributes", "maxUses", "currentUses", "usesType"]
         };
 
-        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. Překlad (translation) poskytni pouze pokud je zřejmý, jinak prázdný řetězec. V popisu (description) a (descriptionCz) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců (např. pro odrážky) použij dvě zalomení řádku (\\n\\n). Ujisti se, že descriptionCz je PŘESNÝ, SOUVISLÝ A KVALITNÍ překlad description, ale zachovává anglické názvy skillů a čísel, stejně jako ve tvém vzoru.";
+        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. V popisu (description) a (descriptionCz) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců použij dvě zalomení řádku (\\n\\n). Ujisti se, že descriptionCz je PŘESNÝ, SOUVISLÝ A KVALITNÍ překlad description, ale zachovává anglické názvy skillů a čísel, stejně jako ve tvém vzoru. Také vyplň 'maxUses', 'currentUses' a 'usesType' na základě informací o charges, použitích nebo životech itemu (např. item má 3/3 charges, nastav maxUses=3, currentUses=3, usesType='DOTS'). Použij 'BAR' pro procenta/stav, 'HEARTS' pro životy, 'DICE' pro denní použití/kostky a 'DOTS' pro charges.";
 
         const userQuery = "Analyzuj tento TTRPG screenshot/y a vyplň data do zadaného JSON schématu. Extrahuj z obrázků co nejvíce textu do atributů a popisu.";
         
@@ -978,7 +1149,6 @@
         } catch (error) {
             console.error("Chyba při analýze screenshotu:", error);
             const errorMessage = "Nepodařilo se analyzovat obrázek. Zkuste jiný nebo zadejte data ručně.";
-            // Zrušeno alert(`${errorMessage} Chyba: ${error.message.substring(0, 100)}...`);
         } finally {
             setLoading(false);
         }
@@ -988,8 +1158,13 @@
         document.getElementById('cardTitle').value = data.title || '';
         document.getElementById('cardTranslation').value = data.translation || '';
         document.getElementById('cardDescription').value = data.description || '';
-        document.getElementById('cardDescriptionCz').value = data.descriptionCz || ''; // NOVÉ
+        document.getElementById('cardDescriptionCz').value = data.descriptionCz || '';
         
+        // Nastavení měřáků (Charges/Uses)
+        usesTypeInput.value = data.usesType && ['DOTS', 'HEARTS', 'DICE', 'BAR'].includes(data.usesType.toUpperCase()) ? data.usesType.toUpperCase() : '';
+        maxUsesInput.value = data.maxUses !== undefined ? data.maxUses : 0;
+        currentUsesInput.value = data.currentUses !== undefined ? data.currentUses : 0;
+
         // NOVÁ LOGIKA: Nastavení typu karty (pokud je platný)
         if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
             cardTypeInput.value = data.cardType.toUpperCase();
@@ -1244,6 +1419,88 @@
         return lowestY;
     }
 
+    // NOVÁ FUNKCE: Kreslení měřáků/charges
+    function drawCharges(ctx, x, y, width, maxUses, currentUses, usesType) {
+        if (maxUses <= 0 || usesType === '') return y; // Není co kreslit
+        
+        const padding = 5;
+        const barHeight = CHARGES_HEIGHT - 2 * padding;
+        const barY = y + padding;
+        const usedFraction = Math.min(1, Math.max(0, currentUses / maxUses));
+        
+        let label = '';
+        let labelColor = '#000000';
+
+        // Rámeček měřáku
+        ctx.strokeStyle = '#333333';
+        ctx.lineWidth = 3;
+        ctx.fillStyle = '#E0E0E0';
+        ctx.strokeRect(x, y, width, CHARGES_HEIGHT);
+        ctx.fillRect(x, y, width, CHARGES_HEIGHT);
+
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px sans-serif';
+        
+        const centerX = x + width / 2;
+        const centerY = y + CHARGES_HEIGHT / 2;
+
+        switch (usesType) {
+            case 'DOTS':
+                // Tečky / Charges
+                label = "Charges: " + currentUses + "/" + maxUses;
+                const dotSize = 10;
+                const dotSpacing = 15;
+                const totalDotWidth = maxUses * dotSize + (maxUses - 1) * dotSpacing;
+                let dotX = centerX - totalDotWidth / 2 + dotSize / 2;
+
+                for (let i = 0; i < maxUses; i++) {
+                    ctx.fillStyle = i < currentUses ? '#22C55E' : '#B91C1C'; // Green/Red
+                    ctx.beginPath();
+                    ctx.arc(dotX, centerY, dotSize / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    dotX += dotSize + dotSpacing;
+                }
+                break;
+            case 'HEARTS':
+                // Srdce / Životy
+                label = "HP: " + currentUses + "/" + maxUses;
+                ctx.fillStyle = '#B91C1C'; // Red
+                ctx.font = '20px sans-serif';
+                ctx.fillText(label, centerX, centerY);
+                break;
+            case 'DICE':
+                // Kostky / Použití za den/kolo
+                label = "Uses: " + currentUses + "/" + maxUses + " (Per Day)";
+                ctx.fillStyle = '#1D4ED8'; // Blue
+                ctx.font = '20px sans-serif';
+                ctx.fillText(label, centerX, centerY);
+                break;
+            case 'BAR':
+                // Bar / Procenta/Stav
+                const fillWidth = width * usedFraction;
+                let barColor = '#4B5563'; // Default Gray
+                if (usedFraction > 0.6) barColor = '#10B981'; // Green
+                else if (usedFraction > 0.3) barColor = '#F59E0B'; // Yellow
+                else barColor = '#EF4444'; // Red
+
+                ctx.fillStyle = barColor;
+                ctx.fillRect(x, y, fillWidth, CHARGES_HEIGHT);
+
+                label = "Status: " + Math.round(usedFraction * 100) + "%";
+                labelColor = (usedFraction < 0.5) ? '#FFFFFF' : '#000000';
+                
+                ctx.fillStyle = labelColor;
+                ctx.fillText(label, centerX, centerY);
+                break;
+        }
+
+        ctx.textAlign = 'left'; // Reset
+        ctx.textBaseline = 'top'; // Reset
+        
+        return y + CHARGES_HEIGHT + PADDING; // Nová Y pozice
+    }
+
 
     // NOVÁ POMOCNÁ FUNKCE: Vykreslení data
     function drawCreationDate(ctx) {
@@ -1253,7 +1510,7 @@
         
         // Zobrazení jazyka generování
         const langNote = printLanguage === 'CZ' ? 'CZ' : 'ENG';
-        const creationText = `Vytvořeno: ${dateString} ${timeString} (${langNote})`; // Přidána poznámka o jazyku
+        const creationText = `Vytvořeno: ${dateString} ${timeString} (${langNote}) V_0.19`; // Přidána poznámka o jazyku a verze
 
         ctx.fillStyle = '#555555'; // Jemně šedá barva
         ctx.font = '14px sans-serif'; // Malé písmo
@@ -1365,7 +1622,7 @@
         ctx.lineTo(BASE_CARD_W - PADDING, PADDING * 2.5);
         ctx.stroke();
         
-        const middleSectionYStart = PADDING * 2.5 + 10;
+        let middleSectionYStart = PADDING * 2.5 + 10;
         
         // --- 2. Rozdělení Prostřední Sekce ---
         const imageX = PADDING;
@@ -1415,12 +1672,29 @@
         // Atributy
         // Spočítáme finální Y pozici pro atributy (nejnižší bod)
         const lowestYAttribute = drawAttributes(ctx, cardData.attributes, statsX, imageY, statsWidth);
+        
+        // --- 2b. Měřáky (Charges/Uses) pod obrázkem ---
+        let descriptionYStart;
+        
+        if (cardData.uses && cardData.uses.usesType) {
+             const usesX = imageX;
+             const usesY = imageY + IMAGE_SIZE + PADDING / 2;
+             const usesWidth = IMAGE_SIZE;
+             
+             // Kreslení měřáků. drawCharges vrátí novou Y pozici
+             const newYAfterCharges = drawCharges(ctx, usesX, usesY, usesWidth, cardData.uses.maxUses, cardData.uses.currentUses, cardData.uses.usesType);
+             
+             // Popis začíná pod měřáky (nebo atributy, whichever is lower)
+             descriptionYStart = Math.max(newYAfterCharges, lowestYAttribute + PADDING);
+        } else {
+             // Pokud nejsou měřáky, popis začíná pod obrázkem nebo atributy
+             descriptionYStart = Math.max(imageY + IMAGE_SIZE, lowestYAttribute) + PADDING;
+        }
 
         // --- 3. Popis (Rozšíření) ---
         
-        // DŮLEŽITÁ OPRAVA: Popis začíná tam, kde končí buď obrázek, nebo atributy, + PADDING
-        const descriptionY = Math.max(imageY + IMAGE_SIZE, lowestYAttribute) + PADDING;
-        
+        const descriptionY = descriptionYStart;
+
         // Výběr popisu podle nastaveného jazyka
         const rawText = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : cardData.description) || "";
         
@@ -1496,7 +1770,7 @@
             if (sectionIndex * BASE_CARD_W > targetWidth) break; // Ochrana proti nekonečné smyčce
         }
 
-        // Vykreslení data a času (V_0.14)
+        // Vykreslení data a času (V_0.19)
         drawCreationDate(ctx);
     }
     
@@ -1536,15 +1810,26 @@
             value: row.querySelector('.attr-value').value.trim()
         })).filter(attr => attr.key && attr.value);
         
-        // Odstranění staré logiky automatického řazení:
-        // attributes.sort((a, b) => { ... });
+        // Načtení dat z měřáků
+        const usesData = {
+            usesType: usesTypeInput.value,
+            maxUses: parseInt(maxUsesInput.value) || 0,
+            currentUses: parseInt(currentUsesInput.value) || 0
+        };
+        
+        if (usesData.currentUses > usesData.maxUses) {
+            usesData.currentUses = usesData.maxUses; // Oprava nesmyslných dat
+            currentUsesInput.value = usesData.maxUses;
+        }
+
 
         currentCardData = {
             title,
             translation,
             description,
             attributes,
-            image: itemImageObject
+            image: itemImageObject,
+            uses: usesData // NOVÉ: Měřáky
         };
         
         // --- Logika určení potřebné šířky karty (počet sekcí) ---
@@ -1552,7 +1837,7 @@
         // Vytáhneme data potřebná pro simulaci
         const cardType = cardTypeInput.value;
         
-        // 1. Zjistit, kolik místa zaberou horní sekce (Název, Obrázek, Atributy)
+        // 1. Zjistit, kolik místa zaberou horní sekce (Název, Obrázek, Atributy, Měřáky)
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
         tempCanvas.width = BASE_CARD_W;
@@ -1605,10 +1890,20 @@
             }
         });
         
-        // DŮLEŽITÁ OPRAVA VÝPOČTU: Potřebujeme zjistit, kde začíná popis
-        const descriptionY = Math.max(imageY + IMAGE_SIZE, currentY) + PADDING;
+        // VÝPOČET Y STARTU PRO POPIS
+        const lowestYAttribute = currentY;
+        let descriptionYStart = Math.max(imageY + IMAGE_SIZE, lowestYAttribute);
         
-        const heightFirstSection = BASE_CARD_H - descriptionY - PADDING;
+        // Přidat výšku měřáku, pokud se má zobrazit
+        if (usesData.usesType && usesData.maxUses > 0) {
+             descriptionYStart = Math.max(descriptionYStart, imageY + IMAGE_SIZE + CHARGES_HEIGHT + PADDING / 2);
+        }
+        
+        descriptionYStart += PADDING;
+        
+        // Konec výpočtu Y STARTU PRO POPIS
+        
+        const heightFirstSection = BASE_CARD_H - descriptionYStart - PADDING;
         const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (22 + textPadding)) / descriptionLineHeight));
         
         // Použijeme text popisu podle vybraného jazyka
@@ -1651,12 +1946,13 @@
         
         // Vykreslení na náhledový canvas
         drawCardOnCanvas(ctx, currentCardData, finalWidth, BASE_CARD_H);
+        
+        // Aktualizace stavu tlačítka pro překlad
+        updateAnalyzeButtonState();
     }
     
     // --- MODAL A ZOOM FUNKCE ---
     
-    // Zbytek funkcí showZoomModal a closeZoomModal je definován níže.
-
     window.showZoomModal = function() {
         const finalWidth = ctx.canvas.width;
         const finalHeight = ctx.canvas.height;
@@ -1777,7 +2073,10 @@
             translation: document.getElementById('cardTranslation').value,
             cardType: cardTypeInput.value,
             description: document.getElementById('cardDescription').value,
-            descriptionCz: document.getElementById('cardDescriptionCz').value, // NOVÉ
+            descriptionCz: document.getElementById('cardDescriptionCz').value,
+            maxUses: parseInt(maxUsesInput.value) || 0,
+            currentUses: parseInt(currentUsesInput.value) || 0,
+            usesType: usesTypeInput.value,
             attributes: attributes
         };
         
@@ -1834,15 +2133,28 @@
         }
         
         initSortable(); // Inicializace Drag & Drop
-        updateAnalyzeButtonState(); // Zkontroluje stav tlačítka na začátku
         
         // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
         setPrintLanguage(storedLang); 
 
-        // Resetuje pole, protože byla odstraněna předvyplněná data "Srp"
-        resetAllFields(); 
-
+        // První reset vyčistí všechna pole, ale nevolá modal (V_0.19)
+        // V_0.18 použil resetAllFields, musíme implementovat performReset
+        
+        // Vykonejte reset bez modalu
+        document.getElementById('cardTitle').value = '';
+        document.getElementById('cardTranslation').value = '';
+        document.getElementById('cardDescription').value = '';
+        document.getElementById('cardDescriptionCz').value = '';
+        cardTypeInput.value = 'ITEM';
+        usesTypeInput.value = '';
+        maxUsesInput.value = '0';
+        currentUsesInput.value = '0';
+        clearAttributes();
+        removeItemImage();
+        jsonInput.value = '';
+        clearAllScreenshots();
+        
         updatePreview();
     };
 
@@ -1850,10 +2162,12 @@
     document.getElementById('cardTitle').addEventListener('input', updatePreview);
     document.getElementById('cardTranslation').addEventListener('input', updatePreview);
     document.getElementById('cardDescription').addEventListener('input', updatePreview);
-    document.getElementById('cardDescriptionCz').addEventListener('input', updatePreview); // NOVÉ
-    document.getElementById('cardType').addEventListener('change', updatePreview); // Přidáno pro typ karty
-    // Naslouchání změnám v atributech (zachytí všechny změny v inputech uvnitř kontejneru)
+    document.getElementById('cardDescriptionCz').addEventListener('input', updatePreview); 
+    document.getElementById('cardType').addEventListener('change', updatePreview); 
     document.getElementById('attributesContainer').addEventListener('input', updatePreview);
+    usesTypeInput.addEventListener('change', updatePreview);
+    maxUsesInput.addEventListener('input', updatePreview);
+    currentUsesInput.addEventListener('input', updatePreview);
 
     // Naslouchání změnám v API klíči (ukládá se jen, pokud nepoužíváme klíč Canvasu)
     geminiApiKeyInput.addEventListener('input', function() {
@@ -1862,6 +2176,9 @@
         }
         updateAnalyzeButtonState();
     });
+    
+    // Naslouchání změnám pro aktivaci tlačítka překladu
+    document.getElementById('cardDescription').addEventListener('input', updateAnalyzeButtonState);
 </script>
 
 </body>
