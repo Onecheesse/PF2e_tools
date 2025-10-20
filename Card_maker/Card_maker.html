@@ -75,8 +75,8 @@
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
 
 <div class="max-w-7xl mx-auto">
-    <!-- Verze aplikace V_0.08 -->
-    <p class="text-xs text-gray-400 text-right">V_0.08</p>
+    <!-- Verze aplikace V_0.10 -->
+    <p class="text-xs text-gray-400 text-right">V_0.10</p>
 
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">
         TTRPG Generátor Karet
@@ -158,6 +158,18 @@
                 </div>
             </div>
 
+            <!-- NOVÉ: Sekce pro JSON vstup -->
+            <div class="mb-6 border-b pb-4">
+                 <h3 class="text-xl font-semibold mb-3 text-gray-700">2b. Načíst data z JSON (Alternativa k obrázkům)</h3>
+                 <textarea id="jsonInput" rows="4" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 p-2 border" placeholder="Vložte JSON data (z externího API nebo souboru) ve stejném formátu, jaký generuje Gemini API."></textarea>
+                 <button onclick="loadJsonData()" class="w-full mt-2 bg-yellow-500 text-white font-bold p-2 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
+                     Načíst JSON data
+                 </button>
+                 <p class="text-xs text-gray-500 mt-1">
+                    *Poznámka: Přímé stahování z libovolné URL není kvůli bezpečnostním omezením Canvasu možné. Vložte data v textové podobě.
+                 </p>
+            </div>
+
             <!-- Vlastní obrázek pro zobrazení na kartě -->
             <div class="mb-6 border-b pb-4">
                 <label for="itemImageUpload" class="block text-sm font-medium text-gray-700 mb-2">Obrázek itemu (Zobrazí se na kartě)</label>
@@ -170,7 +182,10 @@
 
 
             <!-- Klíčové Atributy (Flexibilní a seřazené) -->
-            <h3 class="text-xl font-semibold mb-3 text-gray-700">3. Klíčové Atributy (Řadí se automaticky)</h3>
+            <h3 class="text-xl font-semibold mb-1 text-gray-700">3. Klíčové Atributy</h3>
+            <!-- NOVÁ POZNÁMKA K DRAG & DROP -->
+            <p class="text-sm text-gray-500 mb-3">Atributy můžete přetahovat (Drag & Drop) pro manuální změnu pořadí.</p>
+            
             <div id="attributesContainer" class="space-y-3 mb-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
                 <!-- Počáteční atributy -->
                 <div class="flex space-x-2 attribute-row">
@@ -229,12 +244,20 @@
                 <canvas id="printCanvas" width="744" height="1038" class="shadow-xl rounded-lg mx-auto" onclick="showZoomModal()"></canvas>
             </div>
 
-            <button onclick="exportPDF()" class="w-full bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg mt-4">
-                <div class="flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Stáhnout jako PDF (Černobílé, 63x88mm)
-                </div>
-            </button>
+            <div class="flex space-x-4 w-full">
+                <button onclick="exportJSON()" class="w-1/2 bg-gray-600 text-white font-bold p-3 rounded-lg hover:bg-gray-700 transition duration-150 shadow-lg mt-4">
+                    <div class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l-4-4m4 4H4"></path></svg>
+                        Stáhnout JSON
+                    </div>
+                </button>
+                <button onclick="exportPDF()" class="w-1/2 bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg mt-4">
+                    <div class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Stáhnout PDF
+                    </div>
+                </button>
+            </div>
             <p class="text-xs text-gray-500 mt-2 text-center">PDF soubor bude obsahovat přesné rozměry pro tisk a složení (případné rozšíření).</p>
         </div>
     </div>
@@ -307,6 +330,7 @@
     const geminiApiKeyInput = document.getElementById('geminiApiKey');
     const cardTypeInput = document.getElementById('cardType');
     const attributesContainer = document.getElementById('attributesContainer');
+    const jsonInput = document.getElementById('jsonInput'); // NOVÉ: pro JSON vstup
 
 
     // Pořadí pro automatické řazení atributů
@@ -474,6 +498,33 @@
 
         updatePreview(); // Aktualizovat náhled
     }
+    
+    // NOVÁ FUNKCE: Načtení JSON dat z textového pole
+    window.loadJsonData = function() {
+        const jsonText = jsonInput.value.trim();
+        if (!jsonText) {
+             alert("Prosím, vložte JSON data.");
+             return;
+        }
+
+        try {
+            const data = JSON.parse(jsonText);
+            
+            // Základní ověření struktury
+            if (!data.title || !data.attributes) {
+                alert("Neplatný JSON formát. Chybí 'title' nebo 'attributes'.");
+                return;
+            }
+
+            // Předání dat do formuláře
+            updateFormFields(data);
+            alert("Data z JSON úspěšně načtena!");
+            
+        } catch (e) {
+            console.error("Chyba při parsování JSON:", e);
+            alert("Chyba: Neplatný JSON formát. Zkontrolujte syntaxi.");
+        }
+    }
 
     // --- FUNKCE PRO VKLÁDÁNÍ OBRÁZKU (PRO ANALÝZU) ---
 
@@ -626,6 +677,7 @@
             properties: {
                 title: { type: "STRING", description: "Originální název předmětu/kouzla z obrázku." },
                 translation: { type: "STRING", description: "Překlad názvu do češtiny, pokud je zřejmý. Jinak nechte prázdné." },
+                cardType: { type: "STRING", description: "Identifikovaný typ předmětu. Musí být jedno z: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER." },
                 description: { type: "STRING", description: "Hlavní popis nebo efekt předmětu/kouzla. Text by měl být souvislý. Použijte **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro nové odstavce použijte dvě zalomení řádku (Enter)." },
                 attributes: {
                     type: "ARRAY",
@@ -639,10 +691,10 @@
                     }
                 }
             },
-            required: ["title", "description", "attributes"]
+            required: ["title", "cardType", "description", "attributes"]
         };
 
-        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. Překlad (translation) poskytni pouze pokud je zřejmý, jinak prázdný řetězec. V popisu (description) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců (např. pro odrážky) použij dvě zalomení řádku (\\n\\n).";
+        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. Překlad (translation) poskytni pouze pokud je zřejmý, jinak prázdný řetězec. V popisu (description) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců (např. pro odrážky) použij dvě zalomení řádku (\\n\\n).";
 
         const userQuery = "Analyzuj tento TTRPG screenshot/y a vyplň data do zadaného JSON schématu. Extrahuj z obrázků co nejvíce textu do atributů a popisu.";
         
@@ -715,6 +767,14 @@
         document.getElementById('cardTitle').value = data.title || '';
         document.getElementById('cardTranslation').value = data.translation || '';
         document.getElementById('cardDescription').value = data.description || '';
+        
+        // NOVÁ LOGIKA: Nastavení typu karty (pokud je platný)
+        if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
+            cardTypeInput.value = data.cardType.toUpperCase();
+        } else {
+             // Fallback na Item, pokud se typ nepodaří detekovat nebo je neplatný
+             cardTypeInput.value = 'ITEM';
+        }
         
         clearAttributes();
         
@@ -1371,17 +1431,12 @@
         zoomModal.classList.add('hidden');
     }
 
-    // --- FUNKCE PRO EXPORT PDF ---
-
-    window.exportPDF = function() {
-        if (!currentCardData.title) {
-            // Používáme alert místo custom modalu jen pro kritické chyby, které se nemají dít
-            alert("Vyplňte prosím Název karty.");
-            return;
-        }
-
-        // Získání Levelu a typu pro název souboru
+    // --- FUNKCE PRO EXPORT DAT ---
+    
+    // Získání názvu souboru (společná logika pro PDF a JSON)
+    function getExportFilename(extension) {
         const cardType = cardTypeInput.value.toUpperCase();
+        // Nahrazení nepovolených znaků podtržítky
         const cardName = (currentCardData.title || 'karta').replace(/[^a-zA-Z0-9-()]/g, '_');
         
         let cardLevel = 'N_A';
@@ -1395,10 +1450,18 @@
         const sectionCount = Math.round(ctx.canvas.width / BASE_CARD_W);
         const dimensions = `${CARD_W_MM}x${CARD_H_MM}mm_x${sectionCount}`;
         
-        // Nový formát názvu: [typ]_[level]___[nazev]___[(rozmer)]
-        const filename = `${cardType}_${cardLevel}___${cardName}___(${dimensions}).pdf`;
+        // Formát: [typ]_[level]___[nazev]___[(rozmer)].[extenze]
+        return `${cardType}_${cardLevel}___${cardName}___(${dimensions}).${extension}`;
+    }
 
+    window.exportPDF = function() {
+        if (!currentCardData.title) {
+            alert("Vyplňte prosím Název karty.");
+            return;
+        }
 
+        const filename = getExportFilename('pdf');
+        
         // Získání finálních rozměrů z preview canvas (které byly dynamicky nastaveny)
         const targetWidth = ctx.canvas.width;
         const targetHeight = ctx.canvas.height;
@@ -1430,6 +1493,7 @@
         doc.setLineWidth(0.1);
         doc.rect(1, 1, finalWidthMM, finalHeightMM); // Tenký rámeček pro ořez (bleed)
         
+        const sectionCount = Math.round(ctx.canvas.width / BASE_CARD_W);
         if (sectionCount > 1) {
             // Značky pro složení/přeložení (každých 63mm)
             for (let i = 1; i < sectionCount; i++) {
@@ -1441,6 +1505,44 @@
         }
         
         doc.save(filename);
+    }
+    
+    // NOVÁ FUNKCE: Export dat do JSON souboru
+    window.exportJSON = function() {
+        if (!currentCardData.title) {
+            alert("Vyplňte prosím Název karty.");
+            return;
+        }
+
+        // Získání čistých dat z formuláře
+        const attributes = Array.from(document.querySelectorAll('#attributesContainer .attribute-row'))
+            .map(row => ({
+                key: row.querySelector('.attr-key').value.trim(),
+                value: row.querySelector('.attr-value').value.trim()
+            }))
+            .filter(attr => attr.key && attr.value);
+
+        const dataToExport = {
+            title: document.getElementById('cardTitle').value,
+            translation: document.getElementById('cardTranslation').value,
+            cardType: cardTypeInput.value,
+            description: document.getElementById('cardDescription').value,
+            attributes: attributes
+        };
+        
+        const filename = getExportFilename('json');
+        const jsonText = JSON.stringify(dataToExport, null, 2);
+        
+        const blob = new Blob([jsonText], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     // Inicializace SortableJS
