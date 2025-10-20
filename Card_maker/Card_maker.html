@@ -94,6 +94,11 @@
     
     <div class="flex justify-between items-center mb-6">
         <div class="flex space-x-3">
+             <!-- NOVÉ: Tlačítko pro reset -->
+             <!-- Odstraněno confirm() z resetAllFields -->
+             <button onclick="resetAllFields()" class="p-2 rounded-full bg-red-200 text-red-700 dark:bg-red-700 dark:text-red-100 hover:bg-red-300 dark:hover:bg-red-600 transition" title="Vyčistit všechna pole">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
+             </button>
             <!-- NOVÉ: Tlačítko pro info -->
             <button onclick="showInfoModal()" class="p-2 rounded-full bg-blue-200 text-blue-700 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-300 dark:hover:bg-blue-600 transition" title="Informace a návod">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -108,8 +113,8 @@
             </button>
         </div>
 
-        <!-- Verze aplikace V_0.15 -->
-        <p class="text-xs text-gray-400 text-right">V_0.15</p>
+        <!-- Verze aplikace V_0.18 (Zvýšeno z V_0.17) -->
+        <p class="text-xs text-gray-400 text-right">V_0.18</p>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -139,11 +144,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                     <label for="cardTitle" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Název (Originální jazyk)</label>
-                    <input type="text" id="cardTitle" value="Sickle (Srp)" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">
+                    <input type="text" id="cardTitle" value="" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">
                 </div>
                 <div>
                     <label for="cardTranslation" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Překlad (Volitelně, do CZ v závorce)</label>
-                    <input type="text" id="cardTranslation" value="Srp" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">
+                    <input type="text" id="cardTranslation" value="" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">
                 </div>
             </div>
 
@@ -168,9 +173,9 @@
             <!-- Obrázek pro Analýzu (Screenshot) -->
             <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2. Analýza Screenshotů</h3>
             <div id="dropZone" class="mb-4 p-4 border-2 border-dashed border-indigo-300 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-center cursor-pointer hover:border-indigo-500 transition duration-150"
-                 ondragover="event.preventDefault()"
-                 ondrop="handleImageDrop(event)"
-                 title="Vložte sem obrázek ze schránky (Ctrl+V) nebo přetáhněte soubor.">
+                ondragover="event.preventDefault()"
+                ondrop="handleImageDrop(event)"
+                title="Vložte sem obrázek ze schránky (Ctrl+V) nebo přetáhněte soubor.">
                 
                 <p class="text-indigo-700 dark:text-indigo-300 font-semibold mb-2">Vložte JEDEN nebo VÍCE screenshotů pro ANALÝZU (Ctrl+V) nebo soubor</p>
                 
@@ -194,20 +199,35 @@
 
             <!-- NOVÉ: Sekce pro JSON vstup -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
-                 <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2b. Načíst data z JSON (Alternativa k obrázkům)</h3>
-                 <textarea id="jsonInput" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Vložte JSON data (z externího API nebo souboru) ve stejném formátu, jaký generuje Gemini API."></textarea>
-                 <button onclick="loadJsonData()" class="w-full mt-2 bg-yellow-500 text-white font-bold p-2 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
-                     Načíst JSON data
-                 </button>
-                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    *Poznámka: Přímé stahování z libovolné URL není kvůli bezpečnostním omezením Canvasu možné. Vložte data v textové podobě.
-                 </p>
+                   <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2b. Načíst data z JSON (Alternativa k obrázkům)</h3>
+                   <div class="flex space-x-2">
+                        <textarea id="jsonInput" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Vložte JSON data (z externího API nebo souboru) ve stejném formátu, jaký generuje Gemini API."></textarea>
+                   </div>
+                   <div class="flex space-x-2 mt-2">
+                        <button onclick="loadJsonFile()" class="w-1/2 bg-yellow-500 text-white font-bold p-2 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
+                            Načíst JSON soubor
+                        </button>
+                        <input type="file" id="jsonFileUpload" accept=".json" class="hidden">
+                        <button onclick="loadJsonData()" class="w-1/2 bg-yellow-600 text-white font-bold p-2 rounded-lg hover:bg-yellow-700 transition duration-150 shadow-md">
+                            Načíst JSON z pole
+                        </button>
+                   </div>
+                   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                       *Poznámka: Přímé stahování z libovolné URL není kvůli bezpečnostním omezením Canvasu možné. Vložte data v textové podobě nebo nahrajte JSON soubor.
+                   </p>
             </div>
 
             <!-- Vlastní obrázek pro zobrazení na kartě -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
                 <label for="itemImageUpload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Obrázek itemu (Zobrazí se na kartě)</label>
-                <input type="file" id="itemImageUpload" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 dark:file:bg-green-700 dark:file:text-white dark:hover:file:bg-green-600">
+                
+                <div class="flex space-x-2 items-center">
+                    <input type="file" id="itemImageUpload" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 dark:file:bg-green-700 dark:file:text-white dark:hover:file:bg-green-600">
+                    <button onclick="removeItemImage()" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-full transition duration-150" title="Odebrat obrázek itemu">
+                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
+                    </button>
+                </div>
+                
                 <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Nahrajte oříznutý obrázek, který se zobrazí na kartě. (Ideální poměr 1:1)</p>
                 <div id="itemImagePreview" class="mt-3 w-32 h-32 bg-gray-100 dark:bg-gray-700 rounded-lg border border-dashed border-gray-400 dark:border-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-400 overflow-hidden text-sm mx-auto">
                     Náhled itemu
@@ -221,29 +241,7 @@
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Atributy můžete přetahovat (Drag & Drop) pro manuální změnu pořadí.</p>
             
             <div id="attributesContainer" class="space-y-3 mb-6 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
-                <!-- Počáteční atributy -->
-                <div class="flex space-x-2 attribute-row">
-                    <input type="text" value="Cena" class="attr-key w-1/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Atribut (např. Level)">
-                    <input type="text" value="2 sp" class="attr-value w-2/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Hodnota (např. 50 gp)">
-                    <!-- NOVÉ: Volá manageAttributes pro odebrání -->
-                    <button type="button" onclick="manageAttributes('remove', this)" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <div class="flex space-x-2 attribute-row">
-                    <input type="text" value="Typ" class="attr-key w-1/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Atribut (např. Cena)">
-                    <input type="text" value="Melee, Category Simple, Group Knife" class="attr-value w-2/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Hodnota (např. 50 gp)">
-                    <button type="button" onclick="manageAttributes('remove', this)" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <div class="flex space-x-2 attribute-row">
-                    <input type="text" value="Poškození" class="attr-key w-1/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Atribut (např. Typ)">
-                    <input type="text" value="1d6 persistent bleed damage" class="attr-value w-2/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Hodnota (např. 1d8)">
-                    <button type="button" onclick="manageAttributes('remove', this)" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
+                <!-- Zde se dynamicky vkládají atributy -->
             </div>
             <!-- NOVÉ: Volá manageAttributes pro přidání -->
             <button onclick="manageAttributes('add')" class="w-full bg-indigo-500 text-white p-2 rounded-lg hover:bg-indigo-600 transition duration-150 shadow-md">
@@ -253,29 +251,13 @@
             <!-- Popis (ENG - primární) -->
             <div class="mt-6 mb-4">
                 <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4. Popis Itemu/Kouzla (Originální jazyk)</label>
-                <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">Popis: Originally a farming tool used for reaping grain, this one-handed weapon has a short wooden handle ending in a curved blade, sometimes sharpened on both sides. Zde jsou specifické vlastnosti:
-
-**TRAITS**
-*Agile*: The multiple attack penalty you take with this weapon on the second attack on your turn is -4 instead of -5, and -8 instead of -10 on the third and subsequent attacks in the turn.
-*Finesse*: You can use your Dexterity modifier instead of your Strength modifier on attack rolls using this melee weapon. You still calculate damage using Strength.
-*Trip*: You can use this weapon to Trip with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Trip using the weapon, you can drop the weapon to take the effects of a basic failure instead of a critical failure.
-
-**CRITICAL SPECIALIZATION EFFECT**
-(Source: Core Rulebook pg. 283-4) Certain feats, class features, weapon runes, and other effects can grant you additional benefits when you make a Strike with certain weapons and get a critical success. This is called a critical specialization effect. The exact effect depends on which weapon group your weapon belongs to.</textarea>
+                <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white"></textarea>
             </div>
             
              <!-- NOVÉ: Popis (CZ - přeložený) -->
             <div class="mb-6">
                 <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4b. Popis Itemu/Kouzla (Přeložený do CZ)</label>
-                <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis. Můžete jej upravit.">Popis: Původně farmářský nástroj používaný ke žnutí obilí, tato jednoruční zbraň má krátkou dřevěnou rukojeť končící zakřivenou čepelí, někdy nabroušenou z obou stran. Zde jsou specifické vlastnosti:
-
-**TRAITS**
-*Agile*: Postih pro vícenásobný útok, který obdržíte s touto zbraní na druhý útok ve vašem tahu, je -4 místo -5, a -8 místo -10 na třetí a následující útoky v tahu.
-*Finesse*: Můžete použít svůj modifikátor Obratnosti místo modifikátoru Síly na hody útokem s touto zbraní na blízko. Poškození stále počítáte se Sílou.
-*Trip*: Můžete použít tuto zbraň k Podražení (Trip) dovedností Atletika, i když nemáte volnou ruku. Používá dosah zbraně (pokud se liší od vašeho) a přidává bonus k hodu útokem zbraně jako bonus k testu Atletiky. Pokud kriticky selžete v testu Podražení pomocí zbraně, můžete ji upustit a místo kritického selhání obdržet základní selhání.
-
-**CRITICAL SPECIALIZATION EFFECT**
-(Source: Core Rulebook pg. 283-4) Některé Featy, třídní vlastnosti, runy na zbraních a další efekty vám mohou udělit dodatečné výhody, když provedete Úder (Strike) s určitými zbraněmi a dosáhnete kritického úspěchu. Tomu se říká efekt kritické specializace. Přesný efekt závisí na skupině zbraně, do které vaše zbraň patří.</textarea>
+                <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis. Můžete jej upravit."></textarea>
             </div>
 
 
@@ -359,7 +341,7 @@
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.15</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.18</h2>
         
         <div class="space-y-4 text-gray-700 dark:text-gray-300">
             <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400">Co nástroj umí?</h3>
@@ -431,6 +413,7 @@
     const cardTypeInput = document.getElementById('cardType');
     const attributesContainer = document.getElementById('attributesContainer');
     const jsonInput = document.getElementById('jsonInput'); // NOVÉ: pro JSON vstup
+    const jsonFileUpload = document.getElementById('jsonFileUpload'); // NOVÉ: file input pro JSON
     const body = document.body;
     const moonIcon = document.getElementById('moonIcon');
     const sunIcon = document.getElementById('sunIcon');
@@ -454,7 +437,7 @@
     // NOVÉ: Mapování emoji na typy karet
     const TYPE_EMOJI = {
         'ITEM': '📦',       // Item - krabice
-        'WEAPON': '⚔️',     // Weapon - zkřížené meče
+        'WEAPON': '⚔️',      // Weapon - zkřížené meče
         'SPELL': '✨',      // Spell - jiskry
         'CONSUMABLE': '🧪', // Consumable - lahvička/lektvar
         'EQUIPMENT': '🛡️',  // Equipment - štít
@@ -525,9 +508,11 @@
     
     window.toggleTheme = function() {
         if (body.classList.contains('dark')) {
+            // Přepnutí na SVĚTLÝ režim
             body.classList.remove('dark');
             localStorage.setItem('theme', 'light');
         } else {
+            // Přepnutí na TMAVÝ režim
             body.classList.add('dark');
             localStorage.setItem('theme', 'dark');
         }
@@ -566,6 +551,44 @@
         setClasses(langEngButton, lang === 'ENG');
         setClasses(langCzButton, lang === 'CZ');
 
+        updatePreview();
+    }
+    
+    // --- NOVÁ FUNKCE: Vyčištění všech polí (Reset) ---
+    window.resetAllFields = function() {
+        // NOTE: Původní kód obsahoval confirm() a alert(). Ty byly odebrány, protože jsou v Canvasu zakázány.
+        
+        // Reset textových polí
+        document.getElementById('cardTitle').value = '';
+        document.getElementById('cardTranslation').value = '';
+        document.getElementById('cardDescription').value = '';
+        document.getElementById('cardDescriptionCz').value = '';
+        
+        // Reset typu karty
+        cardTypeInput.value = 'ITEM';
+        
+        // Reset atributů
+        clearAttributes();
+        
+        // Reset obrázku itemu
+        removeItemImage();
+        
+        // Reset JSON pole
+        jsonInput.value = '';
+
+        // Reset analýzy obrázků
+        clearAllScreenshots();
+        
+        updatePreview();
+        console.log("Všechna pole byla vyčištěna.");
+    }
+    
+    // --- NOVÁ FUNKCE: Odebrání obrázku itemu ---
+    window.removeItemImage = function() {
+        itemImageObject = null;
+        itemImagePreview.innerHTML = 'Náhled itemu';
+        itemImagePreview.classList.add('text-gray-500', 'border-dashed');
+        document.getElementById('itemImageUpload').value = ''; // Reset file inputu
         updatePreview();
     }
 
@@ -674,7 +697,7 @@
     window.loadJsonData = function() {
         const jsonText = jsonInput.value.trim();
         if (!jsonText) {
-             alert("Prosím, vložte JSON data.");
+             console.error("Vložte prosím JSON data.");
              return;
         }
 
@@ -683,19 +706,39 @@
             
             // Základní ověření struktury
             if (!data.title || !data.attributes) {
-                alert("Neplatný JSON formát. Chybí 'title' nebo 'attributes'.");
+                console.error("Neplatný JSON formát. Chybí 'title' nebo 'attributes'.");
                 return;
             }
 
             // Předání dat do formuláře
             updateFormFields(data);
-            alert("Data z JSON úspěšně načtena!");
+            console.log("Data z JSON úspěšně načtena!");
             
         } catch (e) {
             console.error("Chyba při parsování JSON:", e);
-            alert("Chyba: Neplatný JSON formát. Zkontrolujte syntaxi.");
+            // Zrušeno alert("Chyba: Neplatný JSON formát. Zkontrolujte syntaxi.")
         }
     }
+
+    // NOVÁ FUNKCE: Načtení JSON dat ze souboru
+    window.loadJsonFile = function() {
+        jsonFileUpload.click(); // Spustí kliknutí na skrytý input
+    }
+    
+    jsonFileUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const jsonText = event.target.result;
+                jsonInput.value = jsonText; // Vloží text do textarea
+                loadJsonData(); // A automaticky se pokusí načíst
+            };
+            reader.readAsText(file);
+        }
+        jsonFileUpload.value = ''; // Reset file inputu
+    });
+
 
     // --- FUNKCE PRO VKLÁDÁNÍ OBRÁZKU (PRO ANALÝZU) ---
 
@@ -761,10 +804,16 @@
             Array.from(files).forEach(file => {
                 if (file.type.startsWith('image/')) {
                     const reader = new FileReader();
-                    reader.onload = function(event) {
-                        addAnalysisImage(event.target.result);
-                    };
-                    reader.readAsDataURL(file);
+                    const fileReaderPromise = new Promise((resolve) => {
+                        reader.onload = function(event) {
+                            resolve(event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    
+                    fileReaderPromise.then(dataUrl => {
+                         addAnalysisImage(dataUrl);
+                    });
                 }
             });
         }
@@ -823,10 +872,7 @@
             };
             reader.readAsDataURL(file);
         } else {
-            itemImageObject = null;
-            itemImagePreview.innerHTML = 'Náhled itemu';
-            itemImagePreview.classList.add('text-gray-500', 'border-dashed');
-            updatePreview();
+            removeItemImage(); // Zavolá funkci pro vyčištění
         }
     });
 
@@ -836,12 +882,11 @@
         const apiKey = getApiKey();
 
         if (!apiKey) {
-            // Tohle by se nemělo stát, protože tlačítko je deaktivované, ale pro jistotu
-            alert("Prosím, zadejte svůj Gemini API klíč pro spuštění analýzy.");
+            console.error("Prosím, zadejte svůj Gemini API klíč pro spuštění analýzy.");
             return;
         }
         if (analysisImagesBase64.length === 0) {
-            alert("Prosím, vložte alespoň jeden screenshot k analýze.");
+            console.error("Prosím, vložte alespoň jeden screenshot k analýze.");
             return;
         }
 
@@ -933,7 +978,7 @@
         } catch (error) {
             console.error("Chyba při analýze screenshotu:", error);
             const errorMessage = "Nepodařilo se analyzovat obrázek. Zkuste jiný nebo zadejte data ručně.";
-            alert(`${errorMessage} Chyba: ${error.message.substring(0, 100)}...`);
+            // Zrušeno alert(`${errorMessage} Chyba: ${error.message.substring(0, 100)}...`);
         } finally {
             setLoading(false);
         }
@@ -1105,7 +1150,6 @@
 
         return { finalY: currentY, remainingText: remainingText };
     }
-
 
     
     // Funkce pro kreslení Atributů 
@@ -1662,7 +1706,7 @@
 
     window.exportPDF = function() {
         if (!currentCardData.title) {
-            alert("Vyplňte prosím Název karty.");
+            console.error("Vyplňte prosím Název karty.");
             return;
         }
 
@@ -1716,7 +1760,7 @@
     // NOVÁ FUNKCE: Export dat do JSON souboru
     window.exportJSON = function() {
         if (!currentCardData.title) {
-            alert("Vyplňte prosím Název karty.");
+            console.error("Vyplňte prosím Název karty.");
             return;
         }
 
@@ -1795,6 +1839,9 @@
         // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
         setPrintLanguage(storedLang); 
+
+        // Resetuje pole, protože byla odstraněna předvyplněná data "Srp"
+        resetAllFields(); 
 
         updatePreview();
     };
