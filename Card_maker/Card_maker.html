@@ -101,8 +101,8 @@
             <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
         </button>
 
-        <!-- Verze aplikace V_0.13 -->
-        <p class="text-xs text-gray-400 text-right">V_0.13</p>
+        <!-- Verze aplikace V_0.14 -->
+        <p class="text-xs text-gray-400 text-right">V_0.14</p>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -282,10 +282,10 @@
             <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700 w-full text-center">Náhled Karty</h2>
             
             <div class="flex space-x-2 mb-4">
-                 <button id="langEng" onclick="setPrintLanguage('ENG')" class="px-3 py-1 rounded-lg font-bold bg-indigo-500 text-white hover:bg-indigo-600">
+                 <button id="langEng" onclick="setPrintLanguage('ENG')" class="px-3 py-1 rounded-lg font-bold bg-indigo-500 text-white hover:bg-indigo-600 transition duration-150">
                     ENG
                  </button>
-                 <button id="langCz" onclick="setPrintLanguage('CZ')" class="px-3 py-1 rounded-lg font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                 <button id="langCz" onclick="setPrintLanguage('CZ')" class="px-3 py-1 rounded-lg font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition duration-150">
                     CZ
                  </button>
             </div>
@@ -478,11 +478,17 @@
         if (body.classList.contains('dark')) {
             body.classList.remove('dark');
             localStorage.setItem('theme', 'light');
+            // Zajištění správné aktualizace ikon
+            moonIcon.classList.remove('hidden');
+            sunIcon.classList.add('hidden');
         } else {
             body.classList.add('dark');
             localStorage.setItem('theme', 'dark');
+            // Zajištění správné aktualizace ikon
+            moonIcon.classList.add('hidden');
+            sunIcon.classList.remove('hidden');
         }
-        updateThemeIcons();
+        // updateThemeIcons(); // Tato funkce je volána uvnitř, ale pro jistotu ji necháme níže
     }
     
     function updateThemeIcons() {
@@ -499,19 +505,30 @@
     window.setPrintLanguage = function(lang) {
         printLanguage = lang;
         
-        // Aktualizace tlačítek pro vizuální stav
-        langEngButton.classList.remove('bg-indigo-500', 'text-white', 'dark:bg-gray-700', 'dark:text-gray-200');
-        langEngButton.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200');
-        langCzButton.classList.remove('bg-indigo-500', 'text-white', 'dark:bg-gray-700', 'dark:text-gray-200');
-        langCzButton.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200');
+        // VYLEPŠENÁ INDIKACE: Resetování a nastavení tříd pro aktivní tlačítko
+        
+        // 1. Reset
+        const commonClasses = ['px-3', 'py-1', 'rounded-lg', 'font-bold', 'transition', 'duration-150'];
+        const inactiveClasses = ['bg-gray-200', 'text-gray-700', 'hover:bg-gray-300', 'dark:bg-gray-700', 'dark:text-gray-200', 'dark:hover:bg-gray-600'];
+        const activeClasses = ['bg-indigo-500', 'text-white', 'hover:bg-indigo-600', 'dark:bg-indigo-600', 'dark:hover:bg-indigo-700'];
 
-        if (lang === 'ENG') {
-            langEngButton.classList.remove('bg-gray-200', 'text-gray-700');
-            langEngButton.classList.add('bg-indigo-500', 'text-white', 'dark:bg-indigo-600');
-        } else {
-            langCzButton.classList.remove('bg-gray-200', 'text-gray-700');
-            langCzButton.classList.add('bg-indigo-500', 'text-white', 'dark:bg-indigo-600');
-        }
+        const setClasses = (btn, isActive) => {
+            // Odebrat všechny aktivní třídy
+            btn.classList.remove(...activeClasses);
+            // Odebrat všechny neaktivní třídy
+            btn.classList.remove(...inactiveClasses);
+            
+            if (isActive) {
+                btn.classList.add(...activeClasses);
+                btn.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200'); // Jen pro jistotu
+            } else {
+                btn.classList.add(...inactiveClasses);
+            }
+        };
+
+
+        setClasses(langEngButton, lang === 'ENG');
+        setClasses(langCzButton, lang === 'CZ');
 
         updatePreview();
     }
@@ -747,9 +764,11 @@
                     
                     itemImagePreview.innerHTML = '';
                     itemImagePreview.classList.remove('text-gray-500', 'border-dashed');
+                    // Oprava: Zajištění, že se do náhledu vkládá img element a má správné styly
                     itemImagePreview.appendChild(img);
-                    img.style.maxWidth = '100%';
-                    img.style.maxHeight = '100%';
+                    img.style.objectFit = 'contain';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
                     
                     updatePreview();
                 }
@@ -1140,7 +1159,10 @@
         const now = new Date();
         const dateString = now.toLocaleDateString('cs-CZ', { year: 'numeric', month: '2-digit', day: '2-digit' });
         const timeString = now.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
-        const creationText = `Vytvořeno: ${dateString} ${timeString}`;
+        
+        // Zobrazení jazyka generování
+        const langNote = printLanguage === 'CZ' ? 'CZ' : 'ENG';
+        const creationText = `Vytvořeno: ${dateString} ${timeString} (${langNote})`; // Přidána poznámka o jazyku
 
         ctx.fillStyle = '#555555'; // Jemně šedá barva
         ctx.font = '14px sans-serif'; // Malé písmo
@@ -1383,7 +1405,7 @@
             if (sectionIndex * BASE_CARD_W > targetWidth) break; // Ochrana proti nekonečné smyčce
         }
 
-        // Vykreslení data a času (V_0.11)
+        // Vykreslení data a času (V_0.14)
         drawCreationDate(ctx);
     }
     
@@ -1723,7 +1745,11 @@
         
         initSortable(); // Inicializace Drag & Drop
         updateAnalyzeButtonState(); // Zkontroluje stav tlačítka na začátku
-        setPrintLanguage('ENG'); // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
+        
+        // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
+        const storedLang = localStorage.getItem('printLanguage') || 'ENG';
+        setPrintLanguage(storedLang); 
+
         updatePreview();
     };
 
