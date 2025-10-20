@@ -49,7 +49,11 @@
             padding: 4px 0;
         }
 
-        .dark .attribute-row input {
+        .dark .attribute-row input, 
+        .dark #cardDescription,
+        .dark #cardDescriptionCz,
+        .dark #jsonInput,
+        .dark select {
             background-color: #374151; /* gray-700 */
             border-color: #4b5563; /* gray-600 */
             color: #f3f4f6; /* gray-100 */
@@ -97,8 +101,8 @@
             <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
         </button>
 
-        <!-- Verze aplikace V_0.12 -->
-        <p class="text-xs text-gray-400 text-right">V_0.12</p>
+        <!-- Verze aplikace V_0.13 -->
+        <p class="text-xs text-gray-400 text-right">V_0.13</p>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -239,9 +243,9 @@
                 + Přidat Atribut
             </button>
 
-            <!-- Popis -->
-            <div class="mt-6 mb-6">
-                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4. Popis Itemu/Kouzla (Použijte **dvojité hvězdičky** pro tučný text, *jednoduché hvězdičky* pro kurzívu, a **dvojitý Enter pro odstavce**)</label>
+            <!-- Popis (ENG - primární) -->
+            <div class="mt-6 mb-4">
+                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4. Popis Itemu/Kouzla (Originální jazyk)</label>
                 <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">Popis: Originally a farming tool used for reaping grain, this one-handed weapon has a short wooden handle ending in a curved blade, sometimes sharpened on both sides. Zde jsou specifické vlastnosti:
 
 **TRAITS**
@@ -252,6 +256,21 @@
 **CRITICAL SPECIALIZATION EFFECT**
 (Source: Core Rulebook pg. 283-4) Certain feats, class features, weapon runes, and other effects can grant you additional benefits when you make a Strike with certain weapons and get a critical success. This is called a critical specialization effect. The exact effect depends on which weapon group your weapon belongs to.</textarea>
             </div>
+            
+             <!-- NOVÉ: Popis (CZ - přeložený) -->
+            <div class="mb-6">
+                <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">4b. Popis Itemu/Kouzla (Přeložený do CZ)</label>
+                <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis. Můžete jej upravit.">Popis: Původně farmářský nástroj používaný ke žnutí obilí, tato jednoruční zbraň má krátkou dřevěnou rukojeť končící zakřivenou čepelí, někdy nabroušenou z obou stran. Zde jsou specifické vlastnosti:
+
+**TRAITS**
+*Agile*: Postih pro vícenásobný útok, který obdržíte s touto zbraní na druhý útok ve vašem tahu, je -4 místo -5, a -8 místo -10 na třetí a následující útoky v tahu.
+*Finesse*: Můžete použít svůj modifikátor Obratnosti místo modifikátoru Síly na hody útokem s touto zbraní na blízko. Poškození stále počítáte se Sílou.
+*Trip*: Můžete použít tuto zbraň k Podražení (Trip) dovedností Atletika, i když nemáte volnou ruku. Používá dosah zbraně (pokud se liší od vašeho) a přidává bonus k hodu útokem zbraně jako bonus k testu Atletiky. Pokud kriticky selžete v testu Podražení pomocí zbraně, můžete ji upustit a místo kritického selhání obdržet základní selhání.
+
+**CRITICAL SPECIALIZATION EFFECT**
+(Source: Core Rulebook pg. 283-4) Některé Featy, třídní vlastnosti, runy na zbraních a další efekty vám mohou udělit dodatečné výhody, když provedete Úder (Strike) s určitými zbraněmi a dosáhnete kritického úspěchu. Tomu se říká efekt kritické specializace. Přesný efekt závisí na skupině zbraně, do které vaše zbraň patří.</textarea>
+            </div>
+
 
             <button onclick="updatePreview()" class="w-full bg-green-500 text-white font-bold p-3 rounded-lg hover:bg-green-600 transition duration-150 shadow-md transform hover:scale-[1.01]">
                 Aktualizovat Náhled Karty
@@ -262,6 +281,15 @@
         <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center sticky top-4 h-fit">
             <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700 w-full text-center">Náhled Karty</h2>
             
+            <div class="flex space-x-2 mb-4">
+                 <button id="langEng" onclick="setPrintLanguage('ENG')" class="px-3 py-1 rounded-lg font-bold bg-indigo-500 text-white hover:bg-indigo-600">
+                    ENG
+                 </button>
+                 <button id="langCz" onclick="setPrintLanguage('CZ')" class="px-3 py-1 rounded-lg font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+                    CZ
+                 </button>
+            </div>
+
             <div class="mb-6 overflow-x-auto w-full">
                 <!-- HTML Canvas pro náhled a generování PDF -->
                 <!-- DŮLEŽITÉ: Canvas zůstává bílý, tmavý režim neovlivňuje výstup tisku/náhledu -->
@@ -340,6 +368,7 @@
     let currentCardData = {};
     let itemImageObject = null;
     let analysisImagesBase64 = []; // Pole pro ukládání Base64 dat z více obrázků
+    let printLanguage = 'ENG'; // NOVÉ: Výchozí jazyk pro tisk
     
     const canvas = document.getElementById('printCanvas');
     const ctx = canvas.getContext('2d');
@@ -358,6 +387,8 @@
     const body = document.body;
     const moonIcon = document.getElementById('moonIcon');
     const sunIcon = document.getElementById('sunIcon');
+    const langEngButton = document.getElementById('langEng');
+    const langCzButton = document.getElementById('langCz');
 
 
     // Pořadí pro automatické řazení atributů
@@ -384,54 +415,60 @@
     const CARD_TEMPLATES = {
         'ITEM': {
             title: 'Hladový náramek', translation: 'Hungry Armlet',
+            description: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \\n\\n**Aktivace**: Požije se, když dostanete zranění. Sníží o 1 obdržené poškození. Po 3 použitích se rozpadne.',
+            descriptionCz: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \\n\\n**Aktivace**: Spotřebuje se, když obdržíte poškození. Sníží o 1 obdržené poškození. Po 3 použitích se rozpadne.',
             attributes: [
                 { key: 'Cena', value: '10 gp' },
                 { key: 'Vzácnost', value: 'Common' }
-            ],
-            description: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \\n\\n**Aktivace**: Požije se, když dostanete zranění. Sníží o 1 obdržené poškození. Po 3 použitích se rozpadne.'
+            ]
         },
         'WEAPON': {
             title: 'Otrávený Dýka', translation: 'Poisoned Dagger',
+            description: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat na cíl jed. \\n\\n**Jed (DC 13)**: Při selhání utrpí cíl 1d4 jedovatého poškození na začátku svého tahu. Trvá 3 kola.',
+            descriptionCz: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat na cíl jed. \\n\\n**Jed (DC 13)**: Při selhání utrpí cíl 1k4 jedovatého poškození na začátku svého tahu. Trvá 3 kola.',
             attributes: [
                 { key: 'Cena', value: '30 gp' },
                 { key: 'Poškození', value: '1d4 piercing + Poison' },
                 { key: 'Typ', value: 'Lehká zbraň, Finesse' }
-            ],
-            description: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat na cíl jed. \\n\\n**Jed (DC 13)**: Při selhání utrpí cíl 1d4 jedovatého poškození na začátku svého tahu. Trvá 3 kola.'
+            ]
         },
         'SPELL': {
             title: 'Ohnivá Zeď', translation: 'Wall of Fire',
+            description: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \\n\\n**Efekt**: Kreatura, která začne svůj tah 10 stop od stěny, utrpí 2k6 ohnivého poškození. Kreatura, která projde stěnou, utrpí 5k6 ohnivého poškození.',
+            descriptionCz: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \\n\\n**Efekt**: Stvoření, které začne svůj tah 10 stop od stěny, utrpí 2k6 ohnivého poškození. Stvoření, které projde stěnou, utrpí 5k6 ohnivého poškození.',
             attributes: [
                 { key: 'Level', value: '4' },
                 { key: 'Akce', value: '2' },
                 { key: 'Dosah', value: '120 ft' }
-            ],
-            description: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \\n\\n**Efekt**: Kreatura, která začne svůj tah 10 stop od stěny, utrpí 2k6 ohnivého poškození. Kreatura, která projde stěnou, utrpí 5k6 ohnivého poškození.'
+            ]
         },
         'CONSUMABLE': {
             title: 'Léčivý lektvar', translation: 'Healing Potion',
+            description: 'Klasický lektvar, který rychle léčí rány. \\n\\n**Použití**: Vypití zabere 1 akci. Obnoví 2d4 + 2 životy.',
+            descriptionCz: 'Klasický lektvar, který rychle léčí zranění. \\n\\n**Použití**: Vypití zabere 1 akci. Obnoví 2k4 + 2 životy.',
             attributes: [
                 { key: 'Cena', value: '50 gp' },
                 { key: 'Dávky', value: '1' }
-            ],
-            description: 'Klasický lektvar, který rychle léčí rány. \\n\\n**Použití**: Vypití zabere 1 akci. Obnoví 2d4 + 2 životy.'
+            ]
         },
         'EQUIPMENT': {
             title: 'Kroužková zbroj', translation: 'Chainmail',
+            description: 'Standardní kroužková zbroj poskytuje solidní ochranu. Je hlučná, ale spolehlivá.',
+            descriptionCz: 'Standardní kroužková zbroj poskytuje spolehlivou ochranu. Je hlučná, ale efektivní.',
             attributes: [
                 { key: 'Cena', value: '50 gp' },
                 { key: 'AC Bonus', value: '+4' },
                 { key: 'Váha', value: 'Těžká' }
-            ],
-            description: 'Standardní kroužková zbroj poskytuje solidní ochranu. Je hlučná, ale spolehlivá.'
+            ]
         },
         'OTHER': {
             title: 'Mapa starověké krypty', translation: 'Ancient Crypt Map',
+            description: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Investigation) DC 20 k rozluštění.',
+            descriptionCz: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Vyšetřování) Obtížnosti 20 k rozluštění.',
             attributes: [
                 { key: 'Vzácnost', value: 'Unique' },
                 { key: 'Hodnota', value: 'N/A' }
-            ],
-            description: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Investigation) DC 20 k rozluštění.'
+            ]
         }
     };
     
@@ -456,6 +493,27 @@
             moonIcon.classList.remove('hidden');
             sunIcon.classList.add('hidden');
         }
+    }
+
+    // --- FUNKCE PRO JAZYK TISKU ---
+    window.setPrintLanguage = function(lang) {
+        printLanguage = lang;
+        
+        // Aktualizace tlačítek pro vizuální stav
+        langEngButton.classList.remove('bg-indigo-500', 'text-white', 'dark:bg-gray-700', 'dark:text-gray-200');
+        langEngButton.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200');
+        langCzButton.classList.remove('bg-indigo-500', 'text-white', 'dark:bg-gray-700', 'dark:text-gray-200');
+        langCzButton.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-200');
+
+        if (lang === 'ENG') {
+            langEngButton.classList.remove('bg-gray-200', 'text-gray-700');
+            langEngButton.classList.add('bg-indigo-500', 'text-white', 'dark:bg-indigo-600');
+        } else {
+            langCzButton.classList.remove('bg-gray-200', 'text-gray-700');
+            langCzButton.classList.add('bg-indigo-500', 'text-white', 'dark:bg-indigo-600');
+        }
+
+        updatePreview();
     }
 
     // --- UTILITY FUNKCE ---
@@ -539,6 +597,7 @@
         document.getElementById('cardTitle').value = template.title;
         document.getElementById('cardTranslation').value = template.translation;
         document.getElementById('cardDescription').value = template.description;
+        document.getElementById('cardDescriptionCz').value = template.descriptionCz; // NOVÉ
         
         // 2. Nastavení atributů
         clearAttributes();
@@ -728,7 +787,8 @@
                 title: { type: "STRING", description: "Originální název předmětu/kouzla z obrázku." },
                 translation: { type: "STRING", description: "Překlad názvu do češtiny, pokud je zřejmý. Jinak nechte prázdné." },
                 cardType: { type: "STRING", description: "Identifikovaný typ předmětu. Musí být jedno z: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER." },
-                description: { type: "STRING", description: "Hlavní popis nebo efekt předmětu/kouzla. Text by měl být souvislý. Použijte **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro nové odstavce použijte dvě zalomení řádku (Enter)." },
+                description: { type: "STRING", description: "Hlavní popis nebo efekt předmětu/kouzla v původním jazyce. Text by měl být souvislý. Použijte **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro nové odstavce použijte dvě zalomení řádku (Enter)." },
+                descriptionCz: { type: "STRING", description: "Přesný překlad pole 'description' do češtiny. Ponechte názvy předmětů, kouzel, levely, skilly a čísla v angličtině/původním jazyce. Přeložte pouze popis a souvislé texty." },
                 attributes: {
                     type: "ARRAY",
                     description: "Pole klíčových atributů. Například Level, Cena, Typ, Damage, Vzácnost, atd. Překlážejte Klíč, ne Hodnotu.",
@@ -741,10 +801,10 @@
                     }
                 }
             },
-            required: ["title", "cardType", "description", "attributes"]
+            required: ["title", "cardType", "description", "descriptionCz", "attributes"] // Přidáno descriptionCz
         };
 
-        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. Překlad (translation) poskytni pouze pokud je zřejmý, jinak prázdný řetězec. V popisu (description) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců (např. pro odrážky) použij dvě zalomení řádku (\\n\\n).";
+        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. Překlad (translation) poskytni pouze pokud je zřejmý, jinak prázdný řetězec. V popisu (description) a (descriptionCz) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců (např. pro odrážky) použij dvě zalomení řádku (\\n\\n). Ujisti se, že descriptionCz je PŘESNÝ, SOUVISLÝ A KVALITNÍ překlad description, ale zachovává anglické názvy skillů a čísel, stejně jako ve tvém vzoru.";
 
         const userQuery = "Analyzuj tento TTRPG screenshot/y a vyplň data do zadaného JSON schématu. Extrahuj z obrázků co nejvíce textu do atributů a popisu.";
         
@@ -817,6 +877,7 @@
         document.getElementById('cardTitle').value = data.title || '';
         document.getElementById('cardTranslation').value = data.translation || '';
         document.getElementById('cardDescription').value = data.description || '';
+        document.getElementById('cardDescriptionCz').value = data.descriptionCz || ''; // NOVÉ
         
         // NOVÁ LOGIKA: Nastavení typu karty (pokud je platný)
         if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
@@ -1247,7 +1308,10 @@
         // DŮLEŽITÁ OPRAVA: Popis začíná tam, kde končí buď obrázek, nebo atributy, + PADDING
         const descriptionY = Math.max(imageY + IMAGE_SIZE, lowestYAttribute) + PADDING;
         
-        let remainingText = cardData.description || "";
+        // Výběr popisu podle nastaveného jazyka
+        const rawText = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : cardData.description) || "";
+        
+        let remainingText = rawText;
         let currentDrawX = PADDING; // X-souřadnice pro vykreslení v aktuální sekci
         let sectionIndex = 0;
         
@@ -1434,8 +1498,11 @@
         const heightFirstSection = BASE_CARD_H - descriptionY - PADDING;
         const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (22 + textPadding)) / descriptionLineHeight));
         
+        // Použijeme text popisu podle vybraného jazyka
+        const textToSimulate = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : description) || "";
+
         let requiredSections = 1;
-        let tempRemainingText = description;
+        let tempRemainingText = textToSimulate;
 
         if (maxLinesFirstSection > 0) {
             // Simulace kreslení textu na první sekci
@@ -1598,6 +1665,7 @@
             translation: document.getElementById('cardTranslation').value,
             cardType: cardTypeInput.value,
             description: document.getElementById('cardDescription').value,
+            descriptionCz: document.getElementById('cardDescriptionCz').value, // NOVÉ
             attributes: attributes
         };
         
@@ -1655,6 +1723,7 @@
         
         initSortable(); // Inicializace Drag & Drop
         updateAnalyzeButtonState(); // Zkontroluje stav tlačítka na začátku
+        setPrintLanguage('ENG'); // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
         updatePreview();
     };
 
@@ -1662,6 +1731,7 @@
     document.getElementById('cardTitle').addEventListener('input', updatePreview);
     document.getElementById('cardTranslation').addEventListener('input', updatePreview);
     document.getElementById('cardDescription').addEventListener('input', updatePreview);
+    document.getElementById('cardDescriptionCz').addEventListener('input', updatePreview); // NOVÉ
     document.getElementById('cardType').addEventListener('change', updatePreview); // Přidáno pro typ karty
     // Naslouchání změnám v atributech (zachytí všechny změny v inputech uvnitř kontejneru)
     document.getElementById('attributesContainer').addEventListener('input', updatePreview);
