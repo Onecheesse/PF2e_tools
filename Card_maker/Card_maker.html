@@ -75,8 +75,8 @@
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
 
 <div class="max-w-7xl mx-auto">
-    <!-- Verze aplikace V_0.10 -->
-    <p class="text-xs text-gray-400 text-right">V_0.10</p>
+    <!-- Verze aplikace V_0.11 -->
+    <p class="text-xs text-gray-400 text-right">V_0.11</p>
 
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">
         TTRPG Generátor Karet
@@ -1024,6 +1024,23 @@
     }
 
 
+    // NOVÁ POMOCNÁ FUNKCE: Vykreslení data
+    function drawCreationDate(ctx) {
+        const now = new Date();
+        const dateString = now.toLocaleDateString('cs-CZ', { year: 'numeric', month: '2-digit', day: '2-digit' });
+        const timeString = now.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+        const creationText = `Vytvořeno: ${dateString} ${timeString}`;
+
+        ctx.fillStyle = '#555555'; // Jemně šedá barva
+        ctx.font = '14px sans-serif'; // Malé písmo
+        ctx.textAlign = 'left';
+        
+        // Pozice v levém dolním rohu, kousek od okraje
+        ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING + 5); 
+        ctx.textAlign = 'left'; // Reset
+    }
+
+
     function drawCardOnCanvas(ctx, cardData, targetWidth, targetHeight) {
         // Nastavení plátna
         ctx.canvas.width = targetWidth;
@@ -1250,6 +1267,9 @@
 
             if (sectionIndex * BASE_CARD_W > targetWidth) break; // Ochrana proti nekonečné smyčce
         }
+
+        // Vykreslení data a času (V_0.11)
+        drawCreationDate(ctx);
     }
     
     // Pomocná funkce pro zalamování textu, když je příliš dlouhý (pro název)
