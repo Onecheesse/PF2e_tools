@@ -143,9 +143,9 @@
             </button>
         </div>
 
-        <!-- VERZE V_1.s.06 (Aktualizováno) -->
+        <!-- VERZE V_1.s.07 (Aktualizováno) -->
         <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
-            V_1.s.06
+            V_1.s.07
         </button>
     </div>
 
@@ -464,7 +464,7 @@
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.06</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.07</h2>
         
         <div class="space-y-6 text-gray-700 dark:text-gray-300">
             <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
@@ -474,7 +474,7 @@
                 <li>**Ruční zadání:** Vyplňte pole pro Název, Překlad, Typ a Popisy.</li>
                 <li>**Analýza Screenshotů (Doporučeno):** Vložte screenshoty a klikněte na "Analyzovat". Umělá inteligence extrahuje data.</li>
                 <li>**JSON Vstup:** Data můžete načíst také z JSON souboru nebo přímo vložením textu.</li>
-                <li>**Ukládání a Verzování (NOVÉ):** Kliknutím na ikonu <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> otevřete správce. Můžete ukládat nové položky a vytvářet různé verze jedné karty. Vše se ukládá lokálně ve vašem prohlížeči.</li>
+                <li>**Ukládání a Verzování (VYLEPŠENÉ):** Kliknutím na ikonu <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> otevřete správce. Nové položky se ukládají pod standardizovaným klíčem (`TYP_LVL___NÁZEV`). U verzí lze nyní nastavit vlastní název.</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">2. Klíčové Funkce</h3>
@@ -505,7 +505,16 @@
         <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
 
             <div class="border-l-4 border-green-500 pl-4">
-                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.06 (Current) - OPRAVA KRESLENÍ</h3>
+                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.07 (Current) - SPRÁVA A OPRAVY</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Standardizovaný klíč pro ukládání:** Ukládání nových položek nyní používá stejný formát klíče jako export do JSON/PDF (`TYP_LVL___NÁZEV`), což zlepšuje organizaci.</li>
+                    <li>**Pojmenování verzí:** Při ukládání nové verze položky je nyní možné zadat vlastní název pro lepší přehlednost. Přidána možnost verze přejmenovat.</li>
+                    <li>**Opraveno pozicování textu:** Text s datem vytvoření a verzí na spodní části karty se již nepřekrývá se spodním okrajem rámečku.</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.s.06</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
                     <li>**Opraveno přetékání textu (Clipping):** Dlouhé popisy v popisném poli se již nebudou vykreslovat mimo určený rámeček. Byla implementována ořezávací maska (clipping), která vizuálně zabraňuje přetečení.</li>
                 </ul>
@@ -630,8 +639,8 @@
 </div>
 
 <script>
-    // --- KONSTANTY PRO KARTU (V_1.s.06) ---
-    const VERSION = 'V_1.s.06';
+    // --- KONSTANTY PRO KARTU (V_1.s.07) ---
+    const VERSION = 'V_1.s.07';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -1646,7 +1655,8 @@
         ctx.font = '16px sans-serif'; 
         ctx.textAlign = 'left';
         
-        ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING + 10);
+        // FIX: Moved text up to prevent collision with bottom border
+        ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING - 18);
         ctx.textAlign = 'left';
     }
 
@@ -2360,6 +2370,24 @@
 
     // --- NOVÝ SYSTÉM: UKLÁDÁNÍ, VERZOVÁNÍ A SDÍLENÍ ---
 
+    function getItemSaveKey(data) {
+        if (!data || !data.title) {
+            return null;
+        }
+        const cardType = data.cardType.toUpperCase();
+        const cardName = data.title.replace(/[^a-zA-Z0-9-()]/g, '_');
+
+        let cardLevel = 'N_A';
+        if (data.attributes) {
+            const levelAttr = data.attributes.find(attr => attr.key.toUpperCase() === 'LEVEL' || attr.key.toUpperCase() === 'ÚROVEŇ');
+            if (levelAttr && levelAttr.value) {
+                cardLevel = levelAttr.value.replace(/[^a-zA-Z0-9]/g, '');
+                if (cardLevel === '') cardLevel = 'N_A';
+            }
+        }
+        return `${cardType}_${cardLevel}___${cardName}`;
+    }
+
     function getSavedItems() {
         try {
             const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -2461,7 +2489,8 @@
             versionDiv.className = 'version-list-item flex justify-between items-center bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm';
             
             const infoSpan = document.createElement('span');
-            infoSpan.innerHTML = `<strong>Verze ${versionData.version}</strong> <span class="text-xs text-gray-500">(${versionData.timestamp})</span>`;
+            const displayName = versionData.name || `Verze ${versionData.version}`;
+            infoSpan.innerHTML = `<strong>${displayName}</strong> <span class="text-xs text-gray-500">(${versionData.timestamp})</span>`;
             versionDiv.appendChild(infoSpan);
 
             const controlsDiv = document.createElement('div');
@@ -2472,11 +2501,17 @@
             loadButton.onclick = () => loadItemVersion(itemName, originalIndex);
             controlsDiv.appendChild(loadButton);
 
+            const renameButton = document.createElement('button');
+            renameButton.textContent = 'Přejmenovat';
+            renameButton.className = 'ml-2 px-3 py-1 text-sm bg-gray-500 text-white rounded hover:bg-gray-600';
+            renameButton.onclick = () => renameItemVersion(itemName, originalIndex);
+            controlsDiv.appendChild(renameButton);
+
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Smazat';
             deleteButton.className = 'ml-2 px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600';
             deleteButton.onclick = () => {
-                 if (confirm(`Opravdu chcete smazat verzi ${versionData.version} položky '${itemName}'?`)) {
+                 if (confirm(`Opravdu chcete smazat verzi '${displayName}' položky '${itemName}'?`)) {
                     deleteItemVersion(itemName, originalIndex);
                 }
             };
@@ -2493,32 +2528,79 @@
             alert("Pro uložení musí mít položka název.");
             return;
         }
+
+        const itemKey = getItemSaveKey(currentData);
+        if (!itemKey) {
+            logMessage("Chyba při generování klíče pro uložení.", "error");
+            return;
+        }
         
         const items = getSavedItems();
-        const itemName = asNew ? currentData.title : currentlySelectedSavedItem;
+        let targetKey;
 
-        if (asNew && items[itemName]) {
-            if (!confirm(`Položka s názvem '${itemName}' již existuje. Chcete ji přepsat a vytvořit novou verzi?`)) {
+        if (asNew) {
+            targetKey = itemKey;
+        } else {
+            if (!currentlySelectedSavedItem) {
+                logMessage("Žádná položka není vybrána, ukládám jako novou položku.", "warn");
+                targetKey = itemKey;
+            } else {
+                targetKey = currentlySelectedSavedItem;
+            }
+        }
+        
+        if (asNew && items[targetKey]) {
+            if (!confirm(`Položka s klíčem '${targetKey}' již existuje. Chcete ji přepsat a vytvořit novou verzi?`)) {
                 return;
             }
         }
         
-        const versions = items[itemName] || [];
+        const versions = items[targetKey] || [];
         const newVersionNumber = versions.length > 0 ? Math.max(...versions.map(v => v.version)) + 1 : 1;
+        
+        const defaultVersionName = `Verze ${newVersionNumber} - ${new Date().toLocaleDateString('cs-CZ')}`;
+        const versionName = prompt("Zadejte název pro tuto verzi (nepovinné):", defaultVersionName);
+
+        if (versionName === null) {
+            logMessage("Ukládání zrušeno.", "info");
+            return;
+        }
         
         const newVersionData = {
             version: newVersionNumber,
             timestamp: new Date().toLocaleString('cs-CZ'),
+            name: versionName.trim() || defaultVersionName,
             data: currentData
         };
 
-        items[itemName] = [...versions, newVersionData];
+        items[targetKey] = [...versions, newVersionData];
         saveItems(items);
 
-        logMessage(`Položka '${itemName}' uložena jako verze ${newVersionNumber}.`, 'success');
-        currentlySelectedSavedItem = itemName;
+        logMessage(`Položka '${targetKey}' uložena (verze: '${newVersionData.name}').`, 'success');
+        currentlySelectedSavedItem = targetKey;
         renderSavedItemsList();
-        renderItemVersions(itemName);
+        renderItemVersions(targetKey);
+    }
+
+    function renameItemVersion(itemName, versionIndex) {
+        const items = getSavedItems();
+        const versionData = items[itemName]?.[versionIndex];
+        if (!versionData) {
+            logMessage("Chyba: Verze pro přejmenování nebyla nalezena.", "error");
+            return;
+        }
+
+        const currentName = versionData.name || `Verze ${versionData.version}`;
+        const newName = prompt(`Zadejte nový název pro verzi:`, currentName);
+
+        if (newName !== null && newName.trim() !== '') {
+            items[itemName][versionIndex].name = newName.trim();
+            saveItems(items);
+            logMessage(`Verze přejmenována na '${newName.trim()}'.`, 'success');
+            renderItemVersions(itemName);
+        } else if (newName !== null) {
+            logMessage("Přejmenování zrušeno (název nemůže být prázdný).", "info");
+        }
     }
 
     function loadItemVersion(itemName, versionIndex) {
@@ -2526,7 +2608,7 @@
         const versionData = items[itemName]?.[versionIndex];
         if (versionData) {
             updateFormFields(versionData.data);
-            logMessage(`Načtena verze ${versionData.version} položky '${itemName}'.`, 'success');
+            logMessage(`Načtena verze '${versionData.name || versionData.version}' položky '${itemName}'.`, 'success');
             closeSavedItemsModal();
         } else {
             logMessage(`Chyba: Verze nebyla nalezena.`, 'error');
