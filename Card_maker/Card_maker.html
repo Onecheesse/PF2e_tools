@@ -143,9 +143,9 @@
             </button>
         </div>
 
-        <!-- VERZE V_1.s.04 (Aktualizováno) -->
+        <!-- VERZE V_1.s.06 (Aktualizováno) -->
         <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
-            V_1.s.04
+            V_1.s.06
         </button>
     </div>
 
@@ -464,7 +464,7 @@
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.03</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.06</h2>
         
         <div class="space-y-6 text-gray-700 dark:text-gray-300">
             <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
@@ -501,18 +501,26 @@
             &times;
         </button>
         <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Historie Změn (Changelog)</h2>
+        
+        <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
 
-        <div class="border-l-4 border-green-500 pl-4">
-                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.04 (Current) - OPRAVY</h3>
+            <div class="border-l-4 border-green-500 pl-4">
+                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.06 (Current) - OPRAVA KRESLENÍ</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Opraveno přetékání textu (Clipping):** Dlouhé popisy v popisném poli se již nebudou vykreslovat mimo určený rámeček. Byla implementována ořezávací maska (clipping), která vizuálně zabraňuje přetečení.</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.s.04</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
                     <li>**Opraveno přetékání textu:** Dlouhé popisy se již správně zalamují a nepřetékají mimo vyhrazený rámeček na kartě.</li>
                     <li>**Odstraněn automatický reset:** Aplikace již automaticky nemaže všechna pole při načtení stránky, což zlepšuje práci se sdílenými odkazy a zachování stavu.</li>
                 </ul>
             </div>
 
-        <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
-            <div class="border-l-4 border-indigo-500 pl-4">
-                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.03 (Current) - NOVINKY</h3>
+            <div class="border-l-4 border-indigo-500 pl-4 mt-6">
+                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.03</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
                     <li>**Systém ukládání a verzování:** Přidán správce uložených položek, který umožňuje ukládat práci lokálně do prohlížeče a spravovat více verzí jedné karty.</li>
                     <li>**Sdílení přes URL:** Implementována funkce pro vygenerování unikátního odkazu, který obsahuje všechna data karty pro snadné sdílení.</li>
@@ -622,8 +630,8 @@
 </div>
 
 <script>
-    // --- KONSTANTY PRO KARTU (V_1.s.04) ---
-    const VERSION = 'V_1.s.04';
+    // --- KONSTANTY PRO KARTU (V_1.s.06) ---
+    const VERSION = 'V_1.s.06';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -1866,7 +1874,6 @@
         const descriptionTitle = "Popis:";
 
         while (remainingText.trim().length > 0) {
-            // --- OPRAVA SMYČKY ZDE ---
             if (currentDrawX >= targetWidth) {
                 logMessage(`Chyba vykreslování: Text se nevejde do vypočítaného prostoru. Zastaveno, aby se zabránilo chybě.`, 'error');
                 break;
@@ -1898,12 +1905,24 @@
             ctx.strokeStyle = '#000000';
             ctx.strokeRect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
             
+            // --- START OF FIX ---
+            ctx.save();
+            ctx.beginPath();
+            // Vytvoříme ořezávací masku (clipping path) přesně podle rámečku pro popis.
+            ctx.rect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
+            ctx.clip();
+            // --- END OF FIX ---
+            
             ctx.font = 'bold 24px sans-serif'; 
             ctx.fillStyle = descriptionColor;
             ctx.fillText(descriptionTitle, currentDrawX + textPadding, sectionTopY + textPadding);
             
             ctx.fillStyle = descriptionColor;
             const result = drawFormattedText(ctx, remainingText, currentDrawX + textPadding, sectionTopY + textPadding + descriptionLineHeight + 5, cardSectionWidth - 2 * textPadding, descriptionLineHeight, descriptionFontSize, maxLines, descriptionItalic, isIdentified);
+            
+            // --- START OF FIX ---
+            ctx.restore(); // Odstraníme ořezávací masku, aby další operace kreslení nebyly ovlivněny.
+            // --- END OF FIX ---
             
             remainingText = result.remainingText;
             sectionIndex++;
@@ -1928,12 +1947,9 @@
         let currentLineParts = [];
 
         const commitLine = (startNewLineWith = []) => {
-            // Pokud jsme již dosáhli limitu řádků, okamžitě skončíme.
             if (linesDrawn >= maxLines) {
-                // Pokud jsou na řádku nějaké části, znamená to, že se nevejdou.
-                if (currentLineParts.length > 0) return false; 
-                // Pokud je řádek prázdný, je to v pořádku, ale nic nekreslíme.
-                return true; 
+                if (currentLineParts.length > 0) return false;
+                return true;
             }
 
             if (currentLineParts.length > 0) {
@@ -1948,9 +1964,7 @@
                 linesDrawn++;
             }
             
-            // Nastavíme nový řádek s případnými zbylými částmi.
             currentLineParts = startNewLineWith;
-            // Vrátíme true, pokud je stále místo pro další řádky.
             return linesDrawn < maxLines;
         }
 
@@ -2619,7 +2633,7 @@
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
         setPrintLanguage(storedLang);
         
-        // Načíst z URL, pokud existují data, jinak resetovat
+        // Načíst z URL, pokud existují data
         loadFromURL();
         
         document.addEventListener('paste', handlePaste);
