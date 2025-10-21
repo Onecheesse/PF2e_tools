@@ -98,6 +98,29 @@
         .log-warn { color: #f59e0b; }
         .log-info { color: #6b7280; }
 
+        /* Styly pro správce uložených položek */
+        .saved-item-list-item, .version-list-item {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .saved-item-list-item:hover, .version-list-item:hover {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .dark .saved-item-list-item:hover, .dark .version-list-item:hover {
+            background-color: #374151; /* gray-700 */
+        }
+        .saved-item-list-item.selected {
+            background-color: #e0e7ff; /* indigo-100 */
+            font-weight: bold;
+            color: #3730a3; /* indigo-800 */
+        }
+        .dark .saved-item-list-item.selected {
+            background-color: #3730a3; /* indigo-800 */
+            color: #e0e7ff; /* indigo-100 */
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans dark:bg-gray-900">
@@ -114,11 +137,15 @@
             <button onclick="showInfoModal()" class="p-2 rounded-full bg-blue-200 text-blue-700 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-300 dark:hover:bg-blue-600 transition" title="Informace a návod">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </button>
+            <!-- NOVÉ Tlačítko pro správce uložených položek -->
+            <button onclick="showSavedItemsModal()" class="p-2 rounded-full bg-yellow-200 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100 hover:bg-yellow-300 dark:hover:bg-yellow-600 transition" title="Správce uložených položek">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+            </button>
         </div>
 
-        <!-- VERZE V_1.s.02 (Aktualizováno) -->
+        <!-- VERZE V_1.s.03 (Aktualizováno) -->
         <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
-            V_1.s.02
+            V_1.s.03
         </button>
     </div>
 
@@ -335,8 +362,16 @@
                 <!-- HTML Canvas pro náhled a generování PDF -->
                 <canvas id="printCanvas" width="744" height="1038" class="shadow-xl rounded-lg mx-auto" onclick="showZoomModal()"></canvas>
             </div>
+            
+            <!-- NOVÉ TLAČÍTKO PRO SDÍLENÍ -->
+            <div class="w-full mb-4">
+                <button onclick="generateShareableLink()" class="w-full bg-teal-500 text-white font-bold p-3 rounded-lg hover:bg-teal-600 transition duration-150 shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                    Sdílet (URL)
+                </button>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                 <!-- Stáhnout PDF tlačítko -->
                 <button onclick="exportPDF()" class="w-full bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg flex items-center justify-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -423,47 +458,37 @@
     </div>
 </div>
 
-
 <!-- Modální okno pro informace a návod (NOVÝ OBSAH) -->
 <div id="infoModal" class="modal hidden">
     <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full lg:w-2/3">
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.02</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.03</h2>
         
         <div class="space-y-6 text-gray-700 dark:text-gray-300">
             <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
             
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">1. Datový Vstup</h3>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">1. Datový Vstup a Správa</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
                 <li>**Ruční zadání:** Vyplňte pole pro Název, Překlad, Typ a Popisy.</li>
-                <li>**Analýza Screenshotů (Doporučeno):**
-                    <ul class="list-circle list-inside ml-4">
-                        <li>Vložte jeden nebo více **screenshotů** herního textu (Ctrl+V) nebo je nahrajte přes tlačítko.</li>
-                        <li>Klikněte na **"Analyzovat Všechny Screenshoty"**. Umělá inteligence extrahuje Název, Popis (včetně českého překladu), Atributy a Měřáky.</li>
-                    </ul>
-                </li>
+                <li>**Analýza Screenshotů (Doporučeno):** Vložte screenshoty a klikněte na "Analyzovat". Umělá inteligence extrahuje data.</li>
                 <li>**JSON Vstup:** Data můžete načíst také z JSON souboru nebo přímo vložením textu.</li>
+                <li>**Ukládání a Verzování (NOVÉ):** Kliknutím na ikonu <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> otevřete správce. Můžete ukládat nové položky a vytvářet různé verze jedné karty. Vše se ukládá lokálně ve vašem prohlížeči.</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">2. Klíčové Funkce</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
-                <li>**Identifikace (Režim GM/Hráč):** Zaškrtněte políčko "Předmět je **Identifikovaný**". Pokud je nezaškrtnuté (Režim Hráče), filtruje se skrytý text a atributy.
-                    <ul class="list-circle list-inside ml-4">
-                        <li>**Skrytý text:** Použijte trojité závorky `{{{...}}}` v popisu pro text, který se má v Režimu Hráče skrýt.</li>
-                    </ul>
-                </li>
-                <li>**Atributy:** Atributy můžete přetáhnout myší (Drag & Drop) pro změnu pořadí. Atributy, které se nevejdou vedle obrázku, se automaticky přesunou pod něj.</li>
-                <li>**Obrázek itemu:** Nahrajte obrázek, použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení, nebo vložte obrázek ze schránky pomocí `Ctrl+V` po aktivaci tlačítka **"Cílit CTRL+V sem"**.</li>
+                <li>**Identifikace (Režim GM/Hráč):** Zaškrtněte políčko "Předmět je **Identifikovaný**". Pokud je nezaškrtnuté (Režim Hráče), filtruje se skrytý text a atributy.</li>
+                <li>**Obrázek itemu:** Nahrajte obrázek, použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení, nebo vložte obrázek ze schránky pomocí `Ctrl+V` po aktivaci tlačítka **"Cílit CTRL+V sem"**. Rámeček na kartě je nyní prázdný pro vaše vlastní kresby.</li>
+                 <li>**AI Prompt Helper (VYLEPŠENÉ):** Generuje detailní prompty na základě názvu, typu, atributů a popisu karty pro lepší výsledky v AI generátorech obrázků.</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">3. Výstup</h3>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">3. Výstup a Sdílení</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
-                <li>**Náhled Karty:** Náhled ukazuje kartu ve vysokém rozlišení pro tisk (744 x 1038 px při 300 DPI, což je 63x88 mm). Kliknutím na náhled zobrazíte detailní zoom.</li>
-                <li>**Jazyk Tísku:** Přepínání mezi ENG a CZ přepne primární jazyk popisu na kartě.</li>
-                <li>**Stáhnout PDF/JSON:** Vygenerujte PDF soubor pro tisk, nebo si stáhněte `.json` soubor pro zálohu a pozdější načtení.</li>
-                <li>**Aplikační konzole:** Sledujte průběh analýzy a případné chyby ve spodní části stránky.</li>
+                <li>**Náhled Karty:** Náhled ukazuje kartu ve vysokém rozlišení pro tisk. Kliknutím na náhled zobrazíte detailní zoom.</li>
+                <li>**Stáhnout PDF/JSON:** Vygenerujte PDF soubor pro tisk, nebo si stáhněte `.json` soubor pro zálohu.</li>
+                 <li>**Sdílet přes URL (NOVÉ):** Tlačítko "Sdílet (URL)" vytvoří unikátní odkaz na aktuální kartu. Kdokoli s odkazem si může vaši kartu ihned zobrazit a upravit.</li>
             </ul>
         </div>
     </div>
@@ -479,32 +504,56 @@
         
         <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
             <div class="border-l-4 border-indigo-500 pl-4">
-                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.02 (Current) - NOVINKY</h3>
+                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.03 (Current) - NOVINKY</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
-                    <li>**Vložení obrázku itemu přes CTRL+V:** Přidáno tlačítko "Cílit CTRL+V sem", které dočasně přesměruje vkládání ze schránky na obrázek itemu místo na analýzu.</li>
+                    <li>**Systém ukládání a verzování:** Přidán správce uložených položek, který umožňuje ukládat práci lokálně do prohlížeče a spravovat více verzí jedné karty.</li>
+                    <li>**Sdílení přes URL:** Implementována funkce pro vygenerování unikátního odkazu, který obsahuje všechna data karty pro snadné sdílení.</li>
+                    <li>**Vylepšený AI Prompt Helper:** Generátor promptů nyní zahrnuje atributy a popis pro tvorbu detailnějších obrázků.</li>
+                    <li>**Prázdný rámeček pro obrázek:** Z náhledu byl odstraněn placeholder "Obrázek itemu", rámeček je nyní ve výchozím stavu prázdný.</li>
+                </ul>
+            </div>
+             <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.s.02</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Vložení obrázku itemu přes CTRL+V:** Přidáno tlačítko "Cílit CTRL+V sem".</li>
                     <li>**Stažení JSON:** Přidáno tlačítko pro přímé stažení dat karty jako `.json` soubor.</li>
-                    <li>**Skrytí API klíče:** Pole pro API klíč je nyní standardně skryté (typ `password`) s možností dočasného zobrazení.</li>
-                    <li>**Informace o modelu:** Zobrazuje se název používaného AI modelu (`gemini-2.5-flash`).</li>
-                    <li>**AI Helper Update:** Do nápovědy pro generování obrázků byl přidán odkaz na Gemini.</li>
+                    <li>**Skrytí API klíče:** Pole pro API klíč je nyní standardně skryté.</li>
                 </ul>
             </div>
-            <div class="border-l-4 border-gray-400 pl-4 mt-6">
-                <h3 class="text-xl font-bold">V_1.s.0</h3>
-                <ul class="list-disc list-inside ml-4 text-sm">
-                    <li>**Oprava API Chyb:** Přepracována logika pro opakování API požadavků (`fetchWithRetry`). Nyní se pokus opakuje pouze u relevantních chyb (např. 429 - Too Many Requests) a poskytuje detailnější chybové hlášky v konzoli pro lepší diagnostiku.</li>
-                    <li>**Oprava Vykreslování:** Opravena kritická chyba ve smyčce, která mohla způsobit zamrznutí nebo chybné vykreslení karet s velmi dlouhým popisem.</li>
-                    <li>**Oprava Zalamování Názvu:** Dlouhé názvy karet se nyní správně zalamují a vykreslují na více řádků v hlavičce karty.</li>
-                </ul>
+        </div>
+    </div>
+</div>
+
+<!-- NOVÉ: Modální okno pro Správce uložených položek -->
+<div id="savedItemsModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-4xl h-[80vh]">
+        <button onclick="closeSavedItemsModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
+            &times;
+        </button>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Správce Uložených Položek</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-[calc(100%-100px)]">
+            <!-- Seznam položek -->
+            <div class="md:col-span-1 flex flex-col h-full border-r pr-4 dark:border-gray-600">
+                <h3 class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">Uložené položky</h3>
+                <div id="savedItemsList" class="flex-grow overflow-y-auto space-y-1 bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                    <!-- Dynamicky plněno -->
+                </div>
+                <button onclick="saveCurrentItem(true)" class="w-full mt-4 bg-green-600 text-white font-bold p-3 rounded-lg hover:bg-green-700 transition">
+                    Uložit aktuální jako novou
+                </button>
             </div>
-            <div class="border-l-4 border-gray-400 pl-4 mt-6">
-                <h3 class="text-xl font-bold">V_1.1.01</h3>
-                <ul class="list-disc list-inside ml-4 text-sm">
-                    <li>**API Model Upgrade:** Přepnuto na **Gemini 2.5 Flash** pro rychlejší a přesnější analýzu.</li>
-                    <li>**API Klíč (Canvas Fix):** Odstraněna nutnost manuálně zadat API klíč v Canvas prostředí.</li>
-                    <li>**Aplikační konzole:** Přidána vizuální konzole pro transparentní zobrazení logů.</li>
-                </ul>
+            
+            <!-- Detail verze -->
+            <div class="md:col-span-2 flex flex-col h-full">
+                <h3 id="versionsTitle" class="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-200">Zvolte položku pro zobrazení verzí</h3>
+                <div id="itemVersionsContainer" class="flex-grow overflow-y-auto space-y-2 bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                    <!-- Dynamicky plněno -->
+                </div>
+                <button id="saveNewVersionButton" onclick="saveCurrentItem(false)" class="w-full mt-4 bg-indigo-600 text-white font-bold p-3 rounded-lg hover:bg-indigo-700 transition hidden">
+                    Uložit aktuální jako novou verzi
+                </button>
             </div>
-            <!-- Zbytek starého changelogu by pokračoval zde... -->
         </div>
     </div>
 </div>
@@ -547,7 +596,7 @@
         <p class="text-gray-700 dark:text-gray-300 mb-4">Zkopírujte prompt pro generování jednoduché černobílé ilustrace v nástrojích jako je <a href="https://aistudio.google.com/app/prompts/new" target="_blank" class="text-indigo-600 hover:underline">Google AI Studio</a> nebo <a href="https://gemini.google.com/app" target="_blank" class="text-indigo-600 hover:underline">Gemini</a>.</p>
         
         <label for="aiPromptTextarea" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Generovaný Prompt:</label>
-        <textarea id="aiPromptTextarea" rows="4" readonly class="block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm p-3 border bg-gray-100 dark:bg-gray-700 dark:text-white text-sm font-mono"></textarea>
+        <textarea id="aiPromptTextarea" rows="6" readonly class="block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm p-3 border bg-gray-100 dark:bg-gray-700 dark:text-white text-sm font-mono"></textarea>
         
         <div class="flex space-x-3 mt-4">
             <button onclick="copyAiPrompt()" class="w-1/2 bg-purple-600 text-white font-bold p-3 rounded-lg hover:bg-purple-700 transition shadow-md">
@@ -564,8 +613,8 @@
 </div>
 
 <script>
-    // --- KONSTANTY PRO KARTU (V_1.s.02) ---
-    const VERSION = 'V_1.s.02';
+    // --- KONSTANTY PRO KARTU (V_1.s.03) ---
+    const VERSION = 'V_1.s.03';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -579,6 +628,7 @@
 
     // PŘÍSTUP KE KLÍČI: Zajištění správné inicializace klíče
     const CANVAS_API_KEY_EXISTS = typeof __gemini_api_key !== 'undefined';
+    const LOCAL_STORAGE_KEY = 'ttrpgCardGeneratorSavedItems_v1';
 
     let currentCardData = {};
     let itemImageObject = null;
@@ -586,6 +636,7 @@
     let printLanguage = 'ENG'; 
     let cropper = null; // Instance CropperJS
     let pasteTargetIsItemImage = false; // Nová proměnná pro cílení vkládání
+    let currentlySelectedSavedItem = null; // Pro správce uložených položek
     
     // --- HISTORIE STAVU - ODSTRANĚNO ---
     const historyStack = [];
@@ -623,6 +674,7 @@
     const isIdentifiedCheckbox = document.getElementById('isIdentified');
     const appConsole = document.getElementById('appConsole');
     const pasteTargetToggleButton = document.getElementById('pasteTargetToggle');
+    const savedItemsModal = document.getElementById('savedItemsModal'); // NOVÉ
 
     // --- TEMPLATY A DATA PRO TYPY KARET ---
     
@@ -1365,17 +1417,50 @@
         newImg.src = dataUrl;
     }
     
-    // --- AI PROMPT HELPER ---
-
+    // --- AI PROMPT HELPER (VYLEPŠENO) ---
     window.showAiPromptModal = function() {
         const title = document.getElementById('cardTitle').value || 'Fantasy Item';
         const type = cardTypeInput.value;
+        const description = document.getElementById('cardDescription').value
+            .replace(/\{\{\{.*?\}\}\}/gs, '') // Odebrat skrytý text
+            .replace(/\*\*|`/g, '') // Odebrat formátování
+            .replace(/\n/g, ' ') // Odebrat nové řádky
+            .trim();
         
-        const basePrompt = `detailed black and white sketch art of '${title}' TTRPG item, ${type.toLowerCase()} style, white background, no text, clean lines, fantasy art.`;
-        aiPromptTextarea.value = basePrompt;
+        const attributes = Array.from(document.querySelectorAll('#attributesContainer .attribute-row'))
+            .map(row => {
+                const key = row.querySelector('.attr-key').value.trim();
+                const value = row.querySelector('.attr-value').value.trim();
+                // Ignorovat prázdné nebo obecné atributy
+                if (!key || !value || key.toLowerCase() === 'cena' || key.toLowerCase() === 'vzácnost') {
+                    return null;
+                }
+                return `${key.toLowerCase()} ${value.toLowerCase()}`;
+            })
+            .filter(Boolean)
+            .join(', ');
+
+        let promptParts = [
+            `detailed black and white sketch art of a TTRPG item: '${title}'`,
+            `It is a ${type.toLowerCase()}`,
+        ];
+
+        if (attributes) {
+            promptParts.push(`Key features and traits include: ${attributes}`);
+        }
+        
+        if (description) {
+            // Zkrátit popis, pokud je příliš dlouhý
+            const shortDescription = description.length > 200 ? description.substring(0, 200) + '...' : description;
+            promptParts.push(`The item is described as: "${shortDescription}"`);
+        }
+        
+        promptParts.push("Style: clean lines, fantasy art, iconic, centered on a white background, no text.");
+        
+        aiPromptTextarea.value = promptParts.join('. ');
         
         aiPromptModal.classList.remove('hidden');
-        logMessage("Vygenerován AI Prompt Helper.", 'info');
+        logMessage("Vygenerován vylepšený AI Prompt.", 'info');
     }
 
     window.closeAiPromptModal = function() {
@@ -1647,12 +1732,7 @@
         if (cardData.image) {
             ctx.drawImage(cardData.image, imageX, imageY, IMAGE_SIZE, IMAGE_SIZE);
         } else {
-            ctx.font = '28px sans-serif'; 
-            ctx.fillStyle = '#AAAAAA';
-            ctx.textAlign = 'center';
-            ctx.fillText('Obrázek itemu', imageX + IMAGE_SIZE/2, imageY + IMAGE_SIZE/2);
-            ctx.textAlign = 'left';
-            ctx.fillStyle = '#000000';
+            // ZMĚNA: Placeholder text odstraněn, zůstává jen prázdný rámeček
         }
 
         // Výpočet, kam by se atributy vešly vpravo od obrázku
@@ -2249,6 +2329,245 @@
              attributes: attributes
             };
     }
+
+    // --- NOVÝ SYSTÉM: UKLÁDÁNÍ, VERZOVÁNÍ A SDÍLENÍ ---
+
+    function getSavedItems() {
+        try {
+            const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+            return saved ? JSON.parse(saved) : {};
+        } catch (e) {
+            logMessage("Chyba při načítání uložených položek z localStorage.", "error");
+            return {};
+        }
+    }
+
+    function saveItems(items) {
+        try {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+        } catch (e) {
+            logMessage("Chyba při ukládání položek do localStorage.", "error");
+        }
+    }
+
+    window.showSavedItemsModal = function() {
+        renderSavedItemsList();
+        savedItemsModal.classList.remove('hidden');
+    }
+
+    window.closeSavedItemsModal = function() {
+        savedItemsModal.classList.add('hidden');
+        currentlySelectedSavedItem = null;
+    }
+
+    function renderSavedItemsList() {
+        const items = getSavedItems();
+        const listContainer = document.getElementById('savedItemsList');
+        const versionsContainer = document.getElementById('itemVersionsContainer');
+        const versionsTitle = document.getElementById('versionsTitle');
+        const saveNewVersionButton = document.getElementById('saveNewVersionButton');
+        
+        listContainer.innerHTML = '';
+        versionsContainer.innerHTML = '<p class="p-4 text-gray-500">Zvolte položku ze seznamu vlevo.</p>';
+        versionsTitle.textContent = 'Zvolte položku pro zobrazení verzí';
+        saveNewVersionButton.classList.add('hidden');
+        
+        const itemNames = Object.keys(items).sort();
+
+        if (itemNames.length === 0) {
+            listContainer.innerHTML = '<p class="p-4 text-gray-500">Zatím nemáte žádné uložené položky.</p>';
+            return;
+        }
+
+        itemNames.forEach(name => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'saved-item-list-item flex justify-between items-center';
+            if (name === currentlySelectedSavedItem) {
+                itemDiv.classList.add('selected');
+            }
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = name;
+            itemDiv.appendChild(nameSpan);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '&times;';
+            deleteButton.className = 'ml-2 text-red-500 hover:text-red-700 font-bold px-2';
+            deleteButton.title = `Smazat '${name}' a všechny verze`;
+            deleteButton.onclick = (e) => {
+                e.stopPropagation();
+                if (confirm(`Opravdu chcete smazat položku '${name}' a všechny její verze?`)) {
+                    deleteItem(name);
+                }
+            };
+            itemDiv.appendChild(deleteButton);
+
+            itemDiv.onclick = () => {
+                currentlySelectedSavedItem = name;
+                renderSavedItemsList(); // Rerender to show selection
+                renderItemVersions(name);
+            };
+            listContainer.appendChild(itemDiv);
+        });
+    }
+    
+    function renderItemVersions(itemName) {
+        const items = getSavedItems();
+        const versions = items[itemName] || [];
+        const container = document.getElementById('itemVersionsContainer');
+        const title = document.getElementById('versionsTitle');
+        const saveNewVersionButton = document.getElementById('saveNewVersionButton');
+
+        container.innerHTML = '';
+        title.textContent = `Verze pro: ${itemName}`;
+        saveNewVersionButton.classList.remove('hidden');
+
+        if (versions.length === 0) {
+            container.innerHTML = '<p class="p-4 text-gray-500">Tato položka nemá žádné uložené verze.</p>';
+            return;
+        }
+
+        [...versions].reverse().forEach((versionData, index) => {
+            const originalIndex = versions.length - 1 - index;
+            const versionDiv = document.createElement('div');
+            versionDiv.className = 'version-list-item flex justify-between items-center bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm';
+            
+            const infoSpan = document.createElement('span');
+            infoSpan.innerHTML = `<strong>Verze ${versionData.version}</strong> <span class="text-xs text-gray-500">(${versionData.timestamp})</span>`;
+            versionDiv.appendChild(infoSpan);
+
+            const controlsDiv = document.createElement('div');
+            
+            const loadButton = document.createElement('button');
+            loadButton.textContent = 'Načíst';
+            loadButton.className = 'px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600';
+            loadButton.onclick = () => loadItemVersion(itemName, originalIndex);
+            controlsDiv.appendChild(loadButton);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Smazat';
+            deleteButton.className = 'ml-2 px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600';
+            deleteButton.onclick = () => {
+                 if (confirm(`Opravdu chcete smazat verzi ${versionData.version} položky '${itemName}'?`)) {
+                    deleteItemVersion(itemName, originalIndex);
+                }
+            };
+            controlsDiv.appendChild(deleteButton);
+
+            versionDiv.appendChild(controlsDiv);
+            container.appendChild(versionDiv);
+        });
+    }
+
+    window.saveCurrentItem = function(asNew = false) {
+        const currentData = getFormState();
+        if (!currentData.title) {
+            alert("Pro uložení musí mít položka název.");
+            return;
+        }
+        
+        const items = getSavedItems();
+        const itemName = asNew ? currentData.title : currentlySelectedSavedItem;
+
+        if (asNew && items[itemName]) {
+            if (!confirm(`Položka s názvem '${itemName}' již existuje. Chcete ji přepsat a vytvořit novou verzi?`)) {
+                return;
+            }
+        }
+        
+        const versions = items[itemName] || [];
+        const newVersionNumber = versions.length > 0 ? Math.max(...versions.map(v => v.version)) + 1 : 1;
+        
+        const newVersionData = {
+            version: newVersionNumber,
+            timestamp: new Date().toLocaleString('cs-CZ'),
+            data: currentData
+        };
+
+        items[itemName] = [...versions, newVersionData];
+        saveItems(items);
+
+        logMessage(`Položka '${itemName}' uložena jako verze ${newVersionNumber}.`, 'success');
+        currentlySelectedSavedItem = itemName;
+        renderSavedItemsList();
+        renderItemVersions(itemName);
+    }
+
+    function loadItemVersion(itemName, versionIndex) {
+        const items = getSavedItems();
+        const versionData = items[itemName]?.[versionIndex];
+        if (versionData) {
+            updateFormFields(versionData.data);
+            logMessage(`Načtena verze ${versionData.version} položky '${itemName}'.`, 'success');
+            closeSavedItemsModal();
+        } else {
+            logMessage(`Chyba: Verze nebyla nalezena.`, 'error');
+        }
+    }
+
+    function deleteItem(itemName) {
+        const items = getSavedItems();
+        delete items[itemName];
+        saveItems(items);
+        logMessage(`Položka '${itemName}' byla smazána.`, 'warn');
+        if (currentlySelectedSavedItem === itemName) {
+            currentlySelectedSavedItem = null;
+        }
+        renderSavedItemsList();
+    }
+    
+    function deleteItemVersion(itemName, versionIndex) {
+        const items = getSavedItems();
+        if (items[itemName]) {
+            items[itemName].splice(versionIndex, 1);
+            if (items[itemName].length === 0) {
+                delete items[itemName];
+                if (currentlySelectedSavedItem === itemName) {
+                    currentlySelectedSavedItem = null;
+                }
+                 renderSavedItemsList();
+            } else {
+                 saveItems(items);
+                 renderItemVersions(itemName);
+            }
+            saveItems(items);
+            logMessage(`Verze byla smazána.`, 'warn');
+        }
+    }
+
+    window.generateShareableLink = function() {
+        try {
+            const data = getFormState();
+            const jsonString = JSON.stringify(data);
+            const encodedData = btoa(unescape(encodeURIComponent(jsonString)));
+            const url = `${window.location.origin}${window.location.pathname}#data=${encodedData}`;
+
+            navigator.clipboard.writeText(url).then(() => {
+                logMessage("Odkaz pro sdílení zkopírován do schránky!", 'success');
+            }).catch(() => {
+                logMessage("Chyba při kopírování odkazu.", 'error');
+            });
+        } catch (e) {
+            logMessage(`Chyba při generování odkazu: ${e.message}`, 'error');
+        }
+    }
+
+    function loadFromURL() {
+        try {
+            if (window.location.hash && window.location.hash.startsWith('#data=')) {
+                const encodedData = window.location.hash.substring(6);
+                const jsonString = decodeURIComponent(escape(atob(encodedData)));
+                const data = JSON.parse(jsonString);
+                updateFormFields(data);
+                logMessage("Data úspěšně načtena z URL.", 'success');
+                // Vyčistit hash z URL, aby se při obnovení nenačítalo znovu
+                history.replaceState(null, null, ' ');
+            }
+        } catch(e) {
+            logMessage(`Chyba při načítání dat z URL: ${e.message}`, 'error');
+            history.replaceState(null, null, ' ');
+        }
+    }
     
     // --- INICIALIZACE ---
 
@@ -2285,7 +2604,13 @@
         initSortable();
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
         setPrintLanguage(storedLang);
-        performReset(); 
+        
+        // Načíst z URL, pokud existují data, jinak resetovat
+        loadFromURL();
+        if (!window.location.hash.startsWith('#data=')) {
+            performReset(); 
+        }
+
         document.addEventListener('paste', handlePaste);
         updateAnalyzeButtonState();
         logMessage(`TTRPG Generátor spuštěn (Verze ${VERSION}). Vítejte!`, 'info');
