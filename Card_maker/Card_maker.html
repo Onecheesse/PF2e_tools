@@ -137,15 +137,15 @@
             <button onclick="showInfoModal()" class="p-2 rounded-full bg-blue-200 text-blue-700 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-300 dark:hover:bg-blue-600 transition" title="Informace a návod">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </button>
-            <!-- NOVÉ Tlačítko pro správce uložených položek -->
+            <!-- Tlačítko pro správce uložených položek -->
             <button onclick="showSavedItemsModal()" class="p-2 rounded-full bg-yellow-200 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100 hover:bg-yellow-300 dark:hover:bg-yellow-600 transition" title="Správce uložených položek">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
             </button>
         </div>
 
-        <!-- VERZE V_1.s.07 (Aktualizováno) -->
+        <!-- VERZE V_1.s.08 (Aktualizováno) -->
         <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
-            V_1.s.07
+            V_1.s.08
         </button>
     </div>
 
@@ -181,6 +181,20 @@
                 <div>
                     <label for="cardTranslation" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Překlad (Volitelně, do CZ v závorce)</label>
                     <input type="text" id="cardTranslation" value="" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white">
+                </div>
+            </div>
+
+            <!-- HERNÍ SYSTÉM (NOVÉ) -->
+            <div class="mb-4">
+                <label for="gameSystem" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Herní systém</label>
+                <div class="flex space-x-2 mt-1">
+                    <select id="gameSystem" class="flex-grow border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" onchange="handleGameSystemChange()">
+                        <option value="PF2e">Pathfinder 2e</option>
+                        <option value="SF2e">Starfinder 2e</option>
+                        <option value="DnD">Dungeons & Dragons 5e</option>
+                        <option value="other">Jiný (Other)</option>
+                    </select>
+                    <input type="text" id="otherGameSystem" class="hidden w-1/2 border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Vlastní systém..." oninput="updatePreview()">
                 </div>
             </div>
 
@@ -288,12 +302,18 @@
                     <option value="BAR">Bar (Procenta/Stav)</option>
                 </select>
 
-                <div class="grid grid-cols-2 gap-4">
+                <!-- NOVÁ MOŽNOST: ZOBRAZIT POUZE MAX -->
+                <div class="flex items-center space-x-2 mt-3 mb-2">
+                    <input type="checkbox" id="showOnlyMaxUses" onchange="handleShowOnlyMaxChange()" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="showOnlyMaxUses" class="text-sm font-medium text-gray-700 dark:text-gray-300">Zobrazit pouze maximum (pro papírové použití)</label>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4" id="usesInputsContainer">
                     <div>
                         <label for="maxUses" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Max. Použití</label>
                         <input type="number" id="maxUses" value="0" min="0" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" oninput="updatePreview()">
                     </div>
-                    <div>
+                    <div id="currentUsesWrapper">
                         <label for="currentUses" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Aktuální Použití</label>
                         <input type="number" id="currentUses" value="0" min="0" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" oninput="updatePreview()">
                     </div>
@@ -464,7 +484,7 @@
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.07</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.08</h2>
         
         <div class="space-y-6 text-gray-700 dark:text-gray-300">
             <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
@@ -474,21 +494,23 @@
                 <li>**Ruční zadání:** Vyplňte pole pro Název, Překlad, Typ a Popisy.</li>
                 <li>**Analýza Screenshotů (Doporučeno):** Vložte screenshoty a klikněte na "Analyzovat". Umělá inteligence extrahuje data.</li>
                 <li>**JSON Vstup:** Data můžete načíst také z JSON souboru nebo přímo vložením textu.</li>
-                <li>**Ukládání a Verzování (VYLEPŠENÉ):** Kliknutím na ikonu <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> otevřete správce. Nové položky se ukládají pod standardizovaným klíčem (`TYP_LVL___NÁZEV`). U verzí lze nyní nastavit vlastní název.</li>
+                <li>**Ukládání a Verzování:** Kliknutím na ikonu <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> otevřete správce. Nové položky se ukládají pod standardizovaným klíčem (`TYP_LVL___NÁZEV`). U verzí lze nyní nastavit vlastní název.</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">2. Klíčové Funkce</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
+                <li>**Herní Systém (NOVÉ):** Zvolte herní systém (např. PF2e, DnD), který se zobrazí na kartě.</li>
                 <li>**Identifikace (Režim GM/Hráč):** Zaškrtněte políčko "Předmět je **Identifikovaný**". Pokud je nezaškrtnuté (Režim Hráče), filtruje se skrytý text a atributy.</li>
-                <li>**Obrázek itemu:** Nahrajte obrázek, použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení, nebo vložte obrázek ze schránky pomocí `Ctrl+V` po aktivaci tlačítka **"Cílit CTRL+V sem"**. Rámeček na kartě je nyní prázdný pro vaše vlastní kresby.</li>
-                 <li>**AI Prompt Helper (VYLEPŠENÉ):** Generuje detailní prompty na základě názvu, typu, atributů a popisu karty pro lepší výsledky v AI generátorech obrázků.</li>
+                <li>**Obrázek itemu:** Nahrajte obrázek, použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení, nebo vložte obrázek ze schránky pomocí `Ctrl+V` po aktivaci tlačítka **"Cílit CTRL+V sem"**.</li>
+                 <li>**Měřáky pro Tisk (NOVÉ):** U měřáků (životy, použití) lze zaškrtnout "Zobrazit pouze maximum", což na kartě nechá místo pro ruční dopsání aktuálního stavu.</li>
+                 <li>**AI Prompt Helper:** Generuje detailní prompty na základě názvu, typu, atributů a popisu karty pro lepší výsledky v AI generátorech obrázků.</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">3. Výstup a Sdílení</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
                 <li>**Náhled Karty:** Náhled ukazuje kartu ve vysokém rozlišení pro tisk. Kliknutím na náhled zobrazíte detailní zoom.</li>
                 <li>**Stáhnout PDF/JSON:** Vygenerujte PDF soubor pro tisk, nebo si stáhněte `.json` soubor pro zálohu.</li>
-                 <li>**Sdílet přes URL (NOVÉ):** Tlačítko "Sdílet (URL)" vytvoří unikátní odkaz na aktuální kartu. Kdokoli s odkazem si může vaši kartu ihned zobrazit a upravit.</li>
+                 <li>**Sdílet přes URL:** Tlačítko "Sdílet (URL)" vytvoří unikátní odkaz na aktuální kartu. Kdokoli s odkazem si může vaši kartu ihned zobrazit a upravit.</li>
             </ul>
         </div>
     </div>
@@ -505,7 +527,16 @@
         <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
 
             <div class="border-l-4 border-green-500 pl-4">
-                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.07 (Current) - SPRÁVA A OPRAVY</h3>
+                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">V_1.s.08 (Current) - Herní Systém a Měřáky</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Přidán výběr herního systému:** V sekci "Základní informace" je nyní možné vybrat herní systém (PF2e, DnD, atd.), který se zobrazí v záhlaví karty.</li>
+                    <li>**Možnost "Jiný systém":** Pokud je vybrána volba "Jiný", zobrazí se textové pole pro zadání vlastního názvu herního systému.</li>
+                    <li>**Úprava měřáků pro tisk:** V sekci "Měřáky" přibyla možnost "Zobrazit pouze maximum". Pokud je aktivní, na kartě se zobrazí pouze maximální hodnota (např. "HP: ___ / 10"), což usnadňuje ruční zapisování na vytištěnou kartu.</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.s.07</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
                     <li>**Standardizovaný klíč pro ukládání:** Ukládání nových položek nyní používá stejný formát klíče jako export do JSON/PDF (`TYP_LVL___NÁZEV`), což zlepšuje organizaci.</li>
                     <li>**Pojmenování verzí:** Při ukládání nové verze položky je nyní možné zadat vlastní název pro lepší přehlednost. Přidána možnost verze přejmenovat.</li>
@@ -639,8 +670,8 @@
 </div>
 
 <script>
-    // --- KONSTANTY PRO KARTU (V_1.s.07) ---
-    const VERSION = 'V_1.s.07';
+    // --- KONSTANTY PRO KARTU (V_1.s.08) ---
+    const VERSION = 'V_1.s.08';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -700,7 +731,7 @@
     const isIdentifiedCheckbox = document.getElementById('isIdentified');
     const appConsole = document.getElementById('appConsole');
     const pasteTargetToggleButton = document.getElementById('pasteTargetToggle');
-    const savedItemsModal = document.getElementById('savedItemsModal'); // NOVÉ
+    const savedItemsModal = document.getElementById('savedItemsModal'); 
 
     // --- TEMPLATY A DATA PRO TYPY KARET ---
     
@@ -710,7 +741,7 @@
         'SPELL': '✨',
         'CONSUMABLE': '🧪',
         'EQUIPMENT': '🛡️',
-        'MONSTER': '💀', // NOVÉ
+        'MONSTER': '💀', 
         'OTHER': '📜'
     };
 
@@ -749,7 +780,7 @@
             ],
             uses: { usesType: 'DICE', maxUses: 1, currentUses: 1 }
         },
-        'MONSTER': { // NOVÝ TEMPLATE
+        'MONSTER': {
             title: 'Goblin Archer', translation: 'Goblin Lučištník',
             description: 'Small, nimble, and highly irritating, the Goblin Archer prefers to attack from range, often hiding behind larger allies or cover. \n\n**Sniper**: Gains +2 bonus on attack rolls when targeting a creature that has not yet acted this combat round. Always carries 1d6 arrows.',
             descriptionCz: 'Malý, hbitý a velmi otravný Goblin Archer preferuje útočit z dálky, často se skrývá za většími spojenci. \n\n**Sniper**: Získá bonus +2 na hod **attack rolls**, pokud se zaměří na stvoření, které v tomto kole ještě nejednalo. Vždy nese 1k6 šípů.',
@@ -794,25 +825,24 @@
         }
     };
     
-    // --- NOVÁ FUNKCE: APLIKAČNÍ KONZOLE ---
+    // --- APLIKAČNÍ KONZOLE ---
     function logMessage(message, type = 'info') {
         const timestamp = new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const p = document.createElement('p');
         p.className = `log-${type}`;
         p.innerHTML = `<span class="text-gray-500 dark:text-gray-500">[${timestamp}]</span> ${message}`;
         
-        // Zabezpečení proti zahlcení
         if (appConsole.children.length >= 50) {
             appConsole.removeChild(appConsole.firstChild);
         }
         appConsole.appendChild(p);
-        appConsole.scrollTop = appConsole.scrollHeight; // Scroll dolů
+        appConsole.scrollTop = appConsole.scrollHeight;
     }
 
     // --- UTILITY FUNKCE ---
     
     function getApiKey() {
-        if (CANVAS_API_KEY_EXISTS) return ""; // V Canvasu vracíme prázdný, platforma to vyřídí
+        if (CANVAS_API_KEY_EXISTS) return "";
         return geminiApiKeyInput.value.trim();
     }
     
@@ -828,7 +858,6 @@
         const hasManualKey = geminiApiKeyInput.value.trim().length > 0;
         const hasImages = analysisImagesBase64.length > 0;
 
-        // V Canvasu stačí mít obrázky (klíč je předpokládán). Mimo Canvas je nutný i klíč.
         let isButtonEnabled;
         if (isCanvasEnvironment) {
             isButtonEnabled = hasImages;
@@ -898,10 +927,15 @@
         document.getElementById('cardTranslation').value = '';
         document.getElementById('cardDescription').value = '';
         document.getElementById('cardDescriptionCz').value = '';
+        document.getElementById('gameSystem').value = 'PF2e';
+        document.getElementById('otherGameSystem').value = '';
+        handleGameSystemChange();
         cardTypeInput.value = 'ITEM';
         usesTypeInput.value = '';
         maxUsesInput.value = '0';
         currentUsesInput.value = '0';
+        document.getElementById('showOnlyMaxUses').checked = false;
+        handleShowOnlyMaxChange();
         isIdentifiedCheckbox.checked = true; 
         clearAttributes();
         removeItemImage();
@@ -909,7 +943,7 @@
         clearAllScreenshots();
         handleIdentificationChange(false); 
         if (pasteTargetIsItemImage) {
-            togglePasteTarget(); // Resetovat cíl vkládání
+            togglePasteTarget();
         }
         updatePreview();
         logMessage("Aplikace resetována. Všechna pole byla vyčištěna.", 'warn');
@@ -939,6 +973,29 @@
         logMessage(`Jazyk tisku přepnut na: ${lang}`, 'info');
     }
     
+    // --- NOVÉ FUNKCE PRO UI ---
+    window.handleGameSystemChange = function() {
+        const systemSelect = document.getElementById('gameSystem');
+        const otherInput = document.getElementById('otherGameSystem');
+        if (systemSelect.value === 'other') {
+            otherInput.classList.remove('hidden');
+        } else {
+            otherInput.classList.add('hidden');
+        }
+        updatePreview();
+    }
+
+    window.handleShowOnlyMaxChange = function() {
+        const isChecked = document.getElementById('showOnlyMaxUses').checked;
+        const currentUsesWrapper = document.getElementById('currentUsesWrapper');
+        if (isChecked) {
+            currentUsesWrapper.style.display = 'none';
+        } else {
+            currentUsesWrapper.style.display = 'block';
+        }
+        updatePreview();
+    }
+
     // --- IDENTIFIKACE ---
     window.handleIdentificationChange = function(update = true) {
         const isEnabled = isIdentifiedCheckbox.checked;
@@ -1006,6 +1063,8 @@
             maxUsesInput.value = '0';
             currentUsesInput.value = '0';
         }
+        document.getElementById('showOnlyMaxUses').checked = false;
+        handleShowOnlyMaxChange();
         
         clearAttributes();
         template.attributes.forEach(attr => {
@@ -1064,10 +1123,23 @@
         document.getElementById('cardDescription').value = data.description || '';
         document.getElementById('cardDescriptionCz').value = data.descriptionCz || '';
         
+        // Načtení herního systému
+        const gameSystemSelect = document.getElementById('gameSystem');
+        if (data.gameSystem && Array.from(gameSystemSelect.options).some(opt => opt.value === data.gameSystem)) {
+            gameSystemSelect.value = data.gameSystem;
+            document.getElementById('otherGameSystem').value = '';
+        } else {
+            gameSystemSelect.value = 'other';
+            document.getElementById('otherGameSystem').value = data.otherGameSystem || data.gameSystem || '';
+        }
+        handleGameSystemChange();
+
         usesTypeInput.value = data.usesType && ['DOTS', 'HEARTS', 'DICE', 'BAR'].includes(data.usesType.toUpperCase()) ? data.usesType.toUpperCase() : '';
         maxUsesInput.value = data.maxUses !== undefined ? data.maxUses : 0;
         currentUsesInput.value = data.currentUses !== undefined ? data.currentUses : 0;
         isIdentifiedCheckbox.checked = data.isIdentified !== undefined ? data.isIdentified : true;
+        document.getElementById('showOnlyMaxUses').checked = data.showOnlyMaxUses === true;
+        handleShowOnlyMaxChange();
         handleIdentificationChange(false);
 
         if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
@@ -1160,7 +1232,6 @@
             }, 5);
 
             if (!response.ok) {
-                 // Chyba byla již zalogována ve fetchWithRetry, zde jen ukončíme funkci
                  throw new Error(`API požadavek selhal se stavem ${response.status}.`);
             }
             
@@ -1186,34 +1257,30 @@
             try {
                 const response = await fetch(url, options);
 
-                // Úspěšný požadavek, vrátíme odpověď
                 if (response.ok) {
                     return response;
                 }
 
-                // Zjistíme, jestli má smysl opakovat pokus
                 const shouldRetry = response.status === 429 || response.status >= 500;
                 
                 if (shouldRetry) {
-                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000; // Exponenciální odklad s jitterem
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
                     logMessage(`API chyba (${response.status}). Pokus ${i + 1}/${maxRetries} selhal. Zkouším znovu za ${Math.round(delay/1000)}s.`, 'warn');
                     await new Promise(resolve => setTimeout(resolve, delay));
-                    continue; // Pokračujeme na další iteraci smyčky
+                    continue;
                 } else {
-                    // Neopakovatelná chyba (např. 400 Bad Request)
                     const errorBody = await response.text();
                     logMessage(`Neopakovatelná API chyba (${response.status}): ${errorBody}`, 'error');
-                    return response; // Vrátíme chybnou odpověď k dalšímu zpracování
+                    return response;
                 }
             } catch (error) {
-                // Chyba sítě
                 const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
                 if (i < maxRetries - 1) {
                     logMessage(`Chyba sítě. Zkouším znovu za ${Math.round(delay/1000)}s. Chyba: ${error.message}`, 'warn');
                     await new Promise(resolve => setTimeout(resolve, delay));
                 } else {
                     logMessage('Chyba sítě. Dosažen maximální počet pokusů.', 'error');
-                    throw error; // Vyhodíme chybu po posledním pokusu
+                    throw error;
                 }
             }
         }
@@ -1223,7 +1290,6 @@
 
     // --- OBRÁZKOVÉ NÁSTROJE ---
     
-    // Přepínač cíle pro vkládání obrázku
     window.togglePasteTarget = function() {
         pasteTargetIsItemImage = !pasteTargetIsItemImage;
         if (pasteTargetIsItemImage) {
@@ -1239,7 +1305,6 @@
         }
     }
 
-    // Funkce pro vkládání obrázků ze schránky (Upraveno)
     function handlePaste(event) {
         const items = (event.clipboardData || event.originalEvent.clipboardData).items;
         for (let index in items) {
@@ -1254,12 +1319,11 @@
                         processAnalysisFile(blob);
                     }
                 }
-                return; // Zpracujeme pouze první nalezený obrázek
+                return;
             }
         }
     }
 
-    // Zpracování obrázku pro item (nová funkce)
     function processItemImagePaste(file) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -1270,7 +1334,6 @@
                 updatePreview();
                 updateAnalyzeButtonState();
                 logMessage(`Obrázek itemu vložen ze schránky.`, 'success');
-                // Automaticky deaktivovat cílení po úspěšném vložení
                 if (pasteTargetIsItemImage) {
                     togglePasteTarget();
                 }
@@ -1280,7 +1343,6 @@
         reader.readAsDataURL(file);
     }
 
-    // Funkce pro zpracování souboru pro analýzu (původní processFile)
     function processAnalysisFile(file) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -1293,19 +1355,17 @@
         reader.readAsDataURL(file);
     }
     
-    // Obsluha přetažení (handleImageDrop)
     window.handleImageDrop = function(event) {
         event.preventDefault();
         if (event.dataTransfer.files) {
             Array.from(event.dataTransfer.files).forEach(file => {
                 if (file.type.startsWith('image/')) {
-                    processAnalysisFile(file); // Přetažení vždy cílí na analýzu
+                    processAnalysisFile(file);
                 }
             });
         }
     }
     
-    // Obsluha uploadu přes input
     analysisImageUpload.addEventListener('change', function(e) {
         Array.from(e.target.files).forEach(file => {
             if (file.type.startsWith('image/')) {
@@ -1448,16 +1508,15 @@
         const title = document.getElementById('cardTitle').value || 'Fantasy Item';
         const type = cardTypeInput.value;
         const description = document.getElementById('cardDescription').value
-            .replace(/\{\{\{.*?\}\}\}/gs, '') // Odebrat skrytý text
-            .replace(/\*\*|`/g, '') // Odebrat formátování
-            .replace(/\n/g, ' ') // Odebrat nové řádky
+            .replace(/\{\{\{.*?\}\}\}/gs, '')
+            .replace(/\*\*|`/g, '')
+            .replace(/\n/g, ' ')
             .trim();
         
         const attributes = Array.from(document.querySelectorAll('#attributesContainer .attribute-row'))
             .map(row => {
                 const key = row.querySelector('.attr-key').value.trim();
                 const value = row.querySelector('.attr-value').value.trim();
-                // Ignorovat prázdné nebo obecné atributy
                 if (!key || !value || key.toLowerCase() === 'cena' || key.toLowerCase() === 'vzácnost') {
                     return null;
                 }
@@ -1476,7 +1535,6 @@
         }
         
         if (description) {
-            // Zkrátit popis, pokud je příliš dlouhý
             const shortDescription = description.length > 200 ? description.substring(0, 200) + '...' : description;
             promptParts.push(`The item is described as: "${shortDescription}"`);
         }
@@ -1526,7 +1584,6 @@
 
                 ctx.fillStyle = isUnidentified ? '#AAAAAA' : '#000000';
                 
-                // Klíč (Tučné)
                 ctx.font = 'bold 24px sans-serif'; 
                 const keyText = attr.key + ":";
                 const keyWidth = ctx.measureText(keyText).width;
@@ -1534,7 +1591,6 @@
                 const valueX = statsX + keyWidth + 5;
                 const valueMaxWidth = statsWidth - (keyWidth + 5);
 
-                // Hodnota (Normální/Kurzíva)
                 ctx.font = `${isUnidentified ? 'italic ' : ''}24px sans-serif`;
                 
                 const words = attr.value.split(/\s+/);
@@ -1561,7 +1617,6 @@
                     finalY += lineHeight;
                 }
                 
-                // Vykreslení klíče (vždy na startu)
                 ctx.font = 'bold 24px sans-serif';
                 ctx.fillText(keyText, statsX, currentY);
 
@@ -1572,10 +1627,8 @@
         return lowestY;
     }
     
-    function drawCharges(ctx, x, y, width, maxUses, currentUses, usesType) {
+    function drawCharges(ctx, x, y, width, maxUses, currentUses, usesType, showOnlyMax) {
         if (maxUses <= 0 || usesType === '') return y;
-        
-        const padding = 5;
         
         ctx.strokeStyle = '#333333';
         ctx.lineWidth = 3;
@@ -1599,40 +1652,53 @@
                 let dotX = centerX - totalDotWidth / 2 + dotSize / 2;
 
                 for (let i = 0; i < maxUses; i++) {
-                    ctx.fillStyle = i < currentUses ? '#22C55E' : '#B91C1C';
                     ctx.beginPath();
                     ctx.arc(dotX, centerY, dotSize / 2, 0, Math.PI * 2);
-                    ctx.fill();
+                    if (showOnlyMax) {
+                        ctx.strokeStyle = '#555555';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    } else {
+                        ctx.fillStyle = i < currentUses ? '#22C55E' : '#B91C1C';
+                        ctx.fill();
+                    }
                     dotX += dotSize + dotSpacing;
                 }
                 break;
             case 'HEARTS':
-                const hpLabel = "HP: " + currentUses + "/" + maxUses;
+                const hpLabel = showOnlyMax ? `HP: ___ / ${maxUses}` : `HP: ${currentUses}/${maxUses}`;
                 ctx.fillStyle = '#B91C1C';
                 ctx.font = `${fontSize}px sans-serif`;
                 ctx.fillText(hpLabel, centerX, centerY);
                 break;
             case 'DICE':
-                const diceLabel = "Uses: " + currentUses + "/" + maxUses + " (Per Day)";
+                const diceLabel = showOnlyMax ? `Použití: ___ / ${maxUses}` : `Použití: ${currentUses}/${maxUses}`;
                 ctx.fillStyle = '#1D4ED8';
                 ctx.font = `${fontSize}px sans-serif`;
                 ctx.fillText(diceLabel, centerX, centerY);
                 break;
             case 'BAR':
-                const usedFraction = Math.min(1, Math.max(0, currentUses / maxUses));
-                const fillWidth = width * usedFraction;
-                let barColor = '#4B5563';
-                if (usedFraction > 0.6) barColor = '#10B981';
-                else if (usedFraction > 0.3) barColor = '#F59E0B';
-                else barColor = '#EF4444';
+                if (showOnlyMax) {
+                    const percentLabel = "Stav: ___ %";
+                    ctx.fillStyle = '#000000';
+                    ctx.font = `bold ${fontSize}px sans-serif`;
+                    ctx.fillText(percentLabel, centerX, centerY);
+                } else {
+                    const usedFraction = Math.min(1, Math.max(0, currentUses / maxUses));
+                    const fillWidth = width * usedFraction;
+                    let barColor = '#4B5563';
+                    if (usedFraction > 0.6) barColor = '#10B981';
+                    else if (usedFraction > 0.3) barColor = '#F59E0B';
+                    else barColor = '#EF4444';
 
-                ctx.fillStyle = barColor;
-                ctx.fillRect(x, y, fillWidth, CHARGES_HEIGHT);
-
-                const percentLabel = "Status: " + Math.round(usedFraction * 100) + "%";
-                ctx.fillStyle = (usedFraction < 0.5) ? '#FFFFFF' : '#000000';
-                ctx.font = `bold ${fontSize}px sans-serif`;
-                ctx.fillText(percentLabel, centerX, centerY);
+                    ctx.fillStyle = barColor;
+                    ctx.fillRect(x, y, fillWidth, CHARGES_HEIGHT);
+                    
+                    const percentLabel = "Stav: " + Math.round(usedFraction * 100) + "%";
+                    ctx.fillStyle = (usedFraction < 0.5 && fillWidth > (width * 0.1)) ? '#FFFFFF' : '#000000';
+                    ctx.font = `bold ${fontSize}px sans-serif`;
+                    ctx.fillText(percentLabel, centerX, centerY);
+                }
                 break;
         }
 
@@ -1655,7 +1721,6 @@
         ctx.font = '16px sans-serif'; 
         ctx.textAlign = 'left';
         
-        // FIX: Moved text up to prevent collision with bottom border
         ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING - 18);
         ctx.textAlign = 'left';
     }
@@ -1678,7 +1743,6 @@
         
         const cardType = cardTypeInput.value;
         
-        // Nastavení stylu čáry rámečku podle typu karty (VĚTŠÍ MĚŘÍTKO)
         if (cardType === 'SPELL') {
              ctx.setLineDash([30, 8, 10, 8]); 
         } else if (cardType === 'WEAPON') {
@@ -1725,20 +1789,31 @@
         const wrappedTitleLines = wrapText(ctx, titleText, availableTitleWidth, `bold ${titleFontSize}px sans-serif`);
         let titleY = PADDING;
         
-        // Vykreslení zalamovaného názvu - VYLEPŠENÍ
         ctx.textAlign = 'left';
         wrappedTitleLines.forEach(line => {
             ctx.fillText(line, PADDING, titleY);
-            titleY += titleFontSize * 1.1; // Posun na další řádek
+            titleY += titleFontSize * 1.1;
         });
         
         ctx.font = `bold ${typeFontSize}px sans-serif`; 
         ctx.textAlign = 'right';
         ctx.fillStyle = '#333333';
         ctx.fillText(fullTypeText, BASE_CARD_W - PADDING, PADDING + 5);
-        ctx.textAlign = 'left';
 
-        // Horizontální čára pod názvem
+        // Herní systém (NOVÉ)
+        const gameSystemSelect = document.getElementById('gameSystem');
+        let systemText = gameSystemSelect.value;
+        if (systemText === 'other') {
+            systemText = document.getElementById('otherGameSystem').value.trim() || 'Other';
+        }
+        ctx.font = 'italic 20px sans-serif';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)'; // Průhledný text
+        ctx.fillText(systemText, BASE_CARD_W - PADDING, PADDING + 5 + typeFontSize * 1.1);
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#000000';
+
+
         const lineY = Math.max(titleY, PADDING * 2.5 + 5);
         ctx.beginPath();
         ctx.moveTo(PADDING, lineY);
@@ -1758,11 +1833,8 @@
 
         if (cardData.image) {
             ctx.drawImage(cardData.image, imageX, imageY, IMAGE_SIZE, IMAGE_SIZE);
-        } else {
-            // ZMĚNA: Placeholder text odstraněn, zůstává jen prázdný rámeček
         }
 
-        // Výpočet, kam by se atributy vešly vpravo od obrázku
         const attributesRightOfImage = [];
         const attributesBelowImage = [];
         let tempYRight = imageY;
@@ -1813,7 +1885,7 @@
         if (cardData.uses && cardData.uses.usesType && cardData.uses.maxUses > 0) {
              const usesX = imageX;
              const usesWidth = IMAGE_SIZE;
-             yAfterUses = drawCharges(ctx, usesX, usesYStart, usesWidth, cardData.uses.maxUses, cardData.uses.currentUses, cardData.uses.usesType);
+             yAfterUses = drawCharges(ctx, usesX, usesYStart, usesWidth, cardData.uses.maxUses, cardData.uses.currentUses, cardData.uses.usesType, cardData.uses.showOnlyMax);
         } else {
              yAfterUses = imageY + IMAGE_SIZE + PADDING / 2;
         }
@@ -1915,13 +1987,10 @@
             ctx.strokeStyle = '#000000';
             ctx.strokeRect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
             
-            // --- START OF FIX ---
             ctx.save();
             ctx.beginPath();
-            // Vytvoříme ořezávací masku (clipping path) přesně podle rámečku pro popis.
             ctx.rect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
             ctx.clip();
-            // --- END OF FIX ---
             
             ctx.font = 'bold 24px sans-serif'; 
             ctx.fillStyle = descriptionColor;
@@ -1930,9 +1999,7 @@
             ctx.fillStyle = descriptionColor;
             const result = drawFormattedText(ctx, remainingText, currentDrawX + textPadding, sectionTopY + textPadding + descriptionLineHeight + 5, cardSectionWidth - 2 * textPadding, descriptionLineHeight, descriptionFontSize, maxLines, descriptionItalic, isIdentified);
             
-            // --- START OF FIX ---
-            ctx.restore(); // Odstraníme ořezávací masku, aby další operace kreslení nebyly ovlivněny.
-            // --- END OF FIX ---
+            ctx.restore();
             
             remainingText = result.remainingText;
             sectionIndex++;
@@ -2025,7 +2092,7 @@
                 if (testWidth > maxWidth && currentLineParts.length > 0) {
                     if (!commitLine([ { text: word, style: style } ])) {
                         remainingParts = [word, ...words.slice(j + 1), ...parts.slice(i + 1)];
-                        break; // break inner loop
+                        break;
                     }
                 } else {
                     let lastPart = currentLineParts[currentLineParts.length - 1];
@@ -2036,7 +2103,7 @@
                     }
                 }
             }
-            if (remainingParts.length > 0) break; // break outer loop
+            if (remainingParts.length > 0) break;
         }
         
         if (remainingParts.length === 0 && currentLineParts.length > 0) {
@@ -2090,7 +2157,8 @@
         const usesData = {
             usesType: usesTypeInput.value,
             maxUses: parseInt(maxUsesInput.value) || 0,
-            currentUses: parseInt(currentUsesInput.value) || 0
+            currentUses: parseInt(currentUsesInput.value) || 0,
+            showOnlyMax: document.getElementById('showOnlyMaxUses').checked
         };
         
         if (usesData.currentUses > usesData.maxUses) {
@@ -2107,7 +2175,6 @@
             uses: usesData
         };
         
-        // --- SIMULACE pro výpočet potřebné šířky (počet sekcí) ---
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
         tempCanvas.width = BASE_CARD_W;
@@ -2119,7 +2186,6 @@
         const lineHeightAttr = 30;
         const descriptionFontSize = 20;
         
-        // Simulace výšky názvu
         const titleText = title + (translation ? ` (${translation})` : '');
         let titleFontSize = 48;
         tempCtx.font = `bold ${titleFontSize}px sans-serif`;
@@ -2354,9 +2420,11 @@
              }))
              .filter(attr => attr.key && attr.value);
             
-         return {
+         const gameSystemSelect = document.getElementById('gameSystem');
+         const formState = {
              title: document.getElementById('cardTitle').value,
              translation: document.getElementById('cardTranslation').value,
+             gameSystem: gameSystemSelect.value,
              cardType: cardTypeInput.value,
              description: document.getElementById('cardDescription').value,
              descriptionCz: document.getElementById('cardDescriptionCz').value,
@@ -2364,11 +2432,17 @@
              maxUses: parseInt(maxUsesInput.value) || 0,
              currentUses: parseInt(currentUsesInput.value) || 0,
              usesType: usesTypeInput.value,
+             showOnlyMaxUses: document.getElementById('showOnlyMaxUses').checked,
              attributes: attributes
             };
+        
+        if (gameSystemSelect.value === 'other') {
+            formState.otherGameSystem = document.getElementById('otherGameSystem').value;
+        }
+        return formState;
     }
 
-    // --- NOVÝ SYSTÉM: UKLÁDÁNÍ, VERZOVÁNÍ A SDÍLENÍ ---
+    // --- SYSTÉM: UKLÁDÁNÍ, VERZOVÁNÍ A SDÍLENÍ ---
 
     function getItemSaveKey(data) {
         if (!data || !data.title) {
@@ -2460,7 +2534,7 @@
 
             itemDiv.onclick = () => {
                 currentlySelectedSavedItem = name;
-                renderSavedItemsList(); // Rerender to show selection
+                renderSavedItemsList();
                 renderItemVersions(name);
             };
             listContainer.appendChild(itemDiv);
@@ -2670,7 +2744,6 @@
                 const data = JSON.parse(jsonString);
                 updateFormFields(data);
                 logMessage("Data úspěšně načtena z URL.", 'success');
-                // Vyčistit hash z URL, aby se při obnovení nenačítalo znovu
                 history.replaceState(null, null, ' ');
             }
         } catch(e) {
@@ -2694,12 +2767,10 @@
     }
 
     window.onload = function() {
-        // --- Dark Mode Inicializace (Systémové preference) ---
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
              document.body.classList.add('dark');
         }
         
-        // --- API klíč a UI ---
         if (CANVAS_API_KEY_EXISTS) {
              document.getElementById('apiKeyHint').style.display = 'inline';
              geminiApiKeyInput.disabled = true;
@@ -2715,7 +2786,6 @@
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
         setPrintLanguage(storedLang);
         
-        // Načíst z URL, pokud existují data
         loadFromURL();
         
         document.addEventListener('paste', handlePaste);
@@ -2733,7 +2803,6 @@
     maxUsesInput.addEventListener('input', updatePreview);
     currentUsesInput.addEventListener('input', updatePreview);
     
-    // Uložení lokálního klíče
     geminiApiKeyInput.addEventListener('input', function() {
         if (!CANVAS_API_KEY_EXISTS) {
             localStorage.setItem('geminiApiKey', geminiApiKeyInput.value.trim());
