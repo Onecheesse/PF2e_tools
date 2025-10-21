@@ -1618,7 +1618,7 @@
         let linesDrawn = 0;
         const filteredText = isIdentifiedState ? rawText : rawText.replace(/\{\{\{.*?\}\}\}/gs, ''); 
         const processedText = filteredText.replace(/\r/g, '').replace(/\n\n/g, ' [PB] ').replace(/\n/g, ' [LB] ');
-        let parts = processedText.split(/(\*\*.*?\*\*|\*.*?\*|\[PB\]|\[LB\]|\s+)/g).filter(p => p.length > 0 && p.trim() !== '');
+        let parts = processedText.split(/(\*\*.*?\*\*|\*.*?\*|\[PB\]|\[LB\]|\s+)/g).filter(p => p.length > 0);
         const getStyle = (isBold, isItalic) => `${isBold ? 'bold ' : ''}${isItalic ? 'italic ' : ''}${fontBase}px sans-serif`;
         let currentLineParts = [];
         let remainingParts = [];
