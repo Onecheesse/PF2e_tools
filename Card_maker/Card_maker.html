@@ -9,47 +9,14 @@
     <!-- Libraries for PDF generation and Canvas capture -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- NOVÉ: Knihovna pro Drag & Drop řazení atributů -->
+    <!-- Knihovna pro Drag & Drop řazení atributů -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <!-- Knihovna pro ořezávání a rotaci obrázků -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
     <style>
-        /* Pro tisk se bude používat Canvas s vysokým rozlišením */
-        #printCanvas {
-            border: 1px dashed #a0a0a0;
-            /* Nastavené rozměry pro náhled, budou přepsány JS */
-            width: 250px; 
-            height: 350px;
-            cursor: pointer; /* Zvětšení náhledu */
-        }
-
-        /* Skryje se defaultně, pro tisk se vytvoří v JS */
-        #hiddenCanvas {
-            display: none;
-        }
-
-        /* Načítací indikátor */
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border-radius: 0.75rem;
-            z-index: 10;
-        }
-        
-        /* DARK MODE styly pro přetahovatelné prvky */
-        .attribute-row {
-            align-items: center;
-            cursor: grab; /* Naznačení, že je to přetahovatelné */
-            padding: 4px 0;
-        }
-
-        .dark .attribute-row input, 
+        /* Ponecháno pro tmavý režim podle systémových preferencí */
+        .dark .attribute-row input,
         .dark #cardDescription,
         .dark #cardDescriptionCz,
         .dark #jsonInput,
@@ -58,14 +25,21 @@
             border-color: #4b5563; /* gray-600 */
             color: #f3f4f6; /* gray-100 */
         }
-        
         .dark #itemImagePreview {
             background-color: #374151;
             color: #d1d5db;
         }
 
-        /* Styl pro modální okno */
-        .modal {
+        #printCanvas {
+            border: 1px dashed #a0a0a0;
+            width: 250px;
+            height: 350px;
+            cursor: zoom-in;
+        }
+
+        #hiddenCanvas { display: none; }
+
+        .loading-overlay, .modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -77,15 +51,53 @@
             align-items: center;
             z-index: 1000;
         }
+        .loading-overlay { background: rgba(255, 255, 255, 0.8); }
+
         .modal-content {
             max-width: 90%;
             max-height: 90%;
             overflow: auto;
             background: #fff;
-            padding: 10px;
+            padding: 20px;
             border-radius: 0.75rem;
             position: relative;
         }
+        .dark .modal-content { background: #1f2937; }
+        
+        .attribute-row {
+            align-items: center;
+            cursor: grab;
+            padding: 4px 0;
+        }
+
+        /* Styl pro Cropper (překrývá defaultní) */
+        .cropper-view-box, .cropper-face {
+            border-radius: 0.75rem;
+        }
+        
+        /* Styl pro Aplikační konzoli */
+        #appConsole {
+            max-height: 200px;
+            overflow-y: scroll;
+            font-family: monospace;
+            font-size: 0.8rem;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            margin-top: 16px;
+            color: #374151;
+        }
+        .dark #appConsole {
+            border-color: #374151;
+            background-color: #1f2937;
+            color: #d1d5db;
+        }
+        .log-error { color: #ef4444; font-weight: bold; }
+        .log-success { color: #10b981; }
+        .log-warn { color: #f59e0b; }
+        .log-info { color: #6b7280; }
+
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans dark:bg-gray-900">
@@ -94,26 +106,20 @@
     
     <div class="flex justify-between items-center mb-6">
         <div class="flex space-x-3">
-             <!-- NOVÉ: Tlačítko pro reset (volá showResetModal) -->
-             <button onclick="showResetModal()" class="p-2 rounded-full bg-red-200 text-red-700 dark:bg-red-700 dark:text-red-100 hover:bg-red-300 dark:hover:bg-red-600 transition" title="Vyčistit všechna pole">
-                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
-             </button>
-            <!-- NOVÉ: Tlačítko pro info -->
+            <!-- Tlačítko pro reset -->
+            <button onclick="showResetModal()" class="p-2 rounded-full bg-red-200 text-red-700 dark:bg-red-700 dark:text-red-100 hover:bg-red-300 dark:hover:bg-red-600 transition" title="Vyčistit všechna pole">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
+            </button>
+            <!-- Tlačítko pro info -->
             <button onclick="showInfoModal()" class="p-2 rounded-full bg-blue-200 text-blue-700 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-300 dark:hover:bg-blue-600 transition" title="Informace a návod">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </button>
-
-            <!-- NOVÉ: Přepínač Dark Mode (Levý roh) -->
-            <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition" title="Přepnout režim">
-                <!-- Ikona pro světlý režim (Měsíc) -->
-                <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 12.003 12.003 0 0012 21a12.003 12.003 0 008.354-5.646z"></path></svg>
-                <!-- Ikona pro tmavý režim (Slunce) -->
-                <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            </button>
         </div>
 
-        <!-- Verze aplikace V_0.19 (Zvýšeno z V_0.18) -->
-        <p class="text-xs text-gray-400 text-right">V_0.19</p>
+        <!-- VERZE V_1.s.0 (Aktualizováno) -->
+        <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
+            V_1.s.0
+        </button>
     </div>
 
     <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">
@@ -127,17 +133,17 @@
         <!-- Panel pro zadávání informací (Levá strana) -->
         <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg h-full relative">
             
-            <!-- Překrytí pro načítání (pro AI analýzu nebo překlad) -->
+            <!-- Překrytí pro načítání -->
             <div id="loadingOverlay" class="loading-overlay hidden">
                 <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                <p class="mt-4 text-lg font-semibold text-indigo-700" id="loadingMessage">Analyzuji obrázky...</p>
-                <p class="text-sm text-gray-500">Může to trvat několik sekund.</p>
+                <p class="mt-4 text-lg font-semibold text-indigo-700 dark:text-indigo-400" id="loadingMessage">Analyzuji obrázky...</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Může to trvat několik sekund.</p>
             </div>
 
-            <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">1. Zadání informací o kartě</h2>
+            <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">1. Základní informace</h2>
 
             <!-- Název a Překlad -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -151,9 +157,9 @@
                 </div>
             </div>
 
-            <!-- NOVÉ: Typ předmětu a Templaty -->
+            <!-- Typ předmětu a Templaty -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
-                <label for="cardType" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Typ předmětu (Zobrazí se v rohu karty)</label>
+                <label for="cardType" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Typ předmětu (Mění rámeček)</label>
                 <div class="flex space-x-3 mb-3">
                     <select id="cardType" class="flex-grow border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" onchange="updatePreview()">
                         <option value="ITEM">Předmět (Item)</option>
@@ -161,6 +167,7 @@
                         <option value="SPELL">Kouzlo (Spell)</option>
                         <option value="CONSUMABLE">Spotřební předmět (Consumable)</option>
                         <option value="EQUIPMENT">Vybavení (Equipment)</option>
+                        <option value="MONSTER">Monstrum / NPC (Monster)</option>
                         <option value="OTHER">Ostatní (Other)</option>
                     </select>
                     <button onclick="applyTemplate()" class="bg-indigo-200 text-indigo-800 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-indigo-300 transition duration-150 dark:bg-indigo-700 dark:text-indigo-100 dark:hover:bg-indigo-600">
@@ -169,7 +176,7 @@
                 </div>
             </div>
             
-            <!-- Obrázek pro Analýzu (Screenshot) -->
+            <!-- Nová Sekce 2: Analýza Screenshotů -->
             <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2. Analýza Screenshotů</h3>
             <div id="dropZone" class="mb-4 p-4 border-2 border-dashed border-indigo-300 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-center cursor-pointer hover:border-indigo-500 transition duration-150"
                 ondragover="event.preventDefault()"
@@ -186,58 +193,65 @@
                     </button>
                 </div>
 
-                <!-- NOVÉ: Náhled pro vizuální potvrzení nahrání/vložení -->
                 <div id="analysisImagePreviewsContainer" class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-3">
                     <!-- Zde se dynamicky vkládají náhledy -->
                 </div>
                 <div class="mt-3 flex space-x-2 justify-center" id="analysisControls" style="display: none;">
-                    <!-- Změněno: Odebráno tlačítko pro Odebrat poslední -->
                     <button onclick="clearAllScreenshots()" class="bg-gray-500 text-white text-sm px-3 py-1 rounded-lg hover:bg-gray-600">Resetovat vše</button>
                 </div>
             </div>
 
-            <!-- NOVÉ: Sekce pro JSON vstup -->
+            <!-- Sekce pro JSON vstup -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
-                   <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2b. Načíst data z JSON (Alternativa k obrázkům)</h3>
-                   <div class="flex space-x-2">
-                        <textarea id="jsonInput" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Vložte JSON data (z externího API nebo souboru) ve stejném formátu, jaký generuje Gemini API."></textarea>
-                   </div>
-                   <div class="flex space-x-2 mt-2">
-                        <button onclick="loadJsonFile()" class="w-1/2 bg-yellow-500 text-white font-bold p-2 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
-                            Načíst JSON soubor
-                        </button>
-                        <input type="file" id="jsonFileUpload" accept=".json" class="hidden">
-                        <button onclick="loadJsonData()" class="w-1/2 bg-yellow-600 text-white font-bold p-2 rounded-lg hover:bg-yellow-700 transition duration-150 shadow-md">
-                            Načíst JSON z pole
-                        </button>
-                   </div>
-                   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                       *Poznámka: Přímé stahování z libovolné URL není kvůli bezpečnostním omezením Canvasu možné. Vložte data v textové podobě nebo nahrajte JSON soubor.
-                   </p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">2b. Načíst data z JSON (Alternativa)</h3>
+                    <div class="flex space-x-2">
+                            <textarea id="jsonInput" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-yellow-500 focus:border-yellow-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Vložte JSON data."></textarea>
+                    </div>
+                    <div class="flex space-x-2 mt-2">
+                            <button onclick="loadJsonFile()" class="w-1/2 bg-yellow-500 text-white font-bold p-2 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
+                                Načíst JSON soubor
+                            </button>
+                            <input type="file" id="jsonFileUpload" accept=".json" class="hidden">
+                            <button onclick="loadJsonData()" class="w-1/2 bg-yellow-600 text-white font-bold p-2 rounded-lg hover:bg-yellow-700 transition duration-150 shadow-md">
+                                Načíst JSON z pole
+                            </button>
+                    </div>
             </div>
 
-            <!-- Vlastní obrázek pro zobrazení na kartě -->
+            <!-- Nová Sekce 3: Vlastní obrázek pro zobrazení na kartě + NOVÉ NÁSTROJE -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
                 <label for="itemImageUpload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">3. Obrázek itemu (Zobrazí se na kartě)</label>
                 
-                <div class="flex space-x-2 items-center">
+                <div class="flex space-x-2 items-center mb-3">
                     <input type="file" id="itemImageUpload" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 dark:file:bg-green-700 dark:file:text-white dark:hover:file:bg-green-600">
                     <button onclick="removeItemImage()" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-full transition duration-150" title="Odebrat obrázek itemu">
-                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-9H7"></path></svg>
                     </button>
                 </div>
-                
-                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Nahrajte oříznutý obrázek, který se zobrazí na kartě. (Ideální poměr 1:1)</p>
-                <div id="itemImagePreview" class="mt-3 w-32 h-32 bg-gray-100 dark:bg-gray-700 rounded-lg border border-dashed border-gray-400 dark:border-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-400 overflow-hidden text-sm mx-auto">
-                    Náhled itemu
+
+                <div class="flex space-x-4">
+                    <!-- Obrázkový náhled -->
+                    <div id="itemImagePreview" class="w-32 h-32 bg-gray-100 dark:bg-gray-700 rounded-lg border border-dashed border-gray-400 dark:border-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-400 overflow-hidden text-sm flex-shrink-0">
+                        Náhled itemu
+                    </div>
+                    <!-- NOVÉ NÁSTROJE pro obrázek -->
+                    <div class="flex flex-col space-y-2 flex-grow">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Volitelné nástroje:</p>
+                        <button onclick="showImageEditorModal()" class="w-full bg-orange-500 text-white font-bold p-2 rounded-lg hover:bg-orange-600 transition duration-150 shadow-md disabled:opacity-50" id="cropButton" disabled>
+                            Ořez a Rotace Obrázku
+                        </button>
+                        <button onclick="showAiPromptModal()" class="w-full bg-purple-500 text-white font-bold p-2 rounded-lg hover:bg-purple-600 transition duration-150 shadow-md">
+                            AI Prompt Helper (Generace)
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- NOVÉ: Sekce pro Měřáky/Charges -->
+            <!-- Nová Sekce 4: Měřáky/Charges -->
             <div class="mb-6 border-b pb-4 dark:border-gray-700">
                 <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">4. Měřáky (Charges/Použití)</h3>
                 <label for="usesType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Typ měřáku</label>
-                <select id="usesType" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white mb-3" onchange="updatePreview()">
+                <select id="usesType" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" onchange="updatePreview()">
                     <option value="">Žádný měřák</option>
                     <option value="DOTS">Tečky (Charges)</option>
                     <option value="HEARTS">Srdce (Životy)</option>
@@ -256,40 +270,46 @@
                     </div>
                 </div>
             </div>
-            <!-- Konec Měřáků -->
 
-
-            <!-- Klíčové Atributy (Flexibilní a seřazené) -->
+            <!-- Nová Sekce 5: Klíčové Atributy (Flexibilní a seřazené) -->
             <h3 class="text-xl font-semibold mb-1 text-gray-700 dark:text-gray-200">5. Klíčové Atributy</h3>
-            <!-- NOVÁ POZNÁMKA K DRAG & DROP -->
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Atributy můžete přetahovat (Drag & Drop) pro manuální změnu pořadí.</p>
+            <div class="flex justify-between items-center mb-3">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Atributy můžete přetahovat (Drag & Drop) pro manuální změnu pořadí.</p>
+                    <button onclick="handleIdentificationChange()" class="px-3 py-1 text-xs rounded-full bg-green-500 text-white hover:bg-green-600">Zobrazit/Skrýt Neznámé</button>
+            </div>
             
             <div id="attributesContainer" class="space-y-3 mb-6 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
                 <!-- Zde se dynamicky vkládají atributy -->
+                <!-- Původní atribut odstraněn pro prázdný start -->
             </div>
-            <!-- NOVÉ: Volá manageAttributes pro přidání -->
             <button onclick="manageAttributes('add')" class="w-full bg-indigo-500 text-white p-2 rounded-lg hover:bg-indigo-600 transition duration-150 shadow-md">
                 + Přidat Atribut
             </button>
 
-            <!-- Popis (ENG - primární) -->
-            <div class="mt-6 mb-4">
-                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">6. Popis Itemu/Kouzla (Originální jazyk)</label>
-                <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white"></textarea>
+            <!-- Nová Sekce 6: Popisy a Přesunutá Identifikace -->
+            <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-700 dark:text-gray-200">6. Popisy a Identifikace</h3>
+            
+            <!-- PŘESUNUTÁ Identifikace z původní sekce 2 -->
+            <div class="mb-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
+                <div class="flex items-center space-x-3 mb-2">
+                    <input type="checkbox" id="isIdentified" class="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500" onchange="updatePreview()">
+                    <label for="isIdentified" class="text-gray-700 dark:text-gray-300 font-medium">Předmět je **Identifikovaný** (Režim GM)</label>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Pokud není zaškrtnuto (Režim Hráče), neidentifikované atributy se SKRYJÍ a text v **`{{{...}}}`** se vynechá.</p>
             </div>
             
-             <!-- NOVÉ: Popis (CZ - přeložený) -->
-            <div class="mb-6">
-                <div class="flex justify-between items-center mb-1">
-                    <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">6b. Popis Itemu/Kouzla (Přeložený do CZ)</label>
-                     <!-- Tlačítko pro manuální překlad -->
-                    <button onclick="translateDescription()" class="bg-blue-500 text-white text-xs px-3 py-1 rounded-full hover:bg-blue-600 transition duration-150 disabled:opacity-50" id="translateButton">
-                        <span id="translateText">Přeložit pomocí AI</span>
-                    </button>
-                </div>
-                <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis. Můžete jej upravit."></textarea>
+            <!-- Popis 1: Originální jazyk -->
+            <div class="mt-6 mb-4">
+                <label for="cardDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Originální Popis</label>
+                <textarea id="cardDescription" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" oninput="saveState()" placeholder="Popis nebo efekty itemu/kouzla. Text v {{{...}}} se skryje v Režimu Hráče."></textarea>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Text uzavřený v **`{{{trojitých závorkách}}}`** bude skryt v Režimu Hráče.</p>
             </div>
-
+            
+            <!-- Popis 2: Přeložený jazyk (Tlačítko pro překlad odstraněno) -->
+            <div class="mb-6">
+                <label for="cardDescriptionCz" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Přeložený Popis (CZ)</label>
+                <textarea id="cardDescriptionCz" rows="10" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Sem se automaticky vygeneruje přeložený popis (Pouze při analýze screenshotů)." oninput="saveState()"></textarea>
+            </div>
 
             <button onclick="updatePreview()" class="w-full bg-green-500 text-white font-bold p-3 rounded-lg hover:bg-green-600 transition duration-150 shadow-md transform hover:scale-[1.01]">
                 Aktualizovat Náhled Karty
@@ -301,25 +321,25 @@
             <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700 w-full text-center">Náhled Karty</h2>
             
             <div class="flex space-x-2 mb-4">
-                 <button id="langEng" onclick="setPrintLanguage('ENG')" class="px-3 py-1 rounded-lg font-bold bg-indigo-500 text-white hover:bg-indigo-600 transition duration-150">
+                 <button id="langEng" onclick="setPrintLanguage('ENG')" class="px-3 py-1 rounded-lg font-bold transition duration-150">
                     ENG
                  </button>
-                 <button id="langCz" onclick="setPrintLanguage('CZ')" class="px-3 py-1 rounded-lg font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition duration-150">
+                 <button id="langCz" onclick="setPrintLanguage('CZ')" class="px-3 py-1 rounded-lg font-bold transition duration-150">
                     CZ
                  </button>
             </div>
 
             <div class="mb-6 overflow-x-auto w-full">
                 <!-- HTML Canvas pro náhled a generování PDF -->
-                <!-- DŮLEŽITÉ: Canvas zůstává bílý, tmavý režim neovlivňuje výstup tisku/náhledu -->
                 <canvas id="printCanvas" width="744" height="1038" class="shadow-xl rounded-lg mx-auto" onclick="showZoomModal()"></canvas>
             </div>
 
             <div class="flex space-x-4 w-full">
-                <button onclick="exportJSON()" class="w-1/2 bg-gray-600 text-white font-bold p-3 rounded-lg hover:bg-gray-700 transition duration-150 shadow-lg mt-4">
+                <!-- Kopírovat JSON tlačítko -->
+                <button onclick="copyJSONToClipboard()" class="w-1/2 bg-gray-600 text-white font-bold p-3 rounded-lg hover:bg-gray-700 transition duration-150 shadow-lg mt-4">
                     <div class="flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l-4-4m4 4H4"></path></svg>
-                        Stáhnout JSON
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Kopírovat JSON
                     </div>
                 </button>
                 <button onclick="exportPDF()" class="w-1/2 bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg mt-4">
@@ -329,11 +349,11 @@
                     </div>
                 </button>
             </div>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">PDF soubor bude obsahovat přesné rozměry pro tisk a složení (případné rozšíření).</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">Stáhněte JSON pro uložení dat. Stáhněte PDF pro tisk.</p>
         </div>
     </div>
 
-    <!-- NOVÁ SEKCE PRO API KLÍČ -->
+    <!-- Nová Sekce 7: Nastavení Gemini API -->
     <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
         <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">7. Nastavení Gemini API</h2>
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
@@ -348,6 +368,14 @@
                 Klíč získáte zdarma zde: 
                 <a href="https://aistudio.google.com/api-keys" target="_blank" class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 font-semibold underline">Google AI Studio</a>
             </p>
+        </div>
+    </div>
+    
+    <!-- Aplikační konzole (NOVÁ SEKVENCE) -->
+    <div id="appConsoleContainer" class="mt-8">
+        <h2 class="text-lg font-bold mb-2 text-gray-700 dark:text-gray-200">Aplikační konzole:</h2>
+        <div id="appConsole" class="bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 max-h-40 overflow-y-scroll text-sm">
+            <!-- Log messages will appear here -->
         </div>
     </div>
 </div>
@@ -365,7 +393,7 @@
     </div>
 </div>
 
-<!-- NOVÉ: Modální okno pro reset (Konfirmace) -->
+<!-- Modální okno pro reset (Konfirmace) -->
 <div id="resetModal" class="modal hidden">
     <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-md text-center">
         <h2 class="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Opravdu resetovat?</h2>
@@ -383,53 +411,138 @@
 </div>
 
 
-<!-- NOVÉ: Modální okno pro informace a návod -->
+<!-- Modální okno pro informace a návod (NOVÝ OBSAH) -->
 <div id="infoModal" class="modal hidden">
     <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full lg:w-2/3">
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Informace a návod k nástroji V_0.19</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.0</h2>
         
-        <div class="space-y-4 text-gray-700 dark:text-gray-300">
-            <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400">Co nástroj umí?</h3>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-                <li class="font-bold">
-                    Analýza Screenshotů (Gemini AI)
-                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Nástroj dokáže analyzovat jeden nebo více herních screenshotů, extrahovat z nich text a strukturovat ho do atributů a popisů. Automaticky detekuje typ předmětu (kouzlo, zbraň, atd.) a generuje český překlad popisu.</p>
+        <div class="space-y-6 text-gray-700 dark:text-gray-300">
+            <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
+            
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">1. Datový Vstup</h3>
+            <ul class="list-disc list-inside ml-4 space-y-2">
+                <li>**Ruční zadání:** Vyplňte pole pro Název, Překlad, Typ a Popisy.</li>
+                <li>**Analýza Screenshotů (Doporučeno):**
+                    <ul class="list-circle list-inside ml-4">
+                        <li>Vložte jeden nebo více **screenshotů** herního textu (Ctrl+V) nebo je nahrajte přes tlačítko.</li>
+                        <li>Klikněte na **"Analyzovat Všechny Screenshoty"**. Umělá inteligence extrahuje Název, Popis (včetně českého překladu), Atributy a Měřáky.</li>
+                    </ul>
                 </li>
-                <li class="font-bold">
-                    Dynamické rozměry a Rámečky
-                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Karta se dynamicky roztáhne na potřebnou délku (přidáním dalších sekcí pro popis), pokud je text delší. Styl rámečku karty se mění podle zvoleného typu předmětu.</p>
-                </li>
-                <li class="font-bold">
-                    Export pro tisk
-                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Generuje PDF s přesnými rozměry 63mm x 88mm (včetně ořezových značek) pro snadný tisk a obsahuje možnost výběru ENG/CZ popisu.</p>
-                </li>
-                <li class="font-bold">
-                    Správa Atributů
-                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Umožňuje přidávat, odebírat a přetahovat (Drag & Drop) atributy pro manuální uspořádání.</p>
-                </li>
-                <li class="font-bold">
-                    Dynamické Měřáky (Charges/Uses)
-                    <p class="font-normal text-sm text-gray-500 dark:text-gray-400 mt-1">Pod obrázkem itemu se dynamicky vykreslí měřák (tečky, srdce, bar) pro zobrazení počtu použití nebo stavu, pokud jsou data zadána.</p>
-                </li>
+                <li>**JSON Vstup:** Data můžete načíst také z JSON souboru nebo přímo vložením textu.</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 pt-4 border-t dark:border-gray-700">Jak s nástrojem pracovat:</h3>
-            <ol class="list-decimal list-inside space-y-3 ml-4">
-                <li>**Vložení zdroje:** Použijte pole "Analýza Screenshotů" k nahrání obrázku nebo vložení obrázku ze schránky (Ctrl+V).</li>
-                <li>**Analýza:** Klikněte na tlačítko "Analyzovat Všechny Screenshoty". Nástroj se pokusí automaticky vyplnit všechna pole, včetně přeloženého popisu (CZ). *Alternativně použijte tlačítko 'Přeložit pomocí AI' pro manuální překlad popisu.*</li>
-                <li>**Obrázek itemu:** Nahrajte oříznutý obrázek do sekce "Obrázek itemu", který se zobrazí na kartě.</li>
-                <li>**Nastavení & Kontrola:** Zkontrolujte vyplněné informace, nastavte měřáky a pomocí Drag & Drop seřaďte atributy. Ujistěte se, že je správně zvolen "Typ předmětu" a jazyk pro tisk.</li>
-                <li>**Export:** Pro finální tisk použijte "Stáhnout PDF". Pro uložení dat pro pozdější editaci použijte "Stáhnout JSON".</li>
-            </ol>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">2. Klíčové Funkce</h3>
+            <ul class="list-disc list-inside ml-4 space-y-2">
+                <li>**Identifikace (Režim GM/Hráč):** Zaškrtněte políčko "Předmět je **Identifikovaný**". Pokud je nezaškrtnuté (Režim Hráče), filtruje se skrytý text a atributy.
+                    <ul class="list-circle list-inside ml-4">
+                        <li>**Skrytý text:** Použijte trojité závorky `{{{...}}}` v popisu pro text, který se má v Režimu Hráče skrýt.</li>
+                    </ul>
+                </li>
+                <li>**Atributy:** Atributy můžete přetáhnout myší (Drag & Drop) pro změnu pořadí. Atributy, které se nevejdou vedle obrázku, se automaticky přesunou pod něj.</li>
+                <li>**Obrázek itemu:** Nahrajte obrázek a použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení čtvercového výřezu.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">3. Výstup</h3>
+            <ul class="list-disc list-inside ml-4 space-y-2">
+                <li>**Náhled Karty:** Náhled ukazuje kartu ve vysokém rozlišení pro tisk (744 x 1038 px při 300 DPI, což je 63x88 mm). Kliknutím na náhled zobrazíte detailní zoom.</li>
+                <li>**Jazyk Tísku:** Přepínání mezi ENG a CZ přepne primární jazyk popisu na kartě.</li>
+                <li>**Stáhnout PDF:** Vygeneruje PDF soubor s kartou, připravený k ořezu a tisku.</li>
+                <li>**Aplikační konzole:** Sledujte průběh analýzy a případné chyby ve spodní části stránky.</li>
+            </ul>
         </div>
     </div>
 </div>
 
+<!-- NOVÉ: Modální okno pro Changelog -->
+<div id="changelogModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-2xl">
+        <button onclick="closeChangelogModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
+            &times;
+        </button>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Historie Změn (Changelog)</h2>
+        
+        <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
+            <div class="border-l-4 border-indigo-500 pl-4">
+                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.0 (Current) - NOVINKY</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Oprava API Chyb:** Přepracována logika pro opakování API požadavků (`fetchWithRetry`). Nyní se pokus opakuje pouze u relevantních chyb (např. 429 - Too Many Requests) a poskytuje detailnější chybové hlášky v konzoli pro lepší diagnostiku.</li>
+                    <li>**Oprava Vykreslování:** Opravena kritická chyba ve smyčce, která mohla způsobit zamrznutí nebo chybné vykreslení karet s velmi dlouhým popisem.</li>
+                    <li>**Oprava Zalamování Názvu:** Dlouhé názvy karet se nyní správně zalamují a vykreslují na více řádků v hlavičce karty.</li>
+                </ul>
+            </div>
+            <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.1.01</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**API Model Upgrade:** Přepnuto na **Gemini 1.5 Flash** pro rychlejší a přesnější analýzu.</li>
+                    <li>**API Klíč (Canvas Fix):** Odstraněna nutnost manuálně zadat API klíč v Canvas prostředí.</li>
+                    <li>**Aplikační konzole:** Přidána vizuální konzole pro transparentní zobrazení logů.</li>
+                </ul>
+            </div>
+            <!-- Zbytek starého changelogu by pokračoval zde... -->
+        </div>
+    </div>
+</div>
+
+<!-- NOVÉ: Modální okno pro Ořez a Rotaci Obrázku -->
+<div id="imageEditorModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-4xl">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">Ořez a Rotace Obrázku</h2>
+        <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+            <!-- Cropper Canvas -->
+            <div class="lg:w-3/4 max-h-[60vh] flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+                <img id="imageToCrop" style="max-width: 100%; display: block;" src="" alt="Obrázek pro ořez">
+            </div>
+            <!-- Ovládání -->
+            <div class="lg:w-1/4 space-y-4 flex flex-col">
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Úpravy</h3>
+                <button onclick="cropper.rotate(90)" class="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition">
+                    Rotace +90°
+                </button>
+                <div class="flex space-x-2">
+                    <button onclick="cropper.zoom(0.1)" class="w-1/2 bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 transition">Zoom +</button>
+                    <button onclick="cropper.zoom(-0.1)" class="w-1/2 bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 transition">Zoom -</button>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Použijte myš pro nastavení ořezu. Výstup bude oříznut do čtverce (1:1).</p>
+                <button onclick="applyCropAndClose()" class="w-full bg-green-600 text-white font-bold p-3 rounded-lg hover:bg-green-700 transition mt-auto">
+                    Použít a Zavřít
+                </button>
+                <button onclick="closeImageEditorModal()" class="w-full bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition">
+                    Zrušit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NOVÉ: Modální okno pro AI Prompt Helper -->
+<div id="aiPromptModal" class="modal hidden">
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-lg">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-purple-600 dark:text-purple-400">AI Prompt Helper</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">Zkopírujte prompt pro generování jednoduché černobílé ilustrace v nástrojích jako je <a href="https://aistudio.google.com/app/prompts/new" target="_blank" class="text-indigo-600 hover:underline">Google AI Studio</a>.</p>
+        
+        <label for="aiPromptTextarea" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Generovaný Prompt:</label>
+        <textarea id="aiPromptTextarea" rows="4" readonly class="block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm p-3 border bg-gray-100 dark:bg-gray-700 dark:text-white text-sm font-mono"></textarea>
+        
+        <div class="flex space-x-3 mt-4">
+            <button onclick="copyAiPrompt()" class="w-1/2 bg-purple-600 text-white font-bold p-3 rounded-lg hover:bg-purple-700 transition shadow-md">
+                Kopírovat Prompt
+            </button>
+            <a id="aiStudioLink" href="https://aistudio.google.com/app/prompts/new" target="_blank" class="w-1/2 bg-indigo-600 text-white font-bold p-3 rounded-lg hover:bg-indigo-700 transition shadow-md text-center flex items-center justify-center">
+                Otevřít AI Studio
+            </a>
+        </div>
+        <button onclick="closeAiPromptModal()" class="w-full bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition mt-4">
+            Zavřít
+        </button>
+    </div>
+</div>
+
 <script>
-    // --- KONSTANTY PRO KARTU ---
+    // --- KONSTANTY PRO KARTU (V_1.s.0) ---
+    const VERSION = 'V_1.s.0';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -439,19 +552,22 @@
 
     const PADDING = 30; // Vnitřní padding karty v pixelech
     const IMAGE_SIZE = 300; // Velikost čtvercového obrázku itemu v pixelech
-    const CHARGES_HEIGHT = 40; // NOVÉ: Výška pro měřáky
+    const CHARGES_HEIGHT = 40; // Výška pro měřáky
 
-    // Globální Canvas API klíč (pokud existuje) - Zajištění, že se používá lokální klíč, pokud je definován
-    const CANVAS_API_KEY = typeof __gemini_api_key !== 'undefined' ? __gemini_api_key : '';
+    // PŘÍSTUP KE KLÍČI: Zajištění správné inicializace klíče
+    const CANVAS_API_KEY_EXISTS = typeof __gemini_api_key !== 'undefined';
 
-    // API klíč se bude načítat dynamicky z inputu nebo globální proměnné
-    const GEMINI_API_BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=`;
-    
     let currentCardData = {};
     let itemImageObject = null;
-    let analysisImagesBase64 = []; // Pole pro ukládání Base64 dat z více obrázků
-    let printLanguage = 'ENG'; // NOVÉ: Výchozí jazyk pro tisk
+    let analysisImagesBase64 = []; 
+    let printLanguage = 'ENG'; 
+    let cropper = null; // Instance CropperJS
     
+    // --- HISTORIE STAVU - ODSTRANĚNO ---
+    const historyStack = [];
+    const historyPointer = -1;
+    function saveState() { /* NOP */ } // No Operation pro odstraněné Undo/Redo
+
     const canvas = document.getElementById('printCanvas');
     const ctx = canvas.getContext('2d');
     const hiddenCanvas = document.getElementById('hiddenCanvas');
@@ -459,8 +575,6 @@
     const analyzeButton = document.getElementById('analyzeButton');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const loadingMessage = document.getElementById('loadingMessage');
-    const translateButton = document.getElementById('translateButton');
-    const translateText = document.getElementById('translateText');
     const itemImagePreview = document.getElementById('itemImagePreview');
     const analysisImageUpload = document.getElementById('analysisImageUpload');
     const analysisImagePreviewsContainer = document.getElementById('analysisImagePreviewsContainer');
@@ -468,79 +582,86 @@
     const geminiApiKeyInput = document.getElementById('geminiApiKey');
     const cardTypeInput = document.getElementById('cardType');
     const attributesContainer = document.getElementById('attributesContainer');
-    const jsonInput = document.getElementById('jsonInput'); // NOVÉ: pro JSON vstup
-    const jsonFileUpload = document.getElementById('jsonFileUpload'); // NOVÉ: file input pro JSON
     const usesTypeInput = document.getElementById('usesType');
     const maxUsesInput = document.getElementById('maxUses');
     const currentUsesInput = document.getElementById('currentUses');
-    const body = document.body;
-    const moonIcon = document.getElementById('moonIcon');
-    const sunIcon = document.getElementById('sunIcon');
     const langEngButton = document.getElementById('langEng');
     const langCzButton = document.getElementById('langCz');
-    const infoModal = document.getElementById('infoModal'); // NOVÉ: Info Modal
-    const zoomModal = document.getElementById('zoomModal'); // Zoom Modal
-    const resetModal = document.getElementById('resetModal'); // NOVÉ: Reset Modal
-
-
-    // Pořadí pro automatické řazení atributů
-    const ATTRIBUTE_ORDER = [
-        "LEVEL", "ÚROVEŇ",
-        "PRICE", "CENA",
-        "TYPE", "TYP", "DICE", "KOSTKY", "POŠKOZENÍ", "DAMAGE",
-        "TAGS",
-        "RARITY", "VZÁCNOST"
-    ];
+    const infoModal = document.getElementById('infoModal'); 
+    const zoomModal = document.getElementById('zoomModal');
+    const resetModal = document.getElementById('resetModal');
+    const changelogModal = document.getElementById('changelogModal');
+    const imageEditorModal = document.getElementById('imageEditorModal');
+    const imageToCrop = document.getElementById('imageToCrop');
+    const cropButton = document.getElementById('cropButton');
+    const aiPromptModal = document.getElementById('aiPromptModal');
+    const aiPromptTextarea = document.getElementById('aiPromptTextarea');
+    const isIdentifiedCheckbox = document.getElementById('isIdentified');
+    const appConsole = document.getElementById('appConsole'); // NOVÁ KONZOLE
 
     // --- TEMPLATY A DATA PRO TYPY KARET ---
     
-    // NOVÉ: Mapování emoji na typy karet
     const TYPE_EMOJI = {
-        'ITEM': '📦',       // Item - krabice
-        'WEAPON': '⚔️',      // Weapon - zkřížené meče
-        'SPELL': '✨',      // Spell - jiskry
-        'CONSUMABLE': '🧪', // Consumable - lahvička/lektvar
-        'EQUIPMENT': '🛡️',  // Equipment - štít
-        'OTHER': '📜'       // Other - svitek
+        'ITEM': '📦',
+        'WEAPON': '⚔️',
+        'SPELL': '✨',
+        'CONSUMABLE': '🧪',
+        'EQUIPMENT': '🛡️',
+        'MONSTER': '💀', // NOVÉ
+        'OTHER': '📜'
     };
 
     const CARD_TEMPLATES = {
         'ITEM': {
             title: 'Hladový náramek', translation: 'Hungry Armlet',
-            description: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \\n\\n**Aktivace**: Požije se, když dostanete zranění. Sníží o 1 obdržené poškození. Po 3 použitích se rozpadne.',
-            descriptionCz: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \\n\\n**Aktivace**: Spotřebuje se, když obdržíte poškození. Sníží o 1 obdržené poškození. Po 3 použitích se rozpadne.',
+            description: 'This armlet of unknown metal pulsates with a faint heat. You feel its hunger. When worn, you occasionally hear faint whispers. \n\n**Activation**: Consumed when you take damage. Reduces damage taken by 1. {{{Shatters after 3 uses.}}}',
+            descriptionCz: 'Tento náramek z neznámého kovu pulzuje slabým teplem. Cítíte, jak je hladový. Když ho máte na ruce, občas uslyšíte tiché šeptání. \n\n**Aktivace**: Spotřebuje se, když obdržíte poškození. Sníží o 1 obdržené **damage**. {{{Po 3 použitích se rozpadne.}}}',
             attributes: [
-                { key: 'Cena', value: '10 gp' },
-                { key: 'Vzácnost', value: 'Common' }
+                { key: 'Cena', value: '10 gp', isUnidentified: false },
+                { key: 'Pravý Název', value: 'The Devourer', isUnidentified: true }, // Příklad pro neidentifikovaný atribut
+                { key: 'Vzácnost', value: 'Common', isUnidentified: false }
             ],
             uses: { usesType: 'DOTS', maxUses: 3, currentUses: 3 }
         },
         'WEAPON': {
-            title: 'Otrávený Dýka', translation: 'Poisoned Dagger',
-            description: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat na cíl jed. \\n\\n**Jed (DC 13)**: Při selhání utrpí cíl 1d4 jedovatého poškození na začátku svého tahu. Trvá 3 kola.',
-            descriptionCz: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat na cíl jed. \\n\\n**Jed (DC 13)**: Při selhání utrpí cíl 1k4 jedovatého poškození na začátku svého tahu. Trvá 3 kola.',
+            title: 'Otrávená Dýka', translation: 'Poisoned Dagger',
+            description: 'The blade is coated in a slow-acting poison. Each hit has a chance to apply poison to the target. \n\n**Poison (DC 13)**: On a failed save, the target suffers 1d4 poison damage at the start of its turn. Lasts 3 rounds.',
+            descriptionCz: 'Čepel je pokryta pomalu působícím jedem. Každé zasažení má šanci aplikovat jed na cíl. \n\n**Jed (DC 13)**: Při selhání utrpí cíl 1d4 poison damage na začátku svého tahu. Trvá 3 kola.',
             attributes: [
                 { key: 'Cena', value: '30 gp' },
+                { key: 'Akce', value: '1 Attack' },
                 { key: 'Poškození', value: '1d4 piercing + Poison' },
-                { key: 'Typ', value: 'Lehká zbraň, Finesse' }
+                { key: 'Typ', value: 'Light weapon, Finesse' }
             ],
             uses: { usesType: '', maxUses: 0, currentUses: 0 }
         },
         'SPELL': {
             title: 'Ohnivá Zeď', translation: 'Wall of Fire',
-            description: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \\n\\n**Efekt**: Kreatura, která začne svůj tah 10 stop od stěny, utrpí 2k6 ohnivého poškození. Kreatura, která projde stěnou, utrpí 5k6 ohnivého poškození.',
-            descriptionCz: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \\n\\n**Efekt**: Stvoření, které začne svůj tah 10 stop od stěny, utrpí 2k6 ohnivého poškození. Stvoření, které projde stěnou, utrpí 5k6 ohnivého poškození.',
+            description: 'Creates an impassable wall of flames that scorches anyone near it. \n\n**Effect**: A creature that starts its turn within 10 ft. of the wall takes 2d6 fire damage. A creature that passes through the wall takes 5d6 fire damage.',
+            descriptionCz: 'Vytvoří neprůchozí stěnu plamenů, která spaluje každého, kdo se k ní přiblíží. \n\n**Efekt**: Stvoření, které začne svůj tah 10 stop od stěny, utrpí 2d6 fire damage. Stvoření, které projde stěnou, utrpí 5d6 fire damage.',
             attributes: [
                 { key: 'Level', value: '4' },
-                { key: 'Akce', value: '2' },
+                { key: 'Casting Time', value: '1 Action' },
                 { key: 'Dosah', value: '120 ft' }
             ],
             uses: { usesType: 'DICE', maxUses: 1, currentUses: 1 }
         },
+        'MONSTER': { // NOVÝ TEMPLATE
+            title: 'Goblin Archer', translation: 'Goblin Lučištník',
+            description: 'Small, nimble, and highly irritating, the Goblin Archer prefers to attack from range, often hiding behind larger allies or cover. \n\n**Sniper**: Gains +2 bonus on attack rolls when targeting a creature that has not yet acted this combat round. Always carries 1d6 arrows.',
+            descriptionCz: 'Malý, hbitý a velmi otravný Goblin Archer preferuje útočit z dálky, často se skrývá za většími spojenci. \n\n**Sniper**: Získá bonus +2 na hod **attack rolls**, pokud se zaměří na stvoření, které v tomto kole ještě nejednalo. Vždy nese 1k6 šípů.',
+            attributes: [
+                { key: 'Challenge', value: '1/4 (50 XP)' },
+                { key: 'HP', value: '7 (2d6)' },
+                { key: 'AC', value: '15 (Leather, Shield)' },
+                { key: 'Speed', value: '30 ft' }
+            ],
+            uses: { usesType: 'HEARTS', maxUses: 7, currentUses: 7 }
+        },
         'CONSUMABLE': {
             title: 'Léčivý lektvar', translation: 'Healing Potion',
-            description: 'Klasický lektvar, který rychle léčí rány. \\n\\n**Použití**: Vypití zabere 1 akci. Obnoví 2d4 + 2 životy.',
-            descriptionCz: 'Klasický lektvar, který rychle léčí zranění. \\n\\n**Použití**: Vypití zabere 1 akci. Obnoví 2k4 + 2 životy.',
+            description: 'A classic potion that quickly mends wounds. \n\n**Usage**: Takes 1 action to drink. Restores 2d4 + 2 HP.',
+            descriptionCz: 'Klasický lektvar, který rychle léčí zranění. \n\n**Použití**: Vypití zabere 1 akci. Obnoví 2k4 + 2 HP.',
             attributes: [
                 { key: 'Cena', value: '50 gp' },
                 { key: 'Dávky', value: '1' }
@@ -549,7 +670,7 @@
         },
         'EQUIPMENT': {
             title: 'Kroužková zbroj', translation: 'Chainmail',
-            description: 'Standardní kroužková zbroj poskytuje solidní ochranu. Je hlučná, ale spolehlivá.',
+            description: 'Standard chainmail provides solid protection. It is noisy but reliable.',
             descriptionCz: 'Standardní kroužková zbroj poskytuje spolehlivou ochranu. Je hlučná, ale efektivní.',
             attributes: [
                 { key: 'Cena', value: '50 gp' },
@@ -560,8 +681,8 @@
         },
         'OTHER': {
             title: 'Mapa starověké krypty', translation: 'Ancient Crypt Map',
-            description: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Investigation) DC 20 k rozluštění.',
-            descriptionCz: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Vyšetřování) Obtížnosti 20 k rozluštění.',
+            description: 'An encrypted map on a piece of leather. Shows the way to a forgotten tomb. Requires a successful Investigation DC 20 check to decipher.',
+            descriptionCz: 'Zašifrovaná mapa na kusu kůže. Ukazuje cestu k zapomenuté hrobce. Vyžaduje úspěšný test Dovednosti (Investigation) DC 20 k rozluštění.',
             attributes: [
                 { key: 'Vzácnost', value: 'Unique' },
                 { key: 'Hodnota', value: 'N/A' }
@@ -570,80 +691,121 @@
         }
     };
     
-    // --- FUNKCE PRO DARK MODE ---
-    
-    window.toggleTheme = function() {
-        if (body.classList.contains('dark')) {
-            // Přepnutí na SVĚTLÝ režim
-            body.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            // Přepnutí na TMAVÝ režim
-            body.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
+    // --- NOVÁ FUNKCE: APLIKAČNÍ KONZOLE ---
+    function logMessage(message, type = 'info') {
+        const timestamp = new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const p = document.createElement('p');
+        p.className = `log-${type}`;
+        p.innerHTML = `<span class="text-gray-500 dark:text-gray-500">[${timestamp}]</span> ${message}`;
+        
+        // Zabezpečení proti zahlcení
+        if (appConsole.children.length >= 50) {
+            appConsole.removeChild(appConsole.firstChild);
         }
-        updateThemeIcons();
+        appConsole.appendChild(p);
+        appConsole.scrollTop = appConsole.scrollHeight; // Scroll dolů
     }
+
+    // --- UTILITY FUNKCE ---
     
-    function updateThemeIcons() {
-        // Kontroluje aktuální stav DOM třídy
-        if (body.classList.contains('dark')) {
-            moonIcon.classList.add('hidden');
-            sunIcon.classList.remove('hidden');
+    function getApiKey() {
+        if (CANVAS_API_KEY_EXISTS) return ""; // V Canvasu vracíme prázdný, platforma to vyřídí
+        return geminiApiKeyInput.value.trim();
+    }
+
+    function updateAnalyzeButtonState() {
+        const isCanvasEnvironment = CANVAS_API_KEY_EXISTS;
+        const hasManualKey = geminiApiKeyInput.value.trim().length > 0;
+        const hasImages = analysisImagesBase64.length > 0;
+
+        // V Canvasu stačí mít obrázky (klíč je předpokládán). Mimo Canvas je nutný i klíč.
+        let isButtonEnabled;
+        if (isCanvasEnvironment) {
+            isButtonEnabled = hasImages;
         } else {
-            moonIcon.classList.remove('hidden');
-            sunIcon.classList.add('hidden');
+            isButtonEnabled = hasImages && hasManualKey;
+        }
+
+        analyzeButton.disabled = !isButtonEnabled;
+        analysisControls.style.display = hasImages ? 'flex' : 'none';
+        
+        cropButton.disabled = !itemImageObject;
+
+        const apiKeyHint = document.getElementById('apiKeyHint');
+        if (apiKeyHint) {
+             apiKeyHint.style.display = isCanvasEnvironment ? 'inline' : 'none';
+             geminiApiKeyInput.disabled = isCanvasEnvironment;
         }
     }
-    
-    // --- FUNKCE PRO KONFIRMACE A RESET ---
-    window.showResetModal = function() {
-        resetModal.classList.remove('hidden');
+
+    function setLoading(isLoading, message = "Analyzuji obrázky...") {
+        loadingMessage.textContent = message;
+        if (isLoading) {
+            loadingOverlay.classList.remove('hidden');
+            analyzeButton.disabled = true;
+            logMessage(`Proces zahájen: ${message}`, 'info');
+        } else {
+            loadingOverlay.classList.add('hidden');
+            updateAnalyzeButtonState();
+            logMessage("Proces dokončen.", 'success');
+        }
     }
+
+    // --- MODAL FUNKCE ---
     
-    window.closeResetModal = function() {
-        resetModal.classList.add('hidden');
+    window.showChangelogModal = function() { changelogModal.classList.remove('hidden'); }
+    window.closeChangelogModal = function() { changelogModal.classList.add('hidden'); }
+    window.showInfoModal = function() { infoModal.classList.remove('hidden'); }
+    window.closeInfoModal = function() { infoModal.classList.add('hidden'); }
+    window.showResetModal = function() { resetModal.classList.remove('hidden'); }
+    window.closeResetModal = function() { resetModal.classList.add('hidden'); }
+    
+    window.showZoomModal = function() {
+        const finalWidth = ctx.canvas.width;
+        const finalHeight = ctx.canvas.height;
+
+        const zoomCanvas = document.getElementById('zoomCanvas');
+        zoomCanvas.width = finalWidth;
+        zoomCanvas.height = finalHeight;
+
+        const image = ctx.getImageData(0, 0, finalWidth, finalHeight);
+        zoomCanvas.getContext('2d').putImageData(image, 0, 0);
+
+        zoomCanvas.style.width = 'auto';
+        zoomCanvas.style.height = 'auto';
+        zoomCanvas.style.maxWidth = '90vw';
+        zoomCanvas.style.maxHeight = '90vh';
+        
+        zoomModal.classList.remove('hidden');
     }
+    window.closeZoomModal = function() { zoomModal.classList.add('hidden'); }
+
 
     window.performReset = function() {
-        closeResetModal(); // Zavře modální okno
-
-        // Reset textových polí
+        closeResetModal();
         document.getElementById('cardTitle').value = '';
         document.getElementById('cardTranslation').value = '';
         document.getElementById('cardDescription').value = '';
         document.getElementById('cardDescriptionCz').value = '';
-        
-        // Reset typu karty
         cardTypeInput.value = 'ITEM';
-        
-        // Reset měřáků
         usesTypeInput.value = '';
         maxUsesInput.value = '0';
         currentUsesInput.value = '0';
-        
-        // Reset atributů
+        isIdentifiedCheckbox.checked = true; 
         clearAttributes();
-        
-        // Reset obrázku itemu
         removeItemImage();
-        
-        // Reset JSON pole
-        jsonInput.value = '';
-
-        // Reset analýzy obrázků
+        document.getElementById('jsonInput').value = '';
         clearAllScreenshots();
-        
+        handleIdentificationChange(false); 
         updatePreview();
-        console.log("Všechna pole byla vyčištěna (V_0.19).");
+        logMessage("Aplikace resetována. Všechna pole byla vyčištěna.", 'warn');
     }
-
-    // --- FUNKCE PRO JAZYK TISKU ---
+    
+    // --- JAZYK TISKU ---
     window.setPrintLanguage = function(lang) {
         printLanguage = lang;
-        localStorage.setItem('printLanguage', lang); // Uložit volbu
+        localStorage.setItem('printLanguage', lang);
 
-        // VYLEPŠENÁ INDIKACE: Resetování a nastavení tříd pro aktivní tlačítko
         const activeClasses = ['bg-indigo-500', 'text-white', 'hover:bg-indigo-600', 'dark:bg-indigo-600', 'dark:hover:bg-indigo-700'];
         const inactiveClasses = ['bg-gray-200', 'text-gray-700', 'hover:bg-gray-300', 'dark:bg-gray-700', 'dark:text-gray-200', 'dark:hover:bg-gray-600'];
 
@@ -660,425 +822,191 @@
         setClasses(langCzButton, lang === 'CZ');
 
         updatePreview();
+        logMessage(`Jazyk tisku přepnut na: ${lang}`, 'info');
     }
     
-    // --- NOVÁ FUNKCE: Odebrání obrázku itemu ---
-    window.removeItemImage = function() {
-        itemImageObject = null;
-        itemImagePreview.innerHTML = 'Náhled itemu';
-        itemImagePreview.classList.add('text-gray-500', 'border-dashed');
-        document.getElementById('itemImageUpload').value = ''; // Reset file inputu
-        updatePreview();
+    // --- IDENTIFIKACE ---
+    window.handleIdentificationChange = function(update = true) {
+        const isEnabled = isIdentifiedCheckbox.checked;
+        const visibility = isEnabled ? 'none' : 'flex';
+
+        document.querySelectorAll('.identification-toggle').forEach(el => {
+            el.style.display = visibility;
+        });
+
+        if (update) updatePreview(); 
     }
 
-    // --- FUNKCE PRO INFO MODAL ---
-    window.showInfoModal = function() {
-        infoModal.classList.remove('hidden');
-    }
 
-    window.closeInfoModal = function() {
-        infoModal.classList.add('hidden');
-    }
-
-    // --- UTILITY FUNKCE ---
-    
-    // Funkce pro získání aktuálního klíče (upřednostňuje Canvas klíč)
-    function getApiKey() {
-        if (CANVAS_API_KEY) {
-            return CANVAS_API_KEY;
-        }
-        return geminiApiKeyInput.value.trim();
-    }
-
-    function updateAnalyzeButtonState() {
-        // Tlačítko se aktivuje, pokud existuje klíč (Canvas nebo uživatelský) A jsou nahrány obrázky
-        const hasKey = !!getApiKey();
-        
-        // NOVÁ LOGIKA: Umožní analýzu POUZE pokud existuje klíč A jsou nahrány obrázky
-        analyzeButton.disabled = analysisImagesBase64.length === 0 || !hasKey;
-        analysisControls.style.display = analysisImagesBase64.length > 0 ? 'flex' : 'none';
-        
-        // Tlačítko pro překlad je aktivní, pokud existuje API klíč a je nějaký text k překladu
-        const hasTextToTranslate = document.getElementById('cardDescription').value.trim().length > 0;
-        translateButton.disabled = !hasKey || !hasTextToTranslate;
-
-        // Zobrazí/skryje tip, pokud je klíč z Canvasu aktivní
-        const apiKeyHint = document.getElementById('apiKeyHint');
-        if (apiKeyHint) {
-             apiKeyHint.style.display = CANVAS_API_KEY ? 'inline' : 'none';
-             geminiApiKeyInput.disabled = !!CANVAS_API_KEY; // Deaktivuje vstup, pokud je klíč z Canvasu
-        }
-    }
-
-    function setLoading(isLoading, message = "Analyzuji obrázky...") {
-        loadingMessage.textContent = message;
-        if (isLoading) {
-            loadingOverlay.classList.remove('hidden');
-            analyzeButton.disabled = true;
-            translateButton.disabled = true;
-        } else {
-            // Stav tlačítka bude řídit updateAnalyzeButtonState()
-            loadingOverlay.classList.add('hidden');
-            updateAnalyzeButtonState();
-        }
-    }
-
-    // --- FUNKCE PRO VKLÁDÁNÍ A ODEBÍRÁNÍ ATRIBUTŮ (JEDNOTNÁ FUNKCE) ---
-    
-    // Nová jednotná funkce pro správu atributů
-    window.manageAttributes = function(action, element = null, key = '', value = '') {
+    // --- SPRÁVA ATRIBUTŮ ---
+    window.manageAttributes = function(action, element = null, key = '', value = '', isUnidentified = false) {
         if (action === 'add') {
             const container = document.getElementById('attributesContainer');
             const newRow = document.createElement('div');
-            // Přidáme handle pro SortableJS
             newRow.className = 'flex space-x-2 attribute-row items-center cursor-grab';
             newRow.innerHTML = `
-                <input type="text" value="${key}" class="attr-key w-1/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Atribut (např. Level)">
-                <input type="text" value="${value}" class="attr-value w-2/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Hodnota (např. 50 gp)">
+                <input type="text" value="${key}" class="attr-key w-1/4 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Atribut (např. Akce)">
+                <input type="text" value="${value}" class="attr-value w-1/3 p-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Hodnota (např. 3 akce)">
+                <div class="flex items-center space-x-1 identification-toggle" style="display: ${isIdentifiedCheckbox.checked ? 'none' : 'flex'};">
+                    <input type="checkbox" class="is-unidentified h-4 w-4 text-gray-500 border-gray-300 rounded focus:ring-gray-400" ${isUnidentified ? 'checked' : ''} onchange="updatePreview()">
+                    <span class="text-xs text-gray-500 dark:text-gray-400" title="Zobrazit atribut jako neznámý (šedá kurzíva/SKRÝT)">Neznámý</span>
+                </div>
                 <button type="button" onclick="manageAttributes('remove', this)" class="p-2 flex-shrink-0 text-red-500 hover:bg-red-100 dark:hover:bg-red-800/50 rounded-lg flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             `;
             container.appendChild(newRow);
         } else if (action === 'remove' && element) {
-            // Odebrání atributu
             const row = element.closest('.attribute-row');
             if (row) {
-                row.remove(); 
+                row.remove();
             }
         }
-        updatePreview(); // Aktualizace po jakékoli akci
+        updatePreview();
     }
 
-    // Přejmenovaná funkce clearAttributes, která nyní volá manageAttributes pro přidání prázdných řádků
     function clearAttributes() {
         document.getElementById('attributesContainer').innerHTML = '';
     }
     
-    // --- FUNKCE PRO TEMPLATY ---
-    
+    // --- TEMPLATY ---
     window.applyTemplate = function() {
         const type = cardTypeInput.value;
         const template = CARD_TEMPLATES[type];
         
         if (!template) return;
 
-        // 1. Nastavení textových polí
         document.getElementById('cardTitle').value = template.title;
         document.getElementById('cardTranslation').value = template.translation;
         document.getElementById('cardDescription').value = template.description;
-        document.getElementById('cardDescriptionCz').value = template.descriptionCz; // NOVÉ
+        document.getElementById('cardDescriptionCz').value = template.descriptionCz;
+        isIdentifiedCheckbox.checked = true; 
+        handleIdentificationChange(false);
         
-        // 2. Nastavení měřáků
         if (template.uses) {
-             usesTypeInput.value = template.uses.usesType;
-             maxUsesInput.value = template.uses.maxUses;
-             currentUsesInput.value = template.uses.currentUses;
+            usesTypeInput.value = template.uses.usesType;
+            maxUsesInput.value = template.uses.maxUses;
+            currentUsesInput.value = template.uses.currentUses;
         } else {
-             usesTypeInput.value = '';
-             maxUsesInput.value = '0';
-             currentUsesInput.value = '0';
+            usesTypeInput.value = '';
+            maxUsesInput.value = '0';
+            currentUsesInput.value = '0';
         }
         
-        // 3. Nastavení atributů
         clearAttributes();
         template.attributes.forEach(attr => {
-             manageAttributes('add', null, attr.key, attr.value);
+             manageAttributes('add', null, attr.key, attr.value, attr.isUnidentified || false);
         });
 
-        updatePreview(); // Aktualizovat náhled
+        updatePreview();
+        logMessage(`Aplikován template pro typ: ${type}`, 'info');
     }
-    
-    // NOVÁ FUNKCE: Načtení JSON dat z textového pole
+
+    // --- JSON FUNKCE ---
     window.loadJsonData = function() {
-        const jsonText = jsonInput.value.trim();
+        const jsonText = document.getElementById('jsonInput').value.trim();
         if (!jsonText) {
-             console.error("Vložte prosím JSON data.");
-             return;
+            logMessage("Chyba: Vložte prosím JSON data do pole.", 'error');
+            return;
         }
 
         try {
             const data = JSON.parse(jsonText);
             
-            // Základní ověření struktury
             if (!data.title || !data.attributes) {
-                console.error("Neplatný JSON formát. Chybí 'title' nebo 'attributes'.");
+                logMessage("Chyba: Neplatný JSON formát. Chybí 'title' nebo 'attributes'.", 'error');
                 return;
             }
 
-            // Předání dat do formuláře
             updateFormFields(data);
-            console.log("Data z JSON úspěšně načtena!");
+            logMessage("Data z JSON pole úspěšně načtena.", 'success');
             
         } catch (e) {
-            console.error("Chyba při parsování JSON:", e);
+            logMessage(`Chyba při parsování JSON: ${e.message}`, 'error');
         }
     }
 
-    // NOVÁ FUNKCE: Načtení JSON dat ze souboru
     window.loadJsonFile = function() {
-        jsonFileUpload.click(); // Spustí kliknutí na skrytý input
+        document.getElementById('jsonFileUpload').click();
     }
-    
-    jsonFileUpload.addEventListener('change', function(e) {
+
+    document.getElementById('jsonFileUpload').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function(event) {
                 const jsonText = event.target.result;
-                jsonInput.value = jsonText; // Vloží text do textarea
-                loadJsonData(); // A automaticky se pokusí načíst
+                document.getElementById('jsonInput').value = jsonText;
+                loadJsonData();
             };
             reader.readAsText(file);
         }
-        jsonFileUpload.value = ''; // Reset file inputu
+        document.getElementById('jsonFileUpload').value = '';
     });
-
-
-    // --- FUNKCE PRO VKLÁDÁNÍ OBRÁZKU (PRO ANALÝZU) ---
-
-    // Funkce pro odstranění jednoho screenshotu podle indexu
-    window.removeScreenshot = function(index) {
-        if (index >= 0 && index < analysisImagesBase64.length) {
-            analysisImagesBase64.splice(index, 1);
-            renderAnalysisPreviews();
-            updateAnalyzeButtonState();
-        }
-    }
     
-    // Nová funkce pro vykreslení všech náhledů
-    function renderAnalysisPreviews() {
-        analysisImagePreviewsContainer.innerHTML = '';
-        analysisImagesBase64.forEach((base64Data, index) => {
-            const dataUrl = `data:image/png;base64,${base64Data}`;
-            
-            const imgContainer = document.createElement('div');
-            // Změněno, aby se umožnilo snadné odstranění
-            imgContainer.className = 'w-full h-20 bg-white border border-gray-300 rounded-lg overflow-hidden relative group'; 
-            
-            imgContainer.innerHTML = `
-                <img src="${dataUrl}" class="object-contain w-full h-full" alt="Screenshot ${index + 1}">
-                <button onclick="removeScreenshot(${index})" 
-                        class="absolute top-0 right-0 p-1 bg-red-600 text-white rounded-bl-lg opacity-0 group-hover:opacity-100 transition duration-150"
-                        title="Odstranit tento screenshot">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            `;
-            analysisImagePreviewsContainer.appendChild(imgContainer);
-        });
-    }
+    function updateFormFields(data, isHistoryLoad = false) {
+        document.getElementById('cardTitle').value = data.title || '';
+        document.getElementById('cardTranslation').value = data.translation || '';
+        document.getElementById('cardDescription').value = data.description || '';
+        document.getElementById('cardDescriptionCz').value = data.descriptionCz || '';
+        
+        usesTypeInput.value = data.usesType && ['DOTS', 'HEARTS', 'DICE', 'BAR'].includes(data.usesType.toUpperCase()) ? data.usesType.toUpperCase() : '';
+        maxUsesInput.value = data.maxUses !== undefined ? data.maxUses : 0;
+        currentUsesInput.value = data.currentUses !== undefined ? data.currentUses : 0;
+        isIdentifiedCheckbox.checked = data.isIdentified !== undefined ? data.isIdentified : true;
+        handleIdentificationChange(false);
 
-    function addAnalysisImage(dataUrl) {
-        const base64Data = dataUrl.split(',')[1];
-        analysisImagesBase64.push(base64Data);
-
-        renderAnalysisPreviews();
-        updateAnalyzeButtonState();
-    }
-
-    // Zpracování nahrání souboru
-    analysisImageUpload.addEventListener('change', function(e) {
-        const files = e.target.files;
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    addAnalysisImage(event.target.result);
-                };
-                reader.readAsDataURL(file);
-            });
-            analysisImageUpload.value = ''; // Reset, aby bylo možné nahrát stejný soubor znovu
-        }
-    });
-
-    // Zpracování drag-and-drop pro ANALÝZU
-    window.handleImageDrop = function(e) {
-        e.preventDefault();
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    const fileReaderPromise = new Promise((resolve) => {
-                        reader.onload = function(event) {
-                            resolve(event.target.result);
-                        };
-                        reader.readAsDataURL(file);
-                    });
-                    
-                    fileReaderPromise.then(dataUrl => {
-                         addAnalysisImage(dataUrl);
-                    });
-                }
-            });
-        }
-    }
-    
-    // Zpracování Ctrl+V (paste) pro ANALÝZU
-    document.addEventListener('paste', function(e) {
-        const items = e.clipboardData.items;
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].type.indexOf('image') !== -1) {
-                const blob = items[i].getAsFile();
-                if (blob.size > 0) { 
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        addAnalysisImage(event.target.result);
-                    };
-                    reader.readAsDataURL(blob);
-                    e.preventDefault();
-                    return;
-                }
-            }
-        }
-    });
-
-    // Odebrání všech screenshotů
-    window.clearAllScreenshots = function() {
-        analysisImagesBase64 = [];
-        analysisImagePreviewsContainer.innerHTML = '';
-        updateAnalyzeButtonState();
-    };
-
-
-    // --- FUNKCE PRO VKLÁDÁNÍ OBRÁZKU (PRO ITEM NA KARTĚ) ---
-    document.getElementById('itemImageUpload').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() {
-                    itemImageObject = img;
-                    
-                    itemImagePreview.innerHTML = '';
-                    itemImagePreview.classList.remove('text-gray-500', 'border-dashed');
-                    // Oprava: Zajištění, že se do náhledu vkládá img element a má správné styly
-                    const previewImg = document.createElement('img');
-                    previewImg.src = img.src;
-                    previewImg.style.objectFit = 'contain';
-                    previewImg.style.width = '100%';
-                    previewImg.style.height = '100%';
-                    itemImagePreview.appendChild(previewImg);
-                    
-                    updatePreview();
-                }
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
+        if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
+            cardTypeInput.value = data.cardType.toUpperCase();
         } else {
-            removeItemImage(); // Zavolá funkci pro vyčištění
+            cardTypeInput.value = 'ITEM';
         }
-    });
-
-    // --- LOGIKA LLM ANALÝZY A PŘEKLADU ---
-    
-    // NOVÁ FUNKCE: Manuální překlad popisu
-    window.translateDescription = async function() {
-        const apiKey = getApiKey();
-        const textToTranslate = document.getElementById('cardDescription').value.trim();
-
-        if (!apiKey) {
-            console.error("Prosím, zadejte svůj Gemini API klíč pro překlad.");
-            return;
-        }
-        if (!textToTranslate) {
-            console.error("Prosím, zadejte text do pole Originální jazyk pro překlad.");
-            return;
-        }
-
-        setLoading(true, "Překládám popis...");
-
-        const systemPrompt = "Jsi profesionální překladatel pro TTRPG hry. Přelož následující text do češtiny. Ponechej herní termíny (jako názvy kouzel, dovednosti, typy kostek (d4, d6, 1d8), číselné hodnoty, atd.) V PŮVODNÍM JAZYCE (nejčastěji angličtina), ale zbytek textu přelož plynule do češtiny. Použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Zachovej formátování odstavců (\\n\\n).";
         
-        const payload = {
-            contents: [{ parts: [{ text: textToTranslate }] }],
-            systemInstruction: { parts: [{ text: systemPrompt }] },
-        };
+        clearAttributes();
         
-        try {
-            const API_URL = GEMINI_API_BASE_URL + apiKey;
-            const MAX_RETRIES = 5;
-            let response;
-            
-            translateButton.disabled = true;
-            translateText.textContent = "Překládám...";
-
-            for (let i = 0; i < MAX_RETRIES; i++) {
-                try {
-                    response = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (response.ok) break;
-
-                } catch (e) {
-                    if (i === MAX_RETRIES - 1) throw e;
-                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
-                }
-            }
-
-            if (!response.ok) {
-                const errorBody = await response.text();
-                throw new Error(`API error: ${response.statusText}. Chyba: ${errorBody}`);
-            }
-
-            const result = await response.json();
-            const translatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-            if (translatedText) {
-                document.getElementById('cardDescriptionCz').value = translatedText;
-                updatePreview();
-                console.log("Překlad úspěšný.");
-            } else {
-                throw new Error("API nevrátilo překlad.");
-            }
-
-        } catch (error) {
-            console.error("Chyba při překladu:", error);
-        } finally {
-            setLoading(false);
-            translateText.textContent = "Přeložit pomocí AI";
-            updateAnalyzeButtonState();
+        if (data.attributes && Array.isArray(data.attributes)) {
+            data.attributes.forEach(attr => {
+             const isUnidentified = attr.isUnidentified === true;
+             manageAttributes('add', null, attr.key, attr.value, isUnidentified);
+            });
         }
+        
+        updatePreview();
     }
 
-
-    async function analyzeScreenshots() {
+    // --- ANALÝZA (LLM) ---
+    
+    window.analyzeScreenshots = async function() {
         const apiKey = getApiKey();
+        const urlKeyParam = (CANVAS_API_KEY_EXISTS || apiKey) ? `?key=${apiKey}` : "";
 
-        if (!apiKey) {
-            console.error("Prosím, zadejte svůj Gemini API klíč pro spuštění analýzy.");
-            return;
-        }
         if (analysisImagesBase64.length === 0) {
-            console.error("Prosím, vložte alespoň jeden screenshot k analýze.");
+            logMessage("Chyba: Nahrajte alespoň jeden obrázek pro analýzu.", 'error');
             return;
         }
 
-        setLoading(true);
+        setLoading(true, "Analyzuji obrázky a extrahuji data...");
 
         const responseSchema = {
             type: "OBJECT",
             properties: {
                 title: { type: "STRING", description: "Originální název předmětu/kouzla z obrázku." },
                 translation: { type: "STRING", description: "Překlad názvu do češtiny, pokud je zřejmý. Jinak nechte prázdné." },
-                cardType: { type: "STRING", description: "Identifikovaný typ předmětu. Musí být jedno z: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER." },
-                description: { type: "STRING", description: "Hlavní popis nebo efekt předmětu/kouzla v původním jazyce. Text by měl být souvislý. Použijte **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro nové odstavce použijte dvě zalomení řádku (Enter)." },
-                descriptionCz: { type: "STRING", description: "Přesný překlad pole 'description' do češtiny. Ponechte názvy předmětů, kouzel, levely, skilly a čísla v angličtině/původním jazyce. Přeložte pouze popis a souvislé texty." },
+                cardType: { type: "STRING", description: "Identifikovaný typ předmětu. Musí být jedno z: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, MONSTER, OTHER." },
+                description: { type: "STRING", description: "Hlavní popis nebo efekt. Použijte **hvězdičky** pro tučný text a '\\n\\n' pro odstavce. Pro skryté info použijte {{{text}}}." },
+                descriptionCz: { type: "STRING", description: "Přesný překlad pole 'description' do češtiny. Ponechte herní termíny a čísla v původním jazyce. Zachovej {{{...}}}." },
                 maxUses: { type: "NUMBER", description: "Maximální počet použití (charges) nebo životů itemu. 0, pokud neaplikovatelné." },
                 currentUses: { type: "NUMBER", description: "Aktuální počet použití (charges) nebo životů itemu. 0, pokud neaplikovatelné." },
                 usesType: { type: "STRING", description: "Typ vizuálního měřáku. Musí být jedno z: '', 'DOTS', 'HEARTS', 'DICE', 'BAR'. Prázdný řetězec, pokud neaplikovatelné." },
                 attributes: {
                     type: "ARRAY",
-                    description: "Pole klíčových atributů. Například Level, Cena, Typ, Damage, Vzácnost, atd. Překlážejte Klíč, ne Hodnotu.",
+                    description: "Pole klíčových atributů. Například Level, Cena, Typ, Damage, Akce (Action Cost), Vzácnost, AC, HP.",
                     items: {
                         type: "OBJECT",
                         properties: {
-                            key: { type: "STRING", description: "Název atributu (např. 'Level', 'Cena', 'Kostky')." },
-                            value: { type: "STRING", description: "Hodnota atributu (např. '3', '150 gp', '1d8 + STR')." }
+                            key: { type: "STRING", description: "Název atributu (přeloženo do CZ, např. 'Level', 'Cena', 'Akce')." },
+                            value: { type: "STRING", description: "Hodnota atributu (původní jazyk/čísla, např. '1 Action', '1d8 + STR', '3 Actions')." },
+                            isUnidentified: { type: "BOOLEAN", description: "Nastav na TRUE, pokud je atribut 'neznámý' nebo 'neidentifikovaný'. Jinak FALSE."}
                         }
                     }
                 }
@@ -1086,11 +1014,10 @@
             required: ["title", "cardType", "description", "descriptionCz", "attributes", "maxUses", "currentUses", "usesType"]
         };
 
-        const systemPrompt = "Jsi expert na TTRPG data. Analyzuj poskytnuté screenshoty (může jich být více, spoj je do jednoho kontextu) a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Na základě kontextu detekuj typ předmětu (cardType) a vyber z možností: ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, OTHER. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Kostky), Hodnoty (value) ponech v originálním znění. V popisu (description) a (descriptionCz) použij **dvojité hvězdičky** pro tučný text a *jednoduché hvězdičky* pro kurzívu. Pro vizuální oddělení odstavců použij dvě zalomení řádku (\\n\\n). Ujisti se, že descriptionCz je PŘESNÝ, SOUVISLÝ A KVALITNÍ překlad description, ale zachovává anglické názvy skillů a čísel, stejně jako ve tvém vzoru. Také vyplň 'maxUses', 'currentUses' a 'usesType' na základě informací o charges, použitích nebo životech itemu (např. item má 3/3 charges, nastav maxUses=3, currentUses=3, usesType='DOTS'). Použij 'BAR' pro procenta/stav, 'HEARTS' pro životy, 'DICE' pro denní použití/kostky a 'DOTS' pro charges.";
+        const systemPrompt = "Jsi expert na TTRPG data, včetně her Pathfinder 2e a DnD 5e. Analyzuj poskytnuté screenshoty a extrahuj veškerá relevantní data do přesného JSON formátu. DŮLEŽITÉ: Detekuj typ (ITEM, WEAPON, SPELL, CONSUMABLE, EQUIPMENT, MONSTER, OTHER) a **akční ekonomiku (action cost - např. Pathfinder akce: 1, 2, 3 akce, Free Action, Single Action, Bonus Action, Reaction)** a zařaď je do atributů. Klíčové názvy atributů (key) přelož do češtiny (Cena, Level, Akce), Hodnoty (value) ponech v originálním znění (např. '1 Action', '1d8 + STR', '3 Actions'). Vyplň 'isUnidentified' pro neznámé atributy a 'usesType' pro charges/životy. Pro texty, které by měly být skryty před hráčem (např. 'True Name', 'Curse details') použij značku {{{...}}} v popisu. Pole 'descriptionCz' vyplň jako přesný překlad pole 'description' do češtiny, přičemž herní termíny a čísla ponech v původním jazyce.";
 
         const userQuery = "Analyzuj tento TTRPG screenshot/y a vyplň data do zadaného JSON schématu. Extrahuj z obrázků co nejvíce textu do atributů a popisu.";
         
-        // Sestavení obsahu pro API (text + všechny obrázky)
         const parts = [{ text: userQuery }];
         analysisImagesBase64.forEach(base64Data => {
             parts.push({
@@ -1111,115 +1038,746 @@
         };
 
         try {
-            const API_URL = GEMINI_API_BASE_URL + apiKey;
-            const MAX_RETRIES = 5;
-            let response;
-            for (let i = 0; i < MAX_RETRIES; i++) {
-                try {
-                    // Klíč je již v API_URL, takže jen voláme fetch
-                    response = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (response.ok) break;
-
-                } catch (e) {
-                    if (i === MAX_RETRIES - 1) throw e;
-                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
-                }
-            }
+            // Používá se moderní model Gemini 2.5 Flash
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent${urlKeyParam}`;
+            const response = await fetchWithRetry(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }, 5);
 
             if (!response.ok) {
-                const errorBody = await response.text();
-                throw new Error(`API error: ${response.statusText}. Zkontrolujte klíč a limity. Chyba: ${errorBody}`);
+                 // Chyba byla již zalogována ve fetchWithRetry, zde jen ukončíme funkci
+                 throw new Error(`API požadavek selhal se stavem ${response.status}.`);
             }
-
+            
             const result = await response.json();
             
             const jsonText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (!jsonText) {
-                throw new Error("API nevrátilo strukturovaná data.");
-            }
+            if (!jsonText) throw new Error("API nevrátilo strukturovaná data. Zkuste jiný obrázek.");
 
             const data = JSON.parse(jsonText);
             updateFormFields(data);
+            logMessage("Analýza úspěšná! Načtena data a vygenerován automatický překlad.", 'success');
 
         } catch (error) {
-            console.error("Chyba při analýze screenshotu:", error);
-            const errorMessage = "Nepodařilo se analyzovat obrázek. Zkuste jiný nebo zadejte data ručně.";
+            logMessage(`Kritická chyba při analýze: ${error.message}. Zkuste to prosím znovu, nebo zadejte data ručně.`, 'error');
         } finally {
             setLoading(false);
         }
     }
     
-    function updateFormFields(data) {
-        document.getElementById('cardTitle').value = data.title || '';
-        document.getElementById('cardTranslation').value = data.translation || '';
-        document.getElementById('cardDescription').value = data.description || '';
-        document.getElementById('cardDescriptionCz').value = data.descriptionCz || '';
-        
-        // Nastavení měřáků (Charges/Uses)
-        usesTypeInput.value = data.usesType && ['DOTS', 'HEARTS', 'DICE', 'BAR'].includes(data.usesType.toUpperCase()) ? data.usesType.toUpperCase() : '';
-        maxUsesInput.value = data.maxUses !== undefined ? data.maxUses : 0;
-        currentUsesInput.value = data.currentUses !== undefined ? data.currentUses : 0;
+    // --- VYLEPŠENÁ FUNKCE: fetchWithRetry ---
+    async function fetchWithRetry(url, options, maxRetries = 5) {
+        for (let i = 0; i < maxRetries; i++) {
+            try {
+                const response = await fetch(url, options);
 
-        // NOVÁ LOGIKA: Nastavení typu karty (pokud je platný)
-        if (data.cardType && CARD_TEMPLATES.hasOwnProperty(data.cardType.toUpperCase())) {
-            cardTypeInput.value = data.cardType.toUpperCase();
+                // Úspěšný požadavek, vrátíme odpověď
+                if (response.ok) {
+                    return response;
+                }
+
+                // Zjistíme, jestli má smysl opakovat pokus
+                const shouldRetry = response.status === 429 || response.status >= 500;
+                
+                if (shouldRetry) {
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000; // Exponenciální odklad s jitterem
+                    logMessage(`API chyba (${response.status}). Pokus ${i + 1}/${maxRetries} selhal. Zkouším znovu za ${Math.round(delay/1000)}s.`, 'warn');
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    continue; // Pokračujeme na další iteraci smyčky
+                } else {
+                    // Neopakovatelná chyba (např. 400 Bad Request)
+                    const errorBody = await response.text();
+                    logMessage(`Neopakovatelná API chyba (${response.status}): ${errorBody}`, 'error');
+                    return response; // Vrátíme chybnou odpověď k dalšímu zpracování
+                }
+            } catch (error) {
+                // Chyba sítě
+                const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                if (i < maxRetries - 1) {
+                    logMessage(`Chyba sítě. Zkouším znovu za ${Math.round(delay/1000)}s. Chyba: ${error.message}`, 'warn');
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                } else {
+                    logMessage('Chyba sítě. Dosažen maximální počet pokusů.', 'error');
+                    throw error; // Vyhodíme chybu po posledním pokusu
+                }
+            }
+        }
+        throw new Error("Maximum retries reached.");
+    }
+
+
+    // --- OBRÁZKOVÉ NÁSTROJE ---
+
+    // Funkce pro vkládání obrázků ze schránky (Oprava)
+    function handlePaste(event) {
+        const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+        for (let index in items) {
+            const item = items[index];
+            if (item.kind === 'file' && item.type.indexOf('image') !== -1) {
+                event.preventDefault(); 
+                const blob = item.getAsFile();
+                if (blob) {
+                    processFile(blob);
+                }
+                return;
+            }
+        }
+    }
+
+    // Funkce pro zpracování souboru (přetaženého nebo vloženého)
+    function processFile(file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const base64Data = event.target.result.split(',')[1];
+            analysisImagesBase64.push(base64Data);
+            displayAnalysisPreview(event.target.result, analysisImagesBase64.length - 1);
+            updateAnalyzeButtonState();
+            logMessage(`Nahrán screenshot: ${file.name || 'ze schránky'}`, 'info');
+        };
+        reader.readAsDataURL(file);
+    }
+    
+    // Obsluha přetažení (handleImageDrop)
+    window.handleImageDrop = function(event) {
+        event.preventDefault();
+        if (event.dataTransfer.files) {
+            Array.from(event.dataTransfer.files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    processFile(file);
+                }
+            });
+        }
+    }
+    
+    // Obsluha uploadu přes input
+    analysisImageUpload.addEventListener('change', function(e) {
+        Array.from(e.target.files).forEach(file => {
+            if (file.type.startsWith('image/')) {
+                processFile(file);
+            }
+        });
+        e.target.value = ''; 
+    });
+
+    function displayAnalysisPreview(src, index) {
+        const div = document.createElement('div');
+        div.className = 'relative group';
+        div.innerHTML = `
+            <img src="${src}" class="w-full h-auto rounded-lg shadow-md border border-gray-300 dark:border-gray-600 object-cover aspect-square" alt="Screenshot ${index + 1}">
+            <button onclick="removeScreenshot(${index})" class="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition duration-200" title="Odstranit">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        `;
+        analysisImagePreviewsContainer.appendChild(div);
+    }
+
+    window.removeScreenshot = function(index) {
+        analysisImagesBase64.splice(index, 1);
+        renderAnalysisPreviews();
+        updateAnalyzeButtonState();
+        logMessage(`Odebrán screenshot na pozici ${index + 1}.`, 'info');
+    }
+
+    function renderAnalysisPreviews() {
+        analysisImagePreviewsContainer.innerHTML = '';
+        analysisImagesBase64.forEach((base64, index) => {
+            displayAnalysisPreview(`data:image/png;base64,${base64}`, index);
+        });
+    }
+
+    window.clearAllScreenshots = function() {
+        analysisImagesBase64 = [];
+        renderAnalysisPreviews();
+        updateAnalyzeButtonState();
+        logMessage("Všechny screenshoty byly odstraněny.", 'warn');
+    }
+
+    window.removeItemImage = function() {
+        itemImageObject = null;
+        itemImagePreview.innerHTML = 'Náhled itemu';
+        itemImagePreview.classList.add('text-gray-500', 'border-dashed');
+        document.getElementById('itemImageUpload').value = ''; 
+        updatePreview();
+        updateAnalyzeButtonState();
+    }
+    
+    document.getElementById('itemImageUpload').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    itemImageObject = img;
+                    displayItemImagePreview(img.src);
+                    updatePreview();
+                    updateAnalyzeButtonState();
+                    logMessage(`Nahrán obrázek itemu: ${file.name}. Připraven k ořezu.`, 'info');
+                }
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
         } else {
-             // Fallback na Item, pokud se typ nepodaří detekovat nebo je neplatný
-             cardTypeInput.value = 'ITEM';
+            removeItemImage();
+        }
+    });
+
+    function displayItemImagePreview(src) {
+        itemImagePreview.innerHTML = '';
+        itemImagePreview.classList.remove('text-gray-500', 'border-dashed');
+        const previewImg = document.createElement('img');
+        previewImg.src = src;
+        previewImg.style.objectFit = 'contain';
+        previewImg.style.width = '100%';
+        previewImg.style.height = '100%';
+        itemImagePreview.appendChild(previewImg);
+    }
+    
+    // --- OŘEZ A ROTACE (CropperJS) ---
+
+    window.showImageEditorModal = function() {
+        if (!itemImageObject) return;
+
+        imageToCrop.src = itemImageObject.src;
+        imageEditorModal.classList.remove('hidden');
+
+        if (cropper) {
+            cropper.replace(itemImageObject.src);
+        } else {
+            cropper = new Cropper(imageToCrop, {
+                aspectRatio: 1, 
+                viewMode: 2, 
+                autoCropArea: 0.8,
+                movable: true,
+                zoomable: true,
+                guides: false,
+                background: false,
+                cropBoxMovable: true,
+                cropBoxResizable: true,
+                minCropBoxWidth: 50,
+                minCropBoxHeight: 50
+            });
+        }
+        logMessage("Otevřen nástroj pro ořez obrázku.", 'info');
+    }
+
+    window.closeImageEditorModal = function() {
+        imageEditorModal.classList.add('hidden');
+    }
+
+    window.applyCropAndClose = function() {
+        if (!cropper) return;
+
+        const croppedCanvas = cropper.getCroppedCanvas({
+            width: IMAGE_SIZE,
+            height: IMAGE_SIZE,
+            fillColor: '#ffffff'
+        });
+        
+        const dataUrl = croppedCanvas.toDataURL('image/png');
+        
+        const newImg = new Image();
+        newImg.onload = function() {
+            itemImageObject = newImg;
+            displayItemImagePreview(newImg.src);
+            updatePreview();
+            closeImageEditorModal();
+            logMessage("Ořezaný obrázek aplikován na kartu.", 'success');
+        }
+        newImg.src = dataUrl;
+    }
+    
+    // --- AI PROMPT HELPER ---
+
+    window.showAiPromptModal = function() {
+        const title = document.getElementById('cardTitle').value || 'Fantasy Item';
+        const type = cardTypeInput.value;
+        
+        const basePrompt = `detailed black and white sketch art of '${title}' TTRPG item, ${type.toLowerCase()} style, white background, no text, clean lines, fantasy art.`;
+        aiPromptTextarea.value = basePrompt;
+        
+        aiPromptModal.classList.remove('hidden');
+        logMessage("Vygenerován AI Prompt Helper.", 'info');
+    }
+
+    window.closeAiPromptModal = function() {
+        aiPromptModal.classList.add('hidden');
+    }
+
+    window.copyAiPrompt = function() {
+        const text = aiPromptTextarea.value;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    logMessage("AI Prompt zkopírován do schránky.", 'success');
+                })
+                .catch(err => {
+                    logMessage('Chyba při kopírování do schránky: ' + err.message, 'error');
+                });
+        } else {
+            logMessage("Kopírování do schránky není v tomto prohlížeči podporováno.", 'warn');
+        }
+    }
+
+    // --- CANVAS KRESLENÍ ---
+
+    function drawAttributes(ctx, attributes, statsX, imageY, statsWidth) {
+        let currentY = imageY;
+        const lineHeight = 30;
+        let lowestY = imageY;
+        const isIdentified = isIdentifiedCheckbox.checked;
+
+        attributes.forEach(attr => {
+            if (attr.key && attr.value) {
+                const isUnidentified = attr.isUnidentified && !isIdentified;
+                
+                if (attr.isUnidentified && !isIdentified) {
+                    return; 
+                }
+
+                ctx.fillStyle = isUnidentified ? '#AAAAAA' : '#000000';
+                
+                // Klíč (Tučné)
+                ctx.font = 'bold 24px sans-serif'; 
+                const keyText = attr.key + ":";
+                const keyWidth = ctx.measureText(keyText).width;
+                
+                const valueX = statsX + keyWidth + 5;
+                const valueMaxWidth = statsWidth - (keyWidth + 5);
+
+                // Hodnota (Normální/Kurzíva)
+                ctx.font = `${isUnidentified ? 'italic ' : ''}24px sans-serif`;
+                
+                const words = attr.value.split(/\s+/);
+                let lineDraw = '';
+                let finalY = currentY;
+
+                for(let n = 0; n < words.length; n++) {
+                    const word = words[n];
+                    const testLine = lineDraw + (lineDraw.length > 0 ? ' ' : '') + word;
+                    ctx.font = `${isUnidentified ? 'italic ' : ''}24px sans-serif`;
+                    const testWidth = ctx.measureText(testLine).width;
+
+                    if (testWidth > valueMaxWidth && lineDraw.length > 0) {
+                        ctx.fillText(lineDraw, valueX, finalY);
+                        finalY += lineHeight;
+                        lineDraw = word;
+                    } else {
+                        lineDraw = testLine;
+                    }
+                }
+
+                if (lineDraw.length > 0) {
+                    ctx.fillText(lineDraw, valueX, finalY);
+                    finalY += lineHeight;
+                }
+                
+                // Vykreslení klíče (vždy na startu)
+                ctx.font = 'bold 24px sans-serif';
+                ctx.fillText(keyText, statsX, currentY);
+
+                currentY = finalY;
+                lowestY = Math.max(lowestY, currentY);
+            }
+        });
+        return lowestY;
+    }
+    
+    function drawCharges(ctx, x, y, width, maxUses, currentUses, usesType) {
+        if (maxUses <= 0 || usesType === '') return y;
+        
+        const padding = 5;
+        
+        ctx.strokeStyle = '#333333';
+        ctx.lineWidth = 3;
+        ctx.fillStyle = '#E0E0E0';
+        ctx.strokeRect(x, y, width, CHARGES_HEIGHT);
+        ctx.fillRect(x, y, width, CHARGES_HEIGHT);
+
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 24px sans-serif';
+        
+        const centerX = x + width / 2;
+        const centerY = y + CHARGES_HEIGHT / 2;
+        const fontSize = 20;
+
+        switch (usesType) {
+            case 'DOTS':
+                const dotSize = 14;
+                const dotSpacing = 10;
+                const totalDotWidth = maxUses * dotSize + (maxUses - 1) * dotSpacing;
+                let dotX = centerX - totalDotWidth / 2 + dotSize / 2;
+
+                for (let i = 0; i < maxUses; i++) {
+                    ctx.fillStyle = i < currentUses ? '#22C55E' : '#B91C1C';
+                    ctx.beginPath();
+                    ctx.arc(dotX, centerY, dotSize / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    dotX += dotSize + dotSpacing;
+                }
+                break;
+            case 'HEARTS':
+                const hpLabel = "HP: " + currentUses + "/" + maxUses;
+                ctx.fillStyle = '#B91C1C';
+                ctx.font = `${fontSize}px sans-serif`;
+                ctx.fillText(hpLabel, centerX, centerY);
+                break;
+            case 'DICE':
+                const diceLabel = "Uses: " + currentUses + "/" + maxUses + " (Per Day)";
+                ctx.fillStyle = '#1D4ED8';
+                ctx.font = `${fontSize}px sans-serif`;
+                ctx.fillText(diceLabel, centerX, centerY);
+                break;
+            case 'BAR':
+                const usedFraction = Math.min(1, Math.max(0, currentUses / maxUses));
+                const fillWidth = width * usedFraction;
+                let barColor = '#4B5563';
+                if (usedFraction > 0.6) barColor = '#10B981';
+                else if (usedFraction > 0.3) barColor = '#F59E0B';
+                else barColor = '#EF4444';
+
+                ctx.fillStyle = barColor;
+                ctx.fillRect(x, y, fillWidth, CHARGES_HEIGHT);
+
+                const percentLabel = "Status: " + Math.round(usedFraction * 100) + "%";
+                ctx.fillStyle = (usedFraction < 0.5) ? '#FFFFFF' : '#000000';
+                ctx.font = `bold ${fontSize}px sans-serif`;
+                ctx.fillText(percentLabel, centerX, centerY);
+                break;
+        }
+
+        ctx.textAlign = 'left'; 
+        ctx.textBaseline = 'top'; 
+        
+        return y + CHARGES_HEIGHT + PADDING; 
+    }
+
+    
+    function drawCreationDate(ctx) {
+        const now = new Date();
+        const dateString = now.toLocaleDateString('cs-CZ', { year: 'numeric', month: '2-digit', day: '2-digit' });
+        const timeString = now.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+        
+        const langNote = printLanguage === 'CZ' ? 'CZ' : 'ENG';
+        const creationText = `Vytvořeno: ${dateString} ${timeString} (${langNote}) ${VERSION}`;
+
+        ctx.fillStyle = '#555555';
+        ctx.font = '16px sans-serif'; 
+        ctx.textAlign = 'left';
+        
+        ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING + 10);
+        ctx.textAlign = 'left';
+    }
+
+
+    function drawCardOnCanvas(ctx, cardData, targetWidth, targetHeight) {
+        ctx.canvas.width = targetWidth;
+        ctx.canvas.height = targetHeight;
+        
+        const cardSectionWidth = BASE_CARD_W - 2 * PADDING;
+        const textPadding = 10;
+        const descriptionLineHeight = 30; 
+        const descriptionFontSize = 20;
+
+        // 1. Vyplnění pozadí a rámeček celé karty
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 10; 
+        
+        const cardType = cardTypeInput.value;
+        
+        // Nastavení stylu čáry rámečku podle typu karty (VĚTŠÍ MĚŘÍTKO)
+        if (cardType === 'SPELL') {
+             ctx.setLineDash([30, 8, 10, 8]); 
+        } else if (cardType === 'WEAPON') {
+             ctx.setLineDash([60, 15]); 
+        } else if (cardType === 'EQUIPMENT') {
+             ctx.setLineDash([25, 12]); 
+        } else if (cardType === 'CONSUMABLE') {
+             ctx.setLineDash([8, 8]); 
+        } else if (cardType === 'MONSTER') {
+             ctx.setLineDash([10, 20, 10, 5, 10, 20, 10, 35]); 
+        } else {
+            ctx.setLineDash([]); 
+        }
+
+        ctx.strokeRect(0, 0, targetWidth, targetHeight);
+        ctx.setLineDash([]);
+        ctx.lineWidth = 2;
+        ctx.fillStyle = '#000000';
+        ctx.textBaseline = 'top';
+
+        // --- 1. Název Karty ---
+        let titleText = cardData.title || cardTypeInput.options[cardTypeInput.selectedIndex].text;
+        if (cardData.translation) {
+             titleText += ` (${cardData.translation})`;
         }
         
-        clearAttributes();
+        const typeTextRaw = cardTypeInput.options[cardTypeInput.selectedIndex].text;
+        const typeEmoji = TYPE_EMOJI[cardType] || '❓';
+        const fullTypeText = `${typeEmoji} ${typeTextRaw}`;
         
-        if (data.attributes && Array.isArray(data.attributes)) {
-            data.attributes.forEach(attr => {
-                // VOLÁNÍ NOVÉ JEDNOTNÉ FUNKCE pro přidání
-                manageAttributes('add', null, attr.key, attr.value);
+        const typeFontSize = 26;
+        ctx.font = `bold ${typeFontSize}px sans-serif`;
+        const typeWidth = ctx.measureText(fullTypeText).width;
+        
+        const availableTitleWidth = cardSectionWidth - typeWidth - PADDING * 0.5;
+
+        let titleFontSize = 48; 
+        ctx.font = `bold ${titleFontSize}px sans-serif`;
+        while (ctx.measureText(titleText).width > availableTitleWidth && titleFontSize > 24) {
+            titleFontSize -= 2;
+            ctx.font = `bold ${titleFontSize}px sans-serif`;
+        }
+        
+        const wrappedTitleLines = wrapText(ctx, titleText, availableTitleWidth, `bold ${titleFontSize}px sans-serif`);
+        let titleY = PADDING;
+        
+        // Vykreslení zalamovaného názvu - VYLEPŠENÍ
+        ctx.textAlign = 'left';
+        wrappedTitleLines.forEach(line => {
+            ctx.fillText(line, PADDING, titleY);
+            titleY += titleFontSize * 1.1; // Posun na další řádek
+        });
+        
+        ctx.font = `bold ${typeFontSize}px sans-serif`; 
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#333333';
+        ctx.fillText(fullTypeText, BASE_CARD_W - PADDING, PADDING + 5);
+        ctx.textAlign = 'left';
+
+        // Horizontální čára pod názvem
+        const lineY = Math.max(titleY, PADDING * 2.5 + 5);
+        ctx.beginPath();
+        ctx.moveTo(PADDING, lineY);
+        ctx.lineTo(BASE_CARD_W - PADDING, lineY);
+        ctx.stroke();
+        
+        let middleSectionYStart = lineY + 10;
+        
+        // --- 2. Prostřední Sekce (Obrázek, Atributy) ---
+        const imageX = PADDING;
+        const imageY = middleSectionYStart;
+        const statsX = imageX + IMAGE_SIZE + PADDING;
+        const statsWidth = BASE_CARD_W - statsX - PADDING;
+
+        ctx.lineWidth = 3; 
+        ctx.strokeRect(imageX, imageY, IMAGE_SIZE, IMAGE_SIZE);
+
+        if (cardData.image) {
+            ctx.drawImage(cardData.image, imageX, imageY, IMAGE_SIZE, IMAGE_SIZE);
+        } else {
+            ctx.font = '28px sans-serif'; 
+            ctx.fillStyle = '#AAAAAA';
+            ctx.textAlign = 'center';
+            ctx.fillText('Obrázek itemu', imageX + IMAGE_SIZE/2, imageY + IMAGE_SIZE/2);
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#000000';
+        }
+
+        // Výpočet, kam by se atributy vešly vpravo od obrázku
+        const attributesRightOfImage = [];
+        const attributesBelowImage = [];
+        let tempYRight = imageY;
+        const lineHeightAttr = 30;
+        
+        const tempCtx = document.createElement('canvas').getContext('2d');
+
+        cardData.attributes.forEach(attr => {
+            if (attr.key && attr.value) {
+                if (attr.isUnidentified && !isIdentifiedCheckbox.checked) return;
+
+                tempCtx.font = 'bold 24px sans-serif';
+                const keyWidth = tempCtx.measureText(attr.key + ":").width;
+                const valueMaxWidth = statsWidth - (keyWidth + 5);
+                tempCtx.font = '24px sans-serif';
+
+                const words = attr.value.split(/\s+/);
+                let currentAttrHeight = lineHeightAttr;
+                let currentLine = '';
+                
+                for(let n = 0; n < words.length; n++) {
+                    const word = words[n];
+                    const testLine = currentLine + (currentLine.length > 0 ? ' ' : '') + word;
+                    const testWidth = tempCtx.measureText(testLine).width;
+
+                    if (testWidth > valueMaxWidth && currentLine.length > 0) {
+                        currentAttrHeight += lineHeightAttr;
+                        currentLine = word;
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
+                
+                if (tempYRight + currentAttrHeight <= imageY + IMAGE_SIZE) {
+                    attributesRightOfImage.push(attr);
+                    tempYRight += currentAttrHeight;
+                } else {
+                    attributesBelowImage.push(attr);
+                }
+            }
+        });
+
+        let lowestYAttribute = drawAttributes(ctx, attributesRightOfImage, statsX, imageY, statsWidth);
+        
+        let usesYStart = imageY + IMAGE_SIZE + PADDING / 2;
+        let yAfterUses = usesYStart;
+
+        if (cardData.uses && cardData.uses.usesType && cardData.uses.maxUses > 0) {
+             const usesX = imageX;
+             const usesWidth = IMAGE_SIZE;
+             yAfterUses = drawCharges(ctx, usesX, usesYStart, usesWidth, cardData.uses.maxUses, cardData.uses.currentUses, cardData.uses.usesType);
+        } else {
+             yAfterUses = imageY + IMAGE_SIZE + PADDING / 2;
+        }
+
+        let currentYBelow = yAfterUses;
+        if (attributesBelowImage.length > 0) {
+            currentYBelow = yAfterUses;
+            attributesBelowImage.forEach(attr => {
+                 if (attr.key && attr.value) {
+                    ctx.fillStyle = attr.isUnidentified && !isIdentifiedCheckbox.checked ? '#AAAAAA' : '#000000';
+                    ctx.font = 'bold 24px sans-serif'; 
+                    const keyText = attr.key + ":";
+                    const keyWidth = ctx.measureText(keyText).width;
+                    const valueX = PADDING + keyWidth + 5;
+                    const valueMaxWidth = cardSectionWidth - (keyWidth + 5);
+                    ctx.font = `${attr.isUnidentified && !isIdentifiedCheckbox.checked ? 'italic ' : ''}24px sans-serif`;
+                    const words = attr.value.split(/\s+/);
+                    let lineDraw = '';
+                    let finalY = currentYBelow;
+
+                    for(let n = 0; n < words.length; n++) {
+                        const word = words[n];
+                        const testLine = lineDraw + (lineDraw.length > 0 ? ' ' : '') + word;
+                        const testWidth = ctx.measureText(testLine).width;
+
+                        if (testWidth > valueMaxWidth && lineDraw.length > 0) {
+                            ctx.fillText(lineDraw, valueX, finalY);
+                            finalY += lineHeightAttr;
+                            lineDraw = word;
+                        } else {
+                            lineDraw = testLine;
+                        }
+                    }
+
+                    if (lineDraw.length > 0) {
+                        ctx.fillText(lineDraw, valueX, finalY);
+                        finalY += lineHeightAttr;
+                    }
+                    
+                    ctx.font = 'bold 24px sans-serif';
+                    ctx.fillText(keyText, PADDING, currentYBelow);
+                    currentYBelow = finalY;
+                 }
             });
         }
         
-        updatePreview();
+        let descriptionYStart = Math.max(lowestYAttribute, currentYBelow) + PADDING;
+
+        ctx.beginPath();
+        ctx.moveTo(PADDING, descriptionYStart - PADDING/2);
+        ctx.lineTo(BASE_CARD_W - PADDING, descriptionYStart - PADDING/2);
+        ctx.stroke();
+
+        // --- 3. Popis (Rozšíření) ---
+        const descriptionY = descriptionYStart;
+        const rawText = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : cardData.description) || "";
+        const isIdentified = isIdentifiedCheckbox.checked;
+        const descriptionColor = '#000000';
+        const descriptionItalic = false;
+
+        let remainingText = rawText;
+        let currentDrawX = PADDING;
+        let sectionIndex = 0;
+        
+        const heightFirstSection = BASE_CARD_H - descriptionY - PADDING - 20; 
+        const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (descriptionFontSize + textPadding)) / descriptionLineHeight));
+        const maxLinesFullSection = Math.max(0, Math.floor((BASE_CARD_H - 2 * PADDING - (descriptionFontSize + textPadding + 20)) / descriptionLineHeight));
+        const descriptionTitle = "Popis:";
+
+        while (remainingText.trim().length > 0) {
+            // --- OPRAVA SMYČKY ZDE ---
+            if (currentDrawX >= targetWidth) {
+                logMessage(`Chyba vykreslování: Text se nevejde do vypočítaného prostoru. Zastaveno, aby se zabránilo chybě.`, 'error');
+                break;
+            }
+
+            let maxLines, sectionTopY, sectionHeight;
+
+            if (sectionIndex === 0) {
+                maxLines = maxLinesFirstSection;
+                sectionTopY = descriptionY;
+                sectionHeight = heightFirstSection;
+            } else {
+                maxLines = maxLinesFullSection;
+                sectionTopY = PADDING;
+                sectionHeight = BASE_CARD_H - 2 * PADDING - 20; 
+                
+                ctx.save();
+                ctx.strokeStyle = '#666666';
+                ctx.setLineDash([20, 20]); 
+                ctx.lineWidth = 4; 
+                ctx.beginPath();
+                ctx.moveTo(currentDrawX - PADDING, PADDING + 10);
+                ctx.lineTo(currentDrawX - PADDING, BASE_CARD_H - PADDING - 10);
+                ctx.stroke();
+                ctx.restore();
+            }
+            
+            ctx.lineWidth = 3; 
+            ctx.strokeStyle = '#000000';
+            ctx.strokeRect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
+            
+            ctx.font = 'bold 24px sans-serif'; 
+            ctx.fillStyle = descriptionColor;
+            ctx.fillText(descriptionTitle, currentDrawX + textPadding, sectionTopY + textPadding);
+            
+            ctx.fillStyle = descriptionColor;
+            const result = drawFormattedText(ctx, remainingText, currentDrawX + textPadding, sectionTopY + textPadding + descriptionLineHeight + 5, cardSectionWidth - 2 * textPadding, descriptionLineHeight, descriptionFontSize, maxLines, descriptionItalic, isIdentified);
+            
+            remainingText = result.remainingText;
+            sectionIndex++;
+            currentDrawX += BASE_CARD_W;
+        }
+
+        drawCreationDate(ctx);
     }
     
-    
-    // --- Zalomení textu a formátování (pro Popis) ---
-    
-    function drawFormattedText(ctx, rawText, x, y, maxWidth, lineHeight, fontBase, maxLines = Infinity) {
+    function drawFormattedText(ctx, rawText, x, y, maxWidth, lineHeight, fontBase, maxLines = Infinity, isGlobalItalic = false, isIdentifiedState = true) {
         let currentY = y;
         let linesDrawn = 0;
         
-        // 1. Přepracování textu: nahradíme \n\n za speciální token [PB] (Paragraph Break) a \n za [LB]
-        const processedText = rawText.replace(/\r/g, '').replace(/\n\n/g, ' [PB] ').replace(/\n/g, ' [LB] ');
+        const filteredText = isIdentifiedState ? rawText : rawText.replace(/\{\{\{.*?\}\}\}/gs, ''); 
+
+        const processedText = filteredText.replace(/\r/g, '').replace(/\n\n/g, ' [PB] ').replace(/\n/g, ' [LB] ');
         
-        // 2. Rozdělení podle formátování a našich zlomových tokenů
         let parts = processedText.split(/(\*\*.*?\*\*|\*.*?\*|\[PB\]|\[LB\]|\s+)/g).filter(p => p.length > 0);
         
         const getStyle = (isBold, isItalic) => `${isBold ? 'bold ' : ''}${isItalic ? 'italic ' : ''}${fontBase}px sans-serif`;
         
-        let currentLineParts = []; // Části textu s různými styly na aktuálním řádku
-        
+        let currentLineParts = [];
+
         const commitLine = (startNewLineWith = []) => {
             if (currentLineParts.length > 0) {
                 if (linesDrawn < maxLines) {
                     let drawX = x;
-                    
-                    // Vykreslení
                     currentLineParts.forEach(part => {
+                        if (part.text.trim().length === 0) return; 
                         ctx.font = part.style;
                         ctx.fillText(part.text, drawX, currentY);
-                        drawX += ctx.measureText(part.text).width;
+                        drawX += ctx.measureText(part.text).width; 
                     });
-
                     currentY += lineHeight;
                     linesDrawn++;
                     currentLineParts = startNewLineWith;
                     return true;
                 } else {
-                    return false; // Přetečení
+                    return false;
                 }
             }
             currentLineParts = startNewLineWith;
@@ -1231,12 +1789,10 @@
         for (let i = 0; i < parts.length; i++) {
             let part = parts[i];
             
-            // --- 1. Speciální tokeny (PB, LB) ---
             if (part === '[PB]') {
                 if (!commitLine()) { remainingParts = parts.slice(i); break; }
                 if (linesDrawn < maxLines) {
-                    currentY += lineHeight * 0.5; // Poloviční mezera pro odstavce
-                    linesDrawn++;
+                    currentY += lineHeight * 0.5;
                 } else { remainingParts = parts.slice(i); break; }
                 continue;
             }
@@ -1246,34 +1802,23 @@
                 continue;
             }
 
-            // --- 2. Mezery (White space) ---
-            if (part.match(/^\s+$/)) {
-                 // Zpracováno níže ve slově, ignorujeme samostatné mezery
-                continue;
-            }
-
-
-            // --- 3. Formátovaný a normální text ---
+            if (part.match(/^\s+$/)) continue;
 
             let isBold = part.startsWith('**') && part.endsWith('**');
-            let isItalic = part.startsWith('*') && part.endsWith('*');
+            let isItalic = (part.startsWith('*') && part.endsWith('*')) || isGlobalItalic; 
             
             let content = part;
             if (isBold) content = part.slice(2, -2);
-            if (isItalic) content = part.slice(1, -1);
+            else if (isItalic && !isGlobalItalic) content = part.slice(1, -1);
             
             let style = getStyle(isBold, isItalic);
-
             const words = content.split(/\s+/g).filter(w => w.length > 0);
             
             for (let j = 0; j < words.length; j++) {
                 const word = words[j];
-                
-                // Určení, zda je potřeba mezera před slovem
                 const prefix = currentLineParts.length === 0 ? '' : ' ';
                 const wordWithPrefix = prefix + word;
 
-                // Spočítat aktuální šířku řádku + nové slovo
                 let currentWidth = 0;
                 currentLineParts.forEach(p => { 
                     ctx.font = p.style;
@@ -1283,498 +1828,36 @@
                 ctx.font = style;
                 let testWidth = currentWidth + ctx.measureText(wordWithPrefix).width;
                 
-                if (testWidth > maxWidth) {
-                    // Zalomení řádku (slovo se nevejde)
-                    let remainingWords = words.slice(j);
-                    
-                    if (!commitLine()) { // Vykreslit aktuální platný řádek
-                        remainingParts = [word, ...remainingWords.slice(1)];
-                        for (let k = i + 1; k < parts.length; k++) { remainingParts.push(parts[k]); }
-                        break; // Přetečení
+                if (testWidth > maxWidth && currentLineParts.length > 0) {
+                    if (!commitLine([ { text: word, style: style } ])) {
+                        remainingParts = [word, ...words.slice(j + 1), ...parts.slice(i + 1)];
+                        break; // break inner loop
                     }
-                    
-                    // Začít nový řádek s aktuálním slovem
-                    currentLineParts.push({ text: word, style: style });
                 } else {
-                    // Slovo se vešlo
                     let lastPart = currentLineParts[currentLineParts.length - 1];
                     if (lastPart && lastPart.style === style) {
-                        // FIX: Oprava pro plynulé navazování bez nadbytečné mezery
-                        const textToAdd = lastPart.text === '' ? word : (lastPart.text.endsWith(' ') ? word : ' ' + word);
-                        lastPart.text += textToAdd;
+                        lastPart.text += (lastPart.text.endsWith(' ') ? word : ' ' + word);
                     } else {
-                         // První slovo na řádku nebo změna stylu
                         currentLineParts.push({ text: currentLineParts.length === 0 ? word : ' ' + word, style: style });
                     }
                 }
             }
-            if (remainingParts.length > 0) break;
+            if (remainingParts.length > 0) break; // break outer loop
         }
         
-        // Vykreslení posledního řádku
-        if (currentLineParts.length > 0) {
+        if (remainingParts.length === 0 && currentLineParts.length > 0) {
             commitLine();
         }
 
-        // Zrekonstruovat zbývající text
         let remainingText = '';
         if (remainingParts.length > 0) {
-            remainingText = remainingParts.join('');
+            remainingText = remainingParts.join(' ').replace(/\s+/g, ' ');
             remainingText = remainingText.replace(/ \[PB\] /g, '\n\n').replace(/ \[LB\] /g, '\n').trim();
         }
 
         return { finalY: currentY, remainingText: remainingText };
     }
-
     
-    // Funkce pro kreslení Atributů 
-    function drawAttributes(ctx, attributes, statsX, imageY, statsWidth) {
-        let currentY = imageY;
-        const lineHeight = 30;
-        let lowestY = imageY;
-
-        attributes.forEach(attr => {
-            if (attr.key && attr.value) {
-                // Toto je simulace výpočtu výšky, která probíhá při renderování!
-                
-                // Klíč (Tučné)
-                ctx.font = 'bold 20px sans-serif';
-                const keyText = attr.key + ":";
-                const keyWidth = ctx.measureText(keyText).width;
-                
-                const valueX = statsX + keyWidth + 5;
-                const valueMaxWidth = statsWidth - (keyWidth + 5);
-
-                // Hodnota (Normální)
-                ctx.font = '20px sans-serif';
-                
-                const words = attr.value.split(/\s+/);
-                let line = '';
-                let tempY = currentY;
-
-                for(let n = 0; n < words.length; n++) {
-                    const word = words[n];
-                    const testLine = line + (line.length > 0 ? ' ' : '') + word;
-                    const testWidth = ctx.measureText(testLine).width;
-
-                    if (testWidth > valueMaxWidth && line.length > 0) {
-                        // Vykreslí předchozí řádek
-                        // ctx.fillText(line, valueX, tempY); // Vykreslovací kód byl odebrán
-                        tempY += lineHeight;
-                        line = word;
-                    } else {
-                        line = testLine;
-                    }
-                    // Omezení na 3 řádky (pro atributy) - pouze pro výpočet prostoru
-                    if (tempY > currentY + (2 * lineHeight) + 5) {
-                         // line += '...'; // Indikátor zkrácení
-                         // break; 
-                    }
-                }
-                
-                // Vykreslí poslední řádek (nebo jediný řádek)
-                if (line.length > 0) {
-                    // ctx.fillText(line, valueX, tempY); // Vykreslovací kód byl odebrán
-                    tempY += lineHeight;
-                }
-                
-                // Nyní provedeme skutečné vykreslení, abychom znali přesnou pozici
-                ctx.font = 'bold 20px sans-serif';
-                ctx.fillText(keyText, statsX, currentY);
-                
-                ctx.font = '20px sans-serif';
-                ctx.fillStyle = '#000000';
-                
-                // Opakujeme logika vykreslení pro zjištění finalY
-                let lineDraw = '';
-                let finalY = currentY;
-
-                for(let n = 0; n < words.length; n++) {
-                    const word = words[n];
-                    const testLine = lineDraw + (lineDraw.length > 0 ? ' ' : '') + word;
-                    const testWidth = ctx.measureText(testLine).width;
-
-                    if (testWidth > valueMaxWidth && lineDraw.length > 0) {
-                        ctx.fillText(lineDraw, valueX, finalY);
-                        finalY += lineHeight;
-                        lineDraw = word;
-                    } else {
-                        lineDraw = testLine;
-                    }
-                    if (finalY > currentY + (2 * lineHeight) + 5) {
-                         lineDraw += '...'; 
-                         break; 
-                    }
-                }
-
-                if (lineDraw.length > 0) {
-                    ctx.fillText(lineDraw, valueX, finalY);
-                    finalY += lineHeight;
-                }
-                
-                currentY = finalY; // Posunout pro další atribut
-                lowestY = Math.max(lowestY, currentY);
-            }
-        });
-        return lowestY;
-    }
-
-    // NOVÁ FUNKCE: Kreslení měřáků/charges
-    function drawCharges(ctx, x, y, width, maxUses, currentUses, usesType) {
-        if (maxUses <= 0 || usesType === '') return y; // Není co kreslit
-        
-        const padding = 5;
-        const barHeight = CHARGES_HEIGHT - 2 * padding;
-        const barY = y + padding;
-        const usedFraction = Math.min(1, Math.max(0, currentUses / maxUses));
-        
-        let label = '';
-        let labelColor = '#000000';
-
-        // Rámeček měřáku
-        ctx.strokeStyle = '#333333';
-        ctx.lineWidth = 3;
-        ctx.fillStyle = '#E0E0E0';
-        ctx.strokeRect(x, y, width, CHARGES_HEIGHT);
-        ctx.fillRect(x, y, width, CHARGES_HEIGHT);
-
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.font = 'bold 16px sans-serif';
-        
-        const centerX = x + width / 2;
-        const centerY = y + CHARGES_HEIGHT / 2;
-
-        switch (usesType) {
-            case 'DOTS':
-                // Tečky / Charges
-                label = "Charges: " + currentUses + "/" + maxUses;
-                const dotSize = 10;
-                const dotSpacing = 15;
-                const totalDotWidth = maxUses * dotSize + (maxUses - 1) * dotSpacing;
-                let dotX = centerX - totalDotWidth / 2 + dotSize / 2;
-
-                for (let i = 0; i < maxUses; i++) {
-                    ctx.fillStyle = i < currentUses ? '#22C55E' : '#B91C1C'; // Green/Red
-                    ctx.beginPath();
-                    ctx.arc(dotX, centerY, dotSize / 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    dotX += dotSize + dotSpacing;
-                }
-                break;
-            case 'HEARTS':
-                // Srdce / Životy
-                label = "HP: " + currentUses + "/" + maxUses;
-                ctx.fillStyle = '#B91C1C'; // Red
-                ctx.font = '20px sans-serif';
-                ctx.fillText(label, centerX, centerY);
-                break;
-            case 'DICE':
-                // Kostky / Použití za den/kolo
-                label = "Uses: " + currentUses + "/" + maxUses + " (Per Day)";
-                ctx.fillStyle = '#1D4ED8'; // Blue
-                ctx.font = '20px sans-serif';
-                ctx.fillText(label, centerX, centerY);
-                break;
-            case 'BAR':
-                // Bar / Procenta/Stav
-                const fillWidth = width * usedFraction;
-                let barColor = '#4B5563'; // Default Gray
-                if (usedFraction > 0.6) barColor = '#10B981'; // Green
-                else if (usedFraction > 0.3) barColor = '#F59E0B'; // Yellow
-                else barColor = '#EF4444'; // Red
-
-                ctx.fillStyle = barColor;
-                ctx.fillRect(x, y, fillWidth, CHARGES_HEIGHT);
-
-                label = "Status: " + Math.round(usedFraction * 100) + "%";
-                labelColor = (usedFraction < 0.5) ? '#FFFFFF' : '#000000';
-                
-                ctx.fillStyle = labelColor;
-                ctx.fillText(label, centerX, centerY);
-                break;
-        }
-
-        ctx.textAlign = 'left'; // Reset
-        ctx.textBaseline = 'top'; // Reset
-        
-        return y + CHARGES_HEIGHT + PADDING; // Nová Y pozice
-    }
-
-
-    // NOVÁ POMOCNÁ FUNKCE: Vykreslení data
-    function drawCreationDate(ctx) {
-        const now = new Date();
-        const dateString = now.toLocaleDateString('cs-CZ', { year: 'numeric', month: '2-digit', day: '2-digit' });
-        const timeString = now.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
-        
-        // Zobrazení jazyka generování
-        const langNote = printLanguage === 'CZ' ? 'CZ' : 'ENG';
-        const creationText = `Vytvořeno: ${dateString} ${timeString} (${langNote}) V_0.19`; // Přidána poznámka o jazyku a verze
-
-        ctx.fillStyle = '#555555'; // Jemně šedá barva
-        ctx.font = '14px sans-serif'; // Malé písmo
-        ctx.textAlign = 'left';
-        
-        // Pozice v levém dolním rohu, kousek od okraje
-        ctx.fillText(creationText, PADDING, BASE_CARD_H - PADDING + 5); 
-        ctx.textAlign = 'left'; // Reset
-    }
-
-
-    function drawCardOnCanvas(ctx, cardData, targetWidth, targetHeight) {
-        // Nastavení plátna
-        ctx.canvas.width = targetWidth;
-        ctx.canvas.height = targetHeight;
-        
-        const cardSectionWidth = BASE_CARD_W - 2 * PADDING;
-        const textPadding = 10;
-        const descriptionLineHeight = 25; // Odstup řádků popisu (větší než velikost fontu pro čitelnost)
-
-        // 1. Vyplnění pozadí a rámeček celé karty
-        // DŮLEŽITÉ: Pozadí KARTY musí být vždy bílé, bez ohledu na Dark Mode
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, targetWidth, targetHeight);
-        ctx.strokeStyle = '#000000';
-        ctx.lineWidth = 8; // JEŠTĚ VĚTŠÍ tloušťka rámečku
-        
-        const cardType = cardTypeInput.value;
-        
-        // Nastavení stylu čáry rámečku podle typu karty (ZVĚTŠENÉ MĚŘÍTKO)
-        if (cardType === 'SPELL') {
-             ctx.setLineDash([18, 6, 6, 6]); // Větší vlnovitý/fancy dash pattern
-             ctx.lineDashOffset = 0;
-        } else if (cardType === 'WEAPON') {
-             ctx.setLineDash([40, 10]); // Větší špičatý/dlouhý dash pattern
-             ctx.lineDashOffset = 0;
-        } else if (cardType === 'EQUIPMENT') {
-             ctx.setLineDash([20, 10]); // Větší čárkovaná
-             ctx.lineDashOffset = 0;
-        } else if (cardType === 'CONSUMABLE') {
-             ctx.setLineDash([4, 4]); // Větší tečkovaná
-             ctx.lineDashOffset = 0;
-        } else {
-            ctx.setLineDash([]); // Plná čára pro Item/Other
-        }
-
-        ctx.strokeRect(0, 0, targetWidth, targetHeight);
-        ctx.setLineDash([]); // Reset dash pro další kreslení
-        ctx.lineWidth = 2; // Zmenšení tloušťky pro vnitřní prvky
-        ctx.fillStyle = '#000000';
-        ctx.textBaseline = 'top';
-
-        // --- 1. Název Karty (Vždy v 1. sekci) ---
-        let titleText = cardData.title || '';
-        if (cardData.translation) {
-             titleText += ` (${cardData.translation})`;
-        }
-        
-        const typeTextRaw = cardTypeInput.options[cardTypeInput.selectedIndex].text;
-        const typeEmoji = TYPE_EMOJI[cardType] || '❓';
-        const fullTypeText = `${typeEmoji} ${typeTextRaw}`;
-        
-        const typeFontSize = 22;
-        ctx.font = `bold ${typeFontSize}px sans-serif`;
-        const typeWidth = ctx.measureText(fullTypeText).width;
-        
-        // Vypočtená šířka pro název, aby se zabránilo kolizi s typem (s mezerou PADDING)
-        // NOVÁ LOGIKA: Ujistíme se, že název a typ mají dostatek místa
-        const availableTitleWidth = cardSectionWidth - typeWidth - PADDING * 0.5;
-
-        let titleFontSize = 40;
-        let wrappedTitleLines = [titleText];
-
-        // Zmenšení fontu, dokud se název nevejde na šířku
-        while (titleFontSize > 25) {
-            ctx.font = `bold ${titleFontSize}px sans-serif`;
-            const testWidth = ctx.measureText(titleText).width;
-            if (testWidth <= availableTitleWidth) {
-                break; // Vešlo se na jeden řádek
-            }
-            titleFontSize -= 2;
-        }
-        
-        // Zalomit text, pokud je i s malým fontem příliš dlouhý
-        if (titleFontSize <= 25) {
-             wrappedTitleLines = wrapText(ctx, titleText, availableTitleWidth, `bold ${titleFontSize}px sans-serif`);
-        }
-        
-        // Výpočet pozice pro název
-        const titleY = PADDING;
-        
-        ctx.font = `bold ${titleFontSize}px sans-serif`;
-        ctx.textAlign = 'left'; // Zarovnání názvu doleva
-        
-        // Vykreslení názvu (pouze první řádek pro jednoduchost, pokud se zalamuje)
-        // Vykreslení pouze prvního řádku pro název, aby nekolidoval s horní čárou
-        ctx.fillText(wrappedTitleLines[0], PADDING, titleY);
-
-        // Vykreslení typu (pravý horní roh)
-        ctx.font = `bold ${typeFontSize}px sans-serif`; 
-        ctx.textAlign = 'right';
-        ctx.fillStyle = '#333333';
-        ctx.fillText(fullTypeText, BASE_CARD_W - PADDING, PADDING + 5);
-        ctx.textAlign = 'left'; // Reset
-
-        // Horizontální čára pod názvem (v první sekci)
-        ctx.beginPath();
-        ctx.moveTo(PADDING, PADDING * 2.5);
-        ctx.lineTo(BASE_CARD_W - PADDING, PADDING * 2.5);
-        ctx.stroke();
-        
-        let middleSectionYStart = PADDING * 2.5 + 10;
-        
-        // --- 2. Rozdělení Prostřední Sekce ---
-        const imageX = PADDING;
-        const imageY = middleSectionYStart;
-        const statsX = imageX + IMAGE_SIZE + PADDING;
-        const statsWidth = BASE_CARD_W - statsX - PADDING;
-
-        // Rámeček Obrázku
-        ctx.lineWidth = 2;
-        ctx.strokeRect(imageX, imageY, IMAGE_SIZE, IMAGE_SIZE);
-
-        if (cardData.image) {
-            // Použít pomocný canvas pro zajištění, že je obrázek perfektní čtverec a nedochází k deformaci
-            const tempImgCanvas = document.createElement('canvas');
-            const tempImgCtx = tempImgCanvas.getContext('2d');
-            tempImgCanvas.width = IMAGE_SIZE;
-            tempImgCanvas.height = IMAGE_SIZE;
-
-            // Výpočet poměru stran a oříznutí
-            const img = cardData.image;
-            const imgAspect = img.width / img.height;
-            const canvasAspect = 1;
-
-            let sourceX = 0;
-            let sourceY = 0;
-            let sourceWidth = img.width;
-            let sourceHeight = img.height;
-
-            if (imgAspect > canvasAspect) { // Obrázek je širší
-                sourceWidth = img.height * canvasAspect;
-                sourceX = (img.width - sourceWidth) / 2;
-            } else if (imgAspect < canvasAspect) { // Obrázek je vyšší
-                sourceHeight = img.width / canvasAspect;
-                sourceY = (img.height - sourceHeight) / 2;
-            }
-            
-            tempImgCtx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, IMAGE_SIZE, IMAGE_SIZE);
-            ctx.drawImage(tempImgCanvas, imageX, imageY);
-
-        } else {
-            ctx.font = '24px sans-serif';
-            ctx.fillStyle = '#AAAAAA';
-            ctx.fillText('Obrázek itemu', imageX + 80, imageY + 140);
-            ctx.fillStyle = '#000000';
-        }
-
-        // Atributy
-        // Spočítáme finální Y pozici pro atributy (nejnižší bod)
-        const lowestYAttribute = drawAttributes(ctx, cardData.attributes, statsX, imageY, statsWidth);
-        
-        // --- 2b. Měřáky (Charges/Uses) pod obrázkem ---
-        let descriptionYStart;
-        
-        if (cardData.uses && cardData.uses.usesType) {
-             const usesX = imageX;
-             const usesY = imageY + IMAGE_SIZE + PADDING / 2;
-             const usesWidth = IMAGE_SIZE;
-             
-             // Kreslení měřáků. drawCharges vrátí novou Y pozici
-             const newYAfterCharges = drawCharges(ctx, usesX, usesY, usesWidth, cardData.uses.maxUses, cardData.uses.currentUses, cardData.uses.usesType);
-             
-             // Popis začíná pod měřáky (nebo atributy, whichever is lower)
-             descriptionYStart = Math.max(newYAfterCharges, lowestYAttribute + PADDING);
-        } else {
-             // Pokud nejsou měřáky, popis začíná pod obrázkem nebo atributy
-             descriptionYStart = Math.max(imageY + IMAGE_SIZE, lowestYAttribute) + PADDING;
-        }
-
-        // --- 3. Popis (Rozšíření) ---
-        
-        const descriptionY = descriptionYStart;
-
-        // Výběr popisu podle nastaveného jazyka
-        const rawText = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : cardData.description) || "";
-        
-        let remainingText = rawText;
-        let currentDrawX = PADDING; // X-souřadnice pro vykreslení v aktuální sekci
-        let sectionIndex = 0;
-        
-        // Maximální řádky v první sekci (výška od descriptionY po dolní padding)
-        const heightFirstSection = BASE_CARD_H - descriptionY - PADDING;
-        const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (22 + textPadding)) / descriptionLineHeight)); // 22 je zhruba výška nadpisu
-        
-        // Maximální řádky v plné sekci (výška celé karty mínus horní/dolní padding a nadpis)
-        const maxLinesFullSection = Math.max(0, Math.floor((BASE_CARD_H - 2 * PADDING - (22 + textPadding)) / descriptionLineHeight));
-
-        const descriptionTitle = "Popis:";
-
-        while (remainingText.trim().length > 0) { 
-            let maxLines;
-            let currentYDescription;
-            let sectionTopY;
-            let sectionHeight;
-
-            if (sectionIndex === 0) {
-                // První sekce
-                maxLines = maxLinesFirstSection;
-                sectionTopY = descriptionY;
-                sectionHeight = heightFirstSection;
-                currentYDescription = sectionTopY + textPadding + descriptionLineHeight;
-            } else {
-                // Rozšířené sekce
-                maxLines = maxLinesFullSection;
-                sectionTopY = PADDING;
-                sectionHeight = BASE_CARD_H - 2 * PADDING;
-                currentYDescription = sectionTopY + textPadding + descriptionLineHeight;
-                
-                // Oddělovací čára pro sekce (přerušovaná)
-                ctx.save();
-                ctx.strokeStyle = '#333333';
-                ctx.setLineDash([15, 15]);
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(currentDrawX - PADDING, PADDING);
-                ctx.lineTo(currentDrawX - PADDING, BASE_CARD_H - PADDING);
-                ctx.stroke();
-                ctx.restore();
-            }
-            
-            // Rámeček sekce
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = '#000000';
-            ctx.strokeRect(currentDrawX, sectionTopY, cardSectionWidth, sectionHeight);
-            
-            // Nadpis sekce
-            ctx.font = 'bold 22px sans-serif';
-            ctx.fillText(descriptionTitle, currentDrawX + textPadding, sectionTopY + textPadding);
-            
-            // Vykreslení textu popisu
-            const result = drawFormattedText(
-                ctx, remainingText, 
-                currentDrawX + textPadding, 
-                currentYDescription, 
-                cardSectionWidth - 2 * textPadding, 
-                descriptionLineHeight, 
-                18, // velikost fontu
-                maxLines
-            );
-            
-            remainingText = result.remainingText;
-            
-            sectionIndex++;
-            currentDrawX += BASE_CARD_W;
-
-            if (sectionIndex * BASE_CARD_W > targetWidth) break; // Ochrana proti nekonečné smyčce
-        }
-
-        // Vykreslení data a času (V_0.19)
-        drawCreationDate(ctx);
-    }
-    
-    // Pomocná funkce pro zalamování textu, když je příliš dlouhý (pro název)
     function wrapText(ctx, text, maxWidth, fontStyle) {
         ctx.font = fontStyle;
         const words = text.split(' ');
@@ -1795,22 +1878,21 @@
         return lines;
     }
 
-
-    window.updatePreview = function() {
+    
+    window.updatePreview = function(isHistoryLoad = false) {
+        
         const title = document.getElementById('cardTitle').value;
         const translation = document.getElementById('cardTranslation').value;
         const description = document.getElementById('cardDescription').value;
 
-        // Načtení a seřazení atributů
         const attributeElements = Array.from(document.querySelectorAll('#attributesContainer .attribute-row'));
         
-        // Zde NEPROVÁDÍME AUTOMATICKÉ ŘAZENÍ, ale pouze čteme pořadí, které nastavil SortableJS
         const attributes = attributeElements.map(row => ({
             key: row.querySelector('.attr-key').value.trim(),
-            value: row.querySelector('.attr-value').value.trim()
+            value: row.querySelector('.attr-value').value.trim(),
+            isUnidentified: row.querySelector('.is-unidentified') ? row.querySelector('.is-unidentified').checked : false
         })).filter(attr => attr.key && attr.value);
         
-        // Načtení dat z měřáků
         const usesData = {
             usesType: usesTypeInput.value,
             maxUses: parseInt(maxUsesInput.value) || 0,
@@ -1818,10 +1900,9 @@
         };
         
         if (usesData.currentUses > usesData.maxUses) {
-            usesData.currentUses = usesData.maxUses; // Oprava nesmyslných dat
+            usesData.currentUses = usesData.maxUses;
             currentUsesInput.value = usesData.maxUses;
         }
-
 
         currentCardData = {
             title,
@@ -1829,166 +1910,168 @@
             description,
             attributes,
             image: itemImageObject,
-            uses: usesData // NOVÉ: Měřáky
+            uses: usesData
         };
         
-        // --- Logika určení potřebné šířky karty (počet sekcí) ---
-        
-        // Vytáhneme data potřebná pro simulaci
-        const cardType = cardTypeInput.value;
-        
-        // 1. Zjistit, kolik místa zaberou horní sekce (Název, Obrázek, Atributy, Měřáky)
+        // --- SIMULACE pro výpočet potřebné šířky (počet sekcí) ---
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
         tempCanvas.width = BASE_CARD_W;
-        tempCanvas.height = BASE_CARD_H;
+        tempCtx.height = BASE_CARD_H;
 
-        // Použijeme zjednodušený výpočet pozic pro zjištění místa
         const cardSectionWidth = BASE_CARD_W - 2 * PADDING;
         const textPadding = 10;
-        const descriptionLineHeight = 25;
+        const descriptionLineHeight = 30;
         const lineHeightAttr = 30;
+        const descriptionFontSize = 20;
         
-        const middleSectionYStart = PADDING * 2.5 + 10;
+        // Simulace výšky názvu
+        const titleText = title + (translation ? ` (${translation})` : '');
+        let titleFontSize = 48;
+        tempCtx.font = `bold ${titleFontSize}px sans-serif`;
+        const typeWidth = tempCtx.measureText(TYPE_EMOJI[cardTypeInput.value] + " " + cardTypeInput.options[cardTypeInput.selectedIndex].text).width;
+        const availableTitleWidth = cardSectionWidth - typeWidth - PADDING * 0.5;
+        while (tempCtx.measureText(titleText).width > availableTitleWidth && titleFontSize > 24) {
+            titleFontSize -= 2;
+            tempCtx.font = `bold ${titleFontSize}px sans-serif`;
+        }
+        const wrappedTitleLines = wrapText(tempCtx, titleText, availableTitleWidth, `bold ${titleFontSize}px sans-serif`);
+        const titleHeight = wrappedTitleLines.length * (titleFontSize * 1.1);
+        const lineY = Math.max(PADDING + titleHeight, PADDING * 2.5 + 5);
+        const middleSectionYStart = lineY + 10;
+        
         const imageY = middleSectionYStart;
         const statsX = PADDING + IMAGE_SIZE + PADDING;
         const statsWidth = BASE_CARD_W - statsX - PADDING;
 
-        let currentY = imageY;
-        currentCardData.attributes.forEach(attr => {
+        const attributesRightOfImage = [];
+        const attributesBelowImage = [];
+        let tempYRight = imageY;
+        
+        currentCardData.attributes.forEach(attr => { 
             if (attr.key && attr.value) {
-                 // Tato část se musí shodovat s logikou v drawAttributes!
-                 if (currentY + lineHeightAttr > imageY + IMAGE_SIZE * 3) return; // Ochrana proti nekonečnu
-                 
-                 // Simulace výpočtu výšky pro attribute
-                 tempCtx.font = 'bold 20px sans-serif';
-                 const keyWidth = tempCtx.measureText(attr.key + ":").width;
-                 const valueMaxWidth = statsWidth - (keyWidth + 5);
+                if (attr.isUnidentified && !isIdentifiedCheckbox.checked) return;
+                tempCtx.font = 'bold 24px sans-serif';
+                const keyWidth = tempCtx.measureText(attr.key + ":").width;
+                const valueMaxWidth = statsWidth - (keyWidth + 5);
+                tempCtx.font = '24px sans-serif';
 
-                 tempCtx.font = '20px sans-serif';
-                 const words = attr.value.split(/\s+/);
-                 let line = '';
-                 let finalY = currentY;
+                const words = attr.value.split(/\s+/);
+                let currentAttrHeight = lineHeightAttr;
+                let currentLine = '';
+                
+                for(let n = 0; n < words.length; n++) {
+                    const word = words[n];
+                    const testLine = currentLine + (currentLine.length > 0 ? ' ' : '') + word;
+                    const testWidth = tempCtx.measureText(testLine).width;
+                    if (testWidth > valueMaxWidth && currentLine.length > 0) {
+                        currentAttrHeight += lineHeightAttr;
+                        currentLine = word;
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
 
-                 for(let n = 0; n < words.length; n++) {
-                     const word = words[n];
-                     const testLine = line + (line.length > 0 ? ' ' : '') + word;
-                     const testWidth = tempCtx.measureText(testLine).width;
-
-                     if (testWidth > valueMaxWidth && line.length > 0) {
-                         finalY += lineHeightAttr;
-                         line = word;
-                     } else {
-                         line = testLine;
-                     }
-                     // Toto je jen simulace, neomezujeme
-                 }
-                 if (line.length > 0) {
-                     finalY += lineHeightAttr;
-                 }
-                 currentY = finalY;
+                if (tempYRight + currentAttrHeight <= imageY + IMAGE_SIZE) {
+                    attributesRightOfImage.push(attr);
+                    tempYRight += currentAttrHeight;
+                } else {
+                    attributesBelowImage.push(attr);
+                }
             }
         });
         
-        // VÝPOČET Y STARTU PRO POPIS
-        const lowestYAttribute = currentY;
-        let descriptionYStart = Math.max(imageY + IMAGE_SIZE, lowestYAttribute);
-        
-        // Přidat výšku měřáku, pokud se má zobrazit
+        let yAfterUses = imageY + IMAGE_SIZE + PADDING / 2;
         if (usesData.usesType && usesData.maxUses > 0) {
-             descriptionYStart = Math.max(descriptionYStart, imageY + IMAGE_SIZE + CHARGES_HEIGHT + PADDING / 2);
+             yAfterUses += CHARGES_HEIGHT + PADDING / 2; 
         }
+
+        let currentYBelow = yAfterUses;
+        attributesBelowImage.forEach(attr => {
+             if (attr.key && attr.value) {
+                const keyWidth = tempCtx.measureText(attr.key + ":").width;
+                const valueMaxWidth = cardSectionWidth - (keyWidth + 5);
+                const words = attr.value.split(/\s+/);
+                let currentAttrHeight = lineHeightAttr;
+                let currentLine = '';
+                for(let n = 0; n < words.length; n++) {
+                    const word = words[n];
+                    const testLine = currentLine + (currentLine.length > 0 ? ' ' : '') + word;
+                    if (tempCtx.measureText(testLine).width > valueMaxWidth && currentLine.length > 0) {
+                        currentAttrHeight += lineHeightAttr;
+                        currentLine = word;
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
+                currentYBelow += currentAttrHeight;
+             }
+        });
         
-        descriptionYStart += PADDING;
-        
-        // Konec výpočtu Y STARTU PRO POPIS
-        
-        const heightFirstSection = BASE_CARD_H - descriptionYStart - PADDING;
-        const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (22 + textPadding)) / descriptionLineHeight));
-        
-        // Použijeme text popisu podle vybraného jazyka
+        let descriptionYStart = Math.max(tempYRight, currentYBelow) + PADDING;
+
+        const heightFirstSection = BASE_CARD_H - descriptionYStart - PADDING - 20;
+        const maxLinesFirstSection = Math.max(0, Math.floor((heightFirstSection - (descriptionFontSize + textPadding)) / descriptionLineHeight));
         const textToSimulate = (printLanguage === 'CZ' ? document.getElementById('cardDescriptionCz').value : description) || "";
 
         let requiredSections = 1;
         let tempRemainingText = textToSimulate;
 
         if (maxLinesFirstSection > 0) {
-            // Simulace kreslení textu na první sekci
-            const resultFirst = drawFormattedText(tempCtx, tempRemainingText, 0, 0, cardSectionWidth - 2 * textPadding, descriptionLineHeight, 18, maxLinesFirstSection);
+            const resultFirst = drawFormattedText(tempCtx, tempRemainingText, 0, 0, cardSectionWidth - 2 * textPadding, descriptionLineHeight, descriptionFontSize, maxLinesFirstSection, false, isIdentifiedCheckbox.checked);
             tempRemainingText = resultFirst.remainingText;
         }
 
-
-        // Simulace výpočtu pro další sekce (full height)
-        const maxLinesFullSection = Math.max(0, Math.floor((BASE_CARD_H - 2 * PADDING - (22 + textPadding)) / descriptionLineHeight));
+        const maxLinesFullSection = Math.max(0, Math.floor((BASE_CARD_H - 2 * PADDING - (descriptionFontSize + textPadding + 20)) / descriptionLineHeight));
         
         while (tempRemainingText.trim().length > 0) {
             requiredSections++;
             if (maxLinesFullSection > 0) {
-                const resultFull = drawFormattedText(tempCtx, tempRemainingText, 0, 0, cardSectionWidth - 2 * textPadding, descriptionLineHeight, 18, maxLinesFullSection);
+                const resultFull = drawFormattedText(tempCtx, tempRemainingText, 0, 0, cardSectionWidth - 2 * textPadding, descriptionLineHeight, descriptionFontSize, maxLinesFullSection, false, isIdentifiedCheckbox.checked);
                 tempRemainingText = resultFull.remainingText;
             } else {
-                break; // Nemáme místo ani v plné sekci
+                break;
             }
-            
-            if (requiredSections > 10) break; // Z bezpečnostních důvodů
+            if (requiredSections > 10) break;
         }
         
-        requiredSections = Math.max(requiredSections, 1);
-
         const finalWidth = requiredSections * BASE_CARD_W;
         
-        // Nastavení velikosti pro náhled (škálování)
-        const scaleFactor = 3; 
+        const scaleFactor = 3;
         canvas.style.width = `${finalWidth / scaleFactor}px`;
         canvas.style.height = `${BASE_CARD_H / scaleFactor}px`;
-        canvas.style.aspectRatio = `${finalWidth} / ${BASE_CARD_H}`; // Zajištění správného poměru stran
+        canvas.style.aspectRatio = `${finalWidth} / ${BASE_CARD_H}`;
         
-        // Vykreslení na náhledový canvas
         drawCardOnCanvas(ctx, currentCardData, finalWidth, BASE_CARD_H);
-        
-        // Aktualizace stavu tlačítka pro překlad
         updateAnalyzeButtonState();
     }
     
-    // --- MODAL A ZOOM FUNKCE ---
-    
-    window.showZoomModal = function() {
-        const finalWidth = ctx.canvas.width;
-        const finalHeight = ctx.canvas.height;
+    // --- EXPORT FUNKCE ---
 
-        zoomCanvas.width = finalWidth;
-        zoomCanvas.height = finalHeight;
+    window.copyJSONToClipboard = function() { 
+        const dataToExport = getFormState();
+        const jsonText = JSON.stringify(dataToExport, null, 2);
 
-        // Kopírování obsahu
-        const image = ctx.getImageData(0, 0, finalWidth, finalHeight);
-        zoomCanvas.getContext('2d').putImageData(image, 0, 0);
-
-        // Nastavení CSS velikosti pro zobrazení v modalu (omezíme na viewport)
-        zoomCanvas.style.width = 'auto'; 
-        zoomCanvas.style.height = 'auto'; 
-        zoomCanvas.style.maxWidth = '90vw';
-        zoomCanvas.style.maxHeight = '90vh';
-        
-        zoomModal.classList.remove('hidden');
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(jsonText)
+                .then(() => {
+                    logMessage("JSON zkopírován do schránky.", 'success');
+                })
+                .catch(err => {
+                    logMessage('Chyba při kopírování JSON: ' + err.message, 'error');
+                });
+        } else {
+            logMessage("Kopírování do schránky není v tomto prostředí podporováno.", 'warn');
+        }
     }
-
-    window.closeZoomModal = function() {
-        zoomModal.classList.add('hidden');
-    }
-
-    // --- FUNKCE PRO EXPORT DAT ---
     
-    // Získání názvu souboru (společná logika pro PDF a JSON)
     function getExportFilename(extension) {
         const cardType = cardTypeInput.value.toUpperCase();
-        // Nahrazení nepovolených znaků podtržítky
         const cardName = (currentCardData.title || 'karta').replace(/[^a-zA-Z0-9-()]/g, '_');
         
         let cardLevel = 'N_A';
         const levelAttr = currentCardData.attributes.find(attr => attr.key.toUpperCase() === 'LEVEL' || attr.key.toUpperCase() === 'ÚROVEŇ');
         if (levelAttr) {
-            // Vyčistíme level pro název souboru
             cardLevel = levelAttr.value.replace(/[^a-zA-Z0-9]/g, '');
             if (cardLevel === '') cardLevel = 'N_A';
         }
@@ -1996,189 +2079,139 @@
         const sectionCount = Math.round(ctx.canvas.width / BASE_CARD_W);
         const dimensions = `${CARD_W_MM}x${CARD_H_MM}mm_x${sectionCount}`;
         
-        // Formát: [typ]_[level]___[nazev]___[(rozmer)].[extenze]
         return `${cardType}_${cardLevel}___${cardName}___(${dimensions}).${extension}`;
     }
 
     window.exportPDF = function() {
         if (!currentCardData.title) {
-            console.error("Vyplňte prosím Název karty.");
+            logMessage("Chyba: Vyplňte prosím Název karty před exportem.", 'error');
             return;
         }
 
+        logMessage("Generuji PDF pro tisk. Čekejte...", 'info');
+
         const filename = getExportFilename('pdf');
         
-        // Získání finálních rozměrů z preview canvas (které byly dynamicky nastaveny)
         const targetWidth = ctx.canvas.width;
         const targetHeight = ctx.canvas.height;
         hiddenCanvas.width = targetWidth;
         hiddenCanvas.height = targetHeight;
 
-        // Překreslení do skrytého canvasu s plnou kvalitou
         drawCardOnCanvas(hiddenCtx, currentCardData, targetWidth, targetHeight);
         
         const imageData = hiddenCanvas.toDataURL('image/png');
 
-        // Výpočet rozměrů v mm
         const finalWidthMM = targetWidth / PX_PER_MM;
         const finalHeightMM = targetHeight / PX_PER_MM;
 
         const { jsPDF } = window.jspdf;
-        // Přidáme malou rezervu (2mm) pro ořez a nastavení formátu
         const doc = new jsPDF({
             orientation: finalWidthMM > finalHeightMM ? 'l' : 'p',
             unit: 'mm',
-            format: [finalWidthMM + 2, finalHeightMM + 2] 
+            format: [finalWidthMM + 2, finalHeightMM + 2]
         });
         
-        // Přidání obrázku (karty) s 1mm okrajem
         doc.addImage(imageData, 'PNG', 1, 1, finalWidthMM, finalHeightMM, '', 'FAST');
 
-        // Kreslení ořezových značek a linie složení
         doc.setDrawColor(0);
         doc.setLineWidth(0.1);
-        doc.rect(1, 1, finalWidthMM, finalHeightMM); // Tenký rámeček pro ořez (bleed)
+        doc.rect(1, 1, finalWidthMM, finalHeightMM);
         
         const sectionCount = Math.round(ctx.canvas.width / BASE_CARD_W);
         if (sectionCount > 1) {
-            // Značky pro složení/přeložení (každých 63mm)
             for (let i = 1; i < sectionCount; i++) {
-                const foldX = i * CARD_W_MM + 1; // +1mm kvůli okraji
-                // Krátké čáry nahoře a dole
+                const foldX = i * CARD_W_MM + 1;
                 doc.line(foldX, 1, foldX, 4);
                 doc.line(foldX, finalHeightMM - 2, foldX, finalHeightMM + 1);
             }
         }
         
         doc.save(filename);
+        logMessage(`PDF soubor "${filename}" byl vygenerován a stažen.`, 'success');
     }
     
-    // NOVÁ FUNKCE: Export dat do JSON souboru
-    window.exportJSON = function() {
-        if (!currentCardData.title) {
-            console.error("Vyplňte prosím Název karty.");
-            return;
-        }
-
-        // Získání čistých dat z formuláře
+    function getFormState() {
         const attributes = Array.from(document.querySelectorAll('#attributesContainer .attribute-row'))
-            .map(row => ({
-                key: row.querySelector('.attr-key').value.trim(),
-                value: row.querySelector('.attr-value').value.trim()
-            }))
-            .filter(attr => attr.key && attr.value);
-
-        const dataToExport = {
-            title: document.getElementById('cardTitle').value,
-            translation: document.getElementById('cardTranslation').value,
-            cardType: cardTypeInput.value,
-            description: document.getElementById('cardDescription').value,
-            descriptionCz: document.getElementById('cardDescriptionCz').value,
-            maxUses: parseInt(maxUsesInput.value) || 0,
-            currentUses: parseInt(currentUsesInput.value) || 0,
-            usesType: usesTypeInput.value,
-            attributes: attributes
-        };
-        
-        const filename = getExportFilename('json');
-        const jsonText = JSON.stringify(dataToExport, null, 2);
-        
-        const blob = new Blob([jsonText], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+             .map(row => ({
+                 key: row.querySelector('.attr-key').value.trim(),
+                 value: row.querySelector('.attr-value').value.trim(),
+                 isUnidentified: row.querySelector('.is-unidentified') ? row.querySelector('.is-unidentified').checked : false
+             }))
+             .filter(attr => attr.key && attr.value);
+            
+         return {
+             title: document.getElementById('cardTitle').value,
+             translation: document.getElementById('cardTranslation').value,
+             cardType: cardTypeInput.value,
+             description: document.getElementById('cardDescription').value,
+             descriptionCz: document.getElementById('cardDescriptionCz').value,
+             isIdentified: isIdentifiedCheckbox.checked,
+             maxUses: parseInt(maxUsesInput.value) || 0,
+             currentUses: parseInt(currentUsesInput.value) || 0,
+             usesType: usesTypeInput.value,
+             attributes: attributes
+            };
     }
+    
+    // --- INICIALIZACE ---
 
-    // Inicializace SortableJS
     function initSortable() {
         Sortable.create(attributesContainer, {
             animation: 150,
             ghostClass: 'bg-indigo-200',
-            handle: '.attribute-row', // Celý řádek je nyní úchyt
+            handle: '.attribute-row',
             onEnd: function (evt) {
-                // Po přesunutí se aktualizuje náhled a tedy i pořadí atributů
-                updatePreview(); 
+                updatePreview();
+                logMessage("Změněno pořadí atributů.", 'info');
             }
         });
     }
 
-    // Inicializace
     window.onload = function() {
-        // --- Dark Mode Inicializace ---
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            body.classList.add('dark');
+        // --- Dark Mode Inicializace (Systémové preference) ---
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+             document.body.classList.add('dark');
         }
-        updateThemeIcons();
         
-        // Inicializujeme API klíč z localStorage, pokud existuje (pokud Canvas API klíč není k dispozici)
-        if (!CANVAS_API_KEY) {
-            const storedApiKey = localStorage.getItem('geminiApiKey');
-            if (storedApiKey) {
-                geminiApiKeyInput.value = storedApiKey;
-            }
-            // Zobrazit vstup pro lokální klíč, pokud není dostupný Canvas klíč
-            document.getElementById('apiKeyHint').style.display = 'none'; 
-            geminiApiKeyInput.disabled = false;
-        } else {
-             // Skrýt tip/vstup pro lokální klíč, pokud je dostupný Canvas klíč
+        // --- API klíč a UI ---
+        if (CANVAS_API_KEY_EXISTS) {
              document.getElementById('apiKeyHint').style.display = 'inline';
              geminiApiKeyInput.disabled = true;
              geminiApiKeyInput.placeholder = "Používá se klíč Canvasu. Není potřeba zadávat.";
+        } else {
+             const storedApiKey = localStorage.getItem('geminiApiKey');
+             if (storedApiKey) geminiApiKeyInput.value = storedApiKey;
+             document.getElementById('apiKeyHint').style.display = 'none';
+             geminiApiKeyInput.disabled = false;
         }
         
-        initSortable(); // Inicializace Drag & Drop
-        
-        // Nastaví výchozí jazyk a aktualizuje vzhled tlačítek
+        initSortable();
         const storedLang = localStorage.getItem('printLanguage') || 'ENG';
-        setPrintLanguage(storedLang); 
-
-        // První reset vyčistí všechna pole, ale nevolá modal (V_0.19)
-        // V_0.18 použil resetAllFields, musíme implementovat performReset
-        
-        // Vykonejte reset bez modalu
-        document.getElementById('cardTitle').value = '';
-        document.getElementById('cardTranslation').value = '';
-        document.getElementById('cardDescription').value = '';
-        document.getElementById('cardDescriptionCz').value = '';
-        cardTypeInput.value = 'ITEM';
-        usesTypeInput.value = '';
-        maxUsesInput.value = '0';
-        currentUsesInput.value = '0';
-        clearAttributes();
-        removeItemImage();
-        jsonInput.value = '';
-        clearAllScreenshots();
-        
-        updatePreview();
+        setPrintLanguage(storedLang);
+        performReset(); 
+        document.addEventListener('paste', handlePaste);
+        updateAnalyzeButtonState();
+        logMessage(`TTRPG Generátor spuštěn (Verze ${VERSION}). Vítejte!`, 'info');
     };
 
-    // Naslouchání změnám v hlavních polích
+    // --- Události pro aktualizaci ---
     document.getElementById('cardTitle').addEventListener('input', updatePreview);
     document.getElementById('cardTranslation').addEventListener('input', updatePreview);
     document.getElementById('cardDescription').addEventListener('input', updatePreview);
     document.getElementById('cardDescriptionCz').addEventListener('input', updatePreview); 
-    document.getElementById('cardType').addEventListener('change', updatePreview); 
-    document.getElementById('attributesContainer').addEventListener('input', updatePreview);
+    document.getElementById('cardType').addEventListener('change', updatePreview);
     usesTypeInput.addEventListener('change', updatePreview);
     maxUsesInput.addEventListener('input', updatePreview);
     currentUsesInput.addEventListener('input', updatePreview);
-
-    // Naslouchání změnám v API klíči (ukládá se jen, pokud nepoužíváme klíč Canvasu)
+    
+    // Uložení lokálního klíče
     geminiApiKeyInput.addEventListener('input', function() {
-        if (!CANVAS_API_KEY) {
+        if (!CANVAS_API_KEY_EXISTS) {
             localStorage.setItem('geminiApiKey', geminiApiKeyInput.value.trim());
         }
         updateAnalyzeButtonState();
     });
     
-    // Naslouchání změnám pro aktivaci tlačítka překladu
-    document.getElementById('cardDescription').addEventListener('input', updateAnalyzeButtonState);
 </script>
 
 </body>
