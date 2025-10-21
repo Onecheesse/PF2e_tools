@@ -116,9 +116,9 @@
             </button>
         </div>
 
-        <!-- VERZE V_1.s.0 (Aktualizováno) -->
+        <!-- VERZE V_1.s.02 (Aktualizováno) -->
         <button onclick="showChangelogModal()" class="text-xs text-gray-400 text-right hover:text-indigo-400 transition" title="Historie změn">
-            V_1.s.0
+            V_1.s.02
         </button>
     </div>
 
@@ -236,7 +236,9 @@
                     </div>
                     <!-- NOVÉ NÁSTROJE pro obrázek -->
                     <div class="flex flex-col space-y-2 flex-grow">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Volitelné nástroje:</p>
+                        <button id="pasteTargetToggle" onclick="togglePasteTarget()" class="w-full bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 font-bold p-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition duration-150 shadow-md">
+                            Cílit CTRL+V sem
+                        </button>
                         <button onclick="showImageEditorModal()" class="w-full bg-orange-500 text-white font-bold p-2 rounded-lg hover:bg-orange-600 transition duration-150 shadow-md disabled:opacity-50" id="cropButton" disabled>
                             Ořez a Rotace Obrázku
                         </button>
@@ -334,19 +336,23 @@
                 <canvas id="printCanvas" width="744" height="1038" class="shadow-xl rounded-lg mx-auto" onclick="showZoomModal()"></canvas>
             </div>
 
-            <div class="flex space-x-4 w-full">
-                <!-- Kopírovat JSON tlačítko -->
-                <button onclick="copyJSONToClipboard()" class="w-1/2 bg-gray-600 text-white font-bold p-3 rounded-lg hover:bg-gray-700 transition duration-150 shadow-lg mt-4">
-                    <div class="flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        Kopírovat JSON
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-4">
+                <!-- Stáhnout PDF tlačítko -->
+                <button onclick="exportPDF()" class="w-full bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Stáhnout PDF
                 </button>
-                <button onclick="exportPDF()" class="w-1/2 bg-black text-white font-bold p-3 rounded-lg hover:bg-gray-800 transition duration-150 shadow-lg mt-4">
-                    <div class="flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Stáhnout PDF
-                    </div>
+                <!-- Stáhnout JSON tlačítko -->
+                <button onclick="downloadJSON()" class="w-full bg-blue-600 text-white font-bold p-3 rounded-lg hover:bg-blue-700 transition duration-150 shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Stáhnout JSON
+                </button>
+            </div>
+            <div class="mt-4 w-full">
+                <!-- Kopírovat JSON tlačítko -->
+                <button onclick="copyJSONToClipboard()" class="w-full bg-gray-600 text-white font-bold p-3 rounded-lg hover:bg-gray-700 transition duration-150 shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Kopírovat JSON
                 </button>
             </div>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">Stáhněte JSON pro uložení dat. Stáhněte PDF pro tisk.</p>
@@ -356,15 +362,22 @@
     <!-- Nová Sekce 7: Nastavení Gemini API -->
     <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
         <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-gray-700 dark:text-gray-200 dark:border-gray-700">7. Nastavení Gemini API</h2>
-        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <div class="flex-grow w-full">
                 <label for="geminiApiKey" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Váš Gemini API klíč 
                     <span id="apiKeyHint" class="text-indigo-600 font-normal text-xs">(Používá se lokální klíč Canvasu. Pro lokální spuštění jej zadejte zde.)</span>
                 </label>
-                <input type="text" id="geminiApiKey" class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white" placeholder="Zadejte klíč pro aktivaci analýzy obrázků">
+                <div class="relative mt-1">
+                    <input type="password" id="geminiApiKey" class="block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 border bg-white dark:bg-gray-700 dark:text-white pr-10" placeholder="Zadejte klíč pro aktivaci analýzy obrázků">
+                    <button id="toggleApiVisibility" onclick="toggleApiKeyVisibility()" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <svg id="eyeIcon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <svg id="eyeOffIcon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a10.05 10.05 0 013.453-5.118m7.536 10.236A9.96 9.96 0 0121.543 12c-1.274 4.057-5.064 7-9.543 7a9.96 9.96 0 01-2.063-.268M15 12a3 3 0 11-6 0 3 3 0 016 0zm-3 5a5 5 0 005-5M3 3l18 18"></path></svg>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-400 mt-1">Používaný model: <code class="font-mono">gemini-2.5-flash</code></p>
             </div>
-            <p class="text-sm text-gray-500 dark:text-gray-400 w-full md:w-auto flex-shrink-0">
+            <p class="text-sm text-gray-500 dark:text-gray-400 w-full md:w-auto flex-shrink-0 mt-4 md:mt-0 self-center">
                 Klíč získáte zdarma zde: 
                 <a href="https://aistudio.google.com/api-keys" target="_blank" class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 font-semibold underline">Google AI Studio</a>
             </p>
@@ -417,7 +430,7 @@
         <button onclick="closeInfoModal()" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 text-3xl hover:text-red-600 transition">
             &times;
         </button>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.0</h2>
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-blue-600 dark:text-blue-400">Návod k použití aplikace V_1.s.02</h2>
         
         <div class="space-y-6 text-gray-700 dark:text-gray-300">
             <p>Tento nástroj vám pomůže vytvořit tiskové předlohy pro TTRPG karty o rozměrech 63 mm x 88 mm (Standard Card Game Size).</p>
@@ -442,14 +455,14 @@
                     </ul>
                 </li>
                 <li>**Atributy:** Atributy můžete přetáhnout myší (Drag & Drop) pro změnu pořadí. Atributy, které se nevejdou vedle obrázku, se automaticky přesunou pod něj.</li>
-                <li>**Obrázek itemu:** Nahrajte obrázek a použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení čtvercového výřezu.</li>
+                <li>**Obrázek itemu:** Nahrajte obrázek, použijte **"Ořez a Rotace Obrázku"** pro přesné nastavení, nebo vložte obrázek ze schránky pomocí `Ctrl+V` po aktivaci tlačítka **"Cílit CTRL+V sem"**.</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-200">3. Výstup</h3>
             <ul class="list-disc list-inside ml-4 space-y-2">
                 <li>**Náhled Karty:** Náhled ukazuje kartu ve vysokém rozlišení pro tisk (744 x 1038 px při 300 DPI, což je 63x88 mm). Kliknutím na náhled zobrazíte detailní zoom.</li>
                 <li>**Jazyk Tísku:** Přepínání mezi ENG a CZ přepne primární jazyk popisu na kartě.</li>
-                <li>**Stáhnout PDF:** Vygeneruje PDF soubor s kartou, připravený k ořezu a tisku.</li>
+                <li>**Stáhnout PDF/JSON:** Vygenerujte PDF soubor pro tisk, nebo si stáhněte `.json` soubor pro zálohu a pozdější načtení.</li>
                 <li>**Aplikační konzole:** Sledujte průběh analýzy a případné chyby ve spodní části stránky.</li>
             </ul>
         </div>
@@ -466,7 +479,17 @@
         
         <div class="space-y-4 text-gray-700 dark:text-gray-300 h-96 overflow-y-auto pr-4">
             <div class="border-l-4 border-indigo-500 pl-4">
-                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.0 (Current) - NOVINKY</h3>
+                <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">V_1.s.02 (Current) - NOVINKY</h3>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>**Vložení obrázku itemu přes CTRL+V:** Přidáno tlačítko "Cílit CTRL+V sem", které dočasně přesměruje vkládání ze schránky na obrázek itemu místo na analýzu.</li>
+                    <li>**Stažení JSON:** Přidáno tlačítko pro přímé stažení dat karty jako `.json` soubor.</li>
+                    <li>**Skrytí API klíče:** Pole pro API klíč je nyní standardně skryté (typ `password`) s možností dočasného zobrazení.</li>
+                    <li>**Informace o modelu:** Zobrazuje se název používaného AI modelu (`gemini-2.5-flash`).</li>
+                    <li>**AI Helper Update:** Do nápovědy pro generování obrázků byl přidán odkaz na Gemini.</li>
+                </ul>
+            </div>
+            <div class="border-l-4 border-gray-400 pl-4 mt-6">
+                <h3 class="text-xl font-bold">V_1.s.0</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
                     <li>**Oprava API Chyb:** Přepracována logika pro opakování API požadavků (`fetchWithRetry`). Nyní se pokus opakuje pouze u relevantních chyb (např. 429 - Too Many Requests) a poskytuje detailnější chybové hlášky v konzoli pro lepší diagnostiku.</li>
                     <li>**Oprava Vykreslování:** Opravena kritická chyba ve smyčce, která mohla způsobit zamrznutí nebo chybné vykreslení karet s velmi dlouhým popisem.</li>
@@ -476,7 +499,7 @@
             <div class="border-l-4 border-gray-400 pl-4 mt-6">
                 <h3 class="text-xl font-bold">V_1.1.01</h3>
                 <ul class="list-disc list-inside ml-4 text-sm">
-                    <li>**API Model Upgrade:** Přepnuto na **Gemini 1.5 Flash** pro rychlejší a přesnější analýzu.</li>
+                    <li>**API Model Upgrade:** Přepnuto na **Gemini 2.5 Flash** pro rychlejší a přesnější analýzu.</li>
                     <li>**API Klíč (Canvas Fix):** Odstraněna nutnost manuálně zadat API klíč v Canvas prostředí.</li>
                     <li>**Aplikační konzole:** Přidána vizuální konzole pro transparentní zobrazení logů.</li>
                 </ul>
@@ -521,7 +544,7 @@
 <div id="aiPromptModal" class="modal hidden">
     <div class="modal-content bg-white dark:bg-gray-800 p-6 shadow-2xl relative w-full max-w-lg">
         <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2 text-purple-600 dark:text-purple-400">AI Prompt Helper</h2>
-        <p class="text-gray-700 dark:text-gray-300 mb-4">Zkopírujte prompt pro generování jednoduché černobílé ilustrace v nástrojích jako je <a href="https://aistudio.google.com/app/prompts/new" target="_blank" class="text-indigo-600 hover:underline">Google AI Studio</a>.</p>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">Zkopírujte prompt pro generování jednoduché černobílé ilustrace v nástrojích jako je <a href="https://aistudio.google.com/app/prompts/new" target="_blank" class="text-indigo-600 hover:underline">Google AI Studio</a> nebo <a href="https://gemini.google.com/app" target="_blank" class="text-indigo-600 hover:underline">Gemini</a>.</p>
         
         <label for="aiPromptTextarea" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Generovaný Prompt:</label>
         <textarea id="aiPromptTextarea" rows="4" readonly class="block w-full border-gray-300 dark:border-gray-600 rounded-lg shadow-sm p-3 border bg-gray-100 dark:bg-gray-700 dark:text-white text-sm font-mono"></textarea>
@@ -541,8 +564,8 @@
 </div>
 
 <script>
-    // --- KONSTANTY PRO KARTU (V_1.s.0) ---
-    const VERSION = 'V_1.s.0';
+    // --- KONSTANTY PRO KARTU (V_1.s.02) ---
+    const VERSION = 'V_1.s.02';
     const CARD_W_MM = 63;
     const CARD_H_MM = 88;
     const DPI = 300;
@@ -562,6 +585,7 @@
     let analysisImagesBase64 = []; 
     let printLanguage = 'ENG'; 
     let cropper = null; // Instance CropperJS
+    let pasteTargetIsItemImage = false; // Nová proměnná pro cílení vkládání
     
     // --- HISTORIE STAVU - ODSTRANĚNO ---
     const historyStack = [];
@@ -597,7 +621,8 @@
     const aiPromptModal = document.getElementById('aiPromptModal');
     const aiPromptTextarea = document.getElementById('aiPromptTextarea');
     const isIdentifiedCheckbox = document.getElementById('isIdentified');
-    const appConsole = document.getElementById('appConsole'); // NOVÁ KONZOLE
+    const appConsole = document.getElementById('appConsole');
+    const pasteTargetToggleButton = document.getElementById('pasteTargetToggle');
 
     // --- TEMPLATY A DATA PRO TYPY KARET ---
     
@@ -712,6 +737,13 @@
         if (CANVAS_API_KEY_EXISTS) return ""; // V Canvasu vracíme prázdný, platforma to vyřídí
         return geminiApiKeyInput.value.trim();
     }
+    
+    window.toggleApiKeyVisibility = function() {
+        const isPassword = geminiApiKeyInput.type === 'password';
+        geminiApiKeyInput.type = isPassword ? 'text' : 'password';
+        document.getElementById('eyeIcon').classList.toggle('hidden', isPassword);
+        document.getElementById('eyeOffIcon').classList.toggle('hidden', !isPassword);
+    }
 
     function updateAnalyzeButtonState() {
         const isCanvasEnvironment = CANVAS_API_KEY_EXISTS;
@@ -735,6 +767,7 @@
         if (apiKeyHint) {
              apiKeyHint.style.display = isCanvasEnvironment ? 'inline' : 'none';
              geminiApiKeyInput.disabled = isCanvasEnvironment;
+             document.getElementById('toggleApiVisibility').disabled = isCanvasEnvironment;
         }
     }
 
@@ -797,6 +830,9 @@
         document.getElementById('jsonInput').value = '';
         clearAllScreenshots();
         handleIdentificationChange(false); 
+        if (pasteTargetIsItemImage) {
+            togglePasteTarget(); // Resetovat cíl vkládání
+        }
         updatePreview();
         logMessage("Aplikace resetována. Všechna pole byla vyčištěna.", 'warn');
     }
@@ -1038,7 +1074,6 @@
         };
 
         try {
-            // Používá se moderní model Gemini 2.5 Flash
             const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent${urlKeyParam}`;
             const response = await fetchWithRetry(API_URL, {
                 method: 'POST',
@@ -1109,25 +1144,66 @@
 
 
     // --- OBRÁZKOVÉ NÁSTROJE ---
+    
+    // Přepínač cíle pro vkládání obrázku
+    window.togglePasteTarget = function() {
+        pasteTargetIsItemImage = !pasteTargetIsItemImage;
+        if (pasteTargetIsItemImage) {
+            pasteTargetToggleButton.classList.remove('bg-gray-200', 'dark:bg-gray-600');
+            pasteTargetToggleButton.classList.add('bg-green-500', 'dark:bg-green-600', 'text-white');
+            pasteTargetToggleButton.textContent = 'CTRL+V je aktivní';
+            logMessage("Vkládání (Ctrl+V) nyní cílí na obrázek itemu.", "warn");
+        } else {
+            pasteTargetToggleButton.classList.add('bg-gray-200', 'dark:bg-gray-600');
+            pasteTargetToggleButton.classList.remove('bg-green-500', 'dark:bg-green-600', 'text-white');
+            pasteTargetToggleButton.textContent = 'Cílit CTRL+V sem';
+            logMessage("Vkládání (Ctrl+V) nyní cílí na analýzu screenshotů (výchozí).", "info");
+        }
+    }
 
-    // Funkce pro vkládání obrázků ze schránky (Oprava)
+    // Funkce pro vkládání obrázků ze schránky (Upraveno)
     function handlePaste(event) {
         const items = (event.clipboardData || event.originalEvent.clipboardData).items;
         for (let index in items) {
             const item = items[index];
-            if (item.kind === 'file' && item.type.indexOf('image') !== -1) {
+            if (item.kind === 'file' && item.type.startsWith('image/')) {
                 event.preventDefault(); 
                 const blob = item.getAsFile();
                 if (blob) {
-                    processFile(blob);
+                    if (pasteTargetIsItemImage) {
+                        processItemImagePaste(blob);
+                    } else {
+                        processAnalysisFile(blob);
+                    }
                 }
-                return;
+                return; // Zpracujeme pouze první nalezený obrázek
             }
         }
     }
 
-    // Funkce pro zpracování souboru (přetaženého nebo vloženého)
-    function processFile(file) {
+    // Zpracování obrázku pro item (nová funkce)
+    function processItemImagePaste(file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                itemImageObject = img;
+                displayItemImagePreview(img.src);
+                updatePreview();
+                updateAnalyzeButtonState();
+                logMessage(`Obrázek itemu vložen ze schránky.`, 'success');
+                // Automaticky deaktivovat cílení po úspěšném vložení
+                if (pasteTargetIsItemImage) {
+                    togglePasteTarget();
+                }
+            }
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Funkce pro zpracování souboru pro analýzu (původní processFile)
+    function processAnalysisFile(file) {
         const reader = new FileReader();
         reader.onload = function(event) {
             const base64Data = event.target.result.split(',')[1];
@@ -1145,7 +1221,7 @@
         if (event.dataTransfer.files) {
             Array.from(event.dataTransfer.files).forEach(file => {
                 if (file.type.startsWith('image/')) {
-                    processFile(file);
+                    processAnalysisFile(file); // Přetažení vždy cílí na analýzu
                 }
             });
         }
@@ -1155,7 +1231,7 @@
     analysisImageUpload.addEventListener('change', function(e) {
         Array.from(e.target.files).forEach(file => {
             if (file.type.startsWith('image/')) {
-                processFile(file);
+                processAnalysisFile(file);
             }
         });
         e.target.value = ''; 
@@ -2063,6 +2139,27 @@
         } else {
             logMessage("Kopírování do schránky není v tomto prostředí podporováno.", 'warn');
         }
+    }
+
+    window.downloadJSON = function() {
+        if (!currentCardData.title) {
+            logMessage("Chyba: Vyplňte prosím Název karty před stažením JSON.", 'error');
+            return;
+        }
+
+        const dataToExport = getFormState();
+        const jsonText = JSON.stringify(dataToExport, null, 2);
+        const blob = new Blob([jsonText], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = getExportFilename('json');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        logMessage(`JSON soubor "${a.download}" byl vygenerován a stažen.`, 'success');
     }
     
     function getExportFilename(extension) {
