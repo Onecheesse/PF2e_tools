@@ -1,8 +1,8 @@
 [
-  "data/equip_ARMOR_(player_core).json",
-  "data/equip_SHIELDS_(player_core).json",
-  "data/equip_TECH GEAR_(player_core).json",
-  "data/equip_WEAPONS_(player_core).json",
-  "data/skills_(player_core).json",
-  "data/spells_(player_core).json"
+  "data/equip_ARMOR_(sf2e_player_core).json",
+  "data/equip_SHIELDS_(sf2e_player_core).json",
+  "data/equip_TECH GEAR_(sf2e_player_core).json",
+  "data/equip_WEAPONS_(sf2e_player_core).json",
+  "data/skills_(sf2e_player_core).json",
+  "data/spells_(sf2e_player_core).json"
 ]
