@@ -1,247 +1,221 @@
-// --- CONFIGURATION ---
-const fieldLabels = {
-    "price": "Price",
-    "level": "Level",
-    "rank": "Rank", // Pro kouzla
-    "bulk": "Bulk",
-    "hands": "Hands",
-    "acBonus": "AC Bonus",
-    "dexCap": "Dex Cap",
-    "checkPenalty": "Check Pen.",
-    "speedPenalty": "Speed Pen.",
-    "strength": "Str Req.",
-    "upgrades": "Slots",
-    "group": "Group",
-    "category": "Category",
-    "range": "Range",
-    "area": "Area",
-    "duration": "Duration",
-    "defense": "Defense",
-    "keyAttribute": "Key Attr." // Pro skilly
+// --- KONFIGURACE ---
+// Definice sloupců pro tabulku pro každou kategorii
+const tableColumns = {
+    equipment: [
+        { key: 'name', label: 'Name' },
+        { key: 'level', label: 'Level' },
+        { key: 'price', label: 'Price' },
+        { key: 'category', label: 'Type' },
+        { key: 'bulk', label: 'Bulk' }
+    ],
+    spells: [
+        { key: 'name', label: 'Spell Name' },
+        { key: 'level', label: 'Rank' }, // Ve spells je level ve skutečnosti Rank
+        { key: 'traditions', label: 'Traditions' },
+        { key: 'actions', label: 'Actions' }
+    ],
+    skills: [
+        { key: 'name', label: 'Skill Name' },
+        { key: 'keyAttribute', label: 'Key Attr' },
+        { key: 'category', label: 'Category' }
+    ]
 };
 
-// Mapování JSON klíčů na naše Záložky (Tabs)
-const categoryMap = {
-    "armor": "equipment",
-    "techGear": "equipment",
-    "weapons": "equipment",
-    "spells": "spells",
-    "skills": "skills"
-};
+// Mapování pro překlad dat
+const categoryMap = { "armor": "equipment", "techGear": "equipment", "weapons": "equipment", "spells": "spells", "skills": "skills" };
 
-// --- STATE ---
+// --- STAV APLIKACE ---
 let allItems = [];
-let activeTab = 'all';
+let activeTab = 'equipment'; // Výchozí tab (už ne 'all')
+let currentSort = { key: 'name', direction: 'asc' }; // Stav řazení
 
-// --- DOM ---
-const searchBar = document.getElementById('searchBar');
-const minLevelInput = document.getElementById('minLevel');
-const maxLevelInput = document.getElementById('maxLevel');
+// DOM Elementy
+const tableHead = document.getElementById('tableHead');
+const tableBody = document.getElementById('tableBody');
 const traitFilter = document.getElementById('traitFilter');
-const resultsList = document.getElementById('resultsList');
+const searchBar = document.getElementById('searchBar');
 const contentArea = document.getElementById('contentArea');
-const navButtons = document.querySelectorAll('.nav-btn');
 
 // --- INIT ---
 async function init() {
     try {
-        const manifestResponse = await fetch('data/manifest.json');
-        if (!manifestResponse.ok) throw new Error("Manifest not found");
-        const fileList = await manifestResponse.json();
-
-        for (const filePath of fileList) {
-            await loadFile(filePath);
-        }
-
-        allItems.sort((a, b) => a.name.localeCompare(b.name));
+        const manifest = await (await fetch('data/manifest.json')).json();
+        for (const file of manifest) await loadFile(file);
         
-        populateTraits(); // Naplnit roletku traitů
-        renderList();     // Zobrazit vše
+        // Po načtení seřadíme a zobrazíme výchozí tab
+        updateView();
+        
+        // Event Listenery pro tlačítka menu
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeTab = btn.dataset.tab;
+                
+                // Reset filtrů a řazení při změně tabu
+                currentSort = { key: 'name', direction: 'asc' };
+                traitFilter.value = "";
+                updateView();
+            });
+        });
 
-    } catch (error) {
-        console.error("Error:", error);
-        resultsList.innerHTML = `<li style="color:red; padding:10px;">Error loading data.<br>Check console.</li>`;
-    }
+        // Listenery pro filtry
+        searchBar.addEventListener('input', renderTable);
+        traitFilter.addEventListener('change', renderTable);
+        document.getElementById('minLevel').addEventListener('input', renderTable);
+        document.getElementById('maxLevel').addEventListener('input', renderTable);
+
+    } catch (e) { console.error(e); }
 }
 
 async function loadFile(path) {
     try {
-        const resp = await fetch(path);
-        const json = await resp.json();
-        // Zjistíme hlavní klíč (např. "spells") pro určení typu
-        const rootKey = Object.keys(json)[0]; 
-        const inferredType = categoryMap[rootKey] || "other";
-
-        extractItemsRecursive(json, inferredType);
-    } catch (e) { console.error(`Failed ${path}`, e); }
+        const json = await (await fetch(path)).json();
+        const rootKey = Object.keys(json)[0];
+        const type = categoryMap[rootKey] || "other";
+        
+        // Rekurzivní extrakce
+        extractItems(json, type);
+    } catch (e) { console.error("Chyba souboru:", path); }
 }
 
-function extractItemsRecursive(obj, mainType, parentCategory = "") {
+function extractItems(obj, mainType, catName = "") {
     for (const key in obj) {
-        const value = obj[key];
-        if (Array.isArray(value)) {
-            value.forEach(item => {
-                // Nastavíme interní typ pro filtrování
-                if (!item.mainType) item.mainType = mainType;
-                // Nastavíme kategorii pro zobrazení
-                if (!item.category) item.category = camelCaseToTitle(parentCategory || key);
-                
-                // Sjednocení Levelu a Ranku (Spells mají rank, Items level)
-                if (item.level === undefined && item.rank !== undefined) {
-                    item.level = item.rank;
-                }
-                // Skills nemají level, dáme jim 0 pro řazení
-                if (item.level === undefined) item.level = 0;
-
+        if (Array.isArray(obj[key])) {
+            obj[key].forEach(item => {
+                item.mainType = mainType;
+                item.category = catName ? capitalize(catName) : capitalize(key);
+                if (item.level === undefined) item.level = item.rank || 0;
                 allItems.push(item);
             });
-        } else if (typeof value === 'object' && value !== null) {
-            extractItemsRecursive(value, mainType, key);
+        } else if (typeof obj[key] === 'object') {
+            extractItems(obj[key], mainType, key);
         }
     }
 }
 
-// --- FILTROVÁNÍ & RENDER ---
+// --- HLAVNÍ LOGIKA ZOBRAZENÍ ---
 
-function applyFilters() {
-    const term = searchBar.value.toLowerCase();
-    const minLvl = parseInt(minLevelInput.value) || -1; // -1 bere i level 0
-    const maxLvl = parseInt(maxLevelInput.value) || 99;
-    const selectedTrait = traitFilter.value;
+function updateView() {
+    // 1. Překreslit hlavičku tabulky podle aktivního tabu
+    renderTableHeaders();
+    
+    // 2. Aktualizovat Traity v roletce (jen pro tuto kategorii)
+    populateTraits();
+    
+    // 3. Vykreslit data
+    renderTable();
+}
 
-    return allItems.filter(item => {
-        // 1. Tab Filter
-        if (activeTab !== 'all' && item.mainType !== activeTab) return false;
+function renderTableHeaders() {
+    const columns = tableColumns[activeTab];
+    tableHead.innerHTML = `<tr>
+        ${columns.map(col => `<th onclick="sortTable('${col.key}')">${col.label} ${getSortIcon(col.key)}</th>`).join('')}
+    </tr>`;
+}
 
-        // 2. Text Search
-        const matchesText = item.name.toLowerCase().includes(term) || 
-                          (item.category && item.category.toLowerCase().includes(term));
-        if (!matchesText) return false;
+function renderTable() {
+    const tbody = tableBody;
+    tbody.innerHTML = '';
 
-        // 3. Level Filter (Skills ignored)
-        if (item.mainType !== 'skills') {
-            if (item.level < minLvl || item.level > maxLvl) return false;
-        }
+    // 1. Filtrace
+    let filtered = allItems.filter(item => {
+        if (item.mainType !== activeTab) return false;
+        
+        const term = searchBar.value.toLowerCase();
+        const min = parseInt(document.getElementById('minLevel').value) || -1;
+        const max = parseInt(document.getElementById('maxLevel').value) || 100;
+        const trait = traitFilter.value;
 
-        // 4. Trait Filter
-        if (selectedTrait) {
-            if (!item.traits || !item.traits.includes(selectedTrait)) return false;
-        }
+        if (term && !item.name.toLowerCase().includes(term)) return false;
+        if (trait && (!item.traits || !item.traits.includes(trait))) return false;
+        if (item.mainType !== 'skills' && (item.level < min || item.level > max)) return false;
 
         return true;
     });
-}
 
-function renderList() {
-    const filtered = applyFilters();
-    resultsList.innerHTML = '';
-    
-    // Limit pro rychlost, kdyby toho bylo moc
-    const toRender = filtered.slice(0, 200); 
-
-    toRender.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'list-item';
+    // 2. Řazení
+    filtered.sort((a, b) => {
+        let valA = a[currentSort.key] || "";
+        let valB = b[currentSort.key] || "";
         
-        let metaInfo = "";
-        if (item.mainType === 'skills') {
-            metaInfo = `${item.keyAttribute} | ${item.category}`;
-        } else {
-            // Pro spelly píšeme "Rank", pro itemy "Lvl"
-            const lvlLabel = item.mainType === 'spells' ? 'Rank' : 'Lvl';
-            metaInfo = `${lvlLabel} ${item.level} | ${item.category}`;
+        // Detekce čísel pro správné řazení
+        if (!isNaN(parseFloat(valA)) && isFinite(valA)) {
+            valA = parseFloat(valA);
+            valB = parseFloat(valB);
         }
 
-        li.innerHTML = `
-            <strong>${item.name}</strong>
-            <small>${metaInfo}</small>
-        `;
-        li.addEventListener('click', () => renderDetail(item));
-        resultsList.appendChild(li);
+        if (valA < valB) return currentSort.direction === 'asc' ? -1 : 1;
+        if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
+        return 0;
     });
 
-    if (filtered.length === 0) {
-        resultsList.innerHTML = '<li style="padding:15px; color:#666;">No results found.</li>';
+    // 3. Vykreslení řádků
+    const columns = tableColumns[activeTab];
+    filtered.slice(0, 200).forEach(item => { // Limit 200 pro výkon
+        const tr = document.createElement('tr');
+        tr.onclick = () => showDetail(item);
+        
+        tr.innerHTML = columns.map(col => {
+            let val = item[col.key];
+            if (Array.isArray(val)) val = val.join(", "); // Pro tradice
+            if (val === undefined || val === null) val = "-";
+            return `<td>${val}</td>`;
+        }).join('');
+        
+        tbody.appendChild(tr);
+    });
+}
+
+// --- POMOCNÉ FUNKCE ---
+
+function sortTable(key) {
+    if (currentSort.key === key) {
+        currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        currentSort.key = key;
+        currentSort.direction = 'asc';
     }
+    updateView(); // Překreslit s novým řazením
+}
+
+function getSortIcon(key) {
+    if (currentSort.key !== key) return '<span style="opacity:0.3">↕</span>';
+    return currentSort.direction === 'asc' ? '▲' : '▼';
 }
 
 function populateTraits() {
-    const traitSet = new Set();
-    allItems.forEach(item => {
-        if (item.traits && Array.isArray(item.traits)) {
-            item.traits.forEach(t => traitSet.add(t));
-        }
-    });
+    const currentItems = allItems.filter(i => i.mainType === activeTab);
+    const traits = new Set();
+    currentItems.forEach(i => i.traits?.forEach(t => traits.add(t)));
     
-    const sortedTraits = Array.from(traitSet).sort();
-    sortedTraits.forEach(t => {
-        const opt = document.createElement('option');
-        opt.value = t;
-        opt.innerText = t;
-        traitFilter.appendChild(opt);
-    });
+    traitFilter.innerHTML = '<option value="">All Traits</option>' + 
+        Array.from(traits).sort().map(t => `<option value="${t}">${t}</option>`).join('');
 }
 
-// --- TAB SWITCHING ---
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Update UI classes
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Set State & Render
-        activeTab = btn.getAttribute('data-tab');
-        renderList();
-    });
-});
-
-// --- EVENT LISTENERS ---
-searchBar.addEventListener('input', renderList);
-minLevelInput.addEventListener('input', renderList);
-maxLevelInput.addEventListener('input', renderList);
-traitFilter.addEventListener('change', renderList);
-
-// --- HELPER & DETAIL RENDER (Same as before) ---
-function camelCaseToTitle(text) {
-    const result = text.replace(/([A-Z])/g, " $1");
-    return result.charAt(0).toUpperCase() + result.slice(1);
-}
-
-function renderDetail(item) {
-    // ... (Zde vlož svou původní funkci renderDetail z minula) ...
-    // Jen malá změna: Pokud je to Skill, nezobrazuj Level Badge
-    
-    let traitsHtml = '';
-    if (item.traits) {
-        traitsHtml = item.traits.map(t => `<span class="trait">${t}</span>`).join('');
-    }
-
-    let statsHtml = '<div class="stats-grid">';
-    for (const [key, label] of Object.entries(fieldLabels)) {
-        if (item[key] !== undefined && item[key] !== null && item[key] !== "") {
-            statsHtml += `<div class="stat-box"><span class="stat-label">${label}</span><span class="stat-value">${item[key]}</span></div>`;
-        }
-    }
-    statsHtml += '</div>';
-
-    // Badge logic
-    let badgeHtml = '';
-    if (item.mainType === 'spells') badgeHtml = `<span class="level-badge">Rank ${item.level}</span>`;
-    else if (item.mainType === 'equipment') badgeHtml = `<span class="level-badge">Level ${item.level}</span>`;
-
-    contentArea.innerHTML = `
+function showDetail(item) {
+    // Zvýraznění řádku (volitelné)
+    // ... vykreslení detailu (stejné jako minule, jen CSS se postará o layout) ...
+     const html = `
         <div class="detail-header">
             <h1>${item.name}</h1>
-            ${badgeHtml}
+            <span class="level-badge">${activeTab === 'spells' ? 'Rank' : 'Lvl'} ${item.level}</span>
         </div>
-        <div class="traits-container">${traitsHtml}</div>
-        ${statsHtml}
-        <hr>
-        <div class="description-block">
-            <h3>Description</h3>
-            <p>${item.description || ""}</p>
+        <div style="margin-bottom:15px">
+            ${(item.traits || []).map(t => `<span class="trait ${t.toLowerCase()}">${t}</span>`).join('')}
+        </div>
+        <p><i>${item.description || "No description."}</i></p>
+        <div class="stats-grid">
+            ${Object.entries(item).map(([k,v]) => {
+                if(['name','description','traits','mainType','source'].includes(k)) return '';
+                if(typeof v === 'object') return '';
+                return `<div class="stat-box"><span class="stat-label">${k}</span><span class="stat-value">${v}</span></div>`;
+            }).join('')}
         </div>
     `;
+    contentArea.innerHTML = html;
 }
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1').trim(); }
 
 init();
