@@ -9,42 +9,50 @@
 <body>
 
     <header>
-        <div class="header-top">
+        <div class="header-row top-row">
             <div class="logo">SF2e <span style="color:var(--accent-color)">DB</span></div>
             <nav class="main-nav">
-                <button class="nav-btn active" data-tab="all">All</button>
-                <button class="nav-btn" data-tab="equipment">Equipment</button>
+                <button class="nav-btn active" data-tab="equipment">Equipment</button>
                 <button class="nav-btn" data-tab="spells">Spells</button>
                 <button class="nav-btn" data-tab="skills">Skills</button>
             </nav>
         </div>
 
-        <div class="filter-bar">
-            <input type="text" id="searchBar" placeholder="Search items...">
+        <div class="header-row filter-row">
+            <input type="text" id="searchBar" placeholder="Search...">
             
-            <div class="filter-group">
-                <input type="number" id="minLevel" placeholder="Min Lvl" class="filter-input-small">
-                <span style="color:#666">-</span>
-                <input type="number" id="maxLevel" placeholder="Max Lvl" class="filter-input-small">
+            <div class="filter-group" id="levelFilterContainer">
+                <input type="number" id="minLevel" placeholder="Min Lvl" class="filter-input">
+                <span>-</span>
+                <input type="number" id="maxLevel" placeholder="Max Lvl" class="filter-input">
             </div>
 
             <select id="traitFilter" class="filter-select">
                 <option value="">All Traits</option>
-                </select>
+            </select>
         </div>
     </header>
 
     <div class="container">
-        <nav id="sidebar">
-            <ul id="resultsList"></ul>
-        </nav>
-
-        <main id="contentArea">
-            <div class="welcome-msg">
-                <h2>Welcome, Starfinder.</h2>
-                <p>Select an entry to view details.</p>
+        <section id="listPanel">
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead id="tableHead">
+                        </thead>
+                    <tbody id="tableBody">
+                        </tbody>
+                </table>
             </div>
-        </main>
+        </section>
+
+        <section id="detailPanel">
+            <div id="contentArea">
+                <div class="welcome-msg">
+                    <h2>Select an Item</h2>
+                    <p>Click on a row in the table to view details.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
