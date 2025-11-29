@@ -1,11 +1,9 @@
 // --- KONFIGURACE DAT ---
 
 // 1. Definice struktury (Které klíče z JSONu patří kam)
-// Key = název klíče v JSONu (např. "simpleMelee")
-// Value = { main: HlavníTab, sub: PodTab }
 const categoryMapping = {
     // --- EQUIPMENT ---
-    "weapons": { main: "equipment", sub: "Weapons" }, // Fallback pro root
+    "weapons": { main: "equipment", sub: "Weapons" },
     "unarmedAttacks": { main: "equipment", sub: "Weapons" },
     "simpleMelee": { main: "equipment", sub: "Weapons" },
     "martialMelee": { main: "equipment", sub: "Weapons" },
@@ -31,10 +29,9 @@ const categoryMapping = {
     // --- SPELLS ---
     "spells": { main: "spells", sub: "Spells" },
     "focusSpells": { main: "spells", sub: "Focus Spells" },
-    "rituals": { main: "spells", sub: "Rituals" },
-
-    // --- SKILLS ---
-    "skills": { main: "skills", sub: "Skills" }
+    "rituals": { main: "spells", sub: "Rituals" }
+    
+    // SKILLS se nyní řeší dynamicky v parseru, protože mají jinou strukturu
 };
 
 // 2. Definice sloupců pro tabulku
@@ -43,7 +40,7 @@ const tableColumns = {
         { key: 'name', label: 'Name' },
         { key: 'level', label: 'Level' },
         { key: 'price', label: 'Price' },
-        { key: 'category', label: 'Category' }, // např. "Simple Melee"
+        { key: 'category', label: 'Category' },
         { key: 'bulk', label: 'Bulk' },
         { key: 'source', label: 'Source' }
     ],
@@ -55,16 +52,17 @@ const tableColumns = {
         { key: 'source', label: 'Source' }
     ],
     skills: [
-        { key: 'name', label: 'Name' },
-        { key: 'keyAttribute', label: 'Key Attr' },
-        { key: 'source', label: 'Source' }
+        { key: 'name', label: 'Action Name' },
+        { key: 'proficiency', label: 'Proficiency' },
+        { key: 'cost', label: 'Cost' },
+        { key: 'subType', label: 'Skill' } // Zobrazíme k jakému skillu to patří
     ]
 };
 
 // --- STAV ---
 let allItems = [];
 let activeMainTab = 'equipment';
-let activeSubTab = 'All'; // 'All' zobrazí vše v daném hlavním tabu
+let activeSubTab = 'All'; 
 let currentSort = { key: 'level', direction: 'asc' };
 
 // --- INIT ---
@@ -87,41 +85,68 @@ async function init() {
 async function loadFile(path) {
     try {
         const json = await (await fetch(path)).json();
-        extractItems(json);
+        
+        // Rozpoznání struktury: Pokud je to pole hned na začátku (Skills), parsujeme jinak
+        if (Array.isArray(json) && json.length > 0 && json[0].skill && json[0].actions) {
+            parseSkills(json);
+        } else {
+            // Standardní rekurzivní parser pro Equipment/Spells
+            extractItems(json);
+        }
     } catch (e) { console.error("Failed to load:", path, e); }
 }
 
-// Rekurzivní parser, který přiřazuje MainType a SubType
+// Speciální parser pro nový formát Skillů
+function parseSkills(skillArray) {
+    skillArray.forEach(skillObj => {
+        const skillName = skillObj.skill; // např. "Acrobatics"
+        const keyAttr = skillObj.key_attribute;
+
+        if (skillObj.actions) {
+            skillObj.actions.forEach(action => {
+                // Každá akce se stane položkou v databázi
+                allItems.push({
+                    name: action.name,           // Balance
+                    description: action.description,
+                    traits: action.traits,
+                    proficiency: action.proficiency,
+                    cost: action.cost,
+                    
+                    // Metadata pro filtraci
+                    mainType: 'skills',
+                    subType: skillName,          // Tady nastavíme podkategorii!
+                    category: "Skill Action",
+                    keyAttribute: keyAttr,
+                    level: 0,                    // Skilly nemají level
+                    source: "Player Core"        // Hardcoded, v JSONu chybí
+                });
+            });
+        }
+    });
+}
+
+// Rekurzivní parser pro Equipment a Spells
 function extractItems(obj, inheritedContext = null) {
     for (const key in obj) {
-        // Zkusíme najít kontext pro tento klíč v naší mapě
         let currentContext = categoryMapping[key] || inheritedContext;
 
         if (Array.isArray(obj[key])) {
-            // Jsme u pole položek (listí stromu)
-            if (!currentContext) {
-                console.warn(`Neznámá kategorie pro klíč: "${key}". Položky budou ignorovány.`);
-                continue;
-            }
+            if (!currentContext) continue;
 
             obj[key].forEach(item => {
                 item.mainType = currentContext.main;
                 item.subType = currentContext.sub;
                 
-                // Hezký název kategorie (pokud chybí)
                 if (!item.category) item.category = camelCaseToTitle(key);
                 
-                // Normalizace Levelu (Kouzla mají Rank)
                 if (item.level === undefined) {
                     item.level = item.rank !== undefined ? item.rank : 0;
                 }
-                // Source fix (pokud chybí)
                 if(!item.source) item.source = "Unknown";
 
                 allItems.push(item);
             });
         } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-            // Zanoření (např. weapons -> simpleMelee)
             extractItems(obj[key], currentContext);
         }
     }
@@ -130,40 +155,39 @@ function extractItems(obj, inheritedContext = null) {
 // --- UI LOGIKA ---
 
 function setupNavigation() {
-    // Hlavní taby
     document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
             activeMainTab = btn.dataset.tab;
-            activeSubTab = 'All'; // Reset podkategorie
+            activeSubTab = 'All'; 
             
-            updateSubNavigation(); // Vygenerovat nová tlačítka
+            // Default sort pro různé taby
+            if(activeMainTab === 'skills') currentSort = { key: 'name', direction: 'asc' };
+            else currentSort = { key: 'level', direction: 'asc' };
+
+            updateSubNavigation();
             updateView();
         });
     });
 
-    // Filtry
     document.getElementById('searchBar').addEventListener('input', renderTable);
     document.getElementById('traitFilter').addEventListener('change', renderTable);
     document.getElementById('minLevel').addEventListener('input', renderTable);
     document.getElementById('maxLevel').addEventListener('input', renderTable);
     
-    // Inicializace pod-menu
     updateSubNavigation();
 }
 
 function updateSubNavigation() {
     const subNavContainer = document.getElementById('subNav');
-    subNavContainer.innerHTML = ''; // Vyčistit
+    subNavContainer.innerHTML = ''; 
 
-    // 1. Zjistit jaké SubTypes existují pro aktuální MainType
     const relevantItems = allItems.filter(i => i.mainType === activeMainTab);
     const subTypes = new Set(['All']);
     relevantItems.forEach(i => subTypes.add(i.subType));
 
-    // 2. Vytvořit tlačítka (seřadit abecedně, ale All první)
     const sortedSubs = Array.from(subTypes).sort((a,b) => a === 'All' ? -1 : a.localeCompare(b));
 
     sortedSubs.forEach(sub => {
@@ -172,7 +196,7 @@ function updateSubNavigation() {
         btn.innerText = sub;
         btn.onclick = () => {
             activeSubTab = sub;
-            updateSubNavigation(); // Překreslit active class
+            updateSubNavigation();
             updateView();
         };
         subNavContainer.appendChild(btn);
@@ -181,7 +205,7 @@ function updateSubNavigation() {
 
 function updateView() {
     renderTableHeaders();
-    populateTraits(); // Traity jen pro aktuální výběr
+    populateTraits(); 
     renderTable();
 }
 
@@ -202,7 +226,6 @@ function renderTable() {
     const max = parseFloat(document.getElementById('maxLevel').value);
     const trait = document.getElementById('traitFilter').value;
 
-    // FILTROVÁNÍ
     let filtered = allItems.filter(item => {
         if (item.mainType !== activeMainTab) return false;
         if (activeSubTab !== 'All' && item.subType !== activeSubTab) return false;
@@ -210,31 +233,28 @@ function renderTable() {
         if (term && !item.name.toLowerCase().includes(term)) return false;
         if (trait && (!item.traits || !item.traits.includes(trait))) return false;
         
-        // Level check (ignorujeme u Skills)
-        if (activeMainTab !== 'skills') {
+        if (activeMainTab !== 'skills' && activeMainTab !== 'services') {
             if (!isNaN(min) && item.level < min) return false;
             if (!isNaN(max) && item.level > max) return false;
         }
         return true;
     });
 
-    // ŘAZENÍ
+    // Řazení
     filtered.sort((a, b) => {
         let valA = a[currentSort.key] || "";
         let valB = b[currentSort.key] || "";
         
-        // Číselné řazení
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
         if(!isNaN(numA) && !isNaN(numB)) {
             return currentSort.direction === 'asc' ? numA - numB : numB - numA;
         }
         return currentSort.direction === 'asc' 
-            ? valA.toString().localeCompare(valB) 
-            : valB.toString().localeCompare(valA);
+            ? valA.toString().localeCompare(valB.toString()) 
+            : valB.toString().localeCompare(valA.toString());
     });
 
-    // VYKRESLENÍ
     const cols = tableColumns[activeMainTab] || tableColumns.equipment;
     
     filtered.slice(0, 200).forEach(item => {
@@ -279,10 +299,12 @@ function camelCaseToTitle(text) {
 }
 
 function showDetail(item) {
-    const levelLabel = activeMainTab === 'spells' ? 'Rank' : 'Lvl';
+    // Pro skilly nechceme Level Badge
+    let badgeHtml = "";
+    if (activeMainTab === 'spells') badgeHtml = `<span class="level-badge">Rank ${item.level}</span>`;
+    else if (activeMainTab === 'equipment') badgeHtml = `<span class="level-badge">Lvl ${item.level}</span>`;
+
     const content = document.getElementById('contentArea');
-    
-    // Ignorované klíče v tabulce statistik
     const ignored = ['name', 'description', 'traits', 'mainType', 'subType', 'category', 'heightened'];
     
     let statsHtml = Object.entries(item)
@@ -290,18 +312,12 @@ function showDetail(item) {
         .map(([k, v]) => `<div class="stat-box"><span class="stat-label">${camelCaseToTitle(k)}</span><span class="stat-value">${v}</span></div>`)
         .join('');
 
-    // Heightened (pro kouzla)
-    let heightenedHtml = "";
-    if (item.heightened) {
-        heightenedHtml = `<h4>Heightened</h4><ul>` + 
-        item.heightened.map(h => `<li><strong>${h.level}:</strong> ${h.effect}</li>`).join('') + 
-        `</ul>`;
-    }
+    let heightenedHtml = item.heightened ? `<h4>Heightened</h4><ul>` + item.heightened.map(h => `<li><strong>${h.level}:</strong> ${h.effect}</li>`).join('') + `</ul>` : "";
 
     content.innerHTML = `
         <div class="detail-header">
             <h1>${item.name}</h1>
-            <span class="level-badge">${levelLabel} ${item.level}</span>
+            ${badgeHtml}
         </div>
         <div style="margin-bottom:15px; display:flex; flex-wrap:wrap; gap:5px">
             ${(item.traits||[]).map(t => `<span class="trait ${t.toLowerCase()}">${t}</span>`).join('')}
