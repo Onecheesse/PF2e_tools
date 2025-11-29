@@ -13,6 +13,8 @@
             <div class="logo">SF2e <span style="color:var(--accent-color)">DB</span></div>
             <nav class="main-nav">
                 <button class="nav-btn active" data-tab="equipment">Equipment</button>
+                <button class="nav-btn" data-tab="medical">Medical</button>
+                <button class="nav-btn" data-tab="services">Services</button>
                 <button class="nav-btn" data-tab="spells">Spells</button>
                 <button class="nav-btn" data-tab="skills">Skills</button>
             </nav>
@@ -22,9 +24,9 @@
             <input type="text" id="searchBar" placeholder="Search...">
             
             <div class="filter-group" id="levelFilterContainer">
-                <input type="number" id="minLevel" placeholder="Min Lvl" class="filter-input">
+                <input type="number" id="minLevel" placeholder="Min" class="filter-input">
                 <span>-</span>
-                <input type="number" id="maxLevel" placeholder="Max Lvl" class="filter-input">
+                <input type="number" id="maxLevel" placeholder="Max" class="filter-input">
             </div>
 
             <select id="traitFilter" class="filter-select">
@@ -37,10 +39,8 @@
         <section id="listPanel">
             <div class="table-wrapper">
                 <table id="dataTable">
-                    <thead id="tableHead">
-                        </thead>
-                    <tbody id="tableBody">
-                        </tbody>
+                    <thead id="tableHead"></thead>
+                    <tbody id="tableBody"></tbody>
                 </table>
             </div>
         </section>
@@ -48,7 +48,7 @@
         <section id="detailPanel">
             <div id="contentArea">
                 <div class="welcome-msg">
-                    <h2>Select an Item</h2>
+                    <h2>Select an Entry</h2>
                     <p>Click on a row in the table to view details.</p>
                 </div>
             </div>
