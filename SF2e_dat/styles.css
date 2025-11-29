@@ -1,136 +1,41 @@
-:root {
-    --bg-dark: #121212;
-    --bg-panel: #1e1e1e;
-    --bg-header: #252526;
-    --text-main: #e0e0e0;
-    --text-muted: #a0a0a0;
-    --accent-color: #00d4ff;
-    --border-color: #3e3e42;
-    --hover-row: #2a2d2e;
-}
+/* ... (předchozí styly zůstávají) ... */
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; /* Důležité pro scrollování tabulky */
-}
-
-/* --- HEADER --- */
-header {
-    background-color: var(--bg-header);
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0;
-}
-
-.header-row {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.top-row { border-bottom: 1px solid #333; }
-.logo { font-size: 1.2rem; font-weight: bold; margin-right: 20px; }
-
-.nav-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 1rem;
-    border-bottom: 2px solid transparent;
-    transition: 0.2s;
-}
-.nav-btn:hover { color: #fff; }
-.nav-btn.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
-
-.filter-input, .filter-select, #searchBar {
-    background: #000;
-    border: 1px solid var(--border-color);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-}
-#searchBar { width: 300px; }
-.filter-input { width: 60px; text-align: center;}
-
-/* --- LAYOUT --- */
-.container {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-}
-
-/* Levý panel - Tabulka */
-#listPanel {
-    flex: 1; /* Bere zbytek místa, nebo 50% */
-    min-width: 400px;
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-}
-
-.table-wrapper {
-    overflow-y: auto;
-    flex: 1;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-thead {
-    position: sticky;
-    top: 0;
-    background-color: #2d2d30;
-    z-index: 1;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-th {
-    text-align: left;
-    padding: 10px;
-    cursor: pointer;
-    user-select: none;
-    color: var(--text-muted);
-    border-bottom: 2px solid var(--border-color);
-}
-th:hover { color: #fff; background: #333; }
-
-td {
-    padding: 8px 10px;
+/* SUB NAV STYLES */
+.sub-nav-row {
+    background-color: #1e1e1e; /* O něco světlejší než header */
+    padding: 5px 20px;
     border-bottom: 1px solid #333;
+    overflow-x: auto; /* Kdyby se nevešly na řádek */
 }
 
-tr:hover { background-color: var(--hover-row); cursor: pointer; }
-tr.selected { background-color: rgba(0, 212, 255, 0.15); border-left: 3px solid var(--accent-color); }
-
-/* Pravý panel - Detail */
-#detailPanel {
-    flex: 0 0 500px; /* Fixní šířka detailu */
-    background-color: var(--bg-panel);
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+.sub-nav-container {
+    display: flex;
+    gap: 10px;
 }
 
-/* Styly pro detail itemu */
-.detail-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--accent-color); margin-bottom: 15px; padding-bottom: 10px;}
-.detail-header h1 { margin: 0; font-size: 1.8rem; }
-.level-badge { background: var(--accent-color); color: black; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+.sub-btn {
+    background: #2d2d30;
+    border: 1px solid #3e3e42;
+    color: #ccc;
+    padding: 4px 12px;
+    border-radius: 15px; /* Pill shape */
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+}
 
-.trait { display: inline-block; background: #333; color: #ddd; padding: 2px 6px; margin-right: 5px; border-radius: 3px; font-size: 0.8rem; border: 1px solid #555; }
-.trait.tech { color: #00d4ff; border-color: #007ea7; }
+.sub-btn:hover {
+    background: #3e3e42;
+    color: white;
+}
 
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin: 20px 0; background: #111; padding: 15px; border-radius: 6px; }
-.stat-box { display: flex; flex-direction: column; }
-.stat-label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
-.stat-value { font-weight: bold; font-size: 1.1rem; }
+.sub-btn.active {
+    background: var(--accent-color);
+    color: black;
+    border-color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Úprava tabulky pro Source */
+td { padding: 6px 10px; border-bottom: 1px solid #333; color: #ddd; }
