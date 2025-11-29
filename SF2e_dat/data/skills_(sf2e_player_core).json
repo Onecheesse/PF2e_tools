@@ -1,0 +1,697 @@
+[
+  {
+    "skill": "Acrobatics",
+    "key_attribute": "Dexterity",
+    "actions": [
+      {
+        "name": "Balance",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Move"],
+        "description": "Move across a narrow surface or uneven ground. You are off-guard while balancing."
+      },
+      {
+        "name": "Tumble Through",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Move"],
+        "description": "Stride up to your Speed and try to move through the space of one enemy."
+      },
+      {
+        "name": "Maneuver in Flight",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Move"],
+        "description": "Try a difficult maneuver while flying, such as reversing direction or flying against wind."
+      },
+      {
+        "name": "Squeeze",
+        "proficiency": "Trained",
+        "cost": "Exploration (Move)",
+        "traits": ["Exploration", "Move"],
+        "description": "Contort yourself to squeeze through a space so small you can barely fit through."
+      }
+    ]
+  },
+  {
+    "skill": "Arcana",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Remember information about arcane theories, magic, constructs, dragons, and elementals."
+      },
+      {
+        "name": "Decipher Writing",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Understand archaic or esoteric texts about arcane theory."
+      },
+      {
+        "name": "Identify Magic",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Spend 10 minutes to identify the properties of a magic item, location, or effect."
+      },
+      {
+        "name": "Learn a Spell",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Learn a new arcane spell from a teacher or book (requires materials)."
+      },
+      {
+        "name": "Borrow an Arcane Spell",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Prepare a spell from someone else's spellbook."
+      }
+    ]
+  },
+  {
+    "skill": "Athletics",
+    "key_attribute": "Strength",
+    "actions": [
+      {
+        "name": "Climb",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Move"],
+        "description": "Move up, down, or across an incline. You are off-guard while climbing."
+      },
+      {
+        "name": "Force Open",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Forcefully open a door, window, container, or heavy gate."
+      },
+      {
+        "name": "Grapple",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Grab a creature or object with your free hand."
+      },
+      {
+        "name": "High Jump",
+        "proficiency": "Untrained",
+        "cost": "2 Actions",
+        "traits": ["Move"],
+        "description": "Stride and then jump vertically."
+      },
+      {
+        "name": "Long Jump",
+        "proficiency": "Untrained",
+        "cost": "2 Actions",
+        "traits": ["Move"],
+        "description": "Stride and then jump horizontally."
+      },
+      {
+        "name": "Reposition",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Muscle a creature or object around to a different position."
+      },
+      {
+        "name": "Shove",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Push a creature away from you."
+      },
+      {
+        "name": "Swim",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Move"],
+        "description": "Move through water."
+      },
+      {
+        "name": "Trip",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Knock a creature to the ground."
+      },
+      {
+        "name": "Disarm",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Attack"],
+        "description": "Knock an item out of a creature's grasp."
+      }
+    ]
+  },
+  {
+    "skill": "Computers",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Remember info about digital equipment, hazards, programs, and vidgames."
+      },
+      {
+        "name": "Access Infosphere",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Research information on a local network (10 minutes)."
+      },
+      {
+        "name": "Operate Device",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Perform a basic task using a digital device or program."
+      },
+      {
+        "name": "Decipher Writing",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Understand code or programming languages."
+      },
+      {
+        "name": "Disable a Device",
+        "proficiency": "Trained",
+        "cost": "2 Actions",
+        "traits": ["Manipulate"],
+        "description": "Disarm a computerized trap or complex digital mechanism."
+      },
+      {
+        "name": "Hack",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Exploration"],
+        "description": "Access, control, or change an active secured system (requires hacking toolkit)."
+      }
+    ]
+  },
+  {
+    "skill": "Crafting",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Assess value of items, tech gear, engineering, and tech creatures."
+      },
+      {
+        "name": "Repair",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Manipulate"],
+        "description": "Fix a damaged item (10 minutes, requires repair toolkit)."
+      },
+      {
+        "name": "Craft",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime", "Manipulate"],
+        "description": "Create an item from raw materials (requires formula and tools)."
+      },
+      {
+        "name": "Earn Income",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime"],
+        "description": "Craft goods for the market to earn money."
+      }
+    ]
+  },
+  {
+    "skill": "Deception",
+    "key_attribute": "Charisma",
+    "actions": [
+      {
+        "name": "Create a Diversion",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Mental"],
+        "description": "Distract creatures to become Hidden."
+      },
+      {
+        "name": "Impersonate",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Manipulate", "Secret"],
+        "description": "Create a disguise to pass as someone else (10 minutes)."
+      },
+      {
+        "name": "Lie",
+        "proficiency": "Untrained",
+        "cost": "1+ Rounds",
+        "traits": ["Auditory", "Concentrate", "Linguistic", "Mental", "Secret"],
+        "description": "Fool someone with an untruth."
+      },
+      {
+        "name": "Feint",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Mental"],
+        "description": "Mislead an opponent in melee to make them off-guard."
+      }
+    ]
+  },
+  {
+    "skill": "Diplomacy",
+    "key_attribute": "Charisma",
+    "actions": [
+      {
+        "name": "Gather Information",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Secret"],
+        "description": "Canvass local areas to learn about a specific topic (approx. 2 hours)."
+      },
+      {
+        "name": "Make an Impression",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Auditory", "Concentrate", "Exploration", "Linguistic", "Mental"],
+        "description": "Converse for 1 minute to improve someone's attitude toward you."
+      },
+      {
+        "name": "Request",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Auditory", "Concentrate", "Linguistic", "Mental"],
+        "description": "Ask a friendly or helpful creature for a favor."
+      }
+    ]
+  },
+  {
+    "skill": "Intimidation",
+    "key_attribute": "Charisma",
+    "actions": [
+      {
+        "name": "Coerce",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Auditory", "Concentrate", "Emotion", "Exploration", "Linguistic", "Mental"],
+        "description": "Bully a creature into doing what you want (1 minute)."
+      },
+      {
+        "name": "Demoralize",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Auditory", "Concentrate", "Emotion", "Fear", "Mental"],
+        "description": "Shake an enemy's resolve to make them Frightened."
+      }
+    ]
+  },
+  {
+    "skill": "Lore",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Retrieve information about the specific subject of the Lore skill."
+      },
+      {
+        "name": "Earn Income",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime"],
+        "description": "Practice a trade related to your Lore to earn money."
+      }
+    ]
+  },
+  {
+    "skill": "Medicine",
+    "key_attribute": "Wisdom",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about diseases, poisons, wounds, and forensics."
+      },
+      {
+        "name": "Administer First Aid",
+        "proficiency": "Untrained",
+        "cost": "2 Actions",
+        "traits": ["Manipulate"],
+        "description": "Stabilize a dying creature or stop bleeding (requires medkit)."
+      },
+      {
+        "name": "Treat Disease",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime", "Manipulate"],
+        "description": "Spend 8 hours caring for a diseased creature to help them recover."
+      },
+      {
+        "name": "Treat Poison",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Manipulate"],
+        "description": "Treat a patient to prevent the spread of poison."
+      },
+      {
+        "name": "Treat Wounds",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Healing", "Manipulate"],
+        "description": "Spend 10 minutes to restore Hit Points to a wounded creature."
+      }
+    ]
+  },
+  {
+    "skill": "Nature",
+    "key_attribute": "Wisdom",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about fauna, flora, geography, weather, and primal magic."
+      },
+      {
+        "name": "Command an Animal",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Auditory", "Concentrate"],
+        "description": "Issue an order to an animal."
+      },
+      {
+        "name": "Identify Magic",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Identify primal magic."
+      },
+      {
+        "name": "Learn a Spell",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Learn a new primal spell."
+      }
+    ]
+  },
+  {
+    "skill": "Occultism",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about eldritch mysteries, cults, aberrations, and occult magic."
+      },
+      {
+        "name": "Decipher Writing",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Understand occult topics and complex metaphysical systems."
+      },
+      {
+        "name": "Identify Magic",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Identify occult magic."
+      },
+      {
+        "name": "Learn a Spell",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Learn a new occult spell."
+      }
+    ]
+  },
+  {
+    "skill": "Performance",
+    "key_attribute": "Charisma",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about art, music, media personalities, and performances."
+      },
+      {
+        "name": "Perform",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate"],
+        "description": "Make a brief performance to prove capability or impress someone."
+      },
+      {
+        "name": "Earn Income",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime"],
+        "description": "Stage a performance to make money."
+      }
+    ]
+  },
+  {
+    "skill": "Piloting",
+    "key_attribute": "Dexterity",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about mechs, vehicles, starships, and piloting."
+      },
+      {
+        "name": "Drive",
+        "proficiency": "Trained",
+        "cost": "1 to 3 Actions",
+        "traits": ["Move"],
+        "description": "Pilot a vehicle to move. Actions spent determine effects."
+      },
+      {
+        "name": "Navigate",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Secret"],
+        "description": "Plan a short journey overland or in-system."
+      },
+      {
+        "name": "Plot Course",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Secret"],
+        "description": "Prepare for a long journey into the stars (e.g., Drift travel)."
+      },
+      {
+        "name": "Run Over",
+        "proficiency": "Trained",
+        "cost": "3 Actions",
+        "traits": ["Move", "Reckless"],
+        "description": "Try to run over creatures or ram another vehicle."
+      },
+      {
+        "name": "Stop",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Manipulate"],
+        "description": "Bring a vehicle to a stop."
+      },
+      {
+        "name": "Stunt",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Manipulate", "Move", "Reckless"],
+        "description": "Perform a stunt (e.g., Barrel Roll, Drift) while Driving."
+      },
+      {
+        "name": "Take Control",
+        "proficiency": "Trained",
+        "cost": "1 Action",
+        "traits": ["Manipulate"],
+        "description": "Take control of a vehicle's pilot seat."
+      }
+    ]
+  },
+  {
+    "skill": "Religion",
+    "key_attribute": "Wisdom",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about gods, theology, undead, fiends, and divine magic."
+      },
+      {
+        "name": "Decipher Writing",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Understand religious texts, allegories, and proverbs."
+      },
+      {
+        "name": "Identify Magic",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Identify divine magic."
+      },
+      {
+        "name": "Learn a Spell",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration"],
+        "description": "Learn a new divine spell."
+      }
+    ]
+  },
+  {
+    "skill": "Society",
+    "key_attribute": "Intelligence",
+    "actions": [
+      {
+        "name": "Recall Knowledge",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Concentrate", "Secret"],
+        "description": "Info about history, laws, social structures, and culture."
+      },
+      {
+        "name": "Subsist",
+        "proficiency": "Untrained",
+        "cost": "Downtime",
+        "traits": ["Downtime"],
+        "description": "Find food and shelter in a settlement."
+      },
+      {
+        "name": "Decipher Writing",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Secret"],
+        "description": "Understand coded messages, archaic text, or alien languages."
+      },
+      {
+        "name": "Create Forgery",
+        "proficiency": "Trained",
+        "cost": "Downtime",
+        "traits": ["Downtime", "Secret"],
+        "description": "Create a false document."
+      }
+    ]
+  },
+  {
+    "skill": "Stealth",
+    "key_attribute": "Dexterity",
+    "actions": [
+      {
+        "name": "Conceal an Object",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Manipulate", "Secret"],
+        "description": "Hide a small object on your person."
+      },
+      {
+        "name": "Hide",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Secret"],
+        "description": "Become hidden behind cover or concealment."
+      },
+      {
+        "name": "Sneak",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Move", "Secret"],
+        "description": "Move undetected."
+      }
+    ]
+  },
+  {
+    "skill": "Survival",
+    "key_attribute": "Wisdom",
+    "actions": [
+      {
+        "name": "Subsist",
+        "proficiency": "Untrained",
+        "cost": "Downtime",
+        "traits": ["Downtime"],
+        "description": "Forage for food and shelter in the wild."
+      },
+      {
+        "name": "Sense Direction",
+        "proficiency": "Untrained",
+        "cost": "Exploration",
+        "traits": ["Exploration", "Secret"],
+        "description": "Get oriented in the wild using stars, geography, or flora."
+      },
+      {
+        "name": "Cover Tracks",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Move"],
+        "description": "Conceal your trail while traveling."
+      },
+      {
+        "name": "Track",
+        "proficiency": "Trained",
+        "cost": "Exploration",
+        "traits": ["Concentrate", "Exploration", "Move"],
+        "description": "Follow tracks."
+      }
+    ]
+  },
+  {
+    "skill": "Thievery",
+    "key_attribute": "Dexterity",
+    "actions": [
+      {
+        "name": "Palm an Object",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Manipulate"],
+        "description": "Pick up a small, unattended object without being noticed."
+      },
+      {
+        "name": "Steal",
+        "proficiency": "Untrained",
+        "cost": "1 Action",
+        "traits": ["Manipulate"],
+        "description": "Take a small object from another creature."
+      },
+      {
+        "name": "Disable a Device",
+        "proficiency": "Trained",
+        "cost": "2 Actions",
+        "traits": ["Manipulate"],
+        "description": "Disarm a trap or complex device (requires tools)."
+      },
+      {
+        "name": "Pick a Lock",
+        "proficiency": "Trained",
+        "cost": "2 Actions",
+        "traits": ["Manipulate"],
+        "description": "Open a lock without a key (requires tools)."
+      }
+    ]
+  }
+]

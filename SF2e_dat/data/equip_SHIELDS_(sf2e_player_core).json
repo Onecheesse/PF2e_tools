@@ -1,0 +1,135 @@
+{
+  "shields": [
+    {
+      "name": "Carbon shield, commercial",
+      "level": 0,
+      "price": 25,
+      "acBonus": "+2",
+      "speedPenalty": "-",
+      "bulk": "1",
+      "hardness": 5,
+      "hp": 20,
+      "bt": 10,
+      "traits": [
+        "Analog"
+      ],
+      "description": "This durable yet lightweight defensive plate comes in a variety of shapes and sizes, and it’s often customized with LED displays that broadcast personal insignia or an organization’s colors and symbols.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Compact shield, commercial",
+      "level": 0,
+      "price": 15,
+      "acBonus": "+1",
+      "speedPenalty": "-",
+      "bulk": "L",
+      "hardness": 4,
+      "hp": 8,
+      "bt": 4,
+      "traits": [
+        "Analog",
+        "Compact"
+      ],
+      "description": "This sleek shield is a favorite of operatives and other mobile combatants. It’s most common design is a polycarbon panel contoured to fit snugly over a forearm or other limb.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Deflecting field, commercial",
+      "level": 0,
+      "price": 10,
+      "acBonus": "+1",
+      "speedPenalty": "-",
+      "bulk": "-",
+      "hardness": 2,
+      "hp": 4,
+      "bt": 2,
+      "traits": [
+        "Installed",
+        "Tech"
+      ],
+      "description": "This shield isn’t held—instead, it’s installed as an armor or weapon upgrade. A deflecting field appears as a translucent panel integrated into the upgraded item and creates a temporary protective hardlight barrier when activated.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Irising shield, commercial",
+      "level": 0,
+      "price": 10,
+      "acBonus": "+1",
+      "speedPenalty": "-",
+      "bulk": "L",
+      "hardness": 3,
+      "hp": 6,
+      "bt": 3,
+      "traits": [
+        "Retractable",
+        "Tech"
+      ],
+      "description": "An irising shield is made of flexible polycarbon with a retractable design. When retracted, an irising shield looks like a decorative bangle, gauntlet, or glove. When deployed, its panels flare out and form a miniature circular shield.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Mobile bulwark, commercial",
+      "level": 0,
+      "price": 200,
+      "acBonus": "+3/+4*",
+      "speedPenalty": "-10 ft.",
+      "bulk": "4",
+      "hardness": 6,
+      "hp": 24,
+      "bt": 12,
+      "traits": [
+        "Analog",
+        "Hefty +2"
+      ],
+      "description": "This bulky shield is advertised as the ultimate protection in battle for those strong enough to hoist them. Mobile bulwarks create an iconic rectangular silhouette. *Getting the higher AC bonus (+4) requires using the Take Cover action while the shield is raised.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Phase shield, commercial",
+      "level": 0,
+      "price": 20,
+      "acBonus": "+2",
+      "speedPenalty": "-",
+      "bulk": "-",
+      "hardness": 5,
+      "hp": 10,
+      "bt": 5,
+      "traits": [
+        "Retractable",
+        "Tech"
+      ],
+      "description": "A phase shield is an intricate but durable technological device often worn strapped to a limb or belt that projects a protective hardlight barrier when deployed. Phase shields are translucent and tinted, with a wide variety of fully customizable colors and image projectors.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    },
+    {
+      "name": "Riot shield, commercial",
+      "level": 0,
+      "price": 100,
+      "acBonus": "+2/+4*",
+      "speedPenalty": "-5 ft.",
+      "bulk": "2",
+      "hardness": 5,
+      "hp": 20,
+      "bt": 10,
+      "traits": [
+        "Analog"
+      ],
+      "description": "Riot shields are constructed from sheets of transparent aluminum reinforced with nanocarbon panels layered over polymers or resins. *Getting the higher AC bonus (+4) requires using the Take Cover action while the shield is raised.",
+      "source": "SF2e Player Core",
+      "page": 252,
+      "category": "Shield"
+    }
+  ]
+}
