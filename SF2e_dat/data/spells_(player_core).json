@@ -1,0 +1,286 @@
+{
+  "spells": [
+    {
+      "name": "Absolute Zero",
+      "type": "Spell",
+      "rank": 7,
+      "actions": "Two Actions",
+      "traits": ["Cold", "Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Primal"],
+      "range": "500 feet",
+      "area": "30-foot burst",
+      "defense": "Fortitude",
+      "description": "A swirling vortex flash freezes the air, dealing 10d8 cold damage. On a critical failure, the creature is immobilized by a layer of ice (50 HP, Hardness 5).",
+      "heightened": [
+        {
+          "level": "+1",
+          "effect": "The damage increases by 1d8 and the ice’s Hit Points increase by 5."
+        }
+      ],
+      "source": "Player Core",
+      "page": 313
+    },
+    {
+      "name": "Acid Grip",
+      "type": "Spell",
+      "rank": 2,
+      "actions": "Two Actions",
+      "traits": ["Acid", "Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Primal"],
+      "range": "120 feet",
+      "targets": "1 creature",
+      "defense": "Reflex",
+      "description": "An ephemeral, taloned hand grips the target, burning it with magical acid. The target takes 2d8 acid damage plus 1d6 persistent acid damage depending on its Reflex save. A creature taking persistent damage from this spell takes a –10-foot status penalty to its Speeds. The hand can also move the target.",
+      "heightened": [
+        {
+          "level": "+2",
+          "effect": "The initial damage increases by 2d8, and the persistent acid damage increases by 1d6."
+        }
+      ],
+      "source": "Player Core",
+      "page": 313
+    },
+    {
+      "name": "Adhere",
+      "type": "Cantrip",
+      "rank": 1,
+      "actions": "One Action",
+      "traits": ["Cantrip", "Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Occult", "Primal"],
+      "range": "Touch",
+      "targets": "1 held or unattended object or a 5-foot square surface",
+      "duration": "1 minute",
+      "description": "You create a molecular bond between an unattended object you touch (or an object you’re holding) and another object or surface that object is touching. Pulling the object free requires a successful Athletics check against your spell DC. If you touch a square, it becomes greater difficult terrain.",
+      "source": "Player Core",
+      "page": 313
+    },
+    {
+      "name": "Aerial Form",
+      "type": "Spell",
+      "rank": 4,
+      "actions": "Two Actions",
+      "traits": ["Concentrate", "Manipulate", "Polymorph"],
+      "traditions": ["Arcane", "Primal"],
+      "duration": "1 minute",
+      "description": "You harness your mastery of the sky to reshape your body into a Medium flying animal battle form (Bat, Bird, Pterosaur, or Wasp). You gain AC=18+level, temporary HP, low-light vision, flight, and specific melee attacks based on the form.",
+      "heightened": [
+        {
+          "level": "5th",
+          "effect": "Battle form is Large, fly Speed +10 ft, 10 temp HP, attack +18, damage +8."
+        },
+        {
+          "level": "6th",
+          "effect": "Battle form is Huge, fly Speed +15 ft, 10 ft reach, AC=21+level, 15 temp HP, attack +21, damage +4 (double dice)."
+        }
+      ],
+      "source": "Player Core",
+      "page": 313
+    },
+    {
+      "name": "Air Bubble",
+      "type": "Spell",
+      "rank": 1,
+      "actions": "Reaction",
+      "trigger": "A creature within range enters an environment where it can’t breathe.",
+      "traits": ["Air", "Concentrate"],
+      "traditions": ["Arcane", "Divine", "Primal"],
+      "range": "60 feet",
+      "targets": "The triggering creature",
+      "duration": "1 minute",
+      "description": "A bubble of pure air appears around the target’s head, allowing it to breathe normally. The effect ends as soon as the target returns to an environment where it can breathe normally.",
+      "source": "Player Core",
+      "page": 314
+    },
+    {
+      "name": "Akashic Download",
+      "type": "Spell",
+      "rank": 1,
+      "actions": "Three Actions",
+      "traits": ["Concentrate", "Manipulate"],
+      "traditions": ["Occult"],
+      "requirements": "You have a comm unit or computer, used as a locus.",
+      "duration": "1 day",
+      "description": "You execute a psychic search of the Akashic Record for information about a specific topic. You gain a +1 status bonus to Recall Knowledge checks on that topic when consulting your comm unit.",
+      "heightened": [
+        {
+          "level": "3rd",
+          "effect": "You can reference your comm unit three times before the spell ends."
+        }
+      ],
+      "source": "Player Core",
+      "page": 314
+    },
+    {
+      "name": "Akashic Revival",
+      "type": "Spell",
+      "rank": 8,
+      "actions": "Two Actions", // Implicit from standard casting if not specified, but Cast time is 10 mins
+      "castTime": "10 minutes",
+      "traits": ["Concentrate", "Manipulate"],
+      "traditions": ["Occult"],
+      "range": "Touch",
+      "targets": "1 willing creature",
+      "duration": "1 day",
+      "description": "You dispatch perfect documentation of the target’s physical body to the Akashic Record. If the target dies, it can recall its recorded body, reappearing in the corpse's space with 1 HP.",
+      "source": "Player Core",
+      "page": 314
+    },
+    {
+      "name": "Alarm",
+      "type": "Spell",
+      "rank": 1,
+      "actions": "Two Actions", // Implicit
+      "castTime": "10 minutes",
+      "traits": ["Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Divine", "Occult", "Primal"],
+      "range": "Touch",
+      "area": "20-foot burst",
+      "duration": "8 hours",
+      "description": "You ward an area to alert you when creatures enter without a password. You choose a mental alert or an audible alarm.",
+      "heightened": [
+        {
+          "level": "3rd",
+          "effect": "You can specify a trigger for which types of creatures sound the alarm."
+        }
+      ],
+      "source": "Player Core",
+      "page": 314
+    },
+    {
+      "name": "Analyze Target",
+      "type": "Cantrip",
+      "rank": 1,
+      "actions": "One Action or Two Actions",
+      "traits": ["Cantrip", "Concentrate", "Detection", "Manipulate"],
+      "traditions": ["Arcane", "Divine", "Occult", "Primal"],
+      "range": "30 feet",
+      "targets": "1 creature",
+      "duration": "1 hour",
+      "description": "You focus on the target, gathering data. You gain a +1 status bonus to checks to Impersonate, Treat Wounds, and Recall Knowledge about the target.",
+      "heightened": [
+        {
+          "level": "3rd",
+          "effect": "The bonus increases to +2, and you can target up to 10 creatures."
+        },
+        {
+          "level": "6th",
+          "effect": "The bonus increases to +3, and you can target any number of creatures."
+        }
+      ],
+      "source": "Player Core",
+      "page": 314
+    },
+    {
+      "name": "Animal Form",
+      "type": "Spell",
+      "rank": 2,
+      "actions": "Two Actions",
+      "traits": ["Concentrate", "Manipulate", "Polymorph"],
+      "traditions": ["Primal"],
+      "duration": "1 minute",
+      "description": "You call upon primal energy to transform yourself into a Medium animal battle form (Ape, Bear, Bull, Canine, Cat, Deer, Frog, Shark, or Snake). You gain AC=16+level, 5 temp HP, low-light vision, imprecise scent, and specific attacks.",
+      "heightened": [
+        {
+          "level": "3rd",
+          "effect": "10 temp HP, AC=17+level, attack +14, damage +5."
+        },
+        {
+          "level": "4th",
+          "effect": "Battle form is Large, 10 ft reach, 15 temp HP, AC=18+level, attack +16, damage +9."
+        },
+        {
+          "level": "5th",
+          "effect": "Battle form is Huge, 15 ft reach, 20 temp HP, AC=18+level, attack +18, damage +7 (double dice)."
+        }
+      ],
+      "source": "Player Core",
+      "page": 315
+    },
+    {
+      "name": "Ant Haul",
+      "type": "Spell",
+      "rank": 1,
+      "actions": "Two Actions",
+      "traits": ["Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Primal"],
+      "range": "Touch",
+      "targets": "1 creature",
+      "duration": "8 hours",
+      "description": "You reinforce the target’s musculoskeletal system to bear more weight. The target can carry 3 more Bulk than normal before becoming encumbered and up to a maximum of 6 more Bulk.",
+      "source": "Player Core",
+      "page": 316
+    },
+    {
+      "name": "Arctic Rift",
+      "type": "Spell",
+      "rank": 8,
+      "actions": "Two Actions",
+      "traits": ["Cold", "Concentrate", "Manipulate"],
+      "traditions": ["Arcane", "Primal"],
+      "area": "120-foot line",
+      "defense": "Fortitude",
+      "description": "A jagged crack opens in the air, dealing 12d8 cold damage. Critical failure immobilizes the target in ice (60 HP, Hardness 5).",
+      "heightened": [
+        {
+          "level": "+1",
+          "effect": "The damage increases by 1d8 and the ice’s Hit Points increase by 5."
+        }
+      ],
+      "source": "Player Core",
+      "page": 316
+    },
+    {
+      "name": "Atomic Blast",
+      "type": "Spell",
+      "rank": 9,
+      "actions": "Three Actions",
+      "traits": ["Concentrate", "Fire", "Manipulate", "Radiation"],
+      "traditions": ["Arcane", "Primal"],
+      "range": "500 feet",
+      "area": "100-foot burst",
+      "defense": "Reflex",
+      "duration": "1 minute (radiation)",
+      "description": "You magically split an atom, creating an explosion with radioactive fallout. Targets take 5d12 bludgeoning and 5d12 fire damage and are exposed to extreme radiation.",
+      "source": "Player Core",
+      "page": 316
+    },
+    {
+      "name": "Augury",
+      "type": "Spell",
+      "rank": 2,
+      "actions": "Two Actions", // Implicit
+      "castTime": "10 minutes",
+      "traits": ["Concentrate", "Manipulate", "Prediction"],
+      "traditions": ["Divine", "Occult"],
+      "description": "You gain a vague glimpse of the future. Predicts results up to 30 minutes into the future: good, bad, mixed, or nothing.",
+      "source": "Player Core",
+      "page": 316
+    },
+    {
+      "name": "Avatar",
+      "type": "Spell",
+      "rank": 10,
+      "actions": "Two Actions",
+      "traits": ["Concentrate", "Manipulate", "Polymorph"],
+      "traditions": ["Divine"],
+      "duration": "1 minute",
+      "description": "You transform into an avatar of your deity, assuming a Huge battle form. You gain AC=25+level, 30 temp HP, darkvision, the cosmic trait, and specific abilities/attacks based on your deity (e.g., Abadar, Besmara, Damoritosh, Triune, etc.).",
+      "source": "Player Core",
+      "page": 316
+    },
+    {
+      "name": "Bane",
+      "type": "Spell",
+      "rank": 1,
+      "actions": "Two Actions",
+      "traits": ["Aura", "Concentrate", "Manipulate", "Mental"],
+      "traditions": ["Divine", "Occult"],
+      "area": "15-foot emanation",
+      "defense": "Will",
+      "duration": "1 minute",
+      "description": "You fill the minds of your enemies with doubt. Enemies in the area take a –1 status penalty to attack rolls. Can be Sustained to increase radius.",
+      "source": "Player Core",
+      "page": 317
+    }
+  ]
+}

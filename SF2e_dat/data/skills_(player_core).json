@@ -1,0 +1,331 @@
+{
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "keyAttribute": "Dexterity",
+      "description": "Acrobatics measures your ability to perform tasks requiring coordination and grace.",
+      "actions": {
+        "untrained": [
+          "Balance",
+          "Tumble Through"
+        ],
+        "trained": [
+          "Maneuver in Flight",
+          "Squeeze"
+        ]
+      },
+      "source": "Player Core",
+      "page": 192
+    },
+    {
+      "name": "Arcana",
+      "keyAttribute": "Intelligence",
+      "description": "Arcana measures how much you know about arcane magic and creatures, arcane theories, and magical traditions.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge"
+        ],
+        "trained": [
+          "Decipher Writing",
+          "Identify Magic",
+          "Learn a Spell",
+          "Borrow an Arcane Spell"
+        ]
+      },
+      "source": "Player Core",
+      "page": 193
+    },
+    {
+      "name": "Athletics",
+      "keyAttribute": "Strength",
+      "description": "Athletics allows you to perform deeds of physical prowess, moving about the environment or controlling opponents.",
+      "actions": {
+        "untrained": [
+          "Climb",
+          "Force Open",
+          "Grapple",
+          "High Jump",
+          "Long Jump",
+          "Reposition",
+          "Shove",
+          "Swim",
+          "Trip"
+        ],
+        "trained": [
+          "Disarm"
+        ]
+      },
+      "source": "Player Core",
+      "page": 193
+    },
+    {
+      "name": "Computers",
+      "keyAttribute": "Intelligence",
+      "description": "Computers is your ability to work with computer systems, digital hazards, and technological equipment.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Access Infosphere",
+          "Operate Device"
+        ],
+        "trained": [
+          "Decipher Writing",
+          "Disable a Device",
+          "Hack"
+        ]
+      },
+      "source": "Player Core",
+      "page": 195
+    },
+    {
+      "name": "Crafting",
+      "keyAttribute": "Intelligence",
+      "description": "You can use this skill to create, understand, and repair items.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Repair"
+        ],
+        "trained": [
+          "Earn Income",
+          "Craft"
+        ]
+      },
+      "source": "Player Core",
+      "page": 196
+    },
+    {
+      "name": "Deception",
+      "keyAttribute": "Charisma",
+      "description": "You can trick and mislead others using disguises, lies, and other forms of subterfuge.",
+      "actions": {
+        "untrained": [
+          "Create a Diversion",
+          "Impersonate",
+          "Lie"
+        ],
+        "trained": [
+          "Feint"
+        ]
+      },
+      "source": "Player Core",
+      "page": 198
+    },
+    {
+      "name": "Diplomacy",
+      "keyAttribute": "Charisma",
+      "description": "You influence others through negotiation and flattery, or find out information through friendly chats.",
+      "actions": {
+        "untrained": [
+          "Gather Information",
+          "Make an Impression",
+          "Request"
+        ],
+        "trained": []
+      },
+      "source": "Player Core",
+      "page": 199
+    },
+    {
+      "name": "Intimidation",
+      "keyAttribute": "Charisma",
+      "description": "You bend others to your will using threats.",
+      "actions": {
+        "untrained": [
+          "Coerce",
+          "Demoralize"
+        ],
+        "trained": []
+      },
+      "source": "Player Core",
+      "page": 200
+    },
+    {
+      "name": "Lore",
+      "keyAttribute": "Intelligence",
+      "description": "You have specialized information on a narrow topic. Lore features many subcategories.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge"
+        ],
+        "trained": [
+          "Earn Income"
+        ]
+      },
+      "source": "Player Core",
+      "page": 200
+    },
+    {
+      "name": "Medicine",
+      "keyAttribute": "Wisdom",
+      "description": "You can patch up wounds and help people recover from diseases and poisons.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Administer First Aid"
+        ],
+        "trained": [
+          "Treat Disease",
+          "Treat Poison",
+          "Treat Wounds"
+        ]
+      },
+      "source": "Player Core",
+      "page": 201
+    },
+    {
+      "name": "Nature",
+      "keyAttribute": "Wisdom",
+      "description": "You know about the natural world, and you command and train animals and magical beasts.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Command an Animal"
+        ],
+        "trained": [
+          "Identify Magic",
+          "Learn a Spell"
+        ]
+      },
+      "source": "Player Core",
+      "page": 202
+    },
+    {
+      "name": "Occultism",
+      "keyAttribute": "Intelligence",
+      "description": "You know a great deal about ancient philosophies, esoteric lore, obscure mysticism, and supernatural creatures.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge"
+        ],
+        "trained": [
+          "Decipher Writing",
+          "Identify Magic",
+          "Learn a Spell"
+        ]
+      },
+      "source": "Player Core",
+      "page": 203
+    },
+    {
+      "name": "Performance",
+      "keyAttribute": "Charisma",
+      "description": "You are skilled at a form of performance, using your talents to impress a crowd or make a living.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Perform"
+        ],
+        "trained": [
+          "Earn Income"
+        ]
+      },
+      "source": "Player Core",
+      "page": 203
+    },
+    {
+      "name": "Piloting",
+      "keyAttribute": "Dexterity",
+      "description": "Piloting represents your ability to command mechs, drive vehicles, pilot starships, and navigate.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge"
+        ],
+        "trained": [
+          "Drive",
+          "Navigate",
+          "Plot Course",
+          "Run Over",
+          "Stop",
+          "Stunt",
+          "Take Control"
+        ]
+      },
+      "source": "Player Core",
+      "page": 204
+    },
+    {
+      "name": "Religion",
+      "keyAttribute": "Wisdom",
+      "description": "The secrets of deities, dogma, faith, and the realms of divine creatures both sublime and sinister are open to you.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge"
+        ],
+        "trained": [
+          "Decipher Writing",
+          "Identify Magic",
+          "Learn a Spell"
+        ]
+      },
+      "source": "Player Core",
+      "page": 206
+    },
+    {
+      "name": "Society",
+      "keyAttribute": "Intelligence",
+      "description": "You understand the people and systems that make organized society run, and you know the historical events that make societies what they are today.",
+      "actions": {
+        "untrained": [
+          "Recall Knowledge",
+          "Subsist"
+        ],
+        "trained": [
+          "Decipher Writing",
+          "Create Forgery"
+        ]
+      },
+      "source": "Player Core",
+      "page": 206
+    },
+    {
+      "name": "Stealth",
+      "keyAttribute": "Dexterity",
+      "description": "You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an item.",
+      "actions": {
+        "untrained": [
+          "Conceal an Object",
+          "Hide",
+          "Sneak"
+        ],
+        "trained": []
+      },
+      "source": "Player Core",
+      "page": 206
+    },
+    {
+      "name": "Survival",
+      "keyAttribute": "Wisdom",
+      "description": "You are adept at living in the wilderness, foraging for food and building shelter.",
+      "actions": {
+        "untrained": [
+          "Subsist",
+          "Sense Direction"
+        ],
+        "trained": [
+          "Cover Tracks",
+          "Track"
+        ]
+      },
+      "source": "Player Core",
+      "page": 208
+    },
+    {
+      "name": "Thievery",
+      "keyAttribute": "Dexterity",
+      "description": "You are trained in a particular set of skills favored by thieves and scoundrels.",
+      "actions": {
+        "untrained": [
+          "Palm an Object",
+          "Steal"
+        ],
+        "trained": [
+          "Disable a Device",
+          "Pick a Lock"
+        ]
+      },
+      "source": "Player Core",
+      "page": 209
+    }
+  ]
+}
